@@ -1,6 +1,12 @@
 set timeoutlen=1000 ttimeoutlen=0 " some hack because some commands lag
 syntax on " syntax highlighting
-set number " line numbers
+set nu rnu " line numbers
+set autoindent
+set wildmenu
+set ruler
+set hidden
+
+inoremap jk <esc>
 
 set laststatus=2 " lightline
 if !has('gui_running')

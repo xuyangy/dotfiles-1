@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/atagi/dev/ihub/BackEndApp'
+let g:netrw_dirhist_7='/home/atagi/dev/ihub/FrontEndApp/.next'
+let g:netrw_dirhist_6='/home/atagi/dev/ihub/FrontEndApp'
+let g:netrw_dirhist_5='/home/atagi/dev/ihub/FrontEndApp/styles/fontawesome'
+let g:netrw_dirhist_4='/home/atagi/dev/ihub/FrontEndApp/styles'
+let g:netrw_dirhist_3='/home/atagi/dev/ihub/FrontEndApp'
+let g:netrw_dirhist_2='/home/atagi/dev/ihub/FrontEndApp/components'
+let g:netrw_dirhist_1='/home/atagi/dev/ihub/FrontEndApp'

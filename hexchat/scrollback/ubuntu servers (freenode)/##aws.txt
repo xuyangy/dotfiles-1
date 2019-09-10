@@ -1,0 +1,407 @@
+T 1567693866 19*	Now talking on 22##aws
+T 1567693866 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1567693866 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1567695041 20*	Disconnected (20)
+T 1568212408 19*	Now talking on 22##aws
+T 1568212408 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568212408 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568214313 18<bn_work18>	> https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html#vpc-limits-security-groups
+T 1568214313 18<bn_work18>	ok, so it looks like there's a soft limit of 5 SGs, hard limit of 16 SGs per instance, and total limit of 1000 rules.  It claims one has to contact support to get an increase.  Is this possible if you don't have paid support?
+T 1568214522 18<Lloyd18>	have a look at the service quotas system, might be able to do it through there
+T 1568214544 18<Lloyd18>	although if you're running production workloads or a business through AWS, you should have paid support
+T 1568215092 18<bn_work18>	Lloyd: thanks!  I'm guessing this is what you're referring to in the console?  https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Limits:  Re. paid support:  unfortunately it's not my call :(  Luckily our usage is still pretty minimal but I will let them know if it starts becoming an issue.
+T 1568215471 18<jwr18>	bn_work: raising limits does not need paid support
+T 1568215530 18<jwr18>	bn_work: https://console.aws.amazon.com/support/cases?region=us-east-1#/create (substitute whatever region you're using in this URL)
+T 1568215701 18<bn_work18>	jwr:  thanks, filling out the form right now.  what are the best practices re. managing SGs?  with the current limits, it seems the max # of SGs (ie: network services) an instance can have is 16.  For now this should be enough but wondering what the best practice would be if we start approaching that limit?  Do you guys just start combining services into 1?  PS:  It also kinda sucks that you can't edit the name or
+T 1568215701 18<bn_work18>	description of SGs after the fact :|
+T 1568215785 18<jwr18>	bn_work: the limit of 5 SG's per region is a very soft limit and they'll raise that for you easily. we have nearly 200.
+T 1568215889 18<bn_work18>	jwr: you mean per EC2 instance network interface?  I think we already have > 5 defined in this region
+T 1568215891 18<jwr18>	bn_work: the limit of 16 SG's per instance is probably much harder, and i've never seen anyone need that many. usually you'd do one SG per logical service, not per protocol or anything. so if you had one service which used port 22, 80, 443, and you'd call it 'webserver'. then all your webservers resuse the same SG.
+T 1568215931 18<bn_work18>	yeah, that's what I've been doing
+T 1568215970 18<bn_work18>	yep, re-use 👍
+T 1568216481 18<mspo18>	i"m confused about cli deployments of replica ecs jobs
+T 1568216491 18<mspo18>	where do I get a revision location?
+T 1568275714 20*	Disconnected (20)
+T 1568275738 19*	Now talking on 22##aws
+T 1568275738 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568275738 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568275852 18<ws2k318>	is it possible to remove a role from the role history?
+T 1568276792 18<vegardx18>	role history?
+T 1568276812 18<vegardx18>	You're talking about console for assuming roles in different accounts?
+T 1568276829 18<vegardx18>	That's all client-side, so local storage or something
+T 1568282374 20*	Disconnected (20)
+T 1568282397 19*	Now talking on 22##aws
+T 1568282397 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568282397 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568288944 18<vegardx18>	How would you implement something like a Lambda@Edge viewer-request in API Gateway? I want to validate some requests before passing them to backends.
+T 1568293745 18<chainz18>	i've asked this before but less openly. is there a standard/practical way to copy an environment from one region to another?
+T 1568293754 18<chainz18>	as close to 1 button push as possible
+T 1568293792 18<Lloyd18>	define environment
+T 1568293800 18<chainz18>	a region essentially
+T 1568293805 18<chainz18>	us-east-1 for example
+T 1568293822 18<chainz18>	everything within 1 aws account in that region
+T 1568293835 18<chainz18>	in that account even
+T 1568293855 18<Lloyd18>	why would you want to do that?
+T 1568293857 18<chainz18>	with terraform i'm going to have to either update ami's in the files or share them out with the other account
+T 1568293901 18<chainz18>	i want to mirror a QA environment in another account to have an additional testing environment
+T 1568293925 18<mspo18>	organize the env as a tf module
+T 1568293932 18<mspo18>	and then duplicate it as much as you want
+T 1568293999 18<Lloyd18>	there's not going to be a solution or tool that will simply copy everything from one to another, because it's kind of nonsensical. like, what does it do with RDS? or the worst, S3?
+T 1568294000 18<chainz18>	mspo: that's what i'm trying to do with the "terraforming" tool
+T 1568294025 18<chainz18>	Lloyd: that's true re: S3. this environment isn't using RDS
+T 1568294029 18<mspo18>	chainz: suck it up and just start writing, imho
+T 1568294048 18<mspo18>	you will get it done by this afternoon
+T 1568294051 18<chainz18>	mspo: you're probably right, i just don't want to realize after the fact i could have saved time using X service
+T 1568294057 18<mspo18>	and it will be a crap day but still..
+T 1568294057 18<chainz18>	mspo: hell no :)
+T 1568294068 18<mspo18>	I don't know your TZ ;)
+T 1568294069 18<chainz18>	there's 1109 resources according to terraform
+T 1568294072 18<mspo18>	it's morning for me!
+T 1568294079 18<chainz18>	i'm in EST
+T 1568294083 18<chainz18>	boston
+T 1568294084 18<mspo18>	yeah you can finish today
+T 1568294097 18<Lloyd18>	plus, you're going to want to adjust your QA env, as you don't want a mirror copy
+T 1568294100 18<chainz18>	i don't think there's enough coffee in the house for that
+T 1568294104 18<Lloyd18>	you won't want it public, you'll want maybe debugging enabled etc etc
+T 1568294116 18<mspo18>	I'm willing to get 850 of those things are duplciates/for-loops
+T 1568294122 18<mspo18>	for le grande import
+T 1568294123 18<Koffa18>	no coffee - go for beer...
+T 1568294123 18<chainz18>	Lloyd: sure but those will be minor changes
+T 1568294138 18<chainz18>	if i can get 90% of it propped up, i can do the rest
+T 1568294151 18<Lloyd18>	you'll also want it repeatable right?
+T 1568294166 18<chainz18>	yah
+T 1568294176 18<chainz18>	variablize things like bucket names
+T 1568294211 18<Lloyd18>	ultimately, QA/staging etc all end up just with a lot of duplication
+T 1568294251 18<Lloyd18>	or large sections of conditionals, which just cause confusion and issues
+T 1568294268 18<Koffa18>	-${aws::accountid}- in bucketname makes sure you'll never have conflicts when deploying dev/test/qa/prod/whatever...
+T 1568294286 18<Lloyd18>	or just never name them if you're using CFN
+T 1568294813 18<chainz18>	bucket creation is the least of my worries for creating this environment
+T 1568294840 18<chainz18>	mostly the vpc/subnets/all things networking, security groups, elbs
+T 1568302788 18<JamesBenson18>	I'm running into a race condition on a windows server EC2 machine.  Does anyone know how to, for example, install AD and DNS, reboot, add an OU and users THEN, continue with the rest of the cloudformation?
+T 1568302833 18<Pilate18>	build your ami separate from your cft?
+T 1568302833 18<JamesBenson18>	^ The rest of the cloudformation being additional linux ec2's that depend on the users who are added, etc.
+T 1568302860 18<JamesBenson18>	@Pilate, I would like to have it build at runtime if possible
+T 1568302917 18<JamesBenson18>	This is part of an opensource software we are developing and don't want to host data for everyone.
+T 1568303058 18<JamesBenson18>	I tried a CreationPolicy with a timeout, but that just causes it to fail it seems.  I'm having issues getting the signal portion to work.
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22##aws
+T 1568307242 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568307242 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568308162 18<bn_work18>	(Volume Shadow Copy Service)
+T 1568308286 18<bn_work18>	Looking through CloudTrail and don't see any user-initiated reboots at the time the windows event log shows AWS Agent (C:\Program Files\Amazon\XenTools\LiteAgent.exe) initiating it, however it does seem to correlate with when the snapshot was taken
+T 1568308710 18<bn_work18>	ok, looking at the event itself in CloudTrail shows a `"noReboot":  false` so I guess it must have been left at the default to let it reboot to take the snapshot.
+T 1568308730 18<bn_work18>	s/event/snapshot event/
+T 1568308751 18<bn_work18>	presumably to ensure integrity
+T 1568309262 18<bn_work18>	s/Reboot time/Up time/
+T 1568309709 18<bn_work18>	so no way to show this in the EC2 Console columns??  Searching the forums but not finding anything- surprised no one has asked this question before (most are just asking uptime in re. to avgs and SLAs, which is a bit different)
+T 1568309800 18<Pilate18>	you should be building around the expectation that ec2s will die
+T 1568310561 18<bn_work18>	Pilate:  you're answering a different question, I'm not trying to architect some kind of "highly-scalable/redundant system" (it's just one test box- not some 300-server farm).  I'm just trying to find out a basic metric to help with auditing/understanding management plane events (ex:  see question earlier about snapshots).
+T 1568310597 18<Pilate18>	its not the right question if ec2s getting killed has a negative impact on your infrastructure
+T 1568311444 18<bn_work18>	Pilate:  again, you're answering a different question, I'm asking for auditing *management plane* actions, NOT to develop some "web 600.0 application for redundancy, blah, blah".  If some admin, does x,y,z, it helps to know when/if a machine was up or down to understand a string of events.
+T 1568311992 18<bn_work18>	here's another use case (not mine):  https://forums.aws.amazon.com/thread.jspa?messageID=889054&#889054
+T 1568312738 18<mspo18>	bn_work: https://aws.amazon.com/cloudtrail/ ?
+T 1568312757 18<lseactuary18>	im trying to install tableau on ec2 using cloudformation template they provided. i provided all parameters and its asking for a source CIDR. 0.0.0.0 is what i used and it fails to install. any ideas what it should be?
+T 1568312825 18<Pilate18>	> The CIDR block parameter must be in the form x.x.x.x/x.
+T 1568312963 18<bn_work18>	mspo:  yes, that's how I determined that no management place issued reboot occurred but that a snapshot request was made however.  What would be nice though is if the EC2 console screen actually had a column that *showed* that the server did reboot, because a column labeled "Launch time:  blah, blah 2017" implies that it's been up since 2017, which is obviously BS.
+T 1568312977 18<bn_work18>	I mean if there's no column for the AWS Console EC2 instance screen, is there at least a CloudWatch metric I can add??
+T 1568312993 18<bn_work18>	called "OS uptime" or something?
+T 1568313053 18<mspo18>	bn_work: you have an ec2 where the launch time disagrees with the uptime?
+T 1568313086 18<bn_work18>	mspo:  correct
+T 1568313105 18<mspo18>	upime is an OS metric and cloudwatch doesn't watch those
+T 1568313112 18<mspo18>	bn_work: weird
+T 1568313141 18<mspo18>	bn_work: not sure I've seen that before
+T 1568313159 18<mspo18>	you could, of course, start sending it in as a custom metric
+T 1568313165 18<mspo18>	but it's probably not worth the cost
+T 1568313203 18<mspo18>	how did that reboot work I wonder
+T 1568313208 18<mspo18>	init 6 or something?
+T 1568313212 18<lseactuary18>	Pilate 0.0.0.0/0 also fails
+T 1568313215 18<bn_work18>	mspo:  but it's collected through an agent installed in the OS?
+T 1568313233 18<lseactuary18>	Pilate not actually sure what source CIDR even is. i set up vpc and subnet etc wondering what is needed here?
+T 1568313247 18<mspo18>	bn_work: default cloudwatch metrics still come in without an agent
+T 1568313251 18<mspo18>	there is an agent you can install
+T 1568313256 18<mspo18>	don't know what it does
+T 1568313341 18<zumba_addict18>	question about migrating data in rds postgres to aurora. Has anyone tried it?
+T 1568313426 18<jwr18>	zumba_addict:  yes
+T 1568313450 18<jwr18>	question: anybody know an awscli one-liner which will tell me which snapshot and RDS instances was created from?
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22##aws
+T 1568351773 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568351773 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22##aws
+T 1568579933 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568579933 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22##aws
+T 1568585985 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568585985 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22##aws
+T 1568617535 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568617535 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568632843 18<upgreydd18>	Hello. Does anyone know some redshift optimization guide with manual WMLs for dummies?
+T 1568633061 18<vegardx18>	Is the latest ubuntu AMIs borked? None of my new instances are accepting ssh connections.
+T 1568633083 18<vegardx18>	They are however responding to ICMP, so network is all good.
+T 1568633170 18<vegardx18>	obviously impossible to google because of all the usual issues of people not having correct SGs or NACLs.
+T 1568633259 18<vegardx18>	And impossible to debug since I can't even get access to the instances to see if they are running openssh or not.
+T 1568633564 18<vegardx18>	Are you f-ing kidding me. They're filtering port 22 suddenly on the corporate network.
+T 1568633572 18<vegardx18>	I'll see myself out
+T 1568633732 18<Kim^J18>	:D
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22##aws
+T 1568641539 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568641539 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568641544 18<um1b0zu18>	I ended up not doing it because it seemed like I couldn't just set up a python Spark job. Is that right?
+T 1568641580 18<um1b0zu18>	I went with this "Sparkflow" Amazon Marketplace solution. It's working fine, it's just really weird. The docs are all junky and I'm not even sure if the system is maintained.
+T 1568641619 18<um1b0zu18>	On paper it looked like it would suit my needs fine, but after reading the docs I'm sort of stuck on a few key components that their docs don't even really cover, even though they're kind of critical features
+T 1568641647 18<um1b0zu18>	For example, I wanted to code python for my spark jobs, but the system uses jython.
+T 1568641651 18<um1b0zu18>	Like whut?
+T 1568641671 18<um1b0zu18>	I could also code in SQL, but I kinda don't want to code there.
+T 1568641699 18<um1b0zu18>	I'm wondering if it was worth just scraping Sparkflows and using something like Databricks, but Databricks is super expensive
+T 1568641756 18<baldpope18>	that's a lot to digest - and the specifics are getting outside of my realm
+T 1568641791 18<baldpope18>	i understand getting the data into spark through some pipeline feed - but after that I'm lost
+T 1568641804 18<baldpope18>	and not familiar with sparkflow / databricks - etc..
+T 1568641806 18<baldpope18>	sorry
+T 1568641851 18<um1b0zu18>	yeah. I mean it's somewhat AWS like though.
+T 1568641875 18<um1b0zu18>	I would like to just use Data Pipeline, but again it's kinda goofy when connecting to EMR and I didn't see any good tutorials for it.
+T 1568641908 18<um1b0zu18>	I mean, I could just code in Scala, but I kinda want other people who are non-technical to be able to kick off these jobs so Data Pipeline is too low level for them
+T 1568641943 18<baldpope18>	are you talking about having some back-end process kick off based on new data being sent in?
+T 1568641977 18<baldpope18>	we do something similar using code pipeline to build new containers, based on s3 triggers
+T 1568642033 18<baldpope18>	I guess, for what you're working on, it would be specific to the aws service performing the processing?
+T 1568642059 18<baldpope18>	i'd welcome a primer on the topic
+T 1568642542 18<um1b0zu18>	code pipeline?
+T 1568642544 18<um1b0zu18>	hm...
+T 1568642547 18<um1b0zu18>	let me check it out
+T 1568642548 18<baldpope18>	nah
+T 1568642549 18<baldpope18>	ignore that
+T 1568642554 18<baldpope18>	not relevant
+T 1568642559 18<um1b0zu18>	ah ok
+T 1568642561 18<um1b0zu18>	well like... idk
+T 1568642583 18<um1b0zu18>	I'm just in this realm of "maybe what I'm doing is overkill"
+T 1568642609 18<um1b0zu18>	ah code pipeline looks like a CI/CD thing
+T 1568642618 18<um1b0zu18>	Kind of want to run the code
+T 1568642628 18<um1b0zu18>	but it's weird because it's a couple of GB files
+T 1568642640 18<um1b0zu18>	like.... maaaaaayyybeeeee I'm pushing into just using AWS lambda
+T 1568642640 18<baldpope18>	couldn't tell you that - I generally follow the grow-up model - start super small (free :)  ) and build up as required
+T 1568642647 18<um1b0zu18>	yeah
+T 1568642657 18<baldpope18>	now aws lambda - that's the shit
+T 1568642664 18<um1b0zu18>	we're just getting to starting small. I actually think this is the "smallest" solution
+T 1568642666 18<baldpope18>	love me some python lambda
+T 1568642696 18<baldpope18>	it's only restriction is total processing time
+T 1568642697 18<um1b0zu18>	every customer sends us data daily and we have to process it. Right now it's a guy on an EC2 machine running bash scripts and such but that obviously gets annoying after about the n=5
+T 1568642704 18<um1b0zu18>	yeah
+T 1568642708 18<baldpope18>	ah
+T 1568642710 18<baldpope18>	ok
+T 1568642716 18<um1b0zu18>	and like... we're doing map reduce style coding
+T 1568642721 18<baldpope18>	you need a hybrid - we do something like this
+T 1568642744 18<baldpope18>	$event ->  aws lambda python -> ecs-container for specific longer running task
+T 1568642763 18<baldpope18>	for stuff you can process in the time restriction, lambda is perfect
+T 1568642793 18<baldpope18>	but when it's time exceeds the allowed - containers is the next best approach (well - for what we're doing anyway)
+T 1568642834 18<baldpope18>	and at a minimum - if you're doing it today manually with ec2 - containers sounds like an ideal next step
+T 1568642880 18<um1b0zu18>	like docker containers?
+T 1568642881 18<um1b0zu18>	ugh
+T 1568642890 18<baldpope18>	but at aws - yea
+T 1568642898 18<um1b0zu18>	hm... I could look into that
+T 1568642910 18<baldpope18>	if you've already got your application running on ec2
+T 1568642926 18<baldpope18>	you just need to figure out how to get access to the data you want to run again
+T 1568642929 18<Lloyd18>	we go, sqs -> scheduler -> mesos -> scheduler -> sqs
+T 1568642933 18<um1b0zu18>	how do you pipe in variables like the ARNs to process? like programmatically spin up ec2s with environment variables.
+T 1568642934 18<Lloyd18>	as a pattern
+T 1568642968 18<baldpope18>	on ec2 - not sure
+T 1568642977 18<um1b0zu18>	there's gotta be a way to do it
+T 1568642979 18<Lloyd18>	we do the same thing, importing data from clients, we have something like, 150,000 imports a day
+T 1568642988 18<um1b0zu18>	sheesh
+T 1568642996 18<um1b0zu18>	Lloyd you in adtech? :-)
+T 1568643005 18<Lloyd18>	are there any other businesses? :P
+T 1568643021 18<um1b0zu18>	sounded eerily similar
+T 1568643033 18<Lloyd18>	digital marketing agency
+T 1568643045 18<Lloyd18>	but yeah, it's all adwords, analytics, fb, etc etc
+T 1568643050 18<um1b0zu18>	Yeah. I'm still learning what that even means. I took on a consulting contract for adtech and I'm doing these weird data pipelining things.
+T 1568643058 18<Lloyd18>	we use mesos on ec2 for all the importing
+T 1568643077 18<Lloyd18>	so each type of import is a docker container, which just comes up, downloads the data, saves it to the warehouse, then dies
+T 1568643078 18*	baldpope steps back and listens 
+T 1568643096 18<Lloyd18>	so we're starting 150,000 containers a day, through mesos
+T 1568643112 18<um1b0zu18>	so yeah, what baldpope was mentioning
+T 1568643112 18<Lloyd18>	had to write a mesos scheduler, which is a pain, but it works fine, we rarely have issues
+T 1568643126 18<um1b0zu18>	except you're using mesos which seems like ultra overkill for me
+T 1568643139 18<Lloyd18>	you could probably do something similar with fargate
+T 1568643166 18<Lloyd18>	as the important bit is being able to listen to the event responses, container starting, container ending etc
+T 1568643212 18<um1b0zu18>	I wonder if there's a way to programmatically start a fargate container
+T 1568643216 18<um1b0zu18>	like, that's  the trick
+T 1568643242 18<Lloyd18>	yeah, you could schedule it to run every day
+T 1568643251 18<Lloyd18>	cloudwatch rule -> start fargate
+T 1568643253 18<baldpope18>	so for us, we use cloudwatch to kick off
+T 1568643256 18<baldpope18>	yea
+T 1568643276 18<baldpope18>	and with cloudwatch, you can use time of day triggers (essentially cron) or some other event
+T 1568643281 18<um1b0zu18>	but here's the thing, how do you tell the container what data to processes?
+T 1568643289 18<um1b0zu18>	that's what I'm not getting
+T 1568643292 18<Lloyd18>	we do it via ENV vars, as a payload
+T 1568643296 18<um1b0zu18>	I see
+T 1568643299 18<baldpope18>	^^
+T 1568643309 18<baldpope18>	ecs != ec2
+T 1568643309 18<Lloyd18>	but if you don't have many imports, you could just hardcode it
+T 1568643314 18<Lloyd18>	especially if they aren't similar
+T 1568643332 18<Lloyd18>	also, if the jobs a really fast, you could just use lambda
+T 1568643332 18<um1b0zu18>	does it accept a docker container?
+T 1568643335 18<baldpope18>	or your app inside the container can make a call to a work queue - and just get whatever job is next
+T 1568643340 18<um1b0zu18>	nah this isn't that fast at all
+T 1568643352 18<um1b0zu18>	I mean, I wanted to use spark to try and parallelize it
+T 1568643354 18<Lloyd18>	yeah, fargate can start whatever container you like
+T 1568643369 18<um1b0zu18>	got any links for tutorials?
+T 1568643373 18<um1b0zu18>	this might be up my alley
+T 1568643390 18<Lloyd18>	probably loads on google
+T 1568643426 18<baldpope18>	https://aws.amazon.com/ecs/getting-started
+T 1568643455 18<baldpope18>	but I'd recommend just firing up a local docker instance and getting your container built locally first
+T 1568643487 18<baldpope18>	keep in mind (something that got me early on) the application that you're intending to run, when it's finished, the container dies
+T 1568643498 18<um1b0zu18>	https://serverless.com/blog/serverless-application-for-long-running-process-fargate-lambda/
+T 1568643512 18<baldpope18>	and specifically - this is what got me - dont' daemonize your app
+T 1568643532 18<baldpope18>	fucking hell did that annoy the shit outta me early on
+T 1568643534 18<um1b0zu18>	what's "daemonization"
+T 1568643549 18<baldpope18>	like running something in the background / as a daemon
+T 1568643554 18<um1b0zu18>	ah I see
+T 1568643566 18<um1b0zu18>	I definitely know to make sure there's no persistence
+T 1568643584 18<baldpope18>	in my case - i was running postgresql -D (or whatever) which put the app in server mode
+T 1568643592 18<baldpope18>	container would start, port would expose itself, and then die
+T 1568643595 18<um1b0zu18>	oooo
+T 1568643644 18<um1b0zu18>	ugh. just docker things
+T 1568643652 18<um1b0zu18>	does it accept vagrant too
+T 1568643656 18<um1b0zu18>	docker is super annoying
+T 1568643879 18<um1b0zu18>	in any case, thank you both
+T 1568643895 18<um1b0zu18>	I'm going to try to stick with this Sparkflows thing, but this seems a lot more up my alley.
+T 1568643931 18<um1b0zu18>	I might work on it in the background for a while. One of the biggest things is clients come and go so we need to have a system so a non-technical user can turn things off and o
+T 1568643933 18<um1b0zu18>	on**
+T 1568644081 18<lseactuary18>	hi - i created a new vpc, subnet etc. i am now trying to spin up RDS in that vpc. im getting this issue: We're sorry, your request to create DB instance database-1 has failed.VPC must have a minimum of 2 subnets in order to create a DB Subnet Group. Go to the VPC Management Console to add subnets.
+T 1568644104 18<baldpope18>	are you using the a non default vpc
+T 1568644113 18<baldpope18>	cause the vpc should spin up 3 subnets
+T 1568644274 18<lseactuary18>	it just did one
+T 1568644290 18<baldpope18>	really? - that would be odd/wrong
+T 1568644300 18<baldpope18>	on the vpc - is it a /16?
+T 1568644573 18<nezZario18>	Is there really no way to do {fixed ip address}->{multiple hosts} within AWS?
+T 1568644584 18<nezZario18>	For, example, domain apex
+T 1568644590 18<nezZario18>	(for DNS we do not control)
+T 1568644645 18<nezZario18>	Just had this box go down for a min again.  We highly highly discourage customers to do this setup and if they do we highly encourage them to use multiple A's and say well look this is going to have a single point of failure .. I mean we really do cover the basis as well as we can
+T 1568644667 18<nezZario18>	But I mean, for ex. like a floating IP?
+T 1568644688 18<nezZario18>	Multiple routes to a single IP
+T 1568645089 18<lseactuary18>	baldpope yeah - /16. I used VPC wizard also
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22##aws
+T 1568708607 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568708607 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)
+T 1568724299 20<threenuc>30	I have 2 IAM users (admins). Admin 1 creates an EC2 VM, Admin 2 can't see it in his console. Is this intented? How do I change it?
+T 1568724730 18<ansyeb18>	hi. whats the difference between 'permanent delete' & expire lifecycle options for an s3 bucket?
+T 1568724934 19<rory>	threenuc: are they definitely looking at the same region?
+T 1568725540 20<threenuc>30	rory: Nope. Just saw why that happened. One VM is in ohio the other is in frankfurt. Can I do something to avoid situations like this in the future?
+T 1568725558 20<threenuc>30	In AWS, I did communicate I created a VM and my coworker created a new one from scratch since he didnt see it
+T 1568725580 20<threenuc>30	So is there some mechanism in AWS to prevent this?
+T 1568725876 20<threenuc>30	Like, I don't know - limit an IAM user to creating resources only in a specified region
+T 1568726179 18<vegardx18>	You can use SCPs for that, but that requires organization account. Alternative is to explicitly deny most actions with a conditional for region.
+T 1568726366 19<lilltiger>	threenuc: https://stackoverflow.com/questions/56759957/how-to-deactivate-region-in-aws-through-the-cli
+T 1568726371 18<lilltiger18>	this might be what you are after
+T 1568726409 18<lilltiger18>	https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-enable-disable-regions.html
+T 1568726421 18<vegardx18>	The issue with all of this is that users that don't understand regional resources will be just as confused regardless
+T 1568727449 20<threenuc>30	Looks like I can't disable regions that are enabled by default. Thats 90% of regions (the only toggleable ones are some asian ones)
+T 1568727489 20<threenuc>30	Though it's possible to limit a certain service to a region https://serverfault.com/a/589155/512282
+T 1568727609 18<IvanSuftin18>	I'm assuming the answer is no, but is there any way to have an application load balancer assume that an instance (in this case an ECS container) is healthy with a HTTP/S response code of..say..472.. but NOT route to it and onlyl route to the instance that has a 200 response?
+T 1568727628 18<IvanSuftin18>	Use case: a cluster of a service that has an active node and 2+ standby nodes
+T 1568727663 18<IvanSuftin18>	active node responds with 200, standby nodes respond with 472 but cannot take client requests but the nodes should not be replaced
+T 1568727694 18<IvanSuftin18>	(Real world use case: Hashicorp Vault high-availability clustering)
+T 1568727722 18<Koffa18>	can you give back a redirect with more specific node routing?
+T 1568727764 18<IvanSuftin18>	The node will respond with a redirect back to the ALB DNS so best case, the next round robin hit will hit an active node which handles the request. Worst case, infinite redirect loop
+T 1568727787 18<IvanSuftin18>	My fallback will be putting an nginx reverse proxy in between ALB and the Vault cluster but I really don't want to :/
+T 1568727841 18<IvanSuftin18>	Was just wondering if there's any configuration that can be done to mark nodes at the ALB/listener level as "healthy but not taking connections at this time"
+T 1568727887 18<Koffa18>	indefinite draining
+T 1568727915 18<IvanSuftin18>	Any thoughts on that?
+T 1568727918 18<baldpope18>	IvanSuftin: i don't recall from the ALB if response code is tunable / weightable
+T 1568727929 18<baldpope18>	how about this
+T 1568727949 18<baldpope18>	write up a quick lambda to check the status code of that specific instance, update the alb weight so that it doesn't get the traffic?
+T 1568727965 18<IvanSuftin18>	baldpope: I don't think it's weightable. But at the target group level you can say which codes are 'healthy'
+T 1568727986 18<IvanSuftin18>	So I have "Matcher": { "HttpCode": "200,429,472,473,501,503" }
+T 1568728042 18<IvanSuftin18>	baldpope: the issue is it's ECS which directly communicate with ALB/target group
+T 1568728051 18<IvanSuftin18>	'magically'
+T 1568728056 18<baldpope18>	ah - yea
+T 1568728070 18<baldpope18>	so it's checking in to tell the alb it's available
+T 1568728074 18<IvanSuftin18>	right
+T 1568728076 18<baldpope18>	but not quit ready?
+T 1568728079 18<IvanSuftin18>	yes
+T 1568728080 18<baldpope18>	quite
+T 1568728098 18<IvanSuftin18>	Vault node: "I am a standby node, don't route to me"
+T 1568728107 18<IvanSuftin18>	ALB: "I see you're healthy. I will begin routing to you!"
+T 1568728110 18<baldpope18>	i feel like I've seen this discussion before - wasn't there a 'warm up' period or something?
+T 1568728123 18<baldpope18>	like yea, i'm onlinem, but leave me alone for another few minutes
+T 1568728159 18<IvanSuftin18>	baldpope: not in this case. in this case the nodes that are considered standby will always  be standby until the leader drops out of the cluster and a new leader is elected
+T 1568728185 18<baldpope18>	slow start mode
+T 1568728199 18<IvanSuftin18>	with Vault Enterprise/Premium, they have the ability to make standby nodes "standby performance" nodes which WILL take traffic and reverse proxy route it behind the scenes to the active node
+T 1568728203 18<baldpope18>	take a gander at this article - not sure 100% relevant
+T 1568728225 18<baldpope18>	https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html
+T 1568728230 18<IvanSuftin18>	looking
+T 1568728379 18<baldpope18>	specifically the slow start mode; brb
+T 1568728397 18<IvanSuftin18>	That's interesting and I didn't know that was a thing. However, I'm not sure it's applicable here because this would be across all targets and also is not indefinite. Eventually the ALB will bring a target out of slow start mode and begin slowly routing to it. However, x-1 (x being the cluster total size) targets may never be routable for the duration of their life
+T 1568728787 18<baldpope18>	sounds like the hashicorps logic is that they'll manage the HA/balancing
+T 1568728847 18<baldpope18>	yea and upon closer reading -the slow start is just a delay in X seconds
+T 1568728873 18<IvanSuftin18>	baldpope: yeah that's their logic in their premium offering
+T 1568728880 18<IvanSuftin18>	with their OSS offering, you're on your own :)
+T 1568728886 18<baldpope18>	what about a lambda that disables a given target in the alb based on status codes
+T 1568728902 18<IvanSuftin18>	What triggers that lambda?
+T 1568728915 18<baldpope18>	while not a fan - you could have it run every minute?
+T 1568728935 18<IvanSuftin18>	True. Soyou have the LB and the Lambda performing health checks..
+T 1568728958 18<baldpope18>	yea - with the lambda overriding the online (cause I'm not ready) state
+T 1568728969 18<IvanSuftin18>	It might just be easier/less to manage to drop an nginx ecs container in the cluster to perform the reverse proxy balancing
+T 1568729015 18<baldpope18>	might be - not familiar enough with nginx / complexity of setting up another front-end
+T 1568729039 18<baldpope18>	i've used lighttpd, haproxy, and keepalived for similar tasks
+T 1568729047 18<vegardx18>	I'd look at AppMesh (envoy) then
+T 1568729115 18<IvanSuftin18>	https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html ?
+T 1568729152 18<vegardx18>	I might have misunderstood, that's if you're already on ECS or EKS.
+T 1568729165 18<IvanSuftin18>	Am on ECS, yes
+T 1568729223 18<vegardx18>	Then running Envoy is an option. AppMesh is Envoy with some AWS flavor added in. Never used it, seems kind of half baked so far. But envoy should be able to do slow-starts.
+T 1568729331 18<IvanSuftin18>	I'll take a peek. One issue I may hit is that our AWS service is provided via a third party. While we get full hands-on access to AWS, the third party is responsible for being the arbiter of what services we can actually use. I do have to check if that's on the list
+T 1568729336 18<vegardx18>	Envoy can also be configured to do replay on another node if a request somehow failed.
+T 1568729377 18<vegardx18>	But I prefer to let the clients handle exceptions gracefully rather than fixing things in the background. It all depends on what you're running.
+T 1568734399 18<oatmealraisin18>	With boto3, I'm having an issue downloading a file from s3 from a lambda (chalice) function
+T 1568734408 18<oatmealraisin18>	I keep getting an empty file
+T 1568734473 18<oatmealraisin18>	https://gist.github.com/oatmealraisin/a65601b06580c509311d43ee1fa3f6d7
+T 1568734493 18<Pilate18>	f.seek(0) before reading
+T 1568734584 18<Pilate18>	file pointer is at EOF after download_fileobj iirc
+T 1568735079 18<ansyeb_18>	could you send cloudwatch logs to syslog-ng in ec2 instance under the same account or smthg?
+T 1568735673 18<oatmealraisin18>	Pilate: thanks a ton!
+T 1568735795 18<Pilate18>	any time
+T 1568736173 18<domino1418>	has anyone set up batch with cloudformation before? I keep getting this error: `Operation failed, ComputeEnvironment went INVALID with error: CLIENT_ERROR - Access denied`
+T 1568736173 19<rory>	threenuc: tbh the answer is to check what region you're in when creating resources using the web UI
+T 1568736183 18<domino1418>	that's all the info i have. why is access denied?
+T 1568736192 19<rory>	threenuc: or always create resources via the API, where it's harder to make mistakes because you have to explicitly mention the region
+T 1568742816 18<jadax18>	I have database with bunch of tasks to be performed. These tasks need to be executed by GPU instances (machine learning), the duration of each is between 1 hour and 12 hours. I have few physical GPU instances under my desk. I want to use them. But I also want to use AWS GPU instances that I would create/terminate as needed. Obviously to manage all
+T 1568742816 18<jadax18>	that I need a queue system. Do you know if AWS natively supports any? I'm especially curious about the ability to create/terminate GPU instances on AWS
+T 1568742950 18<Pilate18>	well sqs is a queue system, but youd have to build out the part that starts/stops instances i think
+T 1568742955 18<Pilate18>	no fargate gpus
+T 1568743151 18<becool18>	tom delonge from blink-182 is getting divorced https://people.com/music/tom-delonge-files-for-divorce-after-18-years-of-marriage/
+T 1568743166 18<Koffa18>	o,O
+T 1568743171 18<Pilate18>	and?
+T 1568743180 18<becool18>	oops wrong channel
+T 1568743187 18<Pilate18>	banned
+T 1568743978 18<vegardx18>	How does CloudFront work with backends that resolve with a low TTL?
+T 1568744023 18<maxel18>	anyone have an example of a lambda with c# using a stream instead of string as input? struggling to get my example working
+T 1568744024 18<vegardx18>	Say you wanted to use service discovery with cloudfront and be a cheap-ass and drop the load balancer?
+T 1568744806 18<bn_work18>	are tags case-sensitive?
+T 1568744818 18<bn_work18>	(EC2 instance tags)
+T 1568744832 18<bn_work18>	both key and value that is
+T 1568744847 18<vegardx18>	No
+T 1568745335 18<jadax18>	is Amazon VPC simply a VPN?
+T 1568745379 18<mspo18>	no
+T 1568745381 18<jadax18>	let's say I have EC2 instance with publicly facing website, but I also want to be able to ssh to it
+T 1568745392 18<jadax18>	can I set up ssh access through VPC so that way only I can access it
+T 1568745400 18<mspo18>	yes
+T 1568745504 18<jadax18>	but and the website should have public acces
+T 1568745510 18<jadax18>	is that how you guys do it?
+T 1568745637 18<maxel18>	is it normal to have to manually import recursive dependencies for a lambda? I brought in a library and the libraries it references are missing from the lambda. I added them myself but this seems wrong...
+T 1568745648 18<maxel18>	this is deploying a c# lambda from visual studio
+T 1568745687 18<Primer18>	It's more normal for a build process to do it
+T 1568745723 18<maxel18>	well if I build the project and it builds fine, are you saying I would need that build to be what actually deploys it?
+T 1568745725 18<Primer18>	But the fact is, you have to include whatever deps your program needs, into the artifact
+T 1568745746 18<Primer18>	You would deploy the artifact of that build, yes. Libs included.
+T 1568745785 18<Primer18>	With nodejs, it's the node_modules directory. With python, it's the requirements.txt and venv.
+T 1568746324 18<bn_work18>	jadax: you can use the CLI too if you enable it, but yes, usually the GUI way is via a web-console.
+T 1568753031 20*	Disconnected (20)
+T 1568753049 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568753049 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568753056 19*	Now talking on 22##aws
+T 1568753056 22*	Topic for 22##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+T 1568753056 22*	Topic for 22##aws set by 26Bejgli (24Mon Jan  2 10:12:01 2017)

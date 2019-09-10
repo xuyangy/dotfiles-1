@@ -1,0 +1,177 @@
+**** BEGIN LOGGING AT Sat Jun 29 16:02:31 2019
+
+cze 29 16:02:31 *	Now talking on #nginx
+cze 29 16:02:31 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 29 16:02:31 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 29 16:02:31 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 29 16:02:31 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+**** ENDING LOGGING AT Sat Jun 29 16:03:08 2019
+
+**** BEGIN LOGGING AT Sat Jun 29 16:04:45 2019
+
+cze 29 16:04:45 *	Now talking on #nginx
+cze 29 16:04:45 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 29 16:04:45 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 29 16:04:46 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 29 16:07:56 <threenuc>	Hey, I have an API running GraphQL - this means that if you want to request 'getUser', 'getCalendar', etc. you call only /api/graphql, and you pick what you want to receive (getUser etc.) in POST body. The problem is that access.log only displays "/api/graphql" and there's no way of telling which information was queried
+cze 29 16:09:20 <threenuc>	Can I somehow extract this info from the JSON response on nginx level?
+cze 29 20:06:05 *	Disconnected ()
+**** ENDING LOGGING AT Sat Jun 29 20:06:05 2019
+
+**** BEGIN LOGGING AT Sat Jun 29 20:06:33 2019
+
+cze 29 20:06:33 *	Now talking on #nginx
+cze 29 20:06:33 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 29 20:06:33 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 29 20:06:34 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 29 20:06:35 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+cze 30 14:13:35 *	Disconnected ()
+**** ENDING LOGGING AT Sun Jun 30 14:13:35 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 14:13:59 2019
+
+cze 30 14:13:59 *	Now talking on #nginx
+cze 30 14:13:59 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 30 14:13:59 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 30 14:14:00 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 30 14:14:00 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+cze 30 15:05:55 *	Disconnected ()
+**** ENDING LOGGING AT Sun Jun 30 15:05:55 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 15:06:20 2019
+
+cze 30 15:06:20 *	Now talking on #nginx
+cze 30 15:06:20 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 30 15:06:20 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 30 15:06:20 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 30 15:06:21 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+cze 30 15:38:24 *	Disconnected ()
+**** ENDING LOGGING AT Sun Jun 30 15:38:24 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 15:38:50 2019
+
+cze 30 15:38:50 *	Now talking on #nginx
+cze 30 15:38:50 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 30 15:38:50 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 30 15:38:50 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 30 15:38:51 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+cze 30 16:25:06 *	Disconnected ()
+**** ENDING LOGGING AT Sun Jun 30 16:25:06 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 16:25:30 2019
+
+cze 30 16:25:30 *	Now talking on #nginx
+cze 30 16:25:30 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 30 16:25:30 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 30 16:25:32 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 30 16:25:32 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+cze 30 17:53:06 *	Disconnected ()
+**** ENDING LOGGING AT Sun Jun 30 17:53:06 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 17:53:32 2019
+
+cze 30 17:53:32 *	Now talking on #nginx
+cze 30 17:53:32 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+cze 30 17:53:32 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+cze 30 17:53:32 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+cze 30 17:53:32 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+lip 01 09:27:28 *	Disconnected ()
+**** ENDING LOGGING AT Mon Jul  1 09:27:28 2019
+
+**** BEGIN LOGGING AT Mon Jul  1 09:27:54 2019
+
+lip 01 09:27:54 *	Now talking on #nginx
+lip 01 09:27:54 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+lip 01 09:27:54 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+lip 01 09:27:54 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+lip 01 09:27:55 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+lip 01 09:44:52 *	Disconnected ()
+**** ENDING LOGGING AT Mon Jul  1 09:44:52 2019
+
+**** BEGIN LOGGING AT Mon Jul  1 09:45:18 2019
+
+lip 01 09:45:18 *	Now talking on #nginx
+lip 01 09:45:18 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+lip 01 09:45:18 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+lip 01 09:45:18 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+lip 01 09:45:19 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+lip 01 11:12:47 *	grummund removed package nginx-full and installed nginx-light (on debian) and it broke a few things:
+lip 01 11:13:01 <grummund>	nginx: [emerg] unknown directive "geo"
+lip 01 11:14:10 <grummund>	but installing libnginx-mod-http-geoip doesn't fix this by itself, should it?
+lip 01 11:14:55 <grummund>	anyone can confirm that difference between nginx-full/-light is simply module dependencies?
+lip 01 11:16:43 <benbrown>	geoip != geo
+lip 01 11:16:51 <benbrown>	They're different modules
+lip 01 11:17:25 <benbrown>	Not a debian developer but I'm pretty sure the only difference between full and light are the modules that are included. If I were you I'd go back to nginx-full
+lip 01 11:18:04 <grummund>	yeah i'll try that.  perhaps there's a binary difference too.
+lip 01 11:19:09 <benbrown>	Run `nginx -V` before and after so you can compare
+lip 01 11:26:57 <MTecknology>	When I first created nginx-{full,light,extras}, it was back in the day where modules were statically compiled.  Now that module support is a thing, it's only module dependencies.
+lip 01 11:28:41 <benbrown>	Sounds like a pretty definitive answer there ;)
+lip 01 11:30:09 <grummund>	MTecknology: so it should be possible to install nginx-light + only the desired modules?
+lip 01 11:30:44 <MTecknology>	yup
+lip 01 11:30:45 <grummund>	because 'geo' directive appears to be unknown in nginx-light
+lip 01 11:31:07 <MTecknology>	is the module installed?
+lip 01 11:31:26 <grummund>	which one? :p
+lip 01 11:31:34 <MTecknology>	...
+lip 01 11:36:27 <grummund>	going back to nginx-full it no longer barfs on 'geo', but complains about unknown directive "init_by_lua_file"
+lip 01 11:42:08 <benbrown>	Try installing libnginx-mod-http-lua
+lip 01 11:43:01 <grummund>	libnginx-mod-http-lua and liblua5.3-0 are installed.
+lip 01 11:44:42 <benbrown>	You might be missing a `load_module' for it
+lip 01 11:44:42 <ngxbot>	https://nginx.org/r/load_module
+lip 01 11:45:28 <grummund>	interesting... because it *was* working, lemme see.
+lip 01 11:50:44 <benbrown>	I had a working setup I would have just left it that way ;)
+lip 01 11:51:36 <benbrown>	*if I had a working setup even...
+lip 01 11:52:21 <grummund>	thanks for that ;)
+lip 01 11:53:31 <grummund>	aha, found it.
+lip 01 11:54:09 <grummund>	sudo ln -s /usr/share/nginx/modules-available/mod-http-lua.conf /etc/nginx/modules-enabled/mod-http-lua.conf
+lip 01 12:11:48 <grummund>	ok. this may be the issue...
+lip 01 12:12:02 <grummund>	nginx-light is compiled with --without-http_geo_module
+lip 01 12:13:09 <grummund>	and there is no separate libnginx-mod-http-geo package
+lip 01 12:13:31 <grummund>	(libnginx-mod-http-geoip is a red-herring)
+lip 01 12:13:52 <benbrown>	That's what I said earlier...
+lip 01 12:14:02 <benbrown>	Geoip is a different thing
+lip 01 12:14:12 <grummund>	yes i get that ;)
+lip 01 12:14:24 <benbrown>	All this isn't strictly nginx's fault though, it's how Debian etc have decided to package it
+lip 01 12:14:35 <grummund>	sure.
+lip 01 12:14:59 <jaybe>	!
+lip 01 12:15:02 <jaybe>	!v
+lip 01 12:15:02 <ngxbot>	`2>&1 nginx -V | xargs -n1 | sort`
+lip 01 12:16:42 <grummund>	so the only way to have 'geo' directive using stock packages is with nginx-full.
+lip 01 12:17:11 <grummund>	which is fine, btw. :)
+lip 01 12:17:51 <benbrown>	Yes. apt-cache show nginx-light vs apt-cache show nginx-full shows it (I was curious and am running Debian. I use the packages from nginx.org myself though)
+lip 01 12:19:33 <grummund>	benbrown: how does apt-cache show it?
+lip 01 12:20:56 <ngxbot>	Paste from benbrown: [ https://paste.ngx.cc/6e ]
+lip 01 12:21:34 <ngxbot>	Paste from benbrown: [ https://paste.ngx.cc/44 ]
+lip 01 12:21:46 <benbrown>	One of those mentions Geo, the other doesn't ^
+lip 01 12:22:13 <grummund>	geoip != geo :p
+lip 01 12:22:41 <grummund>	ah, nevermind, i see it now. :)
+lip 01 12:22:58 <benbrown>	In the description, not the depends
+lip 01 12:23:10 <grummund>	thanks
+lip 01 14:06:20 <aseques>	Hello, I am trying to use the module fancyindex on a existant setup where I have autoindex
+lip 01 14:07:13 <aseques>	But i get every time I try anything -- > [emerg] unknown directive "fancyindex"
+lip 01 14:08:08 <aseques>	I'm on ubuntu 18.04 (nginx 1.14), I checked that the modules are in the expected place (/usr/lib/nginx/modules/)
+lip 01 14:08:42 <aseques>	compiled as dynamic module
+lip 01 14:08:53 <aseques>	But I don't know what else to look
+lip 01 14:08:57 <aseques>	any ideas?
+lip 01 14:10:41 <benbrown>	Sounds like you're missing a `load_module' directive
+lip 01 14:10:41 <ngxbot>	https://nginx.org/r/load_module
+lip 01 14:13:36 <wasanzy>	in an attempt to upgrade nginx, the process failed and nginx can not start
+lip 01 14:14:02 <jaybe>	downgrade
+lip 01 14:14:53 <wasanzy>	open() "/etc/nginx/modules-enabled/50-mod-http-passenger.conf" failed (2: No such file or directory) in /etc/nginx/nginx.conf:4
+lip 01 14:15:07 <aseques>	@benbrown it was! Somehow my nginx.conf missed the "include /etc/nginx/modules-enabled/*.conf;" at the begin, it works now, thanks a lot
+lip 01 14:15:40 <wasanzy>	lrwxrwxrwx 1 root root 58 Sep 26  2018 /etc/nginx/modules-enabled/50-mod-http-passenger.conf -> /usr/share/nginx/modules-available/mod-http-passenger.load
+lip 01 14:15:58 <wasanzy>	the file exist so am surprised
+lip 01 14:16:23 <wasanzy>	jaybe, how do I downgrade on ubuntu server?
+lip 01 14:21:53 <jaybe>	shrug
+lip 01 14:40:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Jul  1 14:40:54 2019
+
+**** BEGIN LOGGING AT Mon Jul  1 14:41:17 2019
+
+lip 01 14:41:17 *	Now talking on #nginx
+lip 01 14:41:17 *	Topic for #nginx is: [Stable: 1.16.0] [Mainline: 1.17.1] <+> Unofficial community support for nginx--primarily an HTTP and reverse proxy server. <+> Don't ask to ask; just ask a specific, clear, and concise question/problem/goal. Include configs on our !pastebin at https://paste.ngx.cc (see: !whypbin). Be patient and wait for a response.
+lip 01 14:41:17 *	Topic for #nginx set by vandemar (Thu Jun 27 01:43:07 2019)
+lip 01 14:41:17 -ChanServ-	[#nginx] Community Nginx support channel. Don't ask to ask; just ask! Config pastes via http://p.ngx.cc only. This channel is publicly logged.
+lip 01 14:41:17 -ngxbot-	You joined #nginx, but you are not identified to services and cannot speak. For help with identification, type "/msg nickserv help register"
+lip 01 14:44:42 *	Disconnected ()
+**** ENDING LOGGING AT Mon Jul  1 14:44:43 2019
+

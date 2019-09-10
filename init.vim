@@ -5,7 +5,7 @@ set autoindent
 set wildmenu
 set ruler
 set hidden
-
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
 set laststatus=2 " lightline
 if !has('gui_running')
@@ -24,10 +24,13 @@ Plug 'tpope/vim-surround'
 Plug 'wincent/terminus'
 Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 " mappings
 map <C-p> :Files<CR>
-nnoremap <C-b> :NERDTreeToggle<CR>
+noremap <C-N> :NERDTreeToggle<CR>
 inoremap jk <esc>
 

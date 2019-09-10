@@ -1,0 +1,58 @@
+**** BEGIN LOGGING AT Fri May 31 12:14:40 2019
+
+maj 31 12:14:40 *	Looking up chat.freenode.net
+**** BEGIN LOGGING AT Sat Jun 29 16:04:23 2019
+
+cze 29 16:04:23 *	Looking up chat.freenode.net
+cze 29 16:04:23 *	Connecting to chat.freenode.net (38.229.70.22:6697)
+cze 29 16:04:24 *	* Certification info:
+cze 29 16:04:24 *	  Subject:
+cze 29 16:04:24 *	    CN=card.freenode.net
+cze 29 16:04:24 *	  Issuer:
+cze 29 16:04:24 *	    C=US
+cze 29 16:04:24 *	    O=Let's Encrypt
+cze 29 16:04:24 *	    CN=Let's Encrypt Authority X3
+cze 29 16:04:24 *	  Public key algorithm: rsaEncryption (4096 bits)
+cze 29 16:04:24 *	  Sign algorithm sha256WithRSAEncryption
+cze 29 16:04:24 *	  Valid since Jun  3 05:03:19 2019 GM to Sep  1 05:03:19 2019 GM
+cze 29 16:04:24 *	* Cipher info:
+cze 29 16:04:24 *	  Version: TLSv1.2, cipher ECDHE-RSA-AES256-GCM-SHA384 (256 bits)
+cze 29 16:04:24 *	Connected. Now logging in.
+cze 29 16:04:24 *	*** Looking up your hostname...
+cze 29 16:04:24 *	*** Checking Ident
+cze 29 16:04:24 *	*** Found your hostname
+cze 29 16:04:31 *	*** No Ident response
+cze 29 16:04:31 *	Capabilities supported: account-notify extended-join identify-msg multi-prefix sasl
+cze 29 16:04:31 *	Capabilities requested: account-notify extended-join identify-msg multi-prefix 
+cze 29 16:04:32 *	Capabilities acknowledged: account-notify extended-join identify-msg multi-prefix 
+**** ENDING LOGGING AT Sat Jun 29 16:04:32 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 16:33:13 2019
+
+Sep 11 16:33:13 *	Looking up chat.freenode.net
+Sep 11 16:33:13 *	Connecting to chat.freenode.net (139.162.227.51:6697)
+Sep 11 16:33:14 *	* Certification info:
+Sep 11 16:33:14 *	  Subject:
+Sep 11 16:33:14 *	    CN=niven.freenode.net
+Sep 11 16:33:14 *	  Issuer:
+Sep 11 16:33:14 *	    C=US
+Sep 11 16:33:14 *	    O=Let's Encrypt
+Sep 11 16:33:14 *	    CN=Let's Encrypt Authority X3
+Sep 11 16:33:14 *	  Public key algorithm: rsaEncryption (4096 bits)
+Sep 11 16:33:14 *	  Sign algorithm sha256WithRSAEncryption
+Sep 11 16:33:14 *	  Valid since Aug 12 05:02:53 2019 GM to Nov 10 05:02:53 2019 GM
+Sep 11 16:33:14 *	* Cipher info:
+Sep 11 16:33:14 *	  Version: TLSv1.3, cipher TLS_AES_256_GCM_SHA384 (256 bits)
+Sep 11 16:33:14 *	Connected. Now logging in.
+Sep 11 16:33:14 *	*** Looking up your hostname...
+Sep 11 16:33:14 *	*** Checking Ident
+Sep 11 16:33:14 *	*** Found your hostname
+Sep 11 16:33:20 *	*** No Ident response
+Sep 11 16:33:20 *	Capabilities supported: account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix sasl tls
+Sep 11 16:33:20 *	Capabilities requested: account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix sasl 
+Sep 11 16:33:20 *	Capabilities acknowledged: account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix sasl 
+Sep 11 16:33:20 *	Authenticating via SASL as threenuc (PLAIN)
+Sep 11 16:33:21 *	You are now logged in as Threenuc.
+Sep 11 16:33:21 *	SASL authentication successful
+**** ENDING LOGGING AT Wed Sep 11 16:33:21 2019
+

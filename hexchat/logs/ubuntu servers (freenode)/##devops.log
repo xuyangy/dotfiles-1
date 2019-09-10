@@ -1,0 +1,100 @@
+**** BEGIN LOGGING AT Fri May 31 12:15:04 2019
+
+maj 31 12:15:04 *	Now talking on ##devops
+maj 31 12:15:04 *	Topic for ##devops is: groups.google.com/group/devops & groups.google.com/group/devops-toolchain | devopsreactions.tumblr.com | devopsdays.org | reddit.com/r/devops | vimeo.com/devopsdays | Welcome! DevOps is better than zombo.com! | devopsweekdays.undo.it | DevOps tools: www.ismycomputeron.com | www.goodreads.com/list/show/30720.DevOps_Reading_List | www.devopsbookmarks.com | Hall of HugOps! | HumanOps!
+maj 31 12:15:04 *	Topic for ##devops set by matti (Wed Mar 22 00:57:20 2017)
+maj 31 12:15:04 -ChanServ-	[##devops] Welcome to ##devops - channel about DevOps, HugOps, HangOps, HumanOps, etc. Feel free to discuss any subject you like, but remember to treat others with respect and kindness. Make yourself at home!
+maj 31 12:16:22 <atagi>	Hey. I'm configuring Jenkins for an Azure VM. It needs to fetch code from a git repository that's on my company's internal network (accessible via VPN). Is it standard practice to set up a VPN on the Azure VM?
+maj 31 13:43:02 *	ghoti (~paul@glphon2233w-grc-14-50-101-208-68.dsl.bell.ca) has joined
+maj 31 13:57:30 *	EnorMOZ has quit (Quit: The Lounge - https://thelounge.chat)
+maj 31 14:01:35 *	EnorMOZ (~EnorMOZ@unaffiliated/dink) has joined
+maj 31 14:09:31 *	jtate has quit (Ping timeout: 248 seconds)
+maj 31 14:21:28 *	z3t0_alt (~z3t0@z3t0.powered.by.lunarbnc.net) has joined
+maj 31 14:22:44 *	xenoclast_ (sid257124@gateway/web/irccloud.com/x-lhptxplvfniagxax) has joined
+maj 31 14:23:14 *	string_ (sid300889@gateway/web/irccloud.com/x-enfjcusggwuzsfpp) has joined
+maj 31 14:23:23 *	jasonrm has quit (Ping timeout: 248 seconds)
+maj 31 14:23:27 *	phtes_ (sid43321@gateway/web/irccloud.com/x-ptywsllhrctmyksm) has joined
+maj 31 14:23:27 *	sadbox has quit (Ping timeout: 268 seconds)
+maj 31 14:23:31 *	deimos____ (sid23568@gateway/web/irccloud.com/x-jsfraqyyuokiuxdr) has joined
+maj 31 14:23:44 *	stephenh_ (sid173696@gateway/web/irccloud.com/x-qxrirmqevlldvkih) has joined
+maj 31 14:24:36 *	Junaos has quit (Remote host closed the connection)
+maj 31 14:24:40 *	McBride36 has quit (Ping timeout: 244 seconds)
+maj 31 14:24:53 *	mewshi has quit (Ping timeout: 257 seconds)
+maj 31 14:24:55 *	Junaos (~Junaos@unaffiliated/junaos) has joined
+maj 31 14:25:09 *	pnwise (~pnwise@unaffiliated/pnwise) has joined
+maj 31 14:25:37 *	waz0wski_ (~waz0wski@hrothgar.distortion.io) has joined
+maj 31 14:25:38 *	mewshi (~mewshi@li543-128.members.linode.com) has joined
+maj 31 14:25:46 *	z3t0 has quit (Quit: Free ZNC ~ Powered by LunarBNC: https://LunarBNC.net)
+maj 31 14:25:46 *	xenoclast has quit (Ping timeout: 252 seconds)
+maj 31 14:25:46 *	phtes has quit (Ping timeout: 252 seconds)
+maj 31 14:25:46 *	heyimawesome has quit (Ping timeout: 252 seconds)
+maj 31 14:25:46 *	wizonesolutions_ has quit (Ping timeout: 252 seconds)
+maj 31 14:25:46 *	string has quit (Ping timeout: 252 seconds)
+maj 31 14:25:47 *	alexbst has quit (Ping timeout: 252 seconds)
+maj 31 14:25:47 *	waz0wski has quit (Ping timeout: 252 seconds)
+maj 31 14:26:10 *	deimos___ has quit (Ping timeout: 252 seconds)
+maj 31 14:26:10 *	stephenh has quit (Ping timeout: 252 seconds)
+maj 31 14:26:10 *	KFBI has quit (Ping timeout: 252 seconds)
+maj 31 14:26:10 *	xenoclast_ is now known as xenoclast
+maj 31 14:26:10 *	phtes_ is now known as phtes
+maj 31 14:26:10 *	string_ is now known as string
+maj 31 14:26:10 *	stephenh_ is now known as stephenh
+maj 31 14:26:10 *	Dieterbe has quit (Ping timeout: 268 seconds)
+maj 31 14:26:10 *	Dieterbe (~Dieterbe@li245-243.members.linode.com) has joined
+maj 31 14:26:10 *	waz0wski_ is now known as waz0wski
+maj 31 14:26:30 *	wizonesolutions_ (sid27627@gateway/web/irccloud.com/x-kwuvnviemxjinzwq) has joined
+maj 31 14:27:02 *	sadbox (jmcguire@sadbox.org) has joined
+maj 31 14:27:20 *	KFBI (~kb@kfbi.xyz) has joined
+maj 31 14:27:38 *	jasonrm (znc@opus.hckr.net) has joined
+maj 31 14:28:16 *	Code_Red has quit (Ping timeout: 248 seconds)
+maj 31 14:28:37 *	heyimawesome (~heyimawes@pool-68-131-82-24.nrflva.fios.verizon.net) has joined
+maj 31 14:28:58 *	alexbst (~lysander@syndicate.internationalconspiracy.org) has joined
+maj 31 14:29:22 *	McBride36 (~McBride36@thedeafguy.space) has joined
+maj 31 14:29:44 *	McBride36 is now known as Guest51336
+maj 31 14:30:51 *	Code_Red (~Code_Red@76.ip-151-80-61.eu) has joined
+maj 31 14:36:39 *	zz_ming2k has quit (Ping timeout: 264 seconds)
+maj 31 14:39:40 *	jtate (jtate@pilot.trilug.org) has joined
+maj 31 14:41:17 *	zz_ming2k (~yasn77@cpc147278-walt27-2-0-cust441.13-2.cable.virginm.net) has joined
+maj 31 14:48:49 *	zfigz (~Adium@12.139.182.194) has joined
+maj 31 15:12:27 *	periffis (~g@66.205.193.237) has joined
+maj 31 15:12:48 *	interop_madness has quit (Quit: Leaving)
+maj 31 15:39:42 *	jokr (~jokr@183.83.194.65) has joined
+maj 31 16:57:27 *	Disconnected ()
+**** ENDING LOGGING AT Fri May 31 16:57:27 2019
+
+**** BEGIN LOGGING AT Fri May 31 16:59:01 2019
+
+maj 31 16:59:01 *	Now talking on ##devops
+maj 31 16:59:01 *	Topic for ##devops is: groups.google.com/group/devops & groups.google.com/group/devops-toolchain | devopsreactions.tumblr.com | devopsdays.org | reddit.com/r/devops | vimeo.com/devopsdays | Welcome! DevOps is better than zombo.com! | devopsweekdays.undo.it | DevOps tools: www.ismycomputeron.com | www.goodreads.com/list/show/30720.DevOps_Reading_List | www.devopsbookmarks.com | Hall of HugOps! | HumanOps!
+maj 31 16:59:01 *	Topic for ##devops set by matti (Wed Mar 22 00:57:20 2017)
+maj 31 16:59:01 -ChanServ-	[##devops] Welcome to ##devops - channel about DevOps, HugOps, HangOps, HumanOps, etc. Feel free to discuss any subject you like, but remember to treat others with respect and kindness. Make yourself at home!
+maj 31 17:06:15 *	charcogreen has quit (Quit: Connection closed for inactivity)
+maj 31 17:39:27 *	zz_ming2k has quit (Ping timeout: 244 seconds)
+maj 31 17:42:14 *	jokr has quit (Ping timeout: 258 seconds)
+maj 31 17:44:34 *	zz_ming2k (~yasn77@cpc147278-walt27-2-0-cust441.13-2.cable.virginm.net) has joined
+maj 31 17:59:11 *	Disconnected ()
+**** ENDING LOGGING AT Fri May 31 17:59:11 2019
+
+**** BEGIN LOGGING AT Fri May 31 18:00:36 2019
+
+maj 31 18:00:36 *	Now talking on ##devops
+maj 31 18:00:36 *	Topic for ##devops is: groups.google.com/group/devops & groups.google.com/group/devops-toolchain | devopsreactions.tumblr.com | devopsdays.org | reddit.com/r/devops | vimeo.com/devopsdays | Welcome! DevOps is better than zombo.com! | devopsweekdays.undo.it | DevOps tools: www.ismycomputeron.com | www.goodreads.com/list/show/30720.DevOps_Reading_List | www.devopsbookmarks.com | Hall of HugOps! | HumanOps!
+maj 31 18:00:36 *	Topic for ##devops set by matti (Wed Mar 22 00:57:20 2017)
+maj 31 18:00:36 -ChanServ-	[##devops] Welcome to ##devops - channel about DevOps, HugOps, HangOps, HumanOps, etc. Feel free to discuss any subject you like, but remember to treat others with respect and kindness. Make yourself at home!
+maj 31 19:08:05 *	Guest51336 is now known as McBride36
+maj 31 19:08:12 *	McBride36 has quit (Changing host)
+maj 31 19:08:12 *	McBride36 (~McBride36@unaffiliated/mcbride36) has joined
+maj 31 19:17:49 *	fission6 (~textual@static-71-190-247-20.nycmny.fios.verizon.net) has joined
+maj 31 19:20:00 *	pnwise has quit (Ping timeout: 248 seconds)
+maj 31 19:20:16 *	thebope has quit (Read error: Connection reset by peer)
+maj 31 19:20:52 *	thebope (~thebope@pdpc/supporter/student/thebope) has joined
+maj 31 19:23:14 *	standardname (~standardn@149.56.137.62) has joined
+maj 31 19:36:32 *	JayDoubleu (sid339529@gateway/web/irccloud.com/x-hygeaxsvrpxzoqnj) has joined
+maj 31 19:37:32 <JayDoubleu>	If I have an dynamodb table, I also have active directory on azure. What would be the best aproach to create server-less website which would be authenticated by azure AD and able to retrieve data from dynamodb ?
+maj 31 19:37:32 <JayDoubleu>	S3 + Cognito with Azure + API Gateway + Lambda
+maj 31 19:37:32 <JayDoubleu>	Or
+maj 31 19:37:33 <JayDoubleu>	Azure web app + Authenticated APi Gateway + Lambda or something else ?
+maj 31 19:39:51 *	fission6 has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+cze 02 03:33:00 *	Disconnected ()
+**** ENDING LOGGING AT Sun Jun  2 03:33:00 2019
+

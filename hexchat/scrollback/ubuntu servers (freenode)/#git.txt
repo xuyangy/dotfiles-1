@@ -1,0 +1,1029 @@
+T 1567243385 19*	Now talking on 22#git
+T 1567243385 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1567243385 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1567244884 18<n-st18>	hi, how can i reset my working copy, but keep the HEAD pointer unchanged?
+T 1567245498 18<j41618>	n-st: !backup
+T 1567245498 18<gitinfo18>	n-st: Worried about your data while trying stuff out in your repo? The repository in its entirety lives inside the .git directory in the root of your work tree so to backup everything `cp -a path/to/workdir path/to/backup` or equivalent will suffice as long as the repo is not modified during backup. See also http://sethrobertson.github.com/GitBestPractices/#backups
+T 1567245502 18<j41618>	n-st: git reset --hard
+T 1567246036 18<n-st18>	j416: git reset --hard also resets the HEAD, unfortunately
+T 1567246195 18<oxymoron9318>	`git checkout <revision> -- . `
+T 1567246247 18<oxymoron9318>	if I understand correctly, you would like your working directory to resemble some <revision>, while staying on the same branch (sort of speak) n-st
+T 1567246259 18<n-st18>	yup
+T 1567246308 18<n-st18>	oxymoron93: ah, that's exactly what i needed, thank you :)
+T 1567255754 18<j41618>	n-st: what do you mean by "resets HEAD"?
+T 1567255853 18<j41618>	note that checkout does not remove files, it only adds on top. There is an option to make it also remove files.
+T 1567269655 18<gnugnugnu18>	hi, can someone tell me more about `git push --force-with-lease`?
+T 1567269856 18<m0viefreak18>	man git-push
+T 1567269856 18<gitinfo18>	the git-push manpage is available at https://gitirc.eu/git-push.html
+T 1567269883 18<gnugnugnu18>	I know.
+T 1567269886 18<gnugnugnu18>	I read it.
+T 1567269917 18<gnugnugnu18>	But I am not sure to understand when it is rejected.
+T 1567269953 18<gnugnugnu18>	I found a case I though would be rejected but it was accept.
+T 1567269964 18<m0viefreak18>	what case is that?
+T 1567269992 18<gnugnugnu18>	The pushed branch was behind in its remote counter parts.
+T 1567270003 18<gnugnugnu18>	*counterpar
+T 1567270148 18<m0viefreak18>	are you sure that was a case where a force-push was actually necessary?
+T 1567270166 18<m0viefreak18>	and not just a regular fast-forward push?
+T 1567270239 18<gnugnugnu18>	I used `git pull --rebase origin master` to sync with the master. So I needed to force push the branch.
+T 1567270275 18<gnugnugnu18>	I was in another branch.
+T 1567270353 18<m0viefreak18>	if you rebase your work locally then there is no need to force-push
+T 1567270450 18<gnugnugnu18>	The rebase didn't stay local because there were commit in the master branch I wanted to integrate with my branch after my modification were push.
+T 1567270506 18<gnugnugnu18>	I just want to understand the cases where `git push --force-with-lease` should be rejected by the remote.
+T 1567270569 18<m0viefreak18>	if .git/refs/remotes/<remote>/<branch> does not match the actual ref of <branch> on the actual <remote>
+T 1567270576 18<canton718>	gnugnugnu, 1) you fetch, 2) you rebase, 3) someone else pushes, 4) --force-with-lease is rejected
+T 1567270671 18<gnugnugnu18>	If the local branch is behind the remote it should be rejected?
+T 1567270720 18<m0viefreak18>	only if someone else has pushed in the meantime
+T 1567270753 18<canton718>	gnugnugnu, "If the remote ref still points at the commit you specified, you can be sure that no other people did anything to the ref. It is like taking a "lease" on the ref without explicitly locking it, and the remote ref is updated only if the "lease" is still valid."
+T 1567270766 18<m0viefreak18>	you can think of "--force-with-lease" as "--only-if-noone-else-has-done-something-to-the-remote-since-i-last-fetched"
+T 1567270766 18<canton718>	"--force-with-lease alone, without specifying the details, will protect all remote refs that are going to be updated by requiring their current value to be the same as the remote-tracking branch we have for them."
+T 1567270769 18<canton718>	from man git push
+T 1567270769 18<gitinfo18>	the git-push manpage is available at https://gitirc.eu/git-push.html
+T 1567270796 18<canton718>	so it's a check of "does the branch on the remote *currently* look the same as when I last fetched from it?"
+T 1567270877 18<gnugnugnu18>	I see, if the branch on the remote is the same as when fetched it pushes the contain of the working directory of the branch.
+T 1567270946 18<m0viefreak18>	it pushes the local branch, the working the directory has nothing to do with any of that
+T 1567271019 18<gnugnugnu18>	The branch was behind (only fetch no fast-forward) so it pushed the branch that was behind.
+T 1567271082 18<m0viefreak18>	if you fetch you change your .git/refs/remotes/<remote>/<branch>
+T 1567271090 18<m0viefreak18>	the man-page contains an explicit warning for that
+T 1567271279 18<gnugnugnu18>	Is there a way so git reject the force-with-lease push if the remote branch is fetch but not fast-forward?
+T 1567271760 18<gnugnugnu18>	It would avoid pushing an older version of the branch.
+T 1567271813 18<canton718>	gnugnugnu, "is fetch but not fast-forward"?
+T 1567271817 18<canton718>	What does "is fetch" mean there?
+T 1567271896 18<gnugnugnu18>	*is fetched*
+T 1567271958 18<gnugnugnu18>	The remote branch was fetch, but not merge locally (fast-forward).
+T 1567272091 18<canton718>	so, a normal non-force push?
+T 1567272104 18<gnugnugnu18>	Not really.
+T 1567272354 18<gnugnugnu18>	You have the branches master and features. The branch 'features' `git pull --rebase origin master`. The force-with-lease push of origin/feature works. The idea is having a kind of force push that would fail on master (that is not fast-forward).
+T 1567272385 18<gnugnugnu18>	It would be a mixed of normal push with a force-with-lease.
+T 1567272585 18<gnugnugnu18>	Is there a place to propose feature requests?
+T 1567272790 18<gnugnugnu18>	I think `git push --force-with-lease=master:master` does what I want.
+T 1567272794 18<gnugnugnu18>	Thanks
+T 1567272806 18<canton718>	gnugnugnu, I don't understand what you're suggesting I'm afraid
+T 1567272840 18<canton718>	what makes pushing to master "non-fast-forward", in a way that's different to pushing a rebased branch?
+T 1567272937 18<gnugnugnu18>	I avoid accidentally pushing to master a "non-fast-forward" version of the branch.
+T 1567272942 18<gnugnugnu18>	*It
+T 1567273074 18<canton718>	gnugnugnu, I don't see how it would distinguish between master and your feature branch
+T 1567273090 18<canton718>	gnugnugnu, be aware that most hosted git solutions provide a way to protect particular branches from force-pushes
+T 1567273167 18<gnugnugnu18>	Look if local/master/HEAD  == fetch/master/HEAD
+T 1567273203 18<malina18>	hi again. Yest I was by as my chromium compiled hit an illegal instruction, and wanted localtime64{,_r} symbols in libc.so but they weren;t there. I compiled a 2.30.9000 (commit=a635d756).. I don't know why it would omit his, so do I have to manually configure time64 struct or so? ( sorry about posting in the current query, I'll wait)
+T 1567273242 18<malina18>	(m64, linux-5.29-rc5. )
+T 1567273248 18<canton718>	gnugnugnu, I don't follow. fetch/master/HEAD means the version of master which was just fetched? But, that just checks whether you're made *any* changes to master -- disallowing a push if that push wouldn't do anything (because you haven't changed anything) seems pointless?
+T 1567273362 18<gnugnugnu18>	It would avoid push a older version of master to the remote.
+T 1567273401 18<canton718>	gnugnugnu, so you're worried about someone typing 'git push -f master^:master'?
+T 1567273405 18<malina18>	OOPS .. wrong channel .. sorry guys :D
+T 1567273445 18<canton718>	gnugnugnu, 'git push -f master' won't do anything, if your local master branch is *behind* the remote
+T 1567273447 18<gnugnugnu18>	`git push --force-with-lease origin master`
+T 1567273472 18<canton718>	gnugnugnu, if your local master is behind origin/master, that won't do anything
+T 1567273488 18<gnugnugnu18>	It overwrite the remote.
+T 1567273498 18<canton718>	have you tested that?
+T 1567273508 18<gnugnugnu18>	Yes
+T 1567273511 18<gnugnugnu18>	Twice
+T 1567273521 18<gnugnugnu18>	Multiple time on a test repo.
+T 1567273602 18<canton718>	huh, so it does
+T 1567273610 18<gnugnugnu18>	yes.
+T 1567273633 18<gnugnugnu18>	But I want it to be reject.
+T 1567273727 18<ravndal18>	out of curiosity, is `git submodule add` recursive by default?
+T 1567279947 18<lrvick18>	So still having that weird git issue in docker where git can't write to files that "touch" can. I have strace output: https://gist.github.com/lrvick/8b49f8b40955387bfb7d45da9912e3ba
+T 1567279966 18<lrvick18>	some batshittery is going on.
+T 1567407102 20*	Disconnected (20)
+T 1567407949 20*	Disconnected (20)
+T 1567409874 20*	Disconnected (20)
+T 1567418638 20*	Disconnected (20)
+T 1567425360 20*	Disconnected (20)
+T 1567498452 20*	Disconnected (20)
+T 1567513343 19*	Now talking on 22#git
+T 1567513343 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1567513343 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1567513423 20<threenuc>30	Hi. When I want to reset a single file to it's previous state, I usually do ' git checkout [filename] '. There's this handy syntax that allows you to skip most of the path like ' git checkout **/filename.txt `
+T 1567513471 20<threenuc>30	But this doesn't work if the file is a few directories lower than the current working dir, like 'file modified in ../../folder/stuff/filename.txt`, git checkout **/filename.txt won't work here. Is there a workaround for that?
+T 1567513571 18<osse18>	:/**/filename.txt
+T 1567513887 18<mms_18>	hi I tar cf repo cloned to my machine and copied to another laptop of another user and extracted it.  it shows all files modified in it.
+T 1567513905 18<mms_18>	when I do git status it shows all modified
+T 1567513978 18<mms_18>	other user when he does clone from gerrit it does not give error but only creates .git and such . hidden folders
+T 1567514010 18<mms_18>	on my laptop git clone works fine and so I tar the folder and gave him
+T 1567514029 18<osse18>	I guess I'll ask again: What are the actual differences?
+T 1567514043 18<mms_18>	osse: file permission I saw are same....
+T 1567514062 18<avu18>	mms_: what does `git diff` say?
+T 1567514077 18<avu18>	it's probably just a timestamp change introduced by tar
+T 1567514091 18<mondris18>	please why is git push taking so much time to complete. it is showing "Writing objects:  17% (402/2319), 255.16 MiB | 202.00 KiB/s" and when it is 100%, the files doenot appear on my git repo
+T 1567514149 18<avu18>	mondris: seems like you're trying to push a lot and your network is slow. Did the complete command succeed without error before you checked the remote?
+T 1567514181 18<mondris18>	it shows something like nothing to push
+T 1567514188 18<mondris18>	let me wait for this one to complete
+T 1567514198 18<mms_18>	avu: git diff shows old mode new mode changes only
+T 1567514219 18<mms_18>	avu: but on file system I think it shows fine
+T 1567514234 18<mms_18>	avu: old is 100755 and new is 100644
+T 1567514241 18<avu18>	mms_: so either reset or commit
+T 1567514260 18<osse18>	mms_: that are file permisison changes
+T 1567514284 18<mms_18>	osse: yes but when I check on file system I thought I read rwx related things and they looked same
+T 1567514322 18<mms_18>	avu: now this is only for png files but I had checked for java files
+T 1567514344 18<mms_18>	avu: but git diff is showing only png files
+T 1567514357 18<mms_18>	any ways so then hwo to do that reset ?
+T 1567514393 18<mms_18>	avu: git reset --hard ?
+T 1567514436 18<mms_18>	ok in git status its showing only png files
+T 1567514453 18<mms_18>	so git status and git diff are in tandem
+T 1567514501 18<mms_18>	so correct only png files in that copy having the issue
+T 1567514509 20<threenuc>30	thanks osse
+T 1567514536 18<mms_18>	now if I change the remote url for that user to point to actual repo it should be fine right
+T 1567514565 18<mms_18>	avu: git restore <file>
+T 1567515082 18<mms_18>	avu: ?
+T 1567515255 18<osse18>	git status tells you
+T 1567515265 18<mms_18>	osse: yes it tells to use restore
+T 1567515281 18<mms_18>	so it will just copy from commit to new ?
+T 1567515297 18<mms_18>	ok let me try
+T 1567515534 18<kreyren18>	i'm using `git submodule init "${srcdir}/pep.py/"` which results in `fatal: /usr/src//pep.py/: '/usr/src//pep.py/' is outside repository` , but it works if executed locally.. am i missing a syntax or ?
+T 1567515817 18<mms_18>	I did git restore but still it shows same
+T 1567515865 18<mms_18>	I better remove those files using rm and then do git checkout on them instead
+T 1567516210 18<mms_18>	osse: I did git restore but status still shows same
+T 1567516308 18<mobidrop18>	hi I do the git checkout
+T 1567516347 18<osse18>	mms_: try chmod +x file.png
+T 1567516492 18<mms_18>	osse: you right it does not have that x but chmod a+x on that file does noting
+T 1567516514 18<mms_18>	osse: from git bash I did chmod on those files but no effect
+T 1567516526 18<osse18>	then I don't know
+T 1567516536 18<mms_18>	avu: ?
+T 1567516561 18<mms_18>	last option now is to just remove those files and git checkout them
+T 1567516581 18<mms_18>	that should be sure shot
+T 1567516654 18<mms_18>	osse: I tried rm and checkout and same result
+T 1567516667 18<avu18>	mms_: `git reset --hard` might be what you want here. But that's one of those commands you should probably never execute just because some person on IRC tells you to ;)
+T 1567516690 18<dcpc00718>	hi, is it possible to remove git-lfs from a repo that use it for some files ?
+T 1567516703 18<osse18>	mms_: what is the file system?
+T 1567516773 18<mms_18>	osse: windows
+T 1567516785 18<osse18>	no that is the operating system
+T 1567516826 18<mms_18>	doing git checkout said updated 273 paths from index
+T 1567516835 18<mms_18>	but git status still has same output
+T 1567516840 18<mms_18>	shows png files as modified
+T 1567517403 18<mms_18>	avu: git reset -hard on each file I should do ?
+T 1567517544 18<avu18>	mms_: you should read up on what that does and decide on your own if it's something you want to do. This commands deletes things without a way to get them back. Don't execute it because some person on IRC thinks it might be the right thing to do.
+T 1567517601 18<osse18>	if git checkout doesn't fix it then i doubt git reset --hard will
+T 1567517714 18<mms_18>	avu: I already did it and same aoutput
+T 1567517731 18<mms_18>	avu: I now already git pull and git pull -f and now it shows lot of files in status
+T 1567517858 18<avu18>	ah, didn't read everything, sure, if checkout fails to fix this, reset won't help either. Now I'm reading you're on Windows, I guess the machine you copied the repo from is another OS?
+T 1567517916 18<avu18>	in that case, that's probably the cause, git does $things to permissions to map between UNIX and Windows permissions I think (not much experience with git on Windows though)
+T 1567523842 18<kreyren18>	 i'm using `git submodule init "${srcdir}/pep.py/"` which results in `fatal: /usr/src//pep.py/: '/usr/src//pep.py/' is outside repository` , but it works if executed locally.. am i missing a syntax or ?
+T 1567524331 18<rafasc18>	kreyren: you should really be asking these questions in #archlinux-aur, I think.
+T 1567524342 18<codecutter18>	how do i delete a branch local & remote?
+T 1567524382 18<shomon18>	hi, I just cloned a repo, made some changes, and then because it couldn't run, copied everything into a docker container, and continued editing in there. I didn't copy the git headers though.. so now I'm not sure if it's best to do git init and set the header, or to just copy the files back and commit from where I first cloned it?
+T 1567524389 18<rafasc18>	codecutter: git branch -d <b_name>; git push <remote> --delete <b_name>;
+T 1567524413 18<codecutter18>	thx
+T 1567524415 18<rafasc18>	codecutter: you'll probably also want to run git fetch --prune; to remove the local !rtb
+T 1567524415 18<gitinfo18>	codecutter: [!remote_tracking_branch] Remote-tracking branches (branches which start with e.g. 'origin/', listed by 'git branch -r') are read-only mirrors of the branches in another repository. They're updated by 'git fetch'. You can't edit them directly (trying to check them out results in a !detached HEAD), but you can create a local branch based on a remote-tracking branch using e.g. 'git checkout -b <branch> <remote>/<bra
+T 1567524483 18<kreyren18>	rafasc, this is not arch.. it's debian fetching ripple repository
+T 1567524508 18<rafasc18>	the ${srcdir} threw me off.
+T 1567524538 18<kreyren18>	rafasc, just variable that i'm using in a script xD
+T 1567524629 18<rafasc18>	I assumed things that I shouldn't. I remember someone asking arch pkgbuilds questions here the other day, and my mind automatically went there. Sorry.
+T 1567524644 18<kreyren18>	rafasc, np
+T 1567524677 18<rafasc18>	kreyren: where is your repository?
+T 1567524702 18<rafasc18>	as in, the $PWD from where you're running those commands.
+T 1567524707 18<kreyren18>	rafasc, refactoring light-ripple/Ripple-Auto-Installer since original is horrible https://github.com/light-ripple/Ripple-Auto-Installer/pull/6
+T 1567524726 18<kreyren18>	rafasc, pwd should be irelevant since it's expected to do this action from any pwd
+T 1567524765 18<rafasc18>	but submodule init expects a path inside your repository, and you're giving something on /usr/ ...
+T 1567525169 18<robertson18>	I work for a long time Subversion user that is reluctantly agreeing to distribute code via GIT as well. He is very set in his ways and one of the SVN features he uses constantly is the $Id$ string in all the code files. As part of adding a GIT repository of the source code he insisted on a way to link subversion revision numbers to GIT hashes. He is the only developer allowed to submit changes to either repository. To (attempt) to acheive hi
+T 1567525388 18<shomon18>	if I do "git checkout -b mynewbranch"  will it overwrite changes made thus far after cloning?
+T 1567525566 18<rafasc18>	shomon: no.
+T 1567525600 18<rafasc18>	!float
+T 1567525600 18<gitinfo18>	If you have made a change in your working directory and have NOT YET COMMITTED, you may "float" that change over to another (`git checkout oldbranch`) or new (`git checkout -b newbranch`) branch and commit it there.  If the files you changed differ between branches, the checkout will fail.  In that case, `git stash` then checkout, and `git stash apply` and go through normal conflict resolution.
+T 1567525644 18<rafasc18>	and what do you mean by: "I didn't copy the git headers though"
+T 1567525708 18<shomon18>	I thought the .git folder wasn't there rafasc but actually it was. the only issue is that I'm still on the master branch
+T 1567531242 20*	Disconnected (20)
+T 1567531260 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1567531260 22*	26threenuc sets mode 24+i on 22threenuc
+T 1567531260 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1567531261 -18freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1567531261 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1567535144 20*	Disconnected (20)
+T 1567535166 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1567535166 22*	26threenuc sets mode 24+i on 22threenuc
+T 1567535166 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1567535167 -18freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1567535167 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1567576502 20*	Disconnected (20)
+T 1567576520 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1567576520 22*	26threenuc sets mode 24+i on 22threenuc
+T 1567576520 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1567576521 -18freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1567576521 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1567584933 20*	Disconnected (20)
+T 1567584951 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1567584951 22*	26threenuc sets mode 24+i on 22threenuc
+T 1567584951 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1567584952 -18freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1567584952 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1567608965 20*	Disconnected (20)
+T 1567670323 20*	Disconnected (20)
+T 1567695041 20*	Disconnected (20)
+T 1568212408 19*	Now talking on 22#git
+T 1568212408 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568212408 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568212415 18<jast18>	add the file, ignore the folder
+T 1568212426 18<jast18>	that file will be tracked, everything else won't
+T 1568212455 18<SJr18>	I don't want the file tracked, just checked out the first time and never updated :)
+T 1568212457 18<jast18>	if that won't work, add a script that developers can use to set up a default
+T 1568212467 18<rafasc18>	then no, git doesn't have any graceful way to deal with that.
+T 1568212479 18<SJr18>	Hrm, okay I'll hack around this with a script.
+T 1568275714 20*	Disconnected (20)
+T 1568275738 19*	Now talking on 22#git
+T 1568275738 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568275738 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568277184 18<markzen18>	no, just move it out of the way
+T 1568277205 18<markzen18>	out of the devs way, rather
+T 1568277284 18<markzen18>	tried the mv and env var, seems to work alright
+T 1568278454 18<osse18>	env var works. symlink works too. a regular file with the content "gitdir: actual/path/to/.git" also
+T 1568278467 18<osse18>	I guess the env is the only way to make it truly invisisble
+T 1568278567 18<osse18>	Remember to unset it if you go to a different repo
+T 1568279013 18<shomon18>	hi, I'm getting a strange error. I cloned a repo a while back, then did some edits live on bitbucket (added a readme), then I do git pull, followed by git add . && git commit but i always get "rejected" "updates were rejected because the remote contains work you do not have locally". Do I need to do -f?
+T 1568279314 18<DelTree18>	do you see your edits on the remote branch you fetched ?
+T 1568279560 18<shomon18>	ah let's see just a sec
+T 1568279725 18<shomon18>	my edits are stil lhere locally.. I just added a directory and gitignore
+T 1568280278 18<markzen18>	osse: regular file? where do you put it?
+T 1568280305 18<jast18>	as '.git' at the root of your working tree :)
+T 1568280318 18<markzen18>	ah, obv
+T 1568280345 18<markzen18>	would be fine, too
+T 1568280371 18<markzen18>	incidentally, moving the .git with mv does not seem to work so well
+T 1568280394 18<markzen18>	it does from the repo root, but as soon as you move down to some subdir, git is list
+T 1568280396 18<markzen18>	lost
+T 1568280415 18<markzen18>	there must be some relative refs somehow, I guess
+T 1568280448 18<jast18>	using GIT_DIR? you'll probably have to set GIT_WORK_TREE, too, to the root of the work tree
+T 1568280469 18<jast18>	because otherwise how is git supposed to know where the work tree begins
+T 1568280520 18<markzen18>	right
+T 1568280558 18<markzen18>	fixed, thanks
+T 1568280642 18<DelTree18>	shomon: I mean the edits you made on bitbucket...
+T 1568280670 18<shomon18>	no. they are not in local
+T 1568281121 18<MoziM18>	how can i add new staged changes to the current commit?
+T 1568281182 18<jast18>	MoziM: as in, the commit you already made?
+T 1568281193 18<jast18>	git commit --amend
+T 1568281251 18<MoziM18>	thanks
+T 1568282374 20*	Disconnected (20)
+T 1568282397 19*	Now talking on 22#git
+T 1568282397 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568282397 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568283210 18<flughafen18>	does d on a rebase -i get rid of the commit 100%?
+T 1568283324 18<vlt18>	flughafen: It will be removed from that branch but most propably still be around until gc.
+T 1568283359 18<flughafen18>	 ok.
+T 1568283373 18<flughafen18>	i just found git reset --soft head t hat worked fine
+T 1568283388 18<flughafen18>	i accdidently forgot to perge a pr when i was reusing a branch and ended up upushing new stuff
+T 1568283453 18<shomon18>	DelTree thanks for your help before.. I just cloned it again somewhere else and fixed it manually :)
+T 1568283550 18<Unode18>	is there any way to prevent git from prompting the user for a password when using the ssh backend?
+T 1568283577 18<vlt18>	Unode: ssh keys
+T 1568283590 18<Unode18>	I'm trying to automate a couple of git actions, including push and I don't want git to prompt if the key is no longer in the keychain
+T 1568283597 18<Unode18>	i.e. I want it to exit with error instead
+T 1568283624 18<no_gravity18>	Could it be that for windows linefeeds, git diff only shows them for the +line and not for the -line?
+T 1568283643 18<osse18>	Unode: find out how you would do that for ssh itself, then set GIT_SSH_COMMAND in the environment
+T 1568283646 18<no_gravity18>	I changed a line from "oldstring" to "newstring" and now git diff shows me:
+T 1568283649 18<no_gravity18>	-oldstring
+T 1568283652 18<osse18>	no_gravity: yes. it's annoying as hell
+T 1568283653 18<no_gravity18>	+newstring^M
+T 1568283681 18<vlt18>	Unode: Ah ok. ssh has a "key only" option you could look up.
+T 1568283710 18<no_gravity18>	osse: Ah! So it's a bug in git diff?
+T 1568283760 18<osse18>	Not sure if it's concidered a bug
+T 1568283773 18<osse18>	It's been like that as long as I can remember and I hate it
+T 1568283782 18<Unode18>	vlt: in this case it's asking for the password of the key
+T 1568283787 18<no_gravity18>	osse: Ok. I hate it too.
+T 1568284158 18<Unode18>	osse: thanks, GIT_SSH_COMMAND="ssh -oBatchMode=yes" git push  does it
+T 1568284167 18<osse18>	\o/
+T 1568287225 18<mazula18>	what is the best and safest method to squash two commits?
+T 1568287309 18<osse18>	mazula: are they recent?
+T 1568287328 18<mazula18>	yes
+T 1568287344 18<osse18>	silly question from me. let me try again
+T 1568287347 18<osse18>	how recent are they? :p
+T 1568287359 18<mazula18>	1h and 2h
+T 1568287411 18<osse18>	git rebase firstcommit~1; mark the second commit squash
+T 1568287440 18<mazula18>	why it's so hard to squash, there is so many methods to do it lol
+T 1568287513 18<osse18>	that they are one and two hours old doesn't matter to git. what I meant was whether there are commits newer than these, for example. Or whther these commits have been merged
+T 1568289627 18<scientes18>	considering that I collect branches like flies, is there a way to namespace stale branches?
+T 1568289638 18<scientes18>	or otherwise manage having too many for the UI
+T 1568289650 18<scientes18>	or sort by last changed
+T 1568289870 18<rafasc18>	scientes: what ui?
+T 1568289945 18<rafasc18>	I literally rename my branches to: stale/some-branch-name. And then filter based on stale/* .
+T 1568290044 18<rafasc18>	for example log --decorate-refs-exclude=heads/stale/* --exclude=stale/* --branches
+T 1568290083 18<GyrosGeier18>	I usually rebase all of them on top of master
+T 1568290095 18<GyrosGeier18>	if they are equal to master, then they can go
+T 1568290107 18<GyrosGeier18>	if not, I can see if they are worth keeping
+T 1568290276 18<rafasc18>	I guess it depends on what stale means. Usually branches go stale because there's some issue with them, and as time goes by, the chances of a rebase conflicting increases.
+T 1568290323 18<rafasc18>	or you don't have a proper solution to integrate those changes with things that happened on the mainline.
+T 1568290339 18<osse18>	push them to your private fork and forget about them
+T 1568290341 18<osse18>	that's what I do
+T 1568290502 18<rafasc18>	tag and forget
+T 1568291317 18<aw1_18>	should each commit pass all unit tests? i can't seem to balance this with "make each commit modular". In order for the commit to pass all tests I often have to fix multiple bugs/issues that touch different subsystems
+T 1568291339 18<GyrosGeier18>	each commit should improve things
+T 1568291399 18<aw1_18>	cool
+T 1568291448 18<GyrosGeier18>	my usual approach for subsystem rewrites is 1. create new API, 2. build compatibility layer so nothing breaks, then 3. 4. 5. convert individual subsystems so they no longer need that layer, and finally remove the compatibility layer again
+T 1568291490 18<GyrosGeier18>	the big advantage of that is that there is no time limit between merging the first and the last commit
+T 1568291533 18<GyrosGeier18>	so if the reviewers are busy, you can just merge the first one, and start building a new subsystem on top of the new API, and merge the rest later
+T 1568291567 18<GyrosGeier18>	also, if there are subsystem maintainers, you might want different reviewers anyway
+T 1568291594 18<osse18>	infront
+T 1568291596 18<osse18>	oops
+T 1568293251 18<mage_18>	hello
+T 1568293271 18<mobidrop18>	hi mage
+T 1568293297 18<mage_18>	I generated a patch git git format-patch but now I want to apply the patch in a different directory (from a/amnesiabbpf/frontend/src/bbpf.js to b/euregias/frontend/src/bbpf.js) any idea how to do this?
+T 1568293431 18<mage_18>	https://gist.github.com/silenius/42bd75f4f4830846ac9b92f6c31c7c78
+T 1568293640 18<mobidrop18>	git apply
+T 1568294314 18<mage_18>	mobidrop: I did git am but it doesn't work as it's not the same arborescence
+T 1568294509 18<mobidrop18>	mage_, yeah I usually don't apply a patch in a different project
+T 1568294795 18<mage_18>	mobidrop: https://gist.github.com/silenius/6269d5f1303d275e2b2ef4acaf1c6df3
+T 1568294819 18<mage_18>	I used -p2 --directory .. patch failed to apply but when I do a git status I don't see any conflicts ... any idea?
+T 1568294909 18<mobidrop18>	mage_, huh weird, don't have git rerere turned on by any chance?
+T 1568294918 18<mage_18>	rerere ?
+T 1568294924 18<mage_18>	no
+T 1568294963 18<rafasc18>	mage_: see --reject
+T 1568295046 18<mage_18>	ah, thanks
+T 1568295069 18<rafasc18>	and --3way.
+T 1568295193 18<RandomSerb18>	hello. I've forked a repo on bb, and now I've origin(my fork) and upstream(original repo). Given that I'm currently the only developer, I push to origin, create pr, approve it, merge it into upstream/dev, then I pull my upstream. Now, given that I'm the only developer, would it be the same as if I simply pushed to both origin and upstream?
+T 1568295201 18<RandomSerb18>	Until someone else comes along
+T 1568295348 18<osse18>	RandomSerb: yes
+T 1568295360 18<osse18>	if you accept the pr's with fast forwarding
+T 1568295424 18<rafasc18>	you could even skip the PR part, merge locally and just push. Git doesn't care. The only difference is that you get a PR#.
+T 1568295822 18<RandomSerb18>	rafasc, do I need to merge, or I can just push?
+T 1568295863 18<rafasc18>	as osse mentioned, if they're fast-fowards, you can just push.
+T 1568295993 18<rafasc18>	I you're working alone, and nobody (including you) is pushing to it from somewhere else, it should be able to always fast-forward.
+T 1568296016 18<RandomSerb18>	rafasc, looks like so
+T 1568296019 18<RandomSerb18>	thanks!@
+T 1568296073 18<rafasc18>	you just need to pay attention to things that may create diverging history: things like --amend, rebase
+T 1568296095 18<RandomSerb18>	rafasc, I don't do those
+T 1568296099 18<RandomSerb18>	no need for now
+T 1568296109 18<RandomSerb18>	nor knowledge about it, for that matter
+T 1568298016 18<anddam18>	howdy, I need a word of advice on proper workflow in this case: I have a repo with master following origin/master and local-config branch that is a local branch with some minor changes from master.
+T 1568298049 18<anddam18>	every time I pull master I then merge local-config on top of it (not sure if this is fast-forward) so those small changes get applied to latest code base
+T 1568298123 18<anddam18>	now I need to switch to the older commit abcdef0, I ran 'git checkout -b local-config-old abcdef0' and got a new branch
+T 1568298157 18<anddam18>	now I want to apply the same diff there is in master..local-config to local-config-old
+T 1568298213 18<anddam18>	I ended up doing it by hand but I'm sure there's a proper git-fu way to do that, what command should I be looking at?
+T 1568298329 18<mobidrop18>	rebase
+T 1568298558 18<dcpc00718>	hi, i used bfg (filter-branch easier) to clean th ewhole history of a ditry repo
+T 1568298574 18<dcpc00718>	is it possible now to detect "empty" commits and delete them ?
+T 1568299216 18<rafasc18>	dcpc007: You could give https://github.com/newren/git-filter-repo a spin.
+T 1568299257 18<rafasc18>	There's talks on the ML to deprecate filter-branch in favor of that.
+T 1568299276 18<dcpc00718>	yes i used BFG
+T 1568299298 18<dcpc00718>	but as it was still present in my HEAD ... seems he doesn't delete emtpy commits
+T 1568299308 18<dcpc00718>	like the ???? with option --prune-empty
+T 1568299323 18<dcpc00718>	maybe i could reuse only a command to remove them now
+T 1568299344 18<rafasc18>	I guess you could filter-branch
+T 1568299348 18<dcpc00718>	i should have put a commit with cleaning before do the BFG if i understand
+T 1568299356 18<dcpc00718>	i try to find
+T 1568299445 18<dcpc00718>	cd repo.git && git filter-branch --prune-empty -- --all
+T 1568299445 18<rafasc18>	dcpc007: I think bfg simply doesn't support pruning empty commits. See:https://github.com/rtyley/bfg-repo-cleaner/pull/147
+T 1568299458 18<dcpc00718>	it support, but only if no ptoected commits
+T 1568299470 18<dcpc00718>	and as i didn't remove files/folders in my current commit ....
+T 1568299489 18<dcpc00718>	https://github.com/rtyley/bfg-repo-cleaner/issues/27
+T 1568299552 18<dcpc00718>	YAH perfect
+T 1568299568 18<dcpc00718>	filter-branch slow, but it's on small repo then perfect !
+T 1568299703 18<rafasc18>	the filter-repo should be considerably faster.
+T 1568299757 18<dcpc00718>	yes, it lasts 30 seconds here
+T 1568299768 18<dcpc00718>	only small scripts repo (<500 commits)
+T 1568299783 18<dcpc00718>	BFG is in java
+T 1568299794 18<dcpc00718>	will look on filter-repo next time
+T 1568299829 18<rafasc18>	maybe by the time you need it, it will already be part of git's core tools :D
+T 1568299862 18<dcpc00718>	yes, especially when they simplify those risky commands
+T 1568299870 18<dcpc00718>	+1 !! upvote )
+T 1568299881 18<dcpc00718>	thxx, good evening
+T 1568303320 18<mlanting18>	Hello, I have a question about what kind of workflow to use in a certain situation. I have a repository with branches `master-internal` and `master-external`. Development happens on the internal branch but the system contains metadata files with links to internal resources, so for external users, we need those links changed to external equivalent versions of those resources. The `master-external` branch contains the updated metadata
+T 1568303320 18<mlanting18>	files and no other changes, but needs to track the `master-internal` when changes are made. My main problem with just merging `master-external` back into `master-internal` each time changes are made is that would lead to a very messy history, but doing a rebase each time will cause problems every time someone tries to fetch from the remote.
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22#git
+T 1568307242 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568307242 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568307641 18<rafasc18>	mlanting: can't you make those links part of the 'build' process?
+T 1568307709 18<rafasc18>	meaning, having some sort of template that gets populated according to where you're trying to deploy.
+T 1568308989 18<mark418>	ive been trying for the past 4 hours to get a side by side difference with git diff from the command line or git difftool.  i have tried beyond comaper, meld, winmerge and a whole bunch of others and not ONE has worked for me.  beyond compare 4 simpl crashes when launched from git diff blah
+T 1568309023 18<mark418>	i was lookint at tkdiff and it looks like it would be a nice simple option but tkdiff has absolutely NO documentation on how to set it up with git
+T 1568309054 18<mark418>	how do i get tkdiff to work with git from the command line. erm more accurately i need to get GIT to work with TKDIFF not the other way round
+T 1568309215 18<rafasc18>	tkdiff is supported, so git difftool --tool=tkdiff should work.
+T 1568309282 18<mark418>	ok so that launches tkdiff showing some difference
+T 1568309289 18<mark418>	but not the file i want to differenc
+T 1568309290 18<mark418>	e
+T 1568309339 18<rafasc18>	git difftool --tool=tkdiff -- file
+T 1568309341 18<mark418>	and i would rather not have to enter a whole bunch of command line items im not going to remember every time, can this be saved somewhere? so i just do git diff xxxxx
+T 1568309343 18<vishal18>	does that file even have changes to show? does git diff --stat list it? you should be able to specify a file to diff(tool)
+T 1568309378 18<mark418>	git dff blah  and it launches tkdiff. is this possible?
+T 1568309386 18<rafasc18>	mark4: you can configure it to use it tkdiff by default. Just check if it works first.
+T 1568309412 18<vishal18>	man git-difftool shows how you can set in your config diff.tool to make it default
+T 1568309412 18<gitinfo18>	the git-difftool manpage is available at https://gitirc.eu/git-difftool.html
+T 1568309429 18<vishal18>	then you can alias something like 'dft' to difftool
+T 1568309444 18<mark418>	it launched tkdiff what its doing is launching tkdiff on the first file. when i close it it launches tkdiff on the next then the next ...
+T 1568309518 18<mark418>	my brain is hard wired to git diff xxxxx if i had to do git dt git difftool or whatever it would be a stumbling block for a long time. why is there the confusion factor of two different ways of getting diffs that are not the same?
+T 1568309521 18<vishal18>	try: git difftool --dir-diff --tool=meld
+T 1568309552 18<rafasc18>	I think maybe with external-diff, but don't remember.
+T 1568309564 18<mark418>	and meld is written in python which is late binding garbage that does not crap out till you try to run it - already tried meld and hit that late binding garbage issue. lol
+T 1568309587 18<vishal18>	I don't know what a late binding garbage is
+T 1568309595 18<mark418>	i tried to add external = tkdiff to my .gitconfig under [diff]
+T 1568309650 18<mark418>	vishal, when you compile a C program agianst libfoo that binding is done at compile time. if libfoo does not exist or you are making incorrect references into it the compiler pukes.  with python that puking does not happen till RUN TIME
+T 1568309668 18<mark418>	late binding
+T 1568309688 18<vishal18>	sounds like something your distro should be taking care of..
+T 1568309766 18<rafasc18>	mark4: just setting won't work. You need to look up how the external diff is invoked, and possible make a wrapper for your tool.
+T 1568309770 18<vishal18>	anyway, off topic. if you want to override 'diff' itself, look into the ext-diff stuff like rafasc said, I never used it
+T 1568309793 18<k18e18>	What's a typical name for a remote that's set up as a fork which gets merged back to origin. Upstream?
+T 1568309813 18<rafasc18>	me neither. Usually if I am doing something complex that requires me to see the diff in a GUI, difftool is enough for me.
+T 1568309820 18<vishal18>	you can name it whatever you like, but yeah, upstream is common
+T 1568309847 18<rafasc18>	but in this case sounds like downstream?
+T 1568309906 18<vishal18>	oh I may have misread. if its not the upstream then don't call it the upstream :)
+T 1568309912 18<sangy18>	hi, I have a commit that I want to cherry pick, but the file it changes has been since moved, so the commit pretty much just detects a "new file" rather than trying to merge the files. Is there a way I can hint git to try to merge these two files?
+T 1568309916 18<rafasc18>	maybe I was the one that misread.
+T 1568309939 18<sangy18>	I could also ammend the commit with the change and make a mv with it but I suspect that'll be just more issues and not the right way to do things
+T 1568309944 18<vishal18>	it wasn't without ambiguity
+T 1568309972 18<rafasc18>	sangy: try -Xfind-renames
+T 1568309987 18<sangy18>	rafasc: oh let me read
+T 1568310046 18<mark418>	ok so i guess tkdiff is no good either. it does not align the differences automatically and thers no way to align things that i can find. so when theres an off by one due to one line being added to one side or the other that throws off the entire reset of the differences making a merge impossinble
+T 1568310050 18<rafasc18>	sangy: find-renames[=<n>]; you can also try changing the 'n' threshold.
+T 1568310077 18<sangy18>	rafasc: wow that did the trick
+T 1568310077 18<mark418>	i tried meld.  late binding causes it to fail. i tried beyond compare and that just crashes when launched from git
+T 1568310081 18<rafasc18>	mark4: have you tried kdiff3? It's my favorite
+T 1568310125 18<rafasc18>	if 'late binding' is a recurrent thing, I suggest you fix your OS.
+T 1568310129 18<mark418>	rafasc, that woluld require gigs of KDE libs to be installed into a gentoo VM where everything is compiled.
+T 1568310139 18<mark418>	slowlly due to it being a vm :/
+T 1568310181 18<mark418>	rafasc, no - late binding is not an issue with my installation, its an issue with a horrendously stupid design flaw in the language itself.
+T 1568310219 18<rafasc18>	mark4: maybe you can adapt this: https://aur.archlinux.org/packages/kdiff3-qt/
+T 1568310287 18<mark418>	rafasc, i dont have ANY kde libs installed other than a few QT libs, I could install that but then when it barfed i would have to figure out what libs i also needed to install. i mean, i could do it but its not ideal
+T 1568310384 18<k18e18>	vishal: yeah right? Because upstream is the original source code, that's where it's flowing
+T 1568310387 18<rafasc18>	not sure where this conversation is going tbh.
+T 1568310420 18<vishal18>	k18e: maybe show an example of what repo is what, and what the flow is, and which you want a name for
+T 1568310475 18<mlanting18>	@rafasc thanks for the suggestion earlier. I think, though, that scripting it like that might be more work than it's worth, at least in the short term. I was considering using cherry pick for it, but i'm not sure if that would end up with similar issues to the rebase method
+T 1568310483 18<vishal18>	if I fork foo/project to vishal/project, then I typically have vishal/project as 'origin', and foo/project as 'upstream'
+T 1568310510 18<k18e18>	vishal: for instance I want to contribute to github.com/golang/go and I fork it to github.com/k18/go and then I make a change and create a PR from k18/go to golang/go
+T 1568310513 18<sangy18>	rafasc: worked wonders thanks!
+T 1568310519 18<rafasc18>	the important thing is that it doesn't really matter whatever you call it. You could call it britneyspears, it only matters to you.
+T 1568310561 18<rafasc18>	sangy: you're welcome. It's not immediate that you need to look up for merge strategies while cherry-picking.
+T 1568310578 18<sangy18>	rafasc: yeah, but I'll keep this nugget of info around it looks so powerful :)
+T 1568310611 18<rafasc18>	because it is not obvious cherry-picking are "merges" in disguise.
+T 1568310672 18<rafasc18>	k18e: in that case I would make golang/go 'upstream' and k18/go origin.
+T 1568310683 18<k18e18>	riiight
+T 1568310709 18<rafasc18>	k18e: git clone -o upstream github.com/golang/go; helps setting it right.
+T 1568310731 18<k18e18>	I guess I am more confused here, because... I am mostly working with GitHub Enterprise and our work flow is to fork before creating PRs, so I always start with the origin repository
+T 1568310737 18<rafasc18>	or you can click fork, clone your own, then remote add upstream the original.
+T 1568310748 18<k18e18>	which is why I never expected it to be the other way around
+T 1568310835 18<rafasc18>	the unspoken convention is that upstream is the official stream of work. While origin is the default place for pushes.
+T 1568310861 18<k18e18>	then maybe I just switch it around
+T 1568310965 18<rafasc18>	but literally, origin is just the remote your cloned from.
+T 1568311079 18<rafasc18>	if you want to change that, because you want to clone from the upstream, you can use clone -o <name> and clone will automatically set the remote as <name>.
+T 1568311136 18<rafasc18>	but most of the time, it doesn't really matter how you name your remotes.
+T 1568312757 18<RoseBus18>	hello, i did a git pull but for some reason it branched and kept the original files
+T 1568312767 18<RoseBus18>	how can i overwrite all files
+T 1568312776 18<vishal18>	it branched??
+T 1568312804 18<Habbie18>	i bet it merged
+T 1568312828 18<mlanting18>	did it run into conflicts?
+T 1568312846 18<RoseBus18>	no conflicts
+T 1568312955 18<mlanting18>	what branch were you on before the pull and what are you on now?
+T 1568313016 18<RoseBus18>	him it must have missed changes in the file
+T 1568313033 18<RoseBus18>	because i added a comment and then recommitted and now it's applying the changes it was supposed to the first time
+T 1568313630 18<RoseBus18>	wow the same thing happened again. my local changes didn't get applied to the master when i pushed
+T 1568313637 18<RoseBus18>	but my commits registered locally
+T 1568313652 18<RoseBus18>	so i had to change the file again (add white space) and save, then commit, then push, then pull remotely
+T 1568313664 18<RoseBus18>	is this uncommoN?
+T 1568313666 18<RoseBus18>	i'm new to git
+T 1568313672 18<RoseBus18>	i should have been using htis a long time ago
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22#git
+T 1568351773 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568351773 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568351783 18<Toxmi18>	I'm developing some feature in a branch called feature/F1. During this development I come across some basic fixes which I applied in master and then cherry pick those into dev and the feature_F1.
+T 1568351812 18<Toxmi18>	Now I think it's better to squash those commits into one. I can rebase in master and squash them. But what about other branches?
+T 1568351831 18<Toxmi18>	I have also some unfinished jobs with feature_F1. What can I do in this situation?
+T 1568351832 18<AnrDaemon18>	Hi. Do I need to run `git update-server-info` aftear each push to the simple DAV remote?
+T 1568352001 18<AnrDaemon18>	Toxmi: It only matters, when you push to the public repository. Never squash commits that you have pushed, unless absolutely necessary.
+T 1568352152 18<Toxmi18>	AnrDaemon:Oh, great. But what about local thing. I'm asking about best practice here. For example my basic understanding is squash them on master, then squash them on dev and then squash them on feature_F1. Same procedure but on 3 different branches. It seems a bit redundant.
+T 1568352218 18<Toxmi18>	This might be due to my previous practice which fix on master and cherry picked them to dev and feature_F1.... (I didn't know a better practice).
+T 1568352391 18<AnrDaemon18>	Toxmi: You are developing in a branch anyway. No matter what you do.
+T 1568352424 18<AnrDaemon18>	Toxmi: When you developed something, and you feel comfortable with it, you squash your commits and merge them to master.
+T 1568352529 18<Toxmi18>	During the development I found some bugs related to master (not that feature) so I switched to master and commit there. This happens serveral times. Each time I cherry-pick those hot fixes to other branches as well. Now I want to squash on master. I can squash on dev and feature_F1 as well. But I want to know if there is a better way or even better practice for such scenario?
+T 1568352786 18<AnrDaemon18>	Toxmi: Did you ask about best practices?
+T 1568352804 18<AnrDaemon18>	Toxmi: Best practice is to never commit directly to master.
+T 1568352834 18<Toxmi18>	but based on gitflow, hotfixes stems from master and merges to it.
+T 1568353572 18<AnrDaemon18>	Toxmi: Merge, not commit.
+T 1568353617 18<Toxmi18>	AnrDaemon:You mean, I should have commit the hot fixes to feature_F1 branch and then merges that to master/dev?
+T 1568354568 18<AnrDaemon18>	Toxmi: You should have created a branch for your fixes.
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22#git
+T 1568579933 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568579933 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568580517 18<disruptivenl18>	git rebase -i HEAD~15
+T 1568580536 18<disruptivenl18>	Total 96 (delta 71), reused 1 (delta 1)... thats not 15...
+T 1568581311 18<_ikke_18>	you know that's not talking about an amount of files, right..?
+T 1568581662 18<disruptivenl18>	No commits
+T 1568581687 18<disruptivenl18>	its puhing the whole git log
+T 1568581704 18<disruptivenl18>	But these are from master and not from the branch
+T 1568582031 18<disruptivenl18>	Ahh I seems when I "make" a branch from master it is including master...
+T 1568582185 18<disruptivenl18>	its not the push what does this...
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22#git
+T 1568585985 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568585985 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568588013 18<alystair18>	wow the reflog contains way more info than I originally thought, even when we decide to checkout different branches
+T 1568588024 18<alystair18>	when no changes were actually made
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22#git
+T 1568617535 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568617535 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568619538 18<henrebotha[m]18>	How do y'all avoid using the mouse to copy & paste Git commit hashes?
+T 1568619566 18<henrebotha[m]18>	So many commands (cherry-pick, show, etc) need a specific hash, but I'm sick of having to grab my mouse to get it
+T 1568619604 18<oxymoron9318>	I just type it in. Only first 6 characters are enough to distinguish commits.
+T 1568619636 18<LordRyan18>	if I need to copy something in the terminal that I won't be using out of the terminal, I'll usually use tmux's copy/paste functionality
+T 1568619639 18<henrebotha[m]18>	My short term memory & attention span do not lend themselves to this
+T 1568619641 18<oxymoron9318>	6 is usual number, mind that
+T 1568619669 18<LordRyan18>	move cursor onto hash, space, e, enter
+T 1568619674 18<LordRyan18>	then can paste with ctrl-b ]
+T 1568619917 18<henrebotha[m]18>	Ah, I see my Tmux has a binding for xclip (not sure if I put it there?)
+T 1568619942 18<henrebotha[m]18>	Still a bit clunky (enter copy mode, move to hash, "visual mode" select, invoke xclip)
+T 1568619945 18<henrebotha[m]18>	But better than nothing I suppose?
+T 1568620079 18<LordRyan18>	It becomes muscle memory after a while, I guess.
+T 1568620167 18<henrebotha[m]18>	I think I'll just make an alias that pipes rev-parse into xclip
+T 1568620319 18<henrebotha[m]18>	Oh on the topic of "first n charcters"
+T 1568620323 18<henrebotha[m]18>	*characters
+T 1568620340 18<henrebotha[m]18>	In situations where two commits have hashes of which the first n characters are identical
+T 1568620348 18<henrebotha[m]18>	Will Git warn me if I try to e.g. rebase onto one of them?
+T 1568620379 18<oxymoron9318>	yes, if the hash is ambiguous git should tell you about it.
+T 1568620389 18<henrebotha[m]18>	Cool
+T 1568620406 18<henrebotha[m]18>		cpref = ! "f() { git rev-parse --short $1 | xclip -sel clip;}; f"
+T 1568620409 18<henrebotha[m]18>	That oughta do it
+T 1568620423 18<oxymoron9318>	too much hassle for me :P
+T 1568620496 18<henrebotha[m]18>	I may or may not be slightly alias-addicted haha
+T 1568620590 18<oxymoron9318>	and I might be feeling aversion to shell scripts
+T 1568620716 18<Luyin18>	is there a revision for the tracked remote for HEAD? something that points to origin/foo automatically when I'm on branch foo?
+T 1568621129 18<_ikke_18>	Luyin: HEAD@{upstream}, or just @{u} for short
+T 1568621213 18<Luyin18>	_ikke_: uuh, nice. thanks!
+T 1568624226 18<Celmor[m]18>	I'm trying to rebase and get my changes on-top of origin/master but each time rebase --continue doesn't work and rebase --skip deletes my changes and I'm left with origin/master
+T 1568624286 18<Celmor[m]18>	I've started the rebase process which shows me that there are merge conflicts which I resolve using my IDE, after I'm finished resolving the conflicts git still says that I'm still rebasing
+T 1568624321 18<canton718>	Celmor[m], you need to 1) resolve the conflicts, 2) 'git add' the conflicted files, 3) 'git rebase --continue'
+T 1568624326 18<canton718>	(sorry afk; meeting)
+T 1568624372 18<Celmor[m]18>	it looked like they were already `add`ed in the git status output (green highlight, below "changes to be commited"
+T 1568624382 18<Celmor[m]18>	and sayd "  (all conflicts fixed: run "git rebase --continue")"
+T 1568624408 18<Celmor[m]18>	but `git rebase --continue` says "You must edit all merge conflicts and then mark them as resolved using git add"
+T 1568624434 18<_ikke_18>	Celmor[m]: that means that origin/master already contains the changes you are trying to rebase
+T 1568624437 18<Celmor[m]18>	`git rebase --skip` seems to just abort the rebase and checks out origin/master and delets my changes
+T 1568624453 18<_ikke_18>	no, it just skips the the current commit
+T 1568624506 18<_ikke_18>	it just means your commit is not introducing any new changes
+T 1568624903 18<Celmor[m]18>	My changes did, which rebase --skip deleted and put me back to origin/master state. How can there be no changes if 'git rebase ' shows conflicts which I needed to resolve?
+T 1568624944 18<_ikke_18>	When the conflict resolution results in undoing the changes
+T 1568624952 18<_ikke_18>	git rebase --skip does not delete any changes
+T 1568624969 18<_ikke_18>	it just continues with the next commit in the rebase sequence (or when none are left, finished the rebase)
+T 1568624997 18<Celmor[m]18>	Anyway, I finally got my changes onto master using stash
+T 1568626887 18<Toxmi18>	I like to get the content of one merge-requests (pull-request) from my private repo to my local repository, resovle conflicts and then accept the merge request aka put the requested code in dev (after my modifiction).
+T 1568626908 18<Toxmi18>	What is the best practice here? Is there a way to do this almost all in my convinent command line.
+T 1568626934 18<Celmor[m]18>	guess all I was missing was the  `git add` between conflict resolution and `git rebase --continue`, still didn't expect `git rebase --skip` to reset to the commit I was rebasing onto and therefore discarding my conflict resolution changes
+T 1568628512 18<Luyin18>	_ikke_: I have this alias in my config now: diverged = log --graph --pretty=format(...) --abbrev-commit @...@{u} --left-right, so I get the differences from diverged branches in a quick overview. thanks again :)
+T 1568628849 18<Toxmi18>	I've merged some PR locally and now after I did `git push origin develope` I couldn't do the `git branch -d The_PR` thing. It seems I've not updated the origin by merge status and hence it cannot be deleted locally!
+T 1568628881 18<Luyin18>	Toxmi: could you give concrete output of the commands you've used, of `git status` and similar?
+T 1568628983 18<Toxmi18>	Luyin: I fetch a merge-request from my private gitlab repo. I did some small modification then I did `git merge fix_blah`. Then `git push origin dev` and when I tried `git branch -d fix_blah` I got this warning which says: not deleting branch fix_blah that is not yet merged to refs/remotes/origin/fix_blah, even though it is merged to HEAD.
+T 1568629001 18<Toxmi18>	I think 1) conceptually 2) and by issuing a command I've missed something here.
+T 1568629102 18<Celmor[m]18>	how do I checkout a commit AS master (make master point to it as well as checking out master). otherwise I need to do `git checkout <ref> ; git branch -f master HEAD ; git checkout master`
+T 1568629179 18<oxymoron9318>	`git checkout -B master <ref>` should do it
+T 1568629244 18<Toxmi18>	I should say, after the warning I have a error which states: The branch 'fix_blah' is not fully merged.
+T 1568629256 18<_ikke_18>	That's not an error
+T 1568629273 18<_ikke_18>	hmm, depending on what command you did, it might be
+T 1568629462 18<Luyin18>	Toxmi: well, the "error"/warning tells you: you have merged the version that is on your local fix_blah but it is not the same version as origin/fix_blah. so you didn't push to your origin before you merged. that can be absolutely fine, or problematic, depending on your project, setup, guidelines etc.
+T 1568629522 18<Toxmi18>	Luyin:Yeah, right. Because I've changed that merged request. So as it suggest using -D is OK. Great and thanks
+T 1568629535 18<Luyin18>	sure, np
+T 1568629801 18<Celmor[m]18>	can I ignore tracked files to have local-only changes to them and avoid commiting them by mistake? I tried adding them to the .gitignore (including the .gitignore itself) but it still shows under "Changes not staged for commit:". I would expect it to show a clean working tree
+T 1568629856 18<Luyin18>	Celmor[m]: https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/#stop-tracking-a-tracked-file
+T 1568629880 18<jguddas-tr18>	is there a way to find commits that changed lines that contain a string?
+T 1568629900 18<Luyin18>	jguddas-tr: I think "git log -S" does that
+T 1568629935 18<jguddas-tr18>	thanks, that looks promising
+T 1568630025 18<Celmor[m]18>	Luyin: now it shows as 'Changes to be committed:  ... deleted:    .gitignore'
+T 1568630073 18<Luyin18>	Celmor[m]: what did you do?
+T 1568630134 18<Celmor[m]18>	I added ".gitignore" to .gitignore and run `git rm --cached ".gitignore"`
+T 1568630139 18<Luyin18>	Celmor[m]: also, what are you actually trying to achieve? there's also .git/info/exclude for ignoring files that are not to be added to .gitignore
+T 1568630159 18<Luyin18>	Celmor[m]: that sounds wrong. don't do that. you'd remove .gitignore for your whole team
+T 1568630169 18<Luyin18>	which is probably not what you're trying to do
+T 1568630188 18<Celmor[m]18>	I only want my local changes to be ignored for commit
+T 1568630198 18<Luyin18>	Celmor[m]: if you have a file foo.txt that you don't want tracked at all but don't want to show up in `git status` and similar, add it to .git/info/exclude
+T 1568630235 18<Luyin18>	Celmor[m]: also you can't tell git to only ignore certain changes in a file. you can use `git add -p` to selectively add changes to the index, and only commit that
+T 1568630237 18<Celmor[m]18>	the files I'm trying to exclude are tracked, does it work for those as well?
+T 1568630244 18<Luyin18>	I still don't understand fully what you're trying to achieve
+T 1568630252 18<Luyin18>	can you be more concrete?
+T 1568630270 18<Luyin18>	you have changes in your working directory that you don't want to include in a commit? is it that?
+T 1568630301 18<Celmor[m]18>	I modified certain tracked files locally and don't want them to be commited nor automatically added using "git commit -a" or similar
+T 1568630306 18<Celmor[m]18>	and not show up in git status
+T 1568630380 18<Luyin18>	don't use git commit -a
+T 1568630383 18<Luyin18>	use git add -p
+T 1568630390 18<Luyin18>	review what's added to the index with git status
+T 1568630392 18<Luyin18>	then use git commit
+T 1568630418 18<Celmor[m]18>	I don't want these changes to show up at all to be commited, either in git status or in my IDE's VCS integration
+T 1568630428 18<Luyin18>	`git commit -a` commits _all_ changes in the working directory, regardless of what's in the index
+T 1568630431 18<Habbie18>	Celmor[m], then those changes should not be in files that git is tracking..
+T 1568630457 18<Luyin18>	Habbie: that's not entirely true. maybe they're developing something that isn't commit-ready, but should eventually be in the tracked files.
+T 1568630465 18<Celmor[m]18>	they have to be in those files...
+T 1568630466 18<Luyin18>	Celmor[m]: however, you can't achieve that.
+T 1568630504 18<Habbie18>	Luyin, i was only referring to the desire to have those changes be invisible from 'git status' etc.
+T 1568630537 18<Celmor[m]18>	I can live with it showing up in the `git status`, etc. but I still have to handle these files specialle when pulling, resseting, checkout, etc.
+T 1568630565 18<Celmor[m]18>	although these changes won't ever change in the VCS anymore and I always want to "override" them with my local versions
+T 1568630578 18<Celmor[m]18>	guess git just isn't as flexible as I though
+T 1568630612 18<Luyin18>	I'm still thinking you're trying to solve something with git that you shouldn't be doing
+T 1568630625 18<Celmor[m]18>	I explained my use-case
+T 1568630626 18<Luyin18>	like handling a config file with passwords or auth keys or something
+T 1568630651 18<Luyin18>	Celmor[m]: if you always want your version, why can't you simply commit them?
+T 1568630677 18<Celmor[m]18>	I want that version _for me_ not for the whole team
+T 1568631200 18<Luyin18>	well you can set autostash before pulls and stuff
+T 1568631208 18<Luyin18>	man autostash
+T 1568631213 18<Luyin18>	hmmm
+T 1568631216 18<Luyin18>	!man autostash
+T 1568631216 18<gitinfo18>	The git man pages are available online at https://gitirc.eu/git.html. Or were you looking for the "man git-foo" syntax (without the !)?
+T 1568631224 18<Luyin18>	argh
+T 1568631235 18<Luyin18>	well, somewhere in the git manpages there's something about autostash
+T 1568631661 18<Toxmi18>	Consider my master branch has multiple commits and merges which make the codebase much better. Now I want to merge from an old merge-request but how to add those new changes as well? Is rebase is the solution here
+T 1568631712 18<_ikke_18>	Yes, rebasing is how you get the latest changes in a feature branch
+T 1568631729 18<Toxmi18>	My scenario is not linear one branch. But let's say the target PR (MR for gitlab) is a bit old and it doesn't have some necessary changes and features which have been introduced later.
+T 1568631756 18<Toxmi18>	_ikke_:Aha, I will try that. rebase seems very intimidating (esp for a cloud repo)
+T 1568631774 18<Toxmi18>	Is cherry pick and squash safer?
+T 1568632534 18<_ikke_18>	No
+T 1568632772 18<Luyin18>	Toxmi: rebase gets much better if you activate rerere
+T 1568632782 18<Luyin18>	man git-config search for "rerere"
+T 1568632782 18<gitinfo18>	the git-config manpage is available at https://gitirc.eu/git-config.html
+T 1568632797 18<_ikke_18>	Luyin: That only applies if you happen to do the same rebase multiple times
+T 1568632813 18<Luyin18>	_ikke_: sometimes it can help for a multitude of problems
+T 1568632820 18<Luyin18>	I find it's generally a good idea to have it enabled
+T 1568632835 18<_ikke_18>	Sure, but if you just rebase a branch, it is not going to help you in any way
+T 1568632846 18<_ikke_18>	it only helps you if you happen to get the exact same conflict again
+T 1568633353 18<gschwind18>	hello, is it prossible to create a submodule that do not have remote, and do init instead instead of clone ?
+T 1568633525 18<Luyin18>	if it doesn't have its own upstream, why does it need to be a submodule? can't it just be its own dir in the project, or in another way just part of the project?
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22#git
+T 1568641539 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568641539 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568642136 18<solidfox18>	hmm, are questions about git extensions ok? it is a gui for windows
+T 1568642180 18<solidfox18>	I get an error in git extensions but not in git gui. it happens whenever i open the repo, it is trying to do something with submodules but i'm not sure what.
+T 1568642203 18<solidfox18>	i can debug it because i have the git extensions code
+T 1568642258 18<solidfox18>	it seems that previous devs for the repo im trying to open have submodules that use a file from c:\dev and my project is in c:\users\solidfox\Projects instead
+T 1568642278 18<rafasc18>	!guis
+T 1568642278 18<gitinfo18>	Popular GUIs for Git are listed on the website: http://git-scm.com/downloads/guis
+T 1568642280 18<rafasc18>	!gui
+T 1568642280 18<gitinfo18>	Graphical user interfaces are not supported here. If you want to get support, it needs to be through the git CLI. Reasons: 1) Because very few people here use the graphical interface. 2) Because giving instructions for GUI's is difficult. 3) The command line gives you a history of what commands you have executed.
+T 1568642300 18<solidfox18>	alright
+T 1568642302 18<rafasc18>	you can try, but gui related questions rarely get answers.
+T 1568642373 18<solidfox18>	i think this guy did it on purpose cause he hates it when people don't put their projects in c:\dev
+T 1568642386 18<solidfox18>	it used to work
+T 1568642387 18<solidfox18>	sad
+T 1568642395 18<rafasc18>	sounds like a pleasant person to work with.
+T 1568642460 18<rafasc18>	solidfox: git has a url-rewrite mechanism, you can probably use that to map their urls to yours.
+T 1568642524 18<rafasc18>	https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf
+T 1568642624 18<solidfox18>	hmm ok i will look into that thanks
+T 1568642772 18<rafasc18>	and you can probably try to just replace that url with the proper one.
+T 1568642780 18<rafasc18>	look inside .gitmodules
+T 1568643457 18<jarlopez18>	There are times when I have some local changes that I'd like to be able to re-apply and stash away at times, almost like a "ghost" commit that I don't want to push to origin
+T 1568643525 18<jarlopez18>	What are some ways to accomplish this?
+T 1568643527 18<_ikke_18>	sounds like git stash
+T 1568643555 18<jarlopez18>	_ikke_: It does, but stash stashes _all_ the changes, rather than letting me choose specific hunks
+T 1568643612 18<mobidrop18>	isn't there a -p for stash ?
+T 1568643630 18<jarlopez18>	:o
+T 1568643659 18<_ikke_18>	git stash push -p
+T 1568643738 18<rafasc18>	and now with the new git restore, it solved some of the limitations that checking out files from stash references had.
+T 1568643747 18<rafasc18>	as you can do: git restore -p --source=<somestashref> --worktree/--staged
+T 1568643777 18<rafasc18>	requires a bit of knowledge about how the stash is stored.
+T 1568643779 18<jarlopez18>	That's pretty close to what I'm looking for. My workaround so far has been to reference a magic commit that has the changes: `git cherry-pick -n <myhash>`
+T 1568643809 18<rafasc18>	but if you can split in advance stash push -p; is the easy route.
+T 1568644050 18<henrebotha[m]18>	jarlopez: just in case of an XY problem, what is the use case for these ghost commits?
+T 1568644119 18<solidfox18>	rafasc, i tried it but its not working. oh well i'll just have to use command line
+T 1568644151 18<rafasc18>	solidfox: maybe your gui is doing some weird parsing and not respecting what it should.
+T 1568644161 18<solidfox18>	rafasc, it is actually
+T 1568644187 18<solidfox18>	rafasc, the very line it crashes on is doing some magic stringy things, and if i change their condition the error goes away
+T 1568644195 18<solidfox18>	this is the code within the git extensions gui
+T 1568644226 18<solidfox18>	i changed var superPath = modulePaths.Find(path => submodulePath != path && submodulePath.Contains(path)); Trace.Assert(superPath != null);
+T 1568644233 18<finn018>	I've hard time to understand the meaning this sentence "Whether and how Git detects renames" (see "diff.renames" section in git-config(1) man page). If here, rename word is used in context of renaming of a file, how does diff subcommand related to file renaming?
+T 1568644241 18<solidfox18>	to var superPath = modulePaths.Find(path => submodulePath.Contains(path)); Trace.Assert(superPath != null);
+T 1568644268 18<solidfox18>	i know you can't confirm its correct just on the one line of code but looking at the paths that its working with, it doesnt seem right to me
+T 1568644321 18<finn018>	when I've to rename a file a git I've to explicitly told git by using "git mv" command otherwise, it will mark committed file as 'D' and arrived file as 'A'.
+T 1568644328 18<rafasc18>	solidfox: maybe open an issue. If git works, and the gui doesn't. It's a bug on their gui.
+T 1568644409 18<henrebotha[m]18>	finn0: AFAIK `git mv` doesn't inform Git that the file was moved, it just moves the file & then stages the deletion & addition
+T 1568644448 18<rafasc18>	finn0: git doesn't support renames. It records them as delete-add pairs.
+T 1568644487 18<rafasc18>	But there are heuristics that say: "renamed" when git sees a delete-add pair with similar enough content.
+T 1568644506 18<finn018>	Okay, but what does diff.rename do?
+T 1568644554 18<henrebotha[m]18>	It tells Git what qualifies as a "rename"
+T 1568644559 18<finn018>	*then
+T 1568644559 18<rafasc18>	what I've just said. It enables or disalbes the heuristic.
+T 1568644705 18<henrebotha[m]18>	Related: why doesn't Git record rename information? Is this just a legacy thing that they never implemented, or is there another good reason for it?
+T 1568644707 18<finn018>	rafasc: By default diff.rename is set to true. What would if set to false? Then, we shouldn't be able to perform renaming.
+T 1568644721 18<rafasc18>	if you set it to false, a rename will always show up as D x.txt A y.txt
+T 1568644871 18<rafasc18>	finn0: also, sometimes when you rename a file and change it substantially, git has a threshold where it stops considering a rename, and shows a add-delete pair. You can change that threshold with the -M flag. (or -C for copies)
+T 1568644954 18<rafasc18>	henrebotha[m]: the reason is that commits are snapshots your project. And renames are things that happen between snapshots.
+T 1568644960 18<rafasc18>	they're differences between commits.
+T 1568644980 18<henrebotha[m]18>	Ah!
+T 1568645019 18<rafasc18>	It's one of the traps of thinking that commits only store the changes in relation to the previous commit. That's not true.
+T 1568645059 18<henrebotha[m]18>	I guess that's what happens when commits are snapshots but are viewed as changesets
+T 1568645119 18<rafasc18>	doesn't help that we talk of commits as changes in spoken language.
+T 1568645147 18<henrebotha[m]18>	Precisely
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22#git
+T 1568708607 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568708607 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568708610 18<oxymoron9318>	I don't see anything. But wait for others with a response.
+T 1568708795 18<oxymoron9318>	I doubt there is a single command for that, to be precise.
+T 1568708810 18<henrebotha[m]18>	So do I, but thought it was worth asking
+T 1568708815 18<henrebotha[m]18>	It comes up for me relatively frequently
+T 1568708852 18<oxymoron9318>	create some script which takes the name of the new branch, and voila
+T 1568708930 18<oxymoron9318>	of course, do not ask me nada, I don't know how to write it off the top of my head :D
+T 1568708958 18<henrebotha[m]18>	Haha, no worries
+T 1568709230 18<oxymoron9318>	`com = !sh -c \"git checkout -b $1 && git commit && git checkout -\" -` in git config under [alias] could be it? Invoked with `git com new-branch`
+T 1568709257 18<henrebotha[m]18>	Yeah something along those lines
+T 1568709282 18<henrebotha[m]18>	More likely I'd just make it a separate script so I can have some decent error handling
+T 1568709282 18<henrebotha[m]18>	Starting to realise that not every use case calls for an alias
+T 1568711747 18<chieta18>	@@ -85,6 +86,23 @@ class machineInterface(threading.Thread):
+T 1568711773 18<chieta18>	what is the meaning '@@ -85,6 +86,23 @@'
+T 1568711812 18<pandem18>	rows
+T 1568711927 18<chieta18>	pandem, im trying patching the code... so it means rows 85 written 'class machineInterface(threading.Thread):'
+T 1568711965 18<pandem18>	not 100% sure, but i would guess that you removed 6 lines starting from row 85 and then added there 23 lines
+T 1568711991 18<chieta18>	noted, thanks
+T 1568712095 18<Bombe18>	Yeah, that’s just the formats diff and patch use.
+T 1568712166 18<chieta18>	will patching python code with additon ^M will be problem on execution?
+T 1568714375 18<Toxmi18>	I've a repo in gitlab with some merge-requests. When I `git fetch` it I can not see the merge request e.g. with `git branch -a`. Is there a way to checkout the merge requests locally?
+T 1568714423 18<pandem18>	you want to checkout a branch, not a merge request
+T 1568714433 18<pandem18>	merge requests are a concept of gitlab, not git
+T 1568714508 18<Toxmi18>	pandem:But previously I could checkout (and create a branch at the same time) from a merge-requst after a `git fetch`.
+T 1568714534 18<Toxmi18>	It was something like `git fetch` then git checkout and create a branch from remotes/origin/feature_x
+T 1568714585 18<Toxmi18>	So since I don't have them locally (after fetch). How can I access the merge requests locally without leaving my convinient command line.
+T 1568714713 18<wonko718>	Hi all! I'm trying to clone a git repo that has submodules, some of which I don't have access to (ssh priv key). Can these be silently ignored? When I clone --recursive ALL my submodules are empty (correct head, but not checked out).
+T 1568716109 18<wonko718>	I can't find a workflow where I don't end up doing "git checkout" for each submodule. I tried cloning without recurse, git config submodule.X.active false, and multiple variations of git submodule init/update, I still end up with empty repos that should be checked out
+T 1568717284 18<wonko718>	this is the repo: git clone --recursive https://github.com/Wonko7/conf-root
+T 1568717401 18<henrebotha[m]18>	Toxmi: are the merge requests coming from forks?
+T 1568717833 18<Toxmi18>	henrebotha[m]:yeah, exactly
+T 1568717981 18<Toxmi18>	priviously when I did `git fetch` I had the merge-requests in my remotes/origin/feature_x which I could easily checkout. But I don't know what has happend that this time gives me a url to checkout (something like `git fetch "git@gitlab.com:USER/Project.git" "feature_x")
+T 1568718015 18<Toxmi18>	and this doesn't work due to some access problem.
+T 1568718030 18<henrebotha[m]18>	Presumably because you don't have access to another user's repos
+T 1568718075 18<Toxmi18>	henrebotha[m]:It's a user with access to my private repo and it already forked the repo, push a feature to the repo and request a merge...
+T 1568718102 18<henrebotha[m]18>	Yeah but I'm saying maybe you don't have access to their repo
+T 1568718115 18<henrebotha[m]18>	Although
+T 1568718119 18<henrebotha[m]18>	Did you try adding their repo as a remote?
+T 1568718141 18<Toxmi18>	what is the general practice when someone checkout a merge-request locally? isn't it git checkout origin/feature_x (after git fetch?)
+T 1568718191 18<Toxmi18>	henrebotha[m]:My problem is this worked before but I can not find out what has happen or what is the problem to search for a fix. The error message is also too general.
+T 1568718295 18<henrebotha[m]18>	The general way to check out a remote branch is git checkout name-of-remote/name-of-branch, yes
+T 1568718304 18<henrebotha[m]18>	What is the error message you get?
+T 1568718427 18<Toxmi18>	henrebotha[m]: The project you're looking for can not be found.
+T 1568718464 18<Toxmi18>	fatal: could not read from remote repository
+T 1568718702 18<Toxmi18>	I fixed it by adding some refspec to the config file (git config -e). Do the job at least.
+T 1568718758 18<henrebotha[m]18>	If git fetch url branch gives you that error, then it must be that you don't have perms
+T 1568718763 18<henrebotha[m]18>	What did you do to fix it?
+T 1568719037 18<Toxmi18>	henrebotha[m]:I add this to config for origin:  fetch = +refs/merge-requests/*/head:refs/remotes/origin/merge-requests/*
+T 1568719076 18<rafasc18>	wonko7: if you know beforehand which submodules have access issues, you could try excluding them from recurse, and dealing with them individually: git clone --recurse-submodules=:^notes --recurse-submodules=:^zsh https://github.com/Wonko7/conf-root
+T 1568719137 18<Toxmi18>	One question. To sync back the forked repo after doing merge-request with the upstream. A git pull upstream is enough. right? I have two branches: master and dev and I want to all of them be updated.
+T 1568719169 18<henrebotha[m]18>	I don't think git pull upstream will update both those branches
+T 1568719186 18<Toxmi18>	henrebotha[m]:If the problem is with permissions which is probably the case why I can easily checkout with that config trick?
+T 1568719205 18<Toxmi18>	henrebotha[m]:what is the best practice for that case then?
+T 1568719214 18<Toxmi18>	git pull upstream dev:dev
+T 1568719226 18<Toxmi18>	git pull upstream master:master :D
+T 1568719241 18<Toxmi18>	Sorry I'm noob (my first real git experience)
+T 1568719289 18<henrebotha[m]18>	Toxmi: ah I see, I guess by default those GitLab merge request branches are not included somehow
+T 1568719291 18<henrebotha[m]18>	So not perms then
+T 1568719332 18<henrebotha[m]18>	To update both branches, I would checkout dev, then pull upstream, then checkout master, then pull upstream
+T 1568719370 18<Toxmi18>	henrebotha[m]:ah, great. I understand that
+T 1568719412 18<Toxmi18>	henrebotha[m]:I didn't get your 'not included somehow' could you please give me more description to read on
+T 1568719449 18<henrebotha[m]18>	Idk, I'm saying before you added the fetch config, Git for some reason didn't think it had to fetch the merge-request branches, or GitLab didn't advertise them, or something
+T 1568719534 18<Toxmi18>	henrebotha[m]:aha. Very good lead to follow. Thanks
+T 1568719870 18<wonko718>	rafasc: I didn't know you could use ^, thanks
+T 1568720361 18<rafasc18>	wonko7: don't get excited, it seems it doesn't work very well if you want to ignore the inner submodules..
+T 1568720448 18<wonko718>	yeah, just ran into that
+T 1568720804 18<wonko718>	well... it's not pretty, but excluding notes is enough. The inner submodules still print errors, but don't stop the other modules from being checked out
+T 1568720928 18<wonko718>	actually yes it does break things
+T 1568720951 18<wonko718>	zsh's public/normal submodules aren't checked out
+T 1568721119 18<rafasc18>	you have a complex submodule setup right there. And since most of those are referencing a local repo in the parent directory, it's hard to reproduce your issues.
+T 1568722170 18<wonko718>	it's referencing a local repo so that I'm not tied to github, I can host this repo tree anywhere
+T 1568722572 18<rafasc18>	wonko7: I think you need cd into each submodule that has private submodules, and deinit them.
+T 1568723400 18<drebs18>	hello,!
+T 1568723400 18<gitinfo18>	drebs: hi! I'd like to automatically welcome you to #git, a place full of helpful gits. Got a question? Just ask it — chances are someone will answer fairly soon. The topic has links with more information about git and this channel. NB. it can't hurt to do a backup (type !backup for help) before trying things out, especially if they involve dangerous keywords such as --hard, clean, --force/-f, rm and so on.
+T 1568723413 18<drebs18>	thanks, gitinfo
+T 1568723413 18<gitinfo18>	drebs: you're welcome, but please note that I'm a bot. I'm not programmed to care.
+T 1568723424 18<drebs18>	:)
+T 1568723476 18<drebs18>	i'm trying to set a submodule using gcrypt:: helper, but i get a "fatal: transport 'gcrypt' not allowed"
+T 1568723477 18<DelTree18>	not so true. it's programmed to care enough to answer...
+T 1568723504 18<drebs18>	is it the case that gcrypt is not allowed for submodules at all?
+T 1568723527 18<drebs18>	DelTree, i think it depends on the definition of "care", no? ;)
+T 1568723991 18<shomon18>	hi, if I set "git branch --set-upstream-to=origin/master master" then will git pull pull in also the other branches, or do if I'm in a branch do I need to set the upstream to that branch each time?
+T 1568724406 18<daggs118>	Greetings, is there a way to configure git that when ever git commit is issued, the signoff feature will be enabled?
+T 1568724531 18<oxymoron9318>	what that option does is sets tracking info for your `master` branch. While on `master` branch, running plain `git fetch` will no from what remote to fetch. Also, it sets information what remote tracking branch (in this case `origin/master`) to use for following merge procedure. shomon
+T 1568724557 18<oxymoron9318>	will know from what remote to fetch.* (wow)
+T 1568724588 18<shomon18>	:)  thanks very much oxymoron93
+T 1568724609 18<oxymoron9318>	following merge procedure is in case when you use `git pull`
+T 1568724642 18<oxymoron9318>	as well in case, when you configured pull to do the rebase instead of merge, or explicitely with `git pull -r`
+T 1568725040 18<shomon18>	oxymoron93 probably I just want to make sure my branch is up to date with other commits to master that might have taken place since I created it
+T 1568725043 18<oxymoron9318>	daggs1 I might didn't understand well. What stops you from providing this short `-s` option to `git commit` ? There is a mention of `format.signOff` configuration option. But I don't believe that would help, as it works with patches.
+T 1568725098 18<rafasc18>	git doesn't have that option because it waters down what it means. That you are giving explicit consent to use the code.
+T 1568725144 18<wonko718>	rafasc: I can't find a way to deinit them.
+T 1568725145 18<rafasc18>	git::master:templates/hooks--prepare-commit-msg.sample#L20
+T 1568725145 18<gitinfo18>	Git web link: https://github.com/git/git/blob/master/templates/hooks--prepare-commit-msg.sample#L20
+T 1568725189 18<rafasc18>	wonko7: cd zsh; git submodule deinit <bookmarks>; etc..
+T 1568725197 18<wonko718>	I get errors could not "lock config file .git/modules/notes/config: No such file or directory" for submodules that failed init
+T 1568725255 18<rafasc18>	wonko7: I think it should still work. Does it complain again if you rerun the command?
+T 1568725346 18<wonko718>	I'll keep trying, but I can't get it to work right now, I've tried cloning without --recurse and trying to remove it then, doesn't work, I tried letting it fail with --recurse and then removing them, doesn't work either
+T 1568725545 18<Toxmi18>	I want to ask about the good (best) practice in special scenario when the one developer have assigned some tasks. However, after developing task 1 on branch T1, then he push T1 to the repo. What if he (as second developer) merges teh T1 with dev branch and then push the dev branch to the repo? which one is better pushing the T1 (feature branch) to origin or pushing merge dev?
+T 1568725620 18<Toxmi18>	Another question is about handling other tasks. When T1 is done some commits in T1 mgiht be needed in T2 as well. As I have searched online one thing is rebase but niether me nor the other guy are expert enough for using rebase (it seems intimidating). Is there a workflow around this without rebase in a collaborative environment?
+T 1568725775 18<butterslax18>	hey all, I'm trying to clone a private repo via https, but when I try using 'git clone https://user@re.po/project/project.git', I'm not prompted for a password and I'm given a repo not found error.  I'm the owner of the repo, and I'm using the correct username, so I'm not sure what's going on....
+T 1568725884 22*	26gitinfo gives voice to 18butterslax
+T 1568726107 18<wonko718>	 
+T 1568726250 18<shomon18>	butterslax - is there already a .git/config ? and can you clone a random repo from somewhere else to that box?
+T 1568726309 18<butterslax18>	@shomon there's no .git/config, and yes I've been successful cloning public repos
+T 1568726350 18<shomon18>	may be to do with connectivity to that box itself but hopefully others here will know more
+T 1568728374 18<rafasc18>	wonko7: you may ask for advice on the mailing list, https://upaste.de/ucZ seems to work. But it isn't a general solution, which sucks.
+T 1568728621 18<rafasc18>	[RFC] rename submodules to sobmodules. :'(
+T 1568728695 18<bremner18>	doooit
+T 1568728843 18<wonko718>	rafasc: ouch, yeah, I wouldn't have found that, thanks... I might ask on the mailing list because that does not scale :/
+T 1568729201 18<rafasc18>	wonko7: I think you can add submodule.<name>.update=none, for your private submodules, so they're automatically skipped.
+T 1568730134 18<wonko718>	rafasc: going back to your paste, the deinit line fails for me: I get the "could not lock config file .../conf-root/.git/modules/zsh/modules/history/config: No such file or directory" errors
+T 1568730168 18<rafasc18>	I also get those errors. But seems to work :shrug:
+T 1568730216 18<wonko718>	hah, yeah, I can live with that, let me see if it works then
+T 1568730256 18<rafasc18>	still think it may be worth dropping that email in the list. (or search the list if something similar was reported already)
+T 1568730268 18<wonko718>	yes, ok, it does work
+T 1568730315 18<rafasc18>	it's probably a weird edge-case. Cloning something that has a submodule that you do not have permission to clone.
+T 1568730338 18<wonko718>	yeah, I thought I was being clever
+T 1568731115 18<henrebotha[m]18>	…Something super spooky is happening
+T 1568731115 18<henrebotha[m]18>	I have made changes to a file
+T 1568731123 18<henrebotha[m]18>	I have staged some of those changes
+T 1568731151 18<henrebotha[m]18>	But now, neither git add -p nor git diff see the remaining changes
+T 1568731164 18<henrebotha[m]18>	Damn it, never mind, I was editing the wrong file
+T 1568731189 18<_ikke_18>	;-)
+T 1568731423 18<rafasc18>	henrebotha[m]: it's only Tuesday!
+T 1568731431 18<henrebotha[m]18>	:D
+T 1568731457 18<_ikke_18>	Still recovering from the weekend
+T 1568731570 18<oncall-pokemon18>	Hi, is there a way to do a git rebase but just have it squash the commits. what I have now in the working directory is good. But it seems like it's a complex rebase and a lot of work. I kinda want to avoid the work, squash the commits and just take what I have now. anyway to do that?
+T 1568731573 18<oxymoron9318>	wait, weekend has passed?
+T 1568731619 18<_ikke_18>	oxymoron93: yes, you should have gotten the memo
+T 1568731638 18<rafasc18>	oncall-pokemon: squash everything?
+T 1568732255 18<rafasc18>	the easiest way I can think of is using: git replace --graft branch master / git filter-branch master..branch
+T 1568732302 18<rafasc18>	and git replace --delete the replacement afterwards.
+T 1568732365 18<rafasc18>	git checkout <base>; git merge --squash <branch>; git commit; is similar but you'll have to solve conflicts if they arise.
+T 1568732451 18<rafasc18>	git checkout -b branch <base>; git checkout <branch> -- :/ ; git commit; should also work.
+T 1568732547 18<rafasc18>	git checkout -b branch <base>; git checkout <tip_commit> -- :/ ; git commit;
+T 1568732612 18<rafasc18>	If you don't mind having the complex history, git merge -s ours <master>; can also work.
+T 1568732644 18<rafasc18>	!backup
+T 1568732644 18<gitinfo18>	Worried about your data while trying stuff out in your repo? The repository in its entirety lives inside the .git directory in the root of your work tree so to backup everything `cp -a path/to/workdir path/to/backup` or equivalent will suffice as long as the repo is not modified during backup. See also http://sethrobertson.github.com/GitBestPractices/#backups
+T 1568732667 18<rafasc18>	checkout with paths and filter-branch can be destructive.
+T 1568732724 18<joo-_18>	hi. If I undo a recent commit, will the changes be reverted and the source files still be the same so that i can do anothoer commit? or will the source filea also dis appear ?
+T 1568732790 18<rafasc18>	!undo
+T 1568732790 18<gitinfo18>	[!fixup] So you lost or broke something or need to otherwise find, fix, or delete commits? Look at http://sethrobertson.github.com/GitFixUm/ for full instructions, or !fixup_hints for the tl;dr. Warning: changing old commits will require you to !rewrite published history!
+T 1568732800 18<rafasc18>	wrong. factoid !revert
+T 1568732801 18<gitinfo18>	That's a rather ambiguous question... options: a) make a commit that "undoes" the effects of an earlier commit [man git-revert]; b) discard uncommitted changes in the working tree [git reset --hard]; c) undo committing [git reset --soft HEAD^]; d) restore staged versions of files [git checkout -p]; e) move the current branch to a different point(possibly losing commits)[git reset --hard $COMMIT]?
+T 1568732811 18<rafasc18>	what do you mean by undo?
+T 1568733227 18<joo-_18>	i messed up, i added 3 files that were earch one gigabyte
+T 1568733234 18<joo-_18>	now even though i removed them i cannot push to github
+T 1568733271 18<joo-_18>	But really it seems very complicated for me to get this fixed
+T 1568733297 18<rafasc18>	depends what you mean by 'I added 3 files'.
+T 1568733324 18<joo-_18>	git add file1 file2 file3, git commit file1 file2 fil3 -m "dont know what im doing"
+T 1568733333 18<joo-_18>	worked like a charm, took a while though
+T 1568733338 18<rafasc18>	was this on the most recent commit?
+T 1568733375 18<joo-_18>	well after that i run the rebase command because somebody suggest me that, i dont know what it did
+T 1568733399 18<joo-_18>	oh wait thats not it
+T 1568733409 18<joo-_18>	the most recent commit is after this stupid action i remove the files and make new commit
+T 1568733437 18<joo-_18>	like i worry if i undo the commit then I will lose all the code changes i've made
+T 1568733457 18<joo-_18>	i am a very bad boi, so i guess there is months of work in 30-40 difference php files in one super-commit
+T 1568733488 18<rafasc18>	then you probably want to: git rebase -i HEAD~2; change the last pick to fixup;
+T 1568733519 18<rafasc18>	that will squash the two commits together.
+T 1568733574 18<rafasc18>	or you can change the first from pick to edit and do git rm --cached bigfile hugefile;
+T 1568733574 18<joo-_18>	like the commits will remain as is, but the big files will be gone ?
+T 1568733595 18<rafasc18>	joo-_: no. The commits will change. Rebase always change the commits.
+T 1568733614 18<joo-_18>	can i remove the bigfiles with --cached ?
+T 1568733625 18<joo-_18>	means my git will be like normal but they will be gone ?
+T 1568733640 18<rafasc18>	they'll be still on your history.
+T 1568733655 18<rafasc18>	and github will still prevent you from pushing because of it
+T 1568733662 18<joo-_18>	oh man
+T 1568733678 18<rafasc18>	you need to remove them from your history. And I just told you how.
+T 1568733717 18<rafasc18>	(with rebase, and rm --cached from the commit they were introduced)
+T 1568733720 18<joo-_18>	does HEAD~2 mean current "head" like where i am now, and 2 points back ?
+T 1568733728 18<rafasc18>	yes
+T 1568733739 18<joo-_18>	and what does the rebase do ? like rewind ?
+T 1568733777 18<rafasc18>	rebase will take those two commits, and reapply them.
+T 1568733795 18<joo-_18>	why would i want them reapplyed ?
+T 1568733807 18<rafasc18>	to remove the files you added?
+T 1568733820 18<joo-_18>	but what does it mean to reapply ?
+T 1568733840 18<joo-_18>	thats what the man page says also, but seems very abstract
+T 1568733850 18<rafasc18>	means you need to create a new commit object without those huge files.
+T 1568733871 18<joo-_18>	but how will this reapply thing know without huge files?
+T 1568733894 18<rafasc18>	by doing what I said.
+T 1568733896 18<joo-_18>	rebase -i HEAD~2 turns back time 2 commits ago right ?
+T 1568733919 18<rafasc18>	When the todo list shows up, you change 'pick' to 'edit'.
+T 1568733935 18<rafasc18>	This will stop the rebase before applying the commit, and allowing you to edit it.
+T 1568733949 18<joo-_18>	There will be a todo list when i do this :)?
+T 1568733952 18<rafasc18>	when it stops, you run $git rm --cached bigfiles; git rebase --continue.
+T 1568733970 18<joo-_18>	bigfiles is it a keyword or i replace by my big file names ?
+T 1568733979 18<rafasc18>	replace the names.
+T 1568734036 18<joo-_18>	i have a feeling You provided me a lot of help, i will print this dialog and contemplate on it... hopefully i will do something and get everything back to normal
+T 1568734047 18<joo-_18>	rafasc: THANKS :-)
+T 1568734103 18<rafasc18>	joo-_: just be aware that this is a !rewrite.
+T 1568734103 18<gitinfo18>	joo-_: Rewriting public history is not recommended. Everyone who has pulled the old history will have to do work (and you'll have to tell them to), so it's infinitely better to just move on. If you must, you can use `git push --force-with-lease <remote> <branch>` to force (and the remote may reject that, anyway). See http://goo.gl/waqum
+T 1568734200 18<rafasc18>	since github denied your push, you should be good. (If you have local branches that branched off after this event, you'll need to rebase them as well)
+T 1568734227 18<joo-_18>	i dont even work with branches
+T 1568734279 18<rafasc18>	that's a lie. You work with at least two.
+T 1568734287 18<rafasc18>	master and origin/master ;)
+T 1568734297 18<joo-_18>	what is difference between them ?
+T 1568734321 18<rafasc18>	master is your local branch, origin/master is a mirror of the master branch the remote has.
+T 1568734324 18<rafasc18>	!rtb
+T 1568734324 18<gitinfo18>	[!remote_tracking_branch] Remote-tracking branches (branches which start with e.g. 'origin/', listed by 'git branch -r') are read-only mirrors of the branches in another repository. They're updated by 'git fetch'. You can't edit them directly (trying to check them out results in a !detached HEAD), but you can create a local branch based on a remote-tracking branch using e.g. 'git checkout -b <branch> <remote>/<branch>'
+T 1568734339 18<joo-_18>	ok
+T 1568734453 18<rafasc18>	joo-_: also, if you use git add f1 f2 f3; you don't/shouldn't use commit f1 f2 f3.
+T 1568734488 18<joo-_18>	i was like "git add *", "git commit ." :-)
+T 1568734499 18<joo-_18>	-m "50 IQ :D"
+T 1568734502 18<rafasc18>	which is another kind of worse.
+T 1568734534 18<rafasc18>	if you specify paths to commit, even if it's '.' you're bypassing your git add.
+T 1568734552 18<rafasc18>	git add f1 f2 f3; git commit; should suffice.
+T 1568734593 18<joo-_18>	Have been using git for 10+ years, but still have so much to learn :D
+T 1568734618 18<rafasc18>	git add '*' is also bad practice, as you can tell from where it got you.
+T 1568734659 18<rafasc18>	but one thing at a time.
+T 1568734670 18<joo-_18>	Yeah i usually don't do, there was just so many files so didnt even bother to look at commit list :-) Usually less dangerous because i rarely modify more than 5-10 files in a commit
+T 1568734676 18<joo-_18>	yeah :)
+T 1568734819 18<rafasc18>	I suggest you read one of !book
+T 1568734819 18<gitinfo18>	There are several good books available about git; 'Pro Git' is probably the best: http://git-scm.com/book but also look at !bottomup !cs !gcs !designers !gitt !vcbe and !parable
+T 1568734835 18<rafasc18>	and start to learn how to branch.
+T 1568735341 18<Radler18>	hello there
+T 1568735455 18<gitinfo18>	Radler: [!welcome] Welcome to #git, a place full of helpful gits. If you have a question, feel free to just go ahead and ask—somebody should answer shortly. For more info on this channel, see https://gitirc.eu/ - Take backups (type !backup to learn how) before taking advice.
+T 1568737632 18<Josse18>	How can I .gitignore all .css and .css.map files in a React repository? I've so far tried adding /ui-react/**/*.css and /ui-react/**/*.css.map, without success
+T 1568737738 18<sangy18>	what's with that guy posting godwin-tier stuff on the ML. Am I the only one who's getting these?
+T 1568737792 18<rafasc18>	Josse: *.css should suffice but !ignore_tracked
+T 1568737792 18<gitinfo18>	Josse: Git only applies ignore patterns to untracked files. You can't use ignore patterns to ignore changes to files that are already tracked by git. To remove files only from git, but keeping them on disk, use git rm --cached <file>. Still, see https://gist.github.com/1423106 for ways people have worked around the problem.
+T 1568737843 18<_ikke_18>	sangy: no, you're not the only one
+T 1568737843 18<Josse18>	Right... And can I rm --cached *.css.map ?
+T 1568737853 18<_ikke_18>	yes
+T 1568737873 18<sangy18>	_ikke_: ok, just making sure. Thanks
+T 1568739478 18<Celmor[m]18>	my local repos master has diverged from remote after a commit I've pushed got amended on the remote (though only the commit message has been changed) and I've created several new commits locally, how best would I now push the new commits?
+T 1568739561 18<thiago18>	rebase first
+T 1568739570 18<Celmor[m]18>	correction, the commit hasn't been amended but rather rebased on the remote
+T 1568739614 18<thiago18>	yep, so rebase your local copy too, on top of their rebasing of your content
+T 1568739618 18<Celmor[m]18>	wouldn't a "normal" rebase cause conflicts as there's a commit in my history different from the remotes history that changes same files?
+T 1568739637 18<thiago18>	no, because usually rebase will notice that your change is already applied, so it'll simply skip it
+T 1568739648 18<thiago18>	if it fails, then during the conflict, do git rebase --skip
+T 1568739655 18<bin_bash18>	wait a minute
+T 1568739667 18<bin_bash18>	you probably want to resolve any conflicts
+T 1568739671 18<bin_bash18>	not just skip them
+T 1568739720 18<Celmor[m]18>	well, the commit(s) in question do the same changes, merely have different parents
+T 1568739780 18<Celmor[m]18>	which commits exactly would a rebase onto current master in this situation now rewrite?
+T 1568739788 18<rafasc18>	bin_bash: rebase can detect the patch is already applied, and will say: man, the changes you told me to apply were already there. --skip to do nothing, or commit --allow-empty if you want an empty commit to stay around.
+T 1568739830 18<bin_bash18>	rafasc: i'm talking about conflicts in files that were both changed upstream and locally (which was how i read the original question)
+T 1568739870 18<rafasc18>	in that case, sure solve them. But this was the thing thiago was mentioning in his comment.
+T 1568739915 18<rafasc18>	if it's just a rewritten commit message it shouldn't conflict anyways.
+T 1568739921 18<bin_bash18>	rafasc: but if someone changed a file upstream that did not exist when he started, and he modified the exact same file, then skipping wouldn't apply your changes
+T 1568740047 18<Celmor[m]18>	the repos have divereged like this, if I understand it right: remote: a < b < c < d < ...; local:  a < 1 < 2 < ... < b.rebased <  e < ...
+T 1568740064 18<Celmor[m]18>	swap "remote" and "local", shouldn't matter though
+T 1568740102 18<Celmor[m]18>	so I guess "pull --rebase" should fix it?
+T 1568740128 18<rafasc18>	bin_bash: if rebase drops you into 'conflict resolution mode' because the patch was already applied, you have to --skip. (or make an empty commit). If there's an actual conflict, you shouldn't skip unless you want to discard those changes.
+T 1568740155 18<Celmor[m]18>	not sure what the result now is but it appears "pull --rebase" run though without issues
+T 1568740165 18<Celmor[m]18>	through*
+T 1568740172 18<bin_bash18>	rafasc: right, which is why I said you should try to resolve them rather than just skipping
+T 1568742555 18<t2mkn18>	is it possible to replace some texts while using "git checkout -f master"?
+T 1568742583 18<_ikke_18>	t2mkn: Can you elaborate?
+T 1568742605 18*	thiago posits !config
+T 1568742693 18<t2mkn18>	i have written a post-receive hook which checkeout from master to www directory.
+T 1568742710 18<_ikke_18>	thiago is right :-)
+T 1568742767 18<_ikke_18>	The best advise we can give you to not directly deploy from git
+T 1568742779 18<t2mkn18>	can i have any example in detail please. not getting, how to use. kind of new to git.
+T 1568742811 18<_ikke_18>	!config
+T 1568742811 18<gitinfo18>	[!configfiles] It is recommended to store local configuration data in a file which is not tracked by git, but certain deployment scenarios(such as Heroku) may require otherwise. See https://gist.github.com/1423106 for some ideas
+T 1568742883 18<t2mkn18>	checking...
+T 1568743042 18<t2mkn18>	OK. just a config file not in tracking can do the job. lol. how i missed that idea! :P
+T 1568743096 18<_ikke_18>	:-)
+T 1568743618 18<t2mkn18>	.gitignore is not respecting the new entries. or am i doing something wrong?
+T 1568743873 18<t2mkn18>	ok gpt it $ git rm --cached site.conf
+T 1568744687 18<rawtaz18>	hi. quick question; when needing git on windows 10, is there a good reason to install Windows Subsystem for Linux and e.g. https://github.com/andy-5/wslgit instead of installing git through the official installer? when not otherwise having WSL installed or knowing that you need it, that is.
+T 1568744731 18<_ikke_18>	depends if you feel more at home in a linux environment or on a windows environment
+T 1568745243 18<rawtaz18>	_ikke_: i feel more at home in linux than windows, but im thinking it might not be worth installing WSL and distro just for git. is the command line git very different in windows than linux? i suppose it's just args syntax and such that differ?
+T 1568745262 18<rawtaz18>	or is it e.g. `git commit --amend` in windows too?
+T 1568745276 18<_ikke_18>	yes\
+T 1568745281 18<_ikke_18>	the commands are exactly the same
+T 1568745287 18<_ikke_18>	and git for windows comes with git bash
+T 1568745303 18<rawtaz18>	hm, whats git bash used for?
+T 1568745313 18<rawtaz18>	i imagine running git in the cmd
+T 1568745318 18<_ikke_18>	yes
+T 1568745322 18<bin_bash18>	are you developing for windows or *nix?
+T 1568745325 18<_ikke_18>	git bash is an alternative terminal / shell
+T 1568745358 18<rawtaz18>	bin_bash: android, so neither really :D
+T 1568745370 18<bin_bash18>	android is linux
+T 1568745408 18<rawtaz18>	sorry, i meant to write arduino
+T 1568745411 18<rawtaz18>	my bad
+T 1568745442 18<bin_bash18>	ok
+T 1568745449 18<bin_bash18>	youre planning on doing the dev in windows?
+T 1568745495 18<rawtaz18>	yeah on windows 10. using arduino IDE, Eagle and thats about it. the reason i need git is to version control the sketches and some additional libraries used in eagle and so on
+T 1568746169 18<rbastic18>	hello all
+T 1568746178 18<rbastic18>	i'm looking for some expertise on merge conflicts, if anyone is around
+T 1568746214 18<thiago18>	on the git part of it or in the actual source code?
+T 1568746218 18<rbastic18>	the git part of it
+T 1568746259 18<rbastic18>	i'm trying to handle a couple of different scenarios
+T 1568746270 18<rbastic18>	without going into too much detail, suffice it to say that i am building a git UI for end-users in the company i work at
+T 1568746283 18<rbastic18>	part of that is having some reasonable merge conflict handling, and of course there are a number of instances in which merge conflicts can arise.
+T 1568746321 18<rbastic18>	so, my current question is centered around --
+T 1568746332 18<rbastic18>	i know if i am behind the remote origin, fetching, and then pulling can result in conflicts
+T 1568746356 18<rbastic18>	a push can also result in merge conflicts, even if not behind the remote origin though... yes?
+T 1568746388 18<bin_bash18>	no a push can't result in merge conflicts
+T 1568746397 18<bin_bash18>	pull = git fetch + merge
+T 1568746407 18<bin_bash18>	a fetch can't result in merge conflicts either
+T 1568746442 18<rbastic18>	why would i trust someone whose irc name is 'fuck you'? ;p
+T 1568746448 18<rbastic18>	you're probably some longlost enemy of mine
+T 1568746449 18<rbastic18>	;)
+T 1568746458 18<_ikke_18>	rbastic: a bit more respect please
+T 1568746494 18<rbastic18>	_ikke_: if you /whois bin_bash ... you'll see what i'm referring to
+T 1568746495 18<rbastic18>	:p
+T 1568746501 18<rbastic18>	it's a harmless joke
+T 1568746552 18<bin_bash18>	trust whatever you want lmao
+T 1568746658 18<rbastic18>	:P
+T 1568746719 18<rafasc18>	.votekick bin_bash
+T 1568746733 18<bin_bash18>	for what?
+T 1568746750 18<rafasc18>	no votes, bin_bash stays :D
+T 1568746756 18<bin_bash18>	lolol
+T 1568746779 18<rbastic18>	.votekick bin_bash
+T 1568746786 18<rbastic18>	i don't even know how this thing works
+T 1568746790 18<rbastic18>	who am i to votekick
+T 1568746953 18<rafasc18>	rbastic: it doesn't. It was a joke.
+T 1568753031 20*	Disconnected (20)
+T 1568753056 19*	Now talking on 22#git
+T 1568753056 22*	Topic for 22#git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+T 1568753056 22*	Topic for 22#git set by 26gitinfo!jast@bot.gitirc.eu (24Fri Aug 16 23:09:40 2019)
+T 1568753242 18<Allods18>	Hi, is `.gitconfig` with `includeif` for per-directory defaults the best way to handle multiple git identities (git user.name and user.email)?
+T 1568753308 18<rafasc18>	Allods: that's one option. The other option is to just remember to configure a local identity.
+T 1568753378 18<j41618>	Allods: I handle it using user.useConfigOnly; has worked great for a long time.
+T 1568753384 18<rafasc18>	if you unset the global/system identity, and set user.configonly=true globally git will always ask to set it.
+T 1568753405 18<j41618>	I set the user name in the global config but I leave the e-mail out. Then I set the e-mail per repo.
+T 1568753434 18<j41618>	that way I can make sure that all personal repos have my personal e-mail address and all work repos have my work e-mail.
+T 1568753467 18<Allods18>	nice, ty
+T 1568753503 18<rafasc18>	the key is that you need to leave something out. But as j416 mentioned, email is often the best candidate.
+T 1568753525 18<Allods18>	yh
+T 1568753540 18<rafasc18>	but conditional ifs are also a common way to deal with it.
+T 1568753552 18<j41618>	surprisingly, I go by the same name at home and at work.
+T 1568753593 18<j41618>	perhaps I should have separate identities there too
+T 1568753613 18<rafasc18>	I used to use rafasc for github, but sometimes projects require your actual name.
+T 1568753663 18<j41618>	people with half a brain will figure out your real name anyway

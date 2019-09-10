@@ -1,0 +1,790 @@
+**** BEGIN LOGGING AT Fri May 31 12:14:40 2019
+
+maj 31 12:14:40 *	Connecting to chat.freenode.net (185.30.166.37:6697)
+maj 31 12:14:41 *	* Certification info:
+maj 31 12:14:41 *	  Subject:
+maj 31 12:14:41 *	    CN=orwell.freenode.net
+maj 31 12:14:41 *	  Issuer:
+maj 31 12:14:41 *	    C=US
+maj 31 12:14:41 *	    O=Let's Encrypt
+maj 31 12:14:41 *	    CN=Let's Encrypt Authority X3
+maj 31 12:14:41 *	  Public key algorithm: rsaEncryption (4096 bits)
+maj 31 12:14:41 *	  Sign algorithm sha256WithRSAEncryption
+maj 31 12:14:41 *	  Valid since May 13 05:03:05 2019 GM to Aug 11 05:03:05 2019 GM
+maj 31 12:14:41 *	* Cipher info:
+maj 31 12:14:41 *	  Version: TLSv1.2, cipher ECDHE-RSA-AES256-GCM-SHA384 (256 bits)
+maj 31 12:14:41 *	Connected. Now logging in.
+**** BEGIN LOGGING AT Fri May 31 16:58:56 2019
+
+maj 31 16:58:56 *	atagi sets mode +Z on atagi
+maj 31 16:58:56 *	atagi sets mode +i on atagi
+maj 31 16:58:56 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+maj 31 16:58:56 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Fri May 31 16:59:01 2019
+
+**** BEGIN LOGGING AT Fri May 31 18:00:30 2019
+
+maj 31 18:00:30 *	atagi sets mode +Z on atagi
+maj 31 18:00:30 *	atagi sets mode +i on atagi
+maj 31 18:00:31 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+maj 31 18:00:31 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Fri May 31 18:00:36 2019
+
+**** BEGIN LOGGING AT Sat Jun 29 20:06:25 2019
+
+cze 29 20:06:25 *	atagi sets mode +Z on atagi
+cze 29 20:06:25 *	atagi sets mode +i on atagi
+cze 29 20:06:26 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 29 20:06:26 *	Received a CTCP VERSION from freenode-connect
+**** BEGIN LOGGING AT Sat Jun 29 20:06:28 2019
+
+cze 29 20:06:28 *	threenuc sets mode +Z on threenuc
+cze 29 20:06:28 *	threenuc sets mode +i on threenuc
+cze 29 20:06:28 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+cze 29 20:06:28 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 29 20:06:28 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Sat Jun 29 20:06:32 2019
+
+**** ENDING LOGGING AT Sat Jun 29 20:06:33 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 14:13:53 2019
+
+cze 30 14:13:53 *	threenuc sets mode +Z on threenuc
+cze 30 14:13:53 *	threenuc sets mode +i on threenuc
+cze 30 14:13:53 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+cze 30 14:13:53 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 14:13:54 *	Received a CTCP VERSION from freenode-connect
+**** BEGIN LOGGING AT Sun Jun 30 14:13:55 2019
+
+cze 30 14:13:55 *	atagi sets mode +Z on atagi
+cze 30 14:13:55 *	atagi sets mode +i on atagi
+cze 30 14:13:56 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 14:13:56 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Sun Jun 30 14:13:59 2019
+
+**** ENDING LOGGING AT Sun Jun 30 14:14:01 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 15:06:13 2019
+
+cze 30 15:06:13 *	threenuc sets mode +Z on threenuc
+cze 30 15:06:13 *	threenuc sets mode +i on threenuc
+cze 30 15:06:14 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+cze 30 15:06:15 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 15:06:15 *	Received a CTCP VERSION from freenode-connect
+**** BEGIN LOGGING AT Sun Jun 30 15:06:15 2019
+
+cze 30 15:06:15 *	atagi sets mode +Z on atagi
+cze 30 15:06:15 *	atagi sets mode +i on atagi
+cze 30 15:06:16 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 15:06:16 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Sun Jun 30 15:06:20 2019
+
+**** ENDING LOGGING AT Sun Jun 30 15:06:22 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 15:38:43 2019
+
+cze 30 15:38:43 *	threenuc sets mode +Z on threenuc
+cze 30 15:38:43 *	threenuc sets mode +i on threenuc
+cze 30 15:38:43 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+**** BEGIN LOGGING AT Sun Jun 30 15:38:43 2019
+
+cze 30 15:38:43 *	atagi sets mode +Z on atagi
+cze 30 15:38:43 *	atagi sets mode +i on atagi
+cze 30 15:38:44 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 15:38:44 *	Received a CTCP VERSION from freenode-connect
+cze 30 15:38:44 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 15:38:44 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Sun Jun 30 15:38:49 2019
+
+**** ENDING LOGGING AT Sun Jun 30 15:38:50 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 16:25:25 2019
+
+cze 30 16:25:25 *	atagi sets mode +Z on atagi
+cze 30 16:25:25 *	atagi sets mode +i on atagi
+**** BEGIN LOGGING AT Sun Jun 30 16:25:25 2019
+
+cze 30 16:25:25 *	threenuc sets mode +Z on threenuc
+cze 30 16:25:25 *	threenuc sets mode +i on threenuc
+cze 30 16:25:25 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+cze 30 16:25:26 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 16:25:26 *	Received a CTCP VERSION from freenode-connect
+cze 30 16:25:26 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 16:25:26 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Sun Jun 30 16:25:30 2019
+
+**** ENDING LOGGING AT Sun Jun 30 16:25:31 2019
+
+**** BEGIN LOGGING AT Sun Jun 30 17:53:23 2019
+
+cze 30 17:53:23 *	atagi sets mode +Z on atagi
+cze 30 17:53:23 *	atagi sets mode +i on atagi
+cze 30 17:53:23 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 17:53:23 *	Received a CTCP VERSION from freenode-connect
+**** BEGIN LOGGING AT Sun Jun 30 17:53:26 2019
+
+cze 30 17:53:26 *	threenuc sets mode +Z on threenuc
+cze 30 17:53:26 *	threenuc sets mode +i on threenuc
+cze 30 17:53:26 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+cze 30 17:53:26 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+cze 30 17:53:26 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Sun Jun 30 17:53:29 2019
+
+**** ENDING LOGGING AT Sun Jun 30 17:53:32 2019
+
+**** BEGIN LOGGING AT Mon Jul  1 09:27:47 2019
+
+lip 01 09:27:47 *	atagi sets mode +Z on atagi
+lip 01 09:27:47 *	atagi sets mode +i on atagi
+**** BEGIN LOGGING AT Mon Jul  1 09:27:47 2019
+
+lip 01 09:27:47 *	threenuc sets mode +Z on threenuc
+lip 01 09:27:47 *	threenuc sets mode +i on threenuc
+lip 01 09:27:47 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+lip 01 09:27:48 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+lip 01 09:27:48 *	Received a CTCP VERSION from freenode-connect
+lip 01 09:27:48 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+lip 01 09:27:48 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Jul  1 09:27:53 2019
+
+**** ENDING LOGGING AT Mon Jul  1 09:27:54 2019
+
+**** BEGIN LOGGING AT Mon Jul  1 09:45:12 2019
+
+lip 01 09:45:12 *	threenuc sets mode +Z on threenuc
+lip 01 09:45:12 *	threenuc sets mode +i on threenuc
+lip 01 09:45:12 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+lip 01 09:45:12 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+lip 01 09:45:12 *	Received a CTCP VERSION from freenode-connect
+**** BEGIN LOGGING AT Mon Jul  1 09:45:13 2019
+
+lip 01 09:45:13 *	atagi sets mode +Z on atagi
+lip 01 09:45:13 *	atagi sets mode +i on atagi
+lip 01 09:45:13 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+lip 01 09:45:13 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Jul  1 09:45:18 2019
+
+**** ENDING LOGGING AT Mon Jul  1 09:45:20 2019
+
+**** BEGIN LOGGING AT Mon Jul  1 14:41:11 2019
+
+lip 01 14:41:11 *	threenuc sets mode +Z on threenuc
+lip 01 14:41:11 *	threenuc sets mode +i on threenuc
+lip 01 14:41:11 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+lip 01 14:41:12 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+lip 01 14:41:12 *	Received a CTCP VERSION from freenode-connect
+**** BEGIN LOGGING AT Mon Jul  1 14:41:14 2019
+
+lip 01 14:41:14 *	atagi sets mode +Z on atagi
+lip 01 14:41:14 *	atagi sets mode +i on atagi
+lip 01 14:41:15 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+lip 01 14:41:15 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Jul  1 14:41:17 2019
+
+**** ENDING LOGGING AT Mon Jul  1 14:41:21 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 08:52:01 2019
+
+Sep 02 08:52:01 *	threenuc sets mode +Z on threenuc
+Sep 02 08:52:01 *	threenuc sets mode +i on threenuc
+Sep 02 08:52:02 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 02 08:52:02 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 02 08:52:02 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Sep  2 08:52:08 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:05:49 2019
+
+Sep 02 09:05:49 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:05:49 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:05:49 2019
+
+Sep 02 09:05:49 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:05:49 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:05:49 2019
+
+Sep 02 09:05:49 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:05:49 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:05:49 2019
+
+Sep 02 09:05:49 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:05:49 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:05:49 2019
+
+Sep 02 09:05:49 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:05:49 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:05:49 2019
+
+Sep 02 09:05:49 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:05:49 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:06:06 2019
+
+Sep 02 09:06:06 *	threenuc sets mode +Z on threenuc
+Sep 02 09:06:06 *	threenuc sets mode +i on threenuc
+Sep 02 09:06:06 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 02 09:06:06 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 02 09:06:06 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Sep  2 09:06:12 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:37:54 2019
+
+Sep 02 09:37:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:37:54 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:37:54 2019
+
+Sep 02 09:37:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:37:54 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:37:54 2019
+
+Sep 02 09:37:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:37:54 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:37:54 2019
+
+Sep 02 09:37:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:37:54 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:37:54 2019
+
+Sep 02 09:37:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:37:54 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:37:54 2019
+
+Sep 02 09:37:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:37:54 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:38:12 2019
+
+Sep 02 09:38:12 *	threenuc sets mode +Z on threenuc
+Sep 02 09:38:12 *	threenuc sets mode +i on threenuc
+Sep 02 09:38:12 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 02 09:38:13 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 02 09:38:13 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Sep  2 09:38:17 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:03:58 2019
+
+Sep 02 12:03:58 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 12:03:58 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:03:58 2019
+
+Sep 02 12:03:58 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 12:03:58 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:03:58 2019
+
+Sep 02 12:03:58 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 12:03:58 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:03:58 2019
+
+Sep 02 12:03:58 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 12:03:58 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:03:58 2019
+
+Sep 02 12:03:58 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 12:03:58 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:03:58 2019
+
+Sep 02 12:03:58 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 12:03:58 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:04:18 2019
+
+Sep 02 12:04:18 *	threenuc sets mode +Z on threenuc
+Sep 02 12:04:18 *	threenuc sets mode +i on threenuc
+Sep 02 12:04:18 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 02 12:04:18 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 02 12:04:18 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Sep  2 12:04:24 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:00 2019
+
+Sep 02 13:56:00 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 13:56:00 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:00 2019
+
+Sep 02 13:56:00 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 13:56:00 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:00 2019
+
+Sep 02 13:56:00 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 13:56:00 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:00 2019
+
+Sep 02 13:56:00 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 13:56:00 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:00 2019
+
+Sep 02 13:56:00 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 13:56:00 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:00 2019
+
+Sep 02 13:56:00 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 13:56:00 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:20 2019
+
+Sep 02 13:56:20 *	threenuc sets mode +Z on threenuc
+Sep 02 13:56:20 *	threenuc sets mode +i on threenuc
+Sep 02 13:56:20 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 02 13:56:21 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 02 13:56:21 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Mon Sep  2 13:56:26 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:12 2019
+
+Sep 03 10:14:12 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 10:14:12 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:12 2019
+
+Sep 03 10:14:12 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 10:14:12 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:12 2019
+
+Sep 03 10:14:12 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 10:14:12 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:12 2019
+
+Sep 03 10:14:12 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 10:14:12 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:12 2019
+
+Sep 03 10:14:12 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 10:14:12 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:12 2019
+
+Sep 03 10:14:12 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 10:14:12 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:31 2019
+
+Sep 03 10:14:31 *	threenuc sets mode +Z on threenuc
+Sep 03 10:14:31 *	threenuc sets mode +i on threenuc
+Sep 03 10:14:31 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 03 10:14:31 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 03 10:14:31 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Tue Sep  3 10:14:37 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 19:20:42 2019
+
+Sep 03 19:20:42 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 19:20:42 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 19:20:42 2019
+
+Sep 03 19:20:42 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 19:20:42 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 19:20:42 2019
+
+Sep 03 19:20:42 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 19:20:42 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 19:20:42 2019
+
+Sep 03 19:20:42 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 19:20:42 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 19:20:42 2019
+
+Sep 03 19:20:42 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 19:20:42 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 19:21:00 2019
+
+Sep 03 19:21:00 *	threenuc sets mode +Z on threenuc
+Sep 03 19:21:00 *	threenuc sets mode +i on threenuc
+Sep 03 19:21:00 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 03 19:21:01 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 03 19:21:01 *	Received a CTCP VERSION from freenode-connect
+Sep 03 20:25:44 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 20:25:44 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 20:25:44 2019
+
+Sep 03 20:25:44 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 20:25:44 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 20:25:44 2019
+
+Sep 03 20:25:44 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 20:25:44 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 20:25:44 2019
+
+Sep 03 20:25:44 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 20:25:44 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 20:25:44 2019
+
+Sep 03 20:25:44 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 20:25:44 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 20:25:45 2019
+
+Sep 03 20:25:45 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 20:25:45 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 20:26:06 2019
+
+Sep 03 20:26:06 *	threenuc sets mode +Z on threenuc
+Sep 03 20:26:06 *	threenuc sets mode +i on threenuc
+Sep 03 20:26:06 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 03 20:26:07 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 03 20:26:07 *	Received a CTCP VERSION from freenode-connect
+Sep 04 07:55:02 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 07:55:02 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 07:55:02 2019
+
+Sep 04 07:55:02 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 07:55:02 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 07:55:02 2019
+
+Sep 04 07:55:02 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 07:55:02 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 07:55:02 2019
+
+Sep 04 07:55:02 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 07:55:02 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 07:55:02 2019
+
+Sep 04 07:55:02 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 07:55:02 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 07:55:02 2019
+
+Sep 04 07:55:02 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 07:55:02 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 07:55:20 2019
+
+Sep 04 07:55:20 *	threenuc sets mode +Z on threenuc
+Sep 04 07:55:20 *	threenuc sets mode +i on threenuc
+Sep 04 07:55:20 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 04 07:55:21 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 04 07:55:21 *	Received a CTCP VERSION from freenode-connect
+Sep 04 10:15:33 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 10:15:33 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 10:15:33 2019
+
+Sep 04 10:15:33 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 10:15:33 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 10:15:33 2019
+
+Sep 04 10:15:33 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 10:15:33 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 10:15:33 2019
+
+Sep 04 10:15:33 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 10:15:33 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 10:15:33 2019
+
+Sep 04 10:15:33 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 10:15:33 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 10:15:33 2019
+
+Sep 04 10:15:33 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 10:15:33 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 10:15:51 2019
+
+Sep 04 10:15:51 *	threenuc sets mode +Z on threenuc
+Sep 04 10:15:51 *	threenuc sets mode +i on threenuc
+Sep 04 10:15:51 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 04 10:15:52 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 04 10:15:52 *	Received a CTCP VERSION from freenode-connect
+Sep 04 16:56:05 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 16:56:05 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 16:56:05 2019
+
+Sep 04 16:56:05 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 16:56:05 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 16:56:05 2019
+
+Sep 04 16:56:05 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 16:56:05 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 16:56:05 2019
+
+Sep 04 16:56:05 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 16:56:05 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 16:56:05 2019
+
+Sep 04 16:56:05 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 16:56:05 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 16:56:05 2019
+
+Sep 04 16:56:05 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 16:56:05 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 16:56:23 2019
+
+Sep 04 16:56:23 *	threenuc sets mode +Z on threenuc
+Sep 04 16:56:23 *	threenuc sets mode +i on threenuc
+Sep 04 16:56:23 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 04 16:56:24 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 04 16:56:24 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Wed Sep  4 16:56:30 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:58:43 2019
+
+Sep 05 09:58:43 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 09:58:43 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:58:43 2019
+
+Sep 05 09:58:43 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 09:58:43 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:58:43 2019
+
+Sep 05 09:58:43 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 09:58:43 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:58:43 2019
+
+Sep 05 09:58:43 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 09:58:43 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:58:43 2019
+
+Sep 05 09:58:43 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 09:58:43 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:58:43 2019
+
+Sep 05 09:58:43 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 09:58:43 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:59:00 2019
+
+Sep 05 09:59:00 *	threenuc sets mode +Z on threenuc
+Sep 05 09:59:00 *	threenuc sets mode +i on threenuc
+Sep 05 09:59:00 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 05 09:59:01 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 05 09:59:01 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Thu Sep  5 09:59:06 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 16:50:41 2019
+
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 16:50:41 2019
+
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 16:50:41 2019
+
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 16:50:41 2019
+
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 16:50:41 2019
+
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 16:50:41 2019
+
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 19:15:00 2019
+
+Sep 05 19:15:00 *	threenuc sets mode +Z on threenuc
+Sep 05 19:15:00 *	threenuc sets mode +i on threenuc
+Sep 05 19:15:00 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 05 19:15:00 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 05 19:15:00 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Thu Sep  5 19:15:06 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 21:45:37 2019
+
+Sep 05 21:45:37 *	threenuc sets mode +Z on threenuc
+Sep 05 21:45:37 *	threenuc sets mode +i on threenuc
+Sep 05 21:45:37 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 05 21:45:38 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 05 21:45:38 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Thu Sep  5 21:45:43 2019
+
+**** BEGIN LOGGING AT Fri Sep  6 08:12:04 2019
+
+Sep 06 08:12:04 *	threenuc sets mode +Z on threenuc
+Sep 06 08:12:04 *	threenuc sets mode +i on threenuc
+Sep 06 08:12:04 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 06 08:12:05 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 06 08:12:05 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Fri Sep  6 08:12:10 2019
+
+**** BEGIN LOGGING AT Fri Sep  6 16:42:34 2019
+
+Sep 06 16:42:34 *	threenuc sets mode +Z on threenuc
+Sep 06 16:42:34 *	threenuc sets mode +i on threenuc
+Sep 06 16:42:34 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 06 16:42:35 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 06 16:42:35 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Fri Sep  6 16:42:40 2019
+
+**** BEGIN LOGGING AT Sat Sep  7 11:05:45 2019
+
+Sep 07 11:05:45 *	threenuc sets mode +Z on threenuc
+Sep 07 11:05:45 *	threenuc sets mode +i on threenuc
+Sep 07 11:05:45 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+Sep 07 11:05:45 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 07 11:05:45 *	Received a CTCP VERSION from freenode-connect
+**** ENDING LOGGING AT Sat Sep  7 11:05:50 2019
+
+**** BEGIN LOGGING AT Sat Sep  7 17:11:28 2019
+
+Sep 07 17:11:28 *	threenuc sets mode +Z on threenuc
+Sep 07 17:11:28 *	threenuc sets mode +i on threenuc
+Sep 07 17:11:29 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+Sep 07 17:11:29 *	Received a CTCP VERSION from freenode-connect
+Sep 07 17:11:31 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+**** ENDING LOGGING AT Sat Sep  7 17:11:34 2019
+
+**** BEGIN LOGGING AT Mon Sep  9 09:21:46 2019
+
+Sep 09 09:21:46 *	threenuc sets mode +Z on threenuc
+Sep 09 09:21:46 *	threenuc sets mode +i on threenuc
+Sep 09 09:21:47 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+**** ENDING LOGGING AT Mon Sep  9 09:21:50 2019
+
+**** BEGIN LOGGING AT Tue Sep 10 10:21:37 2019
+
+Sep 10 10:21:37 *	threenuc sets mode +Z on threenuc
+Sep 10 10:21:37 *	threenuc sets mode +i on threenuc
+Sep 10 10:21:37 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+**** BEGIN LOGGING AT Tue Sep 10 22:51:48 2019
+
+Sep 10 22:51:48 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 10 22:51:48 2019
+
+Sep 10 22:51:48 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 10 22:51:48 2019
+
+**** BEGIN LOGGING AT Tue Sep 10 22:52:05 2019
+
+Sep 10 22:52:05 *	threenuc sets mode +Z on threenuc
+Sep 10 22:52:05 *	threenuc sets mode +i on threenuc
+Sep 10 22:52:05 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+**** ENDING LOGGING AT Tue Sep 10 22:52:12 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 11:12:47 2019
+
+Sep 11 11:12:47 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep 11 11:12:47 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 11:12:47 2019
+
+Sep 11 11:12:47 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep 11 11:12:47 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 11:13:05 2019
+
+Sep 11 11:13:05 *	threenuc sets mode +Z on threenuc
+Sep 11 11:13:05 *	threenuc sets mode +i on threenuc
+Sep 11 11:13:05 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+**** ENDING LOGGING AT Wed Sep 11 11:13:12 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 10:08:52 2019
+
+Sep 12 10:08:52 *	threenuc sets mode +Z on threenuc
+Sep 12 10:08:52 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Thu Sep 12 10:08:58 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 11:59:51 2019
+
+Sep 12 11:59:51 *	threenuc sets mode +Z on threenuc
+Sep 12 11:59:51 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Thu Sep 12 11:59:57 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 18:53:56 2019
+
+Sep 12 18:53:56 *	threenuc sets mode +Z on threenuc
+Sep 12 18:53:56 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Thu Sep 12 18:54:02 2019
+
+**** BEGIN LOGGING AT Fri Sep 13 07:16:07 2019
+
+Sep 13 07:16:07 *	threenuc sets mode +Z on threenuc
+Sep 13 07:16:07 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Fri Sep 13 07:16:13 2019
+
+**** BEGIN LOGGING AT Sun Sep 15 22:38:47 2019
+
+Sep 15 22:38:47 *	threenuc sets mode +Z on threenuc
+Sep 15 22:38:47 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Sun Sep 15 22:38:53 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 00:19:39 2019
+
+Sep 16 00:19:39 *	threenuc sets mode +Z on threenuc
+Sep 16 00:19:39 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Mon Sep 16 00:19:45 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 09:05:29 2019
+
+Sep 16 09:05:29 *	threenuc sets mode +Z on threenuc
+Sep 16 09:05:29 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Mon Sep 16 09:05:35 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 15:45:33 2019
+
+Sep 16 15:45:33 *	threenuc sets mode +Z on threenuc
+Sep 16 15:45:33 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Mon Sep 16 15:45:39 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 10:23:21 2019
+
+Sep 17 10:23:21 *	threenuc sets mode +Z on threenuc
+Sep 17 10:23:21 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Tue Sep 17 10:23:27 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:44:09 2019
+
+Sep 17 22:44:09 *	threenuc sets mode +Z on threenuc
+Sep 17 22:44:09 *	threenuc sets mode +i on threenuc
+**** ENDING LOGGING AT Tue Sep 17 22:44:16 2019
+

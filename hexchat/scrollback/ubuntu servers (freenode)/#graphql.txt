@@ -1,0 +1,140 @@
+T 1561134991 19*	Now talking on 22#graphql
+T 1561135151 20<atagi>30	Hey. I was wondering - everybody seems to be using apollo gql (by looking at tutorials). Is there something wrong with express-grahpql for example?
+T 1561137997 23*	Elyx0 (~Elyx0@unaffiliated/elyx023) has joined
+T 1561140526 23*	xorander (~xorander@50.216.161.66.ded-dsl.fuse.net23) has joined
+T 1561141355 20*	Cannot join 22#linux (20Channel is invite only)
+T 1561141377 20*	You are now known as 18threenuc
+T 1561146039 24*	Elyx0 has quit (Quit: Elyx0)
+T 1561148825 Python interface unloaded
+T 1561816946 19*	Now talking on 22#graphql
+T 1561817005 19*	Now talking on 22#graphql
+T 1561817078 19*	Now talking on 22#graphql
+T 1561831565 20*	Disconnected (20)
+T 1561831565 20*	Disconnected (20)
+T 1561831592 19*	Now talking on 22#graphql
+T 1561831594 19*	Now talking on 22#graphql
+T 1561896815 20*	Disconnected (20)
+T 1561896815 20*	Disconnected (20)
+T 1561896840 19*	Now talking on 22#graphql
+T 1561896841 19*	Now talking on 22#graphql
+T 1561899955 20*	Disconnected (20)
+T 1561899955 20*	Disconnected (20)
+T 1561899980 19*	Now talking on 22#graphql
+T 1561899982 19*	Now talking on 22#graphql
+T 1561901904 20*	Disconnected (20)
+T 1561901904 20*	Disconnected (20)
+T 1561901929 19*	Now talking on 22#graphql
+T 1561901930 19*	Now talking on 22#graphql
+T 1561904706 20*	Disconnected (20)
+T 1561904706 20*	Disconnected (20)
+T 1561904731 19*	Now talking on 22#graphql
+T 1561904731 19*	Now talking on 22#graphql
+T 1561909986 20*	Disconnected (20)
+T 1561909986 20*	Disconnected (20)
+T 1561910009 19*	Now talking on 22#graphql
+T 1561910012 19*	Now talking on 22#graphql
+T 1561966048 20*	Disconnected (20)
+T 1561966048 20*	Disconnected (20)
+T 1561966073 19*	Now talking on 22#graphql
+T 1561966074 19*	Now talking on 22#graphql
+T 1561967092 20*	Disconnected (20)
+T 1561967092 20*	Disconnected (20)
+T 1561967118 19*	Now talking on 22#graphql
+T 1561967120 19*	Now talking on 22#graphql
+T 1561984854 20*	Disconnected (20)
+T 1561984854 20*	Disconnected (20)
+T 1561984877 19*	Now talking on 22#graphql
+T 1561984881 19*	Now talking on 22#graphql
+T 1561985103 20*	Disconnected (20)
+T 1567243155 19*	Now talking on 22#graphql
+T 1567407102 20*	Disconnected (20)
+T 1567407129 19*	Now talking on 22#graphql
+T 1567407949 20*	Disconnected (20)
+T 1567407972 19*	Now talking on 22#graphql
+T 1567409874 20*	Disconnected (20)
+T 1567409897 19*	Now talking on 22#graphql
+T 1567418638 20*	Disconnected (20)
+T 1567418665 19*	Now talking on 22#graphql
+T 1567425360 20*	Disconnected (20)
+T 1567425386 19*	Now talking on 22#graphql
+T 1567498452 20*	Disconnected (20)
+T 1567498478 19*	Now talking on 22#graphql
+T 1567522529 18<_xor18>	So, quick question/feedback...
+T 1567522638 18<_xor18>	I'm using an API server that has an authentication mutation which returns a JWT (token) on success.
+T 1567522658 18<_xor18>	The token is a base64-encoded JSON object that conforms to a specific structure.
+T 1567522704 18<_xor18>	Now, the schema that is returned by the API server says that the type of the value returned from that authentication mutation is a specific object type (Jwt) that's also defined there.
+T 1567522719 18<_xor18>	However, when executing the mutation, the returned value is that base64-encoded string.
+T 1567522763 18<_xor18>	My question is: Is the API server in the wrong here or does the GraphQL spec leave it open as to how the returned value is to be interpreted by the client?
+T 1567522805 18<_xor18>	The assumption that this API server is making is that the client(s) will automatically decode that base64-encoded string & return the Jwt object for use.
+T 1567522824 18<_xor18>	That seems...wrong.  The API server is returning a value that doesn't actually conform to what the schema actually says.
+T 1567531242 20*	Disconnected (20)
+T 1567531266 19*	Now talking on 22#graphql
+T 1567535145 20*	Disconnected (20)
+T 1567535172 19*	Now talking on 22#graphql
+T 1567535372 18<r29v18>	I don't think that's according to spec.
+T 1567535401 18<r29v18>	You shouldn't remove a field if the user is not authenticated. It should ether return an empty object or be removed from the response entirely.
+T 1567535426 18<r29v18>	The query shape should match the response shape
+T 1567535871 18<Jemt18>	Well, the API expose the same functions/fields, always. But createUser(..) won't work if you are not authorized. But specifying :User as return type would imply that I either return Null or a User - but an error is thrown if the user is unauthorized, so that wouldn't be accurate either.
+T 1567535898 18<r29v18>	is createUser a mutation or a query?
+T 1567535903 18<Jemt18>	Mutation
+T 1567535907 18<r29v18>	Oh
+T 1567535932 18<Jemt18>	I might use incorrect terms here btw. I'm new to GraphQL
+T 1567535934 18<r29v18>	yeah I wouldn't put the bang on it unless it's returned all the time.
+T 1567535971 18<Jemt18>	Okay. Thanks.
+T 1567536007 18<Jemt18>	Is there something like JSDoc for GraphQL schemas allow me to describe the API in more detail ?
+T 1567536032 18<r29v18>	https://graphql.github.io/graphql-spec/
+T 1567536099 18<Jemt18>	Thanks
+T 1567576502 20*	Disconnected (20)
+T 1567576527 19*	Now talking on 22#graphql
+T 1567584933 20*	Disconnected (20)
+T 1567584956 19*	Now talking on 22#graphql
+T 1567599416 18<moeng0018>	hi
+T 1567608965 20*	Disconnected (20)
+T 1567608990 19*	Now talking on 22#graphql
+T 1567670323 20*	Disconnected (20)
+T 1567670347 19*	Now talking on 22#graphql
+T 1567695041 20*	Disconnected (20)
+T 1567695240 19*	Now talking on 22#graphql
+T 1567703679 20*	Disconnected (20)
+T 1567703706 19*	Now talking on 22#graphql
+T 1567712717 20*	Disconnected (20)
+T 1567712744 19*	Now talking on 22#graphql
+T 1567750304 20*	Disconnected (20)
+T 1567750330 19*	Now talking on 22#graphql
+T 1567780936 20*	Disconnected (20)
+T 1567780960 19*	Now talking on 22#graphql
+T 1567847128 20*	Disconnected (20)
+T 1567847151 19*	Now talking on 22#graphql
+T 1567869072 20*	Disconnected (20)
+T 1567869094 19*	Now talking on 22#graphql
+T 1568013689 20*	Disconnected (20)
+T 1568013711 19*	Now talking on 22#graphql
+T 1568069522 18<santalex18>	What up? I have a query that can have 1 variable set. It also contains a fragment. The fragment can have multiple variables sets. I am not sure how to set the fragment's variables by calling the parent query
+T 1568103680 20*	Disconnected (20)
+T 1568103704 19*	Now talking on 22#graphql
+T 1568148708 20*	Disconnected (20)
+T 1568148732 19*	Now talking on 22#graphql
+T 1568193167 20*	Disconnected (20)
+T 1568193192 19*	Now talking on 22#graphql
+T 1568209621 19*	Now talking on 22#graphql
+T 1568212408 19*	Now talking on 22#graphql
+T 1568275714 20*	Disconnected (20)
+T 1568275739 19*	Now talking on 22#graphql
+T 1568282374 20*	Disconnected (20)
+T 1568282398 19*	Now talking on 22#graphql
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22#graphql
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22#graphql
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22#graphql
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22#graphql
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22#graphql
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22#graphql
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22#graphql
+T 1568753031 20*	Disconnected (20)
+T 1568753056 19*	Now talking on 22#graphql

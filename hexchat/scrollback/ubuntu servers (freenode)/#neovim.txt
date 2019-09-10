@@ -1,0 +1,855 @@
+T 1567243308 19*	Now talking on 22#neovim
+T 1567243308 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567243308 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567245360 18<EddBarrettGitter18>	@justinmk hi
+T 1567245949 18<JustinMKeyesGitt18>	hi
+T 1567246245 18<MarcoHinzGitter[18>	hi
+T 1567247044 18<MarcoHinzGitter[18>	@h-michael In practice, I had no problems with simply using `'file://'.expand('%')` or `'file://'.getcwd()` for `rootUri` so far. Probably needs to be more elaborate if you plan to publish it, though.
+T 1567247443 18<EddBarrettGitter18>	@justinmk just a friendly reminder that I need help with that CI PR
+T 1567247463 18<EddBarrettGitter18>	sorry to prod, I know it's a pain
+T 1567247616 18<JustinMKeyesGitt18>	thanks will try today. traveling ..
+T 1567250021 18<EddBarrettGitter18>	thanks
+T 1567255549 18<HirokazuHataGitt18>	@mhinz It works in many cases, but it doesn't work on Windows and the LSP specification requires percent encoding.
+T 1567255701 18<HirokazuHataGitt18>	I pushed part of the URI module implementation.
+T 1567255702 18<HirokazuHataGitt18>	https://github.com/neovim/neovim/pull/10222/commits/937540b5f3d28c349c2d3c003a14a6f047846e03
+T 1567257734 18<MarcoHinzGitter[18>	@h-michael Yeah, that's why I meant with the intent to publish. My private LSP plugin does the above only and I never had a single issue with that approach with lots of different servers. :) An official Nvim implementation should be more resilient. :]
+T 1567407102 20*	Disconnected (20)
+T 1567407129 19*	Now talking on 22#neovim
+T 1567407129 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567407129 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567407949 20*	Disconnected (20)
+T 1567407972 19*	Now talking on 22#neovim
+T 1567407972 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567407972 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567408624 18<_rgn18>	is there a way to debug why typing in gitcommit filetype is super unresponsive?
+T 1567408626 18<_rgn18>	thanks
+T 1567408700 18<_rgn18>	:set syntax= fixes it, so it must be slow syntax highlighting or?
+T 1567409874 20*	Disconnected (20)
+T 1567409897 19*	Now talking on 22#neovim
+T 1567409897 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567409897 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567410284 18<_rgn18>	fixed
+T 1567416170 18<sunjon18>	blueyed: For the record (I forgot to mention when I fixed it). My issues with installing --HEAD via brew were resolved by uninstalling binutils. Seems it was some path error relating to `ar`
+T 1567416195 18<sunjon18>	I found the solution in someone else's issue: https://github.com/neovim/neovim/issues/9488
+T 1567416222 18<sunjon18>	that was from January. Not sure why it took until the end of July to rear it's head for me, as I'd been building HEAD quite regularly
+T 1567416328 18<EddBarrettGitter18>	@justinmk thanks for working on the CI
+T 1567416336 18<EddBarrettGitter18>	i can have a look at that gdb thing
+T 1567416342 18<EddBarrettGitter18>	(at some point)
+T 1567416361 18<EddBarrettGitter18>	although we could just manually ssh as you say
+T 1567418638 20*	Disconnected (20)
+T 1567418665 19*	Now talking on 22#neovim
+T 1567418665 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567418665 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567425360 20*	Disconnected (20)
+T 1567425386 19*	Now talking on 22#neovim
+T 1567425386 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567425386 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567432584 18<hendry18>	when coders want to pair program with neovim, how is that best done? via tmux in a shared login ssh login?
+T 1567433946 18<JustinMKeyesGitt18>	hendry: yes, or you could try floobits. https://floobits.com/help/plugins/nvim
+T 1567433961 18<d4218>	i find the floobits thing kind of cool, but i'd like it more with less floobits :^)
+T 1567434487 18<JustinMKeyesGitt18>	tmux seems fine to me, i don't really understand why people need anything else
+T 1567434613 18*	JustinMKeyesGitt sent a long message:  < https://matrix.org/_matrix/media/v1/download/matrix.org/TIrQjhLHRYNrjmylaqXdZPpC >
+T 1567434770 18<JustinMKeyesGitt18>	I think better "collaboration" tool would be an editor plugin that streams git commits to/from some shared branch, and then makes peer edits visible by highlights, notifications, etc.
+T 1567434777 18<JustinMKeyesGitt18>	^ brb getting VC funding
+T 1567435330 18<MarcoHinzGitter[18>	:>
+T 1567498452 20*	Disconnected (20)
+T 1567498477 19*	Now talking on 22#neovim
+T 1567498477 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567498477 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567501695 18<MarcoHinzGitter[18>	astronavt: https://github.com/mhinz/vim-galore#profiling-startup-time and below is usually good enough for all profiling purposes. Unless you want pretty output as well.
+T 1567512612 18*	zgpioGitter[m] sent a long message:  < https://matrix.org/_matrix/media/v1/download/matrix.org/poUnEZhVpQcLPeAJjnDkGeEn >
+T 1567512618 18<JustinMKeyesGitt18>	> I know I should not be possible to use global funciton in function.
+T 1567512619 18<JustinMKeyesGitt18>	> But if I make those global function results arguments, users who use that module would have painful.
+T 1567512619 18<JustinMKeyesGitt18>	@h-michael I don't understand that, nor why you want to stub anything
+T 1567512629 18<zgpioGitter[m]18>	(edited) ... name[=value] ... => ... name[=value] …
+T 1567512630 18<zgpioGitter[m]18>	```
+T 1567512671 18<JustinMKeyesGitt18>	@zgpio what `bash` version?
+T 1567512703 18<zgpioGitter[m]18>	```
+T 1567512704 18<zgpioGitter[m]18>	GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)
+T 1567512705 18<zgpioGitter[m]18>	```
+T 1567512735 18<MarcoHinzGitter[18>	Needs at least 4.0, since it relies on associative arrays.
+T 1567512804 18<JustinMKeyesGitt18>	ah, very old. Typically macOS users install latest bash via homebrew. Although , I like it when we avoid bash features in our scripts, and also we should try to use lua for non-trivial scripts... but the speedup for using associative arrays in vim-patch.sh is huge, so it's worth getting latest `bash` until someone decides to rewrite it in lua :)
+T 1567512812 18<zgpioGitter[m]18>	👌
+T 1567531242 20*	Disconnected (20)
+T 1567531266 19*	Now talking on 22#neovim
+T 1567531266 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567531266 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567535145 20*	Disconnected (20)
+T 1567535172 19*	Now talking on 22#neovim
+T 1567535172 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567535172 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567535876 18<segeljaktGitter[18>	is it a bad idea to nest dictionaries?
+T 1567535901 18<JustinMKeyesGitt18>	not generally
+T 1567535975 18*	segeljaktGitter[ sent a long message:  < https://matrix.org/_matrix/media/v1/download/matrix.org/CCxGWIUYeQEmIwKXNkuYOpdu >
+T 1567535999 18<segeljaktGitter[18>	to be a dictionary of dictionaries
+T 1567536113 18*	segeljaktGitter[ sent a long message:  < https://matrix.org/_matrix/media/v1/download/matrix.org/pHGuWkQDqkzqNgmJgoiCzBNZ >
+T 1567536189 18*	segeljaktGitter[ sent a long message:  < https://matrix.org/_matrix/media/v1/download/matrix.org/RYsRhgqMilmSPoMXKCvhkoZN >
+T 1567536217 18<segeljaktGitter[18>	will it kill performance?
+T 1567536286 18<JustinMKeyesGitt18>	no
+T 1567536327 18<segeljaktGitter[18>	:thumbsup:
+T 1567538324 18<segeljaktGitter[18>	is there any function for converting between hexadecimal number to a decimal?
+T 1567538325 18<segeljaktGitter[18>	(edited) ... hexadecimal numberto ... => ... hexadecimal to ...
+T 1567538326 18<segeljaktGitter[18>	(edited) ... to adecimal? => ... to decimal?
+T 1567538338 18<segeljaktGitter[18>	I can't seem to find
+T 1567538349 18<JustinMKeyesGitt18>	printf()
+T 1567538563 18<segeljaktGitter[18>	thx
+T 1567540287 18<JamesMcCoyGitter18>	or `str2nr()` (if I'm understanding the question correctly)
+T 1567540963 18<vito-cGitter[m]18>	what's best way to clear a terminal buffer?
+T 1567540987 18<JustinMKeyesGitt18>	`reset`, or `:set scrollback=1`
+T 1567541026 18<JustinMKeyesGitt18>	(edited) ... `:set scrollback=1` => ... `:set scrollback=1<cr>:set scrollback=9999<cr>`
+T 1567541186 18<vito-cGitter[m]18>	reset isn't an editor command. Is that a newish feature? and changing the scrollback will chop off everything outside the scrollback "window" but not everything in the current window
+T 1567541219 18<JustinMKeyesGitt18>	reset is a shell command. you didn't specify a context :)
+T 1567541242 18<vito-cGitter[m]18>	ah fair enough :) I mean in normal mode then
+T 1567541275 18<JustinMKeyesGitt18>	clearing the current screen is up to the child process. e.g. in a shell, you can use `clear` command or CTRL-L
+T 1567541380 18<JustinMKeyesGitt18>	the child controls the screen, not the terminal (Nvim), so it does not really make sense for the terminal to "clear the screen". Of course, we could provide such a function, but what's the use case ...
+T 1567541505 18<vito-cGitter[m]18>	on iterm I'm able to use clear screen (cmd+k) and it will clear the terminal. There isn't really an option to do this while inside nvim term because it will give me funky results
+T 1567541866 18<vito-cGitter[m]18>	I'm using `SBT` which doesn't really supply a way for you to clear the screen while a process is running. I imagine there would be similar issues with other interactive interpreters.
+T 1567542003 18<JustinMKeyesGitt18>	but still , what's the use case?
+T 1567542012 18<JustinMKeyesGitt18>	why.... does the screen need to be cleared?
+T 1567542087 18<vito-cGitter[m]18>	it's basically logging to output and I'd like to clear the screen :)
+T 1567542103 18<JustinMKeyesGitt18>	You can hack it like this: `:set ma|for i in range(1,line('$'))|call setline(i,[''])|endfor`
+T 1567542106 18<BjrnLinseGitter[18>	As a hack, you could echo the screen clear sequence to `nvim_get_chan_info(&channel).pty`
+T 1567542134 18<JustinMKeyesGitt18>	that's better :}
+T 1567542181 18<vito-cGitter[m]18>	@bfredl would that be from a command? like `:echo nvim_get_chan_info(&channel).pty`
+T 1567542214 18<BjrnLinseGitter[18>	yes, from a mapping likely
+T 1567542253 18<JustinMKeyesGitt18>	actually would `call chansend(&channel,...)` work?
+T 1567542256 18<vito-cGitter[m]18>	`{'id': 5, 'mode': 'terminal', 'stream': 'job', 'pty': '/dev/ttys002', 'buffer': 51}`
+T 1567542282 18<vito-cGitter[m]18>	the pty is `'/dev/ttys002'`
+T 1567542312 18<BjrnLinseGitter[18>	@justinmk unlikely
+T 1567542323 18<BjrnLinseGitter[18>	you want to send it to tty master, not the child
+T 1567542385 18<JustinMKeyesGitt18>	this works: `:exe '!printf "\e[2J" >' nvim_get_chan_info(&channel).pty`
+T 1567542441 18<vito-cGitter[m]18>	ooh and then clamp and unclamp scrollback?
+T 1567542455 18<BjrnLinseGitter[18>	hmm it doesn't reset the cursor for me. But that's just another sequence :]
+T 1567542513 18<vito-cGitter[m]18>	what's sequence to reset the cursor?
+T 1567542636 18<JustinMKeyesGitt18>	https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+T 1567542640 18<BjrnLinseGitter[18>	\e[H I think
+T 1567542784 18<vito-cGitter[m]18>	yup yup
+T 1567576502 20*	Disconnected (20)
+T 1567576527 19*	Now talking on 22#neovim
+T 1567576527 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567576527 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567584933 20*	Disconnected (20)
+T 1567584956 19*	Now talking on 22#neovim
+T 1567584956 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567584956 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567591654 18<mcepl18>	anybody any thoughts on https://github.com/neovim/neovim/pull/10938 ?
+T 1567596328 18<sQVe18>	Having problems with writing a List with multiple lines. What's the problem with this snippet? https://gist.github.com/sQVe/047fe54319ae873cf8756e073f277ac9
+T 1567598600 18<JamesMcCoyGitter18>	sQVe: your ale_linters dict is using [] when it should be using {}
+T 1567599747 18<sQVe18>	JamesMcCoyGitter: :thumbsup:
+T 1567600574 18<MarcoHinzGitter[18>	@h-michael Good work on the LSP client. ありがとう！
+T 1567602694 18<HirokazuHataGitt18>	I would like to express my gratitude.  I love the neovim community and I am very happy to be involved with it.
+T 1567602821 18<mcepl18>	HirokazuHataGitt: thank you, truly! I was the one asking about the progress, now using vim-lsp, but (patiently!) looking forward to be able to use built-in LSP client.
+T 1567603340 18<muffindrake18>	Hiya.
+T 1567608965 20*	Disconnected (20)
+T 1567608990 19*	Now talking on 22#neovim
+T 1567608990 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567608990 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567670323 20*	Disconnected (20)
+T 1567670346 19*	Now talking on 22#neovim
+T 1567670346 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567670346 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567679485 18<BjrnLinseGitter[18>	"E576: Error while reading ShaDa file: there is an item at position 25565 that must not be there: Missing items are for internal uses only" is this a known recent issue?
+T 1567679506 18<BjrnLinseGitter[18>	or maybe it is just random data corruption from nvim crashing
+T 1567679558 18<BjrnLinseGitter[18>	though shada update is atomic, and shouldn't be affected by a crash? (unless the fs/disk itself was a causality of the crash I guess)
+T 1567680264 18<glacambre[m]18>	Is there a way to have lua code log things to $NVIM_LOG_FILE or to the file specified with `-V`?
+T 1567680611 18<HirokazuHataGitt18>	AFAIK, there is no way except for writing logger your own.
+T 1567680611 18<HirokazuHataGitt18>	related PR https://github.com/neovim/neovim/pull/7062
+T 1567681261 18<glacambre[m]18>	Thank you :)
+T 1567681654 18<filt3r18>	hi, i have the same issue as described here: https://github.com/neovim/neovim/issues/4148 , the last comment mentions that this is covered by other clipboard issues, however, i was unable to find any issues on github (open or closed) which described the same symptoms with the clipboard.
+T 1567681703 18<filt3r18>	anybody aware of a ticked where this issue is covered, or maybe someone knows a workaround when using `clipboard=unnamedplus`?
+T 1567688028 18<MarcoHinzGitter[18>	filt3r: I imagine it's because when you keep `x` pressed while `clipboard=unnamed[plus]` is set, you basically shell out to `pbcopy` for _every_ single character deleted.
+T 1567688118 18<MarcoHinzGitter[18>	There's probably you can do about it except not spamming `x`, but using `d` with a motion or using visual mode first.
+T 1567688126 18<MarcoHinzGitter[18>	+nothing
+T 1567688236 18<BjrnLinseGitter[18>	maybe `noremap x "_x`
+T 1567688535 18<MarcoHinzGitter[18>	@bfredl Good idea as a workaround. Would it be feasible to only shell out to the clipboard provider after 500ms (or probably shorter)? And each new request would reset an already running timer?
+T 1567688604 18<BjrnLinseGitter[18>	dunno. In `nvim-miniyank` I just ignore yanks that is zero or one byte large :)
+T 1567688617 18<MarcoHinzGitter[18>	:-P
+T 1567689205 18<filt3r18>	MarcoHinzGitter[: I see, in hindsight it makes sense (looks like nvim is calling xclip on my system), i'll try to come up with a suitable workaround for my workflow based on your suggestions :)
+T 1567689968 18<MarcoHinzGitter[18>	Well, the mapping bfredl mentioned should be a good workaround for now. Usually you only want to yank to clipboard with `y`, but `clipboard=unnamed[plus]` does it for every delete action as well, so `d` or even `x`. The `nnoremap x "_x` makes `x` copy the deleted character the so-called blackhole register instead of the clipboard register. And using `u` still works afterwards, so I don't see any obvious disadvantage
+T 1567689968 18<MarcoHinzGitter[18>	to that approach.
+T 1567692738 18<JustinMKeyesGitt18>	> ignore yanks that is zero or one byte large
+T 1567692743 18<JustinMKeyesGitt18>	Let's do that
+T 1567694913 18<JustinMKeyesGitt18>	@bfredl re your shada error: if it's still happening, can you see if reverting https://github.com/neovim/neovim/pull/10898 fixes it
+T 1567695041 20*	Disconnected (20)
+T 1567695240 19*	Now talking on 22#neovim
+T 1567695240 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567695240 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567696069 18<MarcoHinzGitter[18>	> Let's do that
+T 1567696070 18<MarcoHinzGitter[18>	But hopefully for characters, not bytes. :)
+T 1567696079 18<MarcoHinzGitter[18>	(edited) ... that
+T 1567696079 18<MarcoHinzGitter[18>	But ... => ... that
+T 1567696080 18<MarcoHinzGitter[18>	But ...
+T 1567696114 18<JustinMKeyesGitt18>	I think bytes was intentional, as bfredl's choices usually are :) E.g. , someone might want to paste a multibyte char that can't be typed
+T 1567696160 18<JustinMKeyesGitt18>	Although why anyone would do this with `x` is a mystery
+T 1567696232 18<MarcoHinzGitter[18>	Ok, but then it's built-in workaround that only affects some users?
+T 1567696243 18<JustinMKeyesGitt18>	I can imagine someone using ctrl-k to insert a digraph, then `x` it into the clipboard, then paste it into their PhD thesis
+T 1567696275 18<MarcoHinzGitter[18>	In that case I'd prefer the timer approach. :P
+T 1567696350 18<JustinMKeyesGitt18>	yeah the timer approach could help with clipboard performance in general. The only place where it falls down is for scripts, but that choice was already made when n/vim disabled clipboard during `:global`
+T 1567696449 18*	MarcoHinzGitter[ nods
+T 1567696466 18<JustinMKeyesGitt18>	+1 for debouncing clipboard with timers. It would need to synchronously update the clipboard just before `"+p`, and on FocusLost
+T 1567696597 18<JustinMKeyesGitt18>	and also on CursorMoved ++once
+T 1567697551 18<MarcoHinzGitter[18>	:+1:
+T 1567703679 20*	Disconnected (20)
+T 1567703706 19*	Now talking on 22#neovim
+T 1567703706 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567703706 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567703729 18<AbdelhakeemOsama18>	> I guess you mean it's difficult.
+T 1567703730 18<AbdelhakeemOsama18>	Yeah, I would have to use a bunch of C for that with possible duplication. I considered manually making up `ufunc_T` at first but didn't go far.
+T 1567703731 18<AbdelhakeemOsama18>	So I'll go with the approach you said for now.
+T 1567704286 18<AbdelhakeemOsama18>	I mainly asked because I'm thinking of introducing support for numbered functions and I was planning to do something similar with them (i.e.: `<SNR>_1_`)
+T 1567712717 20*	Disconnected (20)
+T 1567712744 19*	Now talking on 22#neovim
+T 1567712744 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567712744 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567750304 20*	Disconnected (20)
+T 1567750330 19*	Now talking on 22#neovim
+T 1567750330 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567750330 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567752162 18<sQVe18>	Is it possible to make autocomplete for commands not case sensitive? Say I want to run :PlugInstall and I write :Plugi. I'd like it to suggest PlugInstall
+T 1567756530 18<sQVe18>	Solved it with a augroup that toggled on CmdLineEnter / CmdLineLeave :thumbs-up:
+T 1567770316 18<blueyed18>	sQVe: how did you solve it?
+T 1567770358 18<sQVe18>	blueyed: https://github.com/sQVe/dotfiles/commit/7d751795c6ec9b69b834277c3c05e430eae54d9b
+T 1567770413 18<blueyed18>	sQVe: so ignorecase affects completion of commands?  Interesting!
+T 1567770444 18<sQVe18>	blueyed: Yes. Above solution made such a big difference for me.
+T 1567770459 18<sQVe18>	Now I have just write :update and it will autocomplete to :Update on tab.
+T 1567770463 18<sQVe18>	:thumbsup:
+T 1567770709 18<blueyed18>	hmm, I've thought this would be nice to have a while ago, but am using ignorecase already.. :shrug:
+T 1567770793 18<ameliadolly18>	Join and see the video naked I am here for free http://kortlink.no/gYs
+T 1567770974 18<AbdelhakeemOsama18>	WTF
+T 1567771753 18<sQVe18>	blueyed: Maybe you have smartcase enabled?
+T 1567771773 18<sQVe18>	I dont but if I would I would like to have that disabled for command line too.
+T 1567771804 18<blueyed18>	sQVe: it completes :update to => :Update… for me - I've rather meant that I might have been missing something back then (or it is a newer patch being merged by now)
+T 1567771848 18<sQVe18>	Mkay.
+T 1567772767 18*	AbdelhakeemOsama sent a long message:  < https://matrix.org/_matrix/media/v1/download/matrix.org/LxOwNRuNGSvdnRbDWEiQmiDf >
+T 1567773110 18<AbdelhakeemOsama18>	It runs in `macOS: clang` on Travis too
+T 1567773334 18<BjrnLinseGitter[18>	looks like it is not is implemented, i e `is_os('unix')` is always true . OS X is a unix though :)
+T 1567773485 18*	AbdelhakeemOsama sent a long message:  < https://matrix.org/_matrix/media/v1/download/matrix.org/DedozoTAKgYmHayiIVUPrhtc >
+T 1567773624 18<BjrnLinseGitter[18>	"differentiates" doesn't imply that they are mutually exclusive. One is a a subset of the other. Test that are expected to work "on unix" should also work when running under OS X.
+T 1567773666 18<AbdelhakeemOsama18>	Aha
+T 1567773747 18<AbdelhakeemOsama18>	Anyway I'll change that to `helpers.is_os('win') or helpers.is_os('mac')`
+T 1567773782 18<BjrnLinseGitter[18>	For our current test matrix `is_os('unix') == not is_os('win')` is a possible approximation. Though there have been cases of people building nvim on OS:s that are neither :)
+T 1567780936 20*	Disconnected (20)
+T 1567780960 19*	Now talking on 22#neovim
+T 1567780960 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567780960 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567781266 18<glacambre[m]18>	Does anybody know what I could do in order to understand why neovim is hanging when I run it on appveyor? It seems to stop in a particularily weird place: https://ci.appveyor.com/project/glacambre/firenvim/builds/27233746
+T 1567847128 20*	Disconnected (20)
+T 1567847150 19*	Now talking on 22#neovim
+T 1567847150 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567847150 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567853514 18<BjrnLinseGitter[18>	https://gist.github.com/bfredl/877084bb2b3dd026d918dda3be17d39f
+T 1567853527 18<BjrnLinseGitter[18>	is this a known shada failure?
+T 1567857788 18<AbdelhakeemOsama18>	@bfredl Never ran into it but I can see it's related to packing last used search pattern? Maybe related to https://github.com/neovim/neovim/issues/10945 ?
+T 1567858000 18<AbdelhakeemOsama18>	It's introduced by https://github.com/neovim/neovim/pull/10898 :|
+T 1567860303 18<unixcat18>	what is the vim convention of putting formatting information at the end of the file? Is there a way to insert it automatically?
+T 1567860352 18<MatthieuCoudronG18>	unixcat it can be at the beginning too
+T 1567860358 18<unixcat18>	Ah
+T 1567860360 18<MatthieuCoudronG18>	there is a vim-modeline plugin
+T 1567860376 18<unixcat18>	Cool, I'll find it. Thank you
+T 1567860653 18<MatthieuCoudronG18>	i don't think it adds it by default, but it provides a mapping to add one
+T 1567869072 20*	Disconnected (20)
+T 1567869094 19*	Now talking on 22#neovim
+T 1567869094 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1567869094 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1567869928 18<AbdelhakeemOsama18>	Nevermind it's not needed actually
+T 1568013689 20*	Disconnected (20)
+T 1568013711 19*	Now talking on 22#neovim
+T 1568013711 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568013711 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568016867 18<flip21418>	mstruebing: set conceallevel=0 might help as well
+T 1568031026 18<segeljaktGitter[18>	If I call a function `foo#bar#baz()` it will source `autoload/foo/bar.vim`, but will it also source `autoload/foo.vim`?
+T 1568032505 18<ShougoGitter[m]18>	doesn't
+T 1568032950 18<JamesMcCoyGitter18>	Which can easily be confirmed by putting something like `let g:noodle = 1` in `autoload/foo.vim` and check if it's set after calling `foo#bar#baz()`
+T 1568037256 18<fraktor18>	I am using Neovim and am trying to install a German spellfile. When I run it, I get an error that says "E12: Command not allowed from exrc/vimrc in current dir or tag search: au WinEnter *^Iif &ft == "netrw"|call s:NetrwInsureWinVars()|endif".
+T 1568037605 18<fraktor18>	Well, nevermind... I was able to figure it out.
+T 1568041274 18<chasoteGitter[m]18>	any of you folks use ALE and coc.nvim? There are a couple clojure linters I want to try that only currently work with ALE. Can I have ALE solely used for that without it butting heads with coc.nvim? My dream situation is to have ALE/linters off by default and then have a keyboard shortcut to turn it on to run the linter and then turn it back off when I'm done with it.
+T 1568041367 18<chasoteGitter[m]18>	(edited) ... it.  ... => ... it. That way I get all my coc.nvim functionality the whole time whether I'm using the linters or not. ...
+T 1568042952 18<LeoNerd18>	Folks: OSC 52. Thoughts?
+T 1568042963 18<LeoNerd18>	I.e. "interact with terminal clipboard directly using escape sequences"
+T 1568042987 18<LeoNerd18>	Good thing, bad thing? I'm fed up of folks having to fiddle with X11 forwarding and Xlib and other such crap, just to get clipboard working; doubly so over ssh and other such fun
+T 1568043000 18<LeoNerd18>	OSC 52 would avoid all of that mess
+T 1568043934 18<BjrnLinseGitter[18>	LeoNerd: Neovim is certainly open to support it. But someone has to step up and do the work :)
+T 1568043957 18<LeoNerd18>	Yeah.. hrm
+T 1568043984 18<LeoNerd18>	That's always the fun part. I know *what* code to write just not where to write it
+T 1568044012 18<LeoNerd18>	"finding the bits" is always the hard part for me. Well, that and spinning up a dev env. But at least in nvim's case I have one already
+T 1568044013 18<LeoNerd18>	somewhere
+T 1568044014 18<BjrnLinseGitter[18>	BTW pango 1.44 seems to break pangoterm along with many other monospace-grid based programs.
+T 1568044028 18<LeoNerd18>	Oh wouldn't surprise me. I do _evil_ evil things to it
+T 1568044077 18<BjrnLinseGitter[18>	mostly affecting arch users. for now... Downgrading to 1.43 works for now for me.
+T 1568044101 18<BjrnLinseGitter[18>	also neovim-gtk and gnvim (also based on gtk) seems to be affected
+T 1568044122 18<LeoNerd18>	Still only on 1.42 even in debian/unstable currently
+T 1568044143 18<LeoNerd18>	If its affecting that many folks possibly upstream will provide a different fix somehow?
+T 1568044215 18<BjrnLinseGitter[18>	They seem to be aware they broke stuff. They claim that changing stuff in cairo for the next version might mitigate the problem.
+T 1568044237 18<LeoNerd18>	Mm. OK.. probably just keep an eye on it then until resolution happens
+T 1568044256 18<LeoNerd18>	Anyhow.. on OSC 52 - first progress would be support in libvterm/pangoterm, otherwise nvim would have nothing to talk to
+T 1568044259 18<LeoNerd18>	So I need to fix that
+T 1568044276 18<BjrnLinseGitter[18>	https://blogs.gnome.org/mclasen/2019/08/07/pango-1-44-wrap-up/ "subpixel rendering issues" they say, but those subpixels seems to quickly add up to incorrect offsets of many pixels.
+T 1568044310 18<LeoNerd18>	While also working with Zwegner on this reflow stuff
+T 1568044317 18<LeoNerd18>	Ugh.. so much to do :(
+T 1568044391 18<BjrnLinseGitter[18>	The relevant part to start with OSC 52 in nvim is src/nvim/tui/tui.c . If someone implements the low-level stuff for reading/emitting the control sequence stuff, I could help to wire it up with the rest of nvim.
+T 1568044437 18<JustinMKeyesGitt18>	OSC 52 is tracked by https://github.com/neovim/neovim/issues/3344
+T 1568044505 18<JustinMKeyesGitt18>	I would guess `tui/input.c:handle_background_color()` and its related patches (git blame) would be the pattern to follow for handling OSC 52
+T 1568044578 18<LeoNerd18>	Well, first I need to have something to actually test with ;)
+T 1568044746 18<LeoNerd18>	and first I need to write myself a `tclip`; modeled on `xclip`
+T 1568045363 18<LeoNerd18>	WTF xterm your config is bizarre...
+T 1568045388 18<LeoNerd18>	To use OSC 52 you have to enable it with `allowWindowOps` (fair enough), and then remove it from the list of `disallowedWindowOps`
+T 1568045401 18<LeoNerd18>	A config option containing a comma-separated list of things that are not enabled.
+T 1568045449 18*	LeoNerd learns of push/poptitle stack also; shall have to implement that
+T 1568045475 18<BjrnLinseGitter[18>	yah, I had to try three different suggested magic incantations to make xterm use ESC for meta
+T 1568045568 18<LeoNerd18>	Annoying that it has this list because Id on't think I can write an xresources config file that just removes a couple of items from it
+T 1568045573 18<LeoNerd18>	So I'll have to ocntinue to list all the other values :(
+T 1568045583 18*	LeoNerd hugs vim's set foo-=bar
+T 1568045678 18<BjrnLinseGitter[18>	indeed, you need set foo+=bar and set foo-=bar, otherwise you won't get the default of newly added flags.
+T 1568047909 18<JustinMKeyesGitt18>	LeoNerd: FYI, Nvim implements title-stacking ('title' + 'titlestring' options)
+T 1568048543 18<LeoNerd18>	@justinmk: title stack is a term feature whereby e.g. nvim could push to stack to save the value, so when it exits it pops the old one to restore
+T 1568048608 18<BjrnLinseGitter[18>	yes, we are using it :)
+T 1568048683 18<LeoNerd18>	Ah ok
+T 1568054073 18<LeoNerd18>	Righty. I don't yet have OSC 52 in libvterm/pangoterm but I at least now have a `tclip` program, which works the same as `xclip` but over OSC 52 to the terminal
+T 1568054075 18<LeoNerd18>	So that's a start
+T 1568054508 18<BjrnLinseGitter[18>	LeoNerd: did libvterm 0.1 change handling of screen resize in anyway? some of the test failures with libvterm 0.1 PR is in tests involving screen resize, but not coloring really.
+T 1568054605 18<BjrnLinseGitter[18>	like, is more of the screen cleared by libvterm after resize than before?
+T 1568054649 18<BjrnLinseGitter[18>	some regions are unexpectedly filled with `bg=black, fg=black` which used to have text (from before the resize) before
+T 1568055750 18<blueyed18>	@BjrnLinse have you tried git-bisecting this in libvterm?
+T 1568056254 18<BjrnLinseGitter[18>	blueyed: I would like to hear LeoNerd first if it is an intentional change
+T 1568056434 18<BjrnLinseGitter[18>	seems we upgraded to master recently in that PR and not to 0.1, maybe that is wrong
+T 1568056467 18<BjrnLinseGitter[18>	i e we are getting some of the reflow changes which will require further nvim changes. Nvim 0.4 should target libvterm 0.1
+T 1568056875 18<LeoNerd18>	@bfredl: Shouldn't be intentional, no. Any areas of the screen that aren't affected by resize (i.e. within the min of old/new rows and cols) should remain as they were
+T 1568056995 18<BjrnLinseGitter[18>	LeoNerd: seems we were using an arbitrary master version and not 0.1. Restarted the build with 0.1.
+T 1568057054 18<BjrnLinseGitter[18>	the memory leak is still there though
+T 1568057060 18<LeoNerd18>	Ooh memoryleak?
+T 1568057292 18<BjrnLinseGitter[18>	I'll try to get a proper traceback. currently the traceback ends in vterm.c:default_malloc ..
+T 1568057375 18<LeoNerd18>	Hmmm
+T 1568057681 18<BjrnLinseGitter[18>	yah, adding -g to libvterm build didn't work, still no traceback
+T 1568057695 18<BjrnLinseGitter[18>	maybe a frame pointer got -fomited somewhere..
+T 1568058104 18<BjrnLinseGitter[18>	righty, apart from the leak, the main issue is that `vterm_state_set_palette_color(state, i, &color)` doesn't seem to work. We still get the builtin color back, not the changed one.
+T 1568058140 18<BjrnLinseGitter[18>	(but all issues regarding resize were fixed)
+T 1568058207 18<LeoNerd18>	Hrm.. for what value of i? I.e. <16 or >=16 ?
+T 1568058285 18<BjrnLinseGitter[18>	color 3. Maybe that is not kosher?
+T 1568058319 18<LeoNerd18>	Offhand I forget entirely; let me look
+T 1568058439 18<LeoNerd18>	0..15 are the only colours you *can* set; so colour 3 should be fine
+T 1568058457 18<BjrnLinseGitter[18>	mm
+T 1568058535 18<LeoNerd18>	The palette is stored per vterm object, so make sure you're calling it on the correct one
+T 1568058542 18<LeoNerd18>	But otherwise, this appears like it should work
+T 1568058551 18<LeoNerd18>	also pangoterm uses it.. let me see a moment if it works there
+T 1568058597 18<LeoNerd18>	Yup, appears to be working fine
+T 1568058611 18<BjrnLinseGitter[18>	yep, it is on the state of the instance.
+T 1568058632 18<LeoNerd18>	Are you using 0.1 release?
+T 1568058640 18<BjrnLinseGitter[18>	yes.
+T 1568058651 18<LeoNerd18>	Hmm.. soyeah, that ought to be working :/
+T 1568058683 18<LeoNerd18>	At this point I'd be tempted to fprintf i and color.{r,g,b} at that point in your code to see what you were setting
+T 1568058712 18<BjrnLinseGitter[18>	I will try manually and debug and stuff tomorrow :)
+T 1568058739 18<LeoNerd18>	OK
+T 1568058857 18<BjrnLinseGitter[18>	actually colors are broken even before that. all my <16 colors are bright cyan...
+T 1568058908 18<LeoNerd18>	Yeah that's probably an API mismatch
+T 1568058926 18<LeoNerd18>	That happened to me when I updated libvterm but hadn't yet recompiled pangoterm, so it was still using the old struct layout
+T 1568058948 18<BjrnLinseGitter[18>	rgb colors works though
+T 1568058962 18<LeoNerd18>	Hmmmm
+T 1568058970 18<LeoNerd18>	Are you invoking the right bits of API?
+T 1568058993 18<BjrnLinseGitter[18>	we shouldn't use cell.bg.rgb.red, cell.bg.rgb.green, cell.bg.rgb.blue for a cell with palette color?
+T 1568059000 18<LeoNerd18>	Ah, no. :)
+T 1568059021 18<LeoNerd18>	Those don't get set; they're a union between that and the palette index.
+T 1568059035 18<LeoNerd18>	You need to call `vterm_state_convert_color_to_rgb()` on it (which is a no-op if already RGB)
+T 1568059046 18<BjrnLinseGitter[18>	we only use `VTERM_COLOR_IS_INDEXED` in the cterm branch :P
+T 1568059078 18<BjrnLinseGitter[18>	lemme try
+T 1568059181 18<LeoNerd18>	Ahyes, I suspect you'll get "some sort of cyan" because r/g/b is unioned with the index. index is likely a small value, so that collides with the red channel and makes it almost zero, leaving green and blue to whatever inmemory junk had been there before
+T 1568059818 18<BjrnLinseGitter[18>	pushed a fix. Seem to be other issues though, I guess we should be using VTERM_COLOR_IS_DEFAULT_FG also for rgb colors?
+T 1568059857 18<BjrnLinseGitter[18>	I e to detect if the color was actually unset and not incidentally the same as Normal colors.
+T 1568059863 18<LeoNerd18>	Ah, yes definitely
+T 1568059913 18<LeoNerd18>	Before the conversion, not after. Conversion destroys that flag
+T 1568059928 18<BjrnLinseGitter[18>	indeed.
+T 1568059974 18<BjrnLinseGitter[18>	also the code assumes 'termguicolors' cannot be set after setup... Though this is not a vterm API issue :)
+T 1568060166 18<BjrnLinseGitter[18>	we should also be able to set a bit in the attr struct to TUI that the color is indexed, for pass through of palette colors even in true color mode
+T 1568060277 18<LeoNerd18>	Mm?
+T 1568060359 18<BjrnLinseGitter[18>	I mean, if the program inside `:terminal` uses the 255 or 16 palette, we can pass through these colors unmodified as indicies, even if the rest of nvim uses rgb colors.
+T 1568060402 18<LeoNerd18>	Yah, that was the original idea
+T 1568060408 18<LeoNerd18>	This API is for youguys :) pangoterm doesn't care
+T 1568060906 18<BjrnLinseGitter[18>	now everything is working except for a nvim-layer issue and that mysterious leak of 64 bytes in every nvim instance.
+T 1568060929 18<BjrnLinseGitter[18>	maybe we are initializing some "global" state ahead of time somewhere, and doesn't deinitialize it.
+T 1568061110 18<BjrnLinseGitter[18>	no, it is 64 bytes that are leaked between every `vterm_new` and `vterm_free`
+T 1568061658 18<BjrnLinseGitter[18>	LeoNerd: vt->tmpbuffer is allocated but never freed
+T 1568061832 18<LeoNerd18>	Ahh oops
+T 1568061844 18<LeoNerd18>	That sounds like an easy fix anyhow
+T 1568061877 18<BjrnLinseGitter[18>	yeah, we can fix it a neovim/libvterm branch for now
+T 1568061890 18<BjrnLinseGitter[18>	it mostly matters for testing with ASAN
+T 1568061921 18<LeoNerd18>	I expect the fix is just  if(vt->tmpbuffer) vterm_allocator_free(vt, vt->tmpbuffer);  at the right place
+T 1568061942 18<ShalokShalom18>	do i get this right: lua5.1 is required, 5.2 is not possible?
+T 1568061969 18<BjrnLinseGitter[18>	lua5.1 is supported
+T 1568061980 18<BjrnLinseGitter[18>	lua5.2 might work by accident, but is not supported, and might break any plugin
+T 1568062011 18<ShalokShalom18>	https://github.com/neovim/neovim/blob/master/CMakeLists.txt#L382
+T 1568062018 18<ShalokShalom18>	thats bad
+T 1568062048 18<ShalokShalom18>	could you just offer an AppImage or such?
+T 1568062048 18<BjrnLinseGitter[18>	lua x.y is not backwards compatible
+T 1568062052 18<ShalokShalom18>	sad
+T 1568062068 18<ShalokShalom18>	we use 5.2 since that is what every app in our repo can use
+T 1568062083 18<BjrnLinseGitter[18>	if you are used to semver, think of lua 5.1,5.2,5.3  as if it were lua 6.0, 7.0, 8.0
+T 1568062109 18<ShalokShalom18>	mvp, wireshark pretty much any lua app has different support ranges
+T 1568062123 18<ShalokShalom18>	boah, thats super annoying
+T 1568062131 18<ShalokShalom18>	even more messed up as Python
+T 1568062148 18<BjrnLinseGitter[18>	and we do offer an appimage, with luajit statically linked in :)
+T 1568062153 18<ShalokShalom18>	oh fine
+T 1568062163 18<ShalokShalom18>	hope I can build fvim with that :p
+T 1568062168 18<BjrnLinseGitter[18>	should be on releases page
+T 1568062270 18<ShalokShalom18>	thanks
+T 1568062338 18<BjrnLinseGitter[18>	no problem!
+T 1568064271 18<ShalokShalom18>	hi
+T 1568064317 18<ShalokShalom18>	your CMakeList/Makefile looks for lua in /usr/bin/lua while its /usr/bin/lua5.1
+T 1568064432 18<ShalokShalom18>	 /usr/bin/lua is our distributions standard lua5.2
+T 1568064560 18<JustinMKeyesGitt18>	what change do you suggest?
+T 1568064644 18<ShalokShalom18>	No, I do not suggest a change
+T 1568064650 18<ShalokShalom18>	I ask for one solution
+T 1568064665 18<ShalokShalom18>	How to change it locally
+T 1568064813 18<JustinMKeyesGitt18>	this is handled by https://github.com/neovim/neovim/blob/master/cmake/FindLua.cmake , and typically you tell it where to find lua via `LUA_INCLUDE_DIR`
+T 1568064846 18<ShalokShalom18>	oh, a build trigger?
+T 1568064848 18<ShalokShalom18>	thanks a lot
+T 1568064888 18<JustinMKeyesGitt18>	see also https://github.com/justinmk/neovim/blob/e5d5fc0857935b4f67058a6a2dcfbc573331e3f6/CMakeLists.txt#L381-L391
+T 1568065022 18<ShalokShalom18>	well, 5.2 and 5.1 are both in the same dir
+T 1568065033 18<ShalokShalom18>	the issue is, that it assumes that lua = 51
+T 1568065049 18<JustinMKeyesGitt18>	what is "it"?
+T 1568065052 18<ShalokShalom18>	Uploaded file: https://uploads.kiwiirc.com/files/5a5e0ac6ea70c682468c7b31a603e352/Screenshot_20190909_233718.png
+T 1568065058 18<JustinMKeyesGitt18>	SuSE uses lua 5.2 for nvim package
+T 1568065068 18<ShalokShalom18>	cmake
+T 1568065079 18<ShalokShalom18>	Ah yeah?
+T 1568065092 18<ShalokShalom18>	I just got told this is unsupported, so I rebuild 4 packages :P
+T 1568065097 18<JustinMKeyesGitt18>	lua 5.2 "should" work, since suse uses it and we have their patches AFAIK
+T 1568065105 18<ShalokShalom18>	aha, I see
+T 1568065107 18<ShalokShalom18>	-.-
+T 1568065110 18<ShalokShalom18>	thanks a lot
+T 1568065128 18<JustinMKeyesGitt18>	it is unsupported in that we don't test against it...
+T 1568065129 18<ShalokShalom18>	http://dpaste.com/31V0VKT#line-93
+T 1568065133 18<ShalokShalom18>	i see
+T 1568065149 18<ShalokShalom18>	i guess I have made a packaging issue here
+T 1568065170 18<ShalokShalom18>	lpeg is also build by myself
+T 1568065236 18<ShalokShalom18>	can you see the issue?
+T 1568065575 18<JustinMKeyesGitt18>	you need 'lpeg', 'bit', etc. packages available to whatever Lua interpreter you're targeting. Via either LuaRocks or your system package manager.
+T 1568065592 18<JustinMKeyesGitt18>	Maybe mcepl can say how they handle this on suse
+T 1568065598 18<ShalokShalom18>	i build them
+T 1568065602 18<ShalokShalom18>	lpeg at least
+T 1568065610 18<mcepl18>	JustinMKeyesGitt: what's the question?
+T 1568065616 18<ShalokShalom18>	bit is also not in the pkgbuild of arch and it seems to work
+T 1568065621 18<JustinMKeyesGitt18>	great. does require('lpeg') work in the lua repl?
+T 1568065625 18<ShalokShalom18>	mcepl see me link
+T 1568065628 18<ShalokShalom18>	sec
+T 1568065647 18<JustinMKeyesGitt18>	mcepl: are you packainge lpeg/bit/etc? Or is bit not needed on lua 5.2?
+T 1568065656 18<JustinMKeyesGitt18>	*packaging
+T 1568065680 18<mcepl18>	we use system lua packages from openSUSE
+T 1568065683 18<ShalokShalom18>	they build it on 5.1
+T 1568065688 18<mcepl18>	this is the standard openSUSE neovim SPEC https://build.opensuse.org/package/view_file/editors/neovim/neovim.spec?expand=1
+T 1568065718 18<mcepl18>	this (currently unsucesful) attempt to make universal packages both for openSUSE and Fedora/RHEL https://build.opensuse.org/package/view_file/home:mcepl:neovim/neovim/neovim.spec?expand=1
+T 1568065731 18<ShalokShalom18>	Uploaded file: https://uploads.kiwiirc.com/files/79a9457d6fd6eaaaf3696ed4ce57bf7b/Screenshot_20190909_234838.png
+T 1568065744 18<JustinMKeyesGitt18>	mcepl: for some reason i thought you were using lua 5.2, but i see lua51 in that spec
+T 1568065745 18<ShalokShalom18>	thanks
+T 1568065749 18<mcepl18>	yes, we build on 5.1 (preferably LuaJIT), but on Fedora we built with their system Lua (which is 5.3, I believe)
+T 1568065755 18<ShalokShalom18>	thats such a mess
+T 1568065790 18<mcepl18>	ShalokShalom: true for the multi-platform SPEC, but I think the system one is more or less reasonable.
+T 1568065802 18<mcepl18>	(patches welcome!)
+T 1568065811 18<JustinMKeyesGitt18>	it's a mess because distros are weird about Lua, and can't seem to fathom having multiple versions on the same system
+T 1568065812 18<ShalokShalom18>	our distro uses 5.2
+T 1568065819 18<mcepl18>	JustinMKeyesGitt: I had to be multi-Lua because of Fedora
+T 1568065834 18<ShalokShalom18>	I just spend a bit to build all for 5.1, just to discover that it "should" work anyways
+T 1568065847 18<mcepl18>	JustinMKeyesGitt: openSUSE is perfectly capable of havbing mutliple Luas on one system.
+T 1568065849 18<ShalokShalom18>	why not write the CMake in such a way that all three are working
+T 1568065857 18<mcepl18>	(everything is prefixed)
+T 1568065870 18<ShalokShalom18>	that would make it much more accessible
+T 1568065878 18<JustinMKeyesGitt18>	ShalokShalom: because Lua 5.1 is  a different language than Lua 5.2/5.3
+T 1568065882 18<ShalokShalom18>	i know
+T 1568065889 18<ShalokShalom18>	it seems you build all three anyways
+T 1568065902 18<mcepl18>	ShalokShalom: Lua is (unfortunately) not like Python, Perl, or any other reasonable language in this regard.
+T 1568065902 18<ShalokShalom18>	and other distros will do so as well
+T 1568065918 18<ShalokShalom18>	Python is reasonable in this regard?
+T 1568065937 18<mcepl18>	Yes, Python 3 is more or less compatible for 9 minor versions these days.
+T 1568065952 18<mcepl18>	and there are pretty sucessful dual-Python programs.
+T 1568065955 18<ShalokShalom18>	aha.. these days
+T 1568065955 18<JustinMKeyesGitt18>	We will eventually side-step the issue by inlining whatever Lua modules we want, and avoiding distro's packages entirely.
+T 1568065969 18<ShalokShalom18>	while it was a major break back then?
+T 1568065978 18<mcepl18>	ShalokShalom: and it was always prefectly compatible for all Python 2:* versions.
+T 1568065981 18<ShalokShalom18>	JustinMKeyesGitt that would be awesome
+T 1568065983 18<JustinMKeyesGitt18>	Lua is an embedded language, and using a system packager for it is pointless
+T 1568066007 18<ShalokShalom18>	that would be double awesome, since then I can put neovim easier into the community repos
+T 1568066007 18<mcepl18>	JustinMKeyesGitt: that is not awesome ... we will have to unbundle these packages anyway (I will do it for lpeg certainly)
+T 1568066041 18<JustinMKeyesGitt18>	mcepl: that makes no sense, that would be like "unbundling" buffer.c
+T 1568066054 18<JustinMKeyesGitt18>	or various Vimscript runtime plugins
+T 1568066093 18<ShalokShalom18>	Lua should not be a hard depend, anyways
+T 1568066094 18<JustinMKeyesGitt18>	we already inline the "inspect" module, as well as modules that we've written ourselves. There's no reason lpeg can't be treated the same
+T 1568066107 18<ShalokShalom18>	or is it system-critical?
+T 1568066110 18<JustinMKeyesGitt18>	what are you basing that on?
+T 1568066119 18<JustinMKeyesGitt18>	core code is written in Lua
+T 1568066124 18<ShalokShalom18>	oh i see
+T 1568066127 18<ShalokShalom18>	then ofc
+T 1568066128 18<mcepl18>	will you guarantee timely security updates for all embedded components? Where you are around any distributrion when fixing a security bug for embedded library?
+T 1568066166 18<BjrnLinseGitter[18>	mcepl: we are distributing fully statically linked binaries today :)
+T 1568066172 18<mcepl18>	(I was around Debian when the legendary libz bug happened .... )
+T 1568066175 18<JustinMKeyesGitt18>	security updates for Lua modules?
+T 1568066230 18<JustinMKeyesGitt18>	these will be treated like any security problem in Vim/Nvim: we will backport patches to the stable tag
+T 1568066235 18<mcepl18>	BjrnLinseGitter[: yes, it is a fashion these days to have statically linked binaries ... it will take many high-profile security dissasters before this fashion goes away.
+T 1568066238 18<ShalokShalom18>	i would hearty welcome such changes
+T 1568066275 18<BjrnLinseGitter[18>	mcepl: distributing a nvim binary that people can run at all seems like a good idea.
+T 1568066279 18<ShalokShalom18>	mcepl ppl should just not code stuff in imperative style, which could be functional..
+T 1568066298 18<BjrnLinseGitter[18>	the update frequency is like, literally nightly
+T 1568066300 18<ShalokShalom18>	BjrnLinseGitter[: perfect, imho
+T 1568066307 18<BjrnLinseGitter[18>	and stable whenever there is a critical bug
+T 1568066318 18<mcepl18>	BjrnLinseGitter[: yes, it is a good copmromise forthose who are not well maintained platforms (e.g., Windows)
+T 1568066353 18<BjrnLinseGitter[18>	and for the looong tail of various random linux distros (as long as it is glibc at least)
+T 1568066387 18<ShalokShalom18>	like ours
+T 1568066414 18<mcepl18>	BjrnLinseGitter[: yes, on not well maintained platforms
+T 1568066424 18<mcepl18>	but it is a compromise
+T 1568066428 18<ShalokShalom18>	especially since maintaining thousands of own packages lets you think twice if 12 new dependencies are worth one neovim
+T 1568066442 18<ShalokShalom18>	especially since vim offers similar benefits for most
+T 1568066459 18<ShalokShalom18>	mcepl all is a compromise
+T 1568066464 18<mcepl18>	and yes, hopefuilly, neovim is not usually an Internet facing server
+T 1568066468 18<BjrnLinseGitter[18>	mcepl: just as dynamic linking is compromise. It works well until it fails miserably.
+T 1568066518 18<mcepl18>	(although, I am waiting for somebody to make aweb server in VimScript)
+T 1568066539 18<ShalokShalom18>	I think the answer to that is obviously Flatpak or so
+T 1568066542 18<ShalokShalom18>	Habitat maybe
+T 1568066547 18<BjrnLinseGitter[18>	mcepl: some guys at vim-jp (japanese community) are working on this
+T 1568066557 18<ShalokShalom18>	then you can eat the Cake and .. eat it again
+T 1568066557 18<BjrnLinseGitter[18>	or at least did a year ago, for the last vimconf
+T 1568066590 18<mcepl18>	ShalokShalom: Flatpak is exactly the same as a statically linked binary, who will take of its compoentns?
+T 1568066623 18<ShalokShalom18>	i mean in terms of isolation
+T 1568066634 18<mcepl18>	*tale care of its copmonents
+T 1568066656 18<mcepl18>	perhaps (and SELinux)
+T 1568066725 18<ShalokShalom18>	And Habitat has a server
+T 1568066730 18<ShalokShalom18>	habitat.sh
+T 1568066735 18<BjrnLinseGitter[18>	Sometimes component caretaking breaks stuff. Like pango 1.44 shared library update broke existing apps using pango for monospace rendering
+T 1568066738 18<ShalokShalom18>	in Rust
+T 1568066848 18<mcepl18>	yes, and some maintainers idiots (my current hot candidates are pytest maintainers breaking API every other version)
+T 1568066854 18<mcepl18>	*are idiots
+T 1568066919 18<BjrnLinseGitter[18>	now, there should be a magic incantation to link pangoterm to the .so for pango 1.43, while keeping the rest of the system using 1.44 ...
+T 1568066933 18<LeoNerd18>	That's what -R is for
+T 1568066940 18<LeoNerd18>	and setting LD_RUNPATH on the resultant binary
+T 1568066940 18<BjrnLinseGitter[18>	Though pinning the system wide package to 1.43 works. for now.
+T 1568066974 18<BjrnLinseGitter[18>	I already got it to work with LD_LIBRARY_PATH, but that is ugly.
+T 1568067006 18<BjrnLinseGitter[18>	I would need to reset it in the shell inside pangoterm, so that it is not picked up by other gtk apps
+T 1568067263 18<ShalokShalom18>	is this thing with inlined lua packages on track?
+T 1568067709 18<JustinMKeyesGitt18>	there's no ticket for it currently
+T 1568068873 18<unixcat18>	does anyone here using SpaceVim know how to set autoindent and smartindent in init.toml?
+T 1568068890 18<unixcat18>	The SpaceVim channel on Freenode and Gitter both seem to be dead.
+T 1568069009 18<ShalokShalom18>	thanks that you made me aware of SpaceVim
+T 1568069017 18<unixcat18>	np :)
+T 1568073696 18<ShalokShalom18>	Is anybody interested in a full blown IDE with 100% Vim support?
+T 1568073704 18<ShalokShalom18>	You could help here: https://bugreports.qt.io/browse/QTCREATORBUG-20743
+T 1568074109 18<JustinMKeyesGitt18>	I'm certainly interested, but I don't know what you expect by linking to that issue. https://github.com/sassanh/qnvim is the main repo
+T 1568074141 18<JustinMKeyesGitt18>	Also personally I'm more interested in IntelliJ/VSCode/VS/Eclipse integration.
+T 1568074275 18<astronavt18>	rip sublime developer community :(
+T 1568074293 18<astronavt18>	but vs code would be a great frontend for neovim
+T 1568079628 18<JustinMKeyesGitt18>	@bfredl should `bufpos + relative!=win` be an error?
+T 1568080679 18<henninb18>	i have installed the plugin for prettier for nvim, is there a way to disable markdown for the plugin. when I save a large markdown file prettier pegs my cpu.
+T 1568082854 18<HirokazuHataGitt18>	If you use vim-prettier, you can disable markdown if you reject ‘markdown’ in setting.
+T 1568082855 18<HirokazuHataGitt18>	https://github.com/prettier/vim-prettier#install
+T 1568103680 20*	Disconnected (20)
+T 1568103704 19*	Now talking on 22#neovim
+T 1568103704 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568103704 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568105689 18<daGrevis18>	how can I revert the behaviour of gx mapping?
+T 1568105721 18<daGrevis18>	it opened the link under cursor in BROWSER. now it tries to download the content of link first and only then in opens saved page locally.
+T 1568106052 18<daGrevis18>	https://github.com/vim/vim/issues/4738
+T 1568111203 18<ashfinal18>	:help fold
+T 1568148708 20*	Disconnected (20)
+T 1568148732 19*	Now talking on 22#neovim
+T 1568148732 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568148732 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568193167 20*	Disconnected (20)
+T 1568193192 19*	Now talking on 22#neovim
+T 1568193192 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568193192 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568198957 18<mcepl18>	HirokazuHataGitt: do not be sorry, thank you very much (partially, I had another problem that blooming python-language-server doesn't work with too new python-jedi).
+T 1568199024 18<mcepl18>	HirokazuHataGitt: could you advise on proper form of LSPRename function (https://is.gd/ytXmoh is apparently wrong), please?
+T 1568201344 18<ShalokShalom18>	hi there
+T 1568201425 18<ShalokShalom18>	your trigger LUA_INCLUDE_DIR=/usr/bin/ is supposed to switch the lua directory
+T 1568201445 18<ShalokShalom18>	sadly, all my lua versions life in the same directory, so how to choose 5.1 specifically?
+T 1568201523 18<BjrnLinseGitter[18>	something like `LUA_INCLUDE_DIR=/usr/include/lua5.1/` ?
+T 1568201544 18<ShalokShalom18>	its in usr/bin
+T 1568201551 18<BjrnLinseGitter[18>	both lua.h cannot literally be in the same directory..
+T 1568201553 18<ShalokShalom18>	no separate folder
+T 1568201568 18<ShalokShalom18>	and how to choose which bin?
+T 1568201593 18<BjrnLinseGitter[18>	libraries can be in the same folder, but LUA_INCLUDE_DIR sounds like the dir for .h files
+T 1568201631 18<ShalokShalom18>	i dont know
+T 1568201667 18<BjrnLinseGitter[18>	LUA_INCLUDE_DIR should literally be the dir where lua.h is present (looking at our `FindLua.cmake` )
+T 1568201667 18<ShalokShalom18>	Neovim looks up in /usr/bin
+T 1568201704 18<ShalokShalom18>	Some other person in this channel told me this is the right trigger to manipulate the binary
+T 1568201719 18<BjrnLinseGitter[18>	in /usr/bin it would find a `lua` or `luajit` binary in order to run our lua build scripts, it is not the same thing
+T 1568201737 18<ShalokShalom18>	Uploaded file: https://uploads.kiwiirc.com/files/2b5b4c53944afa6e8846117930abc4b8/pasted.txt
+T 1568201752 18<ShalokShalom18>	This is exactly what I say
+T 1568201765 18<BjrnLinseGitter[18>	we even specifically fixed our build scripts to work with at least lua 5.2, even if nvim binary itself is expected to link to lua 5.1
+T 1568201797 18<ShalokShalom18>	So?
+T 1568201798 18<ShalokShalom18>	When?
+T 1568201802 18<ShalokShalom18>	Yesterday?
+T 1568201830 18<BjrnLinseGitter[18>	but what is your lua 5.1 binary located? `/usr/bin/lua5.1` ?
+T 1568201893 18<ShalokShalom18>	yes
+T 1568201910 18<BjrnLinseGitter[18>	I think it is `LUA_PRG` env var
+T 1568201937 18<BjrnLinseGitter[18>	so `LUA_PRG` should be set to `/usr/bin/lua5.1`,
+T 1568202033 18<ShalokShalom18>	could you help me with the exact command?
+T 1568202034 18<ShalokShalom18>	CMake Error: The source directory "/home/joe/Dokumente/Packages/neovim/src/-LUA_PRG=/usr/bin/lua5.1" does not exist.
+T 1568202061 18<ShalokShalom18>	Uploaded file: https://uploads.kiwiirc.com/files/2d3e67385951a31a129af52f43694039/Screenshot_20190911_134048.png
+T 1568202084 18<BjrnLinseGitter[18>	Missing a "D" after the "-" there
+T 1568202093 18<ShalokShalom18>	ok
+T 1568202106 18<ShalokShalom18>	D stands for what?
+T 1568202117 18<ShalokShalom18>	I am not very used with building
+T 1568202129 18<BjrnLinseGitter[18>	change env var
+T 1568202143 18<ShalokShalom18>	Same error as before
+T 1568202146 18<ShalokShalom18>	5.1 not found
+T 1568202168 18<BjrnLinseGitter[18>	though as your pkgbuild depends on "luajit", you could use "/usr/bin/luajit"
+T 1568202183 18<ShalokShalom18>	ok
+T 1568202254 18<ShalokShalom18>	seems to build ^^
+T 1568202419 18<ShalokShalom18>	It gives me some warnings
+T 1568202433 18<ShalokShalom18>	One is that there is no backup file in the packet: etc/xdg/nvim/sysinit.vim
+T 1568202454 18<ShalokShalom18>	wohee it works :D
+T 1568202458 18<ShalokShalom18>	thanks a lot
+T 1568202472 18<BjrnLinseGitter[18>	no problem :)
+T 1568202491 18<BjrnLinseGitter[18>	did you base it on the existing AUR pkgbuild?
+T 1568202505 18<BjrnLinseGitter[18>	etc/xdg/nvim/sysinit.vim is not something that has been changed recently
+T 1568202542 18<ShalokShalom18>	yes, I did base it on the existing AUR pkgbuild
+T 1568202559 18<ShalokShalom18>	Its just a totally different, independent distribution
+T 1568202563 18<ShalokShalom18>	So I had to port it
+T 1568202568 18<ShalokShalom18>	And I am very bad at it :D
+T 1568202594 18<ShalokShalom18>	So it is supposed to work with 5.2 as well=
+T 1568202609 18<ShalokShalom18>	Since that would need less packages in the user repository
+T 1568202620 18<BjrnLinseGitter[18>	I don't have this etc/xdg/nvim/sysinit.vim file either, probably nothing to worry about
+T 1568202622 18<ShalokShalom18>	I will build fvim in the end
+T 1568202625 18<ShalokShalom18>	ok, fine
+T 1568202628 18<ShalokShalom18>	thanks
+T 1568202631 18<BjrnLinseGitter[18>	but if you already have luajit then use that
+T 1568202643 18<ShalokShalom18>	sure
+T 1568202652 18<ShalokShalom18>	luajit is not running on 5.2?
+T 1568202673 18<ShalokShalom18>	hnn, ah you mean it dont run on 5.1 right now?
+T 1568202676 18<mcepl18>	ShalokShalom: LuaJIT is an alternative interpreter compatible with 5.1
+T 1568202678 18<BjrnLinseGitter[18>	5.1 + a few extensions from 5.2
+T 1568202685 18<ShalokShalom18>	I see.
+T 1568202696 18<ShalokShalom18>	So I dont need to build 5.2
+T 1568202701 18<ShalokShalom18>	Just luajit?
+T 1568202707 18<BjrnLinseGitter[18>	I think it is binary compatible with lua51-xxx binary packages
+T 1568202711 18<ShalokShalom18>	Since that one is already in the userreps, that would be awesome
+T 1568202715 18<BjrnLinseGitter[18>	yes.
+T 1568202716 18<ShalokShalom18>	I see, cool ^-^
+T 1568202720 18<ShalokShalom18>	Thats great
+T 1568202797 18<BjrnLinseGitter[18>	just curious, what is this distribution?
+T 1568202816 18<ShalokShalom18>	KaOS
+T 1568202848 18<ShalokShalom18>	Here I link you the website, since there are multiple distros with this name: https://kaosx.us/
+T 1568202851 18<ShalokShalom18>	KDE focused
+T 1568202858 18<ShalokShalom18>	Thanks a lot for helping me :D
+T 1568202862 18<BjrnLinseGitter[18>	I see
+T 1568202876 18<ShalokShalom18>	:)
+T 1568202898 18<ShalokShalom18>	I go on and build fvim now, has anybody tried this one yet?
+T 1568202908 18<ShalokShalom18>	Or the Qt Creator implementation?
+T 1568202965 18<BjrnLinseGitter[18>	no, I only use gtk UI:s (and gtk terminals) :)
+T 1568203101 18<ShalokShalom18>	I see ^^
+T 1568203130 18<ShalokShalom18>	thanks a lot for helping me
+T 1568203143 18<BjrnLinseGitter[18>	you're welcome :)
+T 1568203171 18<ShalokShalom18>	do you know the Dirk Hohndel talk?
+T 1568203189 18<ShalokShalom18>	the from gtk to qt https://www.youtube.com/watch?v=gGZyVSOnqm0
+T 1568203270 18<BjrnLinseGitter[18>	I've heard about it. But somehow gtk works better in practice.
+T 1568203288 18<BjrnLinseGitter[18>	C rather than C++ seems nice when binding to other languages
+T 1568203300 18<ShalokShalom18>	I see
+T 1568203300 18<LeoNerd18>	+1
+T 1568203313 18<ShalokShalom18>	QT has the burden that it gets badly integrated
+T 1568203322 18<ShalokShalom18>	Most distros put it on top of a GTK stack
+T 1568203329 18<ShalokShalom18>	That this cant work is obvious
+T 1568203347 18<BjrnLinseGitter[18>	like compiling gnvim (using rust-gtk) takes less than a minute, but go-neovim took 40+ min just to build go-qt bindings.
+T 1568203367 18<BjrnLinseGitter[18>	And I think that is more on qt than go....
+T 1568203391 18<ShalokShalom18>	I guess thats more about this specific implementation
+T 1568203452 18<BjrnLinseGitter[18>	well it needs to compile c++ code for every c++ function in qt, because Go does not have a c++ ffi, nor does most other languages.
+T 1568203477 18<ShalokShalom18>	Ah, you use QtWidgets
+T 1568203480 18<BjrnLinseGitter[18>	things like https://github.com/JuliaInterop/Cxx.jl is yet an exception, not the norm :)
+T 1568203501 18<ShalokShalom18>	QML is JavaScript
+T 1568203523 18<ShalokShalom18>	QtWidgets is not very much used these days
+T 1568203542 18<BjrnLinseGitter[18>	well you need to ask gonvim about that.
+T 1568203544 18<ShalokShalom18>	No hardware acceleration, no mobile support and the languages
+T 1568203583 18<BjrnLinseGitter[18>	if you write an app in rust or go, maybe you don't want to write a lot of js in addition, unless you have choosen to go the Electron Way.
+T 1568203596 18<ShalokShalom18>	The binding allows for both
+T 1568203602 18<ShalokShalom18>	And its dev is super nice ^^
+T 1568203731 18<ShalokShalom18>	Yeah, it is written in Widgets
+T 1568204112 18<ShalokShalom18>	BjrnLinseGitter[ You dont need to write in JS
+T 1568204126 18<ShalokShalom18>	I am just saying it is a completely different integration.
+T 1568204463 18<ShalokShalom18>	https://en.wikipedia.org/wiki/List_of_language_bindings_for_Qt_5
+T 1568204656 18<BjrnLinseGitter[18>	ShalokShalom: right but either way you need to write code in the target language or a FFI to the target language
+T 1568204689 18<BjrnLinseGitter[18>	perhaps the QML API surface is smaller, but then it might miss some functionality of qtwidget that gonvim wants.
+T 1568204705 18<ShalokShalom18>	It is declarative, in the first place
+T 1568204725 18<ShalokShalom18>	Which also means more functional/shorter
+T 1568204729 18<ShalokShalom18>	As functional code tends to be
+T 1568205897 18<BenoitdeChezelle18>	LeoNerd: I have a `alias :q=exit` in my shell to avoid this kind of problem 😁
+T 1568206737 18<LeoNerd18>	:)
+T 1568209621 19*	Now talking on 22#neovim
+T 1568209621 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568209621 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568211224 18<DanielReillyGitt18>	hi, i'm using neovim to program in rust.  does anyone know how to prevent `<` character from automatically inserting/pairing a `>` character?
+T 1568211539 18<KillTheMuleGitte18>	@d_k_reilly_twitter (Neo)vim does not do this automatically, check your plugins
+T 1568212157 18<DanielReillyGitt18>	@KillTheMule thanks, seems to only happen for rust, and i have no rust specific addons, i'll look further.  ty
+T 1568212408 19*	Now talking on 22#neovim
+T 1568212408 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568212408 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568212532 18<crose18>	When I use Nvim as a manpager, it displays an error message for some commands.
+T 1568212536 18<crose18>	For example, `$ MANPAGER='nvim +Man!' man git-credential-cache` makes Nvim print `man.vim: command error (7) man -w git-credential-cac: No manual entry for git-credential-cac`.
+T 1568212540 18<crose18>	Is this a known issue?
+T 1568214539 18<ShalokShalom18>	Who wants Vim in a full IDE?
+T 1568214541 18<ShalokShalom18>	https://github.com/sassanh/qnvim/issues/11
+T 1568215788 18<mcepl18>	<ShalokShalom> QT has the burden that it gets badly integrated
+T 1568215788 18<mcepl18>	<ShalokShalom> Most distros put it on top of a GTK stack
+T 1568215808 18<mcepl18>	ShalokShalom: that sounds very strange to me. Qt quite definitively is not on the top of Gtk.
+T 1568215830 18<ShalokShalom18>	The GTK stack here is the base system, which is optimized for GTK
+T 1568215856 18<mcepl18>	OK, this so much doesn't make sense, that I will rather let it be.
+T 1568215897 18<ShalokShalom18>	OK, imagine thousands of packages build on top of thousands of packages, since this is what a distribution is
+T 1568215913 18<ShalokShalom18>	GTK plus GNOME on top of the rest of the system
+T 1568215918 18<ShalokShalom18>	You optimize that
+T 1568215935 18<ShalokShalom18>	Then you remove Gnome, put KDE on top and... what?
+T 1568215948 18<ShalokShalom18>	You have the base system already adjusted towards Gnome
+T 1568215952 18<ShalokShalom18>	You cannot change that
+T 1568215972 18<ShalokShalom18>	This is why every distribution focused on one Toolkit and desktop environment
+T 1568216026 18<ShalokShalom18>	Instead of building 4, 5, 6 DEs half baked on one base, we build 1 DE, together with a always optimized stable basis. Hope this clears things up :)
+T 1568216297 18<BjrnLinseGitter[18>	gnome seems to work fine on arch, with the arch base being no desktop at all.
+T 1568216322 18<BjrnLinseGitter[18>	not sure what the "optimization" would be, there are apps/libs that work with either gtk/glib/etc or qt?
+T 1568275714 20*	Disconnected (20)
+T 1568275739 19*	Now talking on 22#neovim
+T 1568275739 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568275739 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568279293 18<blueyed18>	Should we recommend reporting bugs at Vim directly in the issue template for when "- `vim -u DEFAULTS` (version: ) behaves differently?" is "no"?
+T 1568279434 18<blueyed18>	@JamesMcCoy I've meant to bump the required version in the PR, but then @BjrnLinse (fixed and) merged it already.
+T 1568279439 18<blueyed18>	(libvterm)
+T 1568282374 20*	Disconnected (20)
+T 1568282398 19*	Now talking on 22#neovim
+T 1568282398 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568282398 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568292894 18<vejetaryenvampir18>	Is there a plugin or setting for async writing via sshfs?
+T 1568293513 18<LeoNerd18>	That would just be async writing in general. `sshfs` is mostly invisible to nvim, because it's just part of the filesystem
+T 1568293543 18<LeoNerd18>	I sometimes have wanted nvim to be able to async write though, because it'd be nice to at least keep control of the cursor and move around and read maybe other files while I wait for the super-slow sshfs-to-other-side-of-the-world to finish
+T 1568293548 18<vejetaryenvampir18>	Yeah, I meant async writing.
+T 1568293557 18<vejetaryenvampir18>	I know there's no relation to sshfs.
+T 1568293558 18<LeoNerd18>	That wouldn't need to be sshfs-specific though. Could be just as helpful on NFS or whatever
+T 1568293586 18<BjrnLinseGitter[18>	write to a /tmp path and issue a `jobstart("scp")` async job? (not the same thing, but should get the job done)
+T 1568293588 18<vejetaryenvampir18>	So, do you have any solutution?
+T 1568293605 18<vejetaryenvampir18>	BjrnLinseGitter[: Sorry, I didn't understand.
+T 1568293616 18<LeoNerd18>	Eh; that entirely defeats the point of sshfs though :)
+T 1568293630 18<LeoNerd18>	Really, nvim just needs to be able to asynchronise writing to the filesystem
+T 1568293637 18<vejetaryenvampir18>	Yeah, I know.
+T 1568293641 18<BjrnLinseGitter[18>	it solves the problem of having it "async", I assumed that was the important part.
+T 1568293644 18<LeoNerd18>	I forget if libuv is around; if so that should be trivial
+T 1568293672 18<LeoNerd18>	If not then in practice it's threadpooling because any other option suckcs :(
+T 1568293679 18<vejetaryenvampir18>	Is there any solution or not? I'm confused.
+T 1568293715 18<BjrnLinseGitter[18>	sure, someone can implement `:&w file` with libuv (I think that is the async task syntax from the workers PR, like `:&grep` )
+T 1568293721 18<LeoNerd18>	I don't fully get the question. There are definitely solutions - a program in general should be able to implement this just fine
+T 1568293734 18<LeoNerd18>	I don't know offhand if nvim has already written the code to allow it, or if someone must first go write it
+T 1568293759 18<BjrnLinseGitter[18>	`:w /tmp/somepath` and `jobstart("scp /tmp/somepath host:/the/real/path")` is the workaround that works now. Judge for yourself if you consider it a solution or not.
+T 1568293773 18<LeoNerd18>	.oO( It's days like today when I want DNIX )
+T 1568293803 18<BjrnLinseGitter[18>	(wrapped in a plugin of course,  I have one myself but using `silent !scp` because network is fast :)
+T 1568293828 18<vejetaryenvampir18>	My network is not fast. :/
+T 1568293864 18<LeoNerd18>	The point is the convenience of just being able to `nvim path/to/file` off the regular filesystem, with tab completion in your shell, then be able to `:w` from nvim
+T 1568293869 18<LeoNerd18>	No having to think about remote paths
+T 1568293888 18<BjrnLinseGitter[18>	sure, but such a plugin could just as well use `jobstart`, this was just what I happened to have
+T 1568293901 18<LeoNerd18>	I could justabout accept having to spell it `:&w` but if I have to think about remote filenames or hosts or whatever, that's too much
+T 1568293986 18<BjrnLinseGitter[18>	tough my usecase/plugin had to think about remote paths anyway, because the operation is really "save and send python file to remote host and source that file inside a :terminal already running ipython on the remote host"
+T 1568293992 18<LeoNerd18>	Would adding it into core nvim be possible? By defualt spell it `:&w` but maybe an option to allow all writes to become async?
+T 1568293992 18<BjrnLinseGitter[18>	it is layers of glue all the way down :)
+T 1568294008 18<BjrnLinseGitter[18>	it is for sure possible
+T 1568294019 18<LeoNerd18>	OK that's less of a question and more a feature-request
+T 1568294024 18<BjrnLinseGitter[18>	someone just has to wrap the async libuv function and make the interface nice.
+T 1568294081 18<LeoNerd18>	https://github.com/neovim/neovim/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+async+write  -- I don't currently see an issue for it
+T 1568294101 18<BjrnLinseGitter[18>	actually `FileWriteCmd` could perhaps do it already, using `:lua vim.loop` :)
+T 1568294137 18<LeoNerd18>	I have no comment to make on how to implement it; just as long as I can `:&w` or maybe `:set asyncwrite | :w`
+T 1568294181 18<BjrnLinseGitter[18>	feel free to make an issue
+T 1568294185 18*	LeoNerd already writing
+T 1568294198 18<LeoNerd18>	I'm just doing that asynchronously while also chatting here  ;)
+T 1568294232 18<BjrnLinseGitter[18>	literal concurrency :]
+T 1568294257 18*	LeoNerd <== who added futures and async/await to Perl, lets not forget ;)
+T 1568294338 18<vejetaryenvampir18>	So, should I open an issue?
+T 1568294357 18<LeoNerd18>	https://github.com/neovim/neovim/issues/11005
+T 1568294380 18<vejetaryenvampir18>	Nice, thanks.
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22#neovim
+T 1568307242 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568307242 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568309438 18<PeppepGitter[m]18>	Hey. I'm trying to set up nvim as an alias in .bash_profile on a Mac. I'm not admin, so I'm using the pre-built binaries. Using alias nvim="./nvim-osx64/bin/nvim"  works, but only in the home folder. I've tried setting the alias to the full path (/Users/username/nvim-osx64/nvim" and "./$HOME/nvim-osx64/bin/nvim" but neither work, I get "-bash: ./Users/myusername/nvim-osx64/bin/nvim: No such file or directory"
+T 1568309480 18<PeppepGitter[m]18>	But "cd $HOME/nvim-osx64/bin" works
+T 1568310975 18<PeppepGitter[m]18>	Nevermind, it worked with zsh. The joys of using a University computer without root, brew etc
+T 1568312206 18<d4218>	If you want absolute path start it with / instead of ./
+T 1568312211 18<d4218>	:v
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22#neovim
+T 1568351773 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568351773 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22#neovim
+T 1568579933 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568579933 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22#neovim
+T 1568585985 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568585985 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22#neovim
+T 1568617535 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568617535 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568618488 18<BjrnLinseGitter[18>	@zgpio you want `-i NONE` then
+T 1568618579 18<zgpioGitter[m]18>	👍
+T 1568619495 18<AntonKochkovGitt18>	Are there any release notes?
+T 1568619812 18<JustinMKeyesGitt18>	release notes are always in the tagged commit message
+T 1568622189 18<AntonKochkovGitt18>	ah, thank you
+T 1568633557 18<segeljaktGitter[18>	:tada:
+T 1568633831 18<boxscape18>	wondering how people can live with editors that create trailing whitespace when you press enter multiple times..
+T 1568633849 18<boxscape18>	(actually not sure if you can turn it on in vim, but I'm glad it doesn't)
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22#neovim
+T 1568641539 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568641539 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22#neovim
+T 1568708607 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568708607 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)
+T 1568708981 18<whereistejas18>	hey, folks! I want neovim to show that it in "normal" mode like it shows that it is in "insert" mode
+T 1568708994 18<whereistejas18>	How do I do that?
+T 1568709888 18<HirokazuHataGitt18>	whereistejas: You can show current vim mode in the statusline.
+T 1568709889 18<HirokazuHataGitt18>	https://stackoverflow.com/questions/45270065/show-mode-in-statusline-in-vim
+T 1568709892 18<BjrnLinseGitter[18>	whereistejas: you could use statusline plugin that show every mode, like lightline
+T 1568709945 18<whereistejas18>	HirokazuHataGitt: BjrnLinseGitter[: I ended up installing vim-airline
+T 1568711090 18<blueyed18>	LeoNerd: are you aware of https://github.com/neovim/neovim/issues/11038?  (there appears to be debug printing with the libvterm 0.1 tarball used by homebrew)
+T 1568711110 18<LeoNerd18>	Ah yeah I saw the issue
+T 1568711114 18<LeoNerd18>	Was just about to look into it
+T 1568711981 18<blueyed18>	LeoNerd: looks like the tarball was not created from a clean working dir?
+T 1568712112 18<blueyed18>	ok, I've seen https://github.com/neovim/neovim/issues/11031#issuecomment-532136373 - thanks for looking into it.
+T 1568712149 18<LeoNerd18>	Yep, a bug in my `make dist` target :(
+T 1568712161 18<LeoNerd18>	Or rather, a bug in my applying it
+T 1568712832 18<LeoNerd18>	libvterm-0.1.1 at http://www.leonerd.org.uk/code/libvterm/
+T 1568713107 18<BjrnLinseGitter[18>	:sparkles:
+T 1568716191 18<blueyed18>	LeoNerd: LeoNerd thanks!  is this pushed to bzr already?  What's you take on switching to Git btw?
+T 1568717776 18<LeoNerd18>	blueyed: It's pushed to my RELEASE-0.1 branch. Currently I've been doing the reflow development work on mainline so not releaseable there yet. I should have done that on a feature branch really.
+T 1568718026 18<blueyed18>	LeoNerd: is this a local branch only thenß]
+T 1568719619 18<LeoNerd18>	blueyed: it's at http://bazaar.leonerd.org.uk/c/libvterm.RELEASE-0.1/
+T 1568719971 18<blueyed18>	LeoNerd: why not (also) on Launchpad?  This would allow to have all the branches in a single repo (I am using https://github.com/felipec/git-remote-bzr).
+T 1568719997 18<blueyed18>	LeoNerd: or do you have a repo with all branches on bazaar.leonerd.org?
+T 1568720008 18<LeoNerd18>	Hmm. Unsure if LP does multiple branches. In any case this is a bit of a one-off special; usually I'd keep releases from mainline and do unstable dev on branches
+T 1568720030 18<LeoNerd18>	bazaar.lou is the primary upstream
+T 1568720041 18<blueyed18>	(not so important I guess, since I can add it as separate remote, but it certainly makes the bzr experience more unpleasant ;))
+T 1568720055 18<LeoNerd18>	It just lives behind my home VDSL line, so I prefer to point external folks at LP for official releases and so on
+T 1568720079 18<LeoNerd18>	Though at this point most folks should be using the release tarballs anyhow
+T 1568720106 18<blueyed18>	..which are still hosted on your vdsl then, no?
+T 1568720138 18<LeoNerd18>	Nope - they're on LP or www.lou which lives on my digitalocean VM
+T 1568720188 18<LeoNerd18>	www.lou is a mirror of home.lou which _does_ live at home. :)
+T 1568738578 18<Research18>	Is there builtin functionality/a plugin for editing remote buffers in nvim?
+T 1568738594 18<Research18>	e.g. opening a buffer over ssh
+T 1568742699 18<doubleloop[m]18>	Research: editing over ssh is implemented in for example in mirror.vim (https://github.com/zenbro/mirror.vim) although this plugin is designed for particular use case
+T 1568742830 18<Research18>	well my goal was to use it for remote note taking
+T 1568742885 18<LeoNerd18>	I usually just use sshfs for that
+T 1568742897 18<LeoNerd18>	Advantage is that it isn't specific to my editor; so any local filesystem tools work just fine
+T 1568743036 18<Research18>	I thought about just having a couple special commands like :NoteAdd and :NoteEdit for quickly managing a handful of notes
+T 1568743086 18<Research18>	LeoNerd, would mounting/unmounting sshfs whenever needed be feasible?
+T 1568743130 18<LeoNerd18>	Hrm, adhoc mount,.. not sure. I usually just start/stop it when required
+T 1568743204 18<BjrnLinseGitter[18>	there is also `:e scp://hostname/path/to/file` (via netrw, included by default)
+T 1568743216 18<LeoNerd18>	Yah, that also exists
+T 1568743219 18<Research18>	It would be nice to implement it so I don't have to think about mounting it first
+T 1568743239 18<LeoNerd18>	Basically you want a per-user automounter for sshfs
+T 1568743242 18<Research18>	oh that sounds really straightforward
+T 1568743284 18<Research18>	I wonder if scp would be easier to just plug in and use since it doesn't need a mount point?
+T 1568743931 18<oats18>	hi there, for anyone using coc.nvim, is there a way to disable linting entirely? I prefer to use ALE for linting, and I don't want them to conflict.
+T 1568744012 18<LeoNerd18>	(It's questions like that which amuse me, about the great variety of terminology in computing projects. Using ALE for linting with coc.)
+T 1568744130 18<oats18>	hehe
+T 1568745010 18<jaawerth18>	oats: it'll depend on which CoC extension/languagueserver you're using. the various coc plugins have their own sets of config options depending on how they were written
+T 1568745024 18<oats18>	jaawerth: ah ok, thanks :)
+T 1568745037 18<jaawerth18>	I haven't put much time into getting them to play nice together, but one gotcha I do know about is https://github.com/neoclide/coc.nvim/wiki/F.A.Q#why-vims-location-list-not-work-sometimes
+T 1568745331 18<Research18>	I know LanguageServer-neovim has a flag for disabling all linting
+T 1568745470 18<FranciscoLopesGi18>	oats: https://github.com/neoclide/coc.nvim/blob/master/data/schema.json#L28
+T 1568745696 18<FranciscoLopesGi18>	or https://github.com/neoclide/coc.nvim/blob/master/doc/coc.txt#L282
+T 1568745959 18<jaawerth18>	ahh good call. that'd just restrict CoC's role to completion only right?
+T 1568746032 18<jaawerth18>	well nah that's ignoring the other various features that don't relate to reporting on diagnostics so I shouldn't say that
+T 1568746035 18<jaawerth18>	anyway, good call lol
+T 1568746367 18<FranciscoLopesGi18>	diagnostics relates to linting, not completion
+T 1568753031 20*	Disconnected (20)
+T 1568753056 19*	Now talking on 22#neovim
+T 1568753056 22*	Topic for 22#neovim is: Register with NickServ to talk | Vim fork focused on extensibility and usability -- https://github.com/neovim/neovim -- Help sustain Neovim: https://salt.bountysource.com/teams/neovim -- Gitter: https://gitter.im/neovim/neovim
+T 1568753056 22*	Topic for 22#neovim set by 26jamessan!~jamessan@debian/developer/jamessan (24Thu Sep 27 03:36:33 2018)

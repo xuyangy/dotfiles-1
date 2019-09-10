@@ -1,0 +1,436 @@
+T 1568017823 19*	Now talking on 22#css
+T 1568017823 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568017823 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568018171 20<threenuc>30	When I'm on my website and I press hard reload all the time, the text on my page flickers (appears after a tiny delay). I thought the default behavior would be to load a fallback font first and then it would morph into the custom one? I just use font-family with like 5 fonts, no other tricks involved
+T 1568022003 18<hunboy18>	https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
+T 1568032878 18<androi18>	when i inspect my design with the chrome developer tool, every element is minimizing when using smaller resolution, what could be the reason for that?
+T 1568033372 18<nwoob18>	I can't set src in image tag like this <img src={`image.STEPPER_${this.state.completedSteps.length}`} />
+T 1568033375 18<nwoob18>	is there a way to acheive what I'm trying to do
+T 1568033710 18<aruns18>	nwoob: This is more of a JavaScript question
+T 1568033715 18<aruns18>	I presume you're using React?
+T 1568033721 18<aruns18>	Or a similar JS library
+T 1568033738 18<aruns18>	Might be better off asking in a channel such as #javascript
+T 1568034867 18<androi18>	after reducing the with underneath 980px each element is minimizing: https://codepen.io/androi1/pen/eYOVaWg
+T 1568034881 18<androi18>	any hints?
+T 1568034956 18<linuxconformer18>	why does -webkit-fill-available auto-adjust an iframe's height depending on the contents of the iframe, but -moz-available does not?
+T 1568053815 18<ne55518>	good morning, ¿how may I set the font globally per font-family? for example: all sans will be Helvetica and all serif will be Palatino
+T 1568054006 18<GreenJello18>	ne555, I don't think you can, but you could use css variables to avoid rewriting it eveywhere
+T 1568054088 18<GreenJello18>	https://jsfiddle.net/brigand/0s2qfx65/1/
+T 1568054107 18<GreenJello18>	er https://jsfiddle.net/brigand/0s2qfx65/2/
+T 1568064571 18<adder18>	hi, can someone help me figure out what's going on here, my css isn't being applied. I use class selectors and it doesn't work unless I chain them, id selectors work fine
+T 1568064608 18<adder18>	https://jsfiddle.net/do7ev6ms/ this is the fiddle but it's displayed correctly there
+T 1568064624 18<adder18>	in my case left margin is gone on article-title and article-info
+T 1568064761 18<bin_bash18>	well if it's working there then what are we supposed to debug?
+T 1568064861 18<adder18>	http://i.imgur.com/NUweJlz.png this :D
+T 1568065121 18<adder18>	maybe you could reproduce this: https://github.com/adder46/djangopractice/tree/master/src
+T 1568065267 18<FunkyBob18>	adder: perhaps continue on your fiddle until it displays the same faulty behavior
+T 1568065287 18<adder18>	I am trying to reproduce it there but no success
+T 1568065317 18<FunkyBob18>	which would suggest the problem is from farther afield than you're considering
+T 1568065393 18<adder18>	I copied entire HTML page and all related CSS files and it's displayed correctly
+T 1568065400 18<adder18>	literally everything, can't reproduce
+T 1568065409 18<adder18>	I read somewhere that something might be overriding something
+T 1568065897 18<cliluw18>	There is a website that crawls lots of websites and stores their CSS values. On this website, I can search for a particular CSS setting like "text-indent" and see what other sites set it to. Does anyone remember the URL of this site?
+T 1568065999 18<bin_bash18>	adder: inspect the element and go from there.
+T 1568066210 18<adder18>	bin_bash: http://i.imgur.com/1d71MRp.png
+T 1568066214 18<adder18>	it says margin: auto;
+T 1568066218 18<adder18>	I haven't set that anywhere
+T 1568066225 18<adder18>	when I uncheck that it goes back to normal
+T 1568066230 18<bin_bash18>	it'
+T 1568066234 18<bin_bash18>	ll tell you where it came from
+T 1568066242 18<adder18>	how
+T 1568066259 18<bin_bash18>	by looking at the rule? the inspector has the file
+T 1568066289 18<adder18>	http://i.imgur.com/hqzJaKT.png
+T 1568066290 18<adder18>	this?
+T 1568066328 18<nateriver18>	how can i do this with css and php?  https://images.complex.com/complex/images/c_crop,h_862,w_1533,x_200,y_136/c_scale,q_auto,w_1920/fl_lossy,pg_1/pbakudcgxlfmmduw46iw/sole-supremacy-homepage
+T 1568066348 18<nateriver18>	so that the image source is perfectly over the desktop mockup thing
+T 1568066410 18<oksushi18>	nateriver: is the “site” just a screenshot? Or should it actually load the site?
+T 1568066446 18<adder18>	I see what's going on, nevermind
+T 1568066750 18<AugustusCaesar2418>	im working with this fiddle
+T 1568066762 18<AugustusCaesar2418>	how would i get the buttons to show on the blurry background
+T 1568066770 18<AugustusCaesar2418>	https://jsfiddle.net/AugustsCaesar/hkq4dpab/3/
+T 1568066829 18<oksushi18>	anything inside your mask is going to get blurred, AugustusCaesar24
+T 1568066830 18<AugustusCaesar2418>	https://jsfiddle.net/AugustsCaesar/hkq4dpab/4/
+T 1568066845 18<AugustusCaesar2418>	so how would i make sure the buttons dont get blurred
+T 1568066846 18<oksushi18>	you cannot “unblur” anything inside
+T 1568066872 18<oksushi18>	you would not blur the buttons, and instead place them in a separate element, positioned on top
+T 1568066903 18<AugustusCaesar2418>	so i would position them before the blur div?
+T 1568067013 18<oksushi18>	how much browser support do you need?
+T 1568067057 18<AugustusCaesar2418>	what do you mean?
+T 1568067102 18<AugustusCaesar2418>	could i do it the way this guy did it
+T 1568067103 18<AugustusCaesar2418>	https://jsfiddle.net/amirsaleem/beyyhb4q/
+T 1568067244 18<oksushi18>	AugustusCaesar24: an easy approach would be to use ::before https://jsfiddle.net/28hs9y0c/
+T 1568067315 18<AugustusCaesar2418>	thats nice
+T 1568067323 18<AugustusCaesar2418>	is the background blurred?
+T 1568067334 18<AugustusCaesar2418>	i have to look up ::before
+T 1568067341 18<AugustusCaesar2418>	seems very useful
+T 1568068904 18<hmw_metalab18>	div.innerHTML = "<p>My new paragraph<p>";   results in  <div><p>My new paragraph</p><p></p></div>  (extra <p></p>) Anyone here can explain this? Firefox, Chromium https://paste.asmcbain.net/a791d0f2
+T 1568068956 18<hmw_metalab18>	Web search and ##javascript have no answers. I can't be the only one annoyed by this...
+T 1568068971 18<FunkyBob18>	`paste @ hmw_metalab
+T 1568068971 18<Selvvir18>	hmw_metalab, These live pastebins allow us to see what you're seeing http://jsfiddle.net/ • http://codepen.io/ • http://paste.asmcbain.net/ • Screenshots can't be inspected with website debugging tools
+T 1568068976 18<hmw_metalab18>	^^
+T 1568068984 18<FunkyBob18>	oh, so you did... sorry
+T 1568068988 18<hmw_metalab18>	:)
+T 1568069047 18<hmw_metalab18>	I can work around it, but I'd like to find the spec that makes it "intended" or find out, what's going on
+T 1568069095 18<FunkyBob18>	https://jsfiddle.net/5fs7poge/
+T 1568069096 18<FunkyBob18>	very odd
+T 1568069103 18<hmw_metalab18>	Indeed
+T 1568069157 18<hmw_metalab18>	Even more odd is the fact, that nobody seems to have googled it before or asked about it
+T 1568069192 18<FunkyBob18>	oh, I know what it is
+T 1568069194 18<hmw_metalab18>	Guess, I have switched to another alternate reality. Again. Tomorrow everything will be fine again. I just need to go to bed.
+T 1568069204 18<FunkyBob18>		div.innerHTML = "<p>My new paragraph<p>";
+T 1568069207 18<FunkyBob18>	I can see it
+T 1568069215 18<hmw_metalab18>	have I ... really?
+T 1568069217 18<FunkyBob18>	you have two paragraphs because... you started two paragraphs
+T 1568069224 18<hmw_metalab18>	oh my
+T 1568069231 18<FunkyBob18>	and HTML5 auto-closed them for you
+T 1568069243 18<hmw_metalab18>	OK thanks! WAAAAH
+T 1568069271 18<FunkyBob18>	#css FTW! :)
+T 1568069274 18<hmw_metalab18>	Reality repaired.
+T 1568069327 18<FunkyBob18>	perception of reality amended
+T 1568069437 18<hmw_metalab18>	Note to self: Next time you get seriously stuck and Google has no answer, there is probably a silly reason.
+T 1568069459 18<hmw_metalab18>	Usually I give answers to others, who are stuck :)
+T 1568069677 18<cliluw18>	There is a website that crawls lots of websites and stores their CSS values. On this website, I can search for a particular CSS setting like "text-indent" and see what other sites set it to. Does anyone remember the URL of this site?
+T 1568070285 18<FunkyBob18>	hmw_metalab: we're all just people, helping people
+T 1568070304 18<FunkyBob18>	cliluw: sounds... fascinating
+T 1568070313 18<hmw_metalab18>	^ I'd like to see that too
+T 1568070437 18<hmw_metalab18>	that is hard to search for
+T 1568070646 18<oksushi18>	assume pebkac, of course
+T 1568070655 18<hmw_metalab18>	:)
+T 1568070667 18<oksushi18>	cliluw: sounds like Nerdydata, maybe?
+T 1568070694 18<oksushi18>	I mean, I know that allows you to search for HTML
+T 1568070790 18<oksushi18>	cliluw: TBH I don’t see how that would be at all useful though. If you want to know about CSS on a specific site, just use your browsers’ inspector tool
+T 1568070841 18<cliluw18>	oksushi: Seems different than the one I was thinking of because it doesn't show me the CSS value. Cool site though!
+T 1568070907 18<cliluw18>	oksushi: It's more for answering questions about the Internet in general. For instance, what percentage of websites use CSS grid.
+T 1568103009 18<undefined_bob18>	hi
+T 1568103680 20*	Disconnected (20)
+T 1568103697 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568103697 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568103697 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1568148708 20*	Disconnected (20)
+T 1568193167 20*	Disconnected (20)
+T 1568212408 19*	Now talking on 22#css
+T 1568212408 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568212408 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568275714 20*	Disconnected (20)
+T 1568275738 19*	Now talking on 22#css
+T 1568275738 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568275738 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568276239 18<haiiokarin18>	can someone help me get this, so at the last part of this page i have 3 sections and which one of them is footer, but footer is using much unusable space. And i can't fix it's height somehow - www.plaforma.me/copy-test-home/
+T 1568282374 20*	Disconnected (20)
+T 1568282397 19*	Now talking on 22#css
+T 1568282397 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568282397 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568283567 18<sine018>	damn what are those things called inside of elements like the class= style= aria-data=
+T 1568283584 18<hmw_metalab18>	attributes
+T 1568283594 18<sine018>	thats it thanks
+T 1568283597 18<sine018>	mind b0rk
+T 1568283733 18<hmw_metalab18>	It happens
+T 1568283839 18<Lauxley18>	Hello, using bootstrap4 (not sure if relevant) i'm trying to get the width of a panel but it changes slightly on page load, tried to catch transitionend to no avail, disabling transitions entirely didn't change anything, in the end i by luck removed the padding and it 'fixed' the issue, any idea what is going on?
+T 1568284840 18<hmw_metalab18>	hard to tell from a distance. It might be some ressource being added late in the loading process, like another CSS file, image or text content. Also, ...
+T 1568284844 18<hmw_metalab18>	`live @ Lauxley
+T 1568284844 18<Selvvir18>	Lauxley, Please provide a live page or a working demonstration of your problem to make it possible to debug. If it's local or private, copy your HTML and CSS into a `testcase in a `paste server like http://jsfiddle.net or http://codepen.io. Screenshots and plain text code pastes are difficult to debug.
+T 1568284913 18<hmw_metalab18>	Lauxley: you could remove as many blocks as possible piece by piece, to determine, where the glitch comes from
+T 1568285043 18<Lauxley18>	thx I tried to make a jsfiddle but it doesn't behave the same, I was hoping that removing the padding in a flexbox would ring a bell to somebody
+T 1568285788 18<Lauxley18>	hmw_metalab, Selvvir trying to add to the jsfiddle but it still behaves well there https://jsfiddle.net/ypofnw6h/
+T 1568285880 18<hmw_metalab18>	The padding on its own wouldn't do such a thing. It must be a combination of factors. Reduce your code as much as possible without removing the glitch and then paste that
+T 1568285888 18<hmw_metalab18>	Lauxley: ^
+T 1568285912 18<oksushi18>	Lauxley: “changes slightly on page load” may indicate if the page is longer than one viewport, you get a scrollbar, which may reduce width
+T 1568285930 18<hmw_metalab18>	hm!
+T 1568285936 18<oksushi18>	¯\_(ツ)_/¯
+T 1568285969 18<hmw_metalab18>	Lauxley: you can test oksushi's theory by adding overflow:scroll to your body
+T 1568286010 18<Lauxley18>	hmw_metalab, that's what I've been trying to do but it's a complex app with a lot thrown in there
+T 1568286030 18<Lauxley18>	thx oksushi going to try that
+T 1568286154 18<Lauxley18>	not the case unfortunately
+T 1568286221 18<oksushi18>	can you link to the troublesome page?
+T 1568286255 18<Lauxley18>	it's on a dev branch
+T 1568286362 18<oksushi18>	ngrok can help you to tunnel to your local
+T 1568289105 18<feelextra18>	Hello! is it just me being new to CSS or do more people besides me also feel that CSS3 Grid layout is a lot harder than Flexbox?
+T 1568289130 18<feelextra18>	basically every time I look at the Grid syntax I pass out mentally... the API is huge
+T 1568291702 18<lilltiger18>	feelextra: it's just you :p
+T 1568293956 18<hmw_metalab18>	feelextra: I recently had to catch up with the changes to CSS, since I had taken a years long break from web design, so I also had to read up about grid. It is quite a bit and took me several days to wrap my head around it. And I am a programmer. So, don't worry. - ...
+T 1568293997 18<hmw_metalab18>	feelextra: So let me suggest, you go to the MDN page for grids and start making small test pages, going slow with trying the next feature. Create a collection of templates for yourself, while learning the things piece by piece, like I did. It is not THAT hard after all. Have fun!
+T 1568294107 18<hmw_metalab18>	I still have no idea about flex box stuff, btw :)
+T 1568294125 18<hmw_metalab18>	But grids are making things so much easier
+T 1568294153 18<hmw_metalab18>	no more floating inlineblocks and stacking position over position and cursing display:table for being stupid
+T 1568294206 18<feelextra18>	hmw_metalab: hah! that's a great writeup. thanks for taking the time to share your thoughts :-)
+T 1568294246 18<hmw_metalab18>	welcome to #css
+T 1568294335 18<feelextra18>	hmw_metalab: the reason I feel Flexbox is easier is because the API is small: `justify-content`, `align-items`, `flex-direction` give you almost all functionality you need (there are also stuff like `flex-grow` which is a bit harder to wrap the head around though)
+T 1568294412 18<feelextra18>	thanks for the welcome! appreciate it
+T 1568294422 18<hmw_metalab18>	Grids work great for me, when I would like to use table layout, but without the table weirdness
+T 1568294538 18<feelextra18>	Honestly the code interface to CSS really sucks. Interactive GUIs would be much more efficient. Wondering what the best professionals are using for that.
+T 1568294550 18<hmw_metalab18>	Notepad
+T 1568294555 18<hmw_metalab18>	or vim, in this case
+T 1568294581 18<hmw_metalab18>	Hm
+T 1568294589 18<stennowork18>	vscode ueber alles
+T 1568294614 18<feelextra18>	hmw_metalab: if they are using code interfaces then that's inefficient. I wouldn't say somebody with that interface is very productive unless they have etched the CSS rules into their brain's neurons.
+T 1568294637 18*	hmw_metalab looks into the mirror and sees a lot of selectors
+T 1568294657 18<hmw_metalab18>	CSS is hard to learn at start, but not really so hard to use, once you know your stuff
+T 1568294688 18<feelextra18>	heh. that reminds me i've seen a VScode extension that walks the fine line between a GUI and a code editor. I gotta check it out sometime.
+T 1568294696 18<hmw_metalab18>	'divitis @ feelextra: avoid falling in to the trap of
+T 1568294701 18<hmw_metalab18>	meh
+T 1568294705 18<hmw_metalab18>	`divitis
+T 1568294705 18<Selvvir18>	hmw_metalab, Divitis is when you use tons of <div>s when you don't have to. Create the HTML for the page first, THEN style it. The fewer elements you have, the fewer problems you have.
+T 1568294717 18<hmw_metalab18>	^ truth
+T 1568294751 18<lilltiger18>	feelextra: with grid there is: grid-gap, grid-template-areas, grid-template-columns and with just those you can handle moste cases :D
+T 1568294761 18<stennowork18>	people should really internalize what HTML is supposed to do and what CSS is supposed to do
+T 1568294767 18<stennowork18>	then you can't even have 'divitis'
+T 1568294836 18<lilltiger18>	and try to use <header><section><main><article><footer> tags insted of div when appropriate
+T 1568294861 18<hmw_metalab18>	I should finally finish my article about web design basics...
+T 1568294877 18<hmw_metalab18>	atm I wouldn't like to show it around, also it is dated
+T 1568294912 18<feelextra18>	lilltiger: why should I use those tags?
+T 1568294920 18<feelextra18>	what technical difference does it make?
+T 1568294925 18<stennowork18>	feelextra, semantics
+T 1568294928 18<stennowork18>	HTML is semantic
+T 1568294937 18<lilltiger18>	feelextra: readability, so much easier to see the layout of the page then with just a bunch of div
+T 1568294940 18<stennowork18>	so a screen reader, for example, has some hints
+T 1568294943 18<feelextra18>	these semantics aren't being processed any differently by the client
+T 1568294949 18<stennowork18>	feelextra, false
+T 1568294949 18<hmw_metalab18>	feelextra: You are less likely to use non-semantic class names like "top-area" or "green-leftalign-text"
+T 1568294972 18<feelextra18>	stennowork: what's a screen reader? is that a software?
+T 1568294990 18<thykka18>	using only divs is like writing everything on a post-it note. using semantic elements is where you write events into a calendar, greetings into a postcard and resignation letters onto a formal letter
+T 1568294993 18<stennowork18>	feelextra, yes, a software for people who have impaired sight
+T 1568295032 18<feelextra18>	stennowork: so your point for using semantics is actually for accessibility concerns?
+T 1568295039 18<stennowork18>	among others, yes
+T 1568295060 18<stennowork18>	its one of the arguments for a semantic markup which is strictly seperated from styling (like in html5)
+T 1568295066 18<hmw_metalab18>	my approach is some sort of a role play; The first actor is the author, who writes a text, just like in Notepad, but they put the "hyper" in the text: Marking pieces for what they are: Headings, explanations, citations, listings, etc. Then the Designer takes over and isn't allowed to add any HTML. They have to do everything in CSS.
+T 1568295082 18<hmw_metalab18>	Following semantic standartds will also automatically help you avoid certain mistakes
+T 1568295100 18<stennowork18>	yes - HTML has NO information about actual styling
+T 1568295118 18<lilltiger18>	feelextra: accessibillity and readability for your own sake and other devs that is going to work with the page, esp in months to years time. The better structure the easier to understand and adjust.
+T 1568295126 18<hmw_metalab18>	Look at http://www.csszengarden.com/219/ - CSS with semantic HTML may be considert Art
+T 1568295137 18<lilltiger18>	well gtg :D
+T 1568295157 18<thykka18>	some elements also have specific default styles and/or functionality.. Consider using <dt> and <dd> tags vs. rolling your own expanding element script with div tags..
+T 1568295182 18<feelextra18>	lilltiger: ok i guess for code readability. honestly code sucks for user interfaces so it seems like a low yield effort.
+T 1568295187 18<thykka18>	or using <div>1. foo</div><div>2. bar</div> for a numbered list, instead of <ol>
+T 1568295202 18<stennowork18>	yet still the default UA stylesheet is a recommendation
+T 1568295243 18<hmw_metalab18>	I believe, the majority of benefits in sticking to semantics these days lie with keeping your code well organized, clean and therefore small, fast and efficient.
+T 1568295288 18<thykka18>	users with screenreaders would disagree. after all, we don't make these sites for ourselves and other developers, but for the users that actually use the site
+T 1568295306 18<hmw_metalab18>	Also, imagine you have to program some server side thing that spits out HTML with a lot of layout mixed in and then, a few years later, your boss wants the page to look totally different. If you messed up, you have to refactor EVERYTHING. If done properly, only a new CSS file does the trick. Also, you can provide alternate style sheets for a page. See CSS Zen Garden
+T 1568295306 18<thykka18>	or at least we SHOULDN'T be making them for ourselves...
+T 1568295350 18<feelextra18>	thykka: yea there are two reasons i've gathered here so far. my last reply only addressed the "code readability" argument.
+T 1568295403 18<feelextra18>	"accessibility" is the other argument for semantic elements. sure if the software people are using detects these elements and gives them meanings then that has clear value to users.
+T 1568295429 18<hmw_metalab18>	feelextra: A good ressource is https://www.nngroup.com/articles/most-violated-homepage-guidelines/ (I just picked the first random link from my collection, read them all)
+T 1568295860 18<feelextra18>	ahh I found the link to that " VScode extension that walks the fine line between a GUI and a code editor" I mentioned earlier: https://gimli.app/
+T 1568296164 18<hmw_metalab18>	LOL @ a video about vscode, I am watching right now. It opens, how to set it up in a way, that "no addon can steal your CPU and you are always able to save and restart the IDE"
+T 1568296228 18<thykka18>	wouldn't the solution be just; don't install a crapton of addons?
+T 1568296262 18<hmw_metalab18>	IDK, I use vim without any addons...
+T 1568296274 18<hmw_metalab18>	I just wanted to learn a but about this Gimli
+T 1568296278 18<hmw_metalab18>	about
+T 1568296302 18<hmw_metalab18>	Looks like this is one of the main devs of VSCode talking
+T 1568296316 18<hmw_metalab18>	But that isn't a very promising start :)
+T 1568296411 18<thykka18>	haven't personally experienced either of those issues.. and i've been using VSC for a while
+T 1568296730 18<hmw_metalab18>	I certainly depends on the plugins and perhaps on the language servers, if VSCode uses such things
+T 1568299525 18<lawsa18>	I have a div with inputs in it. I would like the div to be no bigger than the inputs inside, but it's really wide. When I inspect the inputs, it looks like they have right margin filling up the whole width. How do I get this to go away?
+T 1568299556 18<stennowork18>	display: inline-block; for the div
+T 1568299583 18<lawsa18>	https://imgur.com/xdlFEwh.png
+T 1568299584 18<lawsa18>	Thanks!
+T 1568299749 18<lawsa18>	div a is inside div b. div b has margin-right:auto!important;  (I would like div b to be centered horizontally inside div a.) It's currently left-aligned. I checked and div a is very wide so that div b should not be all the way to the left.
+T 1568299760 18<lawsa18>	I tried adding display:inline-block; to div a, but no joy :-)
+T 1568299783 18<stennowork18>	`testcase @ lawsa
+T 1568299783 18<Selvvir18>	lawsa, a (pared-down) testcase is a page that isolates the problem with the minimum required markup, styling and scripting. See `paste for services that easily let you create such testcases for others to see.
+T 1568299789 18<lawsa18>	drat. Okay :-)
+T 1568305468 18<hunboy18>	lawsa, do you want something similar? : https://jsfiddle.net/L1czwhjp/
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22#css
+T 1568307242 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568307242 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568308672 18<ALowther18>	I have two containers, side-by-side with buttons at the bottom. The containers are of equal height, but due to the containing content being of different heights, the buttons are not in the same position in each container. How can I fix the button to a given position at the bottom of the container, while still respecting surrounding content - so as not to overlap it.
+T 1568308795 18<bin_bash18>	`flex @ ALowther
+T 1568308795 18<Selvvir18>	ALowther, Read all about flexbox: http://css-tricks.com/snippets/css/a-guide-to-flexbox/ & http://jonibologna.com/flexbox-cheatsheet/ - Game/tutorial: http://flexboxfroggy.com/
+T 1568308797 18<bin_bash18>	`live @ ALowther
+T 1568308797 18<Selvvir18>	ALowther, Please provide a live page or a working demonstration of your problem to make it possible to debug. If it's local or private, copy your HTML and CSS into a `testcase in a `paste server like http://jsfiddle.net or http://codepen.io. Screenshots and plain text code pastes are difficult to debug.
+T 1568309184 18<lawsa18>	hunboy: Did you find my jsfiddle and modify it a little?
+T 1568309614 18<hunboy18>	lawsa, no. copy and paste the url.
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22#css
+T 1568351773 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568351773 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22#css
+T 1568579933 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568579933 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568582419 18<visualshock18>	Hi! I have a flex container div with two divs inside side by side. I want the first one to take 25% of the widt, and the other 75% of the width. How can I specify this?
+T 1568582485 18<oksushi18>	what did you try, visualshock?
+T 1568582833 18<visualshock18>	oksushi, right now I am playing around with flex-grow
+T 1568583071 18<visualshock18>	Is setting flex-basis to 25rem and 75rem a good solution?
+T 1568583588 18<FunkyBob18>	only if you always want it to be 100rem wide
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22#css
+T 1568585985 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568585985 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22#css
+T 1568617535 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568617535 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568633325 18<adrian_190818>	I want to create a 2 column layout with a sidebar to the left (navigatio) and content to the right. I went this flexbox since that seems neater than the old `display: float` approach. However, I'm having difficulty making the columns use 100% of the window height. They're as high as their content only.
+T 1568633350 18<adrian_190818>	s/went this/went with
+T 1568633486 18<oksushi18>	`live @ adrian_1908
+T 1568633486 18<Selvvir18>	adrian_1908, Please provide a live page or a working demonstration of your problem to make it possible to debug. If it's local or private, copy your HTML and CSS into a `testcase in a `paste server like http://jsfiddle.net or http://codepen.io. Screenshots and plain text code pastes are difficult to debug.
+T 1568633508 18<oksushi18>	also - did you consider what should happen on narrow (mobile) screens?
+T 1568634017 18<adrian_190818>	oksushi: https://jsfiddle.net/thLev0bx   I want the left (or both) columns to stretch to the bottom of the screen. Very simple layout really.
+T 1568634060 18<adrian_190818>	p.s. I won't target mobile, this UI will be Desktop exclusive.
+T 1568634088 18<oksushi18>	adrian_1908: something like https://jsfiddle.net/7jm8sfb2/ ?
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22#css
+T 1568641539 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568641539 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568641880 18<SlimmyJimmy18>	How would I get an image to align to the top of a div versus the bottom?
+T 1568641898 18<SlimmyJimmy18>	Position absolutely I guess?
+T 1568641910 18<SlimmyJimmy18>	Or relative to top of parent
+T 1568641993 18<oksushi18>	that depends
+T 1568642001 18<oksushi18>	have a link to your page
+T 1568642002 18<oksushi18>	?
+T 1568642157 18<SlimmyJimmy18>	oksushi It's local right now, working on it for a class project.
+T 1568642170 18<oksushi18>	`paste
+T 1568642170 18<Selvvir18>	oksushi, These live pastebins allow us to see what you're seeing http://jsfiddle.net/ • http://codepen.io/ • http://paste.asmcbain.net/ • Screenshots can't be inspected with website debugging tools
+T 1568642290 18<SlimmyJimmy18>	It's a multi-page website with lots of .jpgs as backgrounds. Basically, my goal is simple. img elements are, by default, aligned to the bottom of the container element they are in, I wanted it to go at the top because the container switches sizes when different content is displayed. I wanted the img element to at least seem static.
+T 1568642342 18<SlimmyJimmy18>	Pinning the image to the parent container at a specific place seems pretty easy. I'm working on that now.
+T 1568643611 18<netameta18>	https://caniuse.com/#feat=css-nth-child-of - is that true ?
+T 1568643641 18<netameta18>	AH never mind
+T 1568643642 18<netameta18>	:nth-child
+T 1568643647 18<netameta18>	is what i was lookiing for
+T 1568644869 18<haiiokarin18>	hey people, any idea how can i make this more responsive for smaller devices ? https://codepen.io/zobla/pen/eYOjqVM
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22#css
+T 1568708607 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568708607 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568711142 18<hunboy18>	howdoi, https://jsfiddle.net/aygd9r4b/ :)
+T 1568711186 18<howdoi18>	hunboy: nice! grid-template-columns: auto auto;
+T 1568711196 18<hunboy18>	:)
+T 1568713888 18<Antho00018>	Hello everybody :)
+T 1568713976 18<lilltiger18>	Antho000: do you have a question to ask, then just ask it, and also, hello :)
+T 1568714175 18<Antho00018>	lilltiger Hi, yes I seek has to explain in English
+T 1568714188 18<Antho00018>	I want to use animate.css and wanted to know if I was going down the web page if the animations are enabled or it is better that I go js ? :)
+T 1568714455 18<Antho00018>	When I scroll my web page, animated bustle with CSS or he wants better than I speak on JS ?
+T 1568715213 18<lilltiger18>	Antho000: well it depends on the animations you want, also there are some issues with both ways as the scrolling works different in different browsers
+T 1568719941 18<deathwishdave18>	afternoon
+T 1568719959 18<deathwishdave18>	can i take a div out of the flow horizontally, but not vertically?
+T 1568719993 18<deathwishdave18>	the div is in a table, i want it to overlap columns, but to push down the row.
+T 1568720270 18<thykka18>	deathwishdave, something like this? https://jsfiddle.net/f85r7nva/
+T 1568720839 18<deathwishdave18>	thykka awesome! thanks
+T 1568721772 18<Antho00018>	When I scroll my web page, animated bustle with CSS or he wants better than I speak on JS ?
+T 1568724709 18<stennowork18>	nouu, text-decoration-thickness
+T 1568724717 18<stennowork18>	is not supported almost anywhere
+T 1568724883 18<thykka18>	use a border? or a linear-gradient?
+T 1568725209 18<stennowork18>	yeah gotta be border-bottom i guess
+T 1568725218 18<stennowork18>	i was so happy about text-decoration underline
+T 1568725228 18<stennowork18>	but alas
+T 1568732612 18<adder18>	hi, I'm having troubles positioning my div (nav-grid) to be in line with div content, here is how it looks like http://i.imgur.com/3lSjCKN.png and here is jsfiddle link https://jsfiddle.net/91xkbwgf/ can someone please assist?
+T 1568732671 18<adder18>	I'm trying to achieve this: http://i.imgur.com/Ook89VQ.png
+T 1568736115 18<aldonza18>	what's the latest on css yo?
+T 1568736122 18<stennowork18>	wat
+T 1568736152 18<bin_bash18>	it still implements styles
+T 1568736156 18<bin_bash18>	`next
+T 1568736156 18<Selvvir18>	bin_bash, Another satisfied customer! Next!
+T 1568736160 18<bin_bash18>	`next @ aldonza
+T 1568736160 18<Selvvir18>	aldonza, Another satisfied customer! Next!
+T 1568736172 18<stennowork18>	they asked in #html the same question lmao
+T 1568738905 18<adder18>	how can 'Sort by' be in line with the combobox? https://jsfiddle.net/od91yvbk/
+T 1568739132 18<hunboy18>	adder, perhaps : https://jsfiddle.net/mdwa6j05/
+T 1568739176 18<Nickwiz18>	Why "Sort by" outside the form?
+T 1568739186 18<adder18>	thanks hunboy
+T 1568739211 18<hunboy18>	yeah, should be inside as a label
+T 1568739238 18<Nickwiz18>	Enter "Sort by" after <form> and before <select> ...
+T 1568739352 18<adder18>	ok
+T 1568739737 18<adder18>	how can I make the top-grid not change its size when hovering the menu-items? https://jsfiddle.net/7vb1dp42/
+T 1568740063 18<Nickwiz18>	float: left; in the .menu-item > a { } class
+T 1568740162 18<Nyle18>	Hello
+T 1568740199 18<Nyle18>	https://i.imgur.com/hmBK25h.jpg this shows up like so: outside the table. How can I make the table cell content wrap and not overflow
+T 1568740211 18<Nyle18>	I've tried overflow-y and overflow-wrap etc.
+T 1568740216 18<Nyle18>	I can't seem to be able to make it work
+T 1568740277 18<Nyle18>	https://jsfiddle.net/phvaLku4/ here is a fiddle
+T 1568740339 18<horribleprogram18>	https://horribleprogrammer.com/
+T 1568740354 18<horribleprogram18>	why is the <header> not at the top
+T 1568740360 18<horribleprogram18>	it's like a bit down
+T 1568740419 18<bin_bash18>	because you're a horrible programmer
+T 1568740421 18<bin_bash18>	bah-dum-tss
+T 1568740448 18<ray0218>	lol
+T 1568740477 18<bin_bash18>	why is your header floated horribleprogram
+T 1568740508 18<bin_bash18>	that'
+T 1568740510 18<horribleprogram18>	because if you don't float the header
+T 1568740513 18<bin_bash18>	s why it's happening
+T 1568740519 18<horribleprogram18>	you can't float the stuff inside the header
+T 1568740526 18<bin_bash18>	that's not true
+T 1568740547 18<bin_bash18>	and also don't use floats when you don't need them (you don't need them here)
+T 1568740562 18<Nyle18>	https://stackoverflow.com/questions/3949762/how-to-wrap-text-using-css
+T 1568740564 18<Nyle18>	 hmm
+T 1568740571 18<Nyle18>	look at that .wordwrap class
+T 1568740583 18<horribleprogram18>	bin_bash: iight
+T 1568740593 18<bin_bash18>	horribleprogram: remove all your floats, and add header{display:flex;justify-content:space-between;}
+T 1568740635 18<bin_bash18>	Also if you really do need float for some reason, don't forget to clear them.
+T 1568740647 18<bin_bash18>	horribleprogram: https://css-tricks.com/all-about-floats/
+T 1568740665 18<Nickwiz18>	your paragraphs has margins
+T 1568740697 18<bin_bash18>	ya that's the default agent style in most browsers
+T 1568740730 18<horribleprogram18>	bin_bash: that worked, and perfect, I need to know WHY as well
+T 1568740747 18<bin_bash18>	because you didn't clear your floats
+T 1568740778 18<horribleprogram18>	Nickwiz: that makes no sense, the <p> tag is under the <header>
+T 1568740793 18<bin_bash18>	♫ but you didn't clear your floats ♫
+T 1568740805 18<horribleprogram18>	bin_bash: wtf does clearing floats mean
+T 1568740815 18<bin_bash18>	click the link i graciously provided you
+T 1568740818 18<bin_bash18>	then read it
+T 1568740826 18<bin_bash18>	then if you still have questions, ask something more specific
+T 1568740837 18<horribleprogram18>	kk
+T 1568741192 18<horribleprogram18>	this article sucks
+T 1568741224 18<horribleprogram18>	it assumes I know how elements are laid out by default
+T 1568741323 18<bin_bash18>	Well if it's too advanced for you, then you should probably start from the beginning
+T 1568742155 18<Nickwiz18>	https://jsfiddle.net/4vojs8qe/
+T 1568742163 18<Nickwiz18>	oh ... he's gone lol
+T 1568742268 18<bin_bash18>	well he was horrible
+T 1568742323 18<Nickwiz18>	haha
+T 1568743065 18<aldonza18>	Sup Peeps!
+T 1568743073 18<aldonza18>	I'm Aldonza!
+T 1568743157 18<bin_bash18>	Good for you
+T 1568744201 18<craigbass7618>	I'm printing PDFs, so this may be the wrong place to ask, but... Is there a way to declare @bottom-right so that other text can just flow over it if I need it to? z-index maybe?
+T 1568745551 18<depesz18>	Hi. I have canvas element, and a span, and I want to position the span next to lower left corner of the canvas. how can I do it? (there will be more spans, for: top and botton on the left side, and left and right on top size)
+T 1568745618 18<bin_bash18>	probably with position:absolute
+T 1568745725 18<depesz18>	i tried, but I fail. any howto/tutorial?
+T 1568745759 18<bin_bash18>	you can try goolging "css-tricks absolute positioning" or something like that
+T 1568746758 18<Speeder__18>	so I can navigate some mess of deprecated stuff and wacky JS... How I make a menu that when you hover items it shows more items (like Win95 start menu) using CSS3 and zero JS, and is doesn't make SEO confused?
+T 1568746819 18<hunboy18>	depesz, https://jsfiddle.net/we5d3bcp/
+T 1568746861 18<depesz18>	hunboy: well, the idea is that it shouldn't overlap canvas. so technically, it should be outside of wrapper.
+T 1568746901 18<jan618>	"doesn't make SEO confused" is the had part ;P
+T 1568746906 18<jan618>	*hard
+T 1568746914 18<hunboy18>	depesz, https://jsfiddle.net/we5d3bcp/1/
+T 1568746957 18<depesz18>	hunboy:is there a way to put it to the right of the canvs? with bottom of span and canvs being on the same line?
+T 1568746972 18<Speeder__18>	my current site google thinks my menu is the content :( so ALL pages are found when I type menu words on the search, but the actual keywords find zero results :(
+T 1568746987 18<hunboy18>	depesz, yup left: 100%;
+T 1568747049 18<depesz18>	ouch, sorry. to the left. and having bottom lines of the span and canvas to be on the same "y" ?
+T 1568747064 18<hunboy18>	Speeder__, your problem is> there is no hover on handhelds.
+T 1568747085 18<depesz18>	hunboy:got it. thanks a lot.
+T 1568747092 18<hunboy18>	:)
+T 1568747685 18<timmyalfoa18>	How do I make a div blow out of it's container to 100 page width?
+T 1568747699 18<timmyalfoa18>	100% that should say.
+T 1568747757 18<bin_bash18>	timmyalfoa: did you try 100vw
+T 1568747884 18<bin_bash18>	timmyalfoa: https://jsfiddle.net/p8ber21v/
+T 1568748777 18<Nyle18>	oh man.
+T 1568748789 18<Nyle18>	You can't put margin on <tr>
+T 1568748795 18<Nyle18>	That's half a question and half a statement.
+T 1568748804 18<Nyle18>	:( but that's a full sad face.
+T 1568748815 18<Nyle18>	Is it possible to have spacing between the table row borders?
+T 1568748879 18<hunboy18>	border-spacing: 5px
+T 1568748895 18<hunboy18>	on table element
+T 1568748907 18<Nyle18>	hmm
+T 1568748919 18<Nyle18>	uno momento
+T 1568748954 18<Nyle18>	not taking effect on firefox dev edition, let me paste code in a bit
+T 1568748956 18<Nyle18>	on lunch
+T 1568749158 18<timmyalfoa18>	@bin_bash 100vw makes it overflow the browser and the overflow:auto isn't fixing it.
+T 1568749195 18<bin_bash18>	`live @ timmyalfoa
+T 1568749195 18<Selvvir18>	timmyalfoa, Please provide a live page or a working demonstration of your problem to make it possible to debug. If it's local or private, copy your HTML and CSS into a `testcase in a `paste server like http://jsfiddle.net or http://codepen.io. Screenshots and plain text code pastes are difficult to debug.
+T 1568749253 18<timmyalfoa18>	`live pigonahorse.xyz
+T 1568749293 18<timmyalfoa18>	pigonahorse.xyz
+T 1568749310 18<bin_bash18>	i dont see anything going off the screen
+T 1568749372 18<timmyalfoa18>	The galleries are what I'm trying to blow out the content width. the three static pages on bottom of the menu show the content width working well. there's borders for reference.
+T 1568749416 18<timmyalfoa18>	@bin_bash check now
+T 1568749480 18<bin_bash18>	still not seeing anything overflow
+T 1568749531 18<timmyalfoa18>	That;s your cache, the gallery overflows horizontally now.
+T 1568749579 18<timmyalfoa18>	the static pages, COntact, CV, and Press, are not overflowing but the tow gallery pages are.
+T 1568749582 18<bin_bash18>	there is no cache in incognito
+T 1568749599 18<timmyalfoa18>	two, jeez sorry for the typing.
+T 1568749655 18<bin_bash18>	are you using some wp cache or something
+T 1568753031 20*	Disconnected (20)
+T 1568753055 19*	Now talking on 22#css
+T 1568753055 22*	Topic for 22#css is: Cascading Style Sheets :: Don't paste! :: Need help? Validate (`v yoursite) and give a `live URL (see `paste and `testcase) :: Rules: http://hashcss.com/rules/ :: FAQ: http://hashcss.com/faq :: Harassment or disruption? Tell #css-ops :: More general discussions: ##frontend :: Arbitrary chat? ##css-ot
+T 1568753055 22*	Topic for 22#css set by 26AMcBain!~Art@047-006-242-094.res.spectrum.com (24Sat Mar 16 22:43:59 2019)
+T 1568753177 18<bin_bash18>	word
+T 1568753358 18<bin_bash18>	ya timmyalfoa i think your best bet is to either have a different template for the gallery, or use js to add a class that way you can just get rid of the max-width
+T 1568754305 18<Propauyn18>	http://docinterhar.hybrid.concordia.ca/program/students/
+T 1568754325 18<Propauyn18>	Does anyone know how I can remove the white background so its the same color as the inner white?

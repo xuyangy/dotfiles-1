@@ -1,0 +1,1676 @@
+T 1567243371 19*	Now talking on 22##security
+T 1567243371 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1567243371 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1567243371 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1567244395 18<truthr18>	wow the internet has a lot of porn
+T 1567244397 18<truthr18>	just wow
+T 1567245795 18<wasamasa18>	wow
+T 1567245799 18<wasamasa18>	much porn
+T 1567245806 18<wasamasa18>	such amount
+T 1567245807 18<wasamasa18>	wow
+T 1567245882 18<piou18>	https://www.smbc-comics.com/comics/1566143464-20190818.png
+T 1567250502 18<kezimo18>	I found a previously unknown piece of malware masquerading as Windows Defender with forged encryption certificates on an install of Windows Server
+T 1567250525 18<kezimo18>	no known signatures either
+T 1567251525 18<tomreyn18>	kezimo: did you post it to virustotal.com?
+T 1567251711 18<kezimo18>	yes
+T 1567251755 18<kezimo18>	someone check the filesize of mpcmdrun.exe for me and the exact name of the signer
+T 1567251823 18<kezimo18>	Autoruns is reporting the Microsoft certificate is invalid and when I look at the cert info it says "Microsoft Windows Publisher" not "Microsoft Corporation". My reference info says the file should be under 200k but this one is almost half a meg.
+T 1567251914 18<kezimo18>	I probably wasn't compromised. Additional fear. The endless never ending terror. Until my face is stuck in a state of shock for days at a time once it starts to let up
+T 1567251918 18<kezimo18>	jaw agape
+T 1567251933 18<kezimo18>	Shock and Awe.
+T 1567251946 18<kezimo18>	awesome. I thought I just had a funny face more shit to deal with
+T 1567251950 18<kezimo18>	check that fucking file for me
+T 1567251959 18<kezimo18>	idgaf about any of that
+T 1567252190 18<kezimo18>	either way I need to redo this server install anyway
+T 1567252520 18<SymbioticFemale18>	is there a "screen" / "screen -r" for ssh -X applications?
+T 1567252595 18<iz18>	SymbioticFemale: maybe try ctrl-z
+T 1567252617 18<iz18>	and then reconnect the ssh before you do fg again
+T 1567252815 18<rudi_s18>	SymbioticFemale: xpra
+T 1567252884 18<SymbioticFemale18>	rudi_s: thanks rudi_s
+T 1567252962 18<rudi_s18>	np - it's not perfect but works much better than ssh -X
+T 1567262381 18<sl4ck18>	hi all. Does anyone know any work around the Kazakhstan gov case, where they are trying to download their gov cert in order to control, surveil or/and censor the internet
+T 1567262424 18<sl4ck18>	I mean Chrome is keep popping up to install a gov cert
+T 1567262668 18<en4rab18>	i think both chrome and firefox specifically distrust that cert now
+T 1567262767 18<vavkamil18>	sl4ck, you are from kazakhstan?
+T 1567262790 18<sl4ck18>	no
+T 1567262857 18<vavkamil18>	if you try to visit website that uses the "kazach" root cert with chrome/firefox, it will show an error and won't let you in
+T 1567262860 18<sl4ck18>	en4rab: but if we dont accept that cert we'll not be able to access internet, right?
+T 1567262871 18<sl4ck18>	right
+T 1567262884 18<vavkamil18>	yeach I suppose it will break a lot of things
+T 1567262915 18<sl4ck18>	what would be the work around to this matter?
+T 1567262936 18<vavkamil18>	hard to say, as DNS over HTTPS might not work either
+T 1567262997 18<vavkamil18>	one of my colleague is from kazakhstan and she was super angry about this
+T 1567263052 18<sl4ck18>	what about vpn, proxies?
+T 1567263073 18<vavkamil18>	but last I head it was only a "temporary" test and it's not fully enrolled yet
+T 1567263106 18<vavkamil18>	I suppose ISP can report you for using VPN or even deny a service for you
+T 1567263107 18<sl4ck18>	well, will not take too long to fully implement it
+T 1567263177 18<vavkamil18>	for example in my country we have national blacklist for casino websites and all you need to do is change the DNS
+T 1567263205 18<sl4ck18>	change you DNS in your conf file?
+T 1567263232 18<vavkamil18>	yeah DNS addresses from ISP are provided by ISP, just change it to 1.1.1.1 or 8.8.8.8
+T 1567263239 18<vavkamil18>	*DHCP
+T 1567263281 18<sl4ck18>	oh. this matter becomes more and more stupid
+T 1567263290 18<sl4ck18>	i don't know why they want to do that
+T 1567263388 18<vavkamil18>	I read a post from iranian developer recently and he was so fucked
+T 1567263406 18<sl4ck18>	why?
+T 1567263443 18<vavkamil18>	github is blocked because open source is bad :D
+T 1567263484 18<vavkamil18>	sl4ck, https://medium.com/@hamed/github-blocked-my-account-and-they-think-im-developing-nuclear-weapons-e7e1fe62cb74
+T 1567263678 18<vavkamil18>	if you are born in Iran and interested in IT, you are so fucked, it's such a nonsense really
+T 1567263827 18<sl4ck18>	yeah, true
+T 1567263947 18<calmclam18>	Now imagine instead of losing access to github you lost access to imported food
+T 1567264040 18<vavkamil18>	I'm not sure how my life depends on imported food
+T 1567265487 18<katsumi18>	hmmm
+T 1567265572 18<katsumi18>	it's hot and here's a fckn fly that nervs me
+T 1567265625 18<katsumi18>	while watchin football
+T 1567265674 18<at0m18>	katsumi: fly is easy. i always win.
+T 1567265684 18<at0m18>	football otoh..
+T 1567265693 18*	katsumi sends at0m a bear
+T 1567265698 18<katsumi18>	oom sry
+T 1567265716 18*	katsumi offers at0m a beer
+T 1567265724 18<katsumi18>	so besser
+T 1567265728 18*	at0m pours the beer into the bear
+T 1567265729 18<at0m18>	all set
+T 1567265735 18<katsumi18>	hrhrhr
+T 1567265768 18<calmclam18>	bear with me
+T 1567265770 18<katsumi18>	give him som mjot instead
+T 1567265907 18<NGC398218>	hi. if i was to use software (windows software from within a business vm) to connect to a partner, is using winscp a problem?
+T 1567265927 18<NGC398218>	i have always seen it as a good tool for myself, but i have no idea how business enviroments do it
+T 1567265979 18<at0m18>	NGC3982: my company shivers at the thought of SSH. cos bi-directional port-forwarding and ssh tunnels, i imagine.
+T 1567265994 18<katsumi18>	i used it for years, but ngc3982... isn't it an anterprise serialnumber from startrek``?
+T 1567265997 18<NGC398218>	is ssh not seen as secure enough?
+T 1567265998 18<at0m18>	well, for regular employees at least
+T 1567266025 18<at0m18>	NGC3982: oh it's very secure. but also means you can tunnel into the company and make it seem you're on the LAN
+T 1567266028 18<NGC398218>	katsumi: no, i am a galaxy 64Mly away.
+T 1567266058 18<katsumi18>	aaaaaah
+T 1567266077 18<NGC398218>	at0m: i see. well, the sftp connection itself is approved from our it-sec, so im not really trying to question the connection itself. but, im on the vm and need to choose a tool to use the sftp.
+T 1567266084 18<NGC398218>	and there is where my question arises
+T 1567266116 18<at0m18>	katsumi: NGC is the "new" galatic catalog, after messier catalog (say M31, Andromeda)
+T 1567266129 18<NGC398218>	that is not true
+T 1567266135 18<at0m18>	NGC3982: ah ok then. yea winscp or putty has an scp client, too
+T 1567266147 18<NGC398218>	ngc is some random letters douglas adams came up with after he postulated that 42 was the meaning of everything
+T 1567266157 18<katsumi18>	hhrhrhr
+T 1567266166 18<at0m18>	NGC3982: that, too. if you say so.
+T 1567266175 18<NGC398218>	at0m: so, the tool itself is not a big of a security question as with using sftp (ssh) in the first place?
+T 1567266181 18<katsumi18>	but build a key and store instead of using a password
+T 1567266189 18<NGC398218>	yes, i thought so too
+T 1567266211 18<at0m18>	NGC3982: right, i think those tools are all using same libs, and yea use key auth, not pass
+T 1567266236 18<NGC398218>	and passphrase without a password i guess
+T 1567266241 18<NGC398218>	i think thats already setup
+T 1567266261 18<NGC398218>	passphrase key without a password i guess*
+T 1567266288 18<katsumi18>	as far as libgcrypt is not used ... *hust*
+T 1567266290 18<at0m18>	better. even better, key with pass
+T 1567266308 18<flyback18>	20G
+T 1567266328 18<NGC398218>	i guess a key with passphrase + password doesnt hurt
+T 1567266328 18<flyback18>	1950KB in errors 1486 # of errrors
+T 1567266329 18<flyback18>	not bad
+T 1567266337 18<flyback18>	and it's shrinking
+T 1567266348 18<at0m18>	flyback: lemme guess. ddrescue
+T 1567266351 18<wr18>	NGC3982, question is what you wanna connect
+T 1567266354 18<flyback18>	yep
+T 1567266360 18<at0m18>	\o/
+T 1567266377 18<flyback18>	started on one of the origional disks
+T 1567266395 18<flyback18>	before I just been eliminating most of the disks I think just ended up in the pile when I moved
+T 1567266441 18<flyback18>	funny now I didn't know how shitty this model hd was
+T 1567266447 18<katsumi18>	sometimes its better to eleminate things
+T 1567266447 18<flyback18>	back then
+T 1567266452 18<flyback18>	surprised it lasted as long as it did
+T 1567266475 18<at0m18>	https://en.wikipedia.org/wiki/Export_of_cryptography_from_the_United_States#/media/File:Munitions_T-shirt_(front).jpg
+T 1567266566 18<flyback18>	katsumi, yeah im done to two boxes now
+T 1567266580 18<flyback18>	but I decided to switch up and do one of the origionals
+T 1567266591 18<flyback18>	done/down
+T 1567266666 18<NGC398218>	wr: to a single pre-determined partner's sftp server.
+T 1567266672 18<flyback18>	i'd abort ddrescue now and just live with whatever is missing in the 1950KB but I think it's on the mft
+T 1567266782 18<wr18>	NGC3982, ah, anything that works on ftp should do it then, ssh, filezilla etc
+T 1567266793 18<NGC398218>	i see
+T 1567266801 18<NGC398218>	i thought the kind of sftp tool was important
+T 1567266813 18<katsumi18>	i was puttin 5 boxes and send these using a spaceship into the next black hole. i'm waiting taht they will release again.
+T 1567266820 18<NGC398218>	but as long as i have the right way of connecting (keys, passphrases, and so on) it doesnt really matter?
+T 1567266853 18<flyback18>	it's amazing how much info you can get out of a pagefile too
+T 1567266855 18<wr18>	NGC3982, there are differences, but most should work unless you have any special virtualization or network setup
+T 1567266861 18<NGC398218>	i see
+T 1567266869 18<NGC398218>	thank you guys
+T 1567266877 18<flyback18>	you are welcome
+T 1567266880 18<flyback18>	unless you are canadian
+T 1567266886 18<flyback18>	;P
+T 1567266894 18<NGC398218>	who wouldnt welcome a canadian
+T 1567266899 18<flyback18>	I wouldn't
+T 1567266903 18<flyback18>	BMCC
+T 1567266911 18<flyback18>	BITE MY "CANUCK"...........................................CANUCK!
+T 1567266921 18<NGC398218>	relax eh
+T 1567266924 18<flyback18>	:P
+T 1567266926 18<katsumi18>	ohh.... flyback not that canuck canuck
+T 1567266936 18<katsumi18>	lol
+T 1567266968 18<flyback18>	seriously though I must have used ddrescue 100's of times by now at work
+T 1567266971 18<flyback18>	and it still shocks me
+T 1567266971 18<ullbeking18>	i am considering buying a fully libre hardware + firmware security device for openpgp-related email security
+T 1567266994 18<ullbeking18>	i want to learn if there is a methodology to auditing hardware and firmware?
+T 1567267006 18<flyback18>	yeah
+T 1567267012 18<flyback18>	a) kidnap the coder
+T 1567267017 18<flyback18>	b) secret location
+T 1567267018 18<ullbeking18>	or if it is just one of those things you "know" by being a (hopefully) a good engineer?
+T 1567267023 18<flyback18>	c) brass knuckles
+T 1567267027 18<ullbeking18>	i sense the latter
+T 1567267043 18<ullbeking18>	ok, thanks your help flyback !
+T 1567267047 18<ullbeking18>	c ya later
+T 1567267052 18<flyback18>	well that nsa tool is supposted to be good
+T 1567267057 18<flyback18>	ghia or whatever it's called
+T 1567267072 18<flyback18>	for decompiling firmware etc
+T 1567267092 18<flyback18>	also binwalk
+T 1567267102 18<flyback18>	for identifiying parts of an image
+T 1567267187 18<mawk18>	"here, just take this screwdriver, now you can build a home"
+T 1567267243 18<flyback18>	eh?
+T 1567267246 18<flyback18>	that's all I know
+T 1567267427 18<flyback18>	im not blowing him off
+T 1567267431 18<katsumi18>	flyback: canado or germany what would you prefer? i can't give you a green card but may be you wanna marry me? lol
+T 1567267437 18<flyback18>	that's as much info as I have to contribute
+T 1567267668 18<flyback18>	bathroom bbl
+T 1567268179 18<sophiee18>	gmornin
+T 1567268186 18<sophiee18>	https://github.com/jollheef/lpe
+T 1567268208 18<sophiee18>	lpe is a collection of verified Linux kernel exploits.
+T 1567268208 18<sophiee18>	Exploit testing is fully automated. Feel free to make a pull request with a new exploit to see it by yourself 😉
+T 1567268211 18<sophiee18>	The end goal is to collect all public exploits that actually work.
+T 1567268214 18<sophiee18>	https://t.co/wdjryM05LF
+T 1567268573 18<dognosewhiskers18>	Question: Is it 100% impossible to "use double proxies" so that I connect from MyPC => Proxy1 => Proxy2 => DestinationSite, if those proxies don't have some sort of special, private API/interface to enable this?
+T 1567268858 18<flyback18>	ugh
+T 1567268860 18<flyback18>	:/
+T 1567268941 18<flyback18>	some of our various vendor backup sw's are ubuntu based and it seems like they never update anything
+T 1567268945 18<flyback18>	well the newer ones do thank God
+T 1567268953 18<flyback18>	but some of them you have to wonder how much they got rooted
+T 1567268964 18<flyback18>	espically when I saw dictionary attacks on ssh logs
+T 1567268969 18<flyback18>	bill smith
+T 1567268973 18<flyback18>	bill something
+T 1567268975 18<flyback18>	bill thomas
+T 1567268975 18<flyback18>	etc
+T 1567269032 18<flyback18>	im glad we don't use datto's solution anymore
+T 1567269042 18<flyback18>	they were running a kernel that has a known oops in zfs
+T 1567269046 18<flyback18>	which is what they use to store data
+T 1567269051 18<flyback18>	wtfbbq
+T 1567269099 18<flyback18>	course my favorite was replibit, now they are way better under new ownership so it's a good product now
+T 1567269103 18<flyback18>	but we had a few crash
+T 1567269107 18<flyback18>	because the / filled with
+T 1567269121 18<flyback18>	and in there would be a monodb log 20gig+ or
+T 1567269124 18<flyback18>	MONODB STARTING
+T 1567269128 18<flyback18>	MONODB STOPPING
+T 1567269133 18<flyback18>	<flyback> MONODB STARTING
+T 1567269134 18<flyback18>	<flyback> MONODB STOPPING
+T 1567269137 18<flyback18>	OVER AND OVER
+T 1567270721 18*	katsumi will enjoy an icecolded beer now! cheers!!!!!!1
+T 1567270735 18<calmclam18>	watch out for the bear
+T 1567270876 18<katsumi18>	knock knock i want my honey MOW!!!
+T 1567270880 18<katsumi18>	;)
+T 1567271100 18<mawk18>	you're all alcoholics
+T 1567271106 18<mawk18>	first flyback, now katsumi
+T 1567271180 18<flyback18>	me?
+T 1567271184 18<mawk18>	yes
+T 1567271184 18<flyback18>	never drank in my life
+T 1567271188 18<mawk18>	really ?
+T 1567271189 18<flyback18>	yes
+T 1567271203 18<flyback18>	no drugs either
+T 1567271209 18<mawk18>	but sometimes you start to speak german and you can't type straight
+T 1567271214 18<flyback18>	still get hangovers every moroning and lost my teeth
+T 1567271219 18<flyback18>	just tired and burned out
+T 1567271222 18<flyback18>	I get floaty
+T 1567271227 18<calmclam18>	he doesn't "drink", he prefers to imbibe the other way, gets you sloshed faster
+T 1567271237 18<flyback18>	OH BMCC
+T 1567271245 18<mawk18>	with vodka tampons ?
+T 1567271252 18<flyback18>	I was tempted though more than once the pain up my ass was so bad
+T 1567271260 18<kokokon18>	flyback can you repost this link with a mode vulns?
+T 1567271272 18<kokokon18>	if there is a pain in the ass it needs a cream
+T 1567271275 18<flyback18>	mode vulns?
+T 1567271286 18<kokokon18>	printers vulns
+T 1567271294 18<flyback18>	kokokon, no yrs of IBS has damaged the nerves in my backside
+T 1567271298 18<flyback18>	it's just chronic
+T 1567271308 18<flyback18>	when you shit acid that causes you to leap off the toilet into the shower
+T 1567271310 18<flyback18>	it's bad
+T 1567271325 18<kokokon18>	well there is a fix
+T 1567271325 18<flyback18>	hang on
+T 1567271328 18<flyback18>	lemme find it agai
+T 1567271331 18<kokokon18>	ty
+T 1567271353 18<flyback18>	https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-wind-river-vxworks-could-allow-for-remote-code-execution_2019-075/
+T 1567271360 18<flyback18>	and because many routers and pritners use this
+T 1567271365 18<flyback18>	they are vunerable
+T 1567271396 18<kokokon18>	https://www.ncbi.nlm.nih.gov/pubmed/16530131
+T 1567271409 18<kokokon18>	do you have money to buy vitamin b12 in bulk?
+T 1567271421 18<flyback18>	heh
+T 1567271428 18<flyback18>	it's not that simple but thx :)
+T 1567271453 18<flyback18>	lemme try to find you some vxworks examples
+T 1567271467 18<kokokon18>	yes occam razor
+T 1567271488 18<flyback18>	https://discussions.qualys.com/thread/19949-vxworks-urgent11-vulnerabilities
+T 1567271497 18<kokokon18>	ibs disrupts gut and vitamins b absorption
+T 1567271527 18<flyback18>	https://en.wikipedia.org/wiki/VxWorks
+T 1567271567 18<kokokon18>	coool
+T 1567271593 18<mawk18>	you can program a linux kernel like it is vxworks
+T 1567271596 18<mawk18>	using xenomai
+T 1567271636 18<flyback18>	what's hilarious is
+T 1567271652 18<flyback18>	we were exploiting the shit out of vxworks 19 yrs ago
+T 1567271656 18<flyback18>	and they still have some of the same shit
+T 1567271660 18<mawk18>	yeah
+T 1567271660 18<kokokon18>	hehe
+T 1567271669 18<mawk18>	audience of vxworks is very limited
+T 1567271675 18<kokokon18>	its a law of entropy :)
+T 1567271678 18<mawk18>	sloppy programming goes undetected
+T 1567271680 18<kokokon18>	people IQ decay
+T 1567271687 18<flyback18>	mawk no they used it on a lot of cheap routers
+T 1567271698 18<flyback18>	cause they could save some mb of ram and flash vs linux
+T 1567271707 18<flyback18>	but yeah they just slapped them together
+T 1567271712 18<mawk18>	yeah but I mean the dev audience is limited
+T 1567271717 18<flyback18>	oh yeah
+T 1567271719 18<mawk18>	I know it's present everywhere, but it's not audited
+T 1567271727 18<flyback18>	it's actually not bad for some stuff
+T 1567271730 18<mawk18>	I used FreeRTOS, not vxworks
+T 1567271734 18<flyback18>	in terms of a reliable os for embedded
+T 1567271741 18<flyback18>	but their network stack needs redone
+T 1567271745 18<mawk18>	yeah
+T 1567271775 18<flyback18>	i've looked at freertos a few times for some msp430's and 8051's
+T 1567271786 18<flyback18>	I want to take a old cd or dvd drive
+T 1567271797 18<flyback18>	one of the ones that used a real 40mhz 805x and has a rom socket
+T 1567271803 18<flyback18>	and run a os on it just for laughs
+T 1567271807 18<mawk18>	nice
+T 1567271819 18<kokokon18>	old 8088 pc would be fun on lubuntu
+T 1567271824 18<kokokon18>	would it work? :P
+T 1567271829 18<flyback18>	no but there is elks
+T 1567271837 18<flyback18>	I am sorry I destoyed my 286 trying to add ram to the board
+T 1567271843 18<flyback18>	would have been nice to run elks on it
+T 1567271848 18<kokokon18>	what is elks?
+T 1567271850 18<mawk18>	you can run linux on very small things kokokon
+T 1567271858 18<mawk18>	but you have no fork() call or stuff like this that need a MMU
+T 1567271860 18<flyback18>	elks is real mode linux
+T 1567271861 18<mawk18>	so you can forget ubuntu
+T 1567271863 18<flyback18>	for 808x
+T 1567271870 18<flyback18>	I think they might do a 286 protected mode also
+T 1567271888 18<flyback18>	there is linux for devices that don't have a mmu
+T 1567271892 18<flyback18>	but they won't run on 808x still
+T 1567271896 18<mawk18>	ah
+T 1567271904 18<kokokon18>	Vintage Tandy 1000 HX Computer intel 8088 256k RAM 720k Floppy - FULLY WORKING
+T 1567271910 18<kokokon18>	mmmmm
+T 1567271911 18<flyback18>	nice
+T 1567271914 18<kokokon18>	360 usd :D
+T 1567271918 18<flyback18>	swap the floppy drive for a emulator
+T 1567271935 18<flyback18>	someone made a card that lets you use 16 bit ide drives with 8 bit 808x pc's
+T 1567271938 18<flyback18>	has a open source bios
+T 1567271947 18<flyback18>	they also have a serial mode for that bios
+T 1567271951 18<flyback18>	you can emulate a hd using a pc
+T 1567271955 18<flyback18>	to feed the 808x
+T 1567271969 18<flyback18>	xtidebios
+T 1567271990 18<flyback18>	http://www.xtideuniversalbios.org/
+T 1567272130 18<kokokon18>	what is search engine can be co hosted?
+T 1567272134 18<kokokon18>	on blockchain
+T 1567272147 18<kokokon18>	something like google yet decentralised
+T 1567272152 18<kokokon18>	what if
+T 1567272199 18<kokokon18>	peer distributed search engine
+T 1567272230 18<flyback18>	there's a lot of things I would put up with
+T 1567272233 18<flyback18>	legacy pc wise
+T 1567272236 18<flyback18>	for the nostalgia
+T 1567272239 18<kokokon18>	yee
+T 1567272240 18<flyback18>	floppies are not one of them
+T 1567272244 18<flyback18>	so I will be using a hw emualtor
+T 1567272245 18<kokokon18>	floppies are fun
+T 1567272284 18<kokokon18>	well, they are fun for me cause  I feel I am inserting something into a hole :)  and feel leet
+T 1567272327 18<kokokon18>	we no longer can post letters, rarely use drill, no floppies, cards are contactless
+T 1567272345 18<flyback18>	oh you might like this
+T 1567272352 18<flyback18>	I have 100 old floppies I have to pull data form
+T 1567272356 18<kokokon18>	ooooo
+T 1567272362 18<flyback18>	many of them don't even get detected as floppies anymore :(
+T 1567272364 18<flyback18>	so going to use this
+T 1567272382 18<flyback18>	http://cowlark.com/fluxengine/index.html
+T 1567272384 18<flyback18>	$20 to make
+T 1567272400 18<flyback18>	bypases the pc's stupid floppy controller
+T 1567272400 18<kokokon18>	haha awesome
+T 1567272412 18<flyback18>	does direct sampling of the digital bitstream from the drive
+T 1567272425 18<kokokon18>	can I buy old floppies and restore data on them?
+T 1567272426 18<flyback18>	so it can handle oddball formats, fake bad sector copy protection or disks with a canuckload of damage
+T 1567272432 18<kokokon18>	would be fun :)
+T 1567272440 18<flyback18>	mabye if the signal is still intact enough
+T 1567272487 18<kokokon18>	btw I am renting new apartment, left tomato for a 2 days already one that had a hole are moldy
+T 1567272502 18<kokokon18>	this is not normal, how they moldy so fast
+T 1567272558 18<kokokon18>	also how do I select which IP range to scan for printers and such?
+T 1567272563 18<kokokon18>	internet is vast
+T 1567272618 18<flyback18>	no idea sorry
+T 1567272644 18<flyback18>	,mabye find a database of spamming printers people already found
+T 1567272654 18<kokokon18>	Shodan
+T 1567272662 18<kokokon18>	whoever made it is a bitch
+T 1567272672 18<kokokon18>	:)
+T 1567272776 18<weijunli18>	how can i know android Activity arguments? Im trying to do it with drozer
+T 1567272818 18<kokokon18>	cause now more vuln will be patched :P
+T 1567272829 18<kokokon18>	yet entropy will do it work too :)
+T 1567272837 18<kokokon18>	and outsourcing
+T 1567273152 18<flyback18>	hmm
+T 1567273197 18<flyback18>	I still have to come up with a way to checksum validate two hard drive raw images, one from each data recovery box, to guard against data corruptiopn caused by ide/sata incompatibilities etc
+T 1567273203 18<flyback18>	easy to do when the hd images clean
+T 1567273215 18<flyback18>	when you have one like the one I am doing now with ddrescue and it's full of holes
+T 1567273228 18<flyback18>	one more sector imaged on one machine than the other, the checksum will fail
+T 1567273267 18<flyback18>	someoen suggested diff and just go by % of identical
+T 1567273277 18<flyback18>	if they are high identical then the images are probably both good
+T 1567273297 18<kokokon18>	would you say presence of girls helps to code more?
+T 1567273305 18<kokokon18>	or it is distracting
+T 1567273306 18<flyback18>	I don't code
+T 1567273315 18<flyback18>	want to learn how for embedded but not got to that yet
+T 1567273420 18<kokokon18>	there is a crow
+T 1567273427 18<kokokon18>	she is making noice
+T 1567273440 18<kokokon18>	do you think its a warning or ?
+T 1567273451 18<FungiFox18>	it sounds like an audio target.
+T 1567273453 18<FungiFox18>	PULL
+T 1567273457 18<mawk18>	or mating call
+T 1567273479 18<FungiFox18>	crows only say one thing "shoot in my direction you pussy"
+T 1567273508 18<kokokon18>	they can see evil
+T 1567273511 18<kokokon18>	and more
+T 1567273518 18<FungiFox18>	crows are bad.
+T 1567273526 18<FungiFox18>	bad to have em around
+T 1567273529 18<mawk18>	crows are smart
+T 1567273534 18<mawk18>	which is the opposite of bad
+T 1567273545 18<FungiFox18>	hitler was smart.
+T 1567273557 18<kokokon18>	he still is smart
+T 1567273575 18<FungiFox18>	intelligence is a tool... it doesn't have morality. super smart people can be bad, forest gump can be good.
+T 1567273594 18<FungiFox18>	i think he is the only good person... ever... once... even that one time.
+T 1567273619 18<FungiFox18>	rest of us suck for the most part, we want to be good... and generally try to be.. but none of us can compare with forest gump.
+T 1567273627 18<kokokon18>	Hitler did same as Napoleon
+T 1567273645 18<FungiFox18>	yeah, hitlers mistake was doing it when we had camera equipment.
+T 1567273652 18<FungiFox18>	fail
+T 1567273672 18<kokokon18>	trump is a hitler too
+T 1567273681 18<FungiFox18>	not even close.
+T 1567273690 18<FungiFox18>	well.. what is "a hitler"
+T 1567273693 18<kokokon18>	well you right
+T 1567273694 18<FungiFox18>	define that.
+T 1567273723 18<FungiFox18>	did hitler drink water just as trump drinks water? must be the exact same person!
+T 1567273732 18<kokokon18>	hitler an individual from a poor, middle class backround . very smart and very high level sex gf
+T 1567273770 18<kokokon18>	trump is from very wealthy family that makes his emotionally poorer
+T 1567273778 18<FungiFox18>	i just want to say before we continue, im on the high of making $850 in the last 30 minutes from a lucky win.
+T 1567273786 18<kokokon18>	nice
+T 1567273794 18<kokokon18>	do we have a rain bot? :P
+T 1567273804 18<FungiFox18>	every weekend this family comes over and sells off his grandpas estate, i bought a shit ton of legit silver.
+T 1567273837 18<kokokon18>	bought cheep?
+T 1567273874 18<FungiFox18>	lol, 3 lbs of 92.5% silverware for $40.
+T 1567273891 18<kokokon18>	so you are a crow
+T 1567273896 18<kokokon18>	:P
+T 1567273900 18<FungiFox18>	no, they are crows... im a vulture.
+T 1567273914 18<FungiFox18>	im dumb, they are the instigators.
+T 1567273965 18<FungiFox18>	they know exactly what it is.. i bought 700-1400 worth of jewelry off them a few weekends ago when they came up for $100
+T 1567273975 18<kokokon18>	whyy
+T 1567273976 18<FungiFox18>	i felt bad, told them that this aint garage sale stuff.
+T 1567273987 18<kokokon18>	they can easily sell it in town
+T 1567273993 18<FungiFox18>	too much to get rid of.... i told them to call a liquidator.
+T 1567274008 18<FungiFox18>	they would charge them 30-50%, but they would get legit pricing on each item.
+T 1567274016 18<kokokon18>	why dont you hire truck and find more
+T 1567274022 18<kokokon18>	you can make millions
+T 1567274030 18<kokokon18>	is this in america?
+T 1567274053 18<FungiFox18>	cause i work a 9-5, got a business on the side and im not a garage sale hunter... this one gold mine just happens to be around the block in my small town.
+T 1567274104 18<FungiFox18>	i bought 3 sets of NFL cards, 1991, 1992, 1993 for $1. brand new mint condition.
+T 1567274154 18<FungiFox18>	literally owned them for less than 30 minutes, one of the nephews has a birthday today and came over and i surprised him with them. i had a 1991 set that was opened years and years ago and i been surprising him with a handful of cards.
+T 1567274172 18<FungiFox18>	now he got 3 sets, brand new.
+T 1567274271 18<FungiFox18>	most of the best things in my life i paid little to nothing for.
+T 1567274311 18<kokokon18>	I am reading ransomware emails :)
+T 1567274319 18<FungiFox18>	lol.
+T 1567274322 18<mawk18>	my mother received one
+T 1567274327 18<kokokon18>	demanding to pay for some porn
+T 1567274339 18<mawk18>	"WE SAW YOU JERKING OFF THIS DIRTY PORNO, NOW PAY 1BTC OR WE SEND TO ALL YOUR FACEBOOK CONTACTS"
+T 1567274376 18<mawk18>	I think it says "nice porn taste you have" too
+T 1567274395 18<kokokon18>	Nigerians do it
+T 1567274399 18<FungiFox18>	comeon... tell me about the tattoo i saw or i aint paying nothing.
+T 1567274404 18<kokokon18>	act as loli and record people on cam
+T 1567274486 18<kokokon18>	balance 0
+T 1567274492 18<kokokon18>	no one sent him any coins lol
+T 1567274519 18<mawk18>	you can create btc addresses at will
+T 1567274521 18<mawk18>	maybe he did it
+T 1567274522 18*	katsumi gives one godwin point to FungiFox
+T 1567274535 18<kokokon18>	I know, sosasosa is your pass words. Lets get right to the purpose. Nobody has compensated me to check about you. You may not know me and you are most likely thinking why you are getting this e mail?
+T 1567274538 18<kokokon18>	:P
+T 1567274561 18<kokokon18>	In fact, I actually installed a malware on the 18+ vids (adult porn) website and you know what, you visited this website to experience fun
+T 1567274563 18<kokokon18>	lolol
+T 1567274597 18<kokokon18>	better would be you have visited youtube to watch recent trump speeches to have fun and I did record your cam
+T 1567274599 18<katsumi18>	\o
+T 1567274661 18<kokokon18>	one more email
+T 1567274663 18<kokokon18>	 I obtained a video of you flogging the dolphin while at a pornweb site you are visited
+T 1567274708 18*	calmclam feeds dolphin a fish
+T 1567274739 18<wilsonfisk18>	send it
+T 1567274743 18<wilsonfisk18>	double dog dare you
+T 1567274750 18*	wilsonfisk tries reverse psychology
+T 1567274788 18<wilsonfisk18>	that tactic works so much better in the bible belt area of the US
+T 1567274811 18<FungiFox18>	id tell them to send it to me cause i lost my copy and i wanted to show my mom that i followed into the family business.
+T 1567274821 18<wilsonfisk18>	oh snap
+T 1567274834 18<wilsonfisk18>	yea I'd prob lose a fair amount of tokenz
+T 1567274863 18<kokokon18>	they send emails to leaked db people
+T 1567274879 18<kokokon18>	but bible belt people may not have any btc
+T 1567274897 18<kokokon18>	they will be like eee btc wazz that :D
+T 1567274913 18<FungiFox18>	kokokon, dont let it fool you, utah is going high tech. its going to be a capitol of tech soon id say.
+T 1567274919 18<kokokon18>	cool
+T 1567274924 18<mawk18>	a capitole of tech
+T 1567274932 18<kokokon18>	FungiFox lets setup a mail server quickly
+T 1567274934 18<FungiFox18>	they don't fkn drink/smoke.... asshats just work and provide for their 23 kids...
+T 1567274945 18<FungiFox18>	they gotta make businesses strong lol.
+T 1567274966 18<FungiFox18>	utah mormons are like 1920's catholic mexicans.
+T 1567274967 18<kokokon18>	dear sir I saw your flogging your dolphin with your cousin via hacked webcam...
+T 1567274974 18<kokokon18>	now you have 2 choices
+T 1567275003 18<kokokon18>	yes it can work
+T 1567275160 18<katsumi18>	haha
+T 1567275172 18<wilsonfisk18>	you're talking about the news story where this exact thing happened right?
+T 1567275210 18<kokokon18>	i was checking some public inboxes
+T 1567275215 18<kokokon18>	and saw those letters
+T 1567275215 18<wilsonfisk18>	.t https://www.bleepingcomputer.com/news/security/new-trojan-records-your-screen-when-on-sex-related-sites/
+T 1567275220 18<katsumi18>	hitler, mormons, mexicans... your godwin score is risin
+T 1567275225 18<wilsonfisk18>	few weeks ago now
+T 1567275248 18<wilsonfisk18>	mormons are a cult; what do they have to do with hitler or mexicans?
+T 1567275252 18<vavkamil18>	we had a client that fell for this, paid the ransom three times, every time it was way higher :D
+T 1567275266 18<katsumi18>	ask fungi
+T 1567275272 18<kokokon18>	vavkamil can you sell his email address? :)
+T 1567275285 18<kokokon18>	I will share btc with you
+T 1567275296 18<katsumi18>	i'm only counting
+T 1567275303 18<vavkamil18>	kokokon, well that was the case
+T 1567275305 18<katsumi18>	:)
+T 1567275345 18<vavkamil18>	they basically told him that the first payment took so long, so they shared the video of him jerking with other hackers that wanted the payment too
+T 1567275365 18<kokokon18>	lol did they had an actual video?
+T 1567275370 18<vavkamil18>	no
+T 1567275391 18<kokokon18>	bravo
+T 1567275395 18<wilsonfisk18>	I've never been asked by another hacker (let alone anyone really) if I wanted to watch a video of a random jerking for extortion purposes
+T 1567275396 18<vavkamil18>	but he paid them again and after that he contacted us for help, we basically told him to forget about it and he paid us for the advice too
+T 1567275399 18<wilsonfisk18>	you have weird friends
+T 1567275410 18<kokokon18>	vavkamil lolol
+T 1567275436 18<kokokon18>	yes fake bs emails is da way to money
+T 1567275449 18<wilsonfisk18>	not true
+T 1567275464 18<kokokon18>	wilsonfisk you think average payout is low?
+T 1567275466 18<wilsonfisk18>	ransomware/fileless malware is what's hot in the streets
+T 1567275477 18<kokokon18>	fileless?
+T 1567275493 18<vavkamil18>	spam nation by krebs is kinda good book about this kind of stuff, but I found it boring
+T 1567275495 18<kokokon18>	well if there is no video and amount is low most people will not even complain
+T 1567275511 18<kokokon18>	if you spread ransomware many will complain
+T 1567275562 18<wilsonfisk18>	.wik fileless_malware
+T 1567275575 18<wilsonfisk18>	emmy must still be collecting her shit
+T 1567275629 18<katsumi18>	noemmyether
+T 1567275640 18<katsumi18>	:(
+T 1567275648 18<kokokon18>	:(
+T 1567275657 18*	kokokon cries
+T 1567275680 18<wilsonfisk18>	she's in other channels so she's alive
+T 1567275681 18<wasamasa18>	what shit did you make her collect
+T 1567275700 18<kokokon18>	he pimped her
+T 1567275702 18<wilsonfisk18>	math stuff, very complicated, very secret
+T 1567275708 18<kokokon18>	to some old algo
+T 1567275712 18<katsumi18>	she got banned from ##math
+T 1567275779 18<kokokon18>	let's have spam mail competition?
+T 1567275792 18<kokokon18>	divide some list and see who gets more btc
+T 1567275794 18<wilsonfisk18>	sounds drab
+T 1567275822 18<vavkamil18>	kokokon, there was competition like this on darknet
+T 1567275836 18<kokokon18>	ooo where exactly?
+T 1567275878 18<vavkamil18>	you can rent the ransomware and compete with other blackhats, the top ones who infect most people will get discounts for other malware and stuff
+T 1567275904 18<kokokon18>	ransomware is risky
+T 1567275918 18<kokokon18>	you have to be very smart to do it
+T 1567275925 18<wilsonfisk18>	psh
+T 1567275929 18<wilsonfisk18>	that's a lie
+T 1567275950 18<kokokon18>	smart as in hiding your identity
+T 1567276006 18<kokokon18>	many clearnet black hat, hack sites simple collect people data  : )
+T 1567276008 18<flyback18>	rescued:    20488 MB,  errsize:   1926 kB,  current rate:        0 B/s
+T 1567276008 18<flyback18>	   ipos:    605696 B,   errors:    1471,    average rate:        0 B/s
+T 1567276008 18<flyback18>	   opos:    605696 B, run time:       3 s,  successful read:       3 s ago
+T 1567276010 18<flyback18>	:D
+T 1567276018 18<kokokon18>	to id them if necessary
+T 1567276023 18<kokokon18>	and or blackmail
+T 1567276054 18<vavkamil18>	kokokon, it was basically ransomware SaaS, you just need to spam people with it and will get cut from the profits
+T 1567276062 18<kokokon18>	lol
+T 1567276068 18<kokokon18>	well did they pay up?
+T 1567276082 18<vavkamil18>	idk didn't participate
+T 1567276122 18<kokokon18>	seems like a fake competition to me
+T 1567276127 18<kokokon18>	to id wannabes :D
+T 1567276157 18<vavkamil18>	it think that it was ShurL0ckr
+T 1567276193 18<sophiee18>	hi!
+T 1567276216 18<vavkamil18>	sophiee, hey :)
+T 1567276237 18<kokokon18>	sophiee do you like spamming?
+T 1567276279 18<sophiee18>	kokokon: what?
+T 1567276281 18<wilsonfisk18>	do you?
+T 1567276292 18<wilsonfisk18>	hi sophiee
+T 1567276297 18<kokokon18>	yes it its profitable
+T 1567276301 18<kokokon18>	if its
+T 1567276338 18<sophiee18>	heyas :)
+T 1567276420 18<kokokon18>	sophiee any ideas which printers are easiest to access? I am learning a bit with a help from shodan
+T 1567276434 18<wilsonfisk18>	most of them?
+T 1567276454 18<roxfan18>	define "access"
+T 1567276457 18<vavkamil18>	there was powershell script for printers on /r/netsec very recently
+T 1567276467 18<wilsonfisk18>	gross
+T 1567276472 18<kokokon18>	check previous prints and make it print more
+T 1567276473 18<wilsonfisk18>	bash || zsh || nothing
+T 1567276482 18<vavkamil18>	https://github.com/thom-s/netsec-ps-scripts/tree/master/printer-telnet-ftp-report
+T 1567276558 18<sophiee18>	so like, wordpress sites are fucked cuz javascript is the devil, and china just found goo stuff on the moon, and if you get some dickface email from chaoscc sayin theyre video recording you watching porn it's bullshit. oh, also there's now a way to turn dead cats into cat zombies via science!
+T 1567276579 18<vavkamil18>	but very high percentage of accessible printers were hit by pewdiepie spam recently, so it might not be as easy anymore
+T 1567276607 18<kokokon18>	yes that moron
+T 1567276657 18<kokokon18>	sophiee there is a video of you watching Donald Trump speech and smiling, you have 2 choices now :D
+T 1567276692 18<sophiee18>	oh ya? then what color are my eyes?
+T 1567276706 18<kokokon18>	brown green
+T 1567276737 18<sophiee18>	lol
+T 1567276769 18<kokokon18>	lol
+T 1567276801 18<flyback18>	dammimt
+T 1567276811 18<flyback18>	sunday and moday showers and t-storms
+T 1567276819 18<calmclam18>	catpocolypse
+T 1567276821 18<flyback18>	have to get my data recovery done tonight I guess
+T 1567276823 18<flyback18>	:/
+T 1567276831 18<sophiee18>	trump also says that if his twitter gets hacked, there's not much to learn lol
+T 1567276842 18<katsumi18>	soophie has steel blue eyes and a 50inch beard like zztop
+T 1567276852 18<flyback18>	hmm
+T 1567276857 18<flyback18>	from reading this ddrescue log
+T 1567276864 18<flyback18>	looks like the errors are in a few areas
+T 1567276869 18<flyback18>	clustered together
+T 1567276875 18<sophiee18>	katsumi: that'd be quite impressive, actually heh
+T 1567276877 18<flyback18>	if it's not on the mft table
+T 1567276879 18<flyback18>	that' a good thing
+T 1567276890 18<katsumi18>	;)
+T 1567276896 18<kokokon18>	flyback I have managed to find one open printer, well maybe open :)
+T 1567276925 18<kokokon18>	515, 631, 1022, 9100 ports
+T 1567276968 18<katsumi18>	and jumpin into zhe 10 foot pole
+T 1567276981 18<kokokon18>	lol now how I can check previous print jobs?
+T 1567277009 18<vavkamil18>	you know that's illegal right?
+T 1567277059 18<calmclam18>	cheeze it, it's the fuzz!
+T 1567277070 18<kokokon18>	vavkamil really? lol
+T 1567277082 18<vavkamil18>	I don't care, but it can get you banned here
+T 1567277118 18<kokokon18>	it's a test :P
+T 1567277126 18<katsumi18>	hey crime time at tv... he is listening to motörhead
+T 1567277323 18<la_ensalada18>	hi I'm playing around with RPKI ROAs and I want to decode one so I can view it. RFC6488 tells me that they're DER encoded and the file's hex signature (30 82) tells me the same but when I try to view it using   openssl x509 -in certificate.der -inform der -text -noout   I get errors
+T 1567277345 18<la_ensalada18>	anyone have ideas for the ensalada?
+T 1567277499 18<vavkamil18>	lol you are decoding certificates and making salad simultaneously?
+T 1567277517 18<la_ensalada18>	vavkamil, I am blessed with two hands
+T 1567277525 18<kokokon18>	how to route telnet via tor?
+T 1567277545 18<kokokon18>	torrify? :D
+T 1567277666 18<vavkamil18>	kokokon, proxychains should be fine
+T 1567277698 18<kokokon18>	ty kamil
+T 1567277703 18<kokokon18>	I like tor :)
+T 1567277806 18<vavkamil18>	just be sure to use TCP, no UDP
+T 1567278048 18<kokokon18>	why TCP?
+T 1567278311 18<vavkamil18>	proxychains works only with TCP I think
+T 1567278331 18<vavkamil18>	best to use Tails in VM to be sure
+T 1567278660 18<danieldg18>	tor does not support udp, that's why
+T 1567278671 18<kokokon18>	ok
+T 1567278689 18<kokokon18>	for some reason telnet via tor as proxy yet to work
+T 1567278697 18<kokokon18>	9050 9150 socks5
+T 1567279281 18<kokokon18>	perhaps printers telnet setup to block tor ips?
+T 1567279475 18<kokokon18>	https://www.youtube.com/watch?v=7Nbv3reNErw
+T 1567407102 20*	Disconnected (20)
+T 1567407949 20*	Disconnected (20)
+T 1567409874 20*	Disconnected (20)
+T 1567418638 20*	Disconnected (20)
+T 1567425360 20*	Disconnected (20)
+T 1567498452 20*	Disconnected (20)
+T 1567531242 20*	Disconnected (20)
+T 1567535144 20*	Disconnected (20)
+T 1567576502 20*	Disconnected (20)
+T 1567584933 20*	Disconnected (20)
+T 1567608965 20*	Disconnected (20)
+T 1567670323 20*	Disconnected (20)
+T 1567695041 20*	Disconnected (20)
+T 1568212408 19*	Now talking on 22##security
+T 1568212408 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568212408 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568212408 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568213625 18<Jo-Anna18>	Hi what’s new?
+T 1568213640 18<Jo-Anna18>	In security..
+T 1568213730 18<flyback18>	other than the intel remote dma exploit and this idiot company claiming they "broke' sha256
+T 1568213732 18<flyback18>	not that I heard
+T 1568214185 18<dnull18>	flyback Got a link handy for the sha256 thing?
+T 1568214243 18<flyback18>	no looking
+T 1568214268 18<dnull18>	No worries, I'll track it down
+T 1568214310 18<jabberwock18>	Do any of you know this mystery WordPress newbloguser string mentioned here?
+T 1568214311 18<jabberwock18>	.t https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17091
+T 1568214317 18<EmmyNoether18>	URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:600)> (title:71)
+T 1568214320 18<jabberwock18>	:/
+T 1568214345 18<flyback18>	dnull, but they then rattled off how this enables a new era of crypto currency blah blah blah
+T 1568214351 18<flyback18>	nate was saying the same thing I did
+T 1568214354 18<dnull18>	Oh yuck
+T 1568214358 18<flyback18>	soon as we saw that we just facepalmed
+T 1568214375 18<dnull18>	haha
+T 1568214394 18<dnull18>	Was it the people from BH?
+T 1568214463 18<flyback18>	https://www.newson6.com/story/40997267/treadwell-stanton-dupont-today-announced-its-researchers-quietly-broke-the-sha-256-hashing-algorithm-over-a-year-ago
+T 1568214481 18<dnull18>	Ta
+T 1568214487 18*	flyback makes shake-it-weight motions
+T 1568214510 18<flyback18>	wankers
+T 1568214609 18<zuckonit18>	how is everyone doing
+T 1568214772 18<dnull18>	flyback Wow, that's quite a wank session
+T 1568214895 18<calmclam18>	shake it like a polaroid picture
+T 1568215004 18<jabberwock18>	old school ^
+T 1568215005 18<iz18>	a 16 year old kid probably wouldn't know what that means and also would have been born shortly after that song was released
+T 1568215031 18<flyback18>	https://www.youtube.com/watch?v=CWtcE52LKgk
+T 1568215038 18<flyback18>	OH NOES WE BROKE SHA2256
+T 1568215061 18<iz18>	it's not a tuma
+T 1568215096 18<dude1231241418>	is that a joke news aite
+T 1568215100 18<dude1231241418>	*site
+T 1568215110 18<flyback18>	which one
+T 1568215118 18<dude1231241418>	newson6 link above
+T 1568215124 18<flyback18>	nope
+T 1568215143 18<iz18>	no that was a serious press release that company put out, which a few other news outlets picked up
+T 1568215159 18<iz18>	presumably the ones that don't have anyone that works there that knows a little bit
+T 1568215165 18<flyback18>	https://www.treadwell-stanton.com/services/latest-news
+T 1568215245 18<iz18>	do you remember zeosync also?
+T 1568215353 18<iz18>	in 2002 they claimed to have a perfect compression technology that could compress random data
+T 1568215353 18<flyback18>	don't know anything about them or this company
+T 1568215361 18<flyback18>	I just think it sounds like all bullshit
+T 1568215362 18<iz18>	google zeosync, it's pretty lol
+T 1568215371 18<iz18>	yeah, it was startup bullshit
+T 1568215374 18<flyback18>	that
+T 1568215382 18<flyback18>	is why I put up the shake-it-weight video
+T 1568215384 18<iz18>	there is no scientific peer review for company press releases
+T 1568215390 18<iz18>	so they can say whatever they want
+T 1568215419 18<iz18>	with the hope a few suckers fall for it
+T 1568215515 18<flyback18>	speaking of suckers
+T 1568215530 18<flyback18>	you have to wonder if shake-it-weight wasn't the greatest trolling ever
+T 1568215624 18<flyback18>	iz here you go
+T 1568215632 18<iz18>	you know, if you close your eyes and pretend you have a salt shaker in your hand and shake salt into your open mouth, you will actually be able to taste it, even though there isn't any salt...
+T 1568215636 18<flyback18>	deadpool reading their press release
+T 1568215642 18<flyback18>	https://www.youtube.com/watch?v=RygGF_9dDxk
+T 1568215794 18*	calmclam closes eyes and shakes shake weight near mouth, breaks jaw
+T 1568216188 18<nate18>	dude12312414: To expand on your question, it's a serious 'article' from a company with an apparent history of bullshit claims and showing nothing for it and convieniently keeping all it's employees otherwise secret
+T 1568216208 18<nate18>	So it's probably bullshit from a company hoping to attention whore for stupid investors
+T 1568216335 18<Jo-Anna18>	The employees are declared to the irs or are they paid cash without being declared ? If it is the former the employees aren’t secret
+T 1568216399 18<dude1231241418>	hm yeah it does look shady
+T 1568216646 18<nate18>	Jo-Anna: Or they don't have any really.  Their linkedin page lists 8 'Employees", all of which apparently have hidden profiles
+T 1568216671 18<nate18>	dude12312414: The fact they claim collissions on SHA256 is -good- news for cryptocurrency should tell you how much bullshit it is alone
+T 1568216700 18<calmclam18>	good news, everyone!
+T 1568216709 18<nate18>	You switched to geico?
+T 1568275714 20*	Disconnected (20)
+T 1568275738 19*	Now talking on 22##security
+T 1568275738 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568275738 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568275739 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568275781 18<milivoj18>	sup
+T 1568276018 18<praxis18>	patstoms: it's a vulnerable vmware virtual machine, given to me as a bit of a challenge/learning experience
+T 1568276021 18<praxis18>	thought it might be conducive to be able to discuss it with others.
+T 1568276024 18<praxis18>	the os is about 5 years old, and has a bunch of outdated services running
+T 1568276076 18<patstoms18>	like machines in vulnhub?
+T 1568276395 18<praxis18>	patstoms: probably. i'm not familiar with that one
+T 1568276477 18<praxis18>	but yep, i just had a quick look. sounds a lot like it
+T 1568276928 18<offabean18>	anyone online
+T 1568277014 18<postal_blab18>	no
+T 1568277029 18<offabean18>	funny
+T 1568277040 18<offabean18>	is this channel pretty active
+T 1568277117 18<praxis18>	offabean: it's one of the more active ones
+T 1568277125 18<k33k18>	i play soccer twice a week but i can't speak for the others
+T 1568277143 18<praxis18>	full of smartasses though
+T 1568277158 18<k33k18>	>:D
+T 1568277276 18<offabean18>	how would yall go about spreading a meterpeter executable around
+T 1568277287 18<offabean18>	ethically ofc
+T 1568278175 18<prometheus_falli18>	dont you bind it to a pdf or jpeg and send it?
+T 1568278393 18<praxis18>	lol
+T 1568278397 18<praxis18>	ethically of course
+T 1568279184 18<k33k18>	fairtrade locally-sourced exploits
+T 1568279244 18<b1tninja18>	upload to virustotal
+T 1568281620 18<chazapp18>	Hi, anyone know what i can use to find subdomains such as *.foo.co ?
+T 1568282374 20*	Disconnected (20)
+T 1568282397 19*	Now talking on 22##security
+T 1568282397 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568282397 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568282398 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568282461 18<chazapp18>	thoughts on https://github.com/OWASP/Amass for subdomain iteration ?
+T 1568282467 18<chazapp18>	-iteration + enumeration
+T 1568283015 18<dylanwtf18>	unless the DNS server is misconfigured you can't directly get a list of subdomains
+T 1568283028 18<Guifle18>	hello, how can I decrypt an img file which is the image of a luks partition?
+T 1568283034 18<dylanwtf18>	here is a guide on different methods
+T 1568283040 18<dylanwtf18>	https://appsecco.com/books/subdomain-enumeration/
+T 1568283095 18<chazapp18>	dylanwtf: yeah i know that's not a public available data. I'll be trying amass, but i don't want to bruteforce the target's server too hard
+T 1568283103 18<chazapp18>	thanks for the link tho
+T 1568283130 18<dylanwtf18>	use google dorks to try and find them
+T 1568283150 18<dylanwtf18>	if you want to be passive
+T 1568283162 18<dylanwtf18>	Guifle: https://unix.stackexchange.com/questions/504230/mount-encrypted-partition-of-an-image-file
+T 1568283186 18<Guifle18>	dylanwtf, thank you!
+T 1568283280 18<chazapp18>	dylanwtf: can you elaborate on Google Dorks ?
+T 1568283303 18<dylanwtf18>	a google dork is just a search string for google that helps you find something specific
+T 1568283303 18<chazapp18>	i vaguely remember that these are data google provides when it should not, but what can be done with that ?
+T 1568283323 18<dylanwtf18>	but that guide lists a bunch of other passive techniques too
+T 1568283331 18<dylanwtf18>	like looking at cert transparency logs
+T 1568283356 18<dylanwtf18>	you can use google to find subdomains that shouldn't be public
+T 1568283362 18<dylanwtf18>	like dev/test environments and such
+T 1568283417 18<chazapp18>	I'm thinking about subdomains cause the main frontend nmap showed TLS Cert was issued for "*.foobar.com"
+T 1568283449 18<chazapp18>	But ain't no more information, that stuff is behind amazon stuff
+T 1568283462 18<dylanwtf18>	go through the 'Passive sub-domain enumeration' section in that article
+T 1568283469 18<dylanwtf18>	you won't make any noise and you might find something
+T 1568283535 18<dylanwtf18>	you can also try a wordlist of the most common hostnames
+T 1568284318 18<praxis18>	do a dirbuster type thing
+T 1568284446 18<praxis18>	chazapp: nmap -sU -p 53 --script dns-nsec3-enum --script-args dns-nsec3-enum.domains=<domain> <dns-server>
+T 1568284601 18<k33k18>	 /j ##linux
+T 1568284604 18<k33k18>	oops
+T 1568287770 18<aaii18>	Hi guys,I want a good book for start pentesting?
+T 1568287843 18<weedmic18>	I saw some courses offered on https://thehackernews.com/ - might come with a book
+T 1568287971 18<offabean18>	yeo
+T 1568288279 18<aaii18>	weedmic, that's not free :D Do you know a free one>
+T 1568288375 18<offabean18>	whats a good vpn for free vpnbooks never works
+T 1568288461 18<praxis18>	i use expressvpn sometimes
+T 1568288744 18<chazapp18>	praxis: just saw your last message I was afk, which dns server should I target with that command ? Amazon's ?
+T 1568288800 18<chazapp18>	`amass` found 3 domains I knew of already, but I know there's more than these
+T 1568288886 18<praxis18>	chazapp: what's the target
+T 1568289047 18<chazapp18>	praxis: i think i found the dns target, but nmap says "DNSSEC NSEC3 not supported"
+T 1568289243 18<praxis18>	thats not the target, the target is the domain
+T 1568289269 18<praxis18>	you said foobar.com, but i'm guessing its not foobar.com
+T 1568289287 18<chazapp18>	i don't wanna give that info
+T 1568289290 18<chazapp18>	consider its foobar.co
+T 1568289547 18<weedmic18>	no, everything I could think of would not be free aaii
+T 1568289611 18<jabberwock18>	offabean: ProtonVPN
+T 1568289674 18<aaii18>	weedmic, oh :)
+T 1568290673 18<jabberwock18>	chaz
+T 1568290691 18<jabberwock18>	Have you tried ‘fierce’?
+T 1568290805 18<jabberwock18>	fierce -dns foobar.com
+T 1568291250 18<chazapp18>	jabberwock: thanks for the link, i've just managed to get amass to work as intended
+T 1568291259 18<chazapp18>	found what i was looking for
+T 1568291553 18<jabberwock18>	👌
+T 1568293084 18<audiofile18>	I'm trying to do a buffer overflow for my infosec class and for some reason, my return address's last byte 0xff is converted to 0x0c. If you need more info do let me know!
+T 1568293182 18<audiofile18>	stackexchange tells me it's linefeed so it gets converted :/
+T 1568293566 18<audiofile18>	https://imgur.com/a/VaFUbpP here's how I run gdb and the C program basically does takes commandline arg and strcpy's to a char buffer. Examining the $esp shows data is getting written correctly except the last byte which affects the return address :/
+T 1568293595 18<nsh18>	actually in fact everything the computer does it correct
+T 1568293601 18<nsh18>	*is
+T 1568293605 18<nsh18>	the computer is infallible
+T 1568293642 18<nsh18>	even when it's behaving in an unspecified manner contrary to the assumptions of the users, developers and/or architects
+T 1568293696 18<audiofile18>	um ok
+T 1568293752 18<nsh18>	if the computers ravage humanity and turn all arable land into solar farms to help them make paperclips
+T 1568293756 18<nsh18>	it will be entirely our own fault
+T 1568293764 18<nsh18>	they'll be behaving perfectly the whole time
+T 1568293772 18<Fieldy18>	oh ok
+T 1568293790 18<nsh18>	what we need to do is turn off all the computers until we fix humanity
+T 1568293794 18<nsh18>	and then we can have nice things again maybe
+T 1568293811 18<audiofile18>	i thought you were gonna tell me how to fix my issue lol
+T 1568293864 18<audiofile18>	fixed it missing \x
+T 1568296152 18<Hack519018>	Just posted my Firefox user.js file created to improve security, it's available here https://pastebin.com/um7wHTr5
+T 1568296237 18<Criten18>	Hack5190: // Disable DNS over HTTPS
+T 1568296244 18<Criten18>	is that just because they have shitty rules around what server they use?
+T 1568296320 18<Hack519018>	Because I run my own - should comment that in the file, thanks Criten
+T 1568296457 18<audiofile18>	is firefox less cpu intensive than chrome?
+T 1568296508 18<Criten18>	ah gotcha Hack5190 - cool
+T 1568296515 18<Criten18>	audiofile: not sure
+T 1568296533 18<Criten18>	audiofile: i've heard its better on memory and such
+T 1568296545 18<Criten18>	it goes back and forth pretty frequently with them trying to one up eachother
+T 1568296548 18<audiofile18>	oh ok! chrome takes up 7-8 gigs for me :/
+T 1568296548 18<Hack519018>	warning added Criten - thanks mate
+T 1568296567 18<Criten18>	Hack5190: that's what peer reviews are for :D
+T 1568296606 18<Hack519018>	agreed - wish some people didnt take feedback so harsh
+T 1568296630 18<audiofile18>	can someone take a look at my ezpz buffer overflow and see why it's not working?
+T 1568296823 18<Criten18>	Hack5190: those people tpyically dont go too far :)
+T 1568296836 18<Criten18>	atleast they suck to work with and in turn are kind of just missrible people
+T 1568296856 18<Criten18>	audiofile: ezpz?
+T 1568296866 18<audiofile18>	easy-peasy
+T 1568296890 18<Criten18>	what are you trying to buffer overfly?
+T 1568296893 18<Criten18>	flow* haha
+T 1568296915 18<Criten18>	"Vegetarian friendly state for React" <- that thing? hahaha
+T 1568296944 18*	Criten just googled easy peasy
+T 1568296959 18<Criten18>	Dont know if you're talking about some lib or just using the term
+T 1568297487 18<audiofile18>	oh just a term
+T 1568297492 18<audiofile18>	like to mean it's dead easy
+T 1568299322 18<flyback18>	Leonarbro, :)
+T 1568299406 18<soulisson18>	Hi
+T 1568299406 18<EmmyNoether18>	soulisson: <jabberwock> Your WP plugin idea worked. Thank you!
+T 1568299420 18<soulisson18>	jabberwock, you're welcome :)
+T 1568299533 18<flyback18>	https://www.youtube.com/watch?v=OjKhiGiJJgI <--- I can't make up my mind if this is a tech video or pr0n?
+T 1568300889 18<flyback18>	1000% SAFE FOR WORK btw
+T 1568300894 18<flyback18>	just some nerd humor
+T 1568301545 18<pai-pai18>	Hitting the tram but stops 1m befor3 fior blind ppl unacccactable
+T 1568301597 18<pai-pai18>	H3y
+T 1568301735 18<jaggz18>	why can't my phone go into auto-locking mode when it's not near my wifi?
+T 1568301752 18<jaggz18>	why do they demand this must be near known bluetooth devices and stuff
+T 1568301847 18<pepee18>	.t https://twitter.com/johnpilger/status/1168613364827852802
+T 1568301853 18<EmmyNoether18>	Tonight I joined Roger Waters in a unique event outside the Home Office in London. Roger sang his classic 'Wish You were Here' in solidarity with Julian #Assange. Watch the livestream here .. https://www.pscp.tv/w/cD1iMjFkdktPVm5yZ0xsUVh8MVBsSlFWV3pEbW54RbrHbWb7KTHU1pu7n40bXBNYpRv8TwdXFwlLaV59hUE0?t=41s (@johnpilger)
+T 1568302151 18<Fieldy18>	please go spam somewhere else
+T 1568302687 18<pepee18>	is it not security related?
+T 1568305063 18<katsumi18>	moin
+T 1568305072 18<soulisson18>	moin
+T 1568305110 18<katsumi18>	whats down today?
+T 1568305645 18<ilikeyou18>	watching Colbert and overdosing on carrot juice.. checking out presidential candidate Pete Buttigieg. good news, he doesn't sound completely insane imo
+T 1568305718 18<iz18>	you ever mix carrot and orange juice?
+T 1568305719 18<soulisson18>	ilikeyou, watched coldbert this morning :)
+T 1568305776 18<ilikeyou18>	never mixed carrot and orange. good? I'll check it out :)
+T 1568305867 18<katsumi18>	ooom
+T 1568305879 18<zuckonit18>	uwu
+T 1568305885 18<katsumi18>	betacarotin
+T 1568305973 18<katsumi18>	kill all juicee o/
+T 1568305977 18<iz18>	ilikeyou: yeah, it's super good
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22##security
+T 1568307242 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568307242 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568307242 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568307654 18<katsumi_18>	umm. offabean is out. :( i wanted to offer my 0-day exploit###########8backdoor th oim "you have to run as root"
+T 1568307660 18<katsumi_18>	;)
+T 1568307943 18<ilikeyou18>	I'll trade you a backdoor for a fresh new tomato plant! yummm :p
+T 1568307957 18<marder18>	omnomnom
+T 1568307969 18<nate18>	Grayson: Not offhand, but I avoid chrome as best as I can lol
+T 1568307996 18<marder18>	my provider is horrible with ipv6 connecting
+T 1568308166 18<marder18>	ilikeyou: no tomatoes :(
+T 1568308272 18<katsumi18>	the plants are smelling
+T 1568308284 18<katsumi18>	;)
+T 1568308287 18<insecurity18>	s/lants/enis'
+T 1568308347 18<katsumi_18>	wtf
+T 1568308395 18<insecurity18>	right?
+T 1568308401 18<insecurity18>	it's like, holy shit i mean wow
+T 1568308473 18<beanbag-18>	https://hlassets.paessler.com/common/files/screenshots/prtg-v17-4/basics/sunburst-view.png
+T 1568308476 18<beanbag-18>	that's kinda sweet
+T 1568308491 18<beanbag-18>	but dunno if I would use that sw to handle all my syslog data
+T 1568308572 18<katsumi_18>	i'll mail to m< provider that their ipv6 shit makes me grrrrrrrrrrrrrr
+T 1568308638 18<katsumi_18>	while the bot usin ipv4 is workin fine
+T 1568308650 18<katsumi_18>	wish me luck
+T 1568308743 18*	katsumi_ is awating the next disconnect
+T 1568308851 18*	zuckonit disconnects
+T 1568308854 18<zuckonit18>	katsumi_
+T 1568308913 18<c0mmy18>	So I am following this https://blog.secureideas.com/2014/01/intercepting-dns.html, Setup everything as in the tutorial, but...when I visit a website I just get nothing, webpage not available, although I can see it in burpsuite history and in dnschef
+T 1568308966 18<katsumi_18>	^^
+T 1568308981 18<c0mmy18>	katsumi_: ?
+T 1568308996 18<pepee18>	katsumi_, !
+T 1568309056 18<katsumi_18>	lol
+T 1568309074 18<c0mmy18>	sham lam dubeli
+T 1568309159 18<katsumi_18>	.g voodoo people youtube
+T 1568309164 18<EmmyNoether18>	https://www.youtube.com/watch?v=XQEBzauVIlA
+T 1568309348 18<c0mmy18>	who's willing to do some cool tests on the tutorial above
+T 1568309357 18<c0mmy18>	https://blog.secureideas.com/2014/01/intercepting-dns.html,
+T 1568309392 18<vavkamil18>	c0mmy, are you trying it on windows 10?
+T 1568309409 18<nate18>	Jesus fuck a plane just like lowballed overhead my town
+T 1568309508 18<c0mmy18>	vavkami: Burpsuite on win 10 and the rest (webmitm, dnschef, beef) on a kali box.
+T 1568309516 18<technonerd18>	Did the sound come second?
+T 1568309570 18<vavkamil18>	c0mmy, well it's article from 2014, it will only work on http:// websites and win 10 as I know have some protection against DNS spoofing
+T 1568309591 18<c0mmy18>	vavkamil: Who's talking about DNS spoofing?
+T 1568309633 18<c0mmy18>	it should work on both http and https, https sites will give that notification about the certificate etc
+T 1568309643 18<c0mmy18>	but I've tried an http site and it didnt open
+T 1568309653 18<c0mmy18>	however I was able to hook it via beef
+T 1568309667 18<c0mmy18>	but why didn't the page open
+T 1568309671 18<c0mmy18>	in the browser
+T 1568309691 18<katsumi_18>	what agent u use?
+T 1568309756 18<c0mmy18>	internet explorer
+T 1568309767 18<vavkamil18>	how were you able to hook it with beef if the page didn't open
+T 1568309772 18<katsumi_18>	try wget
+T 1568309777 18<katsumi_18>	;)
+T 1568309778 18<c0mmy18>	the page didn't open but it got hooked
+T 1568309791 18<c0mmy18>	not an https one
+T 1568309793 18<katsumi_18>	or curl
+T 1568309794 18<c0mmy18>	an http one
+T 1568309805 18<vavkamil18>	that doesn't make any sense
+T 1568309817 18<c0mmy18>	vavkamil: You wanna test that?
+T 1568309837 18<katsumi_18>	if page filtering out
+T 1568309845 18<vavkamil18>	way complicated scenario for basic test
+T 1568309875 18<nate18>	Huh, we have a C130 circling the town, well people are gonna be freaking out today lol
+T 1568309887 18<c0mmy18>	vavkamil: I"ve got the full setup ready for this setup man.
+T 1568309923 18<c0mmy18>	And I can spin up stuff in the cloud.
+T 1568309952 18<vavkamil18>	cool but I don't
+T 1568309962 18<c0mmy18>	vavkamil: You don't have to.
+T 1568309983 18<vavkamil18>	ok so you have DNS server ready that I can test?
+T 1568309996 18<c0mmy18>	vavkamil: Sure.
+T 1568310003 18<vavkamil18>	pass the IP then
+T 1568310053 18<superherointj18>	@nate, why is that?
+T 1568310075 18<katsumi_18>	+dance*
+T 1568310149 18<c0mmy18>	vavkamil: PM?
+T 1568310188 18<vavkamil18>	yeah
+T 1568310215 18<katsumi_18>	159.89.20.170 - - [12/Sep/2019:19:16:53 +0200] "GET /TEMPORARY_LISTEN_ADDRESSES/WSMAN HTTP/1.1" 404 1057 "-" "Mozilla/5.0 zgrab/0.x"
+T 1568310223 18<katsumi_18>	ooom
+T 1568310250 18<katsumi_18>	funny ppl
+T 1568310264 18<nate18>	superherointj: I'm in a small town, a C-130 is pretty big for our airport size.  But we do have a joint military base up at our small airport so it's probably just an exercise, but a C-130 flying low around mountains and valley is REALLY loud and not something seen usually here :P
+T 1568310288 18<nate18>	Last time we had one flying around here was shortly after 9/11, I think one came in for some maintenance or something
+T 1568310352 18<bubbajbubba18>	Vs here where we have F-18s here leaving Mayport NAS that like to zing up and down the St. Johns river every morning. Kinda comforting hearing them zing on by.
+T 1568310436 18<nate18>	Most we usually have here on occasion (and I mean maybe a few times a month) are blackhawk's and apache's as that's primarily whats up at that base, there's a big medical marine outfit there and they do a lot of training in the blackhawks as well as woodland stuff since we're up in the mountains
+T 1568310514 18<bubbajbubba18>	yeah, the closest Apaches to us are probably at Ft. Rucker in AL. See plenty of Navy Seahawks, though.
+T 1568310517 18<katsumi_18>	https://securitynews.sonicwall.com/xmlpost/microsoft-sharepoint-server-flaw-cve-2019-0604-is-actively-being-exploited/
+T 1568310534 18<katsumi_18>	sry i did not got it
+T 1568310540 18<katsumi_18>	.t
+T 1568310547 18<EmmyNoether18>	Microsoft SharePoint server flaw CVE-2019-0604 actively being exploited in the wild – SonicWall
+T 1568310572 18<beanbag-18>	what was the name of that tool to check if they are dicking with your wifi
+T 1568310609 18<katsumi_18>	toolß thors hanner
+T 1568310612 18<Grayson18>	nate I think if our phishing email says it only works in IE people won't open it
+T 1568311043 18<beanbag-18>	pikarma
+T 1568311070 18<beanbag-18>	now I just need to find out if it will work with any existing network cards or old routers I have around
+T 1568311181 18<beanbag-18>	they also fail to list what revision TP LINK TL-WN722N they require
+T 1568311189 18<beanbag-18>	1x is atheros based, 2 and 3 are realtek
+T 1568311380 18<beanbag-18>	https://rubygems.registry.github.com/0x90/wifi-arsenal
+T 1568311382 18<beanbag-18>	WTF
+T 1568311395 18<beanbag-18>	"the require was made to forbidden content?
+T 1568311452 18<bubbajbubba18>	What's worse is they give you a pic of an angry pink unicorn sneering at you.
+T 1568312636 18<beanbag-18>	hmm I think I have a atheros usb module
+T 1568312649 18<beanbag-18>	it's useless due to lack of win10 drivers but fine for linux and this
+T 1568312691 18<Pilate18>	https://github.com/0x90/wifi-arsenal - dunno where you got that weird link
+T 1568312941 18<beanbag-18>	thx
+T 1568313302 18<beanbag-18>	I got a old laptop with a canucked screeen and hd that would be perfect for this
+T 1568313319 18<beanbag-18>	the damage to the screen isn't enough to destroy it's use as a wifi detector and I got spare hd's
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22##security
+T 1568351773 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568351773 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568351773 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568353382 18<katsumi_18>	moin
+T 1568353419 18*	SymbioticFemale moans
+T 1568354821 18<cesurasean18>	what up peeps
+T 1568354950 18<cesurasean18>	db, sup?
+T 1568354959 18<db18>	uh
+T 1568354962 18<cesurasean18>	lol
+T 1568354966 18<db18>	that's a difficult question
+T 1568355184 18<cesurasean18>	is it possible to trick bios TPM?
+T 1568355274 18<cesurasean18>	woke up bout 4am and my desktop said TPM failed
+T 1568355288 18<cesurasean18>	have obviously been hacked with the Uwasson virus.
+T 1568355323 18<cesurasean18>	is it possible they'll be able to trick TPM into flashing my shit?
+T 1568355723 18<cesurasean18>	also, any advice on removing the virus?
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22##security
+T 1568579933 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568579933 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568579933 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568579988 18<flyback18>	i'd run it in live mode but not on 2gb ram
+T 1568580426 18<flyback18>	bbl
+T 1568580935 18<synaps318>	do you recommend playing ctf for learning security?
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22##security
+T 1568585985 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568585985 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568585985 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568586664 18<mnemon18>	I recommend playing ctf's for fun :o
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22##security
+T 1568617535 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568617535 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568617535 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568618530 18<c0mrade18>	Ehh, what's up doc?
+T 1568621029 18<nindustries18>	Could this potentially give response injection issues in Java? https://hastebin.com/josovuqasa.js
+T 1568621054 18<nindustries18>	hmm, seems not
+T 1568621195 18<pycer18>	can we please have a paste service that doesn't require fogging ECMAScript to view the paste let alone create it?
+T 1568621275 18<pycer18>	"we build it in react"
+T 1568621279 18<pycer18>	fog your bs you foggers
+T 1568621531 18<nindustries18>	i'm already happy it works without ads
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22##security
+T 1568641539 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568641539 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568641540 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568641633 18<bashquest18>	calmclam: i would. but there are naked nude pics of my girlfriend (i love her)
+T 1568641982 18<SymbioticFemale18>	debug1: expecting SSH2_MSG_KEX_ECDH_REPLY  <<<< I'm getting this error while using a RSA key against a "simpleSSHd" Dropbear server (RSA only)
+T 1568642292 18<dedekating18>	hello
+T 1568642332 18<bashquest18>	hi
+T 1568642358 18<qskwx18>	hi
+T 1568642358 18<dedekating18>	any rules?
+T 1568642365 18<dedekating18>	.rules
+T 1568642376 18<dedekating18>	!rules
+T 1568642456 18<SymbioticFemale18>	rules are to stay on topic
+T 1568642503 18<dedekating18>	i get it
+T 1568642561 18<dedekating18>	can i ask something? about my lap trouble
+T 1568642567 18<SymbioticFemale18>	yes
+T 1568642677 18<dedekating18>	i have 1 my lap installed pirates win 7. i cant run hexchat it says "api-ms-win-crt-runtime-|1-1-0.dll is missing
+T 1568642698 18<SymbioticFemale18>	:/
+T 1568642730 18<dedekating18>	i tried to download n install msvc 2015 but failed setup 0x80240017
+T 1568642763 18<SymbioticFemale18>	most people/window 2
+T 1568642767 18<SymbioticFemale18>	umm
+T 1568642789 18<SymbioticFemale18>	maybe you might try in ##windows or #hexchat
+T 1568642800 18<dedekating18>	im on my way learning ubuntu tho
+T 1568642803 18<SymbioticFemale18>	most people here are on some form of unix derivative
+T 1568642831 18<SymbioticFemale18>	well you shouldn't have a problem installing hexchat on ubuntu
+T 1568642832 18<dedekating18>	ouch ;(
+T 1568642840 18<SymbioticFemale18>	apt update ; apt install hexchat
+T 1568642888 18<dedekating18>	then i just dont have to care bout my problem with hex in windows tough?
+T 1568642897 18<SymbioticFemale18>	exactly
+T 1568642901 18<dedekating18>	thanks anyway
+T 1568642909 18<SymbioticFemale18>	try ##windows, like i said
+T 1568642925 18<dedekating18>	didnt it good thing to about learning something?
+T 1568642937 18<SymbioticFemale18>	yeah learning is good
+T 1568642954 18<dedekating18>	wiat, what is that? ##windows? is it a chat room?
+T 1568642965 18<SymbioticFemale18>	yes it is
+T 1568642969 18<SymbioticFemale18>	 /join ##windows
+T 1568642987 18<dedekating18>	uhr..... thanks but
+T 1568642990 18<dedekating18>	i think
+T 1568643005 18<dedekating18>	i just have to throw the windows off
+T 1568643020 18<SymbioticFemale18>	that is what most of us have done, yes
+T 1568643033 18<bashquest18>	:D
+T 1568643036 18<dedekating18>	i btw to be honnest want to learn and be a super hacker
+T 1568643054 18<dedekating18>	thats why im joining here
+T 1568643058 18<bashquest18>	get a PhD in math first.
+T 1568643062 18<SymbioticFemale18>	ah, if you want to be a super hacker, perhaps you start with ParrotOS instead of ubuntu ;)
+T 1568643067 18<bashquest18>	then u'll get.
+T 1568643095 18<bashquest18>	u need math.
+T 1568643103 18<SymbioticFemale18>	bashquest: explain that to me
+T 1568643110 18<dedekating18>	hm... i ll take a look reveiw that
+T 1568643115 18<SymbioticFemale18>	bashquest: or you're pushing on the word 'super'?
+T 1568643131 18<dedekating18>	what math??? hell no im realy dumb of that
+T 1568643134 18<bashquest18>	a super hacker is very good in math i guess
+T 1568643142 18<SymbioticFemale18>	:/
+T 1568643163 18<bashquest18>	dedekating: then forget the super hacker.
+T 1568643176 18<SymbioticFemale18>	bashquest: just let him be a super hacker
+T 1568643196 18<bashquest18>	idc
+T 1568643205 18<bashquest18>	its not my exploding dream
+T 1568643211 18<SymbioticFemale18>	don't take the skid's dream from him
+T 1568643243 18<dedekating18>	thanks btw i got to roll
+T 1568643248 18<dedekating18>	see u soon
+T 1568643250 18<SymbioticFemale18>	c u
+T 1568643337 18<SymbioticFemale18>	i feel like the greatest way possible to troll ##security would be to start a web chat for technical support problems that puts users directly from google into ##security, with not even the technical know-how required to install hexchat.
+T 1568643392 18<bashquest18>	hexchat is a bit creepy. it works. but creepy
+T 1568643396 18<bashquest18>	write your own client
+T 1568643398 18<SymbioticFemale18>	10/10, i would be amused.
+T 1568643454 18<SymbioticFemale18>	i should have told him to install IRSSI on a VPS and then use putty to connect to it
+T 1568643543 18<ilikeyou18>	lol
+T 1568643624 18<weedmic18>	this is what I see when people type lol - https://static.turbosquid.com/Preview/2014/07/10__23_31_27/Tie_Fighter_Front.png264b4307-245c-4be1-ac3e-dd83120e358bOriginal.jpg
+T 1568644077 18<Alexander-47u18>	calmclam thanks
+T 1568644238 18<ilikeyou18>	fun fact, EmmyNoether was a mathematician
+T 1568644656 18<at0m18>	.g noethers theorem
+T 1568644662 18<EmmyNoether18>	https://en.wikipedia.org/wiki/Noether's_theorem
+T 1568644717 18<at0m18>	from what i remember, one of the things there is that 'every conservation law links to a constant of nature'
+T 1568644756 18<at0m18>	or was it on symmetries? probably both eh
+T 1568645924 18<bashquest18>	so theres so much canadian bullshit info but no solution ... ?
+T 1568645940 18<jabberwock18>	bashquest: Don't be influenced by flyback :P
+T 1568645946 18<bashquest18>	whos flyback
+T 1568645959 18<jabberwock18>	The one who says "canuck" about 1,000 times a day
+T 1568645965 18<jabberwock18>	obsessively lol
+T 1568645981 18<jabberwock18>	You two were chatting last night
+T 1568645991 18<bashquest18>	i mean the thinfoil hats
+T 1568646067 18<Jo-Anna18>	What did I miss ?
+T 1568646141 18<bashquest18>	i dont mean im crazy
+T 1568646185 18<bashquest18>	im not a canadian.
+T 1568646332 18<Burgundy18>	do you have a "no canadian" official certification?
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22##security
+T 1568708607 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568708607 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568708607 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+T 1568710305 18<nindustries18>	So i'm a cybersec freelancer, but a company wants to pull me in a regular employee. Anyone did that move/comparison before/
+T 1568710844 18<nate18>	nindustries: Considering most companies don't want to bother with relocation, generally no.  But for me it would mainly depend on the pay and cost of living wherever they were
+T 1568710979 18<nindustries18>	nate: it's a difficult exercise for sure.. this would be for a nearby company
+T 1568711002 18<nindustries18>	and offer the possibility to transition to a manager role (create cybersec team w/ 4 engineers)
+T 1568711015 18<nindustries18>	I basically said "convince me", so let's just wait
+T 1568711960 18<flawseeker18>	well comparison is probably you're less paid as a regular employee, less freedom, you have a hierarchy  and coworkers to deal with. On the positive side, you might get broader mission because you're a team, you're part of a team, and income is more secure
+T 1568711988 18<flawseeker18>	mainly depends what you prefer
+T 1568713377 18<nate18>	I'm beginning to think HP has purposely sabotaged these envy laptops from being able to sanely install any linux onto them
+T 1568714790 18<voices18>	what's the rough amd equivalent ot the intel core i7
+T 1568714831 18<nate18>	Probably the Ryzen 7
+T 1568714838 18<nate18>	(AMD wasn't all that creative with the naming)
+T 1568714839 18<voices18>	thought so
+T 1568714903 18<voices18>	ryzen is kinda creative. i mean, it's not a word.. or is it n_n
+T 1568715327 18<voices18>	so what makes it an i7
+T 1568715351 18<voices18>	is it just a name, or does the 7 represent something
+T 1568715371 18<voices18>	i used to think it was just the generation
+T 1568715402 18<voices18>	but i see there are 9th Gen i7s now
+T 1568715458 18<voices18>	10th Gen now even
+T 1568715479 18<nate18>	voices: Same thing that makes it a Ryzen 7, different features than the 5's and 3's
+T 1568715480 18<nate18>	:P
+T 1568715493 18<nate18>	Just like in the past you had Core 2 Duo's, Core 2 quads, etc
+T 1568715526 18<nate18>	Same architectures, just slightly different clocks, capacities, etc
+T 1568715677 18<voices18>	yeah, but the 7 doesn't represent like ... seven... something's
+T 1568715719 18<voices18>	no, i6
+T 1568715777 18<voices18>	like a quad has 4 cores
+T 1568716164 18<dedekating18>	hello hackies
+T 1568716208 18<dedekating18>	is all hacker using libeeboot-ed machine?
+T 1568717918 18<scapegoat018>	Hey, is it safe to GPG encrypt a ZIP file with AES256? I'm asking because I read somewhere that if you are encrypting something like a codebase, common patterns like your pom.xml can make it significantly easier to recover your encryption key by just having the ciphertext itself only?
+T 1568719571 18<KidBeta18>	scapegoat0: AES does not have a known plaintext attack
+T 1568719591 18<KidBeta18>	knowing the contents shouldn't really help in any meaningful way
+T 1568720149 18<orlock18>	nsh: yo
+T 1568720312 18<orlock18>	nsh: I'm seeing something weird you might have come across with an AXFR
+T 1568720373 18<orlock18>	i get roughly 3k of data in response to a dig -t axfr
+T 1568720416 18<orlock18>	packet dump says that i get more data back from the server, never reaches the client
+T 1568720482 18<orlock18>	dig gives a read error.
+T 1568720505 18<orlock18>	i've been sucked into djb's notes on axfr
+T 1568720524 18<orlock18>	man he has an issue with the guys behind bind.
+T 1568720531 18<orlock18>	https://cr.yp.to/djbdns/axfr-notes.html
+T 1568720578 18<nsh18>	which server?
+T 1568720591 18<nsh18>	don't know anything about AXFR tbh and precious little about DNS in general
+T 1568720607 18<nsh18>	but that's most likely a misconf
+T 1568720615 18<nsh18>	esp if it will respond to the query by UDP
+T 1568720628 18<nsh18>	(DoS amplification vector)
+T 1568720679 18<nate18>	nsh: TL;DR is that AXFR was designed for syncing of a sort, so it had all records.  Meaning you could read all records, including the ones that might be wanted kept private from a nameserver
+T 1568720699 18<nate18>	it's not related to the old DNS Amplification/Reflection attack stuff
+T 1568720732 18*	nsh nods
+T 1568720966 18<orlock18>	nsh: EH, sorry - Must have you confused, i thought you were having lots of fun with axfr previously?
+T 1568721069 18<orlock18>	I'm actually unsure of the server type. Guess i'll just see if it acts broken on AD infrastructure as well.
+T 1568721083 18<nsh18>	not i as far as i recall
+T 1568721135 18<orlock18>	Must have gotten you confused with a different smedly butler
+T 1568721298 18<nsh18>	happens all the time
+T 1568721325 18<nate18>	ugh why must the ubuntu channel always be dead the rare times I got issues
+T 1568721326 18<nate18>	lol
+T 1568721366 18<Kryczek18>	nate: what issue?
+T 1568721434 18<nate18>	Kryczek: Intel graphics issue, it's technically a kali problem but since kali is based off ubuntu I tested ubuntu also and it does the same thing.  When launching it on a fresh install it just enters into a blank terminal looking screen with a blinking cursor, generally indicative of video driver problems
+T 1568721455 18<nate18>	Something I've fixed before but it appears the switches for booting into a purely terminal/console mode no longer exist or were changed
+T 1568721546 18<nate18>	Used to be something like `nomodeset splash` added to the end of the boot line in grub but it doesn't do anything, the closest I did get was adding those to the end of the recovery mode boot, but the most that got me was to...
+T 1568721676 18<nate18>	https://i.imgur.com/uMdm4cN.jpg to this, it hits that and then just hangs w/ the flashing cursor like it tried to boot into a graphical mode again.  Unfortunately the damned live mode on USB is being weird too.  HP laptops are so fucky trying to work with linux on :/
+T 1568721693 18<Kryczek18>	nate: have you tried "nomodeset" alone? I would remove "splash" and "quiet" to see all the messages, and maybe "splash" even turns modeset back on
+T 1568721721 18<Kryczek18>	I mean alone as in without splash
+T 1568721728 18<nate18>	quiet is usually there by default, so I haven't removed that no, I -believe- I Tried nomodeset alone at one point but I'll try again
+T 1568721734 18<Kryczek18>	not alone all by itself on the kernel command line
+T 1568721754 18<nate18>	I saw some referneces to doing a 'nomodeset splash 3' too but it also didn't do anything, also some references to a 'nomodeset text' and etc etc
+T 1568721765 18<Kryczek18>	remove also if you see something like vthandoff or however it's spelled
+T 1568721781 18<Kryczek18>	any chance you can copy/paste the line?
+T 1568721823 18<nate18>	Not really since I can't get it booted lol, I'd just have to take another screen shot.  I wonder if the LVH setup is maybe some how at fault, but I wouldn't -think- that would impact this
+T 1568721866 18<Kryczek18>	it doesn't have SSH?
+T 1568722001 18<nate18>	Hard to SSH into it when you can't even get booted in to decrypt it :P
+T 1568722039 18<Kryczek18>	does it respond to ping at least?
+T 1568722050 18<Kryczek18>	ah no wait I guess LUKS is before networking
+T 1568722057 18<Kryczek18>	(unless you use dracut)
+T 1568722069 18<nate18>	Not just that but I never pre-configured the wireless, and I don't have a wired adapter for this particular laptop unfortunately
+T 1568722202 18<nate18>	Main problem to doing all that though is long-term I want this thing to be LVM encrypted so any fix discoveries without it probably wouldn't work
+T 1568722223 18<nate18>	Or well
+T 1568722236 18<nate18>	I guess I can do all the encryption post a non-encrypted install...
+T 1568722237 18<nate18>	hmph
+T 1568722388 18<Kryczek18>	does it have a TPM?
+T 1568722422 18<nate18>	Yeah, cause I had originally done it at install time
+T 1568722490 18<Kryczek18>	I am not sure I follow... I mean does the laptop have a Trusted Platform Module?
+T 1568722711 18<nate18>	Oh, oh, sorry, I was thinking of something different.  No, it shouldn't, it was just a general consumer laptop
+T 1568722729 18<nate18>	I did have to disable UEFI (go into legacy BIOS mode) to even get things installed though since HP UEFI interface's are a disaster
+T 1568722836 18<Kryczek18>	I know the feeling :) I use UEFI only when I want to play with UEFI Secure Boot
+T 1568722885 18<nate18>	Yeah, well I had that disabled originally anyways but with it in legacy mode that's not a concern either
+T 1568724504 18<mnemon18>	nate: it's an issue with X or the graphical mode terminal?
+T 1568724575 18<mnemon18>	anyways removing quiet and splash should show something unless it fails already on loading the kernel
+T 1568725837 18<nate18>	mnemon: No idea since I can't get it that far, but I think I figured it out possibly
+T 1568725845 18<nate18>	it's still booting UEFI mode despite the BIOS option being set to legacy lol
+T 1568725904 18<nate18>	I forgot, when I first installed I explicitly booted the USB image from the system start up diags, it has a UEFI and non UEFI boot mode options so I explicitly did a USB Boot (Non-UEFI), but when it autoboots it does it in UEFI.  This HP is so fucked up
+T 1568725912 18<nate18>	Maybe I should see if it has a firmware update available
+T 1568726736 18<ilikeyou18>	nate: you could always try chrooting into it. troubleshoot from there. you can see if luks is still in one piece, and can look into that efi boot partition. can also test X in chroot without worrying about efi or legacy. eliminate those at least, before you go on a wild goose chase.
+T 1568727996 18<katsumi18>	hmhmm
+T 1568728151 18*	katsumi is cookin fish
+T 1568728175 18<katsumi18>	will take two hours
+T 1568728270 18<nindustries18>	so a zone transfer?
+T 1568728273 18<nindustries18>	woops
+T 1568728309 18<katsumi18>	what's down? old jira exploit in the wild?
+T 1568728394 18<katsumi18>	from jule
+T 1568728398 18<katsumi18>	ha
+T 1568728486 18<katsumi18>	 128.14.133.58 - - [17/Sep/2019:02:35:01 +0200] "GET /jira/secure/ContactAdministrators!default.jspa HTTP/1.1" 404 1058 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+T 1568728515 18<katsumi18>	post in subject
+T 1568728554 18*	ilikeyou tries to swipe katsumi's fish with ninja-like stealth 
+T 1568728621 18*	katsumi strikes back wit help of an angry dolphin
+T 1568728640 18<ilikeyou18>	:)
+T 1568728705 18<katsumi18>	music
+T 1568728710 18<Jo-Anna18>	Hi everyone what’s new ?
+T 1568728710 18<katsumi18>	he
+T 1568728759 18<katsumi18>	nuthin new, ipv6 is a bunch of shit
+T 1568728850 18<katsumi18>	hey we have milllions of adresses let us disconnectem huray
+T 1568728865 18<katsumi18>	fck fck fck
+T 1568729016 18<katsumi18>	i was standing at my providers store uh but there ... a dog balou 85kg half dobermann half berner sennenhund unstressed me
+T 1568729021 18<Oopserator18>	old man: "Hey, what's all this making the area code mandatory!? I just got used to my 'new' phone number (I like my old one, which was "323"... There are ENOUGH numbers, dammit, stop adding more! Newbies be damned!"
+T 1568729101 18<katsumi18>	wanna phone number? to display or for use???
+T 1568729150 18<mnemon18>	katsumi: ragdoll therapy?
+T 1568729254 18<katsumi18>	ommmmm
+T 1568729349 18<Oopserator18>	I was kidding... My (indirect) message was: The connected world is bigger, and there aren't enough v4 IP addresses to go around, so we need a new schema
+T 1568729401 18<mnemon18>	just reminded me of playing chew toy for some MP dogs
+T 1568729439 18<nate18>	Ugh of course there's literally no driver details at all for this laptop on HP's site, no updates no nothing
+T 1568729479 18<katsumi18>	he not fck wheres my liter
+T 1568729567 18<katsumi18>	mnemon: itÄs about pastor of muppets
+T 1568729608 18<katsumi18>	i'maway heckin th hlogs
+T 1568729615 18<katsumi18>	laterz
+T 1568729650 18<katsumi18>	yazzooooo
+T 1568729761 18*	Oopserator wonders if katsumi should invest in a new keyboard...
+T 1568729808 18<katsumi18>	lol
+T 1568730105 18<katsumi18>	noch rosmarin drauf und thymian dann wird der fisch was
+T 1568730190 18<Oopserator18>	what, is this a German cooking show, now?
+T 1568730219 18<calmclam18>	MOAR SAUSAGE
+T 1568730314 18<Oopserator18>	I've heard of boar sausage, but what does a moar eat in the winter?
+T 1568730431 18<mnemon18>	seems like a bot
+T 1568730645 18<katsumi18>	lekka
+T 1568730676 18<katsumi18>	get a real life
+T 1568730907 18<katsumi18>	no
+T 1568730912 18<mawk18>	yes
+T 1568730918 18<mawk18>	nix lekka
+T 1568730926 18<katsumi18>	hmm?
+T 1568731020 18<katsumi18>	im not a bot... tears droppin outa my eyes...;(
+T 1568731046 18<mawk18>	niks
+T 1568731048 18<mawk18>	nichts
+T 1568731077 18<katsumi18>	trash time now
+T 1568731083 18<katsumi18>	wbbl
+T 1568731086 18<mawk18>	no
+T 1568731234 18<katsumi18>	https://www.youtube.com/watch?v=lIaCTPBOFC4      here we go
+T 1568731243 18<katsumi18>	.t
+T 1568731248 18<EmmyNoether18>	MADBALL - INFILTRATE THE SYSTEM - OFFICIAL - YouTube
+T 1568731282 18<katsumi18>	o/
+T 1568731617 18<katsumi18>	BnB
+T 1568732136 18<rindolf18>	Hi all! I posted this lesson from master Yoda about security - https://twitter.com/shlomif/status/1173867402997768193
+T 1568732166 18<Oladon_wfh18>	Posted it, did you?
+T 1568732181 18<rindolf18>	Oladon_wfh: it is my twitter
+T 1568732213 18<rindolf18>	Oladon_wfh: the youtube upload was not mine
+T 1568732495 18<rindolf18>	Oladon_wfh: back when i posted a link to https://www.shlomifish.org/humour/Summerschool-at-the-NSA/ to fulldisclosure after getting the admin's approval on irc/email some redditors later scolded me for publishing imaginary fanfic there. some months later - the Snowden news broke
+T 1568732565 18<rindolf18>	Oladon_wfh: do you agree that one should not be overly paranoid about security and privacy?
+T 1568732689 18<nsh18>	paranoia isn't like atmosphere control
+T 1568732699 18<nsh18>	you don't just pick a temperature level you feel comfortable with and that's it
+T 1568732706 18<Oopserator18>	I agree that one should not be *overly* paranoid, but a measure of caution is always good
+T 1568732712 18<nsh18>	paranoia is like conversation, or mobility, or a martial art
+T 1568732734 18<nsh18>	it's a thing you must refine and hone and practice and apply daily and introspect as to whether the application was better or worse placed
+T 1568732739 18<Oopserator18>	paranoia is the *irrational* fear of something... If you have a rational reason for taking precautions, it's valid
+T 1568732743 18<nsh18>	whether the methods were more or less effective
+T 1568732755 18<nsh18>	it is not a quantative thing one raises or lowers to find an optimal
+T 1568732759 18<nsh18>	this is bad thinking
+T 1568732779 18<nsh18>	it's like asking "what level of driving is appropriate for urban shanghai"
+T 1568732807 18<nsh18>	it's complex, it's contextual, it's stylistic and its informed by at least semiformalised models and assessments
+T 1568732817 18<nsh18>	paranoia is something you learn. it's not something you just do harder
+T 1568732826 18<Oopserator18>	so, nsh, you're saying it's contextual
+T 1568732843 18<Oopserator18>	if so, I agree
+T 1568732845 18<Mibd18>	lol
+T 1568732850 18<Oopserator18>	Proper security is the mitigation of risk to an acceptable level
+T 1568732856 18<Mibd18>	there is no 99%security
+T 1568732862 18<Mibd18>	or 50%
+T 1568732866 18<Mibd18>	its only 100%
+T 1568732886 18<Mibd18>	you have it or dont
+T 1568732890 18<Mibd18>	there's no half of it
+T 1568732894 18<rindolf18>	Oladon_wfh: i also came up with a new nsa factoid: "The NSA agents are not only afraid of their own shadow, but whenever they see any shadow whatsoever they have to do a saving throw with a twenty sided die where rolling 1 results in a severe heart attack. The NSA's intensive care unit is very busy"
+T 1568732916 18<SymbioticFemale18>	nsh: paranoia is something you learn? i've always thought that the best security professionals tend to have gotten their paranoia from the cheese pizza
+T 1568732931 18<SymbioticFemale18>	nsh: is that within or outside of your suggestion that paranoia is learned? is their paranoia learned?
+T 1568732967 18<Oopserator18>	Mibd,  think your statement is both confusing, and fundamentally wrong
+T 1568732974 18<Mibd18>	lol what
+T 1568732980 18<Oopserator18>	First of all, you don't "have" security, you exercise it
+T 1568732982 18<SymbioticFemale18>	rindolf: not sure what you are getting at here
+T 1568732998 18<Mibd18>	and if you exercise it you have it?
+T 1568733010 18<Oopserator18>	there is no "have".
+T 1568733016 18<Oopserator18>	You don't "have" medicine
+T 1568733024 18<Oopserator18>	you don't "have" engineering
+T 1568733033 18<SymbioticFemale18>	Oopserator: don't dig into the words like this
+T 1568733039 18<Oopserator18>	you exercise it, practice it, execute secure operations
+T 1568733047 18<Mibd18>	:)
+T 1568733049 18<nsh18>	one has languages, but that means to have learned and assimilated
+T 1568733056 18<Mibd18>	security is secure from start
+T 1568733060 18<Mibd18>	not with time or exercise
+T 1568733061 18<Oopserator18>	SymbioticFemale, words are important (to some, anyway)
+T 1568733072 18<Oladon_wfh18>	Mibd: By that argument, nothing is ever secure.
+T 1568733080 18<Mibd18>	Oladon_wfh, that is ture
+T 1568733084 18<Mibd18>	true'
+T 1568733087 18<Mibd18>	we dont have security
+T 1568733090 18<Oopserator18>	In most cases, you cannot be 100% "secure", but you can, as I mentioned previously, *mitigate risk to an acceptable level*
+T 1568733091 18<Mibd18>	and we cant have it
+T 1568733093 18<Oladon_wfh18>	So why bother trying?
+T 1568733098 18<rindolf18>	SymbioticFemale: just sharing stuff
+T 1568733099 18<Mibd18>	noone said that
+T 1568733114 18<Oladon_wfh18>	Mibd: I'm saying it — it's the logical progression of your logic.
+T 1568733115 18<SymbioticFemale18>	rindolf: from where did that come from?
+T 1568733131 18<Mibd18>	can you guarantee anything?
+T 1568733132 18<Mibd18>	no
+T 1568733143 18<Oopserator18>	I'm ask all the time: "Are we secure?", to which I (usually) respond: "We're more secure."
+T 1568733146 18<Mibd18>	not the air not the water not the code
+T 1568733147 18<Mibd18>	never
+T 1568733151 18<Mibd18>	or anything else
+T 1568733161 18<Oladon_wfh18>	Oopserator: I'm sorry you have to work with people who ask you that :P
+T 1568733174 18<rindolf18>	using ssh instead of telnet is rational. using noscript is fine
+T 1568733186 18<Oopserator18>	I'm glad I do, Oladon_wfh, that's what keeps me employed! :)
+T 1568733216 18<Oladon_wfh18>	Oopserator: Heh, fair point. Though I manage pretty well with only external people asking me silly questions like that :P
+T 1568733227 18<rindolf18>	going to great lengths to avoid all trackers and not opening twitter links is paranoia
+T 1568733235 18<Oopserator18>	rindolf, it's all about your comfort level, your tolerance to risk
+T 1568733253 18<rindolf18>	Oopserator: well, maybe
+T 1568733260 18<Oopserator18>	Oladon_wfh, external to what?
+T 1568733277 18<Oladon_wfh18>	the company
+T 1568733289 18<rindolf18>	Oopserator: i'm not afraid of what the nsa knows about me
+T 1568733311 18<rindolf18>	they dont share it with anyone anyway
+T 1568733326 18<nate18>	I mean that's... really not true
+T 1568733331 18<Oopserator18>	so, Oladon_wfh, you're saying everyone in your company is knowledgeable when it comes to Security?
+T 1568733361 18<nate18>	rindolf: https://en.wikipedia.org/wiki/Five_Eyes / https://en.wikipedia.org/wiki/UKUSA_Agreement may be worth a read :P
+T 1568733373 18<Oladon_wfh18>	Oopserator: To various degrees — I'd never pull a Mibd and say you're either 100% knowledgeable or 0% :P
+T 1568733376 18<Oopserator18>	unfortunately there's a lot of over-sharing when it comes to PII
+T 1568733379 18<flawseeker18>	they share their exploits with the whole world, so our data…
+T 1568733387 18<rindolf18>	and i dont mind ppl seeing what pseudo-porn or soft porn i'm reading
+T 1568733402 18<Oladon_wfh18>	Oopserator: But they're pretty good, and they all want to learn.
+T 1568733434 18<Oopserator18>	Oladon_wfh, lucky you , I guess
+T 1568733440 18<Oladon_wfh18>	:)
+T 1568733460 18<rindolf18>	nate: well, they dont share it with anyone outside their limited circle
+T 1568733478 18<Oopserator18>	I work in a fairly large company, with many people, with many competencies, and many levels of competency when it comes to Security.
+T 1568733489 18<Oopserator18>	That's why they hired me, to fill in the gaps :)
+T 1568733494 18<Mibd18>	well if you have 5% knowledge how do you expect to have 100% security?
+T 1568733495 18<Oladon_wfh18>	Oopserator: That's fair.
+T 1568733501 18<Oladon_wfh18>	Mibd: :P
+T 1568733505 18<Mibd18>	when you cant guarantee anything
+T 1568733513 18<Mibd18>	how do you expect your code to be secure
+T 1568733528 18<dedekating18>	hey guys
+T 1568733529 18<rindolf18>	nate: someone told me that  the nsa recruiters he met smiled too much and flinched
+T 1568733532 18<Mibd18>	when the code isnt even math. proven correct
+T 1568733545 18<Oopserator18>	speaking of which, I should get back to my work, here, so I'll just 'lurk', i.e. come back from time to time to follow this interesting conversation
+T 1568733568 18<Oladon_wfh18>	Yeah, I should get back to this very exciting Vendor Security Risk Assessment I'm filling out...
+T 1568733572 18<Mibd18>	you're patching the holes instead of replacing whats faulty
+T 1568733576 18<Oopserator18>	(seriously: I've been lurking in this channel for over a week, and this is the first "good" discussion on security I've seen!)
+T 1568733596 18<rindolf18>	no one in his right mind will work for the nsa. but naturally some ppl are not in their right minds
+T 1568733622 18<Mibd18>	rindolf, then who protects your country, or at least try
+T 1568733628 18<Mibd18>	who keeps you safe
+T 1568733636 18<Mibd18>	"safe"
+T 1568733641 18<rindolf18>	Mibd: the nsa?
+T 1568733652 18<rindolf18>	Mibd: i am israeli
+T 1568733663 18<Mibd18>	then mossad
+T 1568733666 18<Mibd18>	or whats called
+T 1568733694 18<rindolf18>	Mibd: i was told everyone in the intelligence community hates the nsa
+T 1568733701 18<Mibd18>	why
+T 1568733706 18<rindolf18>	Mibd: ah, the mossad
+T 1568733723 18<Oladon_wfh18>	rindolf: What's with your obsession with the NSA?
+T 1568733739 18<nate18>	Considering the nature of shit mossad does I'm pretty sure you have far worse concerns to be had than the US NSA
+T 1568733740 18<nate18>	lol
+T 1568733753 18<iz18>	maybe that's why :b
+T 1568733759 18<rindolf18>	Oladon_wfh: then let's stop
+T 1568733767 18<Oladon_wfh18>	To quote Zaphod Beeblebrox, "The NSA's just this guy, you know?"
+T 1568733769 18<iz18>	YOU guys are the bad ones, we don't do anything bad!
+T 1568733773 18<gurrkiin18>	whats mossad?
+T 1568733785 18<nate18>	gurrkiin: Israeli intelligence
+T 1568733785 18<gurrkiin18>	also fuck the NSA
+T 1568733796 18<nate18>	they just tend to also be considered practical assassins too
+T 1568733801 18<Mibd18>	gurrkiin, the kgb of israel:)
+T 1568733815 18<gurrkiin18>	aha ok, dont mess with em so
+T 1568733821 18<Oladon_wfh18>	To be fair, there's not a lot of proof of that last claim, nate :P
+T 1568733831 18<Oladon_wfh18>	(Nor would there be if they really are...)
+T 1568733835 18<nate18>	gurrkiin: If you don't want your balls hooked up to a car battery while you're waterboarded, no, no you don't
+T 1568733836 18<nate18>	lol
+T 1568733843 18<iz18>	more proof than "i was told everyone hates the NSA"
+T 1568733852 18<Oladon_wfh18>	iz: heh
+T 1568733859 18<dedekating18>	ive heard somwhere that nasa and iss will move from windows to linux, is that true?
+T 1568733875 18<Oladon_wfh18>	Probably, at some point.
+T 1568733879 18<Mibd18>	call them and ask them
+T 1568733880 18<nate18>	Oladon_wfh: There is a LOT of 'evidence' of that, go look up their lists of "alleged assassinations" lol
+T 1568733895 18<SymbioticFemale18>	dedekating: iss is on windoze?
+T 1568733902 18<nate18>	dedekating: NASA has used multiple platforms for ages
+T 1568733909 18<Mibd18>	SymbioticFemale, with thinkpads:)
+T 1568733912 18<rindolf18>	i received a lot of sms spam during the election - what if i get sth important - https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf
+T 1568733948 18<nate18>	dedekating: That said you're like years out of date; https://training.linuxfoundation.org/solutions/corporate-solutions/success-stories/linux-foundation-training-prepares-the-international-space-station-for-linux-migration/
+T 1568733966 18<dedekating18>	idk i just heard somewhere thats why i ask u guys
+T 1568733985 18<nate18>	They did it like 7 years ago or so now I believe lol
+T 1568733990 18<Mibd18>	thats the other agency
+T 1568733993 18<Mibd18>	who spreads bs
+T 1568734000 18<rindolf18>	i didnt vote due to health reasons but i encouraged ppl to vote and wished good luck to all candidates
+T 1568734050 18<rindolf18>	on my twitter
+T 1568734121 18<dedekating18>	hey guys could u throw your twitter id, bout to follow u
+T 1568734122 18<rindolf18>	the mossad did 9/11 - https://www.quora.com/What-is-the-Five-Dancing-Israelis-incident ; http://shlomifishswiki.branchable.com/Fluttershy__44___Princess_of_Princesses__44___head_of_the_secret_cabal_leadership_of_the_Mossad__44___the_already_top_secret_intelligence_agency_of_the_Zionist_conspiracy/?updated
+T 1568734132 18<rindolf18>	dedekating: sure
+T 1568734147 18<rindolf18>	dedekating: https://twitter.com/shlomif
+T 1568734149 18<nate18>	lol those look like completely legit evidential URL's
+T 1568734149 18<Mibd18>	rindolf, i heard bush did it
+T 1568734158 18<Mibd18>	depends where you read it
+T 1568734161 18<rindolf18>	dedekating: what is yours
+T 1568734174 18<dedekating18>	i will follow
+T 1568734177 18<rindolf18>	i am kidding
+T 1568734185 18<rindolf18>	dedekating: thanks
+T 1568734223 18<dedekating18>	its new account
+T 1568734237 18<dedekating18>	for my project called learning flying machine
+T 1568734249 18<rindolf18>	dedekating: my inner https://mlp.fandom.com/wiki/Rainbow_Dash wants to be the twitters with the most followers but i'll settle for much less
+T 1568734375 18<dedekating18>	i was using fandom but uninstall it earlier cuz i didnt see it fun
+T 1568734393 18<rindolf18>	dedekating: https://twitter.com/katyperry was notorious for replying and retweeting interesting replies on her posts and she became the top twitterer
+T 1568734423 18<rindolf18>	dedekating: maybe obama who surpassed her slightly too
+T 1568734433 18<dedekating18>	what? how many account do u have?
+T 1568734448 18<rindolf18>	dedekating: maybe obama who surpassed her slightly does that too now
+T 1568734449 18<dedekating18>	ohh i see
+T 1568734464 18<dedekating18>	haha i didnt read it
+T 1568734476 18<rindolf18>	dedekating: katy perry is not me - she is a singer
+T 1568734504 18<dedekating18>	nice to meet u btw shilomi
+T 1568734506 18<rindolf18>	dedekating: ilike some of her songs but she has a bitch image
+T 1568734523 18<rindolf18>	dedekating: it is Shlomi
+T 1568734531 18<dedekating18>	sorry
+T 1568734535 18<dedekating18>	Shilomy
+T 1568734540 18<dedekating18>	Shilomi
+T 1568734558 18<rindolf18>	dedekating: you can call me rindolf- https://www.shlomifish.org/me/rindolf/
+T 1568734581 18<dedekating18>	why not shilomi?
+T 1568734596 18<Oopserator_lurki18>	obviously her autocorrect doesn't like "Shlomi" ;)
+T 1568734598 18<dedekating18>	its nice
+T 1568734607 18<dedekating18>	Shlomi i mean
+T 1568734608 18<rindolf18>	Oopserator_lurki: heh
+T 1568734610 18<dedekating18>	sorry
+T 1568734614 18<rindolf18>	dedekating: thanks
+T 1568734633 18<rindolf18>	dedekating: it means Shalom-ful
+T 1568734633 18<dedekating18>	is that your true name?
+T 1568734643 18<dedekating18>	wow
+T 1568734647 18*	Oopserator changes his nick back, because the previous one was truncated
+T 1568734657 18<dedekating18>	Shalomaleykhem
+T 1568734661 18<rindolf18>	dedekating: https://www.shlomifish.org/meta/FAQ/#is_shlomi_fish_your_real_name
+T 1568734691 18<rindolf18>	dedekating: you are not the first to ask that
+T 1568734720 18<dedekating18>	cool, and its actually lovely name btw
+T 1568734878 18<rindolf18>	dedekating: i've offered to licence everything i wrote on my site which isnt private/personal under cc-by if i get 10 MegaEUR: https://twitter.com/shlomif/status/1173538842751713281
+T 1568734900 18<rindolf18>	dedekating: thanks
+T 1568734926 18<dedekating18>	i'm study literature too
+T 1568734974 18<dedekating18>	its russian
+T 1568735001 18<dedekating18>	i ve once translating some anna akhmatova poem
+T 1568735005 18<rindolf18>	dedekating: ah
+T 1568735134 18<dedekating18>	also btw i realy interested to find something ancient secreet, mythology, magick etc
+T 1568735136 18<rindolf18>	dedekating: i unapologetically write a lot of fanfic and crossovers - https://twitter.com/shlomif/status/1173866257952776193
+T 1568735146 18<dedekating18>	hope i will find some in deepweb
+T 1568735197 18<rindolf18>	dedekating: parts of the bible are great - https://www.shlomifish.org/philosophy/philosophy/putting-all-cards-on-the-table-2013/DocBook5/putting-all-cards-on-the-table-2013/david_and_goliath.html
+T 1568735221 18<dedekating18>	i think i should follow all your thread
+T 1568735226 18<dedekating18>	interesting
+T 1568735297 18<rindolf18>	dedekating: there is also this scene from indiana jones - https://www.youtube.com/watch?v=vdnA-ESWcPs
+T 1568735320 18<dedekating18>	is that true if israeli have 2 diff bible? and 2 prophet?
+T 1568735337 18<rindolf18>	dedekating: no
+T 1568735396 18<dedekating18>	two race? and two languange?
+T 1568735408 18<dedekating18>	i mean jew
+T 1568735429 18<rindolf18>	dedekating: there is the jewish bible whose original is mostly in hebrew
+T 1568735487 18<rindolf18>	dedekating: and the christians have several canons
+T 1568735531 18<dedekating18>	did u write something bout solomon magick?
+T 1568736601 18<SymbioticFemale18>	well they did it again. Stallman is out from MIT and the FSF https://tech.slashdot.org/story/19/09/17/0446239/richard-stallman-resigns-from-mit
+T 1568736645 18<SymbioticFemale18>	political correctness destroying the FOSS community
+T 1568736706 18<SymbioticFemale18>	taking out people like Jacob Appelbaum and Richard Stallman
+T 1568736744 18<SymbioticFemale18>	surely to be replaced by corporate or three-letter shills
+T 1568736809 18<Mibd18>	it was his decision
+T 1568736819 18<Mibd18>	he didnt got fired
+T 1568736826 18<Mibd18>	he resigned as his own will
+T 1568736831 18<SymbioticFemale18>	https://www.vice.com/en_us/article/9ke3ke/famed-computer-scientist-richard-stallman-described-epstein-victims-as-entirely-willing
+T 1568736843 18<nate18>	mibd: That's... 99% of the time how resignations work
+T 1568736857 18<nate18>	people get ultimatums, go out on your own apparent terms or get fired and potentially embarassed
+T 1568736858 18<nate18>	lol
+T 1568736861 18<Mibd18>	yeah but people say that he was forced
+T 1568736865 18<Mibd18>	noone can force you do shit
+T 1568736869 18<SymbioticFemale18>	exactly nate
+T 1568736873 18<SymbioticFemale18>	""I am doing this due to pressure on MIT and me over a series of misunderstandings and mischaracterizations." "
+T 1568736880 18<nate18>	I mean they can, by telling him if he doesn't then he's getting fired anyways
+T 1568736893 18<SymbioticFemale18>	yep
+T 1568737263 18<xochilpili18>	hello everyone
+T 1568737386 18<xochilpili18>	im trying to use hydra for a test, but got 400 bad request using https-post-form, using curl im able to do the request with cookie and --data-binary, but in hydra i have use https-post-form "web/login:login=^USER^&password=^PASS^:H=Cookie:asdasd" and got freeze, then change Cookie: for Cookie\: but still got 400 Bad request
+T 1568737437 18<xochilpili18>	is there something like --data-binary in hydra ?
+T 1568737564 18<ullbeking18>	Is anybody here running an Exim SMTP server?
+T 1568737804 18<teardown18>	ullbeking: nah. why?
+T 1568737819 18<nate18>	Exim?  Hasn't Exim been EoL for ages now
+T 1568737821 18<teardown18>	are you owning milters
+T 1568737850 18<teardown18>	nate: i know of some very large webhost conglomerates which run exim
+T 1568737957 18<teardown18>	ok im exaggerating. i only know of one very lange webhosting conglemerate which runs it
+T 1568737964 18<teardown18>	*large
+T 1568737973 18*	teardown cant type today
+T 1568738524 18<beanbag-18>	I think I am giving up on pidense
+T 1568738544 18<beanbag-18>	you have to fight various system daemons for control of a 2ndary wifi device
+T 1568738569 18<mawk18>	what is pidense
+T 1568738629 18<beanbag-18>	tool for detecting evil wifi attacks
+T 1568738785 18<beanbag-18>	either the sw hasn't been updated with distros or they broke something
+T 1568739088 18<mawk18>	a
+T 1568739106 18<mawk18>	you have a specific error ?
+T 1568739410 18<Inconvenience18>	dont cameras add personal info to images
+T 1568739413 18<Inconvenience18>	?
+T 1568739415 18<mawk18>	yes
+T 1568739418 18<mawk18>	you can strip the info
+T 1568739421 18<Inconvenience18>	how
+T 1568739428 18<mawk18>	for instance you can upload to my wonderful site: https://pix.watch
+T 1568739434 18<mawk18>	it strips the info automatically on upload
+T 1568739448 18<Inconvenience18>	what abotu just doing a screencap
+T 1568739450 18<Inconvenience18>	on debian?
+T 1568739464 18<mawk18>	no info in a screenshot I think
+T 1568739466 18<mawk18>	you can verify
+T 1568739472 18<mawk18>	http://exif.regex.info/exif.cgi
+T 1568739476 18<Inconvenience18>	what am i looking for
+T 1568739482 18<mawk18>	upload your screenshot to the site
+T 1568739484 18<mawk18>	http://exif.regex.info/exif.cgi
+T 1568739489 18<mawk18>	it will tell about any metadata
+T 1568739492 18<Inconvenience18>	no i want to look myself
+T 1568739494 18<mawk18>	lol
+T 1568739500 18<Inconvenience18>	is there a tool
+T 1568739507 18<mawk18>	no
+T 1568739508 18<mawk18>	not for you
+T 1568739510 18<Inconvenience18>	or just looking at it with vim
+T 1568739513 18<mawk18>	yes do that
+T 1568739515 18<mawk18>	open it with ed
+T 1568739519 18<mawk18>	ed image.png
+T 1568739522 18<mawk18>	best editor
+T 1568739545 18<Inconvenience18>	what ed
+T 1568739552 18<mawk18>	ed
+T 1568739554 18<mawk18>	the command ed
+T 1568739557 18<Inconvenience18>	its like vim?
+T 1568739559 18<teardown18>	Inconvenience: you can use exiv2 and exif to dump the metadata. you would need to use something else to strip it
+T 1568739568 18<mawk18>	why would you tell him teardown
+T 1568739572 18<mawk18>	he's not allowed to do that
+T 1568739574 18<mawk18>	he must open with vi
+T 1568739594 18<teardown18>	you could use vim -b to open the image in binary mode, yes like mawk says
+T 1568739606 18<mawk18>	no -b, that would be too easy
+T 1568739614 18<mawk18>	he needs to be punished for asking for spoon feeding
+T 1568739617 18<Inconvenience18>	is exi* in the debian repos?
+T 1568739620 18<Inconvenience18>	apt get?
+T 1568739634 18<teardown18>	Inconvenience: im not sure but probably
+T 1568739634 18<mawk18>	type: apt search exif
+T 1568739657 18<mawk18>	instead of asking questions about something if you want to learn something today maybe ask questions about how to know something
+T 1568739716 18<teardown18>	mawk: yeah, nah wouldn't spoonfeeding be more like 'run this command to strip the personal info'
+T 1568739763 18<teardown18>	i just told Inconvenience how to see the metadata which might fuel curiosity
+T 1568739911 18<mawk18>	yeah
+T 1568739974 18<SymbioticFemale18>	snowden is speaking live on reuters.tv and youtube.com
+T 1568739988 18<Inconvenience18>	mawk: stfu?
+T 1568740008 18<Inconvenience18>	im asking coz i want to ask
+T 1568740011 18<beanbag-18>	there's no documentation for pidense I can see
+T 1568740016 18<teardown18>	Inconvenience: s/fu/fw/
+T 1568740019 18<Inconvenience18>	i know how to use fuking apt
+T 1568740027 18<shibboleth18>	i find it very likely that droids and idevices embed artifacts in images that lets those in the know link it to device uuid. location and other metrics may as well be included
+T 1568740052 18<Skripter18>	Who likes Kreb on Security
+T 1568740092 18<teardown18>	Kreb is kind of an asshole imo
+T 1568740218 18<mawk18>	then why are you not using it Inconvenience ? if you know
+T 1568740275 18<Inconvenience18>	coz its faster to ask
+T 1568740281 18<mawk18>	lol
+T 1568740297 18<Inconvenience18>	y the fuk r u questioning me numb nuts
+T 1568740306 18<Inconvenience18>	just go about ur business
+T 1568740319 18<mawk18>	I'm unemployed sorry
+T 1568740386 18<Inconvenience18>	is the note10 any good
+T 1568740776 18<SymbioticFemale18>	Inconvenience: ask in ##hardware or something
+T 1568740828 18<Inconvenience18>	oh right
+T 1568740832 18<Inconvenience18>	ive looked at this before
+T 1568740848 18<SymbioticFemale18>	Inconvenience: i liek grapheneOS. you are in ##security btw
+T 1568740882 18<Inconvenience18>	is anyone gona put linux on the samsung
+T 1568740894 18<Inconvenience18>	or any other phone
+T 1568740911 18<SymbioticFemale18>	there is a thing called AnLinux where you can run linux inside a VM in the phone
+T 1568740924 18<SymbioticFemale18>	like a full GUI linux, with xfce or something
+T 1568740938 18<SymbioticFemale18>	but it runs on top of your android OS
+T 1568740954 18<jabberwock18>	much battery. such drain
+T 1568740959 18<Inconvenience18>	no
+T 1568740967 18<Inconvenience18>	no drain
+T 1568740974 18<Inconvenience18>	fkn mac os runs
+T 1568740975 18<mawk18>	such explosion
+T 1568740975 18<SymbioticFemale18>	WAT
+T 1568740984 18<SymbioticFemale18>	Inconvenience: what
+T 1568740993 18<Inconvenience18>	ios and windows os
+T 1568741001 18<Inconvenience18>	those are way more fat
+T 1568741037 18<Inconvenience18>	also gnome is very much phone ready
+T 1568741254 18<Inconvenience18>	so how come some of the info in the image is plain text
+T 1568741288 18<Inconvenience18>	y dont they garble the whole thing
+T 1568741302 18<teardown18>	Inconvenience: what image format
+T 1568741337 18<Inconvenience18>	jpg
+T 1568741362 18<jabberwock18>	exif data?
+T 1568741377 18<Inconvenience18>	no im just looking via vim -b
+T 1568741440 18<mnemon18>	probably at the exif data
+T 1568741447 18<teardown18>	Inconvenience: jpg uses exif to store metadata. you can read about exif and the jpg file format
+T 1568741548 18<SymbioticFemale18>	metadata can be stored in manners other than exif
+T 1568741553 18<SymbioticFemale18>	via jpg
+T 1568741563 18<SymbioticFemale18>	as has been shown by.... facebook? i forget
+T 1568741607 18*	SymbioticFemale is always paranoid about cameras putting a digital version of printer dots, but SymbioticFemale hasn't heard about it being done so far
+T 1568741627 18<jabberwock18>	like steganography?
+T 1568741686 18<jabberwock18>	That's a possibility. There's only so much you can store before the image looks totally f'd
+T 1568741767 18<Inconvenience18>	lol
+T 1568741774 18<kitties18>	it's likely already happening
+T 1568741789 18<Inconvenience18>	how bout manners such as NOT USE FACEBOOK?
+T 1568741792 18<kitties18>	no reason camera manufacturers aren't adding hidden watermarks
+T 1568741836 18<SymbioticFemale18>	kitties: likely.
+T 1568741930 18<SymbioticFemale18>	i can't find the link, but someone on twitter posted within the last couple months about finding encoded data added to images uploaded to facebook, presumably as some form of tracking, which did not modify the appearance of the image nor the exif data
+T 1568741953 18<SymbioticFemale18>	i *think* it was facebook but i could be misremembering
+T 1568742013 18<Skripter18>	I got this interview where they're going to ask me questions about AWS. I'm gonna bomb this shit lmao
+T 1568742025 18<Skripter18>	Bomb = fail
+T 1568742034 18<Skripter18>	Just in case swat team is on here
+T 1568742036 18*	SymbioticFemale also doesn't know shit about AWS and would bomb it
+T 1568742053 18<teardown18>	chilling effect on irc. fuck
+T 1568742100 18<Skripter18>	Like, this job depends on me knowing AWS and I only know the basic cloud practitioner shit, all GUI stuff
+T 1568742110 18<Skripter18>	I'm doing a 6 hour training course today, so that I can learn more lol
+T 1568742137 18<Skripter18>	I'm not saying I'm going to bullshit myself into a job, I'm saying that I'm going to cram what's necessary like a college exam
+T 1568742585 18<Inconvenience18>	yeah i dont see any coordinates in here
+T 1568742603 18<Inconvenience18>	i was just thinking how bad that would be
+T 1568742681 18<Inconvenience18>	coz were all taking pics
+T 1568742802 18<teardown18>	clear
+T 1568742853 18<Inconvenience18>	what
+T 1568742931 18<Inconvenience18>	oh hahaha
+T 1568742946 18<Inconvenience18>	it has all kinds of info
+T 1568742970 18<Inconvenience18>	cant see that shit w vim obviously
+T 1568742974 18<Inconvenience18>	lololololol
+T 1568743084 18<Inconvenience18>	only info it dun have is how many cavities i have
+T 1568743092 18<Inconvenience18>	wtf
+T 1568745094 18<beanbag-18>	looks like the us gov threw a temper tantrum at snowden
+T 1568745473 18<nate18>	Hm, so seems my issue is despite the system being configured to be a 'legacy' BIOS the distros keep installing w/ EFI shit that wonks it all out
+T 1568745659 18<Kryczek18>	nate: what brand of mobo is it?
+T 1568745915 18<nate18>	Kryczek: Not even remotely sure, whatever the hell HP throws in their envy's lol
+T 1568745931 18<nate18>	I had to post a topic in their community forums to see if anyone knows where they moved all the firmware/software updates to
+T 1568746123 18<Inconvenience18>	looks like screenshots png has not exif data
+T 1568746144 18<Inconvenience18>	and like no real info in exiv2 either
+T 1568746187 18<Inconvenience18>	is that true
+T 1568746480 18<nate18>	Inconvenience: For one thing EXIF is a JPEG and TIFF extension mainly.  For another, why would a screenshot, PNG or otherwise have EXIF information?  You may want to look up exactly what EXIF is
+T 1568746874 18<ilikeyou18>	Amazon having job fairs today :p  trying to fill 30k positions
+T 1568746906 18<Inconvenience18>	just want to make sure it dun have my coords
+T 1568746912 18<Inconvenience18>	@nate
+T 1568746922 18<Inconvenience18>	nate:
+T 1568746972 18<Inconvenience18>	the phones have all kinds of info
+T 1568746984 18<Inconvenience18>	although the coords are not precise
+T 1568747084 18<Inconvenience18>	i wonder if most ppl realy know about this
+T 1568747088 18<Inconvenience18>	or care
+T 1568747092 18<Inconvenience18>	and the dangers of it
+T 1568747211 18<nate18>	Inconvenience: A general solution to that is don't enable GPS
+T 1568747396 18<Inconvenience18>	ya but its a phone
+T 1568747567 18<nate18>	so...?
+T 1568747596 18<nate18>	Phones get coordinates from GPS, no GPS then no coordinates really
+T 1568747610 18<Inconvenience18>	is gps not needed for service?
+T 1568747643 18<Inconvenience18>	or do u flip into airplane mode ?
+T 1568747645 18<dylanwtf18>	Inconvenience: there is an app for Android called 'Scrambled EXIF', you can share images to it, it will remove EXIF data, then prompt you for an app to share it back to
+T 1568747658 18<dylanwtf18>	so you can share from camera, to scrambled exif, to email or wherever
+T 1568747660 18<dylanwtf18>	it's in f-droid
+T 1568747663 18<Inconvenience18>	dylanwtf: oh great lol
+T 1568747673 18<Inconvenience18>	and that app knows where i keep my diamonds
+T 1568747673 18<nate18>	Pretty sure the camera apps on most by default will let you disable EXIF for the most part as well, and no GPS is not needed for service
+T 1568747676 18<Inconvenience18>	fuk that
+T 1568747678 18<nate18>	cellular service does not go over GPS
+T 1568747683 18<Inconvenience18>	and fuk that app lol
+T 1568747692 18<Inconvenience18>	nate: right
+T 1568747701 18<Inconvenience18>	man...
+T 1568747711 18<Inconvenience18>	gps should only be used by fkn maps
+T 1568747716 18<Inconvenience18>	but no
+T 1568747724 18<Inconvenience18>	they fkn collect that shit all over
+T 1568747740 18<dylanwtf18>	you want to strip other data too like camera info and shit
+T 1568747750 18<Inconvenience18>	right
+T 1568747758 18<Inconvenience18>	iphone has so much shit in here
+T 1568747778 18<Inconvenience18>	although its not really private
+T 1568747781 18<nate18>	lol using an apple product and EXIF information is what you're concerned about?
+T 1568747784 18<nate18>	Oh you poor soul
+T 1568747784 18<Inconvenience18>	cept the coords
+T 1568747788 18<Inconvenience18>	which are inacurate
+T 1568747803 18<Inconvenience18>	i am a poor soul
+T 1568747809 18<Inconvenience18>	swo
+T 1568747812 18<Inconvenience18>	so
+T 1568747838 18<Inconvenience18>	is note10 any good?
+T 1568747852 18<Inconvenience18>	which phone shud i get?
+T 1568748051 18<NetTerminalGene18>	today a book from edward snowed named permanent record will be released
+T 1568748254 18<jabberwock18>	Anyone know the specific section in PCI-DSS that talks against SSN fields being of type "text" instead of "password"?
+T 1568748263 18<dylanwtf18>	Inconvenience: a pixel device with an aosp rom on it
+T 1568748273 18<dylanwtf18>	grapheneos would be a good choice
+T 1568748284 18<Inconvenience18>	oh google pixel?
+T 1568748322 18<dylanwtf18>	yeah, the 4 is probably going to come out soon, then after that graphene should support it given a bit of time
+T 1568748328 18<dylanwtf18>	if you were willing to wait on a new phone
+T 1568748330 18<Inconvenience18>	fuk google
+T 1568748341 18<Inconvenience18>	those fools cant make phones
+T 1568748348 18<dylanwtf18>	but if you go to a google-less rom your phone would be crippled in the eyes of a lot of people
+T 1568748349 18<Inconvenience18>	stick to making crappy websites
+T 1568748374 18<dylanwtf18>	if you do it right you don't install tracking apps like facebook, netflix, spotify, all that shit
+T 1568748395 18<dylanwtf18>	so you use web apps mostly
+T 1568748397 18<Inconvenience18>	lool
+T 1568748404 18<Inconvenience18>	ie all apps?
+T 1568748409 18<Inconvenience18>	what a fkn nitemare
+T 1568748417 18<dylanwtf18>	not really
+T 1568748440 18<Pilate18>	spotify can have my data in exchange for more good music
+T 1568748442 18<dylanwtf18>	most of the ad and tracking infested shit is for entertainment anyway
+T 1568748469 18<dylanwtf18>	i run spotify on the head unit in my car and just tether my phone via wifi
+T 1568748491 18<SeepingN_18>	which unit does this?
+T 1568748505 18<ilikeyou18>	just saw the Asus ROG 2 phone the other day. that thing has the power of a mid tier netbook. 4GB ddr4.
+T 1568748510 18<dylanwtf18>	tonnes of chinese ones you can get on amazon and ebay
+T 1568748518 18<SeepingN_18>	oh
+T 1568748520 18<Inconvenience18>	Pilate: that makes no sense
+T 1568748535 18<Inconvenience18>	its not a fkn bazar
+T 1568748548 18<SeepingN_18>	it just IS bizarre
+T 1568748563 18<Inconvenience18>	no like a bazar
+T 1568748577 18<Inconvenience18>	like a middle eastern market place
+T 1568748585 18<dylanwtf18>	Inconvenience: https://f-droid.org/en/packages/
+T 1568748590 18<dylanwtf18>	this is the 'app store' i use
+T 1568748611 18<Inconvenience18>	fuk droids must be a mess
+T 1568748619 18<Inconvenience18>	at least apple its all one source
+T 1568748633 18<dylanwtf18>	i mean i'm not using my phone normally
+T 1568748637 18<Inconvenience18>	there needs to be a linux phone
+T 1568748640 18<dylanwtf18>	most people just use the playstore
+T 1568748642 18<CPngN18>	there was
+T 1568748646 18<Inconvenience18>	like a debian phone
+T 1568748647 18<CPngN18>	oh so briefly
+T 1568748649 18<dylanwtf18>	pinephone or librem 5, both coming soon
+T 1568748649 18<Inconvenience18>	w all the shit
+T 1568748650 18<CPngN18>	ubuntu
+T 1568748654 18<Inconvenience18>	and terminal
+T 1568748681 18<Inconvenience18>	and opensource
+T 1568748698 18<Inconvenience18>	otherwise who knows what they are doing
+T 1568748712 18<dylanwtf18>	you're gonna have the same problem there though, you think your bank, or netflix or whoever is gonna give you a kde plasma app or whatever?
+T 1568748740 18<dylanwtf18>	if they ever do it won't be for a long time
+T 1568748761 18<dylanwtf18>	but i'll definitely pick up a pinephone or librem 5, looks sick
+T 1568748931 18<Inconvenience18>	is the note10 good
+T 1568749034 18<beanbag-18>	nate
+T 1568749037 18<calmclam18>	wow firefox moving to 4 week release cycle
+T 1568749041 18<beanbag-18>	message me tonight when I am home
+T 1568749045 18<beanbag-18>	I will help with the bios thing
+T 1568749050 18<calmclam18>	inb4 firefox version 507
+T 1568749146 18<nate18>	beanbag-: Unfortunately apparently the only way to update teh BIOS on this is an .exe patcher, so I have to reinstall windows lol
+T 1568749151 18<nate18>	unless they're hiding a .bin file somewhere
+T 1568749207 18<nate18>	I had someone in the forums say to try and do UEFI w/ secure boot again because "it should work fine", and the system is even worse now, the F9 device chooser doesn't even show any devices in UEFI mode lol, but in legacy mode it will show all devices w/ both UEFI and non-UEFI options.  This thing is a disaster
+T 1568749291 18<nate18>	jabberwock: PCI-DSS literally has nothing to do with SSN's, it's a financial/card regulation enforced by card vendors
+T 1568749304 18<jabberwock18>	I think SSN should be in scope for PCI though.
+T 1568749308 18<nate18>	That said some nations have PII laws that might regulate stuff like that
+T 1568749333 18<nate18>	Not at all, it's not credit/debit card related (and in most cases likely isn't even going to be used in conjunction with CC numbers)
+T 1568749334 18<jabberwock18>	If you're applying for a credit card and it asks you for your SSN then I feel that falls into scope
+T 1568749386 18<nate18>	Not really as SSN's are generally optional for that process and it should never be saved to begin with, simply used quickly for the credit check
+T 1568749452 18<nate18>	(of course not providing an SSN is probably gonna get you rejected unless you have a really REALLY unique name and DOB)
+T 1568749511 18<nate18>	I'm trying to remember what the name of the US legal acts are that are relevant to this
+T 1568753031 20*	Disconnected (20)
+T 1568753056 19*	Now talking on 22##security
+T 1568753056 22*	Topic for 22##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+T 1568753056 22*	Topic for 22##security set by 26Sling!~Sling@freenode/sponsor/about.security.contributor.sling (24Mon Aug 19 16:04:31 2019)
+T 1568753056 -18ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.

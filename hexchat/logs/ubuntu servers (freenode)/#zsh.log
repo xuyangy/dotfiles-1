@@ -1,0 +1,590 @@
+**** BEGIN LOGGING AT Sat Aug 31 11:24:11 2019
+
+Aug 31 11:24:11 *	Now talking on #zsh
+Aug 31 11:24:11 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Aug 31 11:24:11 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Aug 31 11:24:12 *	Channel #zsh url: http://www.zsh.org/
+Aug 31 11:46:35 <ongo>	how do I get that selection menu with suggestions?
+Aug 31 11:46:44 <ongo>	is this an oh my zsh thing?
+Aug 31 11:46:55 <ongo>	like highlighting your selections
+Aug 31 11:53:26 <ongo>	figured out it was this: zstyle ':completion:*' menu select
+Aug 31 17:48:18 <leah2>	how can i use print -P %D with a different timezone?
+Aug 31 17:48:59 <Pepe_vulgaris>	leah2: did you try TZ="whatever" print -P %D?
+Aug 31 17:49:06 <leah2>	yes, that doesnt seem to work
+Aug 31 17:49:53 <leah2>	ok, fun:
+Aug 31 17:50:15 <leah2>	> ( TZ=GMT print -P '%D{%H:%M}' )
+Aug 31 17:50:18 <machabot>	leah2: 15:50
+Aug 31 17:50:32 <leah2>	> ( TZ=DST print -P '%D{%H:%M}' )
+Aug 31 17:50:33 <machabot>	leah2: 15:50
+Aug 31 17:50:41 <leah2>	> ( export TZ=DST; print -P '%D{%H:%M}' )
+Aug 31 17:50:42 <machabot>	leah2: 15:50
+Aug 31 17:50:53 <Mikachu>	even if you set it before, you have to export it for it to take effct
+Aug 31 17:50:57 <Mikachu>	DST isn't a valid value though
+Aug 31 17:51:02 <leah2>	yeah i noticed
+Aug 31 17:51:14 <leah2>	but usually  X=Y CMD is equal to export X=Y; CMD
+Aug 31 17:51:37 <Mikachu>	i think there was a thread about this recently
+Aug 31 18:10:44 <waterkip>	> (  TZ=America/Curacao print -P '%D{%H:%M}' )
+Aug 31 18:10:45 <machabot>	waterkip: 16:10
+Aug 31 18:11:36 <waterkip>	tres weird, works locally
+Aug 31 18:17:38 <m0viefreak>	> TZ=America/Curacao; export TZ; (  TZ=America/Curacao print -P '%D{%H:%M}' )
+Aug 31 18:17:39 <machabot>	m0viefreak: 16:17
+Aug 31 18:17:54 <m0viefreak>	http://www.zsh.org/mla/users/2019/msg00109.html
+Aug 31 18:18:04 <m0viefreak>	this is the thread, Mikachu
+Aug 31 18:19:19 <m0viefreak>	> (  TZ=America/Curacao; export TZ; print -P '%D{%H:%M}' )
+Aug 31 18:19:19 <machabot>	m0viefreak: 16:19
+Aug 31 18:19:23 <m0viefreak>	weird
+Aug 31 18:20:35 <m0viefreak>	hmm, it silently seems to fall back to UTC if if the time zone is not known, which is probably the case on machabot
+Aug 31 18:21:07 <m0viefreak>	> (  TZ=UTC-1; export TZ; print -P '%D{%H:%M}' )
+Aug 31 18:21:07 <machabot>	m0viefreak: 17:20
+Aug 31 18:23:52 <waterkip>	> (  TZ=UTC-4 print -P '%D{%H:%M}' )
+Aug 31 18:23:52 <machabot>	waterkip: 16:23
+Aug 31 18:24:10 <m0viefreak>	it needs to be exported, see the mailing thread linked above
+Aug 31 18:24:15 <Mikachu>	i think the takeaway is "don't do that"
+Aug 31 18:24:39 <waterkip>	m0viefreak: it works on my own box
+Aug 31 18:24:55 <m0viefreak>	yes, because in your interactive shell TZ probably already is export beforehand
+Aug 31 18:25:07 <m0viefreak>	and your assignment just changes the exported parameter
+Aug 31 18:25:11 <m0viefreak>	its a bit of a pitfall
+Aug 31 18:25:43 <m0viefreak>	> echo $+TZ
+Aug 31 18:25:44 <machabot>	m0viefreak: 0
+Aug 31 18:25:55 <m0viefreak>	on machabot, no TZ exists yet
+Aug 31 18:26:11 <waterkip>	https://paste.debian.net/1098175/
+Aug 31 18:26:34 <waterkip>	aha
+Aug 31 18:45:51 <MrAureliusR>	is there a separate channel for oh-my-zsh?
+Aug 31 18:46:01 <MrAureliusR>	ah, found it
+Aug 31 19:23:42 <Orbstheorem>	Hello! Is there any way to specify a here-string, but connect stdin to the terminal afterwards?
+Aug 31 19:24:22 <Orbstheorem>	e.g. `sh <<< exec bash` and keep the underlaying bash open.
+Aug 31 19:27:05 <psprint>	What does fc -e do?
+Aug 31 19:29:39 <nedbat>	psprint: yeah, the man page shows "-e ename" but fails to describe what it does
+Aug 31 19:34:20 <ft>	It names the editor to use. And yes, that's documented.
+Aug 31 19:35:59 <nedbat>	ft: do you see what I mean about the "fc" section of "man zshall"?
+Aug 31 19:36:39 <nedbat>	ft: I see: it mentions ename again, but not "-e", so it's easy to miss.
+Aug 31 19:39:58 <ft>	Some parts of zshbuiltins(1), which is the part of zshall(1) you're mentioning, require close reading. Notably fc and typeset (and its variants). It is pretty complete though.
+Aug 31 19:41:13 <ft>	That being said, if you think something needs clarification: This is an open source project. ;)
+Aug 31 19:49:04 <nedbat>	ft: open source, with some unfamiliar conventions
+Aug 31 19:50:32 <nedbat>	ft: wish me luck: https://github.com/zsh-users/zsh/pull/37
+Aug 31 20:22:08 <Orbstheorem>	nedbat: is the change at line 159 intended?
+Aug 31 20:22:29 <nedbat>	Orbstheorem: oops
+Aug 31 20:22:46 <nedbat>	Orbstheorem: I searched for "ename" and hit return I guess.
+Aug 31 20:23:49 <Orbstheorem>	nedbat: Always diff upstream and local before submitting a PR :)
+Aug 31 20:24:05 <nedbat>	Orbstheorem: i did the whole thing on github, but i can check the results better
+Aug 31 20:24:17 <Orbstheorem>	Reading from a reviewer's perspective usually prevents a lot of unnecessary ping-pong
+Aug 31 20:24:48 <nedbat>	Orbstheorem: fixed.
+Aug 31 20:24:59 <Orbstheorem>	nedbat: You probably wanna fixup that commit x)
+Aug 31 20:26:30 <nedbat>	Orbstheorem: fixed fixed
+Sep 02 08:51:42 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 08:51:42 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 08:52:08 2019
+
+Sep 02 08:52:08 *	Now talking on #zsh
+Sep 02 08:52:08 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 02 08:52:08 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 02 08:52:09 *	Channel #zsh url: http://www.zsh.org/
+Sep 02 09:05:49 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:05:49 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:06:12 2019
+
+Sep 02 09:06:12 *	Now talking on #zsh
+Sep 02 09:06:12 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 02 09:06:12 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 02 09:06:12 *	Channel #zsh url: http://www.zsh.org/
+Sep 02 09:37:54 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 09:37:54 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 09:38:17 2019
+
+Sep 02 09:38:17 *	Now talking on #zsh
+Sep 02 09:38:17 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 02 09:38:17 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 02 09:38:17 *	Channel #zsh url: http://www.zsh.org/
+Sep 02 12:03:58 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 12:03:58 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 12:04:24 2019
+
+Sep 02 12:04:24 *	Now talking on #zsh
+Sep 02 12:04:24 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 02 12:04:24 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 02 12:04:25 *	Channel #zsh url: http://www.zsh.org/
+Sep 02 13:56:00 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 13:56:00 2019
+
+**** BEGIN LOGGING AT Mon Sep  2 13:56:26 2019
+
+Sep 02 13:56:26 *	Now talking on #zsh
+Sep 02 13:56:26 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 02 13:56:26 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 02 13:56:26 *	Channel #zsh url: http://www.zsh.org/
+Sep 03 10:14:12 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 10:14:12 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 10:14:37 2019
+
+Sep 03 10:14:37 *	Now talking on #zsh
+Sep 03 10:14:37 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 03 10:14:37 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 03 10:14:38 *	Channel #zsh url: http://www.zsh.org/
+Sep 03 11:37:57 <ws2k3>	how can i check if im current on zsh shell?
+Sep 03 11:38:19 <ws2k3>	cause how my terminal looks did change. but when i echo $SHELL i still see /bin/bash
+Sep 03 11:39:00 <osse>	ws2k3: zsh doesn't care about $SHELL or attempt to change it
+Sep 03 11:39:57 <osse>	ws2k3: try ps $$
+Sep 03 11:41:21 <ws2k3>	well that looks good i think  1132 pts/3    Ss     0:00 /usr/bin/zsh
+Sep 03 12:52:31 <Marlocov>	Hi I'm currently using oh-my-zsh and I wanted to ask if that's a zsh issue or a oh-my-zsh issue: When I tab on a command the name get appended to the left and I no longer can remove it. Example : $ cd  . Then when I tab I get this -> $ cd cd
+Sep 03 14:03:03 <leah2>	sounds like wrong $TERM setting
+Sep 03 14:04:52 <Marlocov>	I think it's a UTF-8 issue
+Sep 03 14:05:11 <Marlocov>	Found it in the oh-my-zsh FAQ
+Sep 03 19:20:42 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 19:20:42 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 19:21:06 2019
+
+Sep 03 19:21:06 *	Now talking on #zsh
+Sep 03 19:21:06 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 03 19:21:06 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 03 19:21:06 *	Channel #zsh url: http://www.zsh.org/
+Sep 03 20:25:44 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 20:25:44 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 20:26:12 2019
+
+Sep 03 20:26:12 *	Now talking on #zsh
+Sep 03 20:26:12 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 03 20:26:12 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 03 20:26:12 *	Channel #zsh url: http://www.zsh.org/
+Sep 03 22:53:42 <AndyAndyBoBandy>	Why doesn't this send errors to the no-no zone in zsh? /bin/ls *nonexistentfilenamepattern &> /dev/null
+Sep 04 07:55:02 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 07:55:02 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 07:55:26 2019
+
+Sep 04 07:55:26 *	Now talking on #zsh
+Sep 04 07:55:26 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 04 07:55:26 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 04 07:55:27 *	Channel #zsh url: http://www.zsh.org/
+Sep 04 10:15:33 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 10:15:33 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 10:15:56 2019
+
+Sep 04 10:15:56 *	Now talking on #zsh
+Sep 04 10:15:56 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 04 10:15:56 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 04 10:15:56 *	Channel #zsh url: http://www.zsh.org/
+Sep 04 11:44:56 <collector1871>	hi all, any idea how can i remove oh-my-zsh ?
+Sep 04 11:45:46 <wreo>	collector1871, oh-my-zsh comes with an "uninstall_oh_my_zsh" function that might work for you.
+Sep 04 11:47:38 <collector1871>	ok, done
+Sep 04 11:48:26 <wreo>	nice
+Sep 04 11:49:05 <collector1871>	now i am going install `oh-my-zsh-git` on Arch linux (i had this, but from manual installation)
+Sep 04 11:56:50 <collector1871>	other question : how can i use plugins from oh-my-zsh ?
+Sep 04 12:01:01 <collector1871>	ah, got it
+Sep 04 15:00:32 <astronavt>	can someone help me understand what ;& does in case/esac? "IF the list that is executed is terminated with ;& rather than ;;, the following list is also executed."
+Sep 04 15:00:50 <astronavt>	an example would be great
+Sep 04 15:02:10 <meh`>	astronavt, sounds like fall-through to me
+Sep 04 15:02:14 <Mikachu>	^
+Sep 04 15:03:08 <Mikachu>	> case 1 in 1) echo hi ;& 2) echo hello ;; 3) echo nope ;; esac
+Sep 04 15:03:09 <machabot>	Mikachu: hi
+Sep 04 15:03:09 <machabot>	Mikachu: hello
+Sep 04 15:03:40 <Mikachu>	> case 1 in 1) echo hi ;| 2) echo hello ;; [13]) echo nope ;; esac
+Sep 04 15:03:41 <machabot>	Mikachu: hi
+Sep 04 15:03:42 <machabot>	Mikachu: nope
+Sep 04 15:09:24 <astronavt>	ah
+Sep 04 15:09:32 <astronavt>	the "list associated with the next pattern" or something like that
+Sep 04 16:56:05 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep  4 16:56:05 2019
+
+**** BEGIN LOGGING AT Wed Sep  4 16:56:30 2019
+
+Sep 04 16:56:30 *	Now talking on #zsh
+Sep 04 16:56:30 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 04 16:56:30 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 04 16:56:30 *	Channel #zsh url: http://www.zsh.org/
+Sep 05 09:58:43 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 09:58:43 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 09:59:06 2019
+
+Sep 05 09:59:06 *	Now talking on #zsh
+Sep 05 09:59:06 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 05 09:59:06 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 05 09:59:07 *	Channel #zsh url: http://www.zsh.org/
+Sep 05 16:37:20 <gehn>	my google fu is failing me, where do I find the list of definitions of what each \ escape char is or does, like \n and \t
+Sep 05 16:37:34 <gehn>	I mean, I know what those two are, but looking for the full list
+Sep 05 16:38:15 <gehn>	all my searches relating to backslashes or escape sequences or escape chars haven't yet yielded the results I want
+Sep 05 16:41:32 <henrebotha[m]>	gehn: man zshbuiltins, search for 'echo', there's a list of which ones are recognised by echo specifically
+Sep 05 16:41:36 <henrebotha[m]>	Not sure if that's what you want
+Sep 05 16:41:55 <phy1729>	man zshmisc   QUOTING points to print in man zshbuiltins
+Sep 05 16:42:50 <gehn>	yes that's the one
+Sep 05 16:42:51 <gehn>	thanks
+Sep 05 16:44:44 <gehn>	really I just want the feature where new tabs open in the same CWD/PWD as the previous tab
+Sep 05 16:45:15 <gehn>	but on mac with zsh this appears not to be working for me
+Sep 05 16:45:19 <gehn>	all the solutions I've found on SO etc have not worked so far
+Sep 05 16:45:48 <gehn>	I saw something about that Terminall.app "sends" the PWD to the new tab via escape sequences (or something like that)
+Sep 05 16:45:53 <gehn>	but my searching also hasn't found documentation on how this works or how to use it
+Sep 05 16:46:47 <gehn>	one solution consists of this command
+Sep 05 16:46:48 <gehn>	print -Pn "\e]2; %~/ \a"
+Sep 05 16:46:59 <gehn>	but I'm struggling to understand what it does or how it's supposed to accomplish what I want
+Sep 05 16:47:12 <gehn>	I think I understand the component parts, but how does that translate into what I want?
+Sep 05 16:47:54 <gehn>	\e2]; appears to set the title bar (I guess?) and %~ is pwd and \a is bell
+Sep 05 16:47:58 <gehn>	but... why tho?
+Sep 05 16:48:07 <gehn>	also, that doesn't seem to be working for me
+Sep 05 16:48:37 <gehn>	https://superuser.com/questions/232835/open-a-new-tab-in-the-same-directory
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 16:54:01 2019
+
+Sep 05 16:54:01 *	Now talking on #zsh
+Sep 05 16:54:01 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 05 16:54:01 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 05 16:54:01 *	Channel #zsh url: http://www.zsh.org/
+Sep 05 16:55:01 <gehn>	I tested it
+Sep 05 16:55:06 <gehn>	%~ appears to be pwd
+Sep 05 16:55:15 <gehn>	that is, print -Pn "%~" certainly appears to give pwd
+Sep 05 16:55:49 <gehn>	it's mainly the \e]2; part I'm not able to find documentation for
+Sep 05 16:56:01 <gehn>	it appears to probably be mac Terminal.app specific I guess? not sure though
+Sep 05 16:56:11 <gehn>	I wonder if gnome terminal responds to those
+Sep 05 17:03:25 <SuperLag>	What's the safest way to get a more current ZSH than 5.0.x on RHEL7?
+Sep 05 17:04:47 <astronavt>	SuperLag you could install linuxbrew to your home directory
+Sep 05 17:05:11 <astronavt>	of course then youre putting trust in a community-maintained package repo entirely separate from redhat
+Sep 05 17:05:37 <SuperLag>	right
+Sep 05 17:05:42 <astronavt>	i've also built zsh from source, it's not hard and doesn't require a lot of dependencies
+Sep 05 17:05:59 <astronavt>	in either case, piss off your sysadmin and/or IT security at your own peril
+Sep 05 17:09:56 <SuperLag>	:D
+Sep 05 17:18:09 <gehn>	so bash does what I want, out of the box, with no modifications
+Sep 05 17:18:18 <gehn>	my ~/.bash_profile is empty
+Sep 05 17:18:31 <gehn>	and I don't see anything custom or related to this in either /etc/profile or /etc/bash_profile
+Sep 05 17:18:38 <gehn>	er, /etc/bashrc that is
+Sep 05 17:18:42 <gehn>	so how does bash do it?
+Sep 05 17:18:47 <gehn>	and why doesn't zsh do the same?
+Sep 05 17:27:38 <astronavt>	gehn well what do you want?
+Sep 05 17:27:52 <astronavt>	bone-stock bash is comparable to bone-stock zsh
+Sep 05 19:14:39 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 19:14:39 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 19:15:06 2019
+
+Sep 05 19:15:06 *	Now talking on #zsh
+Sep 05 19:15:06 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 05 19:15:06 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 05 19:15:06 *	Channel #zsh url: http://www.zsh.org/
+Sep 05 19:20:42 <Pepe_vulgaris>	thanks for the clue, apparently I have to do this myself then
+Sep 05 21:45:17 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 21:45:17 2019
+
+**** BEGIN LOGGING AT Thu Sep  5 21:45:43 2019
+
+Sep 05 21:45:43 *	Now talking on #zsh
+Sep 05 21:45:43 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 05 21:45:43 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 05 21:45:44 *	Channel #zsh url: http://www.zsh.org/
+Sep 06 08:11:44 *	Disconnected ()
+**** ENDING LOGGING AT Fri Sep  6 08:11:44 2019
+
+**** BEGIN LOGGING AT Fri Sep  6 08:12:10 2019
+
+Sep 06 08:12:10 *	Now talking on #zsh
+Sep 06 08:12:10 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 06 08:12:10 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 06 08:12:10 *	Channel #zsh url: http://www.zsh.org/
+Sep 06 09:19:09 <psprint>	Besides, there's also a point: Zshelldoc is a developer's tool
+Sep 06 13:02:02 <daurnimator>	How can I have zig autoload a completion from the output of a command?
+Sep 06 13:02:29 <daurnimator>	e.g. I tried a file that contains: `#compdef foo` `source <(foo completion zsh)`
+Sep 06 13:06:07 <daurnimator>	oh. I think that worked. I just forgot to run compinit :P
+Sep 06 16:42:16 *	Disconnected ()
+**** ENDING LOGGING AT Fri Sep  6 16:42:16 2019
+
+**** BEGIN LOGGING AT Fri Sep  6 16:42:40 2019
+
+Sep 06 16:42:40 *	Now talking on #zsh
+Sep 06 16:42:40 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 06 16:42:40 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 06 16:42:40 *	Channel #zsh url: http://www.zsh.org/
+Sep 07 11:05:28 *	Disconnected ()
+**** ENDING LOGGING AT Sat Sep  7 11:05:28 2019
+
+**** BEGIN LOGGING AT Sat Sep  7 11:05:50 2019
+
+Sep 07 11:05:50 *	Now talking on #zsh
+Sep 07 11:05:50 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 07 11:05:50 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 07 11:05:51 *	Channel #zsh url: http://www.zsh.org/
+Sep 07 11:48:21 <osse>	Pepe_vulgaris: exactly.
+Sep 07 11:48:40 <osse>	So even if expr succeeds, you might end up in a situation where false_block is evaluated
+Sep 07 17:11:12 *	Disconnected ()
+**** ENDING LOGGING AT Sat Sep  7 17:11:12 2019
+
+**** BEGIN LOGGING AT Sat Sep  7 17:11:34 2019
+
+Sep 07 17:11:34 *	Now talking on #zsh
+Sep 07 17:11:34 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 07 17:11:34 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 07 17:11:46 *	Channel #zsh url: http://www.zsh.org/
+Sep 09 09:21:29 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  9 09:21:29 2019
+
+**** BEGIN LOGGING AT Mon Sep  9 09:21:50 2019
+
+Sep 09 09:21:50 *	Now talking on #zsh
+Sep 09 09:21:50 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 09 09:21:50 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 09 09:21:51 *	Channel #zsh url: http://www.zsh.org/
+Sep 09 09:27:23 <osse>	compdef '_files -g "*.sln"' myscript   works just fine when run from zshrc. How would that look if I want to move it to _myscript in $fpath?
+Sep 09 10:21:38 <osse>	Interesting. I copied _mere from /usr/share/... to my $fpath dir and changed it. The result is identical to what I had, but it works.
+Sep 09 10:21:54 <osse>	There must be some difference, but I can't understand what it is.
+Sep 09 15:26:38 <psprint>	interesting thing with the compdef "_files …
+Sep 09 19:50:43 <Zoohouse>	Hello everyone. I'm having an issue when creating a symbolic link to .oh-my-zsh dir. ln -s zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme creats a broken link. If I run the same command but pointing to ~/ then it works.
+Sep 09 20:18:07 <Mikachu>	!omz
+Sep 09 20:18:08 <machabot>	"omz" is shorthand for "oh-my-zsh", an extension which the consensus of this channel recommends against using.  If you see odd behaviour using omz, please try disabling omz and see if the issue remains. For assistance with oh-my-zsh, try the channel #oh-my-zsh.
+Sep 09 20:20:27 <trucy>	I finally disabled omz
+Sep 09 20:21:14 <trucy>	At least I learned that I can configure the history to keep the history across sessions
+Sep 09 20:22:16 <Zoohouse>	got it
+Sep 09 20:47:13 <Zoohouse>	I have bindkey -v in my .zshrc file. Restarted the terminal and the keybinding isn't working as expected. Example, I'll type "This is a test" and press <esc><0> and the curser doesn't move to the start of the line. Also, <esc><b> moves back by one word and puts me into INSERT MODE.
+Sep 09 22:12:23 <glik22>	my .zshrc file defines a function. i want to create a shell script that uses that function, but it says "command not found"
+Sep 09 22:13:00 <glik22>	what's the best approach? should i just run "source ~/.zshrc" as my first command?
+Sep 09 22:13:49 <psprint>	glik22: you would have to define the function in ~/.zshenv or source the zshrc, but best will be to make it an autoload, i.e. a separate file function, add the dir to $fpath and use `autoload the-funct'
+Sep 09 22:24:58 <glik22>	psprint: it's actually an oh-my-zsh plugin, so not quite sure how that works with autoload
+Sep 09 22:39:57 <psprint>	you've said it's a function
+Sep 10 04:58:01 <nt0>	what is the recommended way to store a custom zsh theme and append fpath?  my first thought is to create a ~/.zsh/themes directory and then "export FPATH=~/.zsh/themes:$FPATH" in .zshrc
+Sep 10 04:59:39 <llua>	fpath+=( dir )
+Sep 10 05:00:39 <nt0>	llua, thanks
+Sep 10 10:21:20 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 10 10:21:20 2019
+
+**** BEGIN LOGGING AT Tue Sep 10 10:21:44 2019
+
+Sep 10 10:21:44 *	Now talking on #zsh
+Sep 10 10:21:44 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 10 10:21:44 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 10 10:21:44 *	Channel #zsh url: http://www.zsh.org/
+Sep 10 14:05:19 <lyknode>	Hello there. I'm trying to work on improving that patch https://www.zsh.org/mla/workers/2019/msg00735.html
+Sep 10 14:06:05 <lyknode>	If I use _deb_codenames in the completion, is there a way to 'edit' choices already pushed by compadd?
+Sep 10 14:06:45 <lyknode>	In that case, I'd like to remove 'sid' and add 'unstable' to the 'debian codenames'
+Sep 10 14:07:31 <lyknode>	(note that I'm _very_ new to writing completion scripts)
+Sep 10 22:51:48 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 10 22:51:48 2019
+
+**** BEGIN LOGGING AT Tue Sep 10 22:52:12 2019
+
+Sep 10 22:52:12 *	Now talking on #zsh
+Sep 10 22:52:12 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 10 22:52:12 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 10 22:52:12 *	Channel #zsh url: http://www.zsh.org/
+Sep 11 11:12:47 *	Disconnected ()
+**** ENDING LOGGING AT Wed Sep 11 11:12:47 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 11:13:12 2019
+
+Sep 11 11:13:12 *	Now talking on #zsh
+Sep 11 11:13:12 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 11 11:13:12 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 11 11:13:12 *	Channel #zsh url: http://www.zsh.org/
+Sep 11 11:14:31 <isomari>	henrebotha[m]: I want to record history from all open sessions into 1 file.
+Sep 11 11:14:59 <Mikachu>	HISTFILE=~/.history
+Sep 11 11:15:48 <isomari>	Mikachu: that is not it. For instance, I have 2 terminals open. i type a command on one then on the other Iwant to see that command in my history.
+Sep 11 11:16:27 <Mikachu>	setopt sharehistory
+Sep 11 11:16:44 <isomari>	Mikachu: cool. Thanks
+Sep 11 11:16:49 <Mikachu>	(don't blame me when you press up enter quickly and rm -rf * in the wrong terminal)
+Sep 11 11:17:03 <isomari>	Mikachu: understood
+Sep 11 11:48:37 <ralpheeee>	am trying to get tab menu selection working -> [zstyle ':completion:*' menu select] added to zshrc ...
+Sep 11 11:48:59 <ralpheeee>	but tabbing does not select the various options
+Sep 11 11:49:14 <ralpheeee>	sorry mean highlight the option
+Sep 11 11:50:01 <ralpheeee>	can someone pls point me in the right direction
+Sep 11 11:59:03 <FoH>	did you restart zsh (e.g. exec zsh)?
+Sep 11 12:01:46 <ralpheeee>	FoH: i source .zshrc
+Sep 11 12:02:08 <FoH>	ok
+Sep 11 12:08:53 <FoH>	the [ ] are not part of it, right?
+Sep 11 12:10:16 <ralpheeee>	FoH:yes just quoting will use "" next time
+Sep 11 12:12:11 <FoH>	i think  setopt menu_complete  is only necessary to make it jump to menu mode on the first <tab>
+Sep 11 12:16:33 <FoH>	anything in there that might be bypassing that line?
+Sep 11 12:17:13 <FoH>	or a  zstyle ':completion:*' menu select=false  somewhere?
+Sep 11 12:23:22 *	ralpheeee not sure whats more annoying ...that i cannot get this to work or searching on the internet just results in oh-my-zsh
+Sep 11 12:26:45 <FoH>	try adding  -"oh-my-zsh"  to the search terms
+Sep 11 12:29:18 <FoH>	argh.  without that, omz is the 1st hit for "zsh".   bad bad bad Google.
+Sep 11 13:36:58 <alephnull>	Is it a setopt that contols cd /u/s/d to cd /usr/share/docs?
+Sep 11 13:43:23 <astronavt>	i dont think so alephnull. i think its more likely a pre command hook
+Sep 11 13:44:29 <alephnull>	I have it working in one shell, I can't for the life of me figure out how.
+Sep 11 13:45:28 <astronavt>	alephnull look and see if any hooks are defined
+Sep 11 13:45:42 <alephnull>	ack
+Sep 11 13:51:11 <astronavt>	alephnull what does $chpwd_functions contain, or $precmd_functions
+Sep 11 13:51:17 <astronavt>	or $preexec_functions rather
+Sep 11 13:51:49 <osse>	astronavt: when does /u/s/d change?
+Sep 11 13:51:54 <osse>	uhh that was for alephnull
+Sep 11 13:53:06 <astronavt>	oh maybe cd is overridden by a function
+Sep 11 13:53:26 <astronavt>	what does 'where cd' show
+Sep 11 13:58:26 <alephnull>	astronavt: Turns out I was just using it wrong. It's actually completion. cd /u/s/d<TAB> will complete the dirs.
+Sep 11 14:27:24 <ralpheeee>	 "#export TERM="screen-256color"" <- is causing my issue of not having menu selection / highlight available on tab
+Sep 11 15:10:55 <elphe>	hi. vim has an option called 'showcmd' that allows for keys/commands to be displayed in statusline as they are entered. hoping to do something similiar in zsh where by there would be an indication if <esc> had been tapped and the shell is waiting to see if its the first part of a multi-char sequence. is there some kind of public flag that registers if the sheel is in waiting for keytimeout?
+**** BEGIN LOGGING AT Wed Sep 11 15:47:02 2019
+
+Sep 11 15:47:02 *	Now talking on #zsh
+Sep 11 15:47:02 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 11 15:47:02 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 11 15:47:02 *	Channel #zsh url: http://www.zsh.org/
+**** ENDING LOGGING AT Wed Sep 11 16:33:19 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 16:33:28 2019
+
+Sep 11 16:33:28 *	Now talking on #zsh
+Sep 11 16:33:28 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 11 16:33:28 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 11 16:33:28 *	Channel #zsh url: http://www.zsh.org/
+Sep 11 16:43:17 <alephnull>	elphe: If you concerned just with edit mode, there are things to indicate the vi mode in your prompt, or the shape of your cursor or things like that.
+Sep 11 16:43:36 <alephnull>	Something like https://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode
+Sep 11 17:06:08 <throstur>	how do I add some small indicator if some env variable is set?
+Sep 11 17:06:12 <throstur>	sorry, to my prompt
+Sep 11 17:06:41 <throstur>	right now I'm doing it all with a precmd() { printf ... and I'm just wondering what to do about it
+Sep 11 17:06:43 <throstur>	:sh
+Sep 11 17:20:20 <osse>	throstur: precmd() { if [[ whatever ]]; then psvar[5]=indicator; fi; }    PROMPT='... %5v ...'
+Sep 11 17:28:53 <throstur>	thank you osse
+Sep 12 10:08:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 10:08:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 10:08:58 2019
+
+Sep 12 10:08:58 *	Now talking on #zsh
+Sep 12 10:08:58 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 12 10:08:58 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 12 10:08:59 *	Channel #zsh url: http://www.zsh.org/
+Sep 12 11:39:22 <nedbat>	my history is set to not save commands starting with space.  But they are still in the commands I cycle through when using up-arrow or Ctrl-P.  Is there a way to not have them there either?
+Sep 12 11:39:47 <Mikachu>	two spaces
+Sep 12 11:42:22 <nedbat>	Mikachu: i can't tell if that was meant as humor... one or two behave the same for me: the command is still there if it was the last command used, but not if it's further back than that.
+Sep 12 11:42:30 <nedbat>	maybe I don't have the right settings./
+Sep 12 11:42:47 <Mikachu>	you're describing a different situation now
+Sep 12 11:43:05 <Mikachu>	commands with two spaces will only appear if they are the previous command, commands with one spaces will remain the whole session
+Sep 12 11:44:25 <nedbat>	Mikachu: that's not what I'm seeing. one and two spaces behave the same, they appear as the previous command, but not as an earlier one. What setting affects this?
+Sep 12 11:44:57 <Mikachu>	histignorespace, or you can customize the behavior with the zshaddhistory hook
+Sep 12 11:45:26 <Mikachu>	the previous command will always be there though
+Sep 12 11:46:47 <nedbat>	Mikachu: hmm, my whole goal was to remove the previous
+Sep 12 11:47:08 <Mikachu>	okay, there was no way for me to know that
+Sep 12 11:47:49 <Mikachu>	you would have to go to some lengths to achieve that
+Sep 12 11:47:59 <Mikachu>	like hooking accept-line, eval the current input, and then discard it instead of accepting it
+Sep 12 11:48:40 <nedbat>	Mikachu: that sounds like a lot of work! Thanks.
+Sep 12 11:59:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 11:59:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 11:59:57 2019
+
+Sep 12 11:59:57 *	Now talking on #zsh
+Sep 12 11:59:57 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 12 11:59:57 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 12 11:59:58 *	Channel #zsh url: http://www.zsh.org/
+Sep 12 12:09:47 <psprint>	trucy: you can use $[ … ] instead
+Sep 12 12:18:16 <bionade24>	Is there anywhere a completion tutorial besides the manpages?
+Sep 12 12:18:49 <osse>	bionade24: this helps a bit: http://bewatermyfriend.org/p/2012/003/
+Sep 12 12:19:21 <bionade24>	osse: Thanks
+Sep 12 12:25:47 <trucy>	Still have to print it though
+Sep 12 13:29:23 <isomari>	greetings, how can I make my complete zsh configuration (oh-my-zsh,antigen,.zshrc,etc) portable/
+Sep 12 13:29:46 <isomari>	?
+Sep 12 13:35:41 <osse>	define portable
+Sep 12 13:53:03 <isomari>	osse: being able to move my whole zsh environment to another machine.
+Sep 12 13:53:57 <isomari>	anyway, I'm just writing a script to copy all relative folder and files.
+Sep 12 13:56:16 <osse>	isomari: I suppose most zsh environments already are portable in that sense
+Sep 12 13:56:42 <isomari>	osse: Yes, I see that. It's easier than I thought.
+Sep 12 15:26:34 <llua>	psprint: it really isn't close
+Sep 12 15:27:09 <llua>	but you know, you are going to do you.
+Sep 12 16:07:35 <briian>	can i ask about oh my zsh in here
+Sep 12 16:14:40 <Valodim>	you can try
+Sep 12 16:19:17 <briian>	jk
+Sep 12 18:53:36 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 18:53:36 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 18:54:02 2019
+
+Sep 12 18:54:02 *	Now talking on #zsh
+Sep 12 18:54:02 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 12 18:54:02 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 12 18:54:02 *	Channel #zsh url: http://www.zsh.org/
+Sep 13 07:15:49 *	Disconnected ()
+**** ENDING LOGGING AT Fri Sep 13 07:15:49 2019
+
+**** BEGIN LOGGING AT Fri Sep 13 07:16:13 2019
+
+Sep 13 07:16:13 *	Now talking on #zsh
+Sep 13 07:16:13 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 13 07:16:13 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 13 07:16:13 *	Channel #zsh url: http://www.zsh.org/
+Sep 15 22:38:27 *	Disconnected ()
+**** ENDING LOGGING AT Sun Sep 15 22:38:27 2019
+
+**** BEGIN LOGGING AT Sun Sep 15 22:38:53 2019
+
+Sep 15 22:38:53 *	Now talking on #zsh
+Sep 15 22:38:53 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 15 22:38:53 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 15 22:38:53 *	Channel #zsh url: http://www.zsh.org/
+Sep 16 00:19:18 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 00:19:18 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 00:19:45 2019
+
+Sep 16 00:19:45 *	Now talking on #zsh
+Sep 16 00:19:45 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 16 00:19:45 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 16 00:19:45 *	Channel #zsh url: http://www.zsh.org/
+Sep 16 09:05:08 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 09:05:08 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 09:05:35 2019
+
+Sep 16 09:05:35 *	Now talking on #zsh
+Sep 16 09:05:35 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 16 09:05:35 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 16 09:05:35 *	Channel #zsh url: http://www.zsh.org/
+Sep 16 15:45:11 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 15:45:11 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 15:45:39 2019
+
+Sep 16 15:45:39 *	Now talking on #zsh
+Sep 16 15:45:39 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 16 15:45:39 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 16 15:45:40 *	Channel #zsh url: http://www.zsh.org/
+Sep 17 10:23:00 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 10:23:00 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 10:23:27 2019
+
+Sep 17 10:23:27 *	Now talking on #zsh
+Sep 17 10:23:27 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 17 10:23:27 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 17 10:23:27 *	Channel #zsh url: http://www.zsh.org/
+Sep 17 16:09:01 <llua>	> args=(a b c); print -- .(P:-P:e*'reply=($args)'*)
+Sep 17 16:09:01 <machabot>	llua: -P a -P b -P c
+Sep 17 16:43:02 <phy1729>	I wonder which is faster
+Sep 17 17:59:23 <gdrc>	i am experiencing very slow behaviour with zsh -- https://streamable.com/38la9
+Sep 17 17:59:28 <gdrc>	any idea of what could it be
+Sep 17 18:06:22 <llua>	your config
+Sep 17 18:31:15 <gdrc>	llua: i'm using ohmyzsh only with git plugin
+Sep 17 18:45:25 <llua>	k
+Sep 17 18:45:34 <llua>	doesn't change the answer
+Sep 17 18:45:41 <llua>	!omz
+Sep 17 18:45:41 <machabot>	"omz" is shorthand for "oh-my-zsh", an extension which the consensus of this channel recommends against using.  If you see odd behaviour using omz, please try disabling omz and see if the issue remains. For assistance with oh-my-zsh, try the channel #oh-my-zsh.
+Sep 17 18:47:02 <tos9>	Why can't I figure out the right level of quoting or nonquoting to get the last argument in `ssh host sudo -u user 'grep -v " \*\*\* " /dir/*/$(date +"%Y-%m-%d").log'` to get globbed on the remote host
+Sep 17 18:48:11 <llua>	type the command like you normally would, without ssh host, invoke the quote-line widget, prefix ssh host
+Sep 17 18:50:04 <tos9>	aha, ok, didn't know about that widget cool
+Sep 17 18:50:16 <tos9>	I think part of my issue is just preventing the glob until after the setuid
+Sep 17 18:50:31 <tos9>	is the best way to do that just using zsh -c as the sudo command
+Sep 17 18:50:56 <tos9>	i.e. `sudo -u user zsh -c 'ls /dir/*'`, if I only want the glob after the sudo
+Sep 17 18:53:10 <llua>	yes
+Sep 17 18:55:06 <tos9>	Perfect, thanks.
+Sep 17 20:32:30 <Brocellous>	So when I'm using _arguments, it sets some helpful parameters for the actions, $words, $line, and $opt_args
+Sep 17 20:32:58 <Brocellous>	One of my arguments has a complex completion, so I made a function for it with _regex_arguments
+Sep 17 20:33:11 <Brocellous>	and I'm trying to call it from an _arguments action
+Sep 17 20:33:46 <Brocellous>	It mostly works, but gets upset if there are other optargs around, refusing to match.
+Sep 17 20:34:30 <Brocellous>	I'm wondering if there is a way to get my function created with _regex_arguments to 'act' only on the content of $line set by _arguments rather than the whole command w/ optargs and all.
+Sep 17 20:38:00 <Brocellous>	Or another way for _arguments to strip the optargs it recognizes, basically.
+Sep 17 21:21:03 <Mikachu>	Brocellous: you probably want the ml for that one
+Sep 17 22:43:51 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 22:43:51 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:44:16 2019
+
+Sep 17 22:44:16 *	Now talking on #zsh
+Sep 17 22:44:16 *	Topic for #zsh is: v5.7.1 | http://zsh.sf.net/ | http://zsh.sf.net/FAQ | http://tinyurl.com/zsh-refcard-pdf | Just ask. | Nobody here or everybody clueless? try the zsh-users mailinglist: http://www.zsh.org/mla
+Sep 17 22:44:16 *	Topic for #zsh set by llua!~llua@zsh/developer/llua (Tue Feb  5 18:41:37 2019)
+Sep 17 22:44:16 *	Channel #zsh url: http://www.zsh.org/
+**** ENDING LOGGING AT Tue Sep 17 22:58:02 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:58:02 2019
+

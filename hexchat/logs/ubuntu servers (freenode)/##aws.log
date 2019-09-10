@@ -1,0 +1,455 @@
+**** BEGIN LOGGING AT Thu Sep  5 16:31:06 2019
+
+Sep 05 16:31:06 *	Now talking on ##aws
+Sep 05 16:31:06 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 05 16:31:06 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 05 16:50:41 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep  5 16:50:41 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 16:33:28 2019
+
+Sep 11 16:33:28 *	Now talking on ##aws
+Sep 11 16:33:28 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 11 16:33:28 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 11 17:05:13 <bn_work>	> https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html#vpc-limits-security-groups
+Sep 11 17:05:13 <bn_work>	ok, so it looks like there's a soft limit of 5 SGs, hard limit of 16 SGs per instance, and total limit of 1000 rules.  It claims one has to contact support to get an increase.  Is this possible if you don't have paid support?
+Sep 11 17:08:42 <Lloyd>	have a look at the service quotas system, might be able to do it through there
+Sep 11 17:09:04 <Lloyd>	although if you're running production workloads or a business through AWS, you should have paid support
+Sep 11 17:18:12 <bn_work>	Lloyd: thanks!  I'm guessing this is what you're referring to in the console?  https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Limits:  Re. paid support:  unfortunately it's not my call :(  Luckily our usage is still pretty minimal but I will let them know if it starts becoming an issue.
+Sep 11 17:24:31 <jwr>	bn_work: raising limits does not need paid support
+Sep 11 17:25:30 <jwr>	bn_work: https://console.aws.amazon.com/support/cases?region=us-east-1#/create (substitute whatever region you're using in this URL)
+Sep 11 17:28:21 <bn_work>	jwr:  thanks, filling out the form right now.  what are the best practices re. managing SGs?  with the current limits, it seems the max # of SGs (ie: network services) an instance can have is 16.  For now this should be enough but wondering what the best practice would be if we start approaching that limit?  Do you guys just start combining services into 1?  PS:  It also kinda sucks that you can't edit the name or
+Sep 11 17:28:21 <bn_work>	description of SGs after the fact :|
+Sep 11 17:29:45 <jwr>	bn_work: the limit of 5 SG's per region is a very soft limit and they'll raise that for you easily. we have nearly 200.
+Sep 11 17:31:29 <bn_work>	jwr: you mean per EC2 instance network interface?  I think we already have > 5 defined in this region
+Sep 11 17:31:31 <jwr>	bn_work: the limit of 16 SG's per instance is probably much harder, and i've never seen anyone need that many. usually you'd do one SG per logical service, not per protocol or anything. so if you had one service which used port 22, 80, 443, and you'd call it 'webserver'. then all your webservers resuse the same SG.
+Sep 11 17:32:11 <bn_work>	yeah, that's what I've been doing
+Sep 11 17:32:50 <bn_work>	yep, re-use 👍
+Sep 11 17:41:21 <mspo>	i"m confused about cli deployments of replica ecs jobs
+Sep 11 17:41:31 <mspo>	where do I get a revision location?
+Sep 12 10:08:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 10:08:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 10:08:58 2019
+
+Sep 12 10:08:58 *	Now talking on ##aws
+Sep 12 10:08:58 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 12 10:08:58 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 12 10:10:52 <ws2k3>	is it possible to remove a role from the role history?
+Sep 12 10:26:32 <vegardx>	role history?
+Sep 12 10:26:52 <vegardx>	You're talking about console for assuming roles in different accounts?
+Sep 12 10:27:09 <vegardx>	That's all client-side, so local storage or something
+Sep 12 11:59:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 11:59:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 11:59:57 2019
+
+Sep 12 11:59:57 *	Now talking on ##aws
+Sep 12 11:59:57 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 12 11:59:57 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 12 13:49:04 <vegardx>	How would you implement something like a Lambda@Edge viewer-request in API Gateway? I want to validate some requests before passing them to backends.
+Sep 12 15:09:05 <chainz>	i've asked this before but less openly. is there a standard/practical way to copy an environment from one region to another?
+Sep 12 15:09:14 <chainz>	as close to 1 button push as possible
+Sep 12 15:09:52 <Lloyd>	define environment
+Sep 12 15:10:00 <chainz>	a region essentially
+Sep 12 15:10:05 <chainz>	us-east-1 for example
+Sep 12 15:10:22 <chainz>	everything within 1 aws account in that region
+Sep 12 15:10:35 <chainz>	in that account even
+Sep 12 15:10:55 <Lloyd>	why would you want to do that?
+Sep 12 15:10:57 <chainz>	with terraform i'm going to have to either update ami's in the files or share them out with the other account
+Sep 12 15:11:41 <chainz>	i want to mirror a QA environment in another account to have an additional testing environment
+Sep 12 15:12:05 <mspo>	organize the env as a tf module
+Sep 12 15:12:12 <mspo>	and then duplicate it as much as you want
+Sep 12 15:13:19 <Lloyd>	there's not going to be a solution or tool that will simply copy everything from one to another, because it's kind of nonsensical. like, what does it do with RDS? or the worst, S3?
+Sep 12 15:13:20 <chainz>	mspo: that's what i'm trying to do with the "terraforming" tool
+Sep 12 15:13:45 <chainz>	Lloyd: that's true re: S3. this environment isn't using RDS
+Sep 12 15:13:49 <mspo>	chainz: suck it up and just start writing, imho
+Sep 12 15:14:08 <mspo>	you will get it done by this afternoon
+Sep 12 15:14:11 <chainz>	mspo: you're probably right, i just don't want to realize after the fact i could have saved time using X service
+Sep 12 15:14:17 <mspo>	and it will be a crap day but still..
+Sep 12 15:14:17 <chainz>	mspo: hell no :)
+Sep 12 15:14:28 <mspo>	I don't know your TZ ;)
+Sep 12 15:14:29 <chainz>	there's 1109 resources according to terraform
+Sep 12 15:14:32 <mspo>	it's morning for me!
+Sep 12 15:14:39 <chainz>	i'm in EST
+Sep 12 15:14:43 <chainz>	boston
+Sep 12 15:14:44 <mspo>	yeah you can finish today
+Sep 12 15:14:57 <Lloyd>	plus, you're going to want to adjust your QA env, as you don't want a mirror copy
+Sep 12 15:15:00 <chainz>	i don't think there's enough coffee in the house for that
+Sep 12 15:15:04 <Lloyd>	you won't want it public, you'll want maybe debugging enabled etc etc
+Sep 12 15:15:16 <mspo>	I'm willing to get 850 of those things are duplciates/for-loops
+Sep 12 15:15:22 <mspo>	for le grande import
+Sep 12 15:15:23 <Koffa>	no coffee - go for beer...
+Sep 12 15:15:23 <chainz>	Lloyd: sure but those will be minor changes
+Sep 12 15:15:38 <chainz>	if i can get 90% of it propped up, i can do the rest
+Sep 12 15:15:51 <Lloyd>	you'll also want it repeatable right?
+Sep 12 15:16:06 <chainz>	yah
+Sep 12 15:16:16 <chainz>	variablize things like bucket names
+Sep 12 15:16:51 <Lloyd>	ultimately, QA/staging etc all end up just with a lot of duplication
+Sep 12 15:17:31 <Lloyd>	or large sections of conditionals, which just cause confusion and issues
+Sep 12 15:17:48 <Koffa>	-${aws::accountid}- in bucketname makes sure you'll never have conflicts when deploying dev/test/qa/prod/whatever...
+Sep 12 15:18:06 <Lloyd>	or just never name them if you're using CFN
+Sep 12 15:26:53 <chainz>	bucket creation is the least of my worries for creating this environment
+Sep 12 15:27:20 <chainz>	mostly the vpc/subnets/all things networking, security groups, elbs
+Sep 12 17:39:48 <JamesBenson>	I'm running into a race condition on a windows server EC2 machine.  Does anyone know how to, for example, install AD and DNS, reboot, add an OU and users THEN, continue with the rest of the cloudformation?
+Sep 12 17:40:33 <Pilate>	build your ami separate from your cft?
+Sep 12 17:40:33 <JamesBenson>	^ The rest of the cloudformation being additional linux ec2's that depend on the users who are added, etc.
+Sep 12 17:41:00 <JamesBenson>	@Pilate, I would like to have it build at runtime if possible
+Sep 12 17:41:57 <JamesBenson>	This is part of an opensource software we are developing and don't want to host data for everyone.
+Sep 12 17:44:18 <JamesBenson>	I tried a CreationPolicy with a timeout, but that just causes it to fail it seems.  I'm having issues getting the signal portion to work.
+Sep 12 18:53:36 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 18:53:36 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 18:54:02 2019
+
+Sep 12 18:54:02 *	Now talking on ##aws
+Sep 12 18:54:02 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 12 18:54:02 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 12 19:09:22 <bn_work>	(Volume Shadow Copy Service)
+Sep 12 19:11:26 <bn_work>	Looking through CloudTrail and don't see any user-initiated reboots at the time the windows event log shows AWS Agent (C:\Program Files\Amazon\XenTools\LiteAgent.exe) initiating it, however it does seem to correlate with when the snapshot was taken
+Sep 12 19:18:30 <bn_work>	ok, looking at the event itself in CloudTrail shows a `"noReboot":  false` so I guess it must have been left at the default to let it reboot to take the snapshot.
+Sep 12 19:18:50 <bn_work>	s/event/snapshot event/
+Sep 12 19:19:11 <bn_work>	presumably to ensure integrity
+Sep 12 19:27:42 <bn_work>	s/Reboot time/Up time/
+Sep 12 19:35:09 <bn_work>	so no way to show this in the EC2 Console columns??  Searching the forums but not finding anything- surprised no one has asked this question before (most are just asking uptime in re. to avgs and SLAs, which is a bit different)
+Sep 12 19:36:40 <Pilate>	you should be building around the expectation that ec2s will die
+Sep 12 19:49:21 <bn_work>	Pilate:  you're answering a different question, I'm not trying to architect some kind of "highly-scalable/redundant system" (it's just one test box- not some 300-server farm).  I'm just trying to find out a basic metric to help with auditing/understanding management plane events (ex:  see question earlier about snapshots).
+Sep 12 19:49:57 <Pilate>	its not the right question if ec2s getting killed has a negative impact on your infrastructure
+Sep 12 20:04:04 <bn_work>	Pilate:  again, you're answering a different question, I'm asking for auditing *management plane* actions, NOT to develop some "web 600.0 application for redundancy, blah, blah".  If some admin, does x,y,z, it helps to know when/if a machine was up or down to understand a string of events.
+Sep 12 20:13:12 <bn_work>	here's another use case (not mine):  https://forums.aws.amazon.com/thread.jspa?messageID=889054&#889054
+Sep 12 20:25:38 <mspo>	bn_work: https://aws.amazon.com/cloudtrail/ ?
+Sep 12 20:25:57 <lseactuary>	im trying to install tableau on ec2 using cloudformation template they provided. i provided all parameters and its asking for a source CIDR. 0.0.0.0 is what i used and it fails to install. any ideas what it should be?
+Sep 12 20:27:05 <Pilate>	> The CIDR block parameter must be in the form x.x.x.x/x.
+Sep 12 20:29:23 <bn_work>	mspo:  yes, that's how I determined that no management place issued reboot occurred but that a snapshot request was made however.  What would be nice though is if the EC2 console screen actually had a column that *showed* that the server did reboot, because a column labeled "Launch time:  blah, blah 2017" implies that it's been up since 2017, which is obviously BS.
+Sep 12 20:29:37 <bn_work>	I mean if there's no column for the AWS Console EC2 instance screen, is there at least a CloudWatch metric I can add??
+Sep 12 20:29:53 <bn_work>	called "OS uptime" or something?
+Sep 12 20:30:53 <mspo>	bn_work: you have an ec2 where the launch time disagrees with the uptime?
+Sep 12 20:31:26 <bn_work>	mspo:  correct
+Sep 12 20:31:45 <mspo>	upime is an OS metric and cloudwatch doesn't watch those
+Sep 12 20:31:52 <mspo>	bn_work: weird
+Sep 12 20:32:21 <mspo>	bn_work: not sure I've seen that before
+Sep 12 20:32:39 <mspo>	you could, of course, start sending it in as a custom metric
+Sep 12 20:32:45 <mspo>	but it's probably not worth the cost
+Sep 12 20:33:23 <mspo>	how did that reboot work I wonder
+Sep 12 20:33:28 <mspo>	init 6 or something?
+Sep 12 20:33:32 <lseactuary>	Pilate 0.0.0.0/0 also fails
+Sep 12 20:33:35 <bn_work>	mspo:  but it's collected through an agent installed in the OS?
+Sep 12 20:33:53 <lseactuary>	Pilate not actually sure what source CIDR even is. i set up vpc and subnet etc wondering what is needed here?
+Sep 12 20:34:07 <mspo>	bn_work: default cloudwatch metrics still come in without an agent
+Sep 12 20:34:11 <mspo>	there is an agent you can install
+Sep 12 20:34:16 <mspo>	don't know what it does
+Sep 12 20:35:41 <zumba_addict>	question about migrating data in rds postgres to aurora. Has anyone tried it?
+Sep 12 20:37:06 <jwr>	zumba_addict:  yes
+Sep 12 20:37:30 <jwr>	question: anybody know an awscli one-liner which will tell me which snapshot and RDS instances was created from?
+Sep 13 07:15:49 *	Disconnected ()
+**** ENDING LOGGING AT Fri Sep 13 07:15:49 2019
+
+**** BEGIN LOGGING AT Fri Sep 13 07:16:13 2019
+
+Sep 13 07:16:13 *	Now talking on ##aws
+Sep 13 07:16:13 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 13 07:16:13 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 15 22:38:27 *	Disconnected ()
+**** ENDING LOGGING AT Sun Sep 15 22:38:27 2019
+
+**** BEGIN LOGGING AT Sun Sep 15 22:38:53 2019
+
+Sep 15 22:38:53 *	Now talking on ##aws
+Sep 15 22:38:53 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 15 22:38:53 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 16 00:19:18 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 00:19:18 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 00:19:45 2019
+
+Sep 16 00:19:45 *	Now talking on ##aws
+Sep 16 00:19:45 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 16 00:19:45 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 16 09:05:08 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 09:05:08 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 09:05:35 2019
+
+Sep 16 09:05:35 *	Now talking on ##aws
+Sep 16 09:05:35 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 16 09:05:35 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 16 13:20:43 <upgreydd>	Hello. Does anyone know some redshift optimization guide with manual WMLs for dummies?
+Sep 16 13:24:21 <vegardx>	Is the latest ubuntu AMIs borked? None of my new instances are accepting ssh connections.
+Sep 16 13:24:43 <vegardx>	They are however responding to ICMP, so network is all good.
+Sep 16 13:26:10 <vegardx>	obviously impossible to google because of all the usual issues of people not having correct SGs or NACLs.
+Sep 16 13:27:39 <vegardx>	And impossible to debug since I can't even get access to the instances to see if they are running openssh or not.
+Sep 16 13:32:44 <vegardx>	Are you f-ing kidding me. They're filtering port 22 suddenly on the corporate network.
+Sep 16 13:32:52 <vegardx>	I'll see myself out
+Sep 16 13:35:32 <Kim^J>	:D
+Sep 16 15:45:11 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 15:45:11 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 15:45:39 2019
+
+Sep 16 15:45:39 *	Now talking on ##aws
+Sep 16 15:45:39 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 16 15:45:39 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 16 15:45:44 <um1b0zu>	I ended up not doing it because it seemed like I couldn't just set up a python Spark job. Is that right?
+Sep 16 15:46:20 <um1b0zu>	I went with this "Sparkflow" Amazon Marketplace solution. It's working fine, it's just really weird. The docs are all junky and I'm not even sure if the system is maintained.
+Sep 16 15:46:59 <um1b0zu>	On paper it looked like it would suit my needs fine, but after reading the docs I'm sort of stuck on a few key components that their docs don't even really cover, even though they're kind of critical features
+Sep 16 15:47:27 <um1b0zu>	For example, I wanted to code python for my spark jobs, but the system uses jython.
+Sep 16 15:47:31 <um1b0zu>	Like whut?
+Sep 16 15:47:51 <um1b0zu>	I could also code in SQL, but I kinda don't want to code there.
+Sep 16 15:48:19 <um1b0zu>	I'm wondering if it was worth just scraping Sparkflows and using something like Databricks, but Databricks is super expensive
+Sep 16 15:49:16 <baldpope>	that's a lot to digest - and the specifics are getting outside of my realm
+Sep 16 15:49:51 <baldpope>	i understand getting the data into spark through some pipeline feed - but after that I'm lost
+Sep 16 15:50:04 <baldpope>	and not familiar with sparkflow / databricks - etc..
+Sep 16 15:50:06 <baldpope>	sorry
+Sep 16 15:50:51 <um1b0zu>	yeah. I mean it's somewhat AWS like though.
+Sep 16 15:51:15 <um1b0zu>	I would like to just use Data Pipeline, but again it's kinda goofy when connecting to EMR and I didn't see any good tutorials for it.
+Sep 16 15:51:48 <um1b0zu>	I mean, I could just code in Scala, but I kinda want other people who are non-technical to be able to kick off these jobs so Data Pipeline is too low level for them
+Sep 16 15:52:23 <baldpope>	are you talking about having some back-end process kick off based on new data being sent in?
+Sep 16 15:52:57 <baldpope>	we do something similar using code pipeline to build new containers, based on s3 triggers
+Sep 16 15:53:53 <baldpope>	I guess, for what you're working on, it would be specific to the aws service performing the processing?
+Sep 16 15:54:19 <baldpope>	i'd welcome a primer on the topic
+Sep 16 16:02:22 <um1b0zu>	code pipeline?
+Sep 16 16:02:24 <um1b0zu>	hm...
+Sep 16 16:02:27 <um1b0zu>	let me check it out
+Sep 16 16:02:28 <baldpope>	nah
+Sep 16 16:02:29 <baldpope>	ignore that
+Sep 16 16:02:34 <baldpope>	not relevant
+Sep 16 16:02:39 <um1b0zu>	ah ok
+Sep 16 16:02:41 <um1b0zu>	well like... idk
+Sep 16 16:03:03 <um1b0zu>	I'm just in this realm of "maybe what I'm doing is overkill"
+Sep 16 16:03:29 <um1b0zu>	ah code pipeline looks like a CI/CD thing
+Sep 16 16:03:38 <um1b0zu>	Kind of want to run the code
+Sep 16 16:03:48 <um1b0zu>	but it's weird because it's a couple of GB files
+Sep 16 16:04:00 <um1b0zu>	like.... maaaaaayyybeeeee I'm pushing into just using AWS lambda
+Sep 16 16:04:00 <baldpope>	couldn't tell you that - I generally follow the grow-up model - start super small (free :)  ) and build up as required
+Sep 16 16:04:07 <um1b0zu>	yeah
+Sep 16 16:04:17 <baldpope>	now aws lambda - that's the shit
+Sep 16 16:04:24 <um1b0zu>	we're just getting to starting small. I actually think this is the "smallest" solution
+Sep 16 16:04:26 <baldpope>	love me some python lambda
+Sep 16 16:04:56 <baldpope>	it's only restriction is total processing time
+Sep 16 16:04:57 <um1b0zu>	every customer sends us data daily and we have to process it. Right now it's a guy on an EC2 machine running bash scripts and such but that obviously gets annoying after about the n=5
+Sep 16 16:05:04 <um1b0zu>	yeah
+Sep 16 16:05:08 <baldpope>	ah
+Sep 16 16:05:10 <baldpope>	ok
+Sep 16 16:05:16 <um1b0zu>	and like... we're doing map reduce style coding
+Sep 16 16:05:21 <baldpope>	you need a hybrid - we do something like this
+Sep 16 16:05:44 <baldpope>	$event ->  aws lambda python -> ecs-container for specific longer running task
+Sep 16 16:06:03 <baldpope>	for stuff you can process in the time restriction, lambda is perfect
+Sep 16 16:06:33 <baldpope>	but when it's time exceeds the allowed - containers is the next best approach (well - for what we're doing anyway)
+Sep 16 16:07:14 <baldpope>	and at a minimum - if you're doing it today manually with ec2 - containers sounds like an ideal next step
+Sep 16 16:08:00 <um1b0zu>	like docker containers?
+Sep 16 16:08:01 <um1b0zu>	ugh
+Sep 16 16:08:10 <baldpope>	but at aws - yea
+Sep 16 16:08:18 <um1b0zu>	hm... I could look into that
+Sep 16 16:08:30 <baldpope>	if you've already got your application running on ec2
+Sep 16 16:08:46 <baldpope>	you just need to figure out how to get access to the data you want to run again
+Sep 16 16:08:49 <Lloyd>	we go, sqs -> scheduler -> mesos -> scheduler -> sqs
+Sep 16 16:08:53 <um1b0zu>	how do you pipe in variables like the ARNs to process? like programmatically spin up ec2s with environment variables.
+Sep 16 16:08:54 <Lloyd>	as a pattern
+Sep 16 16:09:28 <baldpope>	on ec2 - not sure
+Sep 16 16:09:37 <um1b0zu>	there's gotta be a way to do it
+Sep 16 16:09:39 <Lloyd>	we do the same thing, importing data from clients, we have something like, 150,000 imports a day
+Sep 16 16:09:48 <um1b0zu>	sheesh
+Sep 16 16:09:56 <um1b0zu>	Lloyd you in adtech? :-)
+Sep 16 16:10:05 <Lloyd>	are there any other businesses? :P
+Sep 16 16:10:21 <um1b0zu>	sounded eerily similar
+Sep 16 16:10:33 <Lloyd>	digital marketing agency
+Sep 16 16:10:45 <Lloyd>	but yeah, it's all adwords, analytics, fb, etc etc
+Sep 16 16:10:50 <um1b0zu>	Yeah. I'm still learning what that even means. I took on a consulting contract for adtech and I'm doing these weird data pipelining things.
+Sep 16 16:10:58 <Lloyd>	we use mesos on ec2 for all the importing
+Sep 16 16:11:17 <Lloyd>	so each type of import is a docker container, which just comes up, downloads the data, saves it to the warehouse, then dies
+Sep 16 16:11:18 *	baldpope steps back and listens 
+Sep 16 16:11:36 <Lloyd>	so we're starting 150,000 containers a day, through mesos
+Sep 16 16:11:52 <um1b0zu>	so yeah, what baldpope was mentioning
+Sep 16 16:11:52 <Lloyd>	had to write a mesos scheduler, which is a pain, but it works fine, we rarely have issues
+Sep 16 16:12:06 <um1b0zu>	except you're using mesos which seems like ultra overkill for me
+Sep 16 16:12:19 <Lloyd>	you could probably do something similar with fargate
+Sep 16 16:12:46 <Lloyd>	as the important bit is being able to listen to the event responses, container starting, container ending etc
+Sep 16 16:13:32 <um1b0zu>	I wonder if there's a way to programmatically start a fargate container
+Sep 16 16:13:36 <um1b0zu>	like, that's  the trick
+Sep 16 16:14:02 <Lloyd>	yeah, you could schedule it to run every day
+Sep 16 16:14:11 <Lloyd>	cloudwatch rule -> start fargate
+Sep 16 16:14:13 <baldpope>	so for us, we use cloudwatch to kick off
+Sep 16 16:14:16 <baldpope>	yea
+Sep 16 16:14:36 <baldpope>	and with cloudwatch, you can use time of day triggers (essentially cron) or some other event
+Sep 16 16:14:41 <um1b0zu>	but here's the thing, how do you tell the container what data to processes?
+Sep 16 16:14:49 <um1b0zu>	that's what I'm not getting
+Sep 16 16:14:52 <Lloyd>	we do it via ENV vars, as a payload
+Sep 16 16:14:56 <um1b0zu>	I see
+Sep 16 16:14:59 <baldpope>	^^
+Sep 16 16:15:09 <baldpope>	ecs != ec2
+Sep 16 16:15:09 <Lloyd>	but if you don't have many imports, you could just hardcode it
+Sep 16 16:15:14 <Lloyd>	especially if they aren't similar
+Sep 16 16:15:32 <Lloyd>	also, if the jobs a really fast, you could just use lambda
+Sep 16 16:15:32 <um1b0zu>	does it accept a docker container?
+Sep 16 16:15:35 <baldpope>	or your app inside the container can make a call to a work queue - and just get whatever job is next
+Sep 16 16:15:40 <um1b0zu>	nah this isn't that fast at all
+Sep 16 16:15:52 <um1b0zu>	I mean, I wanted to use spark to try and parallelize it
+Sep 16 16:15:54 <Lloyd>	yeah, fargate can start whatever container you like
+Sep 16 16:16:09 <um1b0zu>	got any links for tutorials?
+Sep 16 16:16:13 <um1b0zu>	this might be up my alley
+Sep 16 16:16:30 <Lloyd>	probably loads on google
+Sep 16 16:17:06 <baldpope>	https://aws.amazon.com/ecs/getting-started
+Sep 16 16:17:35 <baldpope>	but I'd recommend just firing up a local docker instance and getting your container built locally first
+Sep 16 16:18:07 <baldpope>	keep in mind (something that got me early on) the application that you're intending to run, when it's finished, the container dies
+Sep 16 16:18:18 <um1b0zu>	https://serverless.com/blog/serverless-application-for-long-running-process-fargate-lambda/
+Sep 16 16:18:32 <baldpope>	and specifically - this is what got me - dont' daemonize your app
+Sep 16 16:18:52 <baldpope>	fucking hell did that annoy the shit outta me early on
+Sep 16 16:18:54 <um1b0zu>	what's "daemonization"
+Sep 16 16:19:09 <baldpope>	like running something in the background / as a daemon
+Sep 16 16:19:14 <um1b0zu>	ah I see
+Sep 16 16:19:26 <um1b0zu>	I definitely know to make sure there's no persistence
+Sep 16 16:19:44 <baldpope>	in my case - i was running postgresql -D (or whatever) which put the app in server mode
+Sep 16 16:19:52 <baldpope>	container would start, port would expose itself, and then die
+Sep 16 16:19:55 <um1b0zu>	oooo
+Sep 16 16:20:44 <um1b0zu>	ugh. just docker things
+Sep 16 16:20:52 <um1b0zu>	does it accept vagrant too
+Sep 16 16:20:56 <um1b0zu>	docker is super annoying
+Sep 16 16:24:39 <um1b0zu>	in any case, thank you both
+Sep 16 16:24:55 <um1b0zu>	I'm going to try to stick with this Sparkflows thing, but this seems a lot more up my alley.
+Sep 16 16:25:31 <um1b0zu>	I might work on it in the background for a while. One of the biggest things is clients come and go so we need to have a system so a non-technical user can turn things off and o
+Sep 16 16:25:33 <um1b0zu>	on**
+Sep 16 16:28:01 <lseactuary>	hi - i created a new vpc, subnet etc. i am now trying to spin up RDS in that vpc. im getting this issue: We're sorry, your request to create DB instance database-1 has failed.VPC must have a minimum of 2 subnets in order to create a DB Subnet Group. Go to the VPC Management Console to add subnets.
+Sep 16 16:28:24 <baldpope>	are you using the a non default vpc
+Sep 16 16:28:33 <baldpope>	cause the vpc should spin up 3 subnets
+Sep 16 16:31:14 <lseactuary>	it just did one
+Sep 16 16:31:30 <baldpope>	really? - that would be odd/wrong
+Sep 16 16:31:40 <baldpope>	on the vpc - is it a /16?
+Sep 16 16:36:13 <nezZario>	Is there really no way to do {fixed ip address}->{multiple hosts} within AWS?
+Sep 16 16:36:24 <nezZario>	For, example, domain apex
+Sep 16 16:36:30 <nezZario>	(for DNS we do not control)
+Sep 16 16:37:25 <nezZario>	Just had this box go down for a min again.  We highly highly discourage customers to do this setup and if they do we highly encourage them to use multiple A's and say well look this is going to have a single point of failure .. I mean we really do cover the basis as well as we can
+Sep 16 16:37:47 <nezZario>	But I mean, for ex. like a floating IP?
+Sep 16 16:38:08 <nezZario>	Multiple routes to a single IP
+Sep 16 16:44:49 <lseactuary>	baldpope yeah - /16. I used VPC wizard also
+Sep 17 10:23:00 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 10:23:00 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 10:23:27 2019
+
+Sep 17 10:23:27 *	Now talking on ##aws
+Sep 17 10:23:27 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 17 10:23:27 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+Sep 17 14:44:59 <threenuc>	I have 2 IAM users (admins). Admin 1 creates an EC2 VM, Admin 2 can't see it in his console. Is this intented? How do I change it?
+Sep 17 14:52:10 <ansyeb>	hi. whats the difference between 'permanent delete' & expire lifecycle options for an s3 bucket?
+Sep 17 14:55:34 <rory>	threenuc: are they definitely looking at the same region?
+Sep 17 15:05:40 <threenuc>	rory: Nope. Just saw why that happened. One VM is in ohio the other is in frankfurt. Can I do something to avoid situations like this in the future?
+Sep 17 15:05:58 <threenuc>	In AWS, I did communicate I created a VM and my coworker created a new one from scratch since he didnt see it
+Sep 17 15:06:20 <threenuc>	So is there some mechanism in AWS to prevent this?
+Sep 17 15:11:16 <threenuc>	Like, I don't know - limit an IAM user to creating resources only in a specified region
+Sep 17 15:16:19 <vegardx>	You can use SCPs for that, but that requires organization account. Alternative is to explicitly deny most actions with a conditional for region.
+Sep 17 15:19:26 <lilltiger>	threenuc: https://stackoverflow.com/questions/56759957/how-to-deactivate-region-in-aws-through-the-cli
+Sep 17 15:19:31 <lilltiger>	this might be what you are after
+Sep 17 15:20:09 <lilltiger>	https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws-enable-disable-regions.html
+Sep 17 15:20:21 <vegardx>	The issue with all of this is that users that don't understand regional resources will be just as confused regardless
+Sep 17 15:37:29 <threenuc>	Looks like I can't disable regions that are enabled by default. Thats 90% of regions (the only toggleable ones are some asian ones)
+Sep 17 15:38:09 <threenuc>	Though it's possible to limit a certain service to a region https://serverfault.com/a/589155/512282
+Sep 17 15:40:09 <IvanSuftin>	I'm assuming the answer is no, but is there any way to have an application load balancer assume that an instance (in this case an ECS container) is healthy with a HTTP/S response code of..say..472.. but NOT route to it and onlyl route to the instance that has a 200 response?
+Sep 17 15:40:28 <IvanSuftin>	Use case: a cluster of a service that has an active node and 2+ standby nodes
+Sep 17 15:41:03 <IvanSuftin>	active node responds with 200, standby nodes respond with 472 but cannot take client requests but the nodes should not be replaced
+Sep 17 15:41:34 <IvanSuftin>	(Real world use case: Hashicorp Vault high-availability clustering)
+Sep 17 15:42:02 <Koffa>	can you give back a redirect with more specific node routing?
+Sep 17 15:42:44 <IvanSuftin>	The node will respond with a redirect back to the ALB DNS so best case, the next round robin hit will hit an active node which handles the request. Worst case, infinite redirect loop
+Sep 17 15:43:07 <IvanSuftin>	My fallback will be putting an nginx reverse proxy in between ALB and the Vault cluster but I really don't want to :/
+Sep 17 15:44:01 <IvanSuftin>	Was just wondering if there's any configuration that can be done to mark nodes at the ALB/listener level as "healthy but not taking connections at this time"
+Sep 17 15:44:47 <Koffa>	indefinite draining
+Sep 17 15:45:15 <IvanSuftin>	Any thoughts on that?
+Sep 17 15:45:18 <baldpope>	IvanSuftin: i don't recall from the ALB if response code is tunable / weightable
+Sep 17 15:45:29 <baldpope>	how about this
+Sep 17 15:45:49 <baldpope>	write up a quick lambda to check the status code of that specific instance, update the alb weight so that it doesn't get the traffic?
+Sep 17 15:46:05 <IvanSuftin>	baldpope: I don't think it's weightable. But at the target group level you can say which codes are 'healthy'
+Sep 17 15:46:26 <IvanSuftin>	So I have "Matcher": { "HttpCode": "200,429,472,473,501,503" }
+Sep 17 15:47:22 <IvanSuftin>	baldpope: the issue is it's ECS which directly communicate with ALB/target group
+Sep 17 15:47:31 <IvanSuftin>	'magically'
+Sep 17 15:47:36 <baldpope>	ah - yea
+Sep 17 15:47:50 <baldpope>	so it's checking in to tell the alb it's available
+Sep 17 15:47:54 <IvanSuftin>	right
+Sep 17 15:47:56 <baldpope>	but not quit ready?
+Sep 17 15:47:59 <IvanSuftin>	yes
+Sep 17 15:48:00 <baldpope>	quite
+Sep 17 15:48:18 <IvanSuftin>	Vault node: "I am a standby node, don't route to me"
+Sep 17 15:48:27 <IvanSuftin>	ALB: "I see you're healthy. I will begin routing to you!"
+Sep 17 15:48:30 <baldpope>	i feel like I've seen this discussion before - wasn't there a 'warm up' period or something?
+Sep 17 15:48:43 <baldpope>	like yea, i'm onlinem, but leave me alone for another few minutes
+Sep 17 15:49:19 <IvanSuftin>	baldpope: not in this case. in this case the nodes that are considered standby will always  be standby until the leader drops out of the cluster and a new leader is elected
+Sep 17 15:49:45 <baldpope>	slow start mode
+Sep 17 15:49:59 <IvanSuftin>	with Vault Enterprise/Premium, they have the ability to make standby nodes "standby performance" nodes which WILL take traffic and reverse proxy route it behind the scenes to the active node
+Sep 17 15:50:03 <baldpope>	take a gander at this article - not sure 100% relevant
+Sep 17 15:50:25 <baldpope>	https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html
+Sep 17 15:50:30 <IvanSuftin>	looking
+Sep 17 15:52:59 <baldpope>	specifically the slow start mode; brb
+Sep 17 15:53:17 <IvanSuftin>	That's interesting and I didn't know that was a thing. However, I'm not sure it's applicable here because this would be across all targets and also is not indefinite. Eventually the ALB will bring a target out of slow start mode and begin slowly routing to it. However, x-1 (x being the cluster total size) targets may never be routable for the duration of their life
+Sep 17 15:59:47 <baldpope>	sounds like the hashicorps logic is that they'll manage the HA/balancing
+Sep 17 16:00:47 <baldpope>	yea and upon closer reading -the slow start is just a delay in X seconds
+Sep 17 16:01:13 <IvanSuftin>	baldpope: yeah that's their logic in their premium offering
+Sep 17 16:01:20 <IvanSuftin>	with their OSS offering, you're on your own :)
+Sep 17 16:01:26 <baldpope>	what about a lambda that disables a given target in the alb based on status codes
+Sep 17 16:01:42 <IvanSuftin>	What triggers that lambda?
+Sep 17 16:01:55 <baldpope>	while not a fan - you could have it run every minute?
+Sep 17 16:02:15 <IvanSuftin>	True. Soyou have the LB and the Lambda performing health checks..
+Sep 17 16:02:38 <baldpope>	yea - with the lambda overriding the online (cause I'm not ready) state
+Sep 17 16:02:49 <IvanSuftin>	It might just be easier/less to manage to drop an nginx ecs container in the cluster to perform the reverse proxy balancing
+Sep 17 16:03:35 <baldpope>	might be - not familiar enough with nginx / complexity of setting up another front-end
+Sep 17 16:03:59 <baldpope>	i've used lighttpd, haproxy, and keepalived for similar tasks
+Sep 17 16:04:07 <vegardx>	I'd look at AppMesh (envoy) then
+Sep 17 16:05:15 <IvanSuftin>	https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html ?
+Sep 17 16:05:52 <vegardx>	I might have misunderstood, that's if you're already on ECS or EKS.
+Sep 17 16:06:05 <IvanSuftin>	Am on ECS, yes
+Sep 17 16:07:03 <vegardx>	Then running Envoy is an option. AppMesh is Envoy with some AWS flavor added in. Never used it, seems kind of half baked so far. But envoy should be able to do slow-starts.
+Sep 17 16:08:51 <IvanSuftin>	I'll take a peek. One issue I may hit is that our AWS service is provided via a third party. While we get full hands-on access to AWS, the third party is responsible for being the arbiter of what services we can actually use. I do have to check if that's on the list
+Sep 17 16:08:56 <vegardx>	Envoy can also be configured to do replay on another node if a request somehow failed.
+Sep 17 16:09:37 <vegardx>	But I prefer to let the clients handle exceptions gracefully rather than fixing things in the background. It all depends on what you're running.
+Sep 17 17:33:19 <oatmealraisin>	With boto3, I'm having an issue downloading a file from s3 from a lambda (chalice) function
+Sep 17 17:33:28 <oatmealraisin>	I keep getting an empty file
+Sep 17 17:34:33 <oatmealraisin>	https://gist.github.com/oatmealraisin/a65601b06580c509311d43ee1fa3f6d7
+Sep 17 17:34:53 <Pilate>	f.seek(0) before reading
+Sep 17 17:36:24 <Pilate>	file pointer is at EOF after download_fileobj iirc
+Sep 17 17:44:39 <ansyeb_>	could you send cloudwatch logs to syslog-ng in ec2 instance under the same account or smthg?
+Sep 17 17:54:33 <oatmealraisin>	Pilate: thanks a ton!
+Sep 17 17:56:35 <Pilate>	any time
+Sep 17 18:02:53 <domino14>	has anyone set up batch with cloudformation before? I keep getting this error: `Operation failed, ComputeEnvironment went INVALID with error: CLIENT_ERROR - Access denied`
+Sep 17 18:02:53 <rory>	threenuc: tbh the answer is to check what region you're in when creating resources using the web UI
+Sep 17 18:03:03 <domino14>	that's all the info i have. why is access denied?
+Sep 17 18:03:12 <rory>	threenuc: or always create resources via the API, where it's harder to make mistakes because you have to explicitly mention the region
+Sep 17 19:53:36 <jadax>	I have database with bunch of tasks to be performed. These tasks need to be executed by GPU instances (machine learning), the duration of each is between 1 hour and 12 hours. I have few physical GPU instances under my desk. I want to use them. But I also want to use AWS GPU instances that I would create/terminate as needed. Obviously to manage all
+Sep 17 19:53:36 <jadax>	that I need a queue system. Do you know if AWS natively supports any? I'm especially curious about the ability to create/terminate GPU instances on AWS
+Sep 17 19:55:50 <Pilate>	well sqs is a queue system, but youd have to build out the part that starts/stops instances i think
+Sep 17 19:55:55 <Pilate>	no fargate gpus
+Sep 17 19:59:11 <becool>	tom delonge from blink-182 is getting divorced https://people.com/music/tom-delonge-files-for-divorce-after-18-years-of-marriage/
+Sep 17 19:59:26 <Koffa>	o,O
+Sep 17 19:59:31 <Pilate>	and?
+Sep 17 19:59:40 <becool>	oops wrong channel
+Sep 17 19:59:47 <Pilate>	banned
+Sep 17 20:12:58 <vegardx>	How does CloudFront work with backends that resolve with a low TTL?
+Sep 17 20:13:43 <maxel>	anyone have an example of a lambda with c# using a stream instead of string as input? struggling to get my example working
+Sep 17 20:13:44 <vegardx>	Say you wanted to use service discovery with cloudfront and be a cheap-ass and drop the load balancer?
+Sep 17 20:26:46 <bn_work>	are tags case-sensitive?
+Sep 17 20:26:58 <bn_work>	(EC2 instance tags)
+Sep 17 20:27:12 <bn_work>	both key and value that is
+Sep 17 20:27:27 <vegardx>	No
+Sep 17 20:35:35 <jadax>	is Amazon VPC simply a VPN?
+Sep 17 20:36:19 <mspo>	no
+Sep 17 20:36:21 <jadax>	let's say I have EC2 instance with publicly facing website, but I also want to be able to ssh to it
+Sep 17 20:36:32 <jadax>	can I set up ssh access through VPC so that way only I can access it
+Sep 17 20:36:40 <mspo>	yes
+Sep 17 20:38:24 <jadax>	but and the website should have public acces
+Sep 17 20:38:30 <jadax>	is that how you guys do it?
+Sep 17 20:40:37 <maxel>	is it normal to have to manually import recursive dependencies for a lambda? I brought in a library and the libraries it references are missing from the lambda. I added them myself but this seems wrong...
+Sep 17 20:40:48 <maxel>	this is deploying a c# lambda from visual studio
+Sep 17 20:41:27 <Primer>	It's more normal for a build process to do it
+Sep 17 20:42:03 <maxel>	well if I build the project and it builds fine, are you saying I would need that build to be what actually deploys it?
+Sep 17 20:42:05 <Primer>	But the fact is, you have to include whatever deps your program needs, into the artifact
+Sep 17 20:42:26 <Primer>	You would deploy the artifact of that build, yes. Libs included.
+Sep 17 20:43:05 <Primer>	With nodejs, it's the node_modules directory. With python, it's the requirements.txt and venv.
+Sep 17 20:52:04 <bn_work>	jadax: you can use the CLI too if you enable it, but yes, usually the GUI way is via a web-console.
+Sep 17 22:43:51 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 22:43:51 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:44:16 2019
+
+Sep 17 22:44:16 *	Now talking on ##aws
+Sep 17 22:44:16 *	Topic for ##aws is: Amazon Web Services discussion: S3, EC2, Lambda, EFS, DynamoDB, RDS, ECS, VPC, etc | http://aws.amazon.com
+Sep 17 22:44:16 *	Topic for ##aws set by Bejgli (Mon Jan  2 10:12:01 2017)
+**** ENDING LOGGING AT Tue Sep 17 22:58:02 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:58:02 2019
+

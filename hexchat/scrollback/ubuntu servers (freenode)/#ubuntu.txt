@@ -1,0 +1,1364 @@
+T 1567243342 19*	Now talking on 22#ubuntu
+T 1567243342 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1567243342 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1567243342 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1567243342 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1567243414 18<uio18>	SwedeMike, Thanks. I see sda5_crypt
+T 1567243432 18<uio18>	But sudo cryptsetup luksDump /dev/sda5_crypt gives nothing.
+T 1567243455 18<uio18>	SwedeMike, Well, "Le périphérique /dev/sda5_crypt n'existe pas ou l'accès y est interdit." actually.
+T 1567243473 18<uio18>	doesn't exist or access is denied.
+T 1567243539 18<tomreyn18>	uio: /dev/sda5_crypt is the decrypted storage, you'll need to wok on the encrypted one
+T 1567243557 18<uio18>	tomreyn, Okay, how can I find it?
+T 1567243562 18<uio18>	in disks?
+T 1567243574 18<SwedeMike18>	uio: what does the cryptsetup line say?
+T 1567243579 18<SwedeMike18>	that mentions sda5_crypt?
+T 1567243584 18<uio18>	doesn't exist or access is denied.
+T 1567243587 18<tomreyn18>	uio: if you found sda5_crypt in crypttab, then you'll also find the encrypted one on the same line
+T 1567243620 18<SwedeMike18>	uio: "sudo grep sda5 /etc/crypttab" and paste the output
+T 1567243642 18<tomreyn18>	chances are it's /dev/sda5
+T 1567243652 18<SwedeMike18>	better to know for sure.
+T 1567243661 18<uio18>	Is this info sensitive?
+T 1567243677 18<uio18>	Big long line of numbers and letters...
+T 1567243682 18<uio18>	That one?
+T 1567243690 18<tomreyn18>	a UUID?
+T 1567243690 18<SwedeMike18>	uio: if it says "UUID=" and numbers then it's not sensitive
+T 1567243698 18<uio18>	Right.
+T 1567243699 18<uio18>	Cool.
+T 1567243714 18<uio18>	sda5_crypt UUID=fcfc9a97-23d2-4134-820e-f90f54b6daae none luks,discard
+T 1567243753 18<SwedeMike18>	uio: "sudo blkid" and look for that uuid
+T 1567243779 18<SwedeMike18>	"sudo blkid | grep fcfc9a"
+T 1567243816 18<tomreyn18>	blkid --uuid fcfc9a97-23d2-4134-820e-f90f54b6daae
+T 1567243848 18<uio18>	sudo cryptsetup luksDump /dev/sda5 gave output...
+T 1567243860 18<uio18>	Of both the keys.
+T 1567243866 18<uio18>	I'd like to remove key 2
+T 1567243877 18<uio18>	which is called slot 1
+T 1567243893 18<SwedeMike18>	uio: https://linux.die.net/man/8/cryptsetup luksRemoveKey
+T 1567243997 18<uio18>	SwedeMike, tomreyn Okay. I think we're good :)
+T 1567244002 18<uio18>	Thanks for your help!
+T 1567244069 18<uio18>	I want to reinstall on the same machine and use one of the same keys. Would this be a security issue? Ie, if someone learns the re-used key could they somehow access my old files? Should I rewrite with zeros to be safe?
+T 1567247070 18<B|ack0p18>	hi
+T 1567247204 18<B|ack0p18>	tomreyn: are you there and available?
+T 1567247221 18<B|ack0p18>	sorry pinging you..
+T 1567250893 18<BluesKaj18>	Hi folks
+T 1567251303 18<tomreyn18>	B|ack0p: There's no 1-on-1 support offering here. Please state the question / issue. If someone's available to help with it, they will respond.
+T 1567251875 18<B|ack0p18>	tomreyn: sorry
+T 1567251963 18<tomreyn18>	B|ack0p: no problem, i'm just explaining my POV on how we do support here.
+T 1567252144 18<x00018>	hi I'm looking for a solution to use my android device as a touchpad on ubuntu
+T 1567252151 18<x00018>	there's an app for this on windows and mac
+T 1567252162 18<x00018>	but no love for ubuntu, or linux at all ?
+T 1567252245 18<mouses18>	x000: https://rarcher.github.io/couch-potato-server/downloads.html
+T 1567252259 18<OerHeks18>	bing + "android as touchpad for linux"   gives https://www.maketecheasier.com/remote-control-ubuntu-android-phone/
+T 1567252303 18<OerHeks18>	more suggestions https://www.makeuseof.com/tag/15-android-apps-remote-control-linux-pc/
+T 1567252647 18<cluelessperson18>	When I do ping   example.server    it pings the WRONG ip address
+T 1567252671 18<ph8818>	i try to install Lubuntu on VM, i can choose the language and start Lubuntu .. but then it's not starting .. what to do ?
+T 1567252730 18<tomreyn18>	cluelessperson: Host example.server not found: 3(NXDOMAIN)
+T 1567252752 18<cluelessperson18>	.. you see "example" right?
+T 1567252767 18<cluelessperson18>	I found it, my bad
+T 1567252774 18<cluelessperson18>	had to restart the cache on the dns server, meh
+T 1567252824 18<tomreyn18>	ph88: when is "then" exactly? after installing, when you reboot?
+T 1567252858 18<tomreyn18>	or does the live system from your installer not start up properly?
+T 1567253117 18<ph8818>	the live system doesn't start
+T 1567253138 18<ph8818>	i get to see text EDAC pnd2: Failed to register device with error -19.
+T 1567253154 18<ph8818>	Which i googled and should be a "normal" error when there is no ECC ram available
+T 1567253165 18<ph8818>	tomreyn, and then nothing ... just that text
+T 1567253175 18<OerHeks18>	ph88 what os is the host, and what vm software?
+T 1567253419 18<ph8818>	synology DSM os host
+T 1567253422 18<ph8818>	vm software i don't know
+T 1567253593 18<crised18>	Is it ok to format a pendrive with only one partition?
+T 1567253602 18<crised18>	it's going to be used for file storage only
+T 1567253829 18<Epharim18>	hi!
+T 1567253844 18<Epharim18>	This should be an important update. https://dovecot.org/pipermail/dovecot/2019-August/116875.html
+T 1567253890 18<Epharim18>	How long it takes usually to be in the release. My last compiling of sources was long time ago.
+T 1567254050 18<lotuspsychje18>	!usn | Epharim you can follow security updates here
+T 1567254050 18<ubottu18>	Epharim you can follow security updates here: Please see https://usn.ubuntu.com/ for information about recent Ubuntu security updates.
+T 1567254402 18<ph8818>	i have to go
+T 1567254405 18<ph8818>	bye
+T 1567254569 18<Epharim18>	I was thinking that I'm save with the version 2.2.36.4 but I altough save with 2.2.33.2. I hope so. CVE-2019-11500 Thanks
+T 1567259520 18<cluelessperson18>	hrm.  ubuntu seems to be resolving ipv6 before ipv4, so results in pulling external dns
+T 1567259528 18<cluelessperson18>	ingoring internal dns
+T 1567259696 18<mystic18>	get ignored in here too lol
+T 1567260824 18<afidegnum18>	hello, pls what tool do i need to create a Windows MRB bootable usb stick in ubuntu 18.04 ?
+T 1567260960 18<ioria18>	!woeusb
+T 1567260961 18<ubottu18>	Ubuntu does not have a recommended tool for preparing bootable Windows installation USBs. If you need one, consider using Microsoft's media creation tool from a Windows computer (see ##windows for support). If this is not an option, there are third-party unsupported tools like WoeUSB ( https://github.com/slacka/WoeUSB , sudo snap install --edge woe-usb ) that might work.
+T 1567260987 18<afidegnum18>	ioria: woeusb create UEFI by default which is not supported by my system
+T 1567260999 18<afidegnum18>	i had ubuntu installed already i want to add windows
+T 1567261000 18<ioria18>	ah, didn't know that
+T 1567261048 18<ioria18>	nope, "Legacy/MBR-style/IBM PC compatible bootmode"
+T 1567261068 18<afidegnum18>	there is no option for that
+T 1567261390 18<lotuspsychje18>	afidegnum: there's woeusb snap if you want
+T 1567261447 18<afidegnum18>	lotuspsychje: i have woeusb installed already which create an EFI bootable, does snap offers an MBR version?
+T 1567261473 18<lotuspsychje18>	afidegnum: not sure, didnt test that myself
+T 1567262463 18<afidegnum18>	any insight ?
+T 1567262531 18<ioria18>	afidegnum, no, but you may try with the cli version
+T 1567262621 18<ThothCastel18>	I am running Ubuntu on a VMware Workstation VM on a laptop host machine with 16GB RAM, 1 Wireless adapter and 1 NIC of 1GB speed, the VM is picking up only 10MB speed for the connection when my host laptop is connected via WIFI - although my VM says it is 'wired' and I don't see my wireless adapter in my VM - why not? and why getting this limited speed? Network adapter is 'Natted'
+T 1567262640 18<ioria18>	afidegnum,  sudo woeusb --target-filesystem NTFS --device ~/Downloads/Win10.iso  /dev/sdX
+T 1567262678 18<afidegnum18>	ok, let me try
+T 1567263790 18<Surfer201118>	^hello, is there anything needed to be taken care of using rsync in rsnapshot with ntfs drives?
+T 1567263794 18<Surfer201118>	i get this error:  ERROR: Warning! /bin/rm failed.
+T 1567263861 18<lotuspsychje18>	Surfer2011: you received suggestions yesterday, did any of those help?
+T 1567263905 18<Surfer201118>	how can i check as what user the rsnapshot will be started?
+T 1567264044 18<Surfer201118>	30 3          * * *           root    /usr/bin/rsnapshot daily is how it is started
+T 1567264088 18<Surfer201118>	/dev/disk/by-label/LaCie /srv/dev-disk-by-label-LaCie ntfs defaults,nofail 0 2            is the fstab entry
+T 1567264875 18<EriC^18>	Surfer2011: where is that cron line in
+T 1567264904 18<Surfer201118>	/etc/cron.d/rsnapshot
+T 1567265237 18<geirha18>	sixth field is the user it runs as. root in this case
+T 1567265473 18<geirha18>	Surfer2011: what does this output?   mount | grep LaCie
+T 1567265502 18<Surfer201118>	/dev/sdd1 on /srv/dev-disk-by-label-LaCie type fuseblk (rw,relatime,user_id=0,group_id=0,allow_other,blksize=4096)
+T 1567265502 18<Surfer201118>	/dev/sdd1 on /sharedfolders/0_LaCie type fuseblk (rw,relatime,user_id=0,group_id=0,allow_other,blksize=4096)
+T 1567265506 18<x00018>	I have the coolest nick ever
+T 1567265587 18<geirha18>	it's mounted read-write and with root as owner on the files, so it should be able to remove files on it
+T 1567265593 18<lotuspsychje18>	x000: only ubuntu issues here please
+T 1567265683 18<x00018>	lotuspsychje, yes of course
+T 1567266298 18<Surfer201118>	any other ideas geirha
+T 1567266391 18<ioria18>	Surfer2011, some here suggested a fs check : https://github.com/rsnapshot/rsnapshot/issues/195
+T 1567268211 18<Surfer201118>	ioria: any chance it is because of the ntfs format / mount?
+T 1567268302 18<Surfer201118>	ioria: how do i do the fsck.ext4 -f /dev/ ? ... do i need to unmount it?
+T 1567268485 18<Surfer201118>	and would it make any difference to mount it as ntfs-3g ???
+T 1567268681 18<MoPac18>	Hi, sorry, having a massive brain lapse -- what is the standard format for placing an 'override' config file containing some select text that should take priority over what is in the main file? If I want to override some options in /folder/gtk.css, is it to make /folder/gtk.css.d , then put files names whatever I want in that with a line or two of css in them? Feels not quite right...
+T 1567269193 18<Surfer201118>	ntfsfix and fsck was fine
+T 1567269691 18<x00018>	fsck was definitely fine
+T 1567271017 18<slyrobot18>	tomreyn: Any progress on the Nvidia issue ?
+T 1567271240 18<kokokon18>	ty sarnold snap did work
+T 1567273043 18<axy18>	Hello there -- how can I display a log file in real time in ubuntu?,
+T 1567273051 18<axy18>	maybe this is more of a general linux question - not sure
+T 1567273073 18<axy18>	for instance tail command to display last lines -- and I need to display the logs in real time in my access.log file for nginx
+T 1567273084 18<axy18>	Not sure if what I need has a specific more technical name
+T 1567273087 18<axy18>	:)
+T 1567273219 18<molinot18>	Ubuntu in 16GB RAM, Chromium, 4GB swapfile goes better than in Chrome 2GB swapfile (many tabs open both cases)
+T 1567273232 18<cluelessperson18>	axy     tail -f /var/log/syslog
+T 1567273239 18<cluelessperson18>	-f  or --follow
+T 1567273334 18<axy18>	cluelessperson thanks! you saved my day
+T 1567273334 18<molinot18>	however the last kernel version has increased the power consumption from around 17+W to 40+
+T 1567273937 18<gbear1427518>	Hello, where would printer log files go to if a print job keeps stopping... I
+T 1567273957 18<gbear1427518>	I'm battling a printer setup and my latest problem is every job get's "Stopped"
+T 1567274103 18<ph8818>	hello. i try to install Lubuntu but the live CD is not continueing to start in the synology VM .. what can i do ??
+T 1567275287 18<Netmage18>	Hi, I would like to spindown the hdd after 3 minutes. I already added the recommended lines to hdparm.conf. Unfortunately nothing happen after 3 Minutes. If I use the hdparm -y /dev/sdb the hdd spindown. Is it necessary to activate (in some ways) hdparm ?
+T 1567278737 18<zetheroo18>	about a year ago I made this bug report https://bugs.launchpad.net/ubuntu/+source/gthumb/+bug/1799084 but there hasn't been a single comment to date. What's the next steps?
+T 1567278738 18<ubottu18>	Launchpad bug 1799084 in gthumb (Ubuntu) "Gthumb Memory Leak" [Undecided,New]
+T 1567278828 18<Sven_vB18>	zetheroo, one option could be to bribe the maintainer to make them care. ;)
+T 1567278838 18<zetheroo18>	:D
+T 1567278839 18<lotuspsychje18>	zetheroo: did you file this bug yourself?
+T 1567278845 18<zetheroo18>	yes
+T 1567278861 18<lotuspsychje18>	zetheroo: when you file bugs to ubuntu, its reccomended to use ubuntu-bug
+T 1567278943 18<Sven_vB18>	there once was a Ubiquity bug that made it crash due to memory exhaustion. several people had that problem. I published a patch for it. afaik it never got mainlined, so I had to maintain my patcher for 3 generations of ubuntu just to be able to install it. then some day I switched to another installer so I don't need to cope with Ubiquity anymore.
+T 1567279020 18<lotuspsychje18>	Sven_vB: thats why we created the #ubuntu-discuss bug team, to create a greater audience to affect bugs
+T 1567279038 18<Sven_vB18>	(the patch itself stayed the same btw. I just wrote an automatic patcher because I guessed I'll need it.)
+T 1567279047 18<zetheroo18>	sorry, got disconnected .. what did I miss?
+T 1567279054 18<Soo_Slow18>	somebody once told me the world is gonna ruin me
+T 1567279075 18<lotuspsychje18>	zetheroo: did you try apport-collect BUGid ?
+T 1567279078 18<Sven_vB18>	Soo_Slow, I'll be happy to help with that. :)
+T 1567279110 18<Soo_Slow18>	:(
+T 1567279147 18<lotuspsychje18>	zetheroo: a few other tricks to get attention to your bug is, find other affected users
+T 1567279167 18<lotuspsychje18>	zetheroo: and do some tests yourself, and keep your bug updated, alive
+T 1567279179 18<zetheroo18>	 lotuspsychje: I cannot recall now how I reported this issue back then
+T 1567279209 18<lotuspsychje18>	zetheroo: by launchpad manual, cause no system info shows in your bug
+T 1567279236 18<zetheroo18>	 lotuspsychje: nothing has changed since I opened the bug report. Still the same issue. I'm really surprised more people don't experience this as well.
+T 1567279265 18<lotuspsychje18>	zetheroo: you need to give a little hand to bugs, try things
+T 1567279305 18<Sven_vB18>	zetheroo, especially with the memory exhaustion type bugs, a lot of power users just don't experience them because they use insane amounts of RAM on all their notebooks.
+T 1567279318 18<zetheroo18>	 lotuspsychje: thing is, I don't really know where to start with this.
+T 1567279361 18<zetheroo18>	Sven_vB: I had 16GB of memory on my last laptop and it was used right up
+T 1567279395 18<Sven_vB18>	zetheroo, "used" is usual in linux, it doesn't imply it's unavailable.
+T 1567279414 18<Sven_vB18>	zetheroo, lots of caches are kept around until something more important needs their space.
+T 1567279442 18<zetheroo18>	used up .. meaning ... swap was also being used up ... laptop freezing up ... can't do anything until gthumb crashes
+T 1567279524 18<Sven_vB18>	uplink comment #15 looks like it was fixed in version 3.5.2. you could report those good news to launchpad in case the maintainer there is waiting for upstream to fix it.
+T 1567279541 18<Sven_vB18>	err, upstream
+T 1567279546 18<Sven_vB18>	not uplink
+T 1567279586 18<lotuspsychje18>	zetheroo: a start would be: apport-collect 1799084
+T 1567279626 18<zetheroo18>	lotuspsychje: I don't know what that is :(
+T 1567279631 18<lotuspsychje18>	zetheroo: also, does this bug still happen on your updated system 18.04.3?
+T 1567279648 18<zetheroo18>	yes
+T 1567279649 18<Sven_vB18>	zetheroo, have you considered mitigating the impact with ulimit until it's fixed? that way only the image viewer should crash instead of a system freeze.
+T 1567279675 18<lotuspsychje18>	zetheroo: apport collect gathers your system info & logs into your bug, they are needed for the devs to debug better
+T 1567279687 18<zetheroo18>	ok
+T 1567279737 18<Sven_vB18>	zetheroo, also a good idea would be to try and check the updated upstream package. if it's fixed there, the debug info is redundant.
+T 1567279751 18<Sven_vB18>	the maintainers would just need to merge the fix.
+T 1567279769 18<lotuspsychje18>	good idea Sven_vB
+T 1567279827 18<lotuspsychje18>	!info gthumb disco
+T 1567279830 18<ubottu18>	gthumb (source: gthumb): image viewer and browser. In component universe, is optional. Version 3:3.6.2-4 (disco), package size 946 kB, installed size 3695 kB
+T 1567279846 18<lotuspsychje18>	!info gthumb bionic
+T 1567279851 18<ubottu18>	gthumb (source: gthumb): image viewer and browser. In component universe, is optional. Version 3:3.6.1-1 (bionic), package size 940 kB, installed size 3514 kB
+T 1567279948 18<zetheroo18>	ok well I did the apport-collect 1799084 thingy
+T 1567279997 18<lotuspsychje18>	zetheroo: i dont see it in your bug yet
+T 1567280121 18<zetheroo18>	I did it again now
+T 1567280208 18<zetheroo18>	it collects the info and then shows it to me and I click 'Send'
+T 1567280441 18<ioria18>	zetheroo, that memory leak seems to be a common issue; have you tried the latest upstream ver or downgrade it ?
+T 1567280550 18<zetheroo18>	ioria: how do I try a newer version?
+T 1567280552 18<devslash218>	i just did a fresh install of ubuntu and any sites that uses drm like spotify.com or songsterr.com or yahoo news videos which all use drm do not work
+T 1567280591 18<Sven_vB18>	DRM never works anyway. ;)
+T 1567280602 18<ioria18>	zetheroo, http://ftp.acc.umu.se/pub/gnome/sources/gthumb/3.8/   (if you know how to )
+T 1567280609 18<devslash218>	i used to be able to listen to spotify
+T 1567280613 18<devslash218>	in ubuntu
+T 1567280622 18<devslash218>	until i reinstalled ubuntu\
+T 1567280653 18<zetheroo18>	ioria: so this would be something I would have to compile myself I suppose
+T 1567280661 18<Bashing-om18>	devslash2: "ubuntu-restricted-extras" installed ? as maybe the sites require non-free codeces ?
+T 1567280667 18<Sven_vB18>	are you sure you have the required licenses etc.? maybe your new Ubuntu install just looks like a new device, in which case the malfunction might be the exact purpose of DRM.
+T 1567280671 18<devslash218>	does anyone know why DRM doesnt work at all
+T 1567280675 18<ioria18>	zetheroo, kinda : https://askubuntu.com/questions/789400/how-to-downgrade-gthumb-in-16-04
+T 1567280678 18<devslash218>	how do i check
+T 1567280736 18<Bashing-om18>	devslash2: ' dpkg -l ubuntu-restricted-extras ' .
+T 1567280784 18<devslash218>	that was it thanks
+T 1567280818 18<zetheroo18>	ioria: I am using the version shipped with 18.04, an LTS release of Ubuntu, and I don't really see downgrading as a 'solution'. It's just surprising that something with such a noticeable bug gets into an LTS and doesn't get fixed. :/
+T 1567280833 18<ioria18>	ok
+T 1567280847 18<zetheroo18>	ioria: but thanks for your help anyhow ;)
+T 1567280871 18<zetheroo18>	I'll just wait for 20.04 and hope it's fixed by then
+T 1567280913 18<Sven_vB18>	zetheroo, consider ulimit ;)
+T 1567280961 18<zetheroo18>	I even opened an issue here https://gitlab.gnome.org/GNOME/gthumb/issues/36
+T 1567280970 18<zetheroo18>	4 months since last contact ... :D
+T 1567407102 20*	Disconnected (20)
+T 1567407949 20*	Disconnected (20)
+T 1567409874 20*	Disconnected (20)
+T 1567418638 20*	Disconnected (20)
+T 1567425360 20*	Disconnected (20)
+T 1567498452 20*	Disconnected (20)
+T 1567531242 20*	Disconnected (20)
+T 1567535144 20*	Disconnected (20)
+T 1567576502 20*	Disconnected (20)
+T 1567584933 20*	Disconnected (20)
+T 1567608965 20*	Disconnected (20)
+T 1567670323 20*	Disconnected (20)
+T 1567695041 20*	Disconnected (20)
+T 1568212408 19*	Now talking on 22#ubuntu
+T 1568212408 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568212408 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568212408 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568212408 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568212486 18<bane18>	that's a great idea
+T 1568212491 18<bane18>	i'll try that as well
+T 1568212539 18<pragmaticenigma18>	logikos: Apache should never run as root
+T 1568212574 18<pragmaticenigma18>	logikos: Also, questions regarding containers should be sent to forums dedicated to the container program that you are using. I.E. Docker based instances should be directed at the Docker community
+T 1568212786 18<mgedmin18>	logikos: for running inside docker?  I think you need to change APACHE_RUN_USER/APACHE_RUN_GROUP in /etc/apache2/envvars
+T 1568212788 18<logikos18>	pragmaticenigma: i understand, and I'm asking in several different channels as there are several different services involved
+T 1568212802 18<mgedmin18>	assuming your docker container is based on ubuntu (or debian)
+T 1568212969 18<pragmaticenigma18>	logikos: Please don't cross post... Anything to do with a docker container should be directed towards the developer of the docker container or the docker community. The setup of apache within the docker container will not match the documentation that UBuntu provides for it's packaging of Apache, volunteers here may not provide you with the most accurate information.
+T 1568213188 18<logikos18>	pragmaticenigma: I was posting in #docker until this issue, which seemed to be distro specific so I came here, relax man
+T 1568213196 18<zamba18>	are there any fundamental differences between ubuntu minimal and ubuntu desktop?
+T 1568213206 18<iffraff18>	I have found an app called devilspie which I think can help me with my window placement.  Has anybody any experience with this?
+T 1568213211 18<zamba18>	meaning: can you install packages on ubuntu minimal to get it up to a standard ubuntu desktop?
+T 1568213218 18<logikos18>	the ppl in #docker told me to ask here lol
+T 1568213221 18<Habbie18>	zamba, yes, you can
+T 1568213269 18<zamba18>	Habbie: is the kernel different?
+T 1568213279 18<lotuspsychje18>	logikos: we handle ubuntu issues here
+T 1568213298 18<Habbie18>	zamba, oh, i'm not sure if there are different default kernels for the two, but all kernels are available in apt-get
+T 1568213559 18<doug16k18>	bane, genisoimage is the almost identical to mkisofs, and exists in the ubuntu package manager
+T 1568213592 18<doug16k18>	so identical they are practically interchangeable
+T 1568213753 18<Habbie18>	ah, nice
+T 1568213910 18<bane18>	gotcha
+T 1568213911 18<bane18>	thanks guys
+T 1568214812 18<iffraff18>	Hi, when I boot my machine I get a grub window that give me 3 options, something like boot normally,  boot in rescue, and somethign else.  standard sutff. However, if have a usb-a device plugged into the computer that screen freezes.  is this something someone can help me with ?
+T 1568214899 18<mgedmin18>	apt has a nice progress bar
+T 1568214907 18<mgedmin18>	so why doesn't do-release-upgrade enable it???
+T 1568214942 18<lotuspsychje18>	!discuss | mgedmin
+T 1568214942 18<ubottu18>	mgedmin: Want to talk about Ubuntu, but don't have a support question? /join #ubuntu-discuss for non-support Ubuntu discussion, or try #ubuntu-offtopic for general chat. Thanks!
+T 1568215067 18<pragmaticenigma18>	iffraff: It is best not to boot a machine with removable storage devices attached, unless you're intending to boot from that device
+T 1568215159 18<tomreyn18>	iffraff: or you can reconfigure your bios not to boot off the usb
+T 1568215163 18<mgedmin18>	iffraff: it sounds like a bios problem; have you checked the bios setup for boot device priority settings?
+T 1568215188 18<mgedmin18>	I've a similar problem where my home "server" fails to boot (doesn't even get to the grub menu) if the external usb hdd is plugged in
+T 1568215212 18<mgedmin18>	unfortunately it seems to be a bios bug because no amount of boot device selection settings fixes it
+T 1568215231 18<mgedmin18>	no unattended-upgrade reboots for me
+T 1568215251 18<lordcirth_18>	It's surprising how often BIOS has bugs.
+T 1568215282 18<iffraff18>	Hi, well, it's not a storage device actually, it's any device, I have a hub with some peripherals on it, no storage though.  I feel like I checked bios but I'll check again
+T 1568215312 18<leftyfb18>	iffraff: tried one of the peripherals without the hub?
+T 1568215642 18<iffraff18>	leftyfb: yes actually I have, I think it was the logitech wireless mouse thing.  same result
+T 1568215669 18<zamba18>	i'm experiencing extreme stuttering on my ubuntu installation
+T 1568215676 18<zamba18>	it seems like there's a "pulse" every second or so
+T 1568215678 18<lordcirth_18>	iffraff, have you looked for bios updates from the manufacturer?
+T 1568215690 18<lordcirth_18>	zamba, What Ubuntu version? What graphics card and driver?
+T 1568215798 18<B|ack0p18>	hi. can i install Ubuntu 18.04 - 64bit inside SD card?
+T 1568215916 18<lordcirth_18>	B|ack0p, yes, but it will be quite slow
+T 1568215919 18<SirScott18>	trying to create a python virtualenv on a live 19.04 desktop.  apt install python3-venv --> Package python3-venv is not available, but is referred to by another package.  Yes, i have done 'apt update'.  What am I missing?
+T 1568215935 18<B|ack0p18>	lordcirth_: thx..
+T 1568215944 18<zamba18>	lordcirth_: i'm working on that, give me a second
+T 1568215945 18<B|ack0p18>	so sd cards still slow..
+T 1568215957 18<iffraff18>	lordcirth_: I have never done a bios update.  frankly scares the crap out of me.  how do you do that?
+T 1568215975 18<frib18>	is anyone able to help me troubleshoot my audio? I really need it and I have no idea what to do.. The ONLY audio I have is those pops you hear when you change the volume. (Strange) It used to be ONLY the speaker test that I could hear (Even stranger). What is going on?! Thanks
+T 1568215981 18<pragmaticenigma18>	B|ack0p: You could, but it wouldn't perform very well. It would be the same process as making a USB drive. The computer's BIOS/Firmware does need to support booting from SD cards too
+T 1568216019 18<lordcirth_18>	iffraff, firstly, only do it if the manufacturer's update says that it fixes your issue. Secondly, follow the instructions on the manufacturer's page, if they have Linux (or generic) instructions.
+T 1568216048 18<iffraff18>	k, but I think I'll use this as a last resort.
+T 1568216058 18<mgedmin18>	SirScott: did you run sudo apt update?
+T 1568216078 18<mgedmin18>	iirc you need to do that before apt install anything-at-all will start working in a live session
+T 1568216085 18<B|ack0p18>	pragmaticenigma: well i tried once i couldnt install inside SD card. if it will be very slow then no need to try again.. i was considering to extend my actual space
+T 1568216123 18<iffraff18>	has anyone used devilspie for window placement? ( i have two issues :) )
+T 1568216266 18<SirScott18>	mgedmin: yes
+T 1568216328 18<mgedmin18>	and apt install python3-venv still fails?  weird; what apt mirrors are you using?
+T 1568216405 18<SirScott18>	mgedmin: https://bpaste.net/show/R38k
+T 1568216434 18<pragmaticenigma18>	!patience | frib
+T 1568216434 18<ubottu18>	frib: Don't feel ignored and repeat your question quickly; if nobody knows your answer, nobody will answer you. While you wait, try searching https://help.ubuntu.com or https://ubuntuforums.org or https://askubuntu.com/
+T 1568216464 18<pragmaticenigma18>	SirScott: try "apt install python3-defaults"
+T 1568216483 18<frib18>	pragmaticenigma, you mean from when I asked the other day?
+T 1568216495 18<mgedmin18>	SirScott: most likely /etc/apt/sources.list only enables the 'main' component; python3-venv is from universe
+T 1568216516 18<pragmaticenigma18>	frib: Sorry... I was scrolled up and thought you had repeated
+T 1568216535 18<frib18>	pragmaticenigma, no, but no problem
+T 1568216683 18<SirScott18>	mgedmin: mgedmin: success, thanks a lot!
+T 1568275714 20*	Disconnected (20)
+T 1568275738 19*	Now talking on 22#ubuntu
+T 1568275738 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568275738 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568275739 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568275739 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568276571 18<gst56892318>	Hi guys, in ubuntu 19.04, synaptic show me that the packages "libsnmp30" and "libsnmp-base" are "Installed (local and obsolete)" but if remove it, there are other dependencies: colord, libsane ...
+T 1568277082 18<lotuspsychje18>	gst568923: best to pastebin the full apt output, so volunteers can think along with you
+T 1568277220 18<gst56892318>	lotuspsychje I have used frontend Synaptic, what is the corresponding command cli?
+T 1568277265 18<MJCDawy18>	"frontend synaptic"
+T 1568277274 18<MJCDawy18>	apt ?
+T 1568277278 18<lotuspsychje18>	gst568923: wich packages are you trying to install/purge?
+T 1568277353 18<MJCDawy18>	does it matter
+T 1568277525 18<gst56892318>	lotuspsychje in the previous days I normally opened synaptic and I clicked on the update button, to update other packages and I found that the "libsnmp30" and "libsnmp-base" packages that from the "installed" item are automatically passed to the "installed (local or obsolete)"
+T 1568277610 18<tomreyn18>	gst568923: can you run and post this to get us started? it returns some general info on your apt repository configuration and package management system, without actually changing anything:   sudo /bin/true && cat &>/tmp/aptlog < <(sudo apt-get -qqy update 2>&1; apt-cache policy 2>&1; sudo apt-get -syV full-upgrade 2>&1;); nc termbin.com 9999 </tmp/aptlog; rm /tmp/aptlog
+T 1568277644 18<lotuspsychje18>	MJCDawy: yes, details matter
+T 1568277793 18<tomreyn18>	gst568923: if you however dislike the idea of running those commands which you may not know/understand, you could also just show some synaptic screenshots, like form the detail view of when it updates package lists, and the screeen where it discusses that those packages are obsolete, and the screen where it wants to remove those other packages.
+T 1568277796 18<MJCDawy18>	lotuspsychje, hello I want to manage a package. what is the thing like synaptic for the cli
+T 1568277808 18<MJCDawy18>	what details would matter in this inquiry
+T 1568277832 18<lotuspsychje18>	MJCDawy: feel free to come discuss this in #ubuntu-discuss
+T 1568277891 18<MJCDawy18>	I'm already too deep inside the ubuntu beast I fear, lest I risk partial digestion
+T 1568278051 18<gst56892318>	tomreyn https://pastebin.com/cBjmPK0g
+T 1568278081 18<BWestOz18>	Can anyone suggest a command line tool I can use to monitor CPU use in real time?
+T 1568278085 18<magic_ninja18>	anyone know if there is an official channel for the ubuntu graphics ppa?
+T 1568278095 18<lotuspsychje18>	nvidia | magic_ninja
+T 1568278099 18<lotuspsychje18>	!nvidia
+T 1568278100 18<ubottu18>	For nvidia and matrox graphics cards, see https://help.ubuntu.com/community/VideoDriverHowto . For AMD/ATI graphics cards, see « /msg ubottu ati » and « /msg ubottu fglrxmissing » For the latest Nvidia drivers see https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa
+T 1568278143 18<doug16k18>	magic_ninja, atop will give a lot of details. top is the simple version of that and is probably already installed
+T 1568278166 18<tomreyn18>	gst568923: hmm my italian is not very good, i'm afraid.
+T 1568278171 18<magic_ninja18>	I want to speak with the maintainers of the ppa
+T 1568278190 18<doug16k18>	qtop is very much like windows task manager
+T 1568278196 18<lotuspsychje18>	magic_ninja: contact the maintainer on the ppa..
+T 1568278215 18<magic_ninja18>	full circle now, anyone know if the ppa has its own irc channel?
+T 1568278269 18<gst56892318>	tomreyn "I seguenti pacchetti sono stati aggiornati:" translated in english "The following packages have been updated:"
+T 1568278289 18<doug16k18>	oops, not you magic_ninja. I meant BWestOz
+T 1568278306 18<tomreyn18>	BWestOz: realtime wont be possible since any application will need to receive, process and output the information. top can do it fast enough usually.
+T 1568278311 18<doug16k18>	BWestOz, top or atop
+T 1568278332 18<gst56892318>	tomreyn "I seguenti pacchetti sono stati installati:" translated "The following packages have been installed:"
+T 1568278336 18<lotuspsychje18>	!alis | magic_ninja to find a channel
+T 1568278336 18<ubottu18>	magic_ninja to find a channel: Alis is an IRC service to help you find channels. For help on using it, see "/msg Alis help list" or ask in #freenode. Example usage: "/msg Alis list http"
+T 1568278372 18<magic_ninja18>	thats fine. appreciate it. I just figured someone in here might know of it off the top of their head
+T 1568278383 18<tomreyn18>	gst568923: thanks. so none of this suggests that these packages you mentioned are obsolete, just that they are about to be upgraded
+T 1568278385 18<doug16k18>	BWestOz, atop will give you extensive information, and per-cpu information. top is a summary
+T 1568278438 18<doug16k18>	BWestOz, htop is good if atop is too much information
+T 1568278484 18<BWestOz18>	I'm just having a look with top at the moment. Thank you all very much
+T 1568278496 18<gst56892318>	tomreyn I know it sounds strange but they are shown in that entry after I updated the day "Commit Log for Fri Sep 6 13:05:45 2019"
+T 1568278562 18<BWestOz18>	It's quite fun clicking away on my browser and watching top. Not very scientific though!
+T 1568278645 18<gst56892318>	furthermore clicking with the right button, the reinstallation entry is disabled, the only items that can be activated on synaptic are "remove" or "remove completely"
+T 1568278782 18<gst56892318>	tomreyn maybe I found the problem
+T 1568278914 18<BWestOz18>	Thank you all for your helpful suggestions.
+T 1568279019 18<gst56892318>	my installed version is "5.7.3 + dfsg-5ubuntu1.1" but by clicking on synaptic on "force version" the entry "5.7.3 + dfsg-5ubuntu1.1 (now)" appears. Maybe I should downgrade to "5.7.3 + dfsg-5ubuntu1 (disco)"
+T 1568279028 18<gst56892318>	tomreyn
+T 1568279156 18<tomreyn18>	!info libsnmp30 disco
+T 1568279159 18<ubottu18>	libsnmp30 (source: net-snmp): SNMP (Simple Network Management Protocol) library. In component main, is optional. Version 5.7.3+dfsg-5ubuntu1 (disco), package size 922 kB, installed size 3907 kB
+T 1568279261 18<tomreyn18>	gst568923: this suggests the latest version of libsnmp30 in 19.04 "disco" is 5.7.3+dfsg-5ubuntu1. but this information can be out of date, which your system seeing 5.7.3+dfsg-5ubuntu1.1 seems to suggest
+T 1568279286 18<tomreyn18>	so maybe you've just hit the middle of a mirror update, and should just reload the packages list.
+T 1568279307 18<tomreyn18>	i.e. refresh the repository cache.
+T 1568279544 18<gst56892318>	tomreyn I downgraded and works :-)  probably version 1.1 was not referred to ubuntu disco but to (now) that I didn't understand what it means
+T 1568279698 18<tomreyn18>	just dont hold it on this downgraded version and you should be fine.
+T 1568279768 18<gst56892318>	tomreyn the word "now" to which version of ubuntu refers?
+T 1568279863 18<tomreyn18>	to the UBUNTU_CODENAME in /etc/os-release
+T 1568279886 18<tomreyn18>	though i'm not 100% certain on this
+T 1568279934 18<gst56892318>	tomreyn what about the repository server even if I am in Italy which servers are more reliable "http://archive.ubuntu.com" or "http://it.archive.ubuntu.com"? What do you suggest me?
+T 1568280100 18<tomreyn18>	gst568923: the latter is usually fine.
+T 1568280103 18<tomreyn18>	!mirrors
+T 1568280103 18<ubottu18>	Ubuntu installation CDs can be downloaded from http://releases.ubuntu.com - Mirrors can be found at https://wiki.ubuntu.com/Mirrors - PLEASE use the !torrents to download !Disco, and help keeping the servers' load low!
+T 1568280137 18<tomreyn18>	actually ignore what ubottus told you there and look at https://launchpad.net/ubuntu/+archivemirrors
+T 1568280209 18<tomreyn18>	it.archive.ubuntu.com is an alias for ubuntu.mirror.garr.it.
+T 1568280250 18<tomreyn18>	...but this can change, so it's best to keep using it.archive.ubuntu.com
+T 1568280351 18<gst56892318>	tomreyn how did you find the corresponding alias?
+T 1568280504 18<tomreyn18>	gst568923: using the "host" command on a terminal. "dig" or "systemd-resolve" would work, too.
+T 1568280586 18<gst56892318>	tomreyn yes, `dig it.archive.ubuntu.com` works
+T 1568280654 18<gst56892318>	tomreyn `dig archive.ubuntu.com` return me 91.189.88.XXX varius number
+T 1568281485 18<tomreyn18>	yes, DNS can be exciting.
+T 1568281644 18<adac18>	For 16.04, which apt package holds the virt-rescue binary?
+T 1568281647 18<adac18>	http://libguestfs.org/virt-rescue.1.html
+T 1568281686 18<adac18>	libguestfs-tools
+T 1568281745 18<parak0vsky18>	how to setup caps lock to act as home key permanently?
+T 1568282374 20*	Disconnected (20)
+T 1568282397 19*	Now talking on 22#ubuntu
+T 1568282397 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568282397 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568282398 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568282398 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568282827 18<Guifle18>	hello, how can I decrypt an img file which is the image of a luks partition?
+T 1568283105 18<vlt18>	Guifle: losetup, then cryptsetup luksOpen
+T 1568283174 18<Guifle18>	vlt, yeah, just made it work, thank you
+T 1568284042 18<MindSpark18>	Hey, how do I list downgradable packages?
+T 1568284553 18<julius_18>	hi
+T 1568285674 18<pedrocr18>	how can I blacklist a module? adding "blacklist bluetooth" to /etc/modprobe.d/blacklist.conf doesn't seem to be working
+T 1568285826 18<julius_18>	hi
+T 1568285861 18<julius_18>	is there a page like:  packages.debian.org for ubuntu?   i would like to search for the package mariadb-backup to see in which ubuntu it is available
+T 1568285952 18<julius_18>	ah, crap. never mind
+T 1568286991 18<redecas18>	what is the difference between 'end of support' and 'end of life' ?
+T 1568287020 18<redecas18>	what is the difference between 'end of STANDARD  support' and 'end of life' ?
+T 1568287046 18<Ool18>	perhaps you can have no standard support
+T 1568287087 18<Ool18>	Extended Maintenance (ESM)
+T 1568287091 18<Ool18>	http://releases.ubuntu.com/
+T 1568287165 18<Ool18>	https://ubuntu.com/esm
+T 1568287173 18<Ool18>	@ redecas
+T 1568287321 18<tomreyn18>	redecas: end of standard support (+ optional (commercially available) extended maintenance) = end of life.
+T 1568287476 18<redecas18>	tomreyn: thx
+T 1568287658 18<Dirkos18>	curl: relocation error: /usr/lib/x86_64-linux-gnu/libgnutls.so.30: symbol _idn2_punycode_decode version IDN2_0.0.0 not defined in file libidn2.so.0 with link time reference
+T 1568287666 18<Dirkos18>	anyone knows how to deal with this? Since apt is also broken now ofc
+T 1568287891 18<tomreyn18>	Dirkos: this shouldn't impact grub unless you use httpS urls for apt archives.
+T 1568287932 18<tomreyn18>	Dirkos: which ubuntu version is this, are all available updates installed?
+T 1568288098 18<tomreyn18>	Dirkos: actually this seems to have also broken "apt update" with only http urls according to bug 1843507 (which has since been fixed).
+T 1568288099 18<ubottu18>	bug 1843507 in libidn2 (Ubuntu) "apt-get update to latest libidn2.so.0 causes multiple application failures including apt-update" [Undecided,Fix released] https://launchpad.net/bugs/1843507
+T 1568288146 18<Dirkos18>	ok thanks!
+T 1568288424 18<Reventlov18>	Hey.
+T 1568288466 18<Reventlov18>	When trying to install ubuntu, I'm greeted with a "EFI Stub: UEFI Secure Boot is enabled" and then nothing else, on a black screen
+T 1568288476 18<Reventlov18>	I tried various options, nomodeset, and so on, and nothing seems to work
+T 1568288526 18<tomreyn18>	Reventlov: try disabling uefi secure boot in the bios for now. you can re-enable it later if needed.
+T 1568288553 18<Reventlov18>	I also get a black screen, without the message
+T 1568288585 18<Reventlov18>	intel core i7, 8th gen, with intel hd graphics
+T 1568288585 18<EoflaOE18>	Reventlov: What about removing quiet to see which message it stuck on?
+T 1568288622 18<tomreyn18>	!bootlog
+T 1568288622 18<ubottu18>	To get a more verbose log of the boot process, add the following !kernelparm: debug systemd.log_level=info
+T 1568288711 18<Reventlov18>	so, without quiet, and with debug systemd.log_level=info: black screen
+T 1568288724 18<Reventlov18>	(and without secure boot)
+T 1568288730 18<Reventlov18>	(I boot in UEFI mode)
+T 1568288789 18<tomreyn18>	are you able to boot to recovery?
+T 1568288798 18<Reventlov18>	the ubuntu is not installed yet
+T 1568288804 18<Reventlov18>	how can I boot to recovery
+T 1568288820 18<tomreyn18>	ah, sorry, i missed that it's not installed, yet
+T 1568288843 18<tomreyn18>	remove "splash" also, add "nosplash"
+T 1568288861 18<tomreyn18>	which hardware is this?
+T 1568288884 18<Reventlov18>	some asus UX331F Notebook
+T 1568288885 18<Ool18>	Reventlov: secure boot block you to boot with an other device, you need to put it off to install
+T 1568288886 18<Reventlov18>	black screen.
+T 1568288896 18<Reventlov18>	Ool: secure boot is disabled now.
+T 1568288900 18<Reventlov18>	same problem.
+T 1568288908 18<Reventlov18>	(without the message, still)
+T 1568288933 18<Ool18>	to install in EFI mode you need to boot in EFI mode too (not legacy)
+T 1568288940 18<Reventlov18>	which is what I do.
+T 1568288945 18<tomreyn18>	this is maybe bug 1829620
+T 1568288946 18<ubottu18>	bug 1829620 in linux-hwe-edge (Ubuntu) "intel-microcode on ASUS makes kernel stuck during loading initramfs on bionic-updates, bionic-security" [Undecided,Confirmed] https://launchpad.net/bugs/1829620
+T 1568289009 18<leftyfb18>	Reventlov: which version of ubuntu are you trying to install?
+T 1568289037 18<Reventlov18>	18.04, I'll try to update the bios (I currently have version 2.20.1271)
+T 1568289075 18<tomreyn18>	Reventlov: bios upgrade may help (and is probably a good idea), another workaround is to boot with dis_ucode_ldr
+T 1568289236 18<linuxconformer18>	why is my systemd service not updating? it keeps throwing an error from on old version, i've run daemon-reload and restarted the service, but it's still reading an old versoin
+T 1568289327 18<tomreyn18>	systemd is the init process, to restart it you'll need to reboot.
+T 1568289340 18<tomreyn18>	(or kexec)
+T 1568289480 18<tomreyn18>	it's not really safe to just upgrade systemd within an ubuntu release, though, unless you know exactly what the implications are and are able to handle those.
+T 1568289510 18<linuxconformer18>	thanks
+T 1568289516 18<tomreyn18>	(other than bug fix / security updates, which won't change the version number systemd reports)
+T 1568289541 18<Reventlov18>	dis_ucode_ldr made it
+T 1568289559 18<tomreyn18>	Reventlov: and a bios upgrade did not?
+T 1568289682 18<grammoboy218>	my 14.04 lts system is screwed. Can't update
+T 1568289685 18<MindSpark18>	Hey, I have a failed service apt-daily.service. How do I find out what it does and why it still shows failed when I do service apt-daily.service start ?
+T 1568289720 18<tomreyn18>	!14.04 | grammoboy2
+T 1568289720 18<ubottu18>	grammoboy2: Ubuntu 14.04 LTS (Trusty Tahr) was the 20th release of Ubuntu. !End-of-life was April 25th, 2019. Paid support (ESM) is available. See also !esm, !eol, !eolupgrade
+T 1568289754 18<OerHeks18>	gramno it is not, just end of life
+T 1568289765 18<OerHeks18>	grammoboy2 ^
+T 1568289771 18<tomreyn18>	MindSpark: which ubuntu version is this? what's the output you get for "service apt-daily.service start"? use a pastebin, please.
+T 1568289782 18<grammoboy218>	https://pastebin.com/BDajABFV
+T 1568289822 18<OerHeks18>	!eolupgrade | grammoboy2 follow this guide to upgrade to 16.04 LTS
+T 1568289822 18<ubottu18>	grammoboy2 follow this guide to upgrade to 16.04 LTS: End-Of-Life is when security updates and support for an Ubuntu release stop, see https://help.ubuntu.com/community/EOL for more info. Looking to upgrade from an EOL release? See https://help.ubuntu.com/community/EOLUpgrades
+T 1568289883 18<grammoboy218>	https://pastebin.com/BDajABFV
+T 1568289907 18<grammoboy218>	E: Sub-process /usr/bin/dpkg returned an error code (1)
+T 1568289917 18<OerHeks18>	no need to click that url, we know what is going on
+T 1568289927 18<grammoboy218>	no you don't
+T 1568289933 18<tomreyn18>	OerHeks: i think ESM supported releases remain on archive mirrors. and any release which is still on archive mirrors can still be upgraded to using do-release-upgrade.
+T 1568289962 18<OerHeks18>	oh good to know
+T 1568289981 18<grammoboy218>	I think I need to be able to upgrade normally first, before a dist upgrade
+T 1568289982 18<MindSpark18>	tomreyn, 18.04, and service apt-daily.service start doesn't give any output, but systemctl --state=failed still shows apt-daily.service
+T 1568290039 18<tomreyn18>	grammoboy2: can you show all output (including errors of:    apt-get update; apt-get -f install
+T 1568290056 18<grammoboy218>	tomreyn, https://pastebin.com/BDajABFV
+T 1568290075 18<tomreyn18>	MindSpark: what's the output of    systemctl status apt-daily.service
+T 1568290097 18<tomreyn18>	(and if other commands are suggested on this output, run those, too)
+T 1568290122 18<tomreyn18>	grammoboy2: you keep posting the same thing, this is not what i asked for
+T 1568290149 18<grammoboy218>	tomreyn, that is apt-get -f install isn't?
+T 1568290190 18<tomreyn18>	grammoboy2: no
+T 1568290240 18<tomreyn18>	the first line of output at https://pastebin.com/raw/BDajABFV is this: "$ sudo apt-get upgrade"
+T 1568290252 18<MindSpark18>	tomreyn, https://paste.ubuntu.com/p/SRNm83G2wF/
+T 1568290261 18<tomreyn18>	...which is a different command than "sudo apt-get -f install"
+T 1568290287 18<grammoboy218>	tomreyn, https://pastebin.com/qxczi5ki
+T 1568290324 18<tomreyn18>	MindSpark: it seesm that the system could not get online via systemd-networkd. is your network configuration sound, are your interfaces up and properly configured?
+T 1568290367 18<MindSpark18>	tomreyn, they should be. That is a server I am sshing into
+T 1568290382 18<OerHeks18>	grammoboy2, line 62:  apport report written because the error message indicates a disk full error
+T 1568290387 18<OerHeks18>	remove some stuff?
+T 1568290397 18<tomreyn18>	grammoboy2: /boot/ has run full (you can confirm it using df -h /boot )
+T 1568290416 18<tomreyn18>	in fact this looks like all of / ran full, right
+T 1568290424 18<grammoboy218>	tomreyn,
+T 1568290426 18<grammoboy218>	df -h /boot
+T 1568290426 18<grammoboy218>	Filesystem      Size  Used Avail Use% Mounted on
+T 1568290426 18<grammoboy218>	/dev/sda1        19G   16G  2,0G  89% /
+T 1568290433 18<tomreyn18>	!paste | grammoboy2
+T 1568290433 18<ubottu18>	grammoboy2: For posting multi-line texts into the channel, please use https://paste.ubuntu.com | To post !screenshots use https://imgur.com/ !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+T 1568290435 18<OerHeks18>	tomreyn, yes, or read-only?
+T 1568290470 18<tomreyn18>	OerHeks: hmm i think "No space left on device" wouldn't have been reported if it was r/o
+T 1568290496 18<tomreyn18>	it can also be inodes
+T 1568290500 18<tomreyn18>	df -hi /
+T 1568290553 18<grammoboy218>	tomreyn, https://pastebin.com/F4HAU8U6
+T 1568290574 18<tomreyn18>	so that's why.
+T 1568290580 18<grammoboy218>	:)
+T 1568290957 18<BluesKaj18>	Howdy all
+T 1568291000 18<tomreyn18>	grammoboy2: so you probably have a lot of subdirectories or files in a single directory somewhere - try to remove some, or to change the structure.
+T 1568291060 18<grammoboy218>	tomreyn, https://help.ubuntu.com/community/RemoveOldKernels trying
+T 1568291137 18<tomreyn18>	this helps with low disk space, not so much with few free inodes, though somewhat, too.
+T 1568291222 18<tomreyn18>	MindSpark: review the system log then to get a better idea of what went wrong when the system was booting.
+T 1568291296 18<Pr070cal18>	hi guys
+T 1568291307 18<Pr070cal18>	just reinstalled 19.04
+T 1568291338 18<Pr070cal18>	with separate partitions for /opt /usr /var and all the directories
+T 1568291341 18<tomreyn18>	MindSpark: also ensure the system is full yupdated, since there were some systemd related bugs in the past which could trigger this situation (which have since been fixed)
+T 1568291372 18<Pr070cal18>	if i install a new version of ubuntu will the applications still be in those partitions and startup ?
+T 1568291379 18<leftyfb18>	Pr070cal: you know that really isn't necessary
+T 1568291406 18<leftyfb18>	Pr070cal: the files will be there, but it will probably not function the way you think. That's not the right way to do it
+T 1568291421 18<Pr070cal18>	i want to install and configure things like snort that make / changes
+T 1568291428 18<Pr070cal18>	how should i do it
+T 1568291453 18<Pr070cal18>	someone said bindmount and someone else said install live persistance to hdd from usb
+T 1568291477 18<leftyfb18>	Pr070cal: can you explain in detail what you're trying to accomplish?
+T 1568291511 18<Pr070cal18>	so i install and configure snort then when i install new version of ubuntu it looks at /etc partition and loads those files instead of the ones at / and snort runs
+T 1568291533 18<Pr070cal18>	and is still there if i wipe /
+T 1568291561 18<Pr070cal18>	it works with persistance on usb it uses files on /persistance instead of /
+T 1568291582 18<leftyfb18>	Pr070cal: you probably want something like overlayroot. But still, I don't think things are going to work out the way you think. It's really a lot easier and quicker to just keep backups and restore after a new install.
+T 1568291661 18<tomreyn18>	i think file system / block device snapshotting was also mentioned previously
+T 1568291671 18<Pr070cal18>	anyone use bindmount ?
+T 1568291673 18<leftyfb18>	tomreyn: even worse
+T 1568291703 18<Pr070cal18>	how about make a persistance partition ?
+T 1568291714 18<tomreyn18>	leftyfb: no idea, i haven't tried it for this use case.
+T 1568291868 18<Pr070cal18>	overlayroot looks cool
+T 1568291932 18<Pr070cal18>	founs this in casper-rw /etc/fstab
+T 1568291933 18<Pr070cal18>	overlay / overlay rw 0 0
+T 1568291954 18<Pr070cal18>	just need a capser-rw partiton i think on hdd and /
+T 1568292000 18<Pr070cal18>	then wipe / reinstall and casper-rw has all the changes on root and loads them fisrt
+T 1568292107 18<OerHeks18>	that would .. wipe casper-rw ?
+T 1568292131 18<grammoboy218>	tomreyn, thx
+T 1568292134 18<Pr070cal18>	no casper-rw has all your changes in
+T 1568292163 18<grammoboy218>	it's updating now
+T 1568292172 18<Pr070cal18>	so make a change to /etc in casper partition then it wont use the version in /
+T 1568292208 18<Pr070cal18>	so i upgrade ubuntu in / with fresh install and when it boots i mount casper and it uses files in casper-rw first
+T 1568292592 18<julius_18>	hi
+T 1568292599 18<julius_18>	is this a official ubuntu mirror?   http://mirror.zol.co.zw/mariadb/repo/10.3/ubuntu xenial main'
+T 1568292731 18<OerHeks18>	julius_, no, it is a mariadb mirror, solely for their packages only
+T 1568292785 18<julius_18>	there are other packages on their two, but im not sure if i can trust the mirro
+T 1568292786 18<julius_18>	r
+T 1568292818 18<julius_18>	OerHeks is it listed somewhere on a mariadb page?
+T 1568292917 18<OerHeks18>	your url changes here to http://mariadb.mirror.liquidtelecom.com/repo/10.3/, a redirect..  you can check it at https://mariadb.com/kb/en/library/mirror-sites-for-mariadb/
+T 1568293086 18<julius_18>	ah alright, makes it a bit more trustworthy
+T 1568293152 18<BoneE18>	how do i make watching 2160p movies run smooth
+T 1568293193 18<grammoboy218>	tomreyn, next problem seems to bump up, but it's still upgrading at least https://pastebin.com/u4SELVBK
+T 1568293221 18<lotuspsychje18>	BoneE: a bit more details please? your ubuntu version? graphics card?
+T 1568293242 18<BoneE18>	19.04 rx vega 64
+T 1568293277 18<BoneE18>	freash install
+T 1568293280 18<lotuspsychje18>	BoneE: is your driver loaded? what happens on wich player?
+T 1568293316 18<BoneE18>	VLC is the best i can play it on. but still a little bit of screen tearing
+T 1568293370 18<lotuspsychje18>	BoneE: check sudo lshw -C video to see if your graphics driver is loaded
+T 1568293438 18<BoneE18>	will try when i get home
+T 1568293449 18<BoneE18>	anything else i can try
+T 1568293474 18<lotuspsychje18>	BoneE: yes, compare with smplayer
+T 1568293563 18<tomreyn18>	grammoboy2: probably a result of the disk running full. try to do as it says. you should also reboot soon after / ran full.
+T 1568295791 18<CrazyEddy18>	authenticate 'disco.tar.gz' against 'disco.tar.gz.gpg' -- I get this when running do-release-upgrade .  Any clues?
+T 1568295926 18<leftyfb18>	CrazyEddy: that is not an error. Do you have an error? What version of ubuntu are you running now?
+T 1568295958 18<CrazyEddy18>	18.10.
+T 1568295991 18<tomreyn18>	hmm, upgrading to an unsupported release is not a good idea, though.
+T 1568295999 18<CrazyEddy18>	The error is: Authenticating the upgrade failed. There may be a problem with the network or with the server.
+T 1568296018 18<CrazyEddy18>	Ah, so disco isn't supported yet?
+T 1568296100 18<tomreyn18>	no longer
+T 1568296160 18<tomreyn18>	oh wait, i mixed this up. sorry
+T 1568296167 18<tomreyn18>	!disco
+T 1568296167 18<ubottu18>	Ubuntu 19.04 (Disco Dingo) is the 30th release of Ubuntu, supported until January 2020.  Release Notes: http://ubottu.com/y/dingo
+T 1568296174 18<CrazyEddy18>	Is cosmic supported?
+T 1568296191 18<CrazyEddy18>	!cosmic
+T 1568296191 18<ubottu18>	Ubuntu 18.10 (Cosmic Cuttlefish) was the 29th release of Ubuntu. Support ended July 18th, 2019. See !eol and https://lists.ubuntu.com/archives/ubuntu-security-announce/2019-July/004996.html
+T 1568296193 18<tomreyn18>	disco (19.04) is supported, cosmic (18.10) is no longer
+T 1568296219 18<CrazyEddy18>	Right, so what's going on with do-release upgrade?
+T 1568296257 18<tomreyn18>	you'Re running an unsupported release. there's no guarantees that upgradign from an unsupported release is possible.
+T 1568296280 18<tomreyn18>	i.e. you should always upgrade from a release to the next while they'Re both supported.
+T 1568296302 18<tomreyn18>	!eolupgrade
+T 1568296303 18<ubottu18>	End-Of-Life is when security updates and support for an Ubuntu release stop, see https://help.ubuntu.com/community/EOL for more info. Looking to upgrade from an EOL release? See https://help.ubuntu.com/community/EOLUpgrades
+T 1568296306 18*	CrazyEddy sighs
+T 1568296414 18<leftyfb18>	stick with LTS's and you won't have this issue if you upgrade within 5 years of it's release
+T 1568296461 18<CrazyEddy18>	See, I've been running do-release upgrade the whole time and lxd errors have been holding up the process.
+T 1568296497 18<TJ-18>	it annoys me that d-r-u doesn't automatically handle needing to switch to old-releases to handle these cases
+T 1568296542 18<leftyfb18>	CrazyEddy: you have yet to post an lxd error.
+T 1568296565 18<CrazyEddy18>	So what can I do about the failed authentication?
+T 1568296572 18<CrazyEddy18>	I removed LXD.
+T 1568296656 18<leftyfb18>	CrazyEddy: you do realize you're upgrading to a version that will EOL in 4 months right?
+T 1568296705 18<iffraff18>	Hi, this may be the wrong room, if so please point me in the right direction.  In bash or zsh is there a way to tell if you script is running in linux or mac ?
+T 1568296758 18<leftyfb18>	iffraff: uname
+T 1568296767 18<leftyfb18>	iffraff: those, that is a binary
+T 1568296778 18<leftyfb18>	iffraff: maybe ask in #bash
+T 1568296797 18<OerHeks18>	uname can tell indeed, example https://stackoverflow.com/questions/3466166/how-to-check-if-running-in-cygwin-mac-or-linux
+T 1568296797 18<CrazyEddy18>	leftyfb, I do now.  That doesn't bother me.  I'd like to get back on track.
+T 1568296817 18<iffraff18>	leftyfb:  thanks, what do you mean it might binary?
+T 1568296833 18<leftyfb18>	iffraff: uname is a binary. Not a shell function
+T 1568296847 18<tomreyn18>	CrazyEddy: see the second link ubottu posted for you earlier
+T 1568296876 18<iffraff18>	leftyfb: oh, but we know that it will be install in ubuntu and mac?
+T 1568296892 18<leftyfb18>	iffraff: it will be installed on ubuntu
+T 1568296921 18<iffraff18>	will it throw on mac?
+T 1568296934 18<CrazyEddy18>	Thanks.
+T 1568296957 18<tomreyn18>	iffraff: that's not topical in #ubuntu, try the other channels suggested.
+T 1568297041 18<leftyfb18>	iffraff: sorry, we don't support mac here
+T 1568297076 18<iffraff18>	lol
+T 1568297085 18<iffraff18>	i know.  ok.  thanks
+T 1568298264 18<sweb18>	i try add to install tinc to two virtualbox bridge , during testing is okey (sudo tincd -n netname -D -d3) but after start service they could not see each other. how can i find out what's going on ?
+T 1568298961 18<humma18>	Hey, my sound began acting up, so I rmmod'ed all the snd* stuff. I modprobed snd_hda_intel again, and it works, except I have to launch a mixer to adjust now. Does anyone know what module provides volume key functionality?
+T 1568299093 18<hays_18>	how do I configure ubuntu to load ebtables at boot
+T 1568299325 18<hays_18>	it seems like there are a few options here... although most of the internet knows about iptables specifically..
+T 1568299343 18<hays_18>	I have an ebtables rule that I'd like run on startup.
+T 1568299380 18<Kats9918>	im just here to see someone talk about debian
+T 1568299414 18<Kats9918>	and imma leave now
+T 1568299430 18<TJ-18>	hays_: ebtables package contains a systemd unit to start it, that controls an old sysvinit /etc/init.d/ebtables script, that in turn is controlled by /etc/default/ebtables
+T 1568299516 18<hays_18>	TJ- thanks. helpful. I see that. where do the rules go though?
+T 1568299566 18<TJ-18>	hays_: according to /etc/init.d/ebtables they will be /etc/ebtables/$table
+T 1568299608 18<TJ-18>	hays_: look in function save() where it does " /sbin/ebtables -t $table --atomic-file ${EBTABLES_DUMPFILE_STEM}.$table --atomic-save "
+T 1568299655 18<TJ-18>	hays_: no, I'm wrong, it'll be /etc/ebtables.$table
+T 1568299668 18<hays_18>	heh ok so I can backdoor that by calling the /etc/init.d script directly
+T 1568299683 18<hays_18>	since systemctl save ebtables isn't a thing
+T 1568299691 18<TJ-18>	hays_: or just "sudo systemctl start ebtables"
+T 1568299713 18<TJ-18>	hays_: oh I see what you mean, to save your manually added rules initially
+T 1568299786 18<jerware18>	hi
+T 1568299809 18<jerware18>	Is ntpd also used on the client side to keep synced with time servers?  Or is ntpd soley a server?
+T 1568299825 18<hays_18>	TJ- ick, the files are binaries
+T 1568299842 18<hays_18>	I wonder if that will work if I am imaging the system
+T 1568299908 18<hays_18>	TJ- thanks for the assistance
+T 1568300104 18<TJ-18>	hays_: you might be able to dump the textual versions with something like "ebtables --atomic-file=/etc/ebtables.filter --list "
+T 1568300138 18<hays_18>	TJ- oh yeah there is ebtables-save
+T 1568300146 18<hays_18>	and ebtables-restore
+T 1568300183 18<TJ-18>	aha!
+T 1568300185 18<hays_18>	So.. I can run that once and save the tables thru /etc/init.d/ebtables save
+T 1568300199 18<hays_18>	still slightly messy but will work
+T 1568300313 18<lordcirth_18>	sweb, anything in 'systemctl status tinc'?
+T 1568300333 18<riex18>	mwape!
+T 1568300353 18<riex18>	I love when u call me Se�orita!
+T 1568300393 18<leftyfb18>	riex: can we help you with something?
+T 1568300418 18<riex18>	i know u like the song!
+T 1568300474 18<riex18>	I know everything, so I dont need help. lol
+T 1568300519 18<riex18>	I'm calling you up to getting down, down, down :P
+T 1568300546 18<OerHeks18>	time to read the topic, riex, there is also #ubuntu-offtopic
+T 1568300562 18<riex18>	So i broke the rules lol?
+T 1568300564 18<riex18>	take it easy dude
+T 1568300574 18<riex18>	Ive been here for years.
+T 1568300610 18<riex18>	If you got a problem with me, just ignore me, thanks!
+T 1568301125 18<SimonNL18>	riex!*@* added to ignore list.
+T 1568301167 18<lordcirth_18>	riex, it is unreasonable to expect all 1169 people in here to have to ignore you, when you could just not spam.
+T 1568301361 18<pragmaticenigma18>	jerware: ntpd is not a server, it only manages the local machine. For more information look at "man ntpd" or look at https://linux.die.net/man/8/ntpd
+T 1568301432 18<jerware18>	pragmaticenigma: is that what's used on workstations to keep synced?
+T 1568301492 18<pragmaticenigma18>	jerware: It's used on nearly all machine types to keep themselves in sync with a defined timeserver.
+T 1568301505 18<jerware18>	ahh yes, that's what I'm looking for.  thanks.
+T 1568301526 18<jerware18>	so if ntpd is for that, then what is the daemon on that defined timeserver?
+T 1568301676 18<Ool18>	timesyncd works for time client
+T 1568301697 18<jerware18>	doesn't timesynd use ntpd ?
+T 1568301765 18<leftyfb18>	chronyd can be used as a time server between machines
+T 1568301799 18<Ool18>	https://help.ubuntu.com/lts/serverguide/NTP.html
+T 1568304810 18<stoned18>	Hi is it possible to make grep to exclude * but only include *.txt ?
+T 1568305030 18<lordcirth_18>	stoned, not sure what you mean.
+T 1568305049 18<pragmaticenigma18>	stoned: Might need a little information... are you asking if you can restrict grep to searching only files with a .txt extension?
+T 1568305318 18<leftyfb18>	stoned: grep $STRING *.txt
+T 1568305516 18<stoned18>	 grep -HIFnir --exclude=\*.{sql,html,js,css,tmp} --exclude-dir={.svn,tmp,uploads,menuicon,osimages,ioncube} 'STR_REGION' /var/www/project199
+T 1568305519 18<stoned18>	Something like that
+T 1568305535 18<stoned18>	Trying to only search through php files
+T 1568305541 22*	26Drone sets mode 24-j on 22#ubuntu
+T 1568305550 18<stoned18>	once I get the grep command right, I'll put that into exec in php
+T 1568305556 18<stoned18>	web based greppy tool for code.
+T 1568305557 18<stoned18>	don't ask.
+T 1568305594 18<stoned18>	I wonder if you can exclude pattern *
+T 1568305605 18<stoned18>	everything! and then include only pattern .php\
+T 1568305627 18<stoned18>	that way grep is faster and doesn't have to go through 3 kinds of code files
+T 1568305632 22*	26niven.freenode.net sets mode 24+j on 22#ubuntu 5:10
+T 1568305638 18<stoned18>	I can make it search through only php or only js or only css or only css
+T 1568305639 18<stoned18>	etc.
+T 1568305644 18<stoned18>	Does that make sense what I need to do?
+T 1568305678 18<stoned18>	 grep -HIFnir --exclude=\*.* --include=*.php --exclude-dir={.svn,tmp,uploads,menuicon,osimages,ioncube} 'STR_REGION' /var/www/project199
+T 1568305681 18<stoned18>	something like that maybe?
+T 1568305683 18<stoned18>	I don't even know.
+T 1568305691 18<leftyfb18>	!enter | stoned
+T 1568305692 18<ubottu18>	stoned: Please try and keep as much of your info as possible on ONE line - easier to follow for everyone.
+T 1568305695 18<pragmaticenigma18>	stoned: Instead of trying to do everything at once, do them in separate operations. Side bar, this isn't a programming channel, You really should be asking questions like this on stack exchange or other forums dedicated to software developemnt
+T 1568305700 18<leftyfb18>	grep *.php
+T 1568305731 18<leftyfb18>	grep -HIFnir 'STR_REGION' /var/www/project999
+T 1568305777 18<stoned18>	yes, include and exclude in that manner work.
+T 1568305783 18<stoned18>	I figured it's a linux thing ask in my distro channel
+T 1568305784 18<stoned18>	np
+T 1568305805 18<stoned18>	grep -HIFnir --exclude=\*.* --include=*.php  --exclude-dir={.svn,tmp,uploads,menuicon,osimages,ioncube} 'STR_REGION'
+T 1568305813 18<stoned18>	That's brilliant.
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22#ubuntu
+T 1568307242 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568307242 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568307242 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568307242 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568307397 18<pragmaticenigma18>	B|ack0p: Buy a new machine
+T 1568307589 18<Habbie18>	B|ack0p, sometimes my audio goes bad (debian, thinkpad x1, but still) - if i then go to audio settings (in gnome, in my case) and switch the output device to another one and back, audio is good again
+T 1568307635 18<B|ack0p18>	Habbie: hmm
+T 1568307665 18<B|ack0p18>	there are 2 devices in Sound settings :
+T 1568307693 18<B|ack0p18>	1- Digital Output (S/PDIF) - Built in Audio
+T 1568307706 18<B|ack0p18>	2- Speakers - Built in Audio
+T 1568307711 18<B|ack0p18>	1 doesnt work
+T 1568307716 18<B|ack0p18>	2 works but bad sound
+T 1568307720 18<Habbie18>	i have 3, of which 2 come out of my speakers
+T 1568307737 18<B|ack0p18>	sorry your method didnt work for T60
+T 1568307738 18<Sven_vB18>	gparted takes forever trying to read /dev/sdb partitions. any ideas where I can see why?
+T 1568307760 18<Habbie18>	B|ack0p, too bad
+T 1568307767 18<B|ack0p18>	Habbie:  T60 is grand grand grand father of your X1 :p
+T 1568307769 18<Habbie18>	Sven_vB, what is /dev/sdb?
+T 1568307771 18<Habbie18>	B|ack0p, i figured :)
+T 1568307779 18<B|ack0p18>	well X1 is not true blood Thinkpad unfortunately :/
+T 1568307785 18<Sven_vB18>	Habbie, a USB thumb drive
+T 1568307825 18<Sven_vB18>	Habbie, I suspect my kernel is confused because I copied an image onto the device (the entire block device, no partition) while gparted was still open (idle)
+T 1568307844 18<Habbie18>	Sven_vB, ah, that may need some kind of kick - reopening gparted might even do it
+T 1568307860 18<kinghat18>	is it possible to leave a firefox extension shortcut to nothing?
+T 1568307860 18<Sven_vB18>	Habbie, no, I killed and re-opened gparted several times
+T 1568307932 18<Sven_vB18>	Habbie, I also un- and replugged the thumb drive in each attempt
+T 1568307976 18<Sven_vB18>	now I tried with another thumb drive, same problem. maybe a module that handles USB TDs is crashed?
+T 1568307991 18<Sven_vB18>	oh cool it settled
+T 1568308095 18<Sven_vB18>	on a side note: how can I convince nautilus's places sidebar to show me all partitions on my USB thumbdrive, even those with boot/esp flags?
+T 1568308143 18<Habbie18>	Sven_vB, replugging should solve any 'kernel confused' problems, so i don't know what happened there
+T 1568308656 18<Sven_vB18>	I'm now in fdisk and I managed to set up all partitions except the end sector of p1 is wrong. what's the easiest way to change it?
+T 1568308730 18<Sven_vB18>	do I need to delete that partition first? what other meta data would I need to write down except start/end and whether it has a boot flag?
+T 1568308969 18<Sven_vB18>	well, yolo. in the worst case I'll just restore the MBR again.
+T 1568309049 18<Sven_vB18>	cross-posted to #systemd: is there a kernel option to tell my Bionic live USB systemd I want to login in text mode asap and stuff like network isn't required for now?
+T 1568309094 18<Sven_vB18>	I use "2" for now but still lots of bloat is loaded
+T 1568309640 18<roger_padactor18>	where should I place my uploaded files for a website. the location would also need access from a remote windows machine to sftp files to that folder.  currently we can them as c:/file/ on windows but we are moving to ubuntu server
+T 1568309810 18<OerHeks18>	the webserver gets his files from /var/www/ as user www-data. so a new folder under /var/ could be logical.
+T 1568309896 18<roger_padactor18>	that is what we were thinking, the issue is when the windows machine sftps a pdf over that needs access through the web interface how do we automatically give is www-data permissions ?
+T 1568309949 18<bviktor18>	hi, how do i find out why firefox keeps failing my downloads? only in my user, but in my user it happens with a clean profile too. ubuntu 18.04
+T 1568310034 18<lordcirth_18>	bviktor, what happens? The download hangs? Errors?
+T 1568310048 18<bviktor18>	"failed"
+T 1568310052 18<bviktor18>	not a single byte is downloaded
+T 1568310071 18<bviktor18>	works fine in other browsers, works fine for other users on this same computer
+T 1568310133 18<bviktor18>	but in firefox, in my user, it fails no matter what
+T 1568310304 18<lordcirth_18>	bviktor, try using curl -v and see if anything weird shows
+T 1568310461 18<bviktor18>	cant see any errors, and the file downloads fine
+T 1568310526 18<p0a18>	Hello how can I check why my ubuntu failed to boot the last 2-3 times (then worked?)
+T 1568311376 18<Sven_vB18>	how do I change the font size or resolution of a text TTY?
+T 1568311399 18<Sven_vB18>	or text console it's called I think
+T 1568311411 18<Sven_vB18>	text TTY seems redundant :)
+T 1568311663 18<lordcirth_18>	p0a, how did it fail? What did you see?
+T 1568312182 18<sweb18>	lordcirth_: problem solved, it's problem for firewall. also seems be tinc is single thread i try to replace it with wireguard
+T 1568312199 18<lordcirth_18>	sweb, good to know
+T 1568313493 18<pragmaticenigma18>	Sven_vB: TTY => TeleTYpewriter
+T 1568313595 18<pragmaticenigma18>	Sven_vB: Also, I believe this will help configure your TTY session: sudo dpkg-reconfigure console-setup
+T 1568313609 18<pragmaticenigma18>	complete instructions here: https://askubuntu.com/a/940218
+T 1568313613 18<p0a18>	lordcirth_: stuck on `ubuntu' loadup screen
+T 1568313655 18<lordcirth_18>	p0a, remove 'quiet splash' from your grub entry in /etc/default/grub. Then the next time it happens it might say why.
+T 1568313662 18<lordcirth_18>	(and run update-grub)
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22#ubuntu
+T 1568351773 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568351773 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568351773 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568351773 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568355850 18<jax18>	good morning
+T 1568355903 18<jax18>	i'm having trouble finding how to setup full disk encryption on ubuntu during install.
+T 1568355906 18<jax18>	is there a guide or so?
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22#ubuntu
+T 1568579933 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568579933 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568579933 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568579933 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568580452 18<error_one18>	   
+T 1568581777 18<jpmh18>	years ago, as I remember it, I could do something like: init 1 to switch to single user mode - how do I do that with 18.4
+T 1568585087 18<bayman18>	is there a default firewall enabled on 18.04 server?
+T 1568585281 18<OerHeks18>	there is a default ufw installed, without rules and not enabled. https://help.ubuntu.com/community/UFW
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22#ubuntu
+T 1568585985 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568585985 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568585985 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568585985 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568587357 18<Vysty18>	I managed muck up my Ubuntu 16.04 to the point where I lost the ability to use my mouse and keyboard, and I'm trying to just upgrade to 18.04 to fix it. Is there any way I can make that upgrade without deleting all my documents, photos, music, etc.? (Yes I have a backup)
+T 1568587521 18<arooni18>	is there a shortcut to dismiss a notification message on ubuntu 18.04?
+T 1568587602 18<Vysty18>	arooni: Looks like we're alone here.
+T 1568587608 18<OerHeks18>	super + M ? https://askubuntu.com/questions/847915/quick-shortcut-to-dismiss-notifications-in-gnome-3
+T 1568587619 18<OerHeks18>	Vysty, good you have a backup :-D
+T 1568587627 18<arooni18>	oooh neato
+T 1568587640 18<OerHeks18>	no , i am not sure your upgrade would give a working system.
+T 1568587656 18<Vysty18>	OerHeks: No kidding. I just get nervous whenever I have to use it and I'm bumming around here before I click the "install" button to check one last time.
+T 1568587665 18<OerHeks18>	interesting you managed to do something without keyboard and mouse
+T 1568587679 18<Vysty18>	OerHeks: I made a bootable USB drive.
+T 1568587686 18<Vysty18>	The mouse works now.
+T 1568587704 18<Vysty18>	I made the mistake of trying to follow some directions for upgrading I found online that involved a bunch of terminal commands I wasn't familiar with.
+T 1568587705 18<OerHeks18>	oke, that would be 1st advise, make a fresh 18.04 usb, and have fun with upgrading
+T 1568587732 18<Vysty18>	Yeap, that's what I just did. Alrighty then, forward I goooooo....
+T 1568587733 18<OerHeks18>	some sources/ppa's will not survive upgrading, those are propperly disabled.
+T 1568587750 18<OerHeks18>	and rleasenotes
+T 1568587755 18<OerHeks18>	!releasenotes
+T 1568587756 18<ubottu18>	For release notes of a given Ubuntu release, please refer to the 'Docs' column on the 'List of releases' table at https://wiki.ubuntu.com/Releases
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22#ubuntu
+T 1568617535 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568617535 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568617535 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568617535 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568619365 18<andre144k18>	hello all ... is there maybe a better crontab-rule like this:  https://paste.debian.net/1100999/
+T 1568620212 18<brainbox18>	clear
+T 1568620815 18<vlt18>	andre144k: I think something like "4-54/10 *  * * 1-6 ..."
+T 1568624380 18<robban18>	Hi! A bit new to Ubuntu One. Whats the best way to manage a number of RPis running Ubuntu One? It will be around 100-200 devices
+T 1568624665 18<bayman18>	Fabric or Ansible
+T 1568624766 18<ZaZaGX18>	do i need to use Windows? I'm kind of been always bored on linux
+T 1568627463 18<lain9818>	how do i fix X/wayland. i changed some config files last week and i dont remember what i touched. i'd just like to have a fresh start
+T 1568627482 18<lain9818>	right now i get dropped to tty after boot and not lightdm/gdm
+T 1568627711 18<robban18>	Sorry, mixed up One and Core ! Whats the best way to manage a number of RPis running Ubuntu Core? It will be around 100-200 devices
+T 1568628081 18<TJ-18>	robban: does this help at all? https://askubuntu.com/questions/816118/managing-large-scale-snappy-core-iot-deployment
+T 1568628153 18<TJ-18>	robban: I'd suspect Canonical would point you at Landscape as the management agent... though I'm not sure if it can manage core/snaps as you would want
+T 1568628287 18<robban18>	TJ- Thanks. Yes, something along those lines. I was thinking abount using ansible towards the machines, but I have not found any docs on that at all.
+T 1568628375 18<SpiritHorse18>	ansible or saltstack
+T 1568628379 18<SpiritHorse18>	rest are fighting for scraps
+T 1568628391 18<Habbie18>	robban, docs on what precisely? i presume these are mostly still linux machines with working ssh
+T 1568628673 18<TJ-18>	Does anyone else only here "buun" in this pronunciation example at wikipedia? https://en.wikipedia.org/wiki/File:En-Ubuntu_pronunciation.oga#
+T 1568628729 18<TJ-18>	s/here/hear/
+T 1568628944 18<SpiritHorse18>	TJ-: lived in South Africa too long not to know how to pronounced Ubuntu
+T 1568628969 18<TJ-18>	SpiritHorse: does that sound correct to you? it sure doesn't to me
+T 1568628983 18<SpiritHorse18>	sounds fucked
+T 1568629007 18<SpiritHorse18>	should sound more like there are O's and not U's in the name
+T 1568629017 18<TJ-18>	SpiritHorse: thought so... I'm on a RaspPi and firefox doesn't play sound so douwnloaded it, just wanted to be sure it hadn't gone 'wrong' locally
+T 1568629696 18<dollarWoman18>	hello, how can i know ram size?
+T 1568629738 18<bitx818>	dollarWoman: free -m
+T 1568629743 18<dollarWoman18>	thanks
+T 1568629842 18<Xat`18>	hello guys ! I get 'unmet dependencies' when installing packages. But as you can see, the needed packages with required versions are available : https://paste.ee/p/tG01B . So why it says 'unmet dependencies' ?
+T 1568630764 18<TJ-18>	Xat`: that isn't Ubuntu, those package versions are Debian
+T 1568630822 18<Xat`18>	TJ-: you're right
+T 1568630924 18<Xat`18>	TJ-: but, maintainer are ubuntu developers
+T 1568630937 18<Xat`18>	original maintainers are debian
+T 1568631142 18<TJ-18>	Xat`: oh, I see what you mean. The packages were a direct import into Ubuntu wouthout changes though so it is possible there's an issue originating in Debian
+T 1568631274 18<TJ-18>	Xat`: what command did you issue to trigger the install?
+T 1568631978 18<Xat`18>	TJ-: apt-get install shibboleth-sp2-utils libapache2-mod-shib2
+T 1568632077 18<TJ-18>	Xat`: is that with 18.04 Bionic ?
+T 1568633023 18<BluesKaj18>	Hi all
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22#ubuntu
+T 1568641539 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568641539 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568641540 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568641540 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568642337 18<Killerherts18>	So I originally install Ubuntu with partitional file system since it was my 2nd install I did not want to complicate things. Now my media server have been expanded accross several hds and is just to spread out to find anything. I know I have to reinstall to use lvm to cure then problem. Do I also need to off load the data from all my hard drives
+T 1568642338 18<Killerherts18>	and format them again. Or will that not be necessary
+T 1568642499 18<sarnold18>	yeah you can't do in-place swaps
+T 1568642540 18<Habbie18>	if you can offload -one-
+T 1568642547 18<Habbie18>	you can lvm that one, move data back onto it, offload the next one, etc.
+T 1568642565 18<Killerherts18>	Oh my ok that was my next question
+T 1568642588 18<Killerherts18>	Jesus this is going to be a long day that no one can watch TV on.
+T 1568642657 18<Killerherts18>	There is not a more elegant solution I'm not thinking of correct lol. ( Prays for miracle)
+T 1568642686 18<sarnold18>	well, *elegant* sounds like buying a new pile of six hard drives and installing zfs and moving everything over :D
+T 1568642716 18<Habbie18>	Killerherts, there are way *less* elegant solutions that might limit downtime
+T 1568642876 18<Killerherts18>	Lol sarnold that will be a hard sell to the wife. Ok well looks like I'm backing up some tbs today to get this converstion going
+T 1568642921 18<sarnold18>	in truth you could probably just do eg two 8tb or 10tb drives, I hear you can get good ones in a usb enclosure for something like $180.. and 10tb would fit most people's media collectoins
+T 1568642945 18<sarnold18>	buying more drives than that are just to put off having a full pool for a few years
+T 1568643049 18<Killerherts18>	This is ultimately where it's all going I need an excuse to learn how to set up lvm so I can say I know a little bit about it
+T 1568643085 18<Killerherts18>	Seems like you gotta break a few things in Linux before you can really understand it
+T 1568643184 18<sarnold18>	definitely that's a good inccentive to learn how to fix things :) thogh hopefully there are easier ways
+T 1568643302 18<Killerherts18>	I'll keep poking around your zfs input is now my new Google rabbit hole
+T 1568643309 18<Killerherts18>	Thanks for the help
+T 1568643356 18<sarnold18>	Killerherts: https://pthree.org/2012/12/04/zfs-administration-part-i-vdevs/  my favourite series of blog posts :)
+T 1568643458 18<Killerherts18>	Nice thanks well looks like I got some reading to handle thanks
+T 1568643496 18<sarnold18>	:D
+T 1568644761 18<bogn18>	Hi everyone, there's a package update for wireshark which seems to fix CVE-2019-12295 but the changelog includes a point saying "Non-maintainer upload". With a security update I'm sort of wary to apply it from a non-maintainer without understanding at least part of the background. Is this a normal procedure?
+T 1568645117 18<OerHeks18>	bogn, hi, you are referring to https://usn.ubuntu.com/4133-1/ ?
+T 1568645142 18<OerHeks18>	CVE-2019-12295 and CVE-2019-13619
+T 1568645148 18<bogn18>	Yes
+T 1568645416 18<bogn18>	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=929446#17
+T 1568645417 18<ubottu18>	Debian bug 929446 in src:wireshark "wireshark: CVE-2019-12295" [Grave,Fixed]
+T 1568645476 18<OerHeks18>	bogn, i think you can trust these archives, they come from debian ? https://packages.ubuntu.com/source/bionic-updates/wireshark
+T 1568645484 18<OerHeks18>	git
+T 1568645541 18<tonyt18>	debian has its own repos seperate from ubuntu's OerHeks
+T 1568645652 18<OerHeks18>	tonyt, the original maintainer is Balint Reczey ( debian)
+T 1568645660 18<tonyt18>	k
+T 1568645671 18<OerHeks18>	that is where we got the sources from, to be more precise
+T 1568645673 18<sarnold18>	balint maintains wireshark for both debian and ubuntu. he's a canonical employee.
+T 1568645804 18<sarnold18>	bogn: the ubuntu security team sponsors updates prepared by community members. we work with our community members to ensure the fixes come from upstream authors
+T 1568645825 18<sarnold18>	https://wiki.ubuntu.com/SecurityTeam/UpdateProcedures gives some guidelines
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22#ubuntu
+T 1568708607 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568708607 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568708607 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568708607 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568709303 18<freannrak18>	What could be the reason for media keys working when the keyboard is connected via usb and not working when it's connected via bluetooth only? `sudo showkey -k` doesn't output anything.
+T 1568710903 18<afidegnum18>	even though i just added a swap partition which i forgot to configure earlier, my systems is very slow
+T 1568710908 18<afidegnum18>	how do i speed it up?
+T 1568710938 18<lotuspsychje18>	afidegnum: what kind of system do you have? cpu/ram/hd-ssd?
+T 1568711046 18<afidegnum18>	i have a good 4Gb of RaM, amd AMD a65200 2.00 Ghz with 230Gb of HDD
+T 1568711107 18<lotuspsychje18>	afidegnum: with ubuntu-desktop on gnome?
+T 1568711141 18<afidegnum18>	ubuntu desktop
+T 1568711149 18<afidegnum18>	18.04
+T 1568711176 18<lotuspsychje18>	afidegnum: im affraid those specs are a bit low for gnome in combo with a spinner HD, unless you start deep wteaking things
+T 1568711197 18<Ascavasaion18>	afidegnum, LXDE desktop might help.
+T 1568711202 18<afidegnum18>	ok
+T 1568711204 18<lotuspsychje18>	afidegnum: so your best bets are, lubuntu, xubuntu ot tweak gnome more
+T 1568711211 18<lotuspsychje18>	*or
+T 1568711221 18<Ascavasaion18>	afidegnum, I run Lubuntu on a Dual Core laptop and it runs fine.
+T 1568711280 18<afidegnum18>	what do i in install in adition to have lxde desktop? or l/xubuntu ?
+T 1568711336 18<lotuspsychje18>	afidegnum: you can install lubuntu-desktop or xubuntu-desktop from your current install to test, but we reccomend if you like one, to clean install the flavour of choice
+T 1568711346 18<lotuspsychje18>	!flavours | afidegnum see also
+T 1568711346 18<ubottu18>	afidegnum see also: Recognized Ubuntu flavors build on Ubuntu and provide a different user experience out of the box. They are supported both in #ubuntu and in their flavor channel. For a list, see https://www.ubuntu.com/download/ubuntu-flavours
+T 1568711359 18<Seveas18>	 /win 32
+T 1568711360 18<afidegnum18>	which is lighter one? between them?
+T 1568711363 18<akemlenovo18>	BTW swap will not really help speed up things, it's here to help if you get low on RAM mainly and it's on the hard drive so it's not that speed. Maybe your system could support another 4GB ram stick inside.
+T 1568711399 18<lotuspsychje18>	afidegnum: in normal cases lubuntu is lightest, but i had machines before running smoother on xubuntu
+T 1568711408 18<afidegnum18>	ok
+T 1568711418 18<lotuspsychje18>	afidegnum: testing it on your personal hardware is reccomended to see
+T 1568711460 18<akemlenovo18>	You can also try Cinnamon instead of Gnome.
+T 1568711781 18<Ascavasaion18>	afidegnum, I am running Lubuntu on four of my computers here at home, and Xubuntu on another Asus Transformer Book
+T 1568711825 18<Ascavasaion18>	For what that info is worth.
+T 1568712420 18<mfoo18>	Hi, is there a channel specifically for Landscape? My server is unresponsive and is returning OperationInProgress (has been for about a day). I can see it's writing what looks like binary data to postgres and I can see postgres has ~10 landscape-user queries running ROLLBACK, but otherwise I don't have much information.
+T 1568712665 18<sarnold18>	mfoo: I haven't seen one, #ubuntu-server exists but it's kind of hit-or-miss about these things; a bug report or support request would be better, I think
+T 1568712670 18<afidegnum18>	ok
+T 1568712686 18<mfoo18>	sarnold: thanks
+T 1568712871 18<lotuspsychje18>	!landscape | mfoo
+T 1568712871 18<ubottu18>	mfoo: Landscape makes the management and monitoring of Ubuntu systems simple and effective by combining world-class support with easy to use online management tools. https://landscape.canonical.com/
+T 1568712965 18<raddy18>	Hello Everybody
+T 1568713018 18<raddy18>	I would like to learn kubernetes and Helm charts in Linux
+T 1568713047 18<raddy18>	I have a laptop with HyperV support from hardware and software
+T 1568713082 18<raddy18>	So, shall I install ubuntu on top of that and explore or better to install directly /
+T 1568713213 18<sarnold18>	raddy: excellent question; the ubuntu-on-windows thing is still pretty new. if you like to try and test and fiddle and file bug reports, running it there would be nice :D but if you just want sometihng to work, then installing ubuntu directly would probably be better
+T 1568714463 18<pomeha18>	is there a way to figure out reboot reason?
+T 1568715438 18<elias_a18>	pomeha: Would this be of any help? https://unix.stackexchange.com/questions/9819/how-to-find-out-from-the-logs-what-caused-system-shutdown
+T 1568715524 18<pomeha18>	elias_a: unfortunately no. I had googled that too.
+T 1568715546 18<pomeha18>	there's no /var/log/acpid, there's no /var/log/messages/ and journalctl remembers only 1 (current) boot :/
+T 1568715564 18<pomeha18>	`last -x` seems to be kinda useless
+T 1568715583 18<tds18>	did your system cleanly reboot, or just reset out of the blue?
+T 1568715592 18<tds18>	and you probably want /var/log/syslog rather than messages
+T 1568716338 18<natten18>	Anyone got any suggestions why this request just sits there until it times out when running from google cloud function but not from local?
+T 1568716339 18<natten18>	Curl from cloud function -> https://hastebin.com/xijisizono.txt
+T 1568716356 18<pomeha18>	tds: that's what I'd like to figure out. And no, syslog is useless :(
+T 1568716380 18<tds18>	oh? it should normally be quite obvious in syslog if the machine rebooted cleanly or not
+T 1568716421 18<TJ-18>	pomeha: what Ubunty release is it?
+T 1568716699 18<OerHeks18>	natten, don't crosspost, you know what -vk does ?
+T 1568716749 18<natten18>	OerHeks: Well yeah, verbose and to not verify the ssl connection
+T 1568716773 18<natten18>	It doesn't work without them if thats what you're asking
+T 1568716808 18<natten18>	Also tried to copy the capath and cacert locally to see if that did anything. Nothing happened
+T 1568716834 18<natten18>	Sorry for the crosspost but im at a loss here, and really need to get this working somehow
+T 1568716836 18<OerHeks18>	oh oke, that would be my 2nd question
+T 1568716941 18<OerHeks18>	i have no clue then :-(
+T 1568717211 18<tds18>	natten: most of the times I've seen tls hang after the handshake like that is mtu issues
+T 1568717239 18<tds18>	http is often fine, as is ssh until you send a load of text at once and hit the mtu
+T 1568717280 18<natten18>	tds: Sounds likely, how would i go about debugging / fixing it?
+T 1568717370 18<tds18>	a dump check would be to drop the mtu on your default route
+T 1568717552 18<natten18>	tds: not really sure on how to check what the mtu is in the cloud function. Its ubuntu, but ifconfig and ip are not there
+T 1568717579 18<tds18>	hmm, missing ip sounds odd
+T 1568717592 18<tds18>	can you `dpkg -l iproute2`?
+T 1568717637 18<natten18>	i lied ip is not missing, but it returns "EOF on netlink\nDump terminated"
+T 1568717643 18<natten18>	when calling ip addr
+T 1568717959 18<natten18>	tds: seems like you were correct though. When lowering my mtu to 1400 locally i experience the same behavior
+T 1568717978 18<natten18>	Do you know what i can do to fix this? I guess increasing the mtu on the cloud function is difficult
+T 1568717995 18<tds18>	can you add iptables rules on this "cloud function"?
+T 1568718005 18<tds18>	a typical solution would be to do mss clamping in iptables
+T 1568718059 18<natten18>	tds: i highly doubt i can do anything about it if it is not on application level in the cloud function
+T 1568718151 18<natten18>	Isn't there anything the api/server can do to "fix" lower mtu's?
+T 1568719661 18<MrMojit018>	Good morning/afternoon/evening
+T 1568719679 18<MrMojit018>	I am wondering what I am doing wrong. I am new to Linux world so also for Ubuntu. But I have a two running Ubuntu machines with both Nagios on it and running smoothly.
+T 1568719710 18<MrMojit018>	But I cannot seem to get e-mails from one machine. So I tried to send a fake e-mail using: /usr/bin/printf "%b" "test" | /usr/bin/mail -s "test subject" user@xyz.com
+T 1568719734 18<MrMojit018>	But I don´t get any email in my inbox
+T 1568719761 18<MrMojit018>	So I looked into /usr/bin and I see that on the working machine I have the following installations "mail, Mail, mailq, mailx".
+T 1568719774 18<MrMojit018>	But on the other machine where the email functionality is not working I only have "mailx"
+T 1568719795 18<MrMojit018>	Does anyone here can help me to get on the right road?
+T 1568719908 18<papin18>	I don't know if `mail` is available on apt repo or not
+T 1568720197 18<MrMojit018>	How can I verify that?
+T 1568720206 18<ducasse18>	MrMojit0: try installing mailutils
+T 1568720242 18<MrMojit018>	I have installed it with: apt-get install mailutils
+T 1568720355 18<MrMojit018>	Do I need to look into the help files to send a fake email to see if it is working
+T 1568720417 18<BluesKaj18>	Hi all
+T 1568720571 18<MrMojit018>	Hi
+T 1568720742 18<MrMojit018>	@Papin @ducasse, I don have the e-mail working but I did installed mailutils on both machines and on the one it is falling and on the other works. So I guess it has to be something on network level / firewall.
+T 1568720755 18<MrMojit018>	Thanks for helping me out I got a bit further here :D
+T 1568720944 18<ducasse18>	MrMojit0: what does  /etc/alternatives/mail point tò?
+T 1568720990 18<nate18>	Figure there may be someone awake now to answer; Anyone know what the switches for booting straight into a non-GUI (console/terminal) mode from grub would be in current ubuntu builds?  It used to be something along the lines of `nomodeset splash` but it doesn't seem to work anymore.  I tried `nomodeset text` I saw in some posts as well to no avail
+T 1568721096 18<MrMojit018>	ducasse: I don´t know what to do in: /etc/alternatives/, if I open the mail with nano I get random symbols
+T 1568721142 18<ducasse18>	MrMojit0: 'ls -l  /etc/alternatives/mail'
+T 1568721190 18<MrMojit018>	It points to the correct installation: /etc/alternatives/mail -> /usr/bin/mail.mailutils
+T 1568721211 18<MrMojit018>	As for my other machine it points to: /etc/alternatives/mail -> /usr/bin/bsd-mailx
+T 1568721239 18<MrMojit018>	The one that works is the bsd-mailx.
+T 1568721525 18<ducasse18>	MrMojit0: ok, i'm not sure what to suggest, try asking in #ubuntu-server. you might have to wait a bit for an answer.
+T 1568721576 18<MrMojit018>	You helped me already more then enough. I will look further my self and find my way through this magical forest. Thanks Cheers!
+T 1568721841 18<ducasse18>	MrMojit0: look at the update-altenatives man page
+T 1568721992 18<TJ-18>	MrMojit0: sounds like you need to install "bsd-mailx" and ensure it is the choice for "update-alternatives --display mail"
+T 1568722013 18<MrMojit018>	I can do that no worries let me handle that TJ-
+T 1568722055 18<MrMojit018>	ducasse I don´t know what update-alternatives man page is, sorry for this question but I don´t know what it is. Still noob with linux
+T 1568722223 18<TJ-18>	MrMojit0: on Debian-derived distributions like Ubuntu there is a policy to provide [man]ual pages for every command. The tool to read them is called "man", so "man update-laternatives" will give you an overview and is usually more explanatory than doing, for example, "update-alternatives --help"
+T 1568722243 18<TJ-18>	oops, typo, "man update-alternatives"
+T 1568722598 18<MrMojit018>	I tried to understand but I do not get it. Shall I not first look into the firewall/network
+T 1568722615 18<rigel_18>	in my alsamixer, There is [Master] [Headphone] [Speaker] [PCM]... volume bars. The [Headphone] bar controls both the laptop's external earplugs/headphones and the internal speakers. The [Speaker] label/volume bar does jack. How do I align them properly?
+T 1568722653 18<rigel_18>	This is only a problem because when i unplug the headphones that level gets set to 0 and i have to manually turn it up everytime.
+T 1568722770 18<BluesKaj18>	rigel_, after setting your levels in alsamixer run, sudo alsactl store, that should hold the volume settings
+T 1568722803 18<rigel_18>	but the [Speaker] bar should control the internal speakers, that's my real gripe here
+T 1568722908 18<__monty__18>	Hi, I'm trying to install an i386 package (ghc) on a CI ubuntu box that seems to have a ton of held packages. Is there a better way to get this installed than iteratively adding whatever dependency apt-get complains about to the command and rerunning?
+T 1568723010 18<sarnold18>	__monty__: dpkg --get-selections should let you find what's held, you can sed those to install or whatever, then feed that back into dpkg --set-selections, then an apt-get install -f will probably upgade everything. but you might want to talk to whoever held all those packages first.
+T 1568723065 18<__monty__18>	sarnold: There's no "hold" in --get-selections output. Only install/deinstall.
+T 1568723081 18<sarnold18>	__monty__: hmm. am I misremembering or are there no held packages? :D
+T 1568723089 18<BluesKaj18>	rigel_, I don't have speaker vol ctl so I'm not sure how it interacts with other ctls, but make sure the automute ctl is disabled
+T 1568723091 18<sarnold18>	I've only done that once or twice in twenty years..
+T 1568723149 18<rigel_18>	no it's enabled, because when i disable it and plug in the headphones, both the headphones and the speakers play
+T 1568723151 18<__monty__18>	sarnold: I'm not sure. I read the --get-selection advice elsewhere. All I know is apt-get install complains about held packages and --get-selection doesn't actually list any as "hold".
+T 1568723229 18<sarnold18>	__monty__: apt also has some repo pinning, that *might* show the same thing, but I've never actually usd pinning, so I'm less sure of what it looks like
+T 1568723801 18<__monty__18>	Well, manually adding packages to the command has gotten me further along. Though now it's failing because dpkg can't start the php 7.3 fpm?
+T 1568723888 18<__monty__18>	I don't think I care about php-fpm in this instance so can I simply remove it before? Or will it be pulled in as a dep anyway?
+T 1568723957 18<sarnold18>	that depends entirely upon your local configuration / application
+T 1568724543 18<raddy18>	Hello Everybody
+T 1568724561 18<raddy18>	I have installed vanilla gnome desktop in ubuntu server using tasksel
+T 1568724581 18<raddy18>	In ubuntu 18.04 server
+T 1568724605 18<raddy18>	But everything is still text only and GUI is not loadiing
+T 1568724609 18<raddy18>	Please help
+T 1568724719 18<ioria18>	raddy, sudo systemctl restart gdm3
+T 1568724747 18<raddy18>	ioria: I have tried restarting the server itself, still no go
+T 1568724763 18<ioria18>	raddy, dpkg -l | grep  gdm3
+T 1568724771 18<raddy18>	I think I should not have installed the gnome desktop using tasksel
+T 1568724778 18<ioria18>	raddy, dpkg -l | grep  gdm3
+T 1568724852 18<raddy18>	okk
+T 1568724868 18<ioria18>	is installed or not ?
+T 1568724919 18<raddy18>	ioria: No.
+T 1568724933 18<ioria18>	raddy, sudo apt install --reinstall vanilla-gnome-desktop
+T 1568724934 18<raddy18>	ioria: I am not sure what has tasksel done
+T 1568724938 18<ioria18>	raddy, sudo apt install --reinstall vanilla-gnome-desktop
+T 1568724939 18<raddy18>	I installed now
+T 1568724963 18<raddy18>	I hope apt install gnome-session would be suffice
+T 1568724967 18<raddy18>	Isn't it ?
+T 1568724992 18<sarnold18>	why would you not run what ioria asked you to run?
+T 1568725138 18<raddy18>	I ran what ioria has suggested
+T 1568725161 18<raddy18>	Is gnome vanilla desktop is light weight or ubuntu desktop ?
+T 1568725184 18<raddy18>	I know both are heavy, but still which one is lighter among them
+T 1568729957 18<codedmart18>	I see you can order the Dell Precision 5540 with Ubuntu installed. It has a Quadro T1000 nVidia card. Does that mean it is using the propietery drivers probably? Are those very reliable in linux these days?
+T 1568729967 18<codedmart18>	Haven't had a nVidia card for years.
+T 1568730012 18<lotuspsychje18>	codedmart: the nvidia drivers are decent on ubuntu these days, alot of version choices too
+T 1568730021 18<lotuspsychje18>	!nvidia | codedmart see the ppa
+T 1568730021 18<ubottu18>	codedmart see the ppa: For nvidia and matrox graphics cards, see https://help.ubuntu.com/community/VideoDriverHowto . For AMD/ATI graphics cards, see « /msg ubottu ati » and « /msg ubottu fglrxmissing » For the latest Nvidia drivers see https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa
+T 1568730073 18<pragmaticenigma18>	codedmart: that sounds like a question you would have to ask Dell as far as how they configured the machine
+T 1568730102 18<codedmart18>	Right I get that. I assumed that because nouveau doesn't have OpenGL support for those cards yet.
+T 1568730107 18<sarnold18>	codedmart: I understand nvidia drops old cards pretty quickly
+T 1568730122 18<sarnold18>	codedmart: depending upon the age of the card it may go easier or worse
+T 1568730135 18<OerHeks18>	the 430 supports Quadro T1000 and T2000 https://www.nvidia.com/Download/driverResults.aspx/148435/en-us
+T 1568730166 18<codedmart18>	I really want a new thinkpad and am looking at the p1 just cause I want the power. Which also comes with the Quadro T1000.
+T 1568730167 18<OerHeks18>	you might want the driver ppa https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa
+T 1568730237 18<codedmart18>	sarnold: What is old? I mean after a few years or...?
+T 1568730270 18<lotuspsychje18>	codedmart: well lets say graphics cards that go below the 390 version, might have bad luck
+T 1568730300 18<sarnold18>	codedmart: no idea :) I don't follow nvidia real close, I just know I've seen a few complaints from people who find their cards are no longer supported before they expected
+T 1568730301 18<lotuspsychje18>	codedmart: but then there's always lubuntu/xubuntu
+T 1568730357 18<codedmart18>	So anyone have suggestions/recommendations on a thinkpad? Is the p1 a good one? Should I consider something else? I at least need 32gb of ram which cuts out my original thought of x1c.
+T 1568730394 18<lotuspsychje18>	codedmart: the hardware choice is really what you need it to be
+T 1568730415 18<lotuspsychje18>	codedmart: we can only help with the ubuntu side of things
+T 1568730416 18<sarnold18>	yeah :( I really like my x1c but I wish it had 32 or 64 gigs of ecc...
+T 1568730446 18<codedmart18>	Well I am always concerned with getting the most compatible laptop for linux as well which is why I ask
+T 1568730471 18<codedmart18>	I prefer just the intel gpu, but it is hard to find powerful laptops with just that.
+T 1568730499 18<lotuspsychje18>	codedmart: alot of machines will run fine with ubuntu, if you choose latest ryzens there might be some kernel fights..
+T 1568730506 18<codedmart18>	I considered the T460s as well since I can get 32gb of ram. But the CPU is much less then the P1. Just trying to weight everything out.
+T 1568730560 18<codedmart18>	OK so even with a Quadro T1000 I should be ok? I mean ideally I could just turn that card off and use the integrated, but I suspect the external will require the nVidia for that.
+T 1568730601 18<ioria18>	codedmart, that card is  based on the Turing architecture (TU117 chip), so it should be supported by nouveau  too
+T 1568730633 18<rexwin_18>	i set the DNS as
+T 1568730634 18<rexwin_18>	nameserver 127.0.0.53 nameserver 52.36.5.248
+T 1568730645 18<rexwin_18>	in /etc/resolv.conf
+T 1568730661 18<rexwin_18>	but it doesnot resolve using the windows DNS server
+T 1568730665 18<Sven_vB18>	can I have a script be triggered each time someone tries to login on text console with a non-existing username, and have that username passed to the script?
+T 1568730667 18<codedmart18>	ioria: I was told it was, but without OpenGL.
+T 1568730677 18<ioria18>	maybe
+T 1568730710 18<codedmart18>	OK thanks for all the info everyone.
+T 1568730834 18<ioria18>	codedmart, i suggest the 5.3 kernel in any case
+T 1568730888 18<TJ-18>	Sven_vB:  yes I think there is a PAM module to do things like that
+T 1568730911 18<ioria18>	only Turing TU116  in 5.3...
+T 1568731029 18<Iarla18>	I have a laptop running 18.04. It's Core 2 Duo so it can't really handle the desktop. What's an alternative desktop environment I can download that wont interfere too much with the users who stay on Unity/Gnome Shell?
+T 1568731111 18<tonyt18>	larla you can try lxde desktop enviroment by doing sudo apt-get get update, sudo apt-get install lxde lxsession
+T 1568731142 18<tonyt18>	then reboot the machine and log in with the lxde option
+T 1568731379 18<codedmart18>	ioria: Only TU116 in 5.3? Didn't you say Quadro T1000 is TU117?
+T 1568731385 18<ioria18>	yep
+T 1568731428 18<ryuo18>	Iarla: you can't move to something a few years newer? even an ancient ivy bridge would be a real improvement.
+T 1568731466 18<rexwin_18>	resolve.conf get overwritten. how to avoid that?
+T 1568731511 18<ryuo18>	rexwin_: you don't necessarily but you can work with whatever is managing the settings.
+T 1568731547 18<tds18>	what's it being overwritten by? most tools that do that will leave a comment at the top of the file
+T 1568731551 18<rexwin_18>	i want to set dns servers and it gets overwritten after 5-10 minutes
+T 1568731573 18<ryuo18>	rexwin_: for what matter, what version are you using?
+T 1568731576 18<ryuo18>	that*
+T 1568731582 18<rexwin_18>	18
+T 1568731592 18<ryuo18>	desktop? server?
+T 1568731603 18<DigbyMW18>	What name does Ubuntu use for X/X11/X Window System? I have installed xorg and now i just want to run x on it
+T 1568731629 18<ryuo18>	DigbyMW: The X server is called X but you don't usually start it that way.
+T 1568731660 18<ryuo18>	normally use a display manager or startx for manual starts.
+T 1568731678 18<DigbyMW18>	Well, usually i'd do "startx fluxbox"
+T 1568731690 18<DigbyMW18>	But for once i'm not using fluxbox and don't know what name to use
+T 1568731709 18<ryuo18>	it'll fallback to whatever is defined in your .xinitrc
+T 1568731715 18<rexwin_18>	desktop
+T 1568731755 18<ryuo18>	rexwin_: you're probably using network manager. you can't configure the DNS from there?
+T 1568731773 18<DigbyMW18>	Ryuo, is x installed by default with xorg?
+T 1568731801 18<ryuo18>	DigbyMW: ... it *should* be. 'X' is the server. you can't start it without it.
+T 1568731815 18<ryuo18>	DigbyMW: but you normally use another method to start it.
+T 1568731825 18<ryuo18>	e.g., start or a systemd service
+T 1568731831 18<ryuo18>	startx
+T 1568731833 18<DigbyMW18>	i am aware. this is an unusual usecase
+T 1568731837 18<TJ-18>	DigbyMW: usually there's a display manager, and it is controlled via "systemctl start display-manager.service"
+T 1568731869 18<DigbyMW18>	i'm using ubuntu server, so no display manager or any such thing is installed at the moment
+T 1568731878 18<DigbyMW18>	and i don't want to use one
+T 1568731901 18<BluesKaj18>	rexwin_, in systemd the dns settings can be setup in /etc/systemd/resolved.conf
+T 1568731939 18<tds18>	on most ubuntu desktop installs resolved has its config pushed to it from network-manager over dbus - so do what ryuo said :)
+T 1568731990 18<DigbyMW18>	just to be clear, i'm talking about trying to run the x window system, the window manager traditionally provided with x server. i have always been able to do this with fluxbox, openbox etc. i'm just not sure what the package for x window system is called
+T 1568732022 18<Sven_vB18>	or can I bind scripts to function keys in the text console login prompt? currently F1 just prints ^[[[A, I'm sure pretty much no-one uses that as part of their username. would be much more useful if that ran my script.
+T 1568732052 18<DigbyMW18>	startx just goes to black and then brings me back to my tty so it isn't defaulting to x window system if it *is* installed
+T 1568732181 18<Iarla18>	ryuo: not in this case, no. I know there are smaller-footprint desktops, just not sure how theyl'l affect the Unity user.
+T 1568734604 18<shreds18>	Hi! I'm using uswsusp to hibernate my XPS laptop. But for the past weeks, it hibernates without actually shutting down so I need to manually reboot my laptop and lose everything that was supposed to be "saved". I noticed I'm all over the place trying to reconfigure uswsusp properly, do I really need pm-utils for this? I noticed I can trigger hibernation via systemd, pm-utils, s2disk, etc. What is really THE tool I need?
+T 1568734604 18<shreds18>	thx
+T 1568734699 18<shreds18>	I tried setting hibernate_mode to shutdown, also set /sys/power/disk to [shutdown] I noticed it always sets itself back to [platform] could that be part of my problem?
+T 1568734946 18<tomreyn18>	you should mention which ubuntu and kernel version you're on, whether there are related logs (and if so, share them).
+T 1568735144 18<shreds18>	good idea! I'm currently on Ubuntu 19.04 with Kernel 5.3.0 but the problem has been happening for the past month or so and back then I was on Ubuntu 18.10 with kernel 5.1.* and 5.2.*
+T 1568735180 18<shreds18>	that's the damn thing, there's no s2disk logs at all, I can't see anything in syslog/dmesg/pm2-suspend says everything is okay, I cannot find any logs or erroneous messages to get a hint from :(
+T 1568735363 18<tomreyn18>	https://askubuntu.com/questions/16239/how-to-debug-suspend
+T 1568735395 18<tomreyn18>	i know hibernation (to disk) is not suspend (to ram), but debugging should be similar
+T 1568735430 18<tomreyn18>	also https://wiki.ubuntu.com/DebuggingKernelSuspend
+T 1568735532 18<shreds18>	I'll check these out thanks! @tomreyn
+T 1568735717 18<tomreyn18>	also consider setting up a serial console (if that's possible on this system, probably not on a laptop) to see late and early kernel output which cannot be logged to disk (yet during early boot, or no more during suspend)
+T 1568735842 18<tomreyn18>	shreds: the first think you shouldprobably do, though, is to ensure you have the latest 'bios' installed, and to inspect your system logs, looking for (not only, but especially) acpi issues during boot.
+T 1568735941 18<tomreyn18>	https://iam.tj/prototype/enhancements/Windows-acpi_osi.html may help you work around a buggy / windows version centric acpi impementation of your mainboard firmware.
+T 1568736020 18<shreds18>	@tomreyn I'll see what I can do to debug this as best as I can. I'm fairly new to that kind of kernel level debugging but I want to learn more about it so I can debug these kind of issues in the future. About the bios, that's what I suspect to be honest, I did a bios upgrade not long ago and I don't know if I'm just crazy but it seems to stem from that upgrade :-/
+T 1568736044 18<shreds18>	I'll keep that close, thanks a lot, that's a good beginning. At least if I can debug it myself I'd be very happy hehe
+T 1568736129 18<tomreyn18>	shreds: you can post    journalctl -b | nc termbin.com 9999    if you like, and (while i'm not really qualified either), i'll be happy to put a second pair of eyes on those logs.
+T 1568736378 18<shreds18>	@tomreyn I have nothing to lose so here it is: https://termbin.com/yuym hehe xD thx a lot for your help I appreciate
+T 1568736389 18<Lutinmalin18>	Hi, can anyone help a noob with a lxqt-powermanagement issue? My battery is not detected, but seen by lshw
+T 1568736491 18<Lutinmalin18>	I tried some acpi_osi fix script but that didn't solve the issue
+T 1568736925 18<lotuspsychje18>	Lutinmalin: for acpi related issues, you can also try to update bios to latest, some cases can solve aswell
+T 1568736982 18<Lutinmalin18>	lotuspsychje: thx, will look into that
+T 1568737032 18<lotuspsychje18>	Lutinmalin: the fwupdate project has also some recent updates, you might wanna check that first on your own system to update bios
+T 1568737272 18<ioria18>	Lutinmalin, you can install conky to test if it' s an acpi issue or a lxqt issue
+T 1568737313 18<Lutinmalin18>	acpi command doesn't show any battery
+T 1568737369 18<tomreyn18>	shreds: sorry, been afk for a bit, looking now
+T 1568737375 18<Lutinmalin18>	only lshw does ioria
+T 1568737380 18<shreds18>	tomreyn: np :P
+T 1568737484 18<ioria18>	Lutinmalin, upower -i `upower -e | grep 'BAT'`
+T 1568737520 18<Lutinmalin18>	no, upower neither :/ ioria
+T 1568737550 18<ioria18>	Lutinmalin, you mean command not found or blank output ?
+T 1568737557 18<Lutinmalin18>	blank ioria
+T 1568737594 18<ioria18>	Lutinmalin, is it plugged ?
+T 1568737608 18<Lutinmalin18>	right now, yes, but I tried unplugged too
+T 1568737613 18<shreds18>	tomreyn: I noticed something weird. Running s2disk does not the SAME as running `echo disk > /sys/power/state` (this prints PM related messages but still works alright)
+T 1568737624 18<ioria18>	Lutinmalin, what laptop is that ?
+T 1568737640 18<Lutinmalin18>	hp pavillon x2 tablet pc
+T 1568737692 18<Lutinmalin18>	I tried that too ioria: http://iam.tj/prototype/enhancements/Windows-acpi_osi.html
+T 1568737707 18<Lutinmalin18>	no luck
+T 1568737874 18<ioria18>	Lutinmalin, what kernel ?
+T 1568738009 18<ioria18>	Lutinmalin,  uname -r
+T 1568738041 18<tomreyn18>	shreds: i think you should try to make systemd's hibernation work, if any.
+T 1568738057 18<Lutinmalin18>	ioria: 5.0.0-27-generic
+T 1568738078 18<ioria18>	Lutinmalin, a bug probably
+T 1568738082 18<ioria18>	https://bugs.launchpad.net/ubuntu/+source/upower/+bug/1606159
+T 1568738083 18<ubottu18>	Launchpad bug 1606159 in upower (Ubuntu) "Battery not recognized on HP Pavilion Detachable X2 10-N123NF" [Medium,Confirmed]
+T 1568738084 18<tomreyn18>	shreds: i assume video.only_lcd=0 is to overcome a backlight issue? i only see few mentions of it online, and a kernel patch which i assume made it into 4.17 (so you should no longer be affected)
+T 1568738170 18<Lutinmalin18>	ah... reported in 2016 :/
+T 1568738243 18<Lutinmalin18>	I'll try a bios update, and if that doesn't help, is there a lightweight distro that might not have this issue ioria ?
+T 1568738267 18<shreds18>	tomreyn: yes it was for a backlight issue. I also noticed my /swapfile partition does not have any UUID but for example in /etc/initramfs-tools/conf.d/resume I have a UUID so maybe a partition misconfiguration? I have a hard time figuring out the difference between systemd hibernation, pm-utils and the rest of the different ways of hibernating. I'd like to keep only one of them and make it work.
+T 1568738278 18<shreds18>	What worked before was having uswsusp handle it all with systemd, I had pm-utils installed but I don't believe I used it
+T 1568738308 18<ioria18>	Lutinmalin, you 're already using lxqt ; you can try lxde ....
+T 1568738315 18<shreds18>	FYI I have the same parition UUID in /etc/default/grub and /etc/initramfs-tools/conf.d/resume
+T 1568738324 18<ioria18>	Lutinmalin, less charge, but the issue will be the same
+T 1568738366 18<tomreyn18>	shreds: make sure the UUID listed in /etc/initramfs-tools/conf.d/resume is correct, or that you remove the file, then run    sudo update-initreamfs -k all -u
+T 1568738386 18<Lutinmalin18>	a pity... okay big thanks anyway ioria
+T 1568738388 18<ioria18>	Lutinmalin, read this  (not sure about the fix btw): https://h30434.www3.hp.com/t5/Notebook-Hardware-and-Upgrade-Questions/Battery-recognition-Linux/td-p/7040710
+T 1568738458 18<tomreyn18>	shreds: it is correct when it points to a swap partition which has this same UUID, is active (swapon), and is at least slightly larger than your installed physical RAM
+T 1568738459 18<shreds18>	tomreyn: I'm getting dizzy from going in circles lol sorry about that but I just realized I don't HAVE a partition since I use a file on the disk to hibernate! it's on my main parition in /swapfile.
+T 1568738510 18<shreds18>	tomreyn: my /swapfile is about 17GB and my ram is 16GB. swapon still says /swapfile file  17G   0B   -2 which seems to be okay
+T 1568738517 18<ioria18>	Lutinmalin, in few words, he states that it works on Fedora but not on ubuntu
+T 1568738522 18<Lutinmalin18>	guess I'll try Fedora then ioria, is that somewhat light?
+T 1568738547 18<tomreyn18>	shreds: i guess a swapfile should also work. be sure to remove the incorrect resume configuration then and to update-grub and update-initramfs
+T 1568738548 18<ioria18>	Lutinmalin, idk fedora, but i guess you can install anothe desktop env on it
+T 1568738573 18<Lutinmalin18>	desktop env is gnome kde and the likes?
+T 1568738587 18<shreds18>	tomreyn: the UUID I point to is my own linux parition which seems right since the /swapfile is on there
+T 1568738623 18<tomreyn18>	shreds: and an offset is given, then i guess it is fine.
+T 1568738627 18<ioria18>	Lutinmalin, yes, go with lxqt or lxde
+T 1568738670 18<Lutinmalin18>	is that something I have to choose before downloading the iso, during install or later? ioria
+T 1568738693 18<ioria18>	Lutinmalin, as i said, i don't know fwdora; sorry try its channel
+T 1568738693 18<shreds18>	tomreyn: resuming always went fine so I guess that part is okay, it's the whole hibernate that won't shutdown thing that messes everything up for me :-/ here's the GRUB line with the offset: GRUB_CMDLINE_LINUX_DEFAULT="resume=UUID=cc859e63-da11-476d-b094-62d8a834e851 resume_offset=26736640 video.only_lcd=0"
+T 1568738722 18<Lutinmalin18>	understood thanks ioria :) will try bios update first
+T 1568738732 18<ioria18>	Lutinmalin, sure, gl
+T 1568738756 18<shreds18>	I guess I could get rid of pm-utils altogether since I don't seem to use it at all
+T 1568738922 18<tomreyn18>	shreds: it's in universe, so can't be essential, so i guess that'll be fine.
+T 1568739003 18<tomreyn18>	the same goes for uswsusp (which provides s2disk)
+T 1568739049 18<shreds18>	but to hibernate on disk I read often that I explicitly needed uswsusp otherwise there was no support for on disk hibernation. maybe I just read something outdated though
+T 1568739072 18<shreds18>	I'll try to find more about it though, if I can remove pm-utils and uswsusp to keep it as light and simple as possible it'd be great
+T 1568739075 18<shreds18>	that's a good first step, I'm trying to remove everything that isn't needed. I will try to do as you said and make the basic systemd hibernation works by itself and go from there trying to debug. I was trying to debug everything at once and got lost but now I should be able to make some progress thanks to you :P @tomreyn
+T 1568739118 18<marcoagpinto18>	guys?! What is this on 19.04?: https://i.imgur.com/iWBMdSH.png
+T 1568739129 18<marcoagpinto18>	lots of lines of text while booting
+T 1568739162 18<marcoagpinto18>	and so far it didn't get to the login screen
+T 1568739351 18<lordcirth_18>	marcoagpinto, that doesn't tell us much. Have you tried recovery mode? Did 19.04 boot on this machine before?
+T 1568739366 18<Sven_vB18>	marcoagpinto, it's progress information so you can see what your system is doing. with a bit of experience this can help you estimate how much longer it will need until you can do stuff.
+T 1568739414 18<lordcirth_18>	Yeah, the boot text is normal; and it doesn't tell us what's preventing you from getting a login
+T 1568739432 18<Sven_vB18>	marcoagpinto, if you prefer a greeter image, try press F2, that should switch between greeter image and progress info.
+T 1568739457 18<lordcirth_18>	Sven_vB, I think he wants help getting it to finish booting, first...
+T 1568739488 18<marcoagpinto18>	yes
+T 1568739496 18<marcoagpinto18>	it doesn't show login
+T 1568739510 18<Sven_vB18>	marcoagpinto, it might need more time to prepare
+T 1568739526 18<marcoagpinto18>	but? it is the first time it happens?
+T 1568739536 18<Sven_vB18>	marcoagpinto, what happens usually instead?
+T 1568739537 18<marcoagpinto18>	I never seen this text before?
+T 1568739544 18<lordcirth_18>	marcoagpinto, So 19.04 booted normally before? How long ago?
+T 1568739551 18<marcoagpinto18>	day 10
+T 1568739557 18<willksm18>	marcoagpinto, try and press F2
+T 1568739569 18<lordcirth_18>	F2 isn't going to start gdm
+T 1568739587 18<marcoagpinto18>	F2 does nothing :((((
+T 1568739592 18<lordcirth_18>	marcoagpinto, see if you can boot into recovery mode.
+T 1568739614 18<Sven_vB18>	marcoagpinto, is the text a problem for you? it's not harmful if that's what you were worried about. especially if most of them are green and "OK".
+T 1568739628 18<lordcirth_18>	Sven_vB, the problem is, as he said, it's not finishing boot
+T 1568739630 18<Sven_vB18>	marcoagpinto, when there's something to worry it will be shown in orange or even red
+T 1568739657 18<Sven_vB18>	lordcirth_, that's why I asked what happens usually instead
+T 1568739657 18<tomreyn18>	shreds: you may be right when you say some of these utilities are required - i really do not know. if you read up on systemd-special(7) looking for "hibernate" you'll see how systemd instruments it, and can then inspect those targets.
+T 1568739675 18<marcoagpinto18>	Buaaaaaaaaaaa
+T 1568739675 18<tomreyn18>	... to see how hibernation actually works.
+T 1568739677 18<marcoagpinto18>	Buaaaaaaaaaaaaaaaaaa
+T 1568739755 18<lordcirth_18>	marcoagpinto, not helpful. Does recovery mode work?
+T 1568739784 18<marcoagpinto18>	well, I still see the text and no login screen... should I poweroff the VM?
+T 1568739824 18<lordcirth_18>	marcoagpinto, yes, reboot it and boot to recovery.
+T 1568739835 18<marcoagpinto18>	how do I boot to recovery?
+T 1568739854 18<Sven_vB18>	marcoagpinto, so is your problem that it doesn't boot quickly enough? you could SSH in and check the logs
+T 1568739882 18<marcoagpinto18>	Sven_vB: I have 19.04 since .04 (April) and it is the first time I see this text
+T 1568739896 18<marcoagpinto18>	usually it takes a few seconds to the login screen
+T 1568739920 18<Sven_vB18>	it take that as "yes it doesn't boot as quickly as expected"
+T 1568739936 18<marcoagpinto18>	yes, it doesn't boot as quickly as usual
+T 1568739971 18<marcoagpinto18>	I have updated the two VMs with 18.04 and I didn't see any text on them
+T 1568740202 18<lordcirth_18>	marcoagpinto, at the grub menu, you choose advanced options, then recovery.
+T 1568740215 18<marcoagpinto18>	ahhh... let me try
+T 1568740352 18<marcoagpinto18>	ohhhh... no GRUB :) I don't know how to make it appear... but in the reboot it said "recovering journal... orphanated something"
+T 1568740360 18<marcoagpinto18>	and now it got to the login screen
+T 1568740422 18<lordcirth_18>	marcoagpinto, hmm, so it only happened once? That's interesting. What's the most recent change in /var/log/apt/history.log?
+T 1568740438 18<tomreyn18>	shreds: so, upon further inspection it doesn't seem like systemd needs any of these extra utilities to carry out hibernation, it provides its own. see also systemd-hibernate.service(8)
+T 1568740438 18<marcoagpinto18>	let me check
+T 1568740618 18<shreds18>	@tomreyn really? even for on disk swapfiles? that's interesting, I'll go check these docs out. sorry I got out to grab something to eat hehe
+T 1568740684 18<marcoagpinto18>	lordcirth_: https://pastebin.com/4ahGRs72
+T 1568740697 18<MibixFox18>	can someone help me with formatting a drive so I don't lose a bunch of space to reserved root and too many i-nodes
+T 1568740697 18<tomreyn18>	shreds: yes. "Note that scripts or binaries dropped in /lib/systemd/system-sleep/ are intended for local use only and should be considered hacks." however, those 'hacks' seem to ususlly work. ;) enojy your food.
+T 1568740708 18<MibixFox18>	I used to have a command I used but I cant remember it
+T 1568740733 18<Sven_vB18>	MibixFox, tunefs can adjust the number or percentage of reserved blocks
+T 1568740744 18<Sven_vB18>	MibixFox, tune2fs
+T 1568740750 18<lordcirth_18>	marcoagpinto, hmm, there was a systemd update on the 11th, that might be related. But if it doesn't happen again, you can probably ignore it.
+T 1568740762 18<marcoagpinto18>	ahhhhh
+T 1568740765 18<marcoagpinto18>	lordcirth_: thanks :)
+T 1568740768 18<Sven_vB18>	MibixFox, also mkfs.ext3 should have an option to do so initially
+T 1568740777 18<marcoagpinto18>	what is systemd?
+T 1568740778 18<marcoagpinto18>	:)
+T 1568740819 18<Sven_vB18>	marcoagpinto, systemd is the services manager that manages what needs to be done to prepare your computer for interactive use.
+T 1568740829 18<MibixFox18>	Sven_vB im doing it intially the drive is empty im just not sure on the exact make2fs command
+T 1568740846 18<shreds18>	@tomreyn that's very interesting, I'll try to strip all extra tools out and go from there to see what happens. I never took the time to read systemd docs properly, that's a quite good learning experience so far :P
+T 1568740864 18<Sven_vB18>	MibixFox, man mkfs.ext2 (or …3 or …4=
+T 1568740880 18<marcoagpinto18>	ahhhhhhhh
+T 1568740884 18<MibixFox18>	ok one sec let me make the line and you tell me if its right lol
+T 1568740958 18<Sven_vB18>	MibixFox, how about you just try it on a small file and check the result? :)
+T 1568741017 18<Sven_vB18>	MibixFox, you can use "truncate --size=20M diskfile" to create a 20 MB file named "diskfile", then use that as the target "disk" for mkfs
+T 1568741023 18<shreds18>	i.e. s2disk is part of the uswsusp package, s2disk is what seems to be used by my systemd config at the moment: /etc/systemd/system/systemd-hibernate.service.d/override.conf = https://termbin.com/5o49
+T 1568741074 18<shreds18>	so I guess if I get rid of uswsusp I'll need to remove that override.conf but still I don't know if it will still suspend to disk like it used to, I'll have to try it out
+T 1568741371 18<tomreyn18>	shreds: it should still be able to do so, if systemd's implementation is sound. i assume /etc/systemd/system/systemd-hibernate.service.d/override.conf exists on your system as a result of installing and enabling uswsusp
+T 1568741441 18<shreds18>	@tomreyn:  just tried to echo disk > sys state to test hibernation on the kernel level and it did exactly the issue I talk about: everything is suspended but the laptop is still powered on the keyboard lighting works but nothing respond so I need to reboot
+T 1568741455 18<shreds18>	I got rid of the override.conf after removing uswuspsp
+T 1568741509 18<tomreyn18>	shreds: if "got rid of" == "rm" that's maybe not the right approach.
+T 1568741536 18<tomreyn18>	the issue you're describing is most likely a firmware issue, though
+T 1568741546 18<shreds18>	I commented the code I side it. But I don’t think I ran the tool to update systemd on an after thought
+T 1568741555 18<shreds18>	Yeah sounds like that most definitely
+T 1568741583 18<MibixFox18>	Sven_vB I think this is what I want mkfs.ext4 -L R -m 0 -b 4096 -N 1000000 -E lazy_itable_init=0 -V /dev/sdf1
+T 1568741585 18<shreds18>	Really sounds like 1) kernel update messed it up or 2) bios update messed it up
+T 1568741613 18<MibixFox18>	label it as R, 0 reserved, 4096 block size, 1 million i-nodes, the fast way, location of device to format
+T 1568741629 18<tomreyn18>	shreds: since no bios update is available for this system at this time, you could try to experiment with http://iam.tj/prototype/enhancements/Windows-acpi_osi.html in the meantime. and try a supported ubuntu kernel, too.
+T 1568741637 18<Sven_vB18>	MibixFox, in case you hoped so, I won't go to the hassle of decoding short options.
+T 1568741737 18<Sven_vB18>	it's a shame mkfs.ext3 still doesn't have descriptively named long options even in bionic.
+T 1568741763 18<Sven_vB18>	I take that back, it was xenial I chacked
+T 1568741766 18<Sven_vB18>	*checked
+T 1568741783 18<shreds18>	I could try to downgrade kernels to Ubuntu’s last supported version. I’ll check the acpi debug too at this point I really want to find out what’s wrong. It used to work so well a few weeks ago
+T 1568741821 18<MibixFox18>	that seems right though
+T 1568741853 18<MibixFox18>	i specify the device location at the end like that, correct?
+T 1568741867 18<tomreyn18>	!bootlog | shreds: you may also want to set these (and remove 'quiet', add 'nosplash') in /etc/default/grub's GRUB_CMDLINE_LINUX_DEFAULT to get visible output when your system shuts down and boots up.
+T 1568741867 18<ubottu18>	shreds: you may also want to set these (and remove 'quiet', add 'nosplash') in /etc/default/grub's GRUB_CMDLINE_LINUX_DEFAULT to get visible output when your system shuts down and boots up.: To get a more verbose log of the boot process, add the following !kernelparm: debug systemd.log_level=info
+T 1568741975 18<shreds18>	tomreyn: I already have them removed, I hate splash screens :P I like to see if something goes wrong on boot hehe
+T 1568741981 18<shreds18>	I don't have the info kernel param though, that's nice to know!
+T 1568741992 18<shreds18>	!kernelparm: debug systemd.log_level=info
+T 1568741992 18<ubottu18>	shreds: I am only a bot, please don't think I'm intelligent :)
+T 1568742005 18<tomreyn18>	!kernelparm
+T 1568742005 18<ubottu18>	To add a one-time or permanent kernel boot parameter see https://wiki.ubuntu.com/Kernel/KernelBootParameters
+T 1568742074 18<B|ack0p18>	hi
+T 1568742085 18<shreds18>	thx!
+T 1568742228 18<tomreyn18>	no need to *downgrade* the kernel, i'm just suggesting you also try the supported one, such as by making sure it's still installed, and choosing to boot it from the grub menu
+T 1568742277 18<entry_lvl_dev18>	is there a linux terminal program that can detect an multiple images in one image file and give the ability to crop them.
+T 1568742292 18<shreds18>	since I removed uswsusp I see PM: restoring the suspended image instead of s2disk but it still works
+T 1568742309 18<shreds18>	it still bugs out from time to time (same issue) but it still fully hibernate and resume half the time
+T 1568742323 18<entry_lvl_dev18>	for instance, lets say i have one png file that haves 4 pictures in them... can the program detect those 4 images and then give you the ability to crop all four out?
+T 1568742346 18<shreds18>	so only need to go bug hunting now! at least I got rid of extra utilities I didn't needed at all
+T 1568742375 18<shreds18>	tomreyn: I'm using ukuu to manage kernel versions, so reinstalling, switching, removing any versions is very easy to do, it's worth a try
+T 1568742426 18<tomreyn18>	shreds: i prefer simple shell scripts over somewhat complex third party C code for this task.
+T 1568742430 18<shreds18>	one question though: the logs I see when the system is hibernating and resuming: I don't find it in dmesg, etc
+T 1568742440 18<shreds18>	oh one thing weird in journal logs: Sep 17 13:45:37 xps kernel: Uhhuh. NMI received for unknown reason 20 on CPU 0.
+T 1568742440 18<shreds18>	Sep 17 13:45:37 xps kernel: Do you have a strange power saving mode enabled?
+T 1568742440 18<shreds18>	Sep 17 13:45:37 xps kernel: Dazed and confused, but trying to continue
+T 1568742451 18<tomreyn18>	!paste | shreds
+T 1568742452 18<ubottu18>	shreds: For posting multi-line texts into the channel, please use https://paste.ubuntu.com | To post !screenshots use https://imgur.com/ !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+T 1568742469 18<shreds18>	sorry about that, I meant to paste a link and not the whole thing
+T 1568742599 18<tomreyn18>	dmesg only returns the currently running kernels' logs, and only those which fitted its buffer. at some point during shutdown / suspend / hibernation file systems are unmounted, which effectively prevents logs from getting written to disk.
+T 1568742636 18<tomreyn18>	so you may get to see more output on screen than end up on logs.
+T 1568742654 18<shreds18>	oh that's what I thought, makes sense
+T 1568743103 18<tomreyn18>	shreds: whats the context in which this NMI is triggered? is it while entering hibernation?
+T 1568743211 18<MibixFox18>	Sven_vB mke2fs -L R -m 0 -t ext4 -b 4096 -N 1000000 -E lazy_itable_init=0 -v /dev/DEVICEADDRESS ended up working :D
+T 1568743274 18<shreds18>	@tomreyn it was when booting up between 2 network/wifi related messages, seems unrelated but also another reason to debug for hardware issues like you suggested. I got hibernate to work a few times via echo shutdown > /sys/power/disk & echo disk > /sys/power/state but I'm still unsure what should be the proper command to execute. Does `sudo systemctl hibernate` make the same as manipulating /sys/power/disk & state? I
+T 1568743274 18<shreds18>	guess so?
+T 1568743300 18<shreds18>	I learnt so much about the kernel and systemd today, I hate to debug such things usually but I'm learning so much that I actually enjoy the ride hehe
+T 1568743521 18<tomreyn18>	shreds: "systemctl hibernate" is the command you should run to hibernate on 18.04 LTS and newer. altewrnatively triggering hibernation using the GUI also works, it should run the same command. as the systemd documentation i pointed you to earlier states, you should not write to /sys/power/* directly, but let system handle it.
+T 1568743899 18<shreds18>	tomreyn: ok thanks, I'm still going through all the docs I opened earlier, I'll get there eventually hehe I also read there's similar issues for NVMe M.2 PCIe SSD users which I have. Surely is related to hardware but why didn't this happen before? I'm also looking for any devices acting weird i.e. /proc/acpi/wakeup = https://termbin.com/utauu
+T 1568744121 18<tomreyn18>	shreds: you mentioned something which sounded like "before" was "before bios upgrade". if you think that's the case, maybe try downgrading the bios and compare (using the identical OS configuration and kernel version).
+T 1568744524 18<shreds18>	@tomreyn good point. so far it seems to work since I got rid of pm-utils/uswsusp. Now I even have better logging in dmesg. I have a hint pointing me hardware is messing with the hibernation: [ 2513.203392] ACPI: Hardware changed while hibernated, success doubtful! it still worked but it's the first time I see this message. Full logs here: https://termbin.com/ygys Getting closer and closer :D
+T 1568744918 18<tomreyn18>	shreds: http://www.thinkwiki.org/wiki/How_to_make_ACPI_work#ACPI_S4_hardware_signature_mismatch lists a workaround to ignore the hardware signature mismatch.
+T 1568745029 18<tomreyn18>	shreds: in case you have a docking station, be sure to test hibernation first with the least complexity, which is without the dock, but with power cable plugged (ie. not running from battery).
+T 1568745264 18<alexandrdvorkin18>	hi guys
+T 1568745323 18<immu18>	hi
+T 1568745426 18<alexandrdvorkin18>	have a question I uninstalled the VB 6.10 and installed 6.0.12 but now my ubuntu installation is taken 6 gb not 3 gb I deleted the previous install of Ubuntu with ram -rf why ?
+T 1568745438 18<shreds18>	@tomreyn so far so good, I tested with or without the battery (I don't have a docking station), rebooted to a new session, etc and it works all of the time so far using only systemd directly :D :D :D I don't want to party just yet but hey that's progress! :D thanks a whole lot for your time and patience. I'll be reading the docs anyway just to make sure I'm better next time I need to debug something like that
+T 1568745467 18<shreds18>	so far so good without any downgrades whatsoever, let's hope it remains like that. Also it's FASTER than s2disk / uswsusp
+T 1568745583 18<alexandrdvorkin18>	is ubuntu install inside the VB6.0.12 ok to take 6Gb ?
+T 1568745714 18<tomreyn18>	shreds: you're welcome. looking at you latest log i notice your cpu temperature reaches 97°C, that's too hot. make sure you reduce the temperature soon.
+T 1568745757 18<tomreyn18>	(those readings could be wrong, of course, check also on  the bios setup in case it lists the values there)
+T 1568745955 18<lordcirth_18>	alexandrdvorkin, not sure I understand your question. You installed virtualbox in Ubuntu, or Ubuntu in virtualbox?
+T 1568745973 18<alexandrdvorkin18>	ubuntu in Vb
+T 1568746002 18<lordcirth_18>	alexandrdvorkin, ok, and what exactly is the problem? The virtual disk is growing?
+T 1568746060 18<alexandrdvorkin18>	I made 10gb for ubuntu now only 2.6 go is free after I made an install
+T 1568746088 18<shreds18>	tomreyn: that's weird since I juggle between 40C-80C when working with the machine. I rarely get to 100C but it's a known issues with XPS 9370 since they're too tiny for their CPUs to properly cool itself :-/ I noticed this too but touching the laptop with my bare hands don't make it seem THAT hot. That's weird, I wonder if these readings are right or not. I'll keep an eye open for this!
+T 1568746097 18<alexandrdvorkin18>	and I deleted the previous install of ubuntu that was installed with Vb6.0.10
+T 1568746136 18<alexandrdvorkin18>	so just an install taken up 6gb not 3gb as it says it should
+T 1568746145 18<CarlFK18>	I'm trying to make  .config/autostart/foo.desktop  - it 'works' (the thing runs) but it is ignoring Path=/home/runr/score/ (and yes to Type=Application here is the thing: http://paste.ubuntu.com/p/5Y4PGSNmfT/
+T 1568746186 18<CarlFK18>	bash because everyone has it and its shows what the curdir is
+T 1568746273 18<EriC^^18>	CarlFK: are you running it as the user runr?
+T 1568746300 18<alexandrdvorkin18>	is there another Ubuntu folder inside the Vb directory that I need to delete
+T 1568746306 18<CarlFK18>	EriC^^: 'yes' as in it runs when that user logs in
+T 1568746380 18<immu18>	hi EriC^^
+T 1568746391 18<EriC^^18>	hi immu
+T 1568746401 18<immu18>	remember me EriC^^ :)
+T 1568746415 18<EriC^^18>	yeah sure buddy :)
+T 1568746429 18<immu18>	can we install KDE in Ubuntu 19.04 along with gnome?
+T 1568746446 18<immu18>	side by side
+T 1568746447 18<lordcirth_18>	you can install kubuntu-desktop
+T 1568746487 18<immu18>	but won't it mess up gnome? or your default installation?
+T 1568746493 18<ioria18>	a bit
+T 1568746511 18<EriC^^18>	it might need some tweaking
+T 1568746522 18<immu18>	like?>
+T 1568746550 18<ioria18>	immu, your /etc/xdg/autostart  will be full of kde processes when you run gnome
+T 1568746565 18<lordcirth_18>	And some of your default applications might change.
+T 1568746586 18<EriC^^18>	not 100% sure but for me lubuntu + unity on 16.04 used to cause lubuntu notification style appearing in unity stuff like that
+T 1568746610 18<icharlz18>	Hello all, Ubuntu 18.04 ships with a bug (https://bugzilla.mindrot.org/show_bug.cgi?id=2810) I need to address.  Is there a safe upgrade other than the openSSH package for Cosmic?
+T 1568746611 18<ubottu18>	bugzilla.mindrot.org bug 2810 in sshd "Broken compatibility with old SSH clients sending 1.99 identification" [Enhancement,Resolved: fixed]
+T 1568746655 18<immu18>	can't i containerze the kde install?
+T 1568746668 18<EriC^^18>	alexandrdvorkin: can you reiterate your problem?
+T 1568746721 18<EriC^^18>	immu: i dont think so, you could save the list of everything apt had to pull in and add in case you want to revert later i guess
+T 1568746732 18<ioria18>	immu, kde better to run alone in my op (you can always use kvm)
+T 1568746738 18<immu18>	ok
+T 1568746746 18<immu18>	i will stick with gnome for now :)
+T 1568746749 18<EriC^^18>	or possibly try it in a vm if you have one already, make a snapshot, install kde, then see how it goes
+T 1568746771 18<avanasear18>	that's a solid plan, using a vm to find out if you enjoy it first
+T 1568746900 18<immu18>	i know kde
+T 1568746916 18<immu18>	but i like gnome, before i use to like kde ,but i like the apps that KDE has
+T 1568747049 18<immu18>	goodnite foks
+T 1568747841 18<MibixFox18>	im confused why my OS on my server has this partition structure.... https://imgur.com/a/Yi2rF2Q
+T 1568747850 18<MibixFox18>	can i just resite my file system partition?
+T 1568747852 18<MibixFox18>	*resize
+T 1568747906 18<lordcirth_18>	MibixFox, you should be able to, but you should make sure you have backups first.
+T 1568747941 18<MibixFox18>	what is that extended partition for?
+T 1568748032 18<EriC^^18>	MibixFox: extended partition is where the logical partitions are
+T 1568748035 18<tds18>	MibixFox: what's the output of say `fdisk -l`? that extended partition is probably just a container for logical partitions, to let you go past the 4 partition limit from an mbr partitioned disk
+T 1568748073 18<EriC^^18>	MibixFox: it's not an actual partition that has a filesystem
+T 1568748106 18<MibixFox18>	yeah i mean its not actually taking up any space
+T 1568748131 18<EriC^^18>	MibixFox: what are you trying to do? integrate the free space into the OS?
+T 1568748188 18<MibixFox18>	https://pastebin.com/6SGF6eW8
+T 1568748212 18<MibixFox18>	yeah that is what i was thinking
+T 1568748226 18<MibixFox18>	I am going to migrate this single drive in to two new drives in RAID 1 in a few days though
+T 1568748352 18<blb439318>	on my new computer the headphone jack plugged not recognized, so I have to switch manually. ubu 18.04. It never happened before so i'm kind of clueless. What could I check first?
+T 1568748627 18<MibixFox18>	EriC^^ I may just wait till I get the new drives installed and use Clonezilla to clone this over to the new RAID 1 array then try to expand it there if everything is working
+T 1568748634 18<MibixFox18>	easiest backup solution heh
+T 1568749027 18<bray90820_18>	How would I view what samb shares my 18.04 system has
+T 1568749061 18<ioria18>	net usershare info
+T 1568749248 18<bray90820_18>	ioria: That returns a blank line
+T 1568749274 18<ioria18>	bray90820_, then check your /etc/samba/smb.conf
+T 1568749324 18<bray90820_18>	Aaahhh there it is thanks
+T 1568749346 18<ioria18>	ok
+T 1568749350 18<bray90820_18>	Would I remove the entry in that file to remove the share
+T 1568749388 18<ioria18>	bray90820_, normally, yes
+T 1568749397 18<bray90820_18>	Ok thanks
+T 1568753031 20*	Disconnected (20)
+T 1568753056 19*	Now talking on 22#ubuntu
+T 1568753056 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 19.04 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1568753056 22*	Topic for 22#ubuntu set by 26hggdh!~hggdh@ubuntu/member/hggdh (24Sun Jul 21 18:50:44 2019)
+T 1568753056 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1568753056 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1568754016 18<nuala18>	should resolvconf be installed by default, because it isnt here and for few days i experience seriously trouble in hostname resolving, actually cant update or install anything right now, ping, ssh everything without domains seems to work flawlessly though
+T 1568754237 18<tomreyn18>	don't forget to provide your ubuntu version number
+T 1568754252 18<nuala18>	oh 18.04 sry…
+T 1568754297 18<tomreyn18>	resolvconf is in universe, it's not installed by default.
+T 1568754310 18<nuala18>	ok… so im running down a wrong track here, thx :)

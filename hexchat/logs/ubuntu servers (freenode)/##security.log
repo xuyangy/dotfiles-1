@@ -1,0 +1,1714 @@
+**** BEGIN LOGGING AT Sat Aug 31 11:22:51 2019
+
+Aug 31 11:22:51 *	Now talking on ##security
+Aug 31 11:22:51 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Aug 31 11:22:51 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Aug 31 11:22:51 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Aug 31 11:39:55 <truthr>	wow the internet has a lot of porn
+Aug 31 11:39:57 <truthr>	just wow
+Aug 31 12:03:15 <wasamasa>	wow
+Aug 31 12:03:19 <wasamasa>	much porn
+Aug 31 12:03:26 <wasamasa>	such amount
+Aug 31 12:03:27 <wasamasa>	wow
+Aug 31 12:04:41 <piou>	https://www.smbc-comics.com/comics/1566143464-20190818.png
+Aug 31 13:21:42 <kezimo>	I found a previously unknown piece of malware masquerading as Windows Defender with forged encryption certificates on an install of Windows Server
+Aug 31 13:22:05 <kezimo>	no known signatures either
+Aug 31 13:38:45 <tomreyn>	kezimo: did you post it to virustotal.com?
+Aug 31 13:41:51 <kezimo>	yes
+Aug 31 13:42:35 <kezimo>	someone check the filesize of mpcmdrun.exe for me and the exact name of the signer
+Aug 31 13:43:43 <kezimo>	Autoruns is reporting the Microsoft certificate is invalid and when I look at the cert info it says "Microsoft Windows Publisher" not "Microsoft Corporation". My reference info says the file should be under 200k but this one is almost half a meg.
+Aug 31 13:45:14 <kezimo>	I probably wasn't compromised. Additional fear. The endless never ending terror. Until my face is stuck in a state of shock for days at a time once it starts to let up
+Aug 31 13:45:18 <kezimo>	jaw agape
+Aug 31 13:45:33 <kezimo>	Shock and Awe.
+Aug 31 13:45:46 <kezimo>	awesome. I thought I just had a funny face more shit to deal with
+Aug 31 13:45:50 <kezimo>	check that fucking file for me
+Aug 31 13:45:59 <kezimo>	idgaf about any of that
+Aug 31 13:49:50 <kezimo>	either way I need to redo this server install anyway
+Aug 31 13:55:20 <SymbioticFemale>	is there a "screen" / "screen -r" for ssh -X applications?
+Aug 31 13:56:35 <iz>	SymbioticFemale: maybe try ctrl-z
+Aug 31 13:56:57 <iz>	and then reconnect the ssh before you do fg again
+Aug 31 14:00:15 <rudi_s>	SymbioticFemale: xpra
+Aug 31 14:01:24 <SymbioticFemale>	rudi_s: thanks rudi_s
+Aug 31 14:02:42 <rudi_s>	np - it's not perfect but works much better than ssh -X
+Aug 31 16:39:41 <sl4ck>	hi all. Does anyone know any work around the Kazakhstan gov case, where they are trying to download their gov cert in order to control, surveil or/and censor the internet
+Aug 31 16:40:24 <sl4ck>	I mean Chrome is keep popping up to install a gov cert
+Aug 31 16:44:28 <en4rab>	i think both chrome and firefox specifically distrust that cert now
+Aug 31 16:46:07 <vavkamil>	sl4ck, you are from kazakhstan?
+Aug 31 16:46:30 <sl4ck>	no
+Aug 31 16:47:37 <vavkamil>	if you try to visit website that uses the "kazach" root cert with chrome/firefox, it will show an error and won't let you in
+Aug 31 16:47:40 <sl4ck>	en4rab: but if we dont accept that cert we'll not be able to access internet, right?
+Aug 31 16:47:51 <sl4ck>	right
+Aug 31 16:48:04 <vavkamil>	yeach I suppose it will break a lot of things
+Aug 31 16:48:35 <sl4ck>	what would be the work around to this matter?
+Aug 31 16:48:56 <vavkamil>	hard to say, as DNS over HTTPS might not work either
+Aug 31 16:49:57 <vavkamil>	one of my colleague is from kazakhstan and she was super angry about this
+Aug 31 16:50:52 <sl4ck>	what about vpn, proxies?
+Aug 31 16:51:13 <vavkamil>	but last I head it was only a "temporary" test and it's not fully enrolled yet
+Aug 31 16:51:46 <vavkamil>	I suppose ISP can report you for using VPN or even deny a service for you
+Aug 31 16:51:47 <sl4ck>	well, will not take too long to fully implement it
+Aug 31 16:52:57 <vavkamil>	for example in my country we have national blacklist for casino websites and all you need to do is change the DNS
+Aug 31 16:53:25 <sl4ck>	change you DNS in your conf file?
+Aug 31 16:53:52 <vavkamil>	yeah DNS addresses from ISP are provided by ISP, just change it to 1.1.1.1 or 8.8.8.8
+Aug 31 16:53:59 <vavkamil>	*DHCP
+Aug 31 16:54:41 <sl4ck>	oh. this matter becomes more and more stupid
+Aug 31 16:54:50 <sl4ck>	i don't know why they want to do that
+Aug 31 16:56:28 <vavkamil>	I read a post from iranian developer recently and he was so fucked
+Aug 31 16:56:46 <sl4ck>	why?
+Aug 31 16:57:23 <vavkamil>	github is blocked because open source is bad :D
+Aug 31 16:58:04 <vavkamil>	sl4ck, https://medium.com/@hamed/github-blocked-my-account-and-they-think-im-developing-nuclear-weapons-e7e1fe62cb74
+Aug 31 17:01:18 <vavkamil>	if you are born in Iran and interested in IT, you are so fucked, it's such a nonsense really
+Aug 31 17:03:47 <sl4ck>	yeah, true
+Aug 31 17:05:47 <calmclam>	Now imagine instead of losing access to github you lost access to imported food
+Aug 31 17:07:20 <vavkamil>	I'm not sure how my life depends on imported food
+Aug 31 17:31:27 <katsumi>	hmmm
+Aug 31 17:32:52 <katsumi>	it's hot and here's a fckn fly that nervs me
+Aug 31 17:33:45 <katsumi>	while watchin football
+Aug 31 17:34:34 <at0m>	katsumi: fly is easy. i always win.
+Aug 31 17:34:44 <at0m>	football otoh..
+Aug 31 17:34:53 *	katsumi sends at0m a bear
+Aug 31 17:34:58 <katsumi>	oom sry
+Aug 31 17:35:16 *	katsumi offers at0m a beer
+Aug 31 17:35:24 <katsumi>	so besser
+Aug 31 17:35:28 *	at0m pours the beer into the bear
+Aug 31 17:35:29 <at0m>	all set
+Aug 31 17:35:35 <katsumi>	hrhrhr
+Aug 31 17:36:08 <calmclam>	bear with me
+Aug 31 17:36:10 <katsumi>	give him som mjot instead
+Aug 31 17:38:27 <NGC3982>	hi. if i was to use software (windows software from within a business vm) to connect to a partner, is using winscp a problem?
+Aug 31 17:38:47 <NGC3982>	i have always seen it as a good tool for myself, but i have no idea how business enviroments do it
+Aug 31 17:39:39 <at0m>	NGC3982: my company shivers at the thought of SSH. cos bi-directional port-forwarding and ssh tunnels, i imagine.
+Aug 31 17:39:54 <katsumi>	i used it for years, but ngc3982... isn't it an anterprise serialnumber from startrek``?
+Aug 31 17:39:57 <NGC3982>	is ssh not seen as secure enough?
+Aug 31 17:39:58 <at0m>	well, for regular employees at least
+Aug 31 17:40:25 <at0m>	NGC3982: oh it's very secure. but also means you can tunnel into the company and make it seem you're on the LAN
+Aug 31 17:40:28 <NGC3982>	katsumi: no, i am a galaxy 64Mly away.
+Aug 31 17:40:58 <katsumi>	aaaaaah
+Aug 31 17:41:17 <NGC3982>	at0m: i see. well, the sftp connection itself is approved from our it-sec, so im not really trying to question the connection itself. but, im on the vm and need to choose a tool to use the sftp.
+Aug 31 17:41:24 <NGC3982>	and there is where my question arises
+Aug 31 17:41:56 <at0m>	katsumi: NGC is the "new" galatic catalog, after messier catalog (say M31, Andromeda)
+Aug 31 17:42:09 <NGC3982>	that is not true
+Aug 31 17:42:15 <at0m>	NGC3982: ah ok then. yea winscp or putty has an scp client, too
+Aug 31 17:42:27 <NGC3982>	ngc is some random letters douglas adams came up with after he postulated that 42 was the meaning of everything
+Aug 31 17:42:37 <katsumi>	hhrhrhr
+Aug 31 17:42:46 <at0m>	NGC3982: that, too. if you say so.
+Aug 31 17:42:55 <NGC3982>	at0m: so, the tool itself is not a big of a security question as with using sftp (ssh) in the first place?
+Aug 31 17:43:01 <katsumi>	but build a key and store instead of using a password
+Aug 31 17:43:09 <NGC3982>	yes, i thought so too
+Aug 31 17:43:31 <at0m>	NGC3982: right, i think those tools are all using same libs, and yea use key auth, not pass
+Aug 31 17:43:56 <NGC3982>	and passphrase without a password i guess
+Aug 31 17:44:01 <NGC3982>	i think thats already setup
+Aug 31 17:44:21 <NGC3982>	passphrase key without a password i guess*
+Aug 31 17:44:48 <katsumi>	as far as libgcrypt is not used ... *hust*
+Aug 31 17:44:50 <at0m>	better. even better, key with pass
+Aug 31 17:45:08 <flyback>	20G
+Aug 31 17:45:28 <NGC3982>	i guess a key with passphrase + password doesnt hurt
+Aug 31 17:45:28 <flyback>	1950KB in errors 1486 # of errrors
+Aug 31 17:45:29 <flyback>	not bad
+Aug 31 17:45:37 <flyback>	and it's shrinking
+Aug 31 17:45:48 <at0m>	flyback: lemme guess. ddrescue
+Aug 31 17:45:51 <wr>	NGC3982, question is what you wanna connect
+Aug 31 17:45:54 <flyback>	yep
+Aug 31 17:46:00 <at0m>	\o/
+Aug 31 17:46:17 <flyback>	started on one of the origional disks
+Aug 31 17:46:35 <flyback>	before I just been eliminating most of the disks I think just ended up in the pile when I moved
+Aug 31 17:47:21 <flyback>	funny now I didn't know how shitty this model hd was
+Aug 31 17:47:27 <katsumi>	sometimes its better to eleminate things
+Aug 31 17:47:27 <flyback>	back then
+Aug 31 17:47:32 <flyback>	surprised it lasted as long as it did
+Aug 31 17:47:55 <at0m>	https://en.wikipedia.org/wiki/Export_of_cryptography_from_the_United_States#/media/File:Munitions_T-shirt_(front).jpg
+Aug 31 17:49:26 <flyback>	katsumi, yeah im done to two boxes now
+Aug 31 17:49:40 <flyback>	but I decided to switch up and do one of the origionals
+Aug 31 17:49:51 <flyback>	done/down
+Aug 31 17:51:06 <NGC3982>	wr: to a single pre-determined partner's sftp server.
+Aug 31 17:51:12 <flyback>	i'd abort ddrescue now and just live with whatever is missing in the 1950KB but I think it's on the mft
+Aug 31 17:53:02 <wr>	NGC3982, ah, anything that works on ftp should do it then, ssh, filezilla etc
+Aug 31 17:53:13 <NGC3982>	i see
+Aug 31 17:53:21 <NGC3982>	i thought the kind of sftp tool was important
+Aug 31 17:53:33 <katsumi>	i was puttin 5 boxes and send these using a spaceship into the next black hole. i'm waiting taht they will release again.
+Aug 31 17:53:40 <NGC3982>	but as long as i have the right way of connecting (keys, passphrases, and so on) it doesnt really matter?
+Aug 31 17:54:13 <flyback>	it's amazing how much info you can get out of a pagefile too
+Aug 31 17:54:15 <wr>	NGC3982, there are differences, but most should work unless you have any special virtualization or network setup
+Aug 31 17:54:21 <NGC3982>	i see
+Aug 31 17:54:29 <NGC3982>	thank you guys
+Aug 31 17:54:37 <flyback>	you are welcome
+Aug 31 17:54:40 <flyback>	unless you are canadian
+Aug 31 17:54:46 <flyback>	;P
+Aug 31 17:54:54 <NGC3982>	who wouldnt welcome a canadian
+Aug 31 17:54:59 <flyback>	I wouldn't
+Aug 31 17:55:03 <flyback>	BMCC
+Aug 31 17:55:11 <flyback>	BITE MY "CANUCK"...........................................CANUCK!
+Aug 31 17:55:21 <NGC3982>	relax eh
+Aug 31 17:55:24 <flyback>	:P
+Aug 31 17:55:26 <katsumi>	ohh.... flyback not that canuck canuck
+Aug 31 17:55:36 <katsumi>	lol
+Aug 31 17:56:08 <flyback>	seriously though I must have used ddrescue 100's of times by now at work
+Aug 31 17:56:11 <flyback>	and it still shocks me
+Aug 31 17:56:11 <ullbeking>	i am considering buying a fully libre hardware + firmware security device for openpgp-related email security
+Aug 31 17:56:34 <ullbeking>	i want to learn if there is a methodology to auditing hardware and firmware?
+Aug 31 17:56:46 <flyback>	yeah
+Aug 31 17:56:52 <flyback>	a) kidnap the coder
+Aug 31 17:56:57 <flyback>	b) secret location
+Aug 31 17:56:58 <ullbeking>	or if it is just one of those things you "know" by being a (hopefully) a good engineer?
+Aug 31 17:57:03 <flyback>	c) brass knuckles
+Aug 31 17:57:07 <ullbeking>	i sense the latter
+Aug 31 17:57:23 <ullbeking>	ok, thanks your help flyback !
+Aug 31 17:57:27 <ullbeking>	c ya later
+Aug 31 17:57:32 <flyback>	well that nsa tool is supposted to be good
+Aug 31 17:57:37 <flyback>	ghia or whatever it's called
+Aug 31 17:57:52 <flyback>	for decompiling firmware etc
+Aug 31 17:58:12 <flyback>	also binwalk
+Aug 31 17:58:22 <flyback>	for identifiying parts of an image
+Aug 31 17:59:47 <mawk>	"here, just take this screwdriver, now you can build a home"
+Aug 31 18:00:43 <flyback>	eh?
+Aug 31 18:00:46 <flyback>	that's all I know
+Aug 31 18:03:47 <flyback>	im not blowing him off
+Aug 31 18:03:51 <katsumi>	flyback: canado or germany what would you prefer? i can't give you a green card but may be you wanna marry me? lol
+Aug 31 18:03:57 <flyback>	that's as much info as I have to contribute
+Aug 31 18:07:48 <flyback>	bathroom bbl
+Aug 31 18:16:19 <sophiee>	gmornin
+Aug 31 18:16:26 <sophiee>	https://github.com/jollheef/lpe
+Aug 31 18:16:48 <sophiee>	lpe is a collection of verified Linux kernel exploits.
+Aug 31 18:16:48 <sophiee>	Exploit testing is fully automated. Feel free to make a pull request with a new exploit to see it by yourself 😉
+Aug 31 18:16:51 <sophiee>	The end goal is to collect all public exploits that actually work.
+Aug 31 18:16:54 <sophiee>	https://t.co/wdjryM05LF
+Aug 31 18:22:53 <dognosewhiskers>	Question: Is it 100% impossible to "use double proxies" so that I connect from MyPC => Proxy1 => Proxy2 => DestinationSite, if those proxies don't have some sort of special, private API/interface to enable this?
+Aug 31 18:27:38 <flyback>	ugh
+Aug 31 18:27:40 <flyback>	:/
+Aug 31 18:29:01 <flyback>	some of our various vendor backup sw's are ubuntu based and it seems like they never update anything
+Aug 31 18:29:05 <flyback>	well the newer ones do thank God
+Aug 31 18:29:13 <flyback>	but some of them you have to wonder how much they got rooted
+Aug 31 18:29:24 <flyback>	espically when I saw dictionary attacks on ssh logs
+Aug 31 18:29:29 <flyback>	bill smith
+Aug 31 18:29:33 <flyback>	bill something
+Aug 31 18:29:35 <flyback>	bill thomas
+Aug 31 18:29:35 <flyback>	etc
+Aug 31 18:30:32 <flyback>	im glad we don't use datto's solution anymore
+Aug 31 18:30:42 <flyback>	they were running a kernel that has a known oops in zfs
+Aug 31 18:30:46 <flyback>	which is what they use to store data
+Aug 31 18:30:51 <flyback>	wtfbbq
+Aug 31 18:31:39 <flyback>	course my favorite was replibit, now they are way better under new ownership so it's a good product now
+Aug 31 18:31:43 <flyback>	but we had a few crash
+Aug 31 18:31:47 <flyback>	because the / filled with
+Aug 31 18:32:01 <flyback>	and in there would be a monodb log 20gig+ or
+Aug 31 18:32:04 <flyback>	MONODB STARTING
+Aug 31 18:32:08 <flyback>	MONODB STOPPING
+Aug 31 18:32:13 <flyback>	<flyback> MONODB STARTING
+Aug 31 18:32:14 <flyback>	<flyback> MONODB STOPPING
+Aug 31 18:32:17 <flyback>	OVER AND OVER
+Aug 31 18:58:41 *	katsumi will enjoy an icecolded beer now! cheers!!!!!!1
+Aug 31 18:58:55 <calmclam>	watch out for the bear
+Aug 31 19:01:16 <katsumi>	knock knock i want my honey MOW!!!
+Aug 31 19:01:20 <katsumi>	;)
+Aug 31 19:05:00 <mawk>	you're all alcoholics
+Aug 31 19:05:06 <mawk>	first flyback, now katsumi
+Aug 31 19:06:20 <flyback>	me?
+Aug 31 19:06:24 <mawk>	yes
+Aug 31 19:06:24 <flyback>	never drank in my life
+Aug 31 19:06:28 <mawk>	really ?
+Aug 31 19:06:29 <flyback>	yes
+Aug 31 19:06:43 <flyback>	no drugs either
+Aug 31 19:06:49 <mawk>	but sometimes you start to speak german and you can't type straight
+Aug 31 19:06:54 <flyback>	still get hangovers every moroning and lost my teeth
+Aug 31 19:06:59 <flyback>	just tired and burned out
+Aug 31 19:07:02 <flyback>	I get floaty
+Aug 31 19:07:07 <calmclam>	he doesn't "drink", he prefers to imbibe the other way, gets you sloshed faster
+Aug 31 19:07:17 <flyback>	OH BMCC
+Aug 31 19:07:25 <mawk>	with vodka tampons ?
+Aug 31 19:07:32 <flyback>	I was tempted though more than once the pain up my ass was so bad
+Aug 31 19:07:40 <kokokon>	flyback can you repost this link with a mode vulns?
+Aug 31 19:07:52 <kokokon>	if there is a pain in the ass it needs a cream
+Aug 31 19:07:55 <flyback>	mode vulns?
+Aug 31 19:08:06 <kokokon>	printers vulns
+Aug 31 19:08:14 <flyback>	kokokon, no yrs of IBS has damaged the nerves in my backside
+Aug 31 19:08:18 <flyback>	it's just chronic
+Aug 31 19:08:28 <flyback>	when you shit acid that causes you to leap off the toilet into the shower
+Aug 31 19:08:30 <flyback>	it's bad
+Aug 31 19:08:45 <kokokon>	well there is a fix
+Aug 31 19:08:45 <flyback>	hang on
+Aug 31 19:08:48 <flyback>	lemme find it agai
+Aug 31 19:08:51 <kokokon>	ty
+Aug 31 19:09:13 <flyback>	https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-wind-river-vxworks-could-allow-for-remote-code-execution_2019-075/
+Aug 31 19:09:20 <flyback>	and because many routers and pritners use this
+Aug 31 19:09:25 <flyback>	they are vunerable
+Aug 31 19:09:56 <kokokon>	https://www.ncbi.nlm.nih.gov/pubmed/16530131
+Aug 31 19:10:09 <kokokon>	do you have money to buy vitamin b12 in bulk?
+Aug 31 19:10:21 <flyback>	heh
+Aug 31 19:10:28 <flyback>	it's not that simple but thx :)
+Aug 31 19:10:53 <flyback>	lemme try to find you some vxworks examples
+Aug 31 19:11:07 <kokokon>	yes occam razor
+Aug 31 19:11:28 <flyback>	https://discussions.qualys.com/thread/19949-vxworks-urgent11-vulnerabilities
+Aug 31 19:11:37 <kokokon>	ibs disrupts gut and vitamins b absorption
+Aug 31 19:12:07 <flyback>	https://en.wikipedia.org/wiki/VxWorks
+Aug 31 19:12:47 <kokokon>	coool
+Aug 31 19:13:13 <mawk>	you can program a linux kernel like it is vxworks
+Aug 31 19:13:16 <mawk>	using xenomai
+Aug 31 19:13:56 <flyback>	what's hilarious is
+Aug 31 19:14:12 <flyback>	we were exploiting the shit out of vxworks 19 yrs ago
+Aug 31 19:14:16 <flyback>	and they still have some of the same shit
+Aug 31 19:14:20 <mawk>	yeah
+Aug 31 19:14:20 <kokokon>	hehe
+Aug 31 19:14:29 <mawk>	audience of vxworks is very limited
+Aug 31 19:14:35 <kokokon>	its a law of entropy :)
+Aug 31 19:14:38 <mawk>	sloppy programming goes undetected
+Aug 31 19:14:40 <kokokon>	people IQ decay
+Aug 31 19:14:47 <flyback>	mawk no they used it on a lot of cheap routers
+Aug 31 19:14:58 <flyback>	cause they could save some mb of ram and flash vs linux
+Aug 31 19:15:07 <flyback>	but yeah they just slapped them together
+Aug 31 19:15:12 <mawk>	yeah but I mean the dev audience is limited
+Aug 31 19:15:17 <flyback>	oh yeah
+Aug 31 19:15:19 <mawk>	I know it's present everywhere, but it's not audited
+Aug 31 19:15:27 <flyback>	it's actually not bad for some stuff
+Aug 31 19:15:30 <mawk>	I used FreeRTOS, not vxworks
+Aug 31 19:15:34 <flyback>	in terms of a reliable os for embedded
+Aug 31 19:15:41 <flyback>	but their network stack needs redone
+Aug 31 19:15:45 <mawk>	yeah
+Aug 31 19:16:15 <flyback>	i've looked at freertos a few times for some msp430's and 8051's
+Aug 31 19:16:26 <flyback>	I want to take a old cd or dvd drive
+Aug 31 19:16:37 <flyback>	one of the ones that used a real 40mhz 805x and has a rom socket
+Aug 31 19:16:43 <flyback>	and run a os on it just for laughs
+Aug 31 19:16:47 <mawk>	nice
+Aug 31 19:16:59 <kokokon>	old 8088 pc would be fun on lubuntu
+Aug 31 19:17:04 <kokokon>	would it work? :P
+Aug 31 19:17:09 <flyback>	no but there is elks
+Aug 31 19:17:17 <flyback>	I am sorry I destoyed my 286 trying to add ram to the board
+Aug 31 19:17:23 <flyback>	would have been nice to run elks on it
+Aug 31 19:17:28 <kokokon>	what is elks?
+Aug 31 19:17:30 <mawk>	you can run linux on very small things kokokon
+Aug 31 19:17:38 <mawk>	but you have no fork() call or stuff like this that need a MMU
+Aug 31 19:17:40 <flyback>	elks is real mode linux
+Aug 31 19:17:41 <mawk>	so you can forget ubuntu
+Aug 31 19:17:43 <flyback>	for 808x
+Aug 31 19:17:50 <flyback>	I think they might do a 286 protected mode also
+Aug 31 19:18:08 <flyback>	there is linux for devices that don't have a mmu
+Aug 31 19:18:12 <flyback>	but they won't run on 808x still
+Aug 31 19:18:16 <mawk>	ah
+Aug 31 19:18:24 <kokokon>	Vintage Tandy 1000 HX Computer intel 8088 256k RAM 720k Floppy - FULLY WORKING
+Aug 31 19:18:30 <kokokon>	mmmmm
+Aug 31 19:18:31 <flyback>	nice
+Aug 31 19:18:34 <kokokon>	360 usd :D
+Aug 31 19:18:38 <flyback>	swap the floppy drive for a emulator
+Aug 31 19:18:55 <flyback>	someone made a card that lets you use 16 bit ide drives with 8 bit 808x pc's
+Aug 31 19:18:58 <flyback>	has a open source bios
+Aug 31 19:19:07 <flyback>	they also have a serial mode for that bios
+Aug 31 19:19:11 <flyback>	you can emulate a hd using a pc
+Aug 31 19:19:15 <flyback>	to feed the 808x
+Aug 31 19:19:29 <flyback>	xtidebios
+Aug 31 19:19:50 <flyback>	http://www.xtideuniversalbios.org/
+Aug 31 19:22:10 <kokokon>	what is search engine can be co hosted?
+Aug 31 19:22:14 <kokokon>	on blockchain
+Aug 31 19:22:27 <kokokon>	something like google yet decentralised
+Aug 31 19:22:32 <kokokon>	what if
+Aug 31 19:23:19 <kokokon>	peer distributed search engine
+Aug 31 19:23:50 <flyback>	there's a lot of things I would put up with
+Aug 31 19:23:53 <flyback>	legacy pc wise
+Aug 31 19:23:56 <flyback>	for the nostalgia
+Aug 31 19:23:59 <kokokon>	yee
+Aug 31 19:24:00 <flyback>	floppies are not one of them
+Aug 31 19:24:04 <flyback>	so I will be using a hw emualtor
+Aug 31 19:24:05 <kokokon>	floppies are fun
+Aug 31 19:24:44 <kokokon>	well, they are fun for me cause  I feel I am inserting something into a hole :)  and feel leet
+Aug 31 19:25:27 <kokokon>	we no longer can post letters, rarely use drill, no floppies, cards are contactless
+Aug 31 19:25:45 <flyback>	oh you might like this
+Aug 31 19:25:52 <flyback>	I have 100 old floppies I have to pull data form
+Aug 31 19:25:56 <kokokon>	ooooo
+Aug 31 19:26:02 <flyback>	many of them don't even get detected as floppies anymore :(
+Aug 31 19:26:04 <flyback>	so going to use this
+Aug 31 19:26:22 <flyback>	http://cowlark.com/fluxengine/index.html
+Aug 31 19:26:24 <flyback>	$20 to make
+Aug 31 19:26:40 <flyback>	bypases the pc's stupid floppy controller
+Aug 31 19:26:40 <kokokon>	haha awesome
+Aug 31 19:26:52 <flyback>	does direct sampling of the digital bitstream from the drive
+Aug 31 19:27:05 <kokokon>	can I buy old floppies and restore data on them?
+Aug 31 19:27:06 <flyback>	so it can handle oddball formats, fake bad sector copy protection or disks with a canuckload of damage
+Aug 31 19:27:12 <kokokon>	would be fun :)
+Aug 31 19:27:20 <flyback>	mabye if the signal is still intact enough
+Aug 31 19:28:07 <kokokon>	btw I am renting new apartment, left tomato for a 2 days already one that had a hole are moldy
+Aug 31 19:28:22 <kokokon>	this is not normal, how they moldy so fast
+Aug 31 19:29:18 <kokokon>	also how do I select which IP range to scan for printers and such?
+Aug 31 19:29:23 <kokokon>	internet is vast
+Aug 31 19:30:18 <flyback>	no idea sorry
+Aug 31 19:30:44 <flyback>	,mabye find a database of spamming printers people already found
+Aug 31 19:30:54 <kokokon>	Shodan
+Aug 31 19:31:02 <kokokon>	whoever made it is a bitch
+Aug 31 19:31:12 <kokokon>	:)
+Aug 31 19:32:56 <weijunli>	how can i know android Activity arguments? Im trying to do it with drozer
+Aug 31 19:33:38 <kokokon>	cause now more vuln will be patched :P
+Aug 31 19:33:49 <kokokon>	yet entropy will do it work too :)
+Aug 31 19:33:57 <kokokon>	and outsourcing
+Aug 31 19:39:12 <flyback>	hmm
+Aug 31 19:39:57 <flyback>	I still have to come up with a way to checksum validate two hard drive raw images, one from each data recovery box, to guard against data corruptiopn caused by ide/sata incompatibilities etc
+Aug 31 19:40:03 <flyback>	easy to do when the hd images clean
+Aug 31 19:40:15 <flyback>	when you have one like the one I am doing now with ddrescue and it's full of holes
+Aug 31 19:40:28 <flyback>	one more sector imaged on one machine than the other, the checksum will fail
+Aug 31 19:41:07 <flyback>	someoen suggested diff and just go by % of identical
+Aug 31 19:41:17 <flyback>	if they are high identical then the images are probably both good
+Aug 31 19:41:37 <kokokon>	would you say presence of girls helps to code more?
+Aug 31 19:41:45 <kokokon>	or it is distracting
+Aug 31 19:41:46 <flyback>	I don't code
+Aug 31 19:41:55 <flyback>	want to learn how for embedded but not got to that yet
+Aug 31 19:43:40 <kokokon>	there is a crow
+Aug 31 19:43:47 <kokokon>	she is making noice
+Aug 31 19:44:00 <kokokon>	do you think its a warning or ?
+Aug 31 19:44:11 <FungiFox>	it sounds like an audio target.
+Aug 31 19:44:13 <FungiFox>	PULL
+Aug 31 19:44:17 <mawk>	or mating call
+Aug 31 19:44:39 <FungiFox>	crows only say one thing "shoot in my direction you pussy"
+Aug 31 19:45:08 <kokokon>	they can see evil
+Aug 31 19:45:11 <kokokon>	and more
+Aug 31 19:45:18 <FungiFox>	crows are bad.
+Aug 31 19:45:26 <FungiFox>	bad to have em around
+Aug 31 19:45:29 <mawk>	crows are smart
+Aug 31 19:45:34 <mawk>	which is the opposite of bad
+Aug 31 19:45:45 <FungiFox>	hitler was smart.
+Aug 31 19:45:57 <kokokon>	he still is smart
+Aug 31 19:46:15 <FungiFox>	intelligence is a tool... it doesn't have morality. super smart people can be bad, forest gump can be good.
+Aug 31 19:46:34 <FungiFox>	i think he is the only good person... ever... once... even that one time.
+Aug 31 19:46:59 <FungiFox>	rest of us suck for the most part, we want to be good... and generally try to be.. but none of us can compare with forest gump.
+Aug 31 19:47:07 <kokokon>	Hitler did same as Napoleon
+Aug 31 19:47:25 <FungiFox>	yeah, hitlers mistake was doing it when we had camera equipment.
+Aug 31 19:47:32 <FungiFox>	fail
+Aug 31 19:47:52 <kokokon>	trump is a hitler too
+Aug 31 19:48:01 <FungiFox>	not even close.
+Aug 31 19:48:10 <FungiFox>	well.. what is "a hitler"
+Aug 31 19:48:13 <kokokon>	well you right
+Aug 31 19:48:14 <FungiFox>	define that.
+Aug 31 19:48:43 <FungiFox>	did hitler drink water just as trump drinks water? must be the exact same person!
+Aug 31 19:48:52 <kokokon>	hitler an individual from a poor, middle class backround . very smart and very high level sex gf
+Aug 31 19:49:30 <kokokon>	trump is from very wealthy family that makes his emotionally poorer
+Aug 31 19:49:38 <FungiFox>	i just want to say before we continue, im on the high of making $850 in the last 30 minutes from a lucky win.
+Aug 31 19:49:46 <kokokon>	nice
+Aug 31 19:49:54 <kokokon>	do we have a rain bot? :P
+Aug 31 19:50:04 <FungiFox>	every weekend this family comes over and sells off his grandpas estate, i bought a shit ton of legit silver.
+Aug 31 19:50:37 <kokokon>	bought cheep?
+Aug 31 19:51:14 <FungiFox>	lol, 3 lbs of 92.5% silverware for $40.
+Aug 31 19:51:31 <kokokon>	so you are a crow
+Aug 31 19:51:36 <kokokon>	:P
+Aug 31 19:51:40 <FungiFox>	no, they are crows... im a vulture.
+Aug 31 19:51:54 <FungiFox>	im dumb, they are the instigators.
+Aug 31 19:52:45 <FungiFox>	they know exactly what it is.. i bought 700-1400 worth of jewelry off them a few weekends ago when they came up for $100
+Aug 31 19:52:55 <kokokon>	whyy
+Aug 31 19:52:56 <FungiFox>	i felt bad, told them that this aint garage sale stuff.
+Aug 31 19:53:07 <kokokon>	they can easily sell it in town
+Aug 31 19:53:13 <FungiFox>	too much to get rid of.... i told them to call a liquidator.
+Aug 31 19:53:28 <FungiFox>	they would charge them 30-50%, but they would get legit pricing on each item.
+Aug 31 19:53:36 <kokokon>	why dont you hire truck and find more
+Aug 31 19:53:42 <kokokon>	you can make millions
+Aug 31 19:53:50 <kokokon>	is this in america?
+Aug 31 19:54:13 <FungiFox>	cause i work a 9-5, got a business on the side and im not a garage sale hunter... this one gold mine just happens to be around the block in my small town.
+Aug 31 19:55:04 <FungiFox>	i bought 3 sets of NFL cards, 1991, 1992, 1993 for $1. brand new mint condition.
+Aug 31 19:55:54 <FungiFox>	literally owned them for less than 30 minutes, one of the nephews has a birthday today and came over and i surprised him with them. i had a 1991 set that was opened years and years ago and i been surprising him with a handful of cards.
+Aug 31 19:56:12 <FungiFox>	now he got 3 sets, brand new.
+Aug 31 19:57:51 <FungiFox>	most of the best things in my life i paid little to nothing for.
+Aug 31 19:58:31 <kokokon>	I am reading ransomware emails :)
+Aug 31 19:58:39 <FungiFox>	lol.
+Aug 31 19:58:42 <mawk>	my mother received one
+Aug 31 19:58:47 <kokokon>	demanding to pay for some porn
+Aug 31 19:58:59 <mawk>	"WE SAW YOU JERKING OFF THIS DIRTY PORNO, NOW PAY 1BTC OR WE SEND TO ALL YOUR FACEBOOK CONTACTS"
+Aug 31 19:59:36 <mawk>	I think it says "nice porn taste you have" too
+Aug 31 19:59:55 <kokokon>	Nigerians do it
+Aug 31 19:59:59 <FungiFox>	comeon... tell me about the tattoo i saw or i aint paying nothing.
+Aug 31 20:00:04 <kokokon>	act as loli and record people on cam
+Aug 31 20:01:26 <kokokon>	balance 0
+Aug 31 20:01:32 <kokokon>	no one sent him any coins lol
+Aug 31 20:01:59 <mawk>	you can create btc addresses at will
+Aug 31 20:02:01 <mawk>	maybe he did it
+Aug 31 20:02:02 *	katsumi gives one godwin point to FungiFox
+Aug 31 20:02:15 <kokokon>	I know, sosasosa is your pass words. Lets get right to the purpose. Nobody has compensated me to check about you. You may not know me and you are most likely thinking why you are getting this e mail?
+Aug 31 20:02:18 <kokokon>	:P
+Aug 31 20:02:41 <kokokon>	In fact, I actually installed a malware on the 18+ vids (adult porn) website and you know what, you visited this website to experience fun
+Aug 31 20:02:43 <kokokon>	lolol
+Aug 31 20:03:17 <kokokon>	better would be you have visited youtube to watch recent trump speeches to have fun and I did record your cam
+Aug 31 20:03:19 <katsumi>	\o
+Aug 31 20:04:21 <kokokon>	one more email
+Aug 31 20:04:23 <kokokon>	 I obtained a video of you flogging the dolphin while at a pornweb site you are visited
+Aug 31 20:05:08 *	calmclam feeds dolphin a fish
+Aug 31 20:05:39 <wilsonfisk>	send it
+Aug 31 20:05:43 <wilsonfisk>	double dog dare you
+Aug 31 20:05:50 *	wilsonfisk tries reverse psychology
+Aug 31 20:06:28 <wilsonfisk>	that tactic works so much better in the bible belt area of the US
+Aug 31 20:06:51 <FungiFox>	id tell them to send it to me cause i lost my copy and i wanted to show my mom that i followed into the family business.
+Aug 31 20:07:01 <wilsonfisk>	oh snap
+Aug 31 20:07:14 <wilsonfisk>	yea I'd prob lose a fair amount of tokenz
+Aug 31 20:07:43 <kokokon>	they send emails to leaked db people
+Aug 31 20:07:59 <kokokon>	but bible belt people may not have any btc
+Aug 31 20:08:17 <kokokon>	they will be like eee btc wazz that :D
+Aug 31 20:08:33 <FungiFox>	kokokon, dont let it fool you, utah is going high tech. its going to be a capitol of tech soon id say.
+Aug 31 20:08:39 <kokokon>	cool
+Aug 31 20:08:44 <mawk>	a capitole of tech
+Aug 31 20:08:52 <kokokon>	FungiFox lets setup a mail server quickly
+Aug 31 20:08:54 <FungiFox>	they don't fkn drink/smoke.... asshats just work and provide for their 23 kids...
+Aug 31 20:09:05 <FungiFox>	they gotta make businesses strong lol.
+Aug 31 20:09:26 <FungiFox>	utah mormons are like 1920's catholic mexicans.
+Aug 31 20:09:27 <kokokon>	dear sir I saw your flogging your dolphin with your cousin via hacked webcam...
+Aug 31 20:09:34 <kokokon>	now you have 2 choices
+Aug 31 20:10:03 <kokokon>	yes it can work
+Aug 31 20:12:40 <katsumi>	haha
+Aug 31 20:12:52 <wilsonfisk>	you're talking about the news story where this exact thing happened right?
+Aug 31 20:13:30 <kokokon>	i was checking some public inboxes
+Aug 31 20:13:35 <kokokon>	and saw those letters
+Aug 31 20:13:35 <wilsonfisk>	.t https://www.bleepingcomputer.com/news/security/new-trojan-records-your-screen-when-on-sex-related-sites/
+Aug 31 20:13:40 <katsumi>	hitler, mormons, mexicans... your godwin score is risin
+Aug 31 20:13:45 <wilsonfisk>	few weeks ago now
+Aug 31 20:14:08 <wilsonfisk>	mormons are a cult; what do they have to do with hitler or mexicans?
+Aug 31 20:14:12 <vavkamil>	we had a client that fell for this, paid the ransom three times, every time it was way higher :D
+Aug 31 20:14:26 <katsumi>	ask fungi
+Aug 31 20:14:32 <kokokon>	vavkamil can you sell his email address? :)
+Aug 31 20:14:45 <kokokon>	I will share btc with you
+Aug 31 20:14:56 <katsumi>	i'm only counting
+Aug 31 20:15:03 <vavkamil>	kokokon, well that was the case
+Aug 31 20:15:05 <katsumi>	:)
+Aug 31 20:15:45 <vavkamil>	they basically told him that the first payment took so long, so they shared the video of him jerking with other hackers that wanted the payment too
+Aug 31 20:16:05 <kokokon>	lol did they had an actual video?
+Aug 31 20:16:10 <vavkamil>	no
+Aug 31 20:16:31 <kokokon>	bravo
+Aug 31 20:16:35 <wilsonfisk>	I've never been asked by another hacker (let alone anyone really) if I wanted to watch a video of a random jerking for extortion purposes
+Aug 31 20:16:36 <vavkamil>	but he paid them again and after that he contacted us for help, we basically told him to forget about it and he paid us for the advice too
+Aug 31 20:16:39 <wilsonfisk>	you have weird friends
+Aug 31 20:16:50 <kokokon>	vavkamil lolol
+Aug 31 20:17:16 <kokokon>	yes fake bs emails is da way to money
+Aug 31 20:17:29 <wilsonfisk>	not true
+Aug 31 20:17:44 <kokokon>	wilsonfisk you think average payout is low?
+Aug 31 20:17:46 <wilsonfisk>	ransomware/fileless malware is what's hot in the streets
+Aug 31 20:17:57 <kokokon>	fileless?
+Aug 31 20:18:13 <vavkamil>	spam nation by krebs is kinda good book about this kind of stuff, but I found it boring
+Aug 31 20:18:15 <kokokon>	well if there is no video and amount is low most people will not even complain
+Aug 31 20:18:31 <kokokon>	if you spread ransomware many will complain
+Aug 31 20:19:22 <wilsonfisk>	.wik fileless_malware
+Aug 31 20:19:35 <wilsonfisk>	emmy must still be collecting her shit
+Aug 31 20:20:29 <katsumi>	noemmyether
+Aug 31 20:20:40 <katsumi>	:(
+Aug 31 20:20:48 <kokokon>	:(
+Aug 31 20:20:57 *	kokokon cries
+Aug 31 20:21:20 <wilsonfisk>	she's in other channels so she's alive
+Aug 31 20:21:21 <wasamasa>	what shit did you make her collect
+Aug 31 20:21:40 <kokokon>	he pimped her
+Aug 31 20:21:42 <wilsonfisk>	math stuff, very complicated, very secret
+Aug 31 20:21:48 <kokokon>	to some old algo
+Aug 31 20:21:52 <katsumi>	she got banned from ##math
+Aug 31 20:22:59 <kokokon>	let's have spam mail competition?
+Aug 31 20:23:12 <kokokon>	divide some list and see who gets more btc
+Aug 31 20:23:14 <wilsonfisk>	sounds drab
+Aug 31 20:23:42 <vavkamil>	kokokon, there was competition like this on darknet
+Aug 31 20:23:56 <kokokon>	ooo where exactly?
+Aug 31 20:24:38 <vavkamil>	you can rent the ransomware and compete with other blackhats, the top ones who infect most people will get discounts for other malware and stuff
+Aug 31 20:25:04 <kokokon>	ransomware is risky
+Aug 31 20:25:18 <kokokon>	you have to be very smart to do it
+Aug 31 20:25:25 <wilsonfisk>	psh
+Aug 31 20:25:29 <wilsonfisk>	that's a lie
+Aug 31 20:25:50 <kokokon>	smart as in hiding your identity
+Aug 31 20:26:46 <kokokon>	many clearnet black hat, hack sites simple collect people data  : )
+Aug 31 20:26:48 <flyback>	rescued:    20488 MB,  errsize:   1926 kB,  current rate:        0 B/s
+Aug 31 20:26:48 <flyback>	   ipos:    605696 B,   errors:    1471,    average rate:        0 B/s
+Aug 31 20:26:48 <flyback>	   opos:    605696 B, run time:       3 s,  successful read:       3 s ago
+Aug 31 20:26:50 <flyback>	:D
+Aug 31 20:26:58 <kokokon>	to id them if necessary
+Aug 31 20:27:03 <kokokon>	and or blackmail
+Aug 31 20:27:34 <vavkamil>	kokokon, it was basically ransomware SaaS, you just need to spam people with it and will get cut from the profits
+Aug 31 20:27:42 <kokokon>	lol
+Aug 31 20:27:48 <kokokon>	well did they pay up?
+Aug 31 20:28:02 <vavkamil>	idk didn't participate
+Aug 31 20:28:42 <kokokon>	seems like a fake competition to me
+Aug 31 20:28:47 <kokokon>	to id wannabes :D
+Aug 31 20:29:17 <vavkamil>	it think that it was ShurL0ckr
+Aug 31 20:29:53 <sophiee>	hi!
+Aug 31 20:30:16 <vavkamil>	sophiee, hey :)
+Aug 31 20:30:37 <kokokon>	sophiee do you like spamming?
+Aug 31 20:31:19 <sophiee>	kokokon: what?
+Aug 31 20:31:21 <wilsonfisk>	do you?
+Aug 31 20:31:32 <wilsonfisk>	hi sophiee
+Aug 31 20:31:37 <kokokon>	yes it its profitable
+Aug 31 20:31:41 <kokokon>	if its
+Aug 31 20:32:18 <sophiee>	heyas :)
+Aug 31 20:33:40 <kokokon>	sophiee any ideas which printers are easiest to access? I am learning a bit with a help from shodan
+Aug 31 20:33:54 <wilsonfisk>	most of them?
+Aug 31 20:34:14 <roxfan>	define "access"
+Aug 31 20:34:17 <vavkamil>	there was powershell script for printers on /r/netsec very recently
+Aug 31 20:34:27 <wilsonfisk>	gross
+Aug 31 20:34:32 <kokokon>	check previous prints and make it print more
+Aug 31 20:34:33 <wilsonfisk>	bash || zsh || nothing
+Aug 31 20:34:42 <vavkamil>	https://github.com/thom-s/netsec-ps-scripts/tree/master/printer-telnet-ftp-report
+Aug 31 20:35:58 <sophiee>	so like, wordpress sites are fucked cuz javascript is the devil, and china just found goo stuff on the moon, and if you get some dickface email from chaoscc sayin theyre video recording you watching porn it's bullshit. oh, also there's now a way to turn dead cats into cat zombies via science!
+Aug 31 20:36:19 <vavkamil>	but very high percentage of accessible printers were hit by pewdiepie spam recently, so it might not be as easy anymore
+Aug 31 20:36:47 <kokokon>	yes that moron
+Aug 31 20:37:37 <kokokon>	sophiee there is a video of you watching Donald Trump speech and smiling, you have 2 choices now :D
+Aug 31 20:38:12 <sophiee>	oh ya? then what color are my eyes?
+Aug 31 20:38:26 <kokokon>	brown green
+Aug 31 20:38:57 <sophiee>	lol
+Aug 31 20:39:29 <kokokon>	lol
+Aug 31 20:40:01 <flyback>	dammimt
+Aug 31 20:40:11 <flyback>	sunday and moday showers and t-storms
+Aug 31 20:40:19 <calmclam>	catpocolypse
+Aug 31 20:40:21 <flyback>	have to get my data recovery done tonight I guess
+Aug 31 20:40:23 <flyback>	:/
+Aug 31 20:40:31 <sophiee>	trump also says that if his twitter gets hacked, there's not much to learn lol
+Aug 31 20:40:42 <katsumi>	soophie has steel blue eyes and a 50inch beard like zztop
+Aug 31 20:40:52 <flyback>	hmm
+Aug 31 20:40:57 <flyback>	from reading this ddrescue log
+Aug 31 20:41:04 <flyback>	looks like the errors are in a few areas
+Aug 31 20:41:09 <flyback>	clustered together
+Aug 31 20:41:15 <sophiee>	katsumi: that'd be quite impressive, actually heh
+Aug 31 20:41:17 <flyback>	if it's not on the mft table
+Aug 31 20:41:19 <flyback>	that' a good thing
+Aug 31 20:41:30 <katsumi>	;)
+Aug 31 20:41:36 <kokokon>	flyback I have managed to find one open printer, well maybe open :)
+Aug 31 20:42:05 <kokokon>	515, 631, 1022, 9100 ports
+Aug 31 20:42:48 <katsumi>	and jumpin into zhe 10 foot pole
+Aug 31 20:43:01 <kokokon>	lol now how I can check previous print jobs?
+Aug 31 20:43:29 <vavkamil>	you know that's illegal right?
+Aug 31 20:44:19 <calmclam>	cheeze it, it's the fuzz!
+Aug 31 20:44:30 <kokokon>	vavkamil really? lol
+Aug 31 20:44:42 <vavkamil>	I don't care, but it can get you banned here
+Aug 31 20:45:18 <kokokon>	it's a test :P
+Aug 31 20:45:26 <katsumi>	hey crime time at tv... he is listening to motörhead
+Aug 31 20:48:43 <la_ensalada>	hi I'm playing around with RPKI ROAs and I want to decode one so I can view it. RFC6488 tells me that they're DER encoded and the file's hex signature (30 82) tells me the same but when I try to view it using   openssl x509 -in certificate.der -inform der -text -noout   I get errors
+Aug 31 20:49:05 <la_ensalada>	anyone have ideas for the ensalada?
+Aug 31 20:51:39 <vavkamil>	lol you are decoding certificates and making salad simultaneously?
+Aug 31 20:51:57 <la_ensalada>	vavkamil, I am blessed with two hands
+Aug 31 20:52:05 <kokokon>	how to route telnet via tor?
+Aug 31 20:52:25 <kokokon>	torrify? :D
+Aug 31 20:54:26 <vavkamil>	kokokon, proxychains should be fine
+Aug 31 20:54:58 <kokokon>	ty kamil
+Aug 31 20:55:03 <kokokon>	I like tor :)
+Aug 31 20:56:46 <vavkamil>	just be sure to use TCP, no UDP
+Aug 31 21:00:48 <kokokon>	why TCP?
+Aug 31 21:05:11 <vavkamil>	proxychains works only with TCP I think
+Aug 31 21:05:31 <vavkamil>	best to use Tails in VM to be sure
+Aug 31 21:11:00 <danieldg>	tor does not support udp, that's why
+Aug 31 21:11:11 <kokokon>	ok
+Aug 31 21:11:29 <kokokon>	for some reason telnet via tor as proxy yet to work
+Aug 31 21:11:37 <kokokon>	9050 9150 socks5
+Aug 31 21:21:21 <kokokon>	perhaps printers telnet setup to block tor ips?
+Aug 31 21:24:35 <kokokon>	https://www.youtube.com/watch?v=7Nbv3reNErw
+Sep 02 08:51:42 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 08:51:42 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 16:33:28 2019
+
+Sep 11 16:33:28 *	Now talking on ##security
+Sep 11 16:33:28 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 11 16:33:28 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 11 16:33:28 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 11 16:53:45 <Jo-Anna>	Hi what’s new?
+Sep 11 16:54:00 <Jo-Anna>	In security..
+Sep 11 16:55:30 <flyback>	other than the intel remote dma exploit and this idiot company claiming they "broke' sha256
+Sep 11 16:55:32 <flyback>	not that I heard
+Sep 11 17:03:05 <dnull>	flyback Got a link handy for the sha256 thing?
+Sep 11 17:04:03 <flyback>	no looking
+Sep 11 17:04:28 <dnull>	No worries, I'll track it down
+Sep 11 17:05:10 <jabberwock>	Do any of you know this mystery WordPress newbloguser string mentioned here?
+Sep 11 17:05:11 <jabberwock>	.t https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17091
+Sep 11 17:05:17 <EmmyNoether>	URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:600)> (title:71)
+Sep 11 17:05:20 <jabberwock>	:/
+Sep 11 17:05:45 <flyback>	dnull, but they then rattled off how this enables a new era of crypto currency blah blah blah
+Sep 11 17:05:51 <flyback>	nate was saying the same thing I did
+Sep 11 17:05:54 <dnull>	Oh yuck
+Sep 11 17:05:58 <flyback>	soon as we saw that we just facepalmed
+Sep 11 17:06:15 <dnull>	haha
+Sep 11 17:06:34 <dnull>	Was it the people from BH?
+Sep 11 17:07:43 <flyback>	https://www.newson6.com/story/40997267/treadwell-stanton-dupont-today-announced-its-researchers-quietly-broke-the-sha-256-hashing-algorithm-over-a-year-ago
+Sep 11 17:08:01 <dnull>	Ta
+Sep 11 17:08:07 *	flyback makes shake-it-weight motions
+Sep 11 17:08:30 <flyback>	wankers
+Sep 11 17:10:09 <zuckonit>	how is everyone doing
+Sep 11 17:12:52 <dnull>	flyback Wow, that's quite a wank session
+Sep 11 17:14:55 <calmclam>	shake it like a polaroid picture
+Sep 11 17:16:44 <jabberwock>	old school ^
+Sep 11 17:16:45 <iz>	a 16 year old kid probably wouldn't know what that means and also would have been born shortly after that song was released
+Sep 11 17:17:11 <flyback>	https://www.youtube.com/watch?v=CWtcE52LKgk
+Sep 11 17:17:18 <flyback>	OH NOES WE BROKE SHA2256
+Sep 11 17:17:41 <iz>	it's not a tuma
+Sep 11 17:18:16 <dude12312414>	is that a joke news aite
+Sep 11 17:18:20 <dude12312414>	*site
+Sep 11 17:18:30 <flyback>	which one
+Sep 11 17:18:38 <dude12312414>	newson6 link above
+Sep 11 17:18:44 <flyback>	nope
+Sep 11 17:19:03 <iz>	no that was a serious press release that company put out, which a few other news outlets picked up
+Sep 11 17:19:19 <iz>	presumably the ones that don't have anyone that works there that knows a little bit
+Sep 11 17:19:25 <flyback>	https://www.treadwell-stanton.com/services/latest-news
+Sep 11 17:20:45 <iz>	do you remember zeosync also?
+Sep 11 17:22:33 <iz>	in 2002 they claimed to have a perfect compression technology that could compress random data
+Sep 11 17:22:33 <flyback>	don't know anything about them or this company
+Sep 11 17:22:41 <flyback>	I just think it sounds like all bullshit
+Sep 11 17:22:42 <iz>	google zeosync, it's pretty lol
+Sep 11 17:22:51 <iz>	yeah, it was startup bullshit
+Sep 11 17:22:54 <flyback>	that
+Sep 11 17:23:02 <flyback>	is why I put up the shake-it-weight video
+Sep 11 17:23:04 <iz>	there is no scientific peer review for company press releases
+Sep 11 17:23:10 <iz>	so they can say whatever they want
+Sep 11 17:23:39 <iz>	with the hope a few suckers fall for it
+Sep 11 17:25:15 <flyback>	speaking of suckers
+Sep 11 17:25:30 <flyback>	you have to wonder if shake-it-weight wasn't the greatest trolling ever
+Sep 11 17:27:04 <flyback>	iz here you go
+Sep 11 17:27:12 <iz>	you know, if you close your eyes and pretend you have a salt shaker in your hand and shake salt into your open mouth, you will actually be able to taste it, even though there isn't any salt...
+Sep 11 17:27:16 <flyback>	deadpool reading their press release
+Sep 11 17:27:22 <flyback>	https://www.youtube.com/watch?v=RygGF_9dDxk
+Sep 11 17:29:54 *	calmclam closes eyes and shakes shake weight near mouth, breaks jaw
+Sep 11 17:36:28 <nate>	dude12312414: To expand on your question, it's a serious 'article' from a company with an apparent history of bullshit claims and showing nothing for it and convieniently keeping all it's employees otherwise secret
+Sep 11 17:36:48 <nate>	So it's probably bullshit from a company hoping to attention whore for stupid investors
+Sep 11 17:38:55 <Jo-Anna>	The employees are declared to the irs or are they paid cash without being declared ? If it is the former the employees aren’t secret
+Sep 11 17:39:59 <dude12312414>	hm yeah it does look shady
+Sep 11 17:44:06 <nate>	Jo-Anna: Or they don't have any really.  Their linkedin page lists 8 'Employees", all of which apparently have hidden profiles
+Sep 11 17:44:31 <nate>	dude12312414: The fact they claim collissions on SHA256 is -good- news for cryptocurrency should tell you how much bullshit it is alone
+Sep 11 17:45:00 <calmclam>	good news, everyone!
+Sep 11 17:45:09 <nate>	You switched to geico?
+Sep 12 10:08:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 10:08:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 10:08:58 2019
+
+Sep 12 10:08:58 *	Now talking on ##security
+Sep 12 10:08:58 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 12 10:08:58 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 12 10:08:59 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 12 10:09:41 <milivoj>	sup
+Sep 12 10:13:38 <praxis>	patstoms: it's a vulnerable vmware virtual machine, given to me as a bit of a challenge/learning experience
+Sep 12 10:13:41 <praxis>	thought it might be conducive to be able to discuss it with others.
+Sep 12 10:13:44 <praxis>	the os is about 5 years old, and has a bunch of outdated services running
+Sep 12 10:14:36 <patstoms>	like machines in vulnhub?
+Sep 12 10:19:55 <praxis>	patstoms: probably. i'm not familiar with that one
+Sep 12 10:21:17 <praxis>	but yep, i just had a quick look. sounds a lot like it
+Sep 12 10:28:48 <offabean>	anyone online
+Sep 12 10:30:14 <postal_blab>	no
+Sep 12 10:30:29 <offabean>	funny
+Sep 12 10:30:40 <offabean>	is this channel pretty active
+Sep 12 10:31:57 <praxis>	offabean: it's one of the more active ones
+Sep 12 10:32:05 <k33k>	i play soccer twice a week but i can't speak for the others
+Sep 12 10:32:23 <praxis>	full of smartasses though
+Sep 12 10:32:38 <k33k>	>:D
+Sep 12 10:34:36 <offabean>	how would yall go about spreading a meterpeter executable around
+Sep 12 10:34:47 <offabean>	ethically ofc
+Sep 12 10:49:35 <prometheus_falli>	dont you bind it to a pdf or jpeg and send it?
+Sep 12 10:53:13 <praxis>	lol
+Sep 12 10:53:17 <praxis>	ethically of course
+Sep 12 11:06:24 <k33k>	fairtrade locally-sourced exploits
+Sep 12 11:07:24 <b1tninja>	upload to virustotal
+Sep 12 11:47:00 <chazapp>	Hi, anyone know what i can use to find subdomains such as *.foo.co ?
+Sep 12 11:59:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 11:59:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 11:59:57 2019
+
+Sep 12 11:59:57 *	Now talking on ##security
+Sep 12 11:59:57 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 12 11:59:57 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 12 11:59:58 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 12 12:01:01 <chazapp>	thoughts on https://github.com/OWASP/Amass for subdomain iteration ?
+Sep 12 12:01:07 <chazapp>	-iteration + enumeration
+Sep 12 12:10:15 <dylanwtf>	unless the DNS server is misconfigured you can't directly get a list of subdomains
+Sep 12 12:10:28 <Guifle>	hello, how can I decrypt an img file which is the image of a luks partition?
+Sep 12 12:10:34 <dylanwtf>	here is a guide on different methods
+Sep 12 12:10:40 <dylanwtf>	https://appsecco.com/books/subdomain-enumeration/
+Sep 12 12:11:35 <chazapp>	dylanwtf: yeah i know that's not a public available data. I'll be trying amass, but i don't want to bruteforce the target's server too hard
+Sep 12 12:11:43 <chazapp>	thanks for the link tho
+Sep 12 12:12:10 <dylanwtf>	use google dorks to try and find them
+Sep 12 12:12:30 <dylanwtf>	if you want to be passive
+Sep 12 12:12:42 <dylanwtf>	Guifle: https://unix.stackexchange.com/questions/504230/mount-encrypted-partition-of-an-image-file
+Sep 12 12:13:06 <Guifle>	dylanwtf, thank you!
+Sep 12 12:14:40 <chazapp>	dylanwtf: can you elaborate on Google Dorks ?
+Sep 12 12:15:03 <dylanwtf>	a google dork is just a search string for google that helps you find something specific
+Sep 12 12:15:03 <chazapp>	i vaguely remember that these are data google provides when it should not, but what can be done with that ?
+Sep 12 12:15:23 <dylanwtf>	but that guide lists a bunch of other passive techniques too
+Sep 12 12:15:31 <dylanwtf>	like looking at cert transparency logs
+Sep 12 12:15:56 <dylanwtf>	you can use google to find subdomains that shouldn't be public
+Sep 12 12:16:02 <dylanwtf>	like dev/test environments and such
+Sep 12 12:16:57 <chazapp>	I'm thinking about subdomains cause the main frontend nmap showed TLS Cert was issued for "*.foobar.com"
+Sep 12 12:17:29 <chazapp>	But ain't no more information, that stuff is behind amazon stuff
+Sep 12 12:17:42 <dylanwtf>	go through the 'Passive sub-domain enumeration' section in that article
+Sep 12 12:17:49 <dylanwtf>	you won't make any noise and you might find something
+Sep 12 12:18:55 <dylanwtf>	you can also try a wordlist of the most common hostnames
+Sep 12 12:31:58 <praxis>	do a dirbuster type thing
+Sep 12 12:34:06 <praxis>	chazapp: nmap -sU -p 53 --script dns-nsec3-enum --script-args dns-nsec3-enum.domains=<domain> <dns-server>
+Sep 12 12:36:41 <k33k>	 /j ##linux
+Sep 12 12:36:44 <k33k>	oops
+Sep 12 13:29:30 <aaii>	Hi guys,I want a good book for start pentesting?
+Sep 12 13:30:43 <weedmic>	I saw some courses offered on https://thehackernews.com/ - might come with a book
+Sep 12 13:32:51 <offabean>	yeo
+Sep 12 13:37:59 <aaii>	weedmic, that's not free :D Do you know a free one>
+Sep 12 13:39:35 <offabean>	whats a good vpn for free vpnbooks never works
+Sep 12 13:41:01 <praxis>	i use expressvpn sometimes
+Sep 12 13:45:44 <chazapp>	praxis: just saw your last message I was afk, which dns server should I target with that command ? Amazon's ?
+Sep 12 13:46:40 <chazapp>	`amass` found 3 domains I knew of already, but I know there's more than these
+Sep 12 13:48:06 <praxis>	chazapp: what's the target
+Sep 12 13:50:47 <chazapp>	praxis: i think i found the dns target, but nmap says "DNSSEC NSEC3 not supported"
+Sep 12 13:54:03 <praxis>	thats not the target, the target is the domain
+Sep 12 13:54:29 <praxis>	you said foobar.com, but i'm guessing its not foobar.com
+Sep 12 13:54:47 <chazapp>	i don't wanna give that info
+Sep 12 13:54:50 <chazapp>	consider its foobar.co
+Sep 12 13:59:07 <weedmic>	no, everything I could think of would not be free aaii
+Sep 12 14:00:11 <jabberwock>	offabean: ProtonVPN
+Sep 12 14:01:14 <aaii>	weedmic, oh :)
+Sep 12 14:17:53 <jabberwock>	chaz
+Sep 12 14:18:11 <jabberwock>	Have you tried ‘fierce’?
+Sep 12 14:20:05 <jabberwock>	fierce -dns foobar.com
+Sep 12 14:27:30 <chazapp>	jabberwock: thanks for the link, i've just managed to get amass to work as intended
+Sep 12 14:27:39 <chazapp>	found what i was looking for
+Sep 12 14:32:33 <jabberwock>	👌
+Sep 12 14:58:04 <audiofile>	I'm trying to do a buffer overflow for my infosec class and for some reason, my return address's last byte 0xff is converted to 0x0c. If you need more info do let me know!
+Sep 12 14:59:42 <audiofile>	stackexchange tells me it's linefeed so it gets converted :/
+Sep 12 15:06:06 <audiofile>	https://imgur.com/a/VaFUbpP here's how I run gdb and the C program basically does takes commandline arg and strcpy's to a char buffer. Examining the $esp shows data is getting written correctly except the last byte which affects the return address :/
+Sep 12 15:06:35 <nsh>	actually in fact everything the computer does it correct
+Sep 12 15:06:41 <nsh>	*is
+Sep 12 15:06:45 <nsh>	the computer is infallible
+Sep 12 15:07:22 <nsh>	even when it's behaving in an unspecified manner contrary to the assumptions of the users, developers and/or architects
+Sep 12 15:08:16 <audiofile>	um ok
+Sep 12 15:09:12 <nsh>	if the computers ravage humanity and turn all arable land into solar farms to help them make paperclips
+Sep 12 15:09:16 <nsh>	it will be entirely our own fault
+Sep 12 15:09:24 <nsh>	they'll be behaving perfectly the whole time
+Sep 12 15:09:32 <Fieldy>	oh ok
+Sep 12 15:09:50 <nsh>	what we need to do is turn off all the computers until we fix humanity
+Sep 12 15:09:54 <nsh>	and then we can have nice things again maybe
+Sep 12 15:10:11 <audiofile>	i thought you were gonna tell me how to fix my issue lol
+Sep 12 15:11:04 <audiofile>	fixed it missing \x
+Sep 12 15:49:12 <Hack5190>	Just posted my Firefox user.js file created to improve security, it's available here https://pastebin.com/um7wHTr5
+Sep 12 15:50:37 <Criten>	Hack5190: // Disable DNS over HTTPS
+Sep 12 15:50:44 <Criten>	is that just because they have shitty rules around what server they use?
+Sep 12 15:52:00 <Hack5190>	Because I run my own - should comment that in the file, thanks Criten
+Sep 12 15:54:17 <audiofile>	is firefox less cpu intensive than chrome?
+Sep 12 15:55:08 <Criten>	ah gotcha Hack5190 - cool
+Sep 12 15:55:15 <Criten>	audiofile: not sure
+Sep 12 15:55:33 <Criten>	audiofile: i've heard its better on memory and such
+Sep 12 15:55:45 <Criten>	it goes back and forth pretty frequently with them trying to one up eachother
+Sep 12 15:55:48 <audiofile>	oh ok! chrome takes up 7-8 gigs for me :/
+Sep 12 15:55:48 <Hack5190>	warning added Criten - thanks mate
+Sep 12 15:56:07 <Criten>	Hack5190: that's what peer reviews are for :D
+Sep 12 15:56:46 <Hack5190>	agreed - wish some people didnt take feedback so harsh
+Sep 12 15:57:10 <audiofile>	can someone take a look at my ezpz buffer overflow and see why it's not working?
+Sep 12 16:00:23 <Criten>	Hack5190: those people tpyically dont go too far :)
+Sep 12 16:00:36 <Criten>	atleast they suck to work with and in turn are kind of just missrible people
+Sep 12 16:00:56 <Criten>	audiofile: ezpz?
+Sep 12 16:01:06 <audiofile>	easy-peasy
+Sep 12 16:01:30 <Criten>	what are you trying to buffer overfly?
+Sep 12 16:01:33 <Criten>	flow* haha
+Sep 12 16:01:55 <Criten>	"Vegetarian friendly state for React" <- that thing? hahaha
+Sep 12 16:02:24 *	Criten just googled easy peasy
+Sep 12 16:02:39 <Criten>	Dont know if you're talking about some lib or just using the term
+Sep 12 16:11:27 <audiofile>	oh just a term
+Sep 12 16:11:32 <audiofile>	like to mean it's dead easy
+Sep 12 16:42:02 <flyback>	Leonarbro, :)
+Sep 12 16:43:26 <soulisson>	Hi
+Sep 12 16:43:26 <EmmyNoether>	soulisson: <jabberwock> Your WP plugin idea worked. Thank you!
+Sep 12 16:43:40 <soulisson>	jabberwock, you're welcome :)
+Sep 12 16:45:33 <flyback>	https://www.youtube.com/watch?v=OjKhiGiJJgI <--- I can't make up my mind if this is a tech video or pr0n?
+Sep 12 17:08:09 <flyback>	1000% SAFE FOR WORK btw
+Sep 12 17:08:14 <flyback>	just some nerd humor
+Sep 12 17:19:05 <pai-pai>	Hitting the tram but stops 1m befor3 fior blind ppl unacccactable
+Sep 12 17:19:57 <pai-pai>	H3y
+Sep 12 17:22:15 <jaggz>	why can't my phone go into auto-locking mode when it's not near my wifi?
+Sep 12 17:22:32 <jaggz>	why do they demand this must be near known bluetooth devices and stuff
+Sep 12 17:24:07 <pepee>	.t https://twitter.com/johnpilger/status/1168613364827852802
+Sep 12 17:24:13 <EmmyNoether>	Tonight I joined Roger Waters in a unique event outside the Home Office in London. Roger sang his classic 'Wish You were Here' in solidarity with Julian #Assange. Watch the livestream here .. https://www.pscp.tv/w/cD1iMjFkdktPVm5yZ0xsUVh8MVBsSlFWV3pEbW54RbrHbWb7KTHU1pu7n40bXBNYpRv8TwdXFwlLaV59hUE0?t=41s (@johnpilger)
+Sep 12 17:29:11 <Fieldy>	please go spam somewhere else
+Sep 12 17:38:07 <pepee>	is it not security related?
+Sep 12 18:17:43 <katsumi>	moin
+Sep 12 18:17:52 <soulisson>	moin
+Sep 12 18:18:30 <katsumi>	whats down today?
+Sep 12 18:27:25 <ilikeyou>	watching Colbert and overdosing on carrot juice.. checking out presidential candidate Pete Buttigieg. good news, he doesn't sound completely insane imo
+Sep 12 18:28:38 <iz>	you ever mix carrot and orange juice?
+Sep 12 18:28:39 <soulisson>	ilikeyou, watched coldbert this morning :)
+Sep 12 18:29:36 <ilikeyou>	never mixed carrot and orange. good? I'll check it out :)
+Sep 12 18:31:07 <katsumi>	ooom
+Sep 12 18:31:19 <zuckonit>	uwu
+Sep 12 18:31:25 <katsumi>	betacarotin
+Sep 12 18:32:53 <katsumi>	kill all juicee o/
+Sep 12 18:32:57 <iz>	ilikeyou: yeah, it's super good
+Sep 12 18:53:36 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 18:53:36 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 18:54:02 2019
+
+Sep 12 18:54:02 *	Now talking on ##security
+Sep 12 18:54:02 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 12 18:54:02 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 12 18:54:02 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 12 19:00:54 <katsumi_>	umm. offabean is out. :( i wanted to offer my 0-day exploit###########8backdoor th oim "you have to run as root"
+Sep 12 19:01:00 <katsumi_>	;)
+Sep 12 19:05:43 <ilikeyou>	I'll trade you a backdoor for a fresh new tomato plant! yummm :p
+Sep 12 19:05:57 <marder>	omnomnom
+Sep 12 19:06:09 <nate>	Grayson: Not offhand, but I avoid chrome as best as I can lol
+Sep 12 19:06:36 <marder>	my provider is horrible with ipv6 connecting
+Sep 12 19:09:26 <marder>	ilikeyou: no tomatoes :(
+Sep 12 19:11:12 <katsumi>	the plants are smelling
+Sep 12 19:11:24 <katsumi>	;)
+Sep 12 19:11:27 <insecurity>	s/lants/enis'
+Sep 12 19:12:27 <katsumi_>	wtf
+Sep 12 19:13:15 <insecurity>	right?
+Sep 12 19:13:21 <insecurity>	it's like, holy shit i mean wow
+Sep 12 19:14:33 <beanbag->	https://hlassets.paessler.com/common/files/screenshots/prtg-v17-4/basics/sunburst-view.png
+Sep 12 19:14:36 <beanbag->	that's kinda sweet
+Sep 12 19:14:51 <beanbag->	but dunno if I would use that sw to handle all my syslog data
+Sep 12 19:16:12 <katsumi_>	i'll mail to m< provider that their ipv6 shit makes me grrrrrrrrrrrrrr
+Sep 12 19:17:18 <katsumi_>	while the bot usin ipv4 is workin fine
+Sep 12 19:17:30 <katsumi_>	wish me luck
+Sep 12 19:19:03 *	katsumi_ is awating the next disconnect
+Sep 12 19:20:51 *	zuckonit disconnects
+Sep 12 19:20:54 <zuckonit>	katsumi_
+Sep 12 19:21:53 <c0mmy>	So I am following this https://blog.secureideas.com/2014/01/intercepting-dns.html, Setup everything as in the tutorial, but...when I visit a website I just get nothing, webpage not available, although I can see it in burpsuite history and in dnschef
+Sep 12 19:22:46 <katsumi_>	^^
+Sep 12 19:23:01 <c0mmy>	katsumi_: ?
+Sep 12 19:23:16 <pepee>	katsumi_, !
+Sep 12 19:24:16 <katsumi_>	lol
+Sep 12 19:24:34 <c0mmy>	sham lam dubeli
+Sep 12 19:25:59 <katsumi_>	.g voodoo people youtube
+Sep 12 19:26:04 <EmmyNoether>	https://www.youtube.com/watch?v=XQEBzauVIlA
+Sep 12 19:29:08 <c0mmy>	who's willing to do some cool tests on the tutorial above
+Sep 12 19:29:17 <c0mmy>	https://blog.secureideas.com/2014/01/intercepting-dns.html,
+Sep 12 19:29:52 <vavkamil>	c0mmy, are you trying it on windows 10?
+Sep 12 19:30:09 <nate>	Jesus fuck a plane just like lowballed overhead my town
+Sep 12 19:31:48 <c0mmy>	vavkami: Burpsuite on win 10 and the rest (webmitm, dnschef, beef) on a kali box.
+Sep 12 19:31:56 <technonerd>	Did the sound come second?
+Sep 12 19:32:50 <vavkamil>	c0mmy, well it's article from 2014, it will only work on http:// websites and win 10 as I know have some protection against DNS spoofing
+Sep 12 19:33:11 <c0mmy>	vavkamil: Who's talking about DNS spoofing?
+Sep 12 19:33:53 <c0mmy>	it should work on both http and https, https sites will give that notification about the certificate etc
+Sep 12 19:34:03 <c0mmy>	but I've tried an http site and it didnt open
+Sep 12 19:34:13 <c0mmy>	however I was able to hook it via beef
+Sep 12 19:34:27 <c0mmy>	but why didn't the page open
+Sep 12 19:34:31 <c0mmy>	in the browser
+Sep 12 19:34:51 <katsumi_>	what agent u use?
+Sep 12 19:35:56 <c0mmy>	internet explorer
+Sep 12 19:36:07 <vavkamil>	how were you able to hook it with beef if the page didn't open
+Sep 12 19:36:12 <katsumi_>	try wget
+Sep 12 19:36:17 <katsumi_>	;)
+Sep 12 19:36:18 <c0mmy>	the page didn't open but it got hooked
+Sep 12 19:36:31 <c0mmy>	not an https one
+Sep 12 19:36:33 <katsumi_>	or curl
+Sep 12 19:36:34 <c0mmy>	an http one
+Sep 12 19:36:45 <vavkamil>	that doesn't make any sense
+Sep 12 19:36:57 <c0mmy>	vavkamil: You wanna test that?
+Sep 12 19:37:17 <katsumi_>	if page filtering out
+Sep 12 19:37:25 <vavkamil>	way complicated scenario for basic test
+Sep 12 19:37:55 <nate>	Huh, we have a C130 circling the town, well people are gonna be freaking out today lol
+Sep 12 19:38:07 <c0mmy>	vavkamil: I"ve got the full setup ready for this setup man.
+Sep 12 19:38:43 <c0mmy>	And I can spin up stuff in the cloud.
+Sep 12 19:39:12 <vavkamil>	cool but I don't
+Sep 12 19:39:22 <c0mmy>	vavkamil: You don't have to.
+Sep 12 19:39:43 <vavkamil>	ok so you have DNS server ready that I can test?
+Sep 12 19:39:56 <c0mmy>	vavkamil: Sure.
+Sep 12 19:40:03 <vavkamil>	pass the IP then
+Sep 12 19:40:53 <superherointj>	@nate, why is that?
+Sep 12 19:41:15 <katsumi_>	+dance*
+Sep 12 19:42:29 <c0mmy>	vavkamil: PM?
+Sep 12 19:43:08 <vavkamil>	yeah
+Sep 12 19:43:35 <katsumi_>	159.89.20.170 - - [12/Sep/2019:19:16:53 +0200] "GET /TEMPORARY_LISTEN_ADDRESSES/WSMAN HTTP/1.1" 404 1057 "-" "Mozilla/5.0 zgrab/0.x"
+Sep 12 19:43:43 <katsumi_>	ooom
+Sep 12 19:44:10 <katsumi_>	funny ppl
+Sep 12 19:44:24 <nate>	superherointj: I'm in a small town, a C-130 is pretty big for our airport size.  But we do have a joint military base up at our small airport so it's probably just an exercise, but a C-130 flying low around mountains and valley is REALLY loud and not something seen usually here :P
+Sep 12 19:44:48 <nate>	Last time we had one flying around here was shortly after 9/11, I think one came in for some maintenance or something
+Sep 12 19:45:52 <bubbajbubba>	Vs here where we have F-18s here leaving Mayport NAS that like to zing up and down the St. Johns river every morning. Kinda comforting hearing them zing on by.
+Sep 12 19:47:16 <nate>	Most we usually have here on occasion (and I mean maybe a few times a month) are blackhawk's and apache's as that's primarily whats up at that base, there's a big medical marine outfit there and they do a lot of training in the blackhawks as well as woodland stuff since we're up in the mountains
+Sep 12 19:48:34 <bubbajbubba>	yeah, the closest Apaches to us are probably at Ft. Rucker in AL. See plenty of Navy Seahawks, though.
+Sep 12 19:48:37 <katsumi_>	https://securitynews.sonicwall.com/xmlpost/microsoft-sharepoint-server-flaw-cve-2019-0604-is-actively-being-exploited/
+Sep 12 19:48:54 <katsumi_>	sry i did not got it
+Sep 12 19:49:00 <katsumi_>	.t
+Sep 12 19:49:07 <EmmyNoether>	Microsoft SharePoint server flaw CVE-2019-0604 actively being exploited in the wild – SonicWall
+Sep 12 19:49:32 <beanbag->	what was the name of that tool to check if they are dicking with your wifi
+Sep 12 19:50:09 <katsumi_>	toolß thors hanner
+Sep 12 19:50:12 <Grayson>	nate I think if our phishing email says it only works in IE people won't open it
+Sep 12 19:57:23 <beanbag->	pikarma
+Sep 12 19:57:50 <beanbag->	now I just need to find out if it will work with any existing network cards or old routers I have around
+Sep 12 19:59:41 <beanbag->	they also fail to list what revision TP LINK TL-WN722N they require
+Sep 12 19:59:49 <beanbag->	1x is atheros based, 2 and 3 are realtek
+Sep 12 20:03:00 <beanbag->	https://rubygems.registry.github.com/0x90/wifi-arsenal
+Sep 12 20:03:02 <beanbag->	WTF
+Sep 12 20:03:15 <beanbag->	"the require was made to forbidden content?
+Sep 12 20:04:12 <bubbajbubba>	What's worse is they give you a pic of an angry pink unicorn sneering at you.
+Sep 12 20:23:56 <beanbag->	hmm I think I have a atheros usb module
+Sep 12 20:24:09 <beanbag->	it's useless due to lack of win10 drivers but fine for linux and this
+Sep 12 20:24:51 <Pilate>	https://github.com/0x90/wifi-arsenal - dunno where you got that weird link
+Sep 12 20:29:01 <beanbag->	thx
+Sep 12 20:35:02 <beanbag->	I got a old laptop with a canucked screeen and hd that would be perfect for this
+Sep 12 20:35:19 <beanbag->	the damage to the screen isn't enough to destroy it's use as a wifi detector and I got spare hd's
+Sep 13 07:15:49 *	Disconnected ()
+**** ENDING LOGGING AT Fri Sep 13 07:15:49 2019
+
+**** BEGIN LOGGING AT Fri Sep 13 07:16:13 2019
+
+Sep 13 07:16:13 *	Now talking on ##security
+Sep 13 07:16:13 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 13 07:16:13 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 13 07:16:13 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 13 07:43:02 <katsumi_>	moin
+Sep 13 07:43:39 *	SymbioticFemale moans
+Sep 13 08:07:01 <cesurasean>	what up peeps
+Sep 13 08:09:10 <cesurasean>	db, sup?
+Sep 13 08:09:19 <db>	uh
+Sep 13 08:09:22 <cesurasean>	lol
+Sep 13 08:09:26 <db>	that's a difficult question
+Sep 13 08:13:04 <cesurasean>	is it possible to trick bios TPM?
+Sep 13 08:14:34 <cesurasean>	woke up bout 4am and my desktop said TPM failed
+Sep 13 08:14:48 <cesurasean>	have obviously been hacked with the Uwasson virus.
+Sep 13 08:15:23 <cesurasean>	is it possible they'll be able to trick TPM into flashing my shit?
+Sep 13 08:22:03 <cesurasean>	also, any advice on removing the virus?
+Sep 15 22:38:27 *	Disconnected ()
+**** ENDING LOGGING AT Sun Sep 15 22:38:27 2019
+
+**** BEGIN LOGGING AT Sun Sep 15 22:38:53 2019
+
+Sep 15 22:38:53 *	Now talking on ##security
+Sep 15 22:38:53 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 15 22:38:53 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 15 22:38:53 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 15 22:39:48 <flyback>	i'd run it in live mode but not on 2gb ram
+Sep 15 22:47:06 <flyback>	bbl
+Sep 15 22:55:35 <synaps3>	do you recommend playing ctf for learning security?
+Sep 16 00:19:18 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 00:19:18 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 00:19:45 2019
+
+Sep 16 00:19:45 *	Now talking on ##security
+Sep 16 00:19:45 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 16 00:19:45 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 16 00:19:45 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 16 00:31:04 <mnemon>	I recommend playing ctf's for fun :o
+Sep 16 09:05:08 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 09:05:08 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 09:05:35 2019
+
+Sep 16 09:05:35 *	Now talking on ##security
+Sep 16 09:05:35 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 16 09:05:35 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 16 09:05:35 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 16 09:22:10 <c0mrade>	Ehh, what's up doc?
+Sep 16 10:03:49 <nindustries>	Could this potentially give response injection issues in Java? https://hastebin.com/josovuqasa.js
+Sep 16 10:04:14 <nindustries>	hmm, seems not
+Sep 16 10:06:35 <pycer>	can we please have a paste service that doesn't require fogging ECMAScript to view the paste let alone create it?
+Sep 16 10:07:55 <pycer>	"we build it in react"
+Sep 16 10:07:59 <pycer>	fog your bs you foggers
+Sep 16 10:12:11 <nindustries>	i'm already happy it works without ads
+Sep 16 15:45:11 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 15:45:11 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 15:45:39 2019
+
+Sep 16 15:45:39 *	Now talking on ##security
+Sep 16 15:45:39 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 16 15:45:39 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 16 15:45:40 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 16 15:47:13 <bashquest>	calmclam: i would. but there are naked nude pics of my girlfriend (i love her)
+Sep 16 15:53:02 <SymbioticFemale>	debug1: expecting SSH2_MSG_KEX_ECDH_REPLY  <<<< I'm getting this error while using a RSA key against a "simpleSSHd" Dropbear server (RSA only)
+Sep 16 15:58:12 <dedekating>	hello
+Sep 16 15:58:52 <bashquest>	hi
+Sep 16 15:59:18 <qskwx>	hi
+Sep 16 15:59:18 <dedekating>	any rules?
+Sep 16 15:59:25 <dedekating>	.rules
+Sep 16 15:59:36 <dedekating>	!rules
+Sep 16 16:00:56 <SymbioticFemale>	rules are to stay on topic
+Sep 16 16:01:43 <dedekating>	i get it
+Sep 16 16:02:41 <dedekating>	can i ask something? about my lap trouble
+Sep 16 16:02:47 <SymbioticFemale>	yes
+Sep 16 16:04:37 <dedekating>	i have 1 my lap installed pirates win 7. i cant run hexchat it says "api-ms-win-crt-runtime-|1-1-0.dll is missing
+Sep 16 16:04:58 <SymbioticFemale>	:/
+Sep 16 16:05:30 <dedekating>	i tried to download n install msvc 2015 but failed setup 0x80240017
+Sep 16 16:06:03 <SymbioticFemale>	most people/window 2
+Sep 16 16:06:07 <SymbioticFemale>	umm
+Sep 16 16:06:29 <SymbioticFemale>	maybe you might try in ##windows or #hexchat
+Sep 16 16:06:40 <dedekating>	im on my way learning ubuntu tho
+Sep 16 16:06:43 <SymbioticFemale>	most people here are on some form of unix derivative
+Sep 16 16:07:11 <SymbioticFemale>	well you shouldn't have a problem installing hexchat on ubuntu
+Sep 16 16:07:12 <dedekating>	ouch ;(
+Sep 16 16:07:20 <SymbioticFemale>	apt update ; apt install hexchat
+Sep 16 16:08:08 <dedekating>	then i just dont have to care bout my problem with hex in windows tough?
+Sep 16 16:08:17 <SymbioticFemale>	exactly
+Sep 16 16:08:21 <dedekating>	thanks anyway
+Sep 16 16:08:29 <SymbioticFemale>	try ##windows, like i said
+Sep 16 16:08:45 <dedekating>	didnt it good thing to about learning something?
+Sep 16 16:08:57 <SymbioticFemale>	yeah learning is good
+Sep 16 16:09:14 <dedekating>	wiat, what is that? ##windows? is it a chat room?
+Sep 16 16:09:25 <SymbioticFemale>	yes it is
+Sep 16 16:09:29 <SymbioticFemale>	 /join ##windows
+Sep 16 16:09:47 <dedekating>	uhr..... thanks but
+Sep 16 16:09:50 <dedekating>	i think
+Sep 16 16:10:05 <dedekating>	i just have to throw the windows off
+Sep 16 16:10:20 <SymbioticFemale>	that is what most of us have done, yes
+Sep 16 16:10:33 <bashquest>	:D
+Sep 16 16:10:36 <dedekating>	i btw to be honnest want to learn and be a super hacker
+Sep 16 16:10:54 <dedekating>	thats why im joining here
+Sep 16 16:10:58 <bashquest>	get a PhD in math first.
+Sep 16 16:11:02 <SymbioticFemale>	ah, if you want to be a super hacker, perhaps you start with ParrotOS instead of ubuntu ;)
+Sep 16 16:11:07 <bashquest>	then u'll get.
+Sep 16 16:11:35 <bashquest>	u need math.
+Sep 16 16:11:43 <SymbioticFemale>	bashquest: explain that to me
+Sep 16 16:11:50 <dedekating>	hm... i ll take a look reveiw that
+Sep 16 16:11:55 <SymbioticFemale>	bashquest: or you're pushing on the word 'super'?
+Sep 16 16:12:11 <dedekating>	what math??? hell no im realy dumb of that
+Sep 16 16:12:14 <bashquest>	a super hacker is very good in math i guess
+Sep 16 16:12:22 <SymbioticFemale>	:/
+Sep 16 16:12:43 <bashquest>	dedekating: then forget the super hacker.
+Sep 16 16:12:56 <SymbioticFemale>	bashquest: just let him be a super hacker
+Sep 16 16:13:16 <bashquest>	idc
+Sep 16 16:13:25 <bashquest>	its not my exploding dream
+Sep 16 16:13:31 <SymbioticFemale>	don't take the skid's dream from him
+Sep 16 16:14:03 <dedekating>	thanks btw i got to roll
+Sep 16 16:14:08 <dedekating>	see u soon
+Sep 16 16:14:10 <SymbioticFemale>	c u
+Sep 16 16:15:37 <SymbioticFemale>	i feel like the greatest way possible to troll ##security would be to start a web chat for technical support problems that puts users directly from google into ##security, with not even the technical know-how required to install hexchat.
+Sep 16 16:16:32 <bashquest>	hexchat is a bit creepy. it works. but creepy
+Sep 16 16:16:36 <bashquest>	write your own client
+Sep 16 16:16:38 <SymbioticFemale>	10/10, i would be amused.
+Sep 16 16:17:34 <SymbioticFemale>	i should have told him to install IRSSI on a VPS and then use putty to connect to it
+Sep 16 16:19:03 <ilikeyou>	lol
+Sep 16 16:20:24 <weedmic>	this is what I see when people type lol - https://static.turbosquid.com/Preview/2014/07/10__23_31_27/Tie_Fighter_Front.png264b4307-245c-4be1-ac3e-dd83120e358bOriginal.jpg
+Sep 16 16:27:57 <Alexander-47u>	calmclam thanks
+Sep 16 16:30:38 <ilikeyou>	fun fact, EmmyNoether was a mathematician
+Sep 16 16:37:36 <at0m>	.g noethers theorem
+Sep 16 16:37:42 <EmmyNoether>	https://en.wikipedia.org/wiki/Noether's_theorem
+Sep 16 16:38:37 <at0m>	from what i remember, one of the things there is that 'every conservation law links to a constant of nature'
+Sep 16 16:39:16 <at0m>	or was it on symmetries? probably both eh
+Sep 16 16:58:44 <bashquest>	so theres so much canadian bullshit info but no solution ... ?
+Sep 16 16:59:00 <jabberwock>	bashquest: Don't be influenced by flyback :P
+Sep 16 16:59:06 <bashquest>	whos flyback
+Sep 16 16:59:19 <jabberwock>	The one who says "canuck" about 1,000 times a day
+Sep 16 16:59:25 <jabberwock>	obsessively lol
+Sep 16 16:59:41 <jabberwock>	You two were chatting last night
+Sep 16 16:59:51 <bashquest>	i mean the thinfoil hats
+Sep 16 17:01:07 <Jo-Anna>	What did I miss ?
+Sep 16 17:02:21 <bashquest>	i dont mean im crazy
+Sep 16 17:03:05 <bashquest>	im not a canadian.
+Sep 16 17:05:32 <Burgundy>	do you have a "no canadian" official certification?
+Sep 17 10:23:00 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 10:23:00 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 10:23:27 2019
+
+Sep 17 10:23:27 *	Now talking on ##security
+Sep 17 10:23:27 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 17 10:23:27 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 17 10:23:27 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+Sep 17 10:51:45 <nindustries>	So i'm a cybersec freelancer, but a company wants to pull me in a regular employee. Anyone did that move/comparison before/
+Sep 17 11:00:44 <nate>	nindustries: Considering most companies don't want to bother with relocation, generally no.  But for me it would mainly depend on the pay and cost of living wherever they were
+Sep 17 11:02:59 <nindustries>	nate: it's a difficult exercise for sure.. this would be for a nearby company
+Sep 17 11:03:22 <nindustries>	and offer the possibility to transition to a manager role (create cybersec team w/ 4 engineers)
+Sep 17 11:03:35 <nindustries>	I basically said "convince me", so let's just wait
+Sep 17 11:19:20 <flawseeker>	well comparison is probably you're less paid as a regular employee, less freedom, you have a hierarchy  and coworkers to deal with. On the positive side, you might get broader mission because you're a team, you're part of a team, and income is more secure
+Sep 17 11:19:48 <flawseeker>	mainly depends what you prefer
+Sep 17 11:42:57 <nate>	I'm beginning to think HP has purposely sabotaged these envy laptops from being able to sanely install any linux onto them
+Sep 17 12:06:30 <voices>	what's the rough amd equivalent ot the intel core i7
+Sep 17 12:07:11 <nate>	Probably the Ryzen 7
+Sep 17 12:07:18 <nate>	(AMD wasn't all that creative with the naming)
+Sep 17 12:07:19 <voices>	thought so
+Sep 17 12:08:23 <voices>	ryzen is kinda creative. i mean, it's not a word.. or is it n_n
+Sep 17 12:15:27 <voices>	so what makes it an i7
+Sep 17 12:15:51 <voices>	is it just a name, or does the 7 represent something
+Sep 17 12:16:11 <voices>	i used to think it was just the generation
+Sep 17 12:16:42 <voices>	but i see there are 9th Gen i7s now
+Sep 17 12:17:38 <voices>	10th Gen now even
+Sep 17 12:17:59 <nate>	voices: Same thing that makes it a Ryzen 7, different features than the 5's and 3's
+Sep 17 12:18:00 <nate>	:P
+Sep 17 12:18:13 <nate>	Just like in the past you had Core 2 Duo's, Core 2 quads, etc
+Sep 17 12:18:46 <nate>	Same architectures, just slightly different clocks, capacities, etc
+Sep 17 12:21:17 <voices>	yeah, but the 7 doesn't represent like ... seven... something's
+Sep 17 12:21:59 <voices>	no, i6
+Sep 17 12:22:57 <voices>	like a quad has 4 cores
+Sep 17 12:29:24 <dedekating>	hello hackies
+Sep 17 12:30:08 <dedekating>	is all hacker using libeeboot-ed machine?
+Sep 17 12:58:38 <scapegoat0>	Hey, is it safe to GPG encrypt a ZIP file with AES256? I'm asking because I read somewhere that if you are encrypting something like a codebase, common patterns like your pom.xml can make it significantly easier to recover your encryption key by just having the ciphertext itself only?
+Sep 17 13:26:11 <KidBeta>	scapegoat0: AES does not have a known plaintext attack
+Sep 17 13:26:31 <KidBeta>	knowing the contents shouldn't really help in any meaningful way
+Sep 17 13:35:49 <orlock>	nsh: yo
+Sep 17 13:38:32 <orlock>	nsh: I'm seeing something weird you might have come across with an AXFR
+Sep 17 13:39:33 <orlock>	i get roughly 3k of data in response to a dig -t axfr
+Sep 17 13:40:16 <orlock>	packet dump says that i get more data back from the server, never reaches the client
+Sep 17 13:41:22 <orlock>	dig gives a read error.
+Sep 17 13:41:45 <orlock>	i've been sucked into djb's notes on axfr
+Sep 17 13:42:04 <orlock>	man he has an issue with the guys behind bind.
+Sep 17 13:42:11 <orlock>	https://cr.yp.to/djbdns/axfr-notes.html
+Sep 17 13:42:58 <nsh>	which server?
+Sep 17 13:43:11 <nsh>	don't know anything about AXFR tbh and precious little about DNS in general
+Sep 17 13:43:27 <nsh>	but that's most likely a misconf
+Sep 17 13:43:35 <nsh>	esp if it will respond to the query by UDP
+Sep 17 13:43:48 <nsh>	(DoS amplification vector)
+Sep 17 13:44:39 <nate>	nsh: TL;DR is that AXFR was designed for syncing of a sort, so it had all records.  Meaning you could read all records, including the ones that might be wanted kept private from a nameserver
+Sep 17 13:44:59 <nate>	it's not related to the old DNS Amplification/Reflection attack stuff
+Sep 17 13:45:32 *	nsh nods
+Sep 17 13:49:26 <orlock>	nsh: EH, sorry - Must have you confused, i thought you were having lots of fun with axfr previously?
+Sep 17 13:51:09 <orlock>	I'm actually unsure of the server type. Guess i'll just see if it acts broken on AD infrastructure as well.
+Sep 17 13:51:23 <nsh>	not i as far as i recall
+Sep 17 13:52:15 <orlock>	Must have gotten you confused with a different smedly butler
+Sep 17 13:54:58 <nsh>	happens all the time
+Sep 17 13:55:25 <nate>	ugh why must the ubuntu channel always be dead the rare times I got issues
+Sep 17 13:55:26 <nate>	lol
+Sep 17 13:56:06 <Kryczek>	nate: what issue?
+Sep 17 13:57:14 <nate>	Kryczek: Intel graphics issue, it's technically a kali problem but since kali is based off ubuntu I tested ubuntu also and it does the same thing.  When launching it on a fresh install it just enters into a blank terminal looking screen with a blinking cursor, generally indicative of video driver problems
+Sep 17 13:57:35 <nate>	Something I've fixed before but it appears the switches for booting into a purely terminal/console mode no longer exist or were changed
+Sep 17 13:59:06 <nate>	Used to be something like `nomodeset splash` added to the end of the boot line in grub but it doesn't do anything, the closest I did get was adding those to the end of the recovery mode boot, but the most that got me was to...
+Sep 17 14:01:16 <nate>	https://i.imgur.com/uMdm4cN.jpg to this, it hits that and then just hangs w/ the flashing cursor like it tried to boot into a graphical mode again.  Unfortunately the damned live mode on USB is being weird too.  HP laptops are so fucky trying to work with linux on :/
+Sep 17 14:01:33 <Kryczek>	nate: have you tried "nomodeset" alone? I would remove "splash" and "quiet" to see all the messages, and maybe "splash" even turns modeset back on
+Sep 17 14:02:01 <Kryczek>	I mean alone as in without splash
+Sep 17 14:02:08 <nate>	quiet is usually there by default, so I haven't removed that no, I -believe- I Tried nomodeset alone at one point but I'll try again
+Sep 17 14:02:14 <Kryczek>	not alone all by itself on the kernel command line
+Sep 17 14:02:34 <nate>	I saw some referneces to doing a 'nomodeset splash 3' too but it also didn't do anything, also some references to a 'nomodeset text' and etc etc
+Sep 17 14:02:45 <Kryczek>	remove also if you see something like vthandoff or however it's spelled
+Sep 17 14:03:01 <Kryczek>	any chance you can copy/paste the line?
+Sep 17 14:03:43 <nate>	Not really since I can't get it booted lol, I'd just have to take another screen shot.  I wonder if the LVH setup is maybe some how at fault, but I wouldn't -think- that would impact this
+Sep 17 14:04:26 <Kryczek>	it doesn't have SSH?
+Sep 17 14:06:41 <nate>	Hard to SSH into it when you can't even get booted in to decrypt it :P
+Sep 17 14:07:19 <Kryczek>	does it respond to ping at least?
+Sep 17 14:07:30 <Kryczek>	ah no wait I guess LUKS is before networking
+Sep 17 14:07:37 <Kryczek>	(unless you use dracut)
+Sep 17 14:07:49 <nate>	Not just that but I never pre-configured the wireless, and I don't have a wired adapter for this particular laptop unfortunately
+Sep 17 14:10:02 <nate>	Main problem to doing all that though is long-term I want this thing to be LVM encrypted so any fix discoveries without it probably wouldn't work
+Sep 17 14:10:23 <nate>	Or well
+Sep 17 14:10:36 <nate>	I guess I can do all the encryption post a non-encrypted install...
+Sep 17 14:10:37 <nate>	hmph
+Sep 17 14:13:08 <Kryczek>	does it have a TPM?
+Sep 17 14:13:42 <nate>	Yeah, cause I had originally done it at install time
+Sep 17 14:14:50 <Kryczek>	I am not sure I follow... I mean does the laptop have a Trusted Platform Module?
+Sep 17 14:18:31 <nate>	Oh, oh, sorry, I was thinking of something different.  No, it shouldn't, it was just a general consumer laptop
+Sep 17 14:18:49 <nate>	I did have to disable UEFI (go into legacy BIOS mode) to even get things installed though since HP UEFI interface's are a disaster
+Sep 17 14:20:36 <Kryczek>	I know the feeling :) I use UEFI only when I want to play with UEFI Secure Boot
+Sep 17 14:21:25 <nate>	Yeah, well I had that disabled originally anyways but with it in legacy mode that's not a concern either
+Sep 17 14:48:24 <mnemon>	nate: it's an issue with X or the graphical mode terminal?
+Sep 17 14:49:35 <mnemon>	anyways removing quiet and splash should show something unless it fails already on loading the kernel
+Sep 17 15:10:37 <nate>	mnemon: No idea since I can't get it that far, but I think I figured it out possibly
+Sep 17 15:10:45 <nate>	it's still booting UEFI mode despite the BIOS option being set to legacy lol
+Sep 17 15:11:44 <nate>	I forgot, when I first installed I explicitly booted the USB image from the system start up diags, it has a UEFI and non UEFI boot mode options so I explicitly did a USB Boot (Non-UEFI), but when it autoboots it does it in UEFI.  This HP is so fucked up
+Sep 17 15:11:52 <nate>	Maybe I should see if it has a firmware update available
+Sep 17 15:25:36 <ilikeyou>	nate: you could always try chrooting into it. troubleshoot from there. you can see if luks is still in one piece, and can look into that efi boot partition. can also test X in chroot without worrying about efi or legacy. eliminate those at least, before you go on a wild goose chase.
+Sep 17 15:46:36 <katsumi>	hmhmm
+Sep 17 15:49:11 *	katsumi is cookin fish
+Sep 17 15:49:35 <katsumi>	will take two hours
+Sep 17 15:51:10 <nindustries>	so a zone transfer?
+Sep 17 15:51:13 <nindustries>	woops
+Sep 17 15:51:49 <katsumi>	what's down? old jira exploit in the wild?
+Sep 17 15:53:14 <katsumi>	from jule
+Sep 17 15:53:18 <katsumi>	ha
+Sep 17 15:54:46 <katsumi>	 128.14.133.58 - - [17/Sep/2019:02:35:01 +0200] "GET /jira/secure/ContactAdministrators!default.jspa HTTP/1.1" 404 1058 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+Sep 17 15:55:15 <katsumi>	post in subject
+Sep 17 15:55:54 *	ilikeyou tries to swipe katsumi's fish with ninja-like stealth 
+Sep 17 15:57:01 *	katsumi strikes back wit help of an angry dolphin
+Sep 17 15:57:20 <ilikeyou>	:)
+Sep 17 15:58:25 <katsumi>	music
+Sep 17 15:58:30 <Jo-Anna>	Hi everyone what’s new ?
+Sep 17 15:58:30 <katsumi>	he
+Sep 17 15:59:19 <katsumi>	nuthin new, ipv6 is a bunch of shit
+Sep 17 16:00:50 <katsumi>	hey we have milllions of adresses let us disconnectem huray
+Sep 17 16:01:05 <katsumi>	fck fck fck
+Sep 17 16:03:36 <katsumi>	i was standing at my providers store uh but there ... a dog balou 85kg half dobermann half berner sennenhund unstressed me
+Sep 17 16:03:41 <Oopserator>	old man: "Hey, what's all this making the area code mandatory!? I just got used to my 'new' phone number (I like my old one, which was "323"... There are ENOUGH numbers, dammit, stop adding more! Newbies be damned!"
+Sep 17 16:05:01 <katsumi>	wanna phone number? to display or for use???
+Sep 17 16:05:50 <mnemon>	katsumi: ragdoll therapy?
+Sep 17 16:07:34 <katsumi>	ommmmm
+Sep 17 16:09:09 <Oopserator>	I was kidding... My (indirect) message was: The connected world is bigger, and there aren't enough v4 IP addresses to go around, so we need a new schema
+Sep 17 16:10:01 <mnemon>	just reminded me of playing chew toy for some MP dogs
+Sep 17 16:10:39 <nate>	Ugh of course there's literally no driver details at all for this laptop on HP's site, no updates no nothing
+Sep 17 16:11:19 <katsumi>	he not fck wheres my liter
+Sep 17 16:12:47 <katsumi>	mnemon: itÄs about pastor of muppets
+Sep 17 16:13:28 <katsumi>	i'maway heckin th hlogs
+Sep 17 16:13:35 <katsumi>	laterz
+Sep 17 16:14:10 <katsumi>	yazzooooo
+Sep 17 16:16:01 *	Oopserator wonders if katsumi should invest in a new keyboard...
+Sep 17 16:16:48 <katsumi>	lol
+Sep 17 16:21:45 <katsumi>	noch rosmarin drauf und thymian dann wird der fisch was
+Sep 17 16:23:10 <Oopserator>	what, is this a German cooking show, now?
+Sep 17 16:23:39 <calmclam>	MOAR SAUSAGE
+Sep 17 16:25:14 <Oopserator>	I've heard of boar sausage, but what does a moar eat in the winter?
+Sep 17 16:27:11 <mnemon>	seems like a bot
+Sep 17 16:30:45 <katsumi>	lekka
+Sep 17 16:31:16 <katsumi>	get a real life
+Sep 17 16:35:07 <katsumi>	no
+Sep 17 16:35:12 <mawk>	yes
+Sep 17 16:35:18 <mawk>	nix lekka
+Sep 17 16:35:26 <katsumi>	hmm?
+Sep 17 16:37:00 <katsumi>	im not a bot... tears droppin outa my eyes...;(
+Sep 17 16:37:26 <mawk>	niks
+Sep 17 16:37:28 <mawk>	nichts
+Sep 17 16:37:57 <katsumi>	trash time now
+Sep 17 16:38:03 <katsumi>	wbbl
+Sep 17 16:38:06 <mawk>	no
+Sep 17 16:40:34 <katsumi>	https://www.youtube.com/watch?v=lIaCTPBOFC4      here we go
+Sep 17 16:40:43 <katsumi>	.t
+Sep 17 16:40:48 <EmmyNoether>	MADBALL - INFILTRATE THE SYSTEM - OFFICIAL - YouTube
+Sep 17 16:41:22 <katsumi>	o/
+Sep 17 16:46:57 <katsumi>	BnB
+Sep 17 16:55:36 <rindolf>	Hi all! I posted this lesson from master Yoda about security - https://twitter.com/shlomif/status/1173867402997768193
+Sep 17 16:56:06 <Oladon_wfh>	Posted it, did you?
+Sep 17 16:56:21 <rindolf>	Oladon_wfh: it is my twitter
+Sep 17 16:56:53 <rindolf>	Oladon_wfh: the youtube upload was not mine
+Sep 17 17:01:35 <rindolf>	Oladon_wfh: back when i posted a link to https://www.shlomifish.org/humour/Summerschool-at-the-NSA/ to fulldisclosure after getting the admin's approval on irc/email some redditors later scolded me for publishing imaginary fanfic there. some months later - the Snowden news broke
+Sep 17 17:02:45 <rindolf>	Oladon_wfh: do you agree that one should not be overly paranoid about security and privacy?
+Sep 17 17:04:49 <nsh>	paranoia isn't like atmosphere control
+Sep 17 17:04:59 <nsh>	you don't just pick a temperature level you feel comfortable with and that's it
+Sep 17 17:05:06 <Oopserator>	I agree that one should not be *overly* paranoid, but a measure of caution is always good
+Sep 17 17:05:12 <nsh>	paranoia is like conversation, or mobility, or a martial art
+Sep 17 17:05:34 <nsh>	it's a thing you must refine and hone and practice and apply daily and introspect as to whether the application was better or worse placed
+Sep 17 17:05:39 <Oopserator>	paranoia is the *irrational* fear of something... If you have a rational reason for taking precautions, it's valid
+Sep 17 17:05:43 <nsh>	whether the methods were more or less effective
+Sep 17 17:05:55 <nsh>	it is not a quantative thing one raises or lowers to find an optimal
+Sep 17 17:05:59 <nsh>	this is bad thinking
+Sep 17 17:06:19 <nsh>	it's like asking "what level of driving is appropriate for urban shanghai"
+Sep 17 17:06:47 <nsh>	it's complex, it's contextual, it's stylistic and its informed by at least semiformalised models and assessments
+Sep 17 17:06:57 <nsh>	paranoia is something you learn. it's not something you just do harder
+Sep 17 17:07:06 <Oopserator>	so, nsh, you're saying it's contextual
+Sep 17 17:07:23 <Oopserator>	if so, I agree
+Sep 17 17:07:25 <Mibd>	lol
+Sep 17 17:07:30 <Oopserator>	Proper security is the mitigation of risk to an acceptable level
+Sep 17 17:07:36 <Mibd>	there is no 99%security
+Sep 17 17:07:42 <Mibd>	or 50%
+Sep 17 17:07:46 <Mibd>	its only 100%
+Sep 17 17:08:06 <Mibd>	you have it or dont
+Sep 17 17:08:10 <Mibd>	there's no half of it
+Sep 17 17:08:14 <rindolf>	Oladon_wfh: i also came up with a new nsa factoid: "The NSA agents are not only afraid of their own shadow, but whenever they see any shadow whatsoever they have to do a saving throw with a twenty sided die where rolling 1 results in a severe heart attack. The NSA's intensive care unit is very busy"
+Sep 17 17:08:36 <SymbioticFemale>	nsh: paranoia is something you learn? i've always thought that the best security professionals tend to have gotten their paranoia from the cheese pizza
+Sep 17 17:08:51 <SymbioticFemale>	nsh: is that within or outside of your suggestion that paranoia is learned? is their paranoia learned?
+Sep 17 17:09:27 <Oopserator>	Mibd,  think your statement is both confusing, and fundamentally wrong
+Sep 17 17:09:34 <Mibd>	lol what
+Sep 17 17:09:40 <Oopserator>	First of all, you don't "have" security, you exercise it
+Sep 17 17:09:42 <SymbioticFemale>	rindolf: not sure what you are getting at here
+Sep 17 17:09:58 <Mibd>	and if you exercise it you have it?
+Sep 17 17:10:10 <Oopserator>	there is no "have".
+Sep 17 17:10:16 <Oopserator>	You don't "have" medicine
+Sep 17 17:10:24 <Oopserator>	you don't "have" engineering
+Sep 17 17:10:33 <SymbioticFemale>	Oopserator: don't dig into the words like this
+Sep 17 17:10:39 <Oopserator>	you exercise it, practice it, execute secure operations
+Sep 17 17:10:47 <Mibd>	:)
+Sep 17 17:10:49 <nsh>	one has languages, but that means to have learned and assimilated
+Sep 17 17:10:56 <Mibd>	security is secure from start
+Sep 17 17:11:00 <Mibd>	not with time or exercise
+Sep 17 17:11:01 <Oopserator>	SymbioticFemale, words are important (to some, anyway)
+Sep 17 17:11:12 <Oladon_wfh>	Mibd: By that argument, nothing is ever secure.
+Sep 17 17:11:20 <Mibd>	Oladon_wfh, that is ture
+Sep 17 17:11:24 <Mibd>	true'
+Sep 17 17:11:27 <Mibd>	we dont have security
+Sep 17 17:11:30 <Oopserator>	In most cases, you cannot be 100% "secure", but you can, as I mentioned previously, *mitigate risk to an acceptable level*
+Sep 17 17:11:31 <Mibd>	and we cant have it
+Sep 17 17:11:33 <Oladon_wfh>	So why bother trying?
+Sep 17 17:11:38 <rindolf>	SymbioticFemale: just sharing stuff
+Sep 17 17:11:39 <Mibd>	noone said that
+Sep 17 17:11:54 <Oladon_wfh>	Mibd: I'm saying it — it's the logical progression of your logic.
+Sep 17 17:11:55 <SymbioticFemale>	rindolf: from where did that come from?
+Sep 17 17:12:11 <Mibd>	can you guarantee anything?
+Sep 17 17:12:12 <Mibd>	no
+Sep 17 17:12:23 <Oopserator>	I'm ask all the time: "Are we secure?", to which I (usually) respond: "We're more secure."
+Sep 17 17:12:26 <Mibd>	not the air not the water not the code
+Sep 17 17:12:27 <Mibd>	never
+Sep 17 17:12:31 <Mibd>	or anything else
+Sep 17 17:12:41 <Oladon_wfh>	Oopserator: I'm sorry you have to work with people who ask you that :P
+Sep 17 17:12:54 <rindolf>	using ssh instead of telnet is rational. using noscript is fine
+Sep 17 17:13:06 <Oopserator>	I'm glad I do, Oladon_wfh, that's what keeps me employed! :)
+Sep 17 17:13:36 <Oladon_wfh>	Oopserator: Heh, fair point. Though I manage pretty well with only external people asking me silly questions like that :P
+Sep 17 17:13:47 <rindolf>	going to great lengths to avoid all trackers and not opening twitter links is paranoia
+Sep 17 17:13:55 <Oopserator>	rindolf, it's all about your comfort level, your tolerance to risk
+Sep 17 17:14:13 <rindolf>	Oopserator: well, maybe
+Sep 17 17:14:20 <Oopserator>	Oladon_wfh, external to what?
+Sep 17 17:14:37 <Oladon_wfh>	the company
+Sep 17 17:14:49 <rindolf>	Oopserator: i'm not afraid of what the nsa knows about me
+Sep 17 17:15:11 <rindolf>	they dont share it with anyone anyway
+Sep 17 17:15:26 <nate>	I mean that's... really not true
+Sep 17 17:15:31 <Oopserator>	so, Oladon_wfh, you're saying everyone in your company is knowledgeable when it comes to Security?
+Sep 17 17:16:01 <nate>	rindolf: https://en.wikipedia.org/wiki/Five_Eyes / https://en.wikipedia.org/wiki/UKUSA_Agreement may be worth a read :P
+Sep 17 17:16:13 <Oladon_wfh>	Oopserator: To various degrees — I'd never pull a Mibd and say you're either 100% knowledgeable or 0% :P
+Sep 17 17:16:16 <Oopserator>	unfortunately there's a lot of over-sharing when it comes to PII
+Sep 17 17:16:19 <flawseeker>	they share their exploits with the whole world, so our data…
+Sep 17 17:16:27 <rindolf>	and i dont mind ppl seeing what pseudo-porn or soft porn i'm reading
+Sep 17 17:16:42 <Oladon_wfh>	Oopserator: But they're pretty good, and they all want to learn.
+Sep 17 17:17:14 <Oopserator>	Oladon_wfh, lucky you , I guess
+Sep 17 17:17:20 <Oladon_wfh>	:)
+Sep 17 17:17:40 <rindolf>	nate: well, they dont share it with anyone outside their limited circle
+Sep 17 17:17:58 <Oopserator>	I work in a fairly large company, with many people, with many competencies, and many levels of competency when it comes to Security.
+Sep 17 17:18:09 <Oopserator>	That's why they hired me, to fill in the gaps :)
+Sep 17 17:18:14 <Mibd>	well if you have 5% knowledge how do you expect to have 100% security?
+Sep 17 17:18:15 <Oladon_wfh>	Oopserator: That's fair.
+Sep 17 17:18:21 <Oladon_wfh>	Mibd: :P
+Sep 17 17:18:25 <Mibd>	when you cant guarantee anything
+Sep 17 17:18:33 <Mibd>	how do you expect your code to be secure
+Sep 17 17:18:48 <dedekating>	hey guys
+Sep 17 17:18:49 <rindolf>	nate: someone told me that  the nsa recruiters he met smiled too much and flinched
+Sep 17 17:18:52 <Mibd>	when the code isnt even math. proven correct
+Sep 17 17:19:05 <Oopserator>	speaking of which, I should get back to my work, here, so I'll just 'lurk', i.e. come back from time to time to follow this interesting conversation
+Sep 17 17:19:28 <Oladon_wfh>	Yeah, I should get back to this very exciting Vendor Security Risk Assessment I'm filling out...
+Sep 17 17:19:32 <Mibd>	you're patching the holes instead of replacing whats faulty
+Sep 17 17:19:36 <Oopserator>	(seriously: I've been lurking in this channel for over a week, and this is the first "good" discussion on security I've seen!)
+Sep 17 17:19:56 <rindolf>	no one in his right mind will work for the nsa. but naturally some ppl are not in their right minds
+Sep 17 17:20:22 <Mibd>	rindolf, then who protects your country, or at least try
+Sep 17 17:20:28 <Mibd>	who keeps you safe
+Sep 17 17:20:36 <Mibd>	"safe"
+Sep 17 17:20:41 <rindolf>	Mibd: the nsa?
+Sep 17 17:20:52 <rindolf>	Mibd: i am israeli
+Sep 17 17:21:03 <Mibd>	then mossad
+Sep 17 17:21:06 <Mibd>	or whats called
+Sep 17 17:21:34 <rindolf>	Mibd: i was told everyone in the intelligence community hates the nsa
+Sep 17 17:21:41 <Mibd>	why
+Sep 17 17:21:46 <rindolf>	Mibd: ah, the mossad
+Sep 17 17:22:03 <Oladon_wfh>	rindolf: What's with your obsession with the NSA?
+Sep 17 17:22:19 <nate>	Considering the nature of shit mossad does I'm pretty sure you have far worse concerns to be had than the US NSA
+Sep 17 17:22:20 <nate>	lol
+Sep 17 17:22:33 <iz>	maybe that's why :b
+Sep 17 17:22:39 <rindolf>	Oladon_wfh: then let's stop
+Sep 17 17:22:47 <Oladon_wfh>	To quote Zaphod Beeblebrox, "The NSA's just this guy, you know?"
+Sep 17 17:22:49 <iz>	YOU guys are the bad ones, we don't do anything bad!
+Sep 17 17:22:53 <gurrkiin>	whats mossad?
+Sep 17 17:23:05 <nate>	gurrkiin: Israeli intelligence
+Sep 17 17:23:05 <gurrkiin>	also fuck the NSA
+Sep 17 17:23:16 <nate>	they just tend to also be considered practical assassins too
+Sep 17 17:23:21 <Mibd>	gurrkiin, the kgb of israel:)
+Sep 17 17:23:35 <gurrkiin>	aha ok, dont mess with em so
+Sep 17 17:23:41 <Oladon_wfh>	To be fair, there's not a lot of proof of that last claim, nate :P
+Sep 17 17:23:51 <Oladon_wfh>	(Nor would there be if they really are...)
+Sep 17 17:23:55 <nate>	gurrkiin: If you don't want your balls hooked up to a car battery while you're waterboarded, no, no you don't
+Sep 17 17:23:56 <nate>	lol
+Sep 17 17:24:03 <iz>	more proof than "i was told everyone hates the NSA"
+Sep 17 17:24:12 <Oladon_wfh>	iz: heh
+Sep 17 17:24:19 <dedekating>	ive heard somwhere that nasa and iss will move from windows to linux, is that true?
+Sep 17 17:24:35 <Oladon_wfh>	Probably, at some point.
+Sep 17 17:24:39 <Mibd>	call them and ask them
+Sep 17 17:24:40 <nate>	Oladon_wfh: There is a LOT of 'evidence' of that, go look up their lists of "alleged assassinations" lol
+Sep 17 17:24:55 <SymbioticFemale>	dedekating: iss is on windoze?
+Sep 17 17:25:02 <nate>	dedekating: NASA has used multiple platforms for ages
+Sep 17 17:25:09 <Mibd>	SymbioticFemale, with thinkpads:)
+Sep 17 17:25:12 <rindolf>	i received a lot of sms spam during the election - what if i get sth important - https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf
+Sep 17 17:25:48 <nate>	dedekating: That said you're like years out of date; https://training.linuxfoundation.org/solutions/corporate-solutions/success-stories/linux-foundation-training-prepares-the-international-space-station-for-linux-migration/
+Sep 17 17:26:06 <dedekating>	idk i just heard somewhere thats why i ask u guys
+Sep 17 17:26:25 <nate>	They did it like 7 years ago or so now I believe lol
+Sep 17 17:26:30 <Mibd>	thats the other agency
+Sep 17 17:26:33 <Mibd>	who spreads bs
+Sep 17 17:26:40 <rindolf>	i didnt vote due to health reasons but i encouraged ppl to vote and wished good luck to all candidates
+Sep 17 17:27:30 <rindolf>	on my twitter
+Sep 17 17:28:41 <dedekating>	hey guys could u throw your twitter id, bout to follow u
+Sep 17 17:28:42 <rindolf>	the mossad did 9/11 - https://www.quora.com/What-is-the-Five-Dancing-Israelis-incident ; http://shlomifishswiki.branchable.com/Fluttershy__44___Princess_of_Princesses__44___head_of_the_secret_cabal_leadership_of_the_Mossad__44___the_already_top_secret_intelligence_agency_of_the_Zionist_conspiracy/?updated
+Sep 17 17:28:52 <rindolf>	dedekating: sure
+Sep 17 17:29:07 <rindolf>	dedekating: https://twitter.com/shlomif
+Sep 17 17:29:09 <nate>	lol those look like completely legit evidential URL's
+Sep 17 17:29:09 <Mibd>	rindolf, i heard bush did it
+Sep 17 17:29:18 <Mibd>	depends where you read it
+Sep 17 17:29:21 <rindolf>	dedekating: what is yours
+Sep 17 17:29:34 <dedekating>	i will follow
+Sep 17 17:29:37 <rindolf>	i am kidding
+Sep 17 17:29:45 <rindolf>	dedekating: thanks
+Sep 17 17:30:23 <dedekating>	its new account
+Sep 17 17:30:37 <dedekating>	for my project called learning flying machine
+Sep 17 17:30:49 <rindolf>	dedekating: my inner https://mlp.fandom.com/wiki/Rainbow_Dash wants to be the twitters with the most followers but i'll settle for much less
+Sep 17 17:32:55 <dedekating>	i was using fandom but uninstall it earlier cuz i didnt see it fun
+Sep 17 17:33:13 <rindolf>	dedekating: https://twitter.com/katyperry was notorious for replying and retweeting interesting replies on her posts and she became the top twitterer
+Sep 17 17:33:43 <rindolf>	dedekating: maybe obama who surpassed her slightly too
+Sep 17 17:33:53 <dedekating>	what? how many account do u have?
+Sep 17 17:34:08 <rindolf>	dedekating: maybe obama who surpassed her slightly does that too now
+Sep 17 17:34:09 <dedekating>	ohh i see
+Sep 17 17:34:24 <dedekating>	haha i didnt read it
+Sep 17 17:34:36 <rindolf>	dedekating: katy perry is not me - she is a singer
+Sep 17 17:35:04 <dedekating>	nice to meet u btw shilomi
+Sep 17 17:35:06 <rindolf>	dedekating: ilike some of her songs but she has a bitch image
+Sep 17 17:35:23 <rindolf>	dedekating: it is Shlomi
+Sep 17 17:35:31 <dedekating>	sorry
+Sep 17 17:35:35 <dedekating>	Shilomy
+Sep 17 17:35:40 <dedekating>	Shilomi
+Sep 17 17:35:58 <rindolf>	dedekating: you can call me rindolf- https://www.shlomifish.org/me/rindolf/
+Sep 17 17:36:21 <dedekating>	why not shilomi?
+Sep 17 17:36:36 <Oopserator_lurki>	obviously her autocorrect doesn't like "Shlomi" ;)
+Sep 17 17:36:38 <dedekating>	its nice
+Sep 17 17:36:47 <dedekating>	Shlomi i mean
+Sep 17 17:36:48 <rindolf>	Oopserator_lurki: heh
+Sep 17 17:36:50 <dedekating>	sorry
+Sep 17 17:36:54 <rindolf>	dedekating: thanks
+Sep 17 17:37:13 <rindolf>	dedekating: it means Shalom-ful
+Sep 17 17:37:13 <dedekating>	is that your true name?
+Sep 17 17:37:23 <dedekating>	wow
+Sep 17 17:37:27 *	Oopserator changes his nick back, because the previous one was truncated
+Sep 17 17:37:37 <dedekating>	Shalomaleykhem
+Sep 17 17:37:41 <rindolf>	dedekating: https://www.shlomifish.org/meta/FAQ/#is_shlomi_fish_your_real_name
+Sep 17 17:38:11 <rindolf>	dedekating: you are not the first to ask that
+Sep 17 17:38:40 <dedekating>	cool, and its actually lovely name btw
+Sep 17 17:41:18 <rindolf>	dedekating: i've offered to licence everything i wrote on my site which isnt private/personal under cc-by if i get 10 MegaEUR: https://twitter.com/shlomif/status/1173538842751713281
+Sep 17 17:41:40 <rindolf>	dedekating: thanks
+Sep 17 17:42:06 <dedekating>	i'm study literature too
+Sep 17 17:42:54 <dedekating>	its russian
+Sep 17 17:43:21 <dedekating>	i ve once translating some anna akhmatova poem
+Sep 17 17:43:25 <rindolf>	dedekating: ah
+Sep 17 17:45:34 <dedekating>	also btw i realy interested to find something ancient secreet, mythology, magick etc
+Sep 17 17:45:36 <rindolf>	dedekating: i unapologetically write a lot of fanfic and crossovers - https://twitter.com/shlomif/status/1173866257952776193
+Sep 17 17:45:46 <dedekating>	hope i will find some in deepweb
+Sep 17 17:46:37 <rindolf>	dedekating: parts of the bible are great - https://www.shlomifish.org/philosophy/philosophy/putting-all-cards-on-the-table-2013/DocBook5/putting-all-cards-on-the-table-2013/david_and_goliath.html
+Sep 17 17:47:01 <dedekating>	i think i should follow all your thread
+Sep 17 17:47:06 <dedekating>	interesting
+Sep 17 17:48:17 <rindolf>	dedekating: there is also this scene from indiana jones - https://www.youtube.com/watch?v=vdnA-ESWcPs
+Sep 17 17:48:40 <dedekating>	is that true if israeli have 2 diff bible? and 2 prophet?
+Sep 17 17:48:57 <rindolf>	dedekating: no
+Sep 17 17:49:56 <dedekating>	two race? and two languange?
+Sep 17 17:50:08 <dedekating>	i mean jew
+Sep 17 17:50:29 <rindolf>	dedekating: there is the jewish bible whose original is mostly in hebrew
+Sep 17 17:51:27 <rindolf>	dedekating: and the christians have several canons
+Sep 17 17:52:11 <dedekating>	did u write something bout solomon magick?
+Sep 17 18:10:01 <SymbioticFemale>	well they did it again. Stallman is out from MIT and the FSF https://tech.slashdot.org/story/19/09/17/0446239/richard-stallman-resigns-from-mit
+Sep 17 18:10:45 <SymbioticFemale>	political correctness destroying the FOSS community
+Sep 17 18:11:46 <SymbioticFemale>	taking out people like Jacob Appelbaum and Richard Stallman
+Sep 17 18:12:24 <SymbioticFemale>	surely to be replaced by corporate or three-letter shills
+Sep 17 18:13:29 <Mibd>	it was his decision
+Sep 17 18:13:39 <Mibd>	he didnt got fired
+Sep 17 18:13:46 <Mibd>	he resigned as his own will
+Sep 17 18:13:51 <SymbioticFemale>	https://www.vice.com/en_us/article/9ke3ke/famed-computer-scientist-richard-stallman-described-epstein-victims-as-entirely-willing
+Sep 17 18:14:03 <nate>	mibd: That's... 99% of the time how resignations work
+Sep 17 18:14:17 <nate>	people get ultimatums, go out on your own apparent terms or get fired and potentially embarassed
+Sep 17 18:14:18 <nate>	lol
+Sep 17 18:14:21 <Mibd>	yeah but people say that he was forced
+Sep 17 18:14:25 <Mibd>	noone can force you do shit
+Sep 17 18:14:29 <SymbioticFemale>	exactly nate
+Sep 17 18:14:33 <SymbioticFemale>	""I am doing this due to pressure on MIT and me over a series of misunderstandings and mischaracterizations." "
+Sep 17 18:14:40 <nate>	I mean they can, by telling him if he doesn't then he's getting fired anyways
+Sep 17 18:14:53 <SymbioticFemale>	yep
+Sep 17 18:21:03 <xochilpili>	hello everyone
+Sep 17 18:23:06 <xochilpili>	im trying to use hydra for a test, but got 400 bad request using https-post-form, using curl im able to do the request with cookie and --data-binary, but in hydra i have use https-post-form "web/login:login=^USER^&password=^PASS^:H=Cookie:asdasd" and got freeze, then change Cookie: for Cookie\: but still got 400 Bad request
+Sep 17 18:23:57 <xochilpili>	is there something like --data-binary in hydra ?
+Sep 17 18:26:04 <ullbeking>	Is anybody here running an Exim SMTP server?
+Sep 17 18:30:04 <teardown>	ullbeking: nah. why?
+Sep 17 18:30:19 <nate>	Exim?  Hasn't Exim been EoL for ages now
+Sep 17 18:30:21 <teardown>	are you owning milters
+Sep 17 18:30:50 <teardown>	nate: i know of some very large webhost conglomerates which run exim
+Sep 17 18:32:37 <teardown>	ok im exaggerating. i only know of one very lange webhosting conglemerate which runs it
+Sep 17 18:32:44 <teardown>	*large
+Sep 17 18:32:53 *	teardown cant type today
+Sep 17 18:42:04 <beanbag->	I think I am giving up on pidense
+Sep 17 18:42:24 <beanbag->	you have to fight various system daemons for control of a 2ndary wifi device
+Sep 17 18:42:49 <mawk>	what is pidense
+Sep 17 18:43:49 <beanbag->	tool for detecting evil wifi attacks
+Sep 17 18:46:25 <beanbag->	either the sw hasn't been updated with distros or they broke something
+Sep 17 18:51:28 <mawk>	a
+Sep 17 18:51:46 <mawk>	you have a specific error ?
+Sep 17 18:56:50 <Inconvenience>	dont cameras add personal info to images
+Sep 17 18:56:53 <Inconvenience>	?
+Sep 17 18:56:55 <mawk>	yes
+Sep 17 18:56:58 <mawk>	you can strip the info
+Sep 17 18:57:01 <Inconvenience>	how
+Sep 17 18:57:08 <mawk>	for instance you can upload to my wonderful site: https://pix.watch
+Sep 17 18:57:14 <mawk>	it strips the info automatically on upload
+Sep 17 18:57:28 <Inconvenience>	what abotu just doing a screencap
+Sep 17 18:57:30 <Inconvenience>	on debian?
+Sep 17 18:57:44 <mawk>	no info in a screenshot I think
+Sep 17 18:57:46 <mawk>	you can verify
+Sep 17 18:57:52 <mawk>	http://exif.regex.info/exif.cgi
+Sep 17 18:57:56 <Inconvenience>	what am i looking for
+Sep 17 18:58:02 <mawk>	upload your screenshot to the site
+Sep 17 18:58:04 <mawk>	http://exif.regex.info/exif.cgi
+Sep 17 18:58:09 <mawk>	it will tell about any metadata
+Sep 17 18:58:12 <Inconvenience>	no i want to look myself
+Sep 17 18:58:14 <mawk>	lol
+Sep 17 18:58:20 <Inconvenience>	is there a tool
+Sep 17 18:58:27 <mawk>	no
+Sep 17 18:58:28 <mawk>	not for you
+Sep 17 18:58:30 <Inconvenience>	or just looking at it with vim
+Sep 17 18:58:33 <mawk>	yes do that
+Sep 17 18:58:35 <mawk>	open it with ed
+Sep 17 18:58:39 <mawk>	ed image.png
+Sep 17 18:58:42 <mawk>	best editor
+Sep 17 18:59:05 <Inconvenience>	what ed
+Sep 17 18:59:12 <mawk>	ed
+Sep 17 18:59:14 <mawk>	the command ed
+Sep 17 18:59:17 <Inconvenience>	its like vim?
+Sep 17 18:59:19 <teardown>	Inconvenience: you can use exiv2 and exif to dump the metadata. you would need to use something else to strip it
+Sep 17 18:59:28 <mawk>	why would you tell him teardown
+Sep 17 18:59:32 <mawk>	he's not allowed to do that
+Sep 17 18:59:34 <mawk>	he must open with vi
+Sep 17 18:59:54 <teardown>	you could use vim -b to open the image in binary mode, yes like mawk says
+Sep 17 19:00:06 <mawk>	no -b, that would be too easy
+Sep 17 19:00:14 <mawk>	he needs to be punished for asking for spoon feeding
+Sep 17 19:00:17 <Inconvenience>	is exi* in the debian repos?
+Sep 17 19:00:20 <Inconvenience>	apt get?
+Sep 17 19:00:34 <teardown>	Inconvenience: im not sure but probably
+Sep 17 19:00:34 <mawk>	type: apt search exif
+Sep 17 19:00:57 <mawk>	instead of asking questions about something if you want to learn something today maybe ask questions about how to know something
+Sep 17 19:01:56 <teardown>	mawk: yeah, nah wouldn't spoonfeeding be more like 'run this command to strip the personal info'
+Sep 17 19:02:43 <teardown>	i just told Inconvenience how to see the metadata which might fuel curiosity
+Sep 17 19:05:11 <mawk>	yeah
+Sep 17 19:06:14 <SymbioticFemale>	snowden is speaking live on reuters.tv and youtube.com
+Sep 17 19:06:28 <Inconvenience>	mawk: stfu?
+Sep 17 19:06:48 <Inconvenience>	im asking coz i want to ask
+Sep 17 19:06:51 <beanbag->	there's no documentation for pidense I can see
+Sep 17 19:06:56 <teardown>	Inconvenience: s/fu/fw/
+Sep 17 19:06:59 <Inconvenience>	i know how to use fuking apt
+Sep 17 19:07:07 <shibboleth>	i find it very likely that droids and idevices embed artifacts in images that lets those in the know link it to device uuid. location and other metrics may as well be included
+Sep 17 19:07:32 <Skripter>	Who likes Kreb on Security
+Sep 17 19:08:12 <teardown>	Kreb is kind of an asshole imo
+Sep 17 19:10:18 <mawk>	then why are you not using it Inconvenience ? if you know
+Sep 17 19:11:15 <Inconvenience>	coz its faster to ask
+Sep 17 19:11:21 <mawk>	lol
+Sep 17 19:11:37 <Inconvenience>	y the fuk r u questioning me numb nuts
+Sep 17 19:11:46 <Inconvenience>	just go about ur business
+Sep 17 19:11:59 <mawk>	I'm unemployed sorry
+Sep 17 19:13:06 <Inconvenience>	is the note10 any good
+Sep 17 19:19:36 <SymbioticFemale>	Inconvenience: ask in ##hardware or something
+Sep 17 19:20:28 <Inconvenience>	oh right
+Sep 17 19:20:32 <Inconvenience>	ive looked at this before
+Sep 17 19:20:48 <SymbioticFemale>	Inconvenience: i liek grapheneOS. you are in ##security btw
+Sep 17 19:21:22 <Inconvenience>	is anyone gona put linux on the samsung
+Sep 17 19:21:34 <Inconvenience>	or any other phone
+Sep 17 19:21:51 <SymbioticFemale>	there is a thing called AnLinux where you can run linux inside a VM in the phone
+Sep 17 19:22:04 <SymbioticFemale>	like a full GUI linux, with xfce or something
+Sep 17 19:22:18 <SymbioticFemale>	but it runs on top of your android OS
+Sep 17 19:22:34 <jabberwock>	much battery. such drain
+Sep 17 19:22:39 <Inconvenience>	no
+Sep 17 19:22:47 <Inconvenience>	no drain
+Sep 17 19:22:54 <Inconvenience>	fkn mac os runs
+Sep 17 19:22:55 <mawk>	such explosion
+Sep 17 19:22:55 <SymbioticFemale>	WAT
+Sep 17 19:23:04 <SymbioticFemale>	Inconvenience: what
+Sep 17 19:23:13 <Inconvenience>	ios and windows os
+Sep 17 19:23:21 <Inconvenience>	those are way more fat
+Sep 17 19:23:57 <Inconvenience>	also gnome is very much phone ready
+Sep 17 19:27:34 <Inconvenience>	so how come some of the info in the image is plain text
+Sep 17 19:28:08 <Inconvenience>	y dont they garble the whole thing
+Sep 17 19:28:22 <teardown>	Inconvenience: what image format
+Sep 17 19:28:57 <Inconvenience>	jpg
+Sep 17 19:29:22 <jabberwock>	exif data?
+Sep 17 19:29:37 <Inconvenience>	no im just looking via vim -b
+Sep 17 19:30:40 <mnemon>	probably at the exif data
+Sep 17 19:30:47 <teardown>	Inconvenience: jpg uses exif to store metadata. you can read about exif and the jpg file format
+Sep 17 19:32:28 <SymbioticFemale>	metadata can be stored in manners other than exif
+Sep 17 19:32:33 <SymbioticFemale>	via jpg
+Sep 17 19:32:43 <SymbioticFemale>	as has been shown by.... facebook? i forget
+Sep 17 19:33:27 *	SymbioticFemale is always paranoid about cameras putting a digital version of printer dots, but SymbioticFemale hasn't heard about it being done so far
+Sep 17 19:33:47 <jabberwock>	like steganography?
+Sep 17 19:34:46 <jabberwock>	That's a possibility. There's only so much you can store before the image looks totally f'd
+Sep 17 19:36:07 <Inconvenience>	lol
+Sep 17 19:36:14 <kitties>	it's likely already happening
+Sep 17 19:36:29 <Inconvenience>	how bout manners such as NOT USE FACEBOOK?
+Sep 17 19:36:32 <kitties>	no reason camera manufacturers aren't adding hidden watermarks
+Sep 17 19:37:16 <SymbioticFemale>	kitties: likely.
+Sep 17 19:38:50 <SymbioticFemale>	i can't find the link, but someone on twitter posted within the last couple months about finding encoded data added to images uploaded to facebook, presumably as some form of tracking, which did not modify the appearance of the image nor the exif data
+Sep 17 19:39:13 <SymbioticFemale>	i *think* it was facebook but i could be misremembering
+Sep 17 19:40:13 <Skripter>	I got this interview where they're going to ask me questions about AWS. I'm gonna bomb this shit lmao
+Sep 17 19:40:25 <Skripter>	Bomb = fail
+Sep 17 19:40:34 <Skripter>	Just in case swat team is on here
+Sep 17 19:40:36 *	SymbioticFemale also doesn't know shit about AWS and would bomb it
+Sep 17 19:40:53 <teardown>	chilling effect on irc. fuck
+Sep 17 19:41:40 <Skripter>	Like, this job depends on me knowing AWS and I only know the basic cloud practitioner shit, all GUI stuff
+Sep 17 19:41:50 <Skripter>	I'm doing a 6 hour training course today, so that I can learn more lol
+Sep 17 19:42:17 <Skripter>	I'm not saying I'm going to bullshit myself into a job, I'm saying that I'm going to cram what's necessary like a college exam
+Sep 17 19:49:45 <Inconvenience>	yeah i dont see any coordinates in here
+Sep 17 19:50:03 <Inconvenience>	i was just thinking how bad that would be
+Sep 17 19:51:21 <Inconvenience>	coz were all taking pics
+Sep 17 19:53:22 <teardown>	clear
+Sep 17 19:54:13 <Inconvenience>	what
+Sep 17 19:55:31 <Inconvenience>	oh hahaha
+Sep 17 19:55:46 <Inconvenience>	it has all kinds of info
+Sep 17 19:56:10 <Inconvenience>	cant see that shit w vim obviously
+Sep 17 19:56:14 <Inconvenience>	lololololol
+Sep 17 19:58:04 <Inconvenience>	only info it dun have is how many cavities i have
+Sep 17 19:58:12 <Inconvenience>	wtf
+Sep 17 20:31:34 <beanbag->	looks like the us gov threw a temper tantrum at snowden
+Sep 17 20:37:53 <nate>	Hm, so seems my issue is despite the system being configured to be a 'legacy' BIOS the distros keep installing w/ EFI shit that wonks it all out
+Sep 17 20:40:59 <Kryczek>	nate: what brand of mobo is it?
+Sep 17 20:45:15 <nate>	Kryczek: Not even remotely sure, whatever the hell HP throws in their envy's lol
+Sep 17 20:45:31 <nate>	I had to post a topic in their community forums to see if anyone knows where they moved all the firmware/software updates to
+Sep 17 20:48:43 <Inconvenience>	looks like screenshots png has not exif data
+Sep 17 20:49:04 <Inconvenience>	and like no real info in exiv2 either
+Sep 17 20:49:47 <Inconvenience>	is that true
+Sep 17 20:54:40 <nate>	Inconvenience: For one thing EXIF is a JPEG and TIFF extension mainly.  For another, why would a screenshot, PNG or otherwise have EXIF information?  You may want to look up exactly what EXIF is
+Sep 17 21:01:14 <ilikeyou>	Amazon having job fairs today :p  trying to fill 30k positions
+Sep 17 21:01:46 <Inconvenience>	just want to make sure it dun have my coords
+Sep 17 21:01:52 <Inconvenience>	@nate
+Sep 17 21:02:02 <Inconvenience>	nate:
+Sep 17 21:02:52 <Inconvenience>	the phones have all kinds of info
+Sep 17 21:03:04 <Inconvenience>	although the coords are not precise
+Sep 17 21:04:44 <Inconvenience>	i wonder if most ppl realy know about this
+Sep 17 21:04:48 <Inconvenience>	or care
+Sep 17 21:04:52 <Inconvenience>	and the dangers of it
+Sep 17 21:06:51 <nate>	Inconvenience: A general solution to that is don't enable GPS
+Sep 17 21:09:56 <Inconvenience>	ya but its a phone
+Sep 17 21:12:47 <nate>	so...?
+Sep 17 21:13:16 <nate>	Phones get coordinates from GPS, no GPS then no coordinates really
+Sep 17 21:13:30 <Inconvenience>	is gps not needed for service?
+Sep 17 21:14:03 <Inconvenience>	or do u flip into airplane mode ?
+Sep 17 21:14:05 <dylanwtf>	Inconvenience: there is an app for Android called 'Scrambled EXIF', you can share images to it, it will remove EXIF data, then prompt you for an app to share it back to
+Sep 17 21:14:18 <dylanwtf>	so you can share from camera, to scrambled exif, to email or wherever
+Sep 17 21:14:20 <dylanwtf>	it's in f-droid
+Sep 17 21:14:23 <Inconvenience>	dylanwtf: oh great lol
+Sep 17 21:14:33 <Inconvenience>	and that app knows where i keep my diamonds
+Sep 17 21:14:33 <nate>	Pretty sure the camera apps on most by default will let you disable EXIF for the most part as well, and no GPS is not needed for service
+Sep 17 21:14:36 <Inconvenience>	fuk that
+Sep 17 21:14:38 <nate>	cellular service does not go over GPS
+Sep 17 21:14:43 <Inconvenience>	and fuk that app lol
+Sep 17 21:14:52 <Inconvenience>	nate: right
+Sep 17 21:15:01 <Inconvenience>	man...
+Sep 17 21:15:11 <Inconvenience>	gps should only be used by fkn maps
+Sep 17 21:15:16 <Inconvenience>	but no
+Sep 17 21:15:24 <Inconvenience>	they fkn collect that shit all over
+Sep 17 21:15:40 <dylanwtf>	you want to strip other data too like camera info and shit
+Sep 17 21:15:50 <Inconvenience>	right
+Sep 17 21:15:58 <Inconvenience>	iphone has so much shit in here
+Sep 17 21:16:18 <Inconvenience>	although its not really private
+Sep 17 21:16:21 <nate>	lol using an apple product and EXIF information is what you're concerned about?
+Sep 17 21:16:24 <nate>	Oh you poor soul
+Sep 17 21:16:24 <Inconvenience>	cept the coords
+Sep 17 21:16:28 <Inconvenience>	which are inacurate
+Sep 17 21:16:43 <Inconvenience>	i am a poor soul
+Sep 17 21:16:49 <Inconvenience>	swo
+Sep 17 21:16:52 <Inconvenience>	so
+Sep 17 21:17:18 <Inconvenience>	is note10 any good?
+Sep 17 21:17:32 <Inconvenience>	which phone shud i get?
+Sep 17 21:20:51 <NetTerminalGene>	today a book from edward snowed named permanent record will be released
+Sep 17 21:24:14 <jabberwock>	Anyone know the specific section in PCI-DSS that talks against SSN fields being of type "text" instead of "password"?
+Sep 17 21:24:23 <dylanwtf>	Inconvenience: a pixel device with an aosp rom on it
+Sep 17 21:24:33 <dylanwtf>	grapheneos would be a good choice
+Sep 17 21:24:44 <Inconvenience>	oh google pixel?
+Sep 17 21:25:22 <dylanwtf>	yeah, the 4 is probably going to come out soon, then after that graphene should support it given a bit of time
+Sep 17 21:25:28 <dylanwtf>	if you were willing to wait on a new phone
+Sep 17 21:25:30 <Inconvenience>	fuk google
+Sep 17 21:25:41 <Inconvenience>	those fools cant make phones
+Sep 17 21:25:48 <dylanwtf>	but if you go to a google-less rom your phone would be crippled in the eyes of a lot of people
+Sep 17 21:25:49 <Inconvenience>	stick to making crappy websites
+Sep 17 21:26:14 <dylanwtf>	if you do it right you don't install tracking apps like facebook, netflix, spotify, all that shit
+Sep 17 21:26:35 <dylanwtf>	so you use web apps mostly
+Sep 17 21:26:37 <Inconvenience>	lool
+Sep 17 21:26:44 <Inconvenience>	ie all apps?
+Sep 17 21:26:49 <Inconvenience>	what a fkn nitemare
+Sep 17 21:26:57 <dylanwtf>	not really
+Sep 17 21:27:20 <Pilate>	spotify can have my data in exchange for more good music
+Sep 17 21:27:22 <dylanwtf>	most of the ad and tracking infested shit is for entertainment anyway
+Sep 17 21:27:49 <dylanwtf>	i run spotify on the head unit in my car and just tether my phone via wifi
+Sep 17 21:28:11 <SeepingN_>	which unit does this?
+Sep 17 21:28:25 <ilikeyou>	just saw the Asus ROG 2 phone the other day. that thing has the power of a mid tier netbook. 4GB ddr4.
+Sep 17 21:28:30 <dylanwtf>	tonnes of chinese ones you can get on amazon and ebay
+Sep 17 21:28:38 <SeepingN_>	oh
+Sep 17 21:28:40 <Inconvenience>	Pilate: that makes no sense
+Sep 17 21:28:55 <Inconvenience>	its not a fkn bazar
+Sep 17 21:29:08 <SeepingN_>	it just IS bizarre
+Sep 17 21:29:23 <Inconvenience>	no like a bazar
+Sep 17 21:29:37 <Inconvenience>	like a middle eastern market place
+Sep 17 21:29:45 <dylanwtf>	Inconvenience: https://f-droid.org/en/packages/
+Sep 17 21:29:50 <dylanwtf>	this is the 'app store' i use
+Sep 17 21:30:11 <Inconvenience>	fuk droids must be a mess
+Sep 17 21:30:19 <Inconvenience>	at least apple its all one source
+Sep 17 21:30:33 <dylanwtf>	i mean i'm not using my phone normally
+Sep 17 21:30:37 <Inconvenience>	there needs to be a linux phone
+Sep 17 21:30:40 <dylanwtf>	most people just use the playstore
+Sep 17 21:30:42 <CPngN>	there was
+Sep 17 21:30:46 <Inconvenience>	like a debian phone
+Sep 17 21:30:47 <CPngN>	oh so briefly
+Sep 17 21:30:49 <dylanwtf>	pinephone or librem 5, both coming soon
+Sep 17 21:30:49 <Inconvenience>	w all the shit
+Sep 17 21:30:50 <CPngN>	ubuntu
+Sep 17 21:30:54 <Inconvenience>	and terminal
+Sep 17 21:31:21 <Inconvenience>	and opensource
+Sep 17 21:31:38 <Inconvenience>	otherwise who knows what they are doing
+Sep 17 21:31:52 <dylanwtf>	you're gonna have the same problem there though, you think your bank, or netflix or whoever is gonna give you a kde plasma app or whatever?
+Sep 17 21:32:20 <dylanwtf>	if they ever do it won't be for a long time
+Sep 17 21:32:41 <dylanwtf>	but i'll definitely pick up a pinephone or librem 5, looks sick
+Sep 17 21:35:31 <Inconvenience>	is the note10 good
+Sep 17 21:37:14 <beanbag->	nate
+Sep 17 21:37:17 <calmclam>	wow firefox moving to 4 week release cycle
+Sep 17 21:37:21 <beanbag->	message me tonight when I am home
+Sep 17 21:37:25 <beanbag->	I will help with the bios thing
+Sep 17 21:37:30 <calmclam>	inb4 firefox version 507
+Sep 17 21:39:06 <nate>	beanbag-: Unfortunately apparently the only way to update teh BIOS on this is an .exe patcher, so I have to reinstall windows lol
+Sep 17 21:39:11 <nate>	unless they're hiding a .bin file somewhere
+Sep 17 21:40:07 <nate>	I had someone in the forums say to try and do UEFI w/ secure boot again because "it should work fine", and the system is even worse now, the F9 device chooser doesn't even show any devices in UEFI mode lol, but in legacy mode it will show all devices w/ both UEFI and non-UEFI options.  This thing is a disaster
+Sep 17 21:41:31 <nate>	jabberwock: PCI-DSS literally has nothing to do with SSN's, it's a financial/card regulation enforced by card vendors
+Sep 17 21:41:44 <jabberwock>	I think SSN should be in scope for PCI though.
+Sep 17 21:41:48 <nate>	That said some nations have PII laws that might regulate stuff like that
+Sep 17 21:42:13 <nate>	Not at all, it's not credit/debit card related (and in most cases likely isn't even going to be used in conjunction with CC numbers)
+Sep 17 21:42:14 <jabberwock>	If you're applying for a credit card and it asks you for your SSN then I feel that falls into scope
+Sep 17 21:43:06 <nate>	Not really as SSN's are generally optional for that process and it should never be saved to begin with, simply used quickly for the credit check
+Sep 17 21:44:12 <nate>	(of course not providing an SSN is probably gonna get you rejected unless you have a really REALLY unique name and DOB)
+Sep 17 21:45:11 <nate>	I'm trying to remember what the name of the US legal acts are that are relevant to this
+Sep 17 22:43:51 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 22:43:51 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:44:16 2019
+
+Sep 17 22:44:16 *	Now talking on ##security
+Sep 17 22:44:16 *	Topic for ##security is: Welcome to Computer, Network & Physical ##Security | Please stay on topic | Jobs: https://bit.ly/2YZtyoY
+Sep 17 22:44:16 *	Topic for ##security set by Sling!~Sling@freenode/sponsor/about.security.contributor.sling (Mon Aug 19 16:04:31 2019)
+Sep 17 22:44:16 -ChanServ-	[##security] In line with freenode channel naming policy ( http://freenode.net/policy.shtml#channelnaming ), channel management of #security has moved to ##security .... please update your autojoins! Thanks.
+**** ENDING LOGGING AT Tue Sep 17 22:58:02 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:58:02 2019
+

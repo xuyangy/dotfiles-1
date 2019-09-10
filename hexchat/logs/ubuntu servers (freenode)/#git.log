@@ -1,0 +1,1052 @@
+**** BEGIN LOGGING AT Sat Aug 31 11:23:05 2019
+
+Aug 31 11:23:05 *	Now talking on #git
+Aug 31 11:23:05 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Aug 31 11:23:05 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Aug 31 11:48:04 <n-st>	hi, how can i reset my working copy, but keep the HEAD pointer unchanged?
+Aug 31 11:58:17 <j416>	n-st: !backup
+Aug 31 11:58:18 <gitinfo>	n-st: Worried about your data while trying stuff out in your repo? The repository in its entirety lives inside the .git directory in the root of your work tree so to backup everything `cp -a path/to/workdir path/to/backup` or equivalent will suffice as long as the repo is not modified during backup. See also http://sethrobertson.github.com/GitBestPractices/#backups
+Aug 31 11:58:22 <j416>	n-st: git reset --hard
+Aug 31 12:07:16 <n-st>	j416: git reset --hard also resets the HEAD, unfortunately
+Aug 31 12:09:55 <oxymoron93>	`git checkout <revision> -- . `
+Aug 31 12:10:47 <oxymoron93>	if I understand correctly, you would like your working directory to resemble some <revision>, while staying on the same branch (sort of speak) n-st
+Aug 31 12:10:59 <n-st>	yup
+Aug 31 12:11:48 <n-st>	oxymoron93: ah, that's exactly what i needed, thank you :)
+Aug 31 14:49:14 <j416>	n-st: what do you mean by "resets HEAD"?
+Aug 31 14:50:53 <j416>	note that checkout does not remove files, it only adds on top. There is an option to make it also remove files.
+Aug 31 18:40:55 <gnugnugnu>	hi, can someone tell me more about `git push --force-with-lease`?
+Aug 31 18:44:16 <m0viefreak>	man git-push
+Aug 31 18:44:16 <gitinfo>	the git-push manpage is available at https://gitirc.eu/git-push.html
+Aug 31 18:44:43 <gnugnugnu>	I know.
+Aug 31 18:44:46 <gnugnugnu>	I read it.
+Aug 31 18:45:17 <gnugnugnu>	But I am not sure to understand when it is rejected.
+Aug 31 18:45:53 <gnugnugnu>	I found a case I though would be rejected but it was accept.
+Aug 31 18:46:04 <m0viefreak>	what case is that?
+Aug 31 18:46:32 <gnugnugnu>	The pushed branch was behind in its remote counter parts.
+Aug 31 18:46:43 <gnugnugnu>	*counterpar
+Aug 31 18:49:08 <m0viefreak>	are you sure that was a case where a force-push was actually necessary?
+Aug 31 18:49:26 <m0viefreak>	and not just a regular fast-forward push?
+Aug 31 18:50:39 <gnugnugnu>	I used `git pull --rebase origin master` to sync with the master. So I needed to force push the branch.
+Aug 31 18:51:15 <gnugnugnu>	I was in another branch.
+Aug 31 18:52:33 <m0viefreak>	if you rebase your work locally then there is no need to force-push
+Aug 31 18:54:10 <gnugnugnu>	The rebase didn't stay local because there were commit in the master branch I wanted to integrate with my branch after my modification were push.
+Aug 31 18:55:06 <gnugnugnu>	I just want to understand the cases where `git push --force-with-lease` should be rejected by the remote.
+Aug 31 18:56:09 <m0viefreak>	if .git/refs/remotes/<remote>/<branch> does not match the actual ref of <branch> on the actual <remote>
+Aug 31 18:56:16 <canton7>	gnugnugnu, 1) you fetch, 2) you rebase, 3) someone else pushes, 4) --force-with-lease is rejected
+Aug 31 18:57:51 <gnugnugnu>	If the local branch is behind the remote it should be rejected?
+Aug 31 18:58:40 <m0viefreak>	only if someone else has pushed in the meantime
+Aug 31 18:59:13 <canton7>	gnugnugnu, "If the remote ref still points at the commit you specified, you can be sure that no other people did anything to the ref. It is like taking a "lease" on the ref without explicitly locking it, and the remote ref is updated only if the "lease" is still valid."
+Aug 31 18:59:26 <m0viefreak>	you can think of "--force-with-lease" as "--only-if-noone-else-has-done-something-to-the-remote-since-i-last-fetched"
+Aug 31 18:59:26 <canton7>	"--force-with-lease alone, without specifying the details, will protect all remote refs that are going to be updated by requiring their current value to be the same as the remote-tracking branch we have for them."
+Aug 31 18:59:29 <canton7>	from man git push
+Aug 31 18:59:29 <gitinfo>	the git-push manpage is available at https://gitirc.eu/git-push.html
+Aug 31 18:59:56 <canton7>	so it's a check of "does the branch on the remote *currently* look the same as when I last fetched from it?"
+Aug 31 19:01:17 <gnugnugnu>	I see, if the branch on the remote is the same as when fetched it pushes the contain of the working directory of the branch.
+Aug 31 19:02:26 <m0viefreak>	it pushes the local branch, the working the directory has nothing to do with any of that
+Aug 31 19:03:39 <gnugnugnu>	The branch was behind (only fetch no fast-forward) so it pushed the branch that was behind.
+Aug 31 19:04:42 <m0viefreak>	if you fetch you change your .git/refs/remotes/<remote>/<branch>
+Aug 31 19:04:50 <m0viefreak>	the man-page contains an explicit warning for that
+Aug 31 19:07:59 <gnugnugnu>	Is there a way so git reject the force-with-lease push if the remote branch is fetch but not fast-forward?
+Aug 31 19:16:00 <gnugnugnu>	It would avoid pushing an older version of the branch.
+Aug 31 19:16:53 <canton7>	gnugnugnu, "is fetch but not fast-forward"?
+Aug 31 19:16:57 <canton7>	What does "is fetch" mean there?
+Aug 31 19:18:16 <gnugnugnu>	*is fetched*
+Aug 31 19:19:18 <gnugnugnu>	The remote branch was fetch, but not merge locally (fast-forward).
+Aug 31 19:21:31 <canton7>	so, a normal non-force push?
+Aug 31 19:21:44 <gnugnugnu>	Not really.
+Aug 31 19:25:54 <gnugnugnu>	You have the branches master and features. The branch 'features' `git pull --rebase origin master`. The force-with-lease push of origin/feature works. The idea is having a kind of force push that would fail on master (that is not fast-forward).
+Aug 31 19:26:25 <gnugnugnu>	It would be a mixed of normal push with a force-with-lease.
+Aug 31 19:29:45 <gnugnugnu>	Is there a place to propose feature requests?
+Aug 31 19:33:10 <gnugnugnu>	I think `git push --force-with-lease=master:master` does what I want.
+Aug 31 19:33:14 <gnugnugnu>	Thanks
+Aug 31 19:33:26 <canton7>	gnugnugnu, I don't understand what you're suggesting I'm afraid
+Aug 31 19:34:00 <canton7>	what makes pushing to master "non-fast-forward", in a way that's different to pushing a rebased branch?
+Aug 31 19:35:37 <gnugnugnu>	I avoid accidentally pushing to master a "non-fast-forward" version of the branch.
+Aug 31 19:35:42 <gnugnugnu>	*It
+Aug 31 19:37:54 <canton7>	gnugnugnu, I don't see how it would distinguish between master and your feature branch
+Aug 31 19:38:10 <canton7>	gnugnugnu, be aware that most hosted git solutions provide a way to protect particular branches from force-pushes
+Aug 31 19:39:27 <gnugnugnu>	Look if local/master/HEAD  == fetch/master/HEAD
+Aug 31 19:40:03 <malina>	hi again. Yest I was by as my chromium compiled hit an illegal instruction, and wanted localtime64{,_r} symbols in libc.so but they weren;t there. I compiled a 2.30.9000 (commit=a635d756).. I don't know why it would omit his, so do I have to manually configure time64 struct or so? ( sorry about posting in the current query, I'll wait)
+Aug 31 19:40:42 <malina>	(m64, linux-5.29-rc5. )
+Aug 31 19:40:48 <canton7>	gnugnugnu, I don't follow. fetch/master/HEAD means the version of master which was just fetched? But, that just checks whether you're made *any* changes to master -- disallowing a push if that push wouldn't do anything (because you haven't changed anything) seems pointless?
+Aug 31 19:42:42 <gnugnugnu>	It would avoid push a older version of master to the remote.
+Aug 31 19:43:21 <canton7>	gnugnugnu, so you're worried about someone typing 'git push -f master^:master'?
+Aug 31 19:43:25 <malina>	OOPS .. wrong channel .. sorry guys :D
+Aug 31 19:44:05 <canton7>	gnugnugnu, 'git push -f master' won't do anything, if your local master branch is *behind* the remote
+Aug 31 19:44:07 <gnugnugnu>	`git push --force-with-lease origin master`
+Aug 31 19:44:32 <canton7>	gnugnugnu, if your local master is behind origin/master, that won't do anything
+Aug 31 19:44:48 <gnugnugnu>	It overwrite the remote.
+Aug 31 19:44:58 <canton7>	have you tested that?
+Aug 31 19:45:08 <gnugnugnu>	Yes
+Aug 31 19:45:11 <gnugnugnu>	Twice
+Aug 31 19:45:21 <gnugnugnu>	Multiple time on a test repo.
+Aug 31 19:46:42 <canton7>	huh, so it does
+Aug 31 19:46:50 <gnugnugnu>	yes.
+Aug 31 19:47:13 <gnugnugnu>	But I want it to be reject.
+Aug 31 19:48:47 <ravndal>	out of curiosity, is `git submodule add` recursive by default?
+Aug 31 21:32:27 <lrvick>	So still having that weird git issue in docker where git can't write to files that "touch" can. I have strace output: https://gist.github.com/lrvick/8b49f8b40955387bfb7d45da9912e3ba
+Aug 31 21:32:46 <lrvick>	some batshittery is going on.
+Sep 02 08:51:42 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep  2 08:51:42 2019
+
+**** BEGIN LOGGING AT Tue Sep  3 14:22:23 2019
+
+Sep 03 14:22:23 *	Now talking on #git
+Sep 03 14:22:23 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 03 14:22:23 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 03 14:23:43 <threenuc>	Hi. When I want to reset a single file to it's previous state, I usually do ' git checkout [filename] '. There's this handy syntax that allows you to skip most of the path like ' git checkout **/filename.txt `
+Sep 03 14:24:31 <threenuc>	But this doesn't work if the file is a few directories lower than the current working dir, like 'file modified in ../../folder/stuff/filename.txt`, git checkout **/filename.txt won't work here. Is there a workaround for that?
+Sep 03 14:26:11 <osse>	:/**/filename.txt
+Sep 03 14:31:27 <mms_>	hi I tar cf repo cloned to my machine and copied to another laptop of another user and extracted it.  it shows all files modified in it.
+Sep 03 14:31:45 <mms_>	when I do git status it shows all modified
+Sep 03 14:32:58 <mms_>	other user when he does clone from gerrit it does not give error but only creates .git and such . hidden folders
+Sep 03 14:33:30 <mms_>	on my laptop git clone works fine and so I tar the folder and gave him
+Sep 03 14:33:49 <osse>	I guess I'll ask again: What are the actual differences?
+Sep 03 14:34:03 <mms_>	osse: file permission I saw are same....
+Sep 03 14:34:22 <avu>	mms_: what does `git diff` say?
+Sep 03 14:34:37 <avu>	it's probably just a timestamp change introduced by tar
+Sep 03 14:34:51 <mondris>	please why is git push taking so much time to complete. it is showing "Writing objects:  17% (402/2319), 255.16 MiB | 202.00 KiB/s" and when it is 100%, the files doenot appear on my git repo
+Sep 03 14:35:49 <avu>	mondris: seems like you're trying to push a lot and your network is slow. Did the complete command succeed without error before you checked the remote?
+Sep 03 14:36:21 <mondris>	it shows something like nothing to push
+Sep 03 14:36:28 <mondris>	let me wait for this one to complete
+Sep 03 14:36:38 <mms_>	avu: git diff shows old mode new mode changes only
+Sep 03 14:36:59 <mms_>	avu: but on file system I think it shows fine
+Sep 03 14:37:14 <mms_>	avu: old is 100755 and new is 100644
+Sep 03 14:37:21 <avu>	mms_: so either reset or commit
+Sep 03 14:37:40 <osse>	mms_: that are file permisison changes
+Sep 03 14:38:04 <mms_>	osse: yes but when I check on file system I thought I read rwx related things and they looked same
+Sep 03 14:38:42 <mms_>	avu: now this is only for png files but I had checked for java files
+Sep 03 14:39:04 <mms_>	avu: but git diff is showing only png files
+Sep 03 14:39:17 <mms_>	any ways so then hwo to do that reset ?
+Sep 03 14:39:53 <mms_>	avu: git reset --hard ?
+Sep 03 14:40:36 <mms_>	ok in git status its showing only png files
+Sep 03 14:40:53 <mms_>	so git status and git diff are in tandem
+Sep 03 14:41:41 <mms_>	so correct only png files in that copy having the issue
+Sep 03 14:41:49 <threenuc>	thanks osse
+Sep 03 14:42:16 <mms_>	now if I change the remote url for that user to point to actual repo it should be fine right
+Sep 03 14:42:45 <mms_>	avu: git restore <file>
+Sep 03 14:51:22 <mms_>	avu: ?
+Sep 03 14:54:15 <osse>	git status tells you
+Sep 03 14:54:25 <mms_>	osse: yes it tells to use restore
+Sep 03 14:54:41 <mms_>	so it will just copy from commit to new ?
+Sep 03 14:54:57 <mms_>	ok let me try
+Sep 03 14:58:54 <kreyren>	i'm using `git submodule init "${srcdir}/pep.py/"` which results in `fatal: /usr/src//pep.py/: '/usr/src//pep.py/' is outside repository` , but it works if executed locally.. am i missing a syntax or ?
+Sep 03 15:03:37 <mms_>	I did git restore but still it shows same
+Sep 03 15:04:25 <mms_>	I better remove those files using rm and then do git checkout on them instead
+Sep 03 15:10:10 <mms_>	osse: I did git restore but status still shows same
+Sep 03 15:11:48 <mobidrop>	hi I do the git checkout
+Sep 03 15:12:27 <osse>	mms_: try chmod +x file.png
+Sep 03 15:14:52 <mms_>	osse: you right it does not have that x but chmod a+x on that file does noting
+Sep 03 15:15:14 <mms_>	osse: from git bash I did chmod on those files but no effect
+Sep 03 15:15:26 <osse>	then I don't know
+Sep 03 15:15:36 <mms_>	avu: ?
+Sep 03 15:16:01 <mms_>	last option now is to just remove those files and git checkout them
+Sep 03 15:16:21 <mms_>	that should be sure shot
+Sep 03 15:17:34 <mms_>	osse: I tried rm and checkout and same result
+Sep 03 15:17:47 <avu>	mms_: `git reset --hard` might be what you want here. But that's one of those commands you should probably never execute just because some person on IRC tells you to ;)
+Sep 03 15:18:10 <dcpc007>	hi, is it possible to remove git-lfs from a repo that use it for some files ?
+Sep 03 15:18:23 <osse>	mms_: what is the file system?
+Sep 03 15:19:33 <mms_>	osse: windows
+Sep 03 15:19:45 <osse>	no that is the operating system
+Sep 03 15:20:26 <mms_>	doing git checkout said updated 273 paths from index
+Sep 03 15:20:35 <mms_>	but git status still has same output
+Sep 03 15:20:40 <mms_>	shows png files as modified
+Sep 03 15:30:03 <mms_>	avu: git reset -hard on each file I should do ?
+Sep 03 15:32:24 <avu>	mms_: you should read up on what that does and decide on your own if it's something you want to do. This commands deletes things without a way to get them back. Don't execute it because some person on IRC thinks it might be the right thing to do.
+Sep 03 15:33:21 <osse>	if git checkout doesn't fix it then i doubt git reset --hard will
+Sep 03 15:35:14 <mms_>	avu: I already did it and same aoutput
+Sep 03 15:35:31 <mms_>	avu: I now already git pull and git pull -f and now it shows lot of files in status
+Sep 03 15:37:38 <avu>	ah, didn't read everything, sure, if checkout fails to fix this, reset won't help either. Now I'm reading you're on Windows, I guess the machine you copied the repo from is another OS?
+Sep 03 15:38:36 <avu>	in that case, that's probably the cause, git does $things to permissions to map between UNIX and Windows permissions I think (not much experience with git on Windows though)
+Sep 03 17:17:22 <kreyren>	 i'm using `git submodule init "${srcdir}/pep.py/"` which results in `fatal: /usr/src//pep.py/: '/usr/src//pep.py/' is outside repository` , but it works if executed locally.. am i missing a syntax or ?
+Sep 03 17:25:31 <rafasc>	kreyren: you should really be asking these questions in #archlinux-aur, I think.
+Sep 03 17:25:42 <codecutter>	how do i delete a branch local & remote?
+Sep 03 17:26:22 <shomon>	hi, I just cloned a repo, made some changes, and then because it couldn't run, copied everything into a docker container, and continued editing in there. I didn't copy the git headers though.. so now I'm not sure if it's best to do git init and set the header, or to just copy the files back and commit from where I first cloned it?
+Sep 03 17:26:29 <rafasc>	codecutter: git branch -d <b_name>; git push <remote> --delete <b_name>;
+Sep 03 17:26:53 <codecutter>	thx
+Sep 03 17:26:55 <rafasc>	codecutter: you'll probably also want to run git fetch --prune; to remove the local !rtb
+Sep 03 17:26:55 <gitinfo>	codecutter: [!remote_tracking_branch] Remote-tracking branches (branches which start with e.g. 'origin/', listed by 'git branch -r') are read-only mirrors of the branches in another repository. They're updated by 'git fetch'. You can't edit them directly (trying to check them out results in a !detached HEAD), but you can create a local branch based on a remote-tracking branch using e.g. 'git checkout -b <branch> <remote>/<bra
+Sep 03 17:28:03 <kreyren>	rafasc, this is not arch.. it's debian fetching ripple repository
+Sep 03 17:28:28 <rafasc>	the ${srcdir} threw me off.
+Sep 03 17:28:58 <kreyren>	rafasc, just variable that i'm using in a script xD
+Sep 03 17:30:29 <rafasc>	I assumed things that I shouldn't. I remember someone asking arch pkgbuilds questions here the other day, and my mind automatically went there. Sorry.
+Sep 03 17:30:44 <kreyren>	rafasc, np
+Sep 03 17:31:17 <rafasc>	kreyren: where is your repository?
+Sep 03 17:31:42 <rafasc>	as in, the $PWD from where you're running those commands.
+Sep 03 17:31:47 <kreyren>	rafasc, refactoring light-ripple/Ripple-Auto-Installer since original is horrible https://github.com/light-ripple/Ripple-Auto-Installer/pull/6
+Sep 03 17:32:06 <kreyren>	rafasc, pwd should be irelevant since it's expected to do this action from any pwd
+Sep 03 17:32:45 <rafasc>	but submodule init expects a path inside your repository, and you're giving something on /usr/ ...
+Sep 03 17:39:29 <robertson>	I work for a long time Subversion user that is reluctantly agreeing to distribute code via GIT as well. He is very set in his ways and one of the SVN features he uses constantly is the $Id$ string in all the code files. As part of adding a GIT repository of the source code he insisted on a way to link subversion revision numbers to GIT hashes. He is the only developer allowed to submit changes to either repository. To (attempt) to acheive hi
+Sep 03 17:43:08 <shomon>	if I do "git checkout -b mynewbranch"  will it overwrite changes made thus far after cloning?
+Sep 03 17:46:06 <rafasc>	shomon: no.
+Sep 03 17:46:40 <rafasc>	!float
+Sep 03 17:46:40 <gitinfo>	If you have made a change in your working directory and have NOT YET COMMITTED, you may "float" that change over to another (`git checkout oldbranch`) or new (`git checkout -b newbranch`) branch and commit it there.  If the files you changed differ between branches, the checkout will fail.  In that case, `git stash` then checkout, and `git stash apply` and go through normal conflict resolution.
+Sep 03 17:47:24 <rafasc>	and what do you mean by: "I didn't copy the git headers though"
+Sep 03 17:48:28 <shomon>	I thought the .git folder wasn't there rafasc but actually it was. the only issue is that I'm still on the master branch
+Sep 03 19:20:42 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep  3 19:20:42 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 16:33:28 2019
+
+Sep 11 16:33:28 *	Now talking on #git
+Sep 11 16:33:28 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 11 16:33:28 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 11 16:33:35 <jast>	add the file, ignore the folder
+Sep 11 16:33:46 <jast>	that file will be tracked, everything else won't
+Sep 11 16:34:15 <SJr>	I don't want the file tracked, just checked out the first time and never updated :)
+Sep 11 16:34:17 <jast>	if that won't work, add a script that developers can use to set up a default
+Sep 11 16:34:27 <rafasc>	then no, git doesn't have any graceful way to deal with that.
+Sep 11 16:34:39 <SJr>	Hrm, okay I'll hack around this with a script.
+Sep 12 10:08:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 10:08:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 10:08:58 2019
+
+Sep 12 10:08:58 *	Now talking on #git
+Sep 12 10:08:58 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 12 10:08:58 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 12 10:33:04 <markzen>	no, just move it out of the way
+Sep 12 10:33:25 <markzen>	out of the devs way, rather
+Sep 12 10:34:44 <markzen>	tried the mv and env var, seems to work alright
+Sep 12 10:54:14 <osse>	env var works. symlink works too. a regular file with the content "gitdir: actual/path/to/.git" also
+Sep 12 10:54:27 <osse>	I guess the env is the only way to make it truly invisisble
+Sep 12 10:56:07 <osse>	Remember to unset it if you go to a different repo
+Sep 12 11:03:33 <shomon>	hi, I'm getting a strange error. I cloned a repo a while back, then did some edits live on bitbucket (added a readme), then I do git pull, followed by git add . && git commit but i always get "rejected" "updates were rejected because the remote contains work you do not have locally". Do I need to do -f?
+Sep 12 11:08:34 <DelTree>	do you see your edits on the remote branch you fetched ?
+Sep 12 11:12:40 <shomon>	ah let's see just a sec
+Sep 12 11:15:25 <shomon>	my edits are stil lhere locally.. I just added a directory and gitignore
+Sep 12 11:24:38 <markzen>	osse: regular file? where do you put it?
+Sep 12 11:25:05 <jast>	as '.git' at the root of your working tree :)
+Sep 12 11:25:18 <markzen>	ah, obv
+Sep 12 11:25:45 <markzen>	would be fine, too
+Sep 12 11:26:11 <markzen>	incidentally, moving the .git with mv does not seem to work so well
+Sep 12 11:26:34 <markzen>	it does from the repo root, but as soon as you move down to some subdir, git is list
+Sep 12 11:26:36 <markzen>	lost
+Sep 12 11:26:55 <markzen>	there must be some relative refs somehow, I guess
+Sep 12 11:27:28 <jast>	using GIT_DIR? you'll probably have to set GIT_WORK_TREE, too, to the root of the work tree
+Sep 12 11:27:49 <jast>	because otherwise how is git supposed to know where the work tree begins
+Sep 12 11:28:40 <markzen>	right
+Sep 12 11:29:18 <markzen>	fixed, thanks
+Sep 12 11:30:42 <DelTree>	shomon: I mean the edits you made on bitbucket...
+Sep 12 11:31:10 <shomon>	no. they are not in local
+Sep 12 11:38:41 <MoziM>	how can i add new staged changes to the current commit?
+Sep 12 11:39:42 <jast>	MoziM: as in, the commit you already made?
+Sep 12 11:39:53 <jast>	git commit --amend
+Sep 12 11:40:51 <MoziM>	thanks
+Sep 12 11:59:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 11:59:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 11:59:57 2019
+
+Sep 12 11:59:57 *	Now talking on #git
+Sep 12 11:59:57 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 12 11:59:57 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 12 12:13:30 <flughafen>	does d on a rebase -i get rid of the commit 100%?
+Sep 12 12:15:24 <vlt>	flughafen: It will be removed from that branch but most propably still be around until gc.
+Sep 12 12:15:59 <flughafen>	 ok.
+Sep 12 12:16:13 <flughafen>	i just found git reset --soft head t hat worked fine
+Sep 12 12:16:28 <flughafen>	i accdidently forgot to perge a pr when i was reusing a branch and ended up upushing new stuff
+Sep 12 12:17:33 <shomon>	DelTree thanks for your help before.. I just cloned it again somewhere else and fixed it manually :)
+Sep 12 12:19:10 <Unode>	is there any way to prevent git from prompting the user for a password when using the ssh backend?
+Sep 12 12:19:37 <vlt>	Unode: ssh keys
+Sep 12 12:19:50 <Unode>	I'm trying to automate a couple of git actions, including push and I don't want git to prompt if the key is no longer in the keychain
+Sep 12 12:19:57 <Unode>	i.e. I want it to exit with error instead
+Sep 12 12:20:24 <no_gravity>	Could it be that for windows linefeeds, git diff only shows them for the +line and not for the -line?
+Sep 12 12:20:43 <osse>	Unode: find out how you would do that for ssh itself, then set GIT_SSH_COMMAND in the environment
+Sep 12 12:20:46 <no_gravity>	I changed a line from "oldstring" to "newstring" and now git diff shows me:
+Sep 12 12:20:49 <no_gravity>	-oldstring
+Sep 12 12:20:52 <osse>	no_gravity: yes. it's annoying as hell
+Sep 12 12:20:53 <no_gravity>	+newstring^M
+Sep 12 12:21:21 <vlt>	Unode: Ah ok. ssh has a "key only" option you could look up.
+Sep 12 12:21:50 <no_gravity>	osse: Ah! So it's a bug in git diff?
+Sep 12 12:22:40 <osse>	Not sure if it's concidered a bug
+Sep 12 12:22:53 <osse>	It's been like that as long as I can remember and I hate it
+Sep 12 12:23:02 <Unode>	vlt: in this case it's asking for the password of the key
+Sep 12 12:23:07 <no_gravity>	osse: Ok. I hate it too.
+Sep 12 12:29:18 <Unode>	osse: thanks, GIT_SSH_COMMAND="ssh -oBatchMode=yes" git push  does it
+Sep 12 12:29:27 <osse>	\o/
+Sep 12 13:20:25 <mazula>	what is the best and safest method to squash two commits?
+Sep 12 13:21:49 <osse>	mazula: are they recent?
+Sep 12 13:22:08 <mazula>	yes
+Sep 12 13:22:24 <osse>	silly question from me. let me try again
+Sep 12 13:22:27 <osse>	how recent are they? :p
+Sep 12 13:22:39 <mazula>	1h and 2h
+Sep 12 13:23:31 <osse>	git rebase firstcommit~1; mark the second commit squash
+Sep 12 13:24:00 <mazula>	why it's so hard to squash, there is so many methods to do it lol
+Sep 12 13:25:13 <osse>	that they are one and two hours old doesn't matter to git. what I meant was whether there are commits newer than these, for example. Or whther these commits have been merged
+Sep 12 14:00:27 <scientes>	considering that I collect branches like flies, is there a way to namespace stale branches?
+Sep 12 14:00:38 <scientes>	or otherwise manage having too many for the UI
+Sep 12 14:00:50 <scientes>	or sort by last changed
+Sep 12 14:04:30 <rafasc>	scientes: what ui?
+Sep 12 14:05:45 <rafasc>	I literally rename my branches to: stale/some-branch-name. And then filter based on stale/* .
+Sep 12 14:07:24 <rafasc>	for example log --decorate-refs-exclude=heads/stale/* --exclude=stale/* --branches
+Sep 12 14:08:03 <GyrosGeier>	I usually rebase all of them on top of master
+Sep 12 14:08:15 <GyrosGeier>	if they are equal to master, then they can go
+Sep 12 14:08:27 <GyrosGeier>	if not, I can see if they are worth keeping
+Sep 12 14:11:16 <rafasc>	I guess it depends on what stale means. Usually branches go stale because there's some issue with them, and as time goes by, the chances of a rebase conflicting increases.
+Sep 12 14:12:03 <rafasc>	or you don't have a proper solution to integrate those changes with things that happened on the mainline.
+Sep 12 14:12:19 <osse>	push them to your private fork and forget about them
+Sep 12 14:12:21 <osse>	that's what I do
+Sep 12 14:15:02 <rafasc>	tag and forget
+Sep 12 14:28:37 <aw1_>	should each commit pass all unit tests? i can't seem to balance this with "make each commit modular". In order for the commit to pass all tests I often have to fix multiple bugs/issues that touch different subsystems
+Sep 12 14:28:59 <GyrosGeier>	each commit should improve things
+Sep 12 14:29:59 <aw1_>	cool
+Sep 12 14:30:48 <GyrosGeier>	my usual approach for subsystem rewrites is 1. create new API, 2. build compatibility layer so nothing breaks, then 3. 4. 5. convert individual subsystems so they no longer need that layer, and finally remove the compatibility layer again
+Sep 12 14:31:30 <GyrosGeier>	the big advantage of that is that there is no time limit between merging the first and the last commit
+Sep 12 14:32:13 <GyrosGeier>	so if the reviewers are busy, you can just merge the first one, and start building a new subsystem on top of the new API, and merge the rest later
+Sep 12 14:32:47 <GyrosGeier>	also, if there are subsystem maintainers, you might want different reviewers anyway
+Sep 12 14:33:14 <osse>	infront
+Sep 12 14:33:16 <osse>	oops
+Sep 12 15:00:51 <mage_>	hello
+Sep 12 15:01:11 <mobidrop>	hi mage
+Sep 12 15:01:37 <mage_>	I generated a patch git git format-patch but now I want to apply the patch in a different directory (from a/amnesiabbpf/frontend/src/bbpf.js to b/euregias/frontend/src/bbpf.js) any idea how to do this?
+Sep 12 15:03:51 <mage_>	https://gist.github.com/silenius/42bd75f4f4830846ac9b92f6c31c7c78
+Sep 12 15:07:20 <mobidrop>	git apply
+Sep 12 15:18:34 <mage_>	mobidrop: I did git am but it doesn't work as it's not the same arborescence
+Sep 12 15:21:49 <mobidrop>	mage_, yeah I usually don't apply a patch in a different project
+Sep 12 15:26:35 <mage_>	mobidrop: https://gist.github.com/silenius/6269d5f1303d275e2b2ef4acaf1c6df3
+Sep 12 15:26:59 <mage_>	I used -p2 --directory .. patch failed to apply but when I do a git status I don't see any conflicts ... any idea?
+Sep 12 15:28:29 <mobidrop>	mage_, huh weird, don't have git rerere turned on by any chance?
+Sep 12 15:28:38 <mage_>	rerere ?
+Sep 12 15:28:44 <mage_>	no
+Sep 12 15:29:23 <rafasc>	mage_: see --reject
+Sep 12 15:30:46 <mage_>	ah, thanks
+Sep 12 15:31:09 <rafasc>	and --3way.
+Sep 12 15:33:13 <RandomSerb>	hello. I've forked a repo on bb, and now I've origin(my fork) and upstream(original repo). Given that I'm currently the only developer, I push to origin, create pr, approve it, merge it into upstream/dev, then I pull my upstream. Now, given that I'm the only developer, would it be the same as if I simply pushed to both origin and upstream?
+Sep 12 15:33:21 <RandomSerb>	Until someone else comes along
+Sep 12 15:35:48 <osse>	RandomSerb: yes
+Sep 12 15:36:00 <osse>	if you accept the pr's with fast forwarding
+Sep 12 15:37:04 <rafasc>	you could even skip the PR part, merge locally and just push. Git doesn't care. The only difference is that you get a PR#.
+Sep 12 15:43:42 <RandomSerb>	rafasc, do I need to merge, or I can just push?
+Sep 12 15:44:23 <rafasc>	as osse mentioned, if they're fast-fowards, you can just push.
+Sep 12 15:46:33 <rafasc>	I you're working alone, and nobody (including you) is pushing to it from somewhere else, it should be able to always fast-forward.
+Sep 12 15:46:56 <RandomSerb>	rafasc, looks like so
+Sep 12 15:46:59 <RandomSerb>	thanks!@
+Sep 12 15:47:53 <rafasc>	you just need to pay attention to things that may create diverging history: things like --amend, rebase
+Sep 12 15:48:15 <RandomSerb>	rafasc, I don't do those
+Sep 12 15:48:19 <RandomSerb>	no need for now
+Sep 12 15:48:29 <RandomSerb>	nor knowledge about it, for that matter
+Sep 12 16:20:16 <anddam>	howdy, I need a word of advice on proper workflow in this case: I have a repo with master following origin/master and local-config branch that is a local branch with some minor changes from master.
+Sep 12 16:20:49 <anddam>	every time I pull master I then merge local-config on top of it (not sure if this is fast-forward) so those small changes get applied to latest code base
+Sep 12 16:22:03 <anddam>	now I need to switch to the older commit abcdef0, I ran 'git checkout -b local-config-old abcdef0' and got a new branch
+Sep 12 16:22:37 <anddam>	now I want to apply the same diff there is in master..local-config to local-config-old
+Sep 12 16:23:33 <anddam>	I ended up doing it by hand but I'm sure there's a proper git-fu way to do that, what command should I be looking at?
+Sep 12 16:25:29 <mobidrop>	rebase
+Sep 12 16:29:18 <dcpc007>	hi, i used bfg (filter-branch easier) to clean th ewhole history of a ditry repo
+Sep 12 16:29:34 <dcpc007>	is it possible now to detect "empty" commits and delete them ?
+Sep 12 16:40:16 <rafasc>	dcpc007: You could give https://github.com/newren/git-filter-repo a spin.
+Sep 12 16:40:57 <rafasc>	There's talks on the ML to deprecate filter-branch in favor of that.
+Sep 12 16:41:16 <dcpc007>	yes i used BFG
+Sep 12 16:41:38 <dcpc007>	but as it was still present in my HEAD ... seems he doesn't delete emtpy commits
+Sep 12 16:41:48 <dcpc007>	like the ???? with option --prune-empty
+Sep 12 16:42:03 <dcpc007>	maybe i could reuse only a command to remove them now
+Sep 12 16:42:24 <rafasc>	I guess you could filter-branch
+Sep 12 16:42:28 <dcpc007>	i should have put a commit with cleaning before do the BFG if i understand
+Sep 12 16:42:36 <dcpc007>	i try to find
+Sep 12 16:44:05 <dcpc007>	cd repo.git && git filter-branch --prune-empty -- --all
+Sep 12 16:44:05 <rafasc>	dcpc007: I think bfg simply doesn't support pruning empty commits. See:https://github.com/rtyley/bfg-repo-cleaner/pull/147
+Sep 12 16:44:18 <dcpc007>	it support, but only if no ptoected commits
+Sep 12 16:44:30 <dcpc007>	and as i didn't remove files/folders in my current commit ....
+Sep 12 16:44:49 <dcpc007>	https://github.com/rtyley/bfg-repo-cleaner/issues/27
+Sep 12 16:45:52 <dcpc007>	YAH perfect
+Sep 12 16:46:08 <dcpc007>	filter-branch slow, but it's on small repo then perfect !
+Sep 12 16:48:23 <rafasc>	the filter-repo should be considerably faster.
+Sep 12 16:49:17 <dcpc007>	yes, it lasts 30 seconds here
+Sep 12 16:49:28 <dcpc007>	only small scripts repo (<500 commits)
+Sep 12 16:49:43 <dcpc007>	BFG is in java
+Sep 12 16:49:54 <dcpc007>	will look on filter-repo next time
+Sep 12 16:50:29 <rafasc>	maybe by the time you need it, it will already be part of git's core tools :D
+Sep 12 16:51:02 <dcpc007>	yes, especially when they simplify those risky commands
+Sep 12 16:51:10 <dcpc007>	+1 !! upvote )
+Sep 12 16:51:21 <dcpc007>	thxx, good evening
+Sep 12 17:48:40 <mlanting>	Hello, I have a question about what kind of workflow to use in a certain situation. I have a repository with branches `master-internal` and `master-external`. Development happens on the internal branch but the system contains metadata files with links to internal resources, so for external users, we need those links changed to external equivalent versions of those resources. The `master-external` branch contains the updated metadata
+Sep 12 17:48:40 <mlanting>	files and no other changes, but needs to track the `master-internal` when changes are made. My main problem with just merging `master-external` back into `master-internal` each time changes are made is that would lead to a very messy history, but doing a rebase each time will cause problems every time someone tries to fetch from the remote.
+Sep 12 18:53:36 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 18:53:36 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 18:54:02 2019
+
+Sep 12 18:54:02 *	Now talking on #git
+Sep 12 18:54:02 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 12 18:54:02 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 12 19:00:41 <rafasc>	mlanting: can't you make those links part of the 'build' process?
+Sep 12 19:01:49 <rafasc>	meaning, having some sort of template that gets populated according to where you're trying to deploy.
+Sep 12 19:23:09 <mark4>	ive been trying for the past 4 hours to get a side by side difference with git diff from the command line or git difftool.  i have tried beyond comaper, meld, winmerge and a whole bunch of others and not ONE has worked for me.  beyond compare 4 simpl crashes when launched from git diff blah
+Sep 12 19:23:43 <mark4>	i was lookint at tkdiff and it looks like it would be a nice simple option but tkdiff has absolutely NO documentation on how to set it up with git
+Sep 12 19:24:14 <mark4>	how do i get tkdiff to work with git from the command line. erm more accurately i need to get GIT to work with TKDIFF not the other way round
+Sep 12 19:26:55 <rafasc>	tkdiff is supported, so git difftool --tool=tkdiff should work.
+Sep 12 19:28:02 <mark4>	ok so that launches tkdiff showing some difference
+Sep 12 19:28:09 <mark4>	but not the file i want to differenc
+Sep 12 19:28:10 <mark4>	e
+Sep 12 19:28:59 <rafasc>	git difftool --tool=tkdiff -- file
+Sep 12 19:29:01 <mark4>	and i would rather not have to enter a whole bunch of command line items im not going to remember every time, can this be saved somewhere? so i just do git diff xxxxx
+Sep 12 19:29:03 <vishal>	does that file even have changes to show? does git diff --stat list it? you should be able to specify a file to diff(tool)
+Sep 12 19:29:38 <mark4>	git dff blah  and it launches tkdiff. is this possible?
+Sep 12 19:29:46 <rafasc>	mark4: you can configure it to use it tkdiff by default. Just check if it works first.
+Sep 12 19:30:12 <vishal>	man git-difftool shows how you can set in your config diff.tool to make it default
+Sep 12 19:30:12 <gitinfo>	the git-difftool manpage is available at https://gitirc.eu/git-difftool.html
+Sep 12 19:30:29 <vishal>	then you can alias something like 'dft' to difftool
+Sep 12 19:30:44 <mark4>	it launched tkdiff what its doing is launching tkdiff on the first file. when i close it it launches tkdiff on the next then the next ...
+Sep 12 19:31:58 <mark4>	my brain is hard wired to git diff xxxxx if i had to do git dt git difftool or whatever it would be a stumbling block for a long time. why is there the confusion factor of two different ways of getting diffs that are not the same?
+Sep 12 19:32:01 <vishal>	try: git difftool --dir-diff --tool=meld
+Sep 12 19:32:32 <rafasc>	I think maybe with external-diff, but don't remember.
+Sep 12 19:32:44 <mark4>	and meld is written in python which is late binding garbage that does not crap out till you try to run it - already tried meld and hit that late binding garbage issue. lol
+Sep 12 19:33:07 <vishal>	I don't know what a late binding garbage is
+Sep 12 19:33:15 <mark4>	i tried to add external = tkdiff to my .gitconfig under [diff]
+Sep 12 19:34:10 <mark4>	vishal, when you compile a C program agianst libfoo that binding is done at compile time. if libfoo does not exist or you are making incorrect references into it the compiler pukes.  with python that puking does not happen till RUN TIME
+Sep 12 19:34:28 <mark4>	late binding
+Sep 12 19:34:48 <vishal>	sounds like something your distro should be taking care of..
+Sep 12 19:36:06 <rafasc>	mark4: just setting won't work. You need to look up how the external diff is invoked, and possible make a wrapper for your tool.
+Sep 12 19:36:10 <vishal>	anyway, off topic. if you want to override 'diff' itself, look into the ext-diff stuff like rafasc said, I never used it
+Sep 12 19:36:33 <k18e>	What's a typical name for a remote that's set up as a fork which gets merged back to origin. Upstream?
+Sep 12 19:36:53 <rafasc>	me neither. Usually if I am doing something complex that requires me to see the diff in a GUI, difftool is enough for me.
+Sep 12 19:37:00 <vishal>	you can name it whatever you like, but yeah, upstream is common
+Sep 12 19:37:27 <rafasc>	but in this case sounds like downstream?
+Sep 12 19:38:26 <vishal>	oh I may have misread. if its not the upstream then don't call it the upstream :)
+Sep 12 19:38:32 <sangy>	hi, I have a commit that I want to cherry pick, but the file it changes has been since moved, so the commit pretty much just detects a "new file" rather than trying to merge the files. Is there a way I can hint git to try to merge these two files?
+Sep 12 19:38:36 <rafasc>	maybe I was the one that misread.
+Sep 12 19:38:59 <sangy>	I could also ammend the commit with the change and make a mv with it but I suspect that'll be just more issues and not the right way to do things
+Sep 12 19:39:04 <vishal>	it wasn't without ambiguity
+Sep 12 19:39:32 <rafasc>	sangy: try -Xfind-renames
+Sep 12 19:39:47 <sangy>	rafasc: oh let me read
+Sep 12 19:40:46 <mark4>	ok so i guess tkdiff is no good either. it does not align the differences automatically and thers no way to align things that i can find. so when theres an off by one due to one line being added to one side or the other that throws off the entire reset of the differences making a merge impossinble
+Sep 12 19:40:50 <rafasc>	sangy: find-renames[=<n>]; you can also try changing the 'n' threshold.
+Sep 12 19:41:17 <sangy>	rafasc: wow that did the trick
+Sep 12 19:41:17 <mark4>	i tried meld.  late binding causes it to fail. i tried beyond compare and that just crashes when launched from git
+Sep 12 19:41:21 <rafasc>	mark4: have you tried kdiff3? It's my favorite
+Sep 12 19:42:05 <rafasc>	if 'late binding' is a recurrent thing, I suggest you fix your OS.
+Sep 12 19:42:09 <mark4>	rafasc, that woluld require gigs of KDE libs to be installed into a gentoo VM where everything is compiled.
+Sep 12 19:42:19 <mark4>	slowlly due to it being a vm :/
+Sep 12 19:43:01 <mark4>	rafasc, no - late binding is not an issue with my installation, its an issue with a horrendously stupid design flaw in the language itself.
+Sep 12 19:43:39 <rafasc>	mark4: maybe you can adapt this: https://aur.archlinux.org/packages/kdiff3-qt/
+Sep 12 19:44:47 <mark4>	rafasc, i dont have ANY kde libs installed other than a few QT libs, I could install that but then when it barfed i would have to figure out what libs i also needed to install. i mean, i could do it but its not ideal
+Sep 12 19:46:24 <k18e>	vishal: yeah right? Because upstream is the original source code, that's where it's flowing
+Sep 12 19:46:27 <rafasc>	not sure where this conversation is going tbh.
+Sep 12 19:47:00 <vishal>	k18e: maybe show an example of what repo is what, and what the flow is, and which you want a name for
+Sep 12 19:47:55 <mlanting>	@rafasc thanks for the suggestion earlier. I think, though, that scripting it like that might be more work than it's worth, at least in the short term. I was considering using cherry pick for it, but i'm not sure if that would end up with similar issues to the rebase method
+Sep 12 19:48:03 <vishal>	if I fork foo/project to vishal/project, then I typically have vishal/project as 'origin', and foo/project as 'upstream'
+Sep 12 19:48:30 <k18e>	vishal: for instance I want to contribute to github.com/golang/go and I fork it to github.com/k18/go and then I make a change and create a PR from k18/go to golang/go
+Sep 12 19:48:33 <sangy>	rafasc: worked wonders thanks!
+Sep 12 19:48:39 <rafasc>	the important thing is that it doesn't really matter whatever you call it. You could call it britneyspears, it only matters to you.
+Sep 12 19:49:21 <rafasc>	sangy: you're welcome. It's not immediate that you need to look up for merge strategies while cherry-picking.
+Sep 12 19:49:38 <sangy>	rafasc: yeah, but I'll keep this nugget of info around it looks so powerful :)
+Sep 12 19:50:11 <rafasc>	because it is not obvious cherry-picking are "merges" in disguise.
+Sep 12 19:51:12 <rafasc>	k18e: in that case I would make golang/go 'upstream' and k18/go origin.
+Sep 12 19:51:23 <k18e>	riiight
+Sep 12 19:51:49 <rafasc>	k18e: git clone -o upstream github.com/golang/go; helps setting it right.
+Sep 12 19:52:11 <k18e>	I guess I am more confused here, because... I am mostly working with GitHub Enterprise and our work flow is to fork before creating PRs, so I always start with the origin repository
+Sep 12 19:52:17 <rafasc>	or you can click fork, clone your own, then remote add upstream the original.
+Sep 12 19:52:28 <k18e>	which is why I never expected it to be the other way around
+Sep 12 19:53:55 <rafasc>	the unspoken convention is that upstream is the official stream of work. While origin is the default place for pushes.
+Sep 12 19:54:21 <k18e>	then maybe I just switch it around
+Sep 12 19:56:05 <rafasc>	but literally, origin is just the remote your cloned from.
+Sep 12 19:57:59 <rafasc>	if you want to change that, because you want to clone from the upstream, you can use clone -o <name> and clone will automatically set the remote as <name>.
+Sep 12 19:58:56 <rafasc>	but most of the time, it doesn't really matter how you name your remotes.
+Sep 12 20:25:57 <RoseBus>	hello, i did a git pull but for some reason it branched and kept the original files
+Sep 12 20:26:07 <RoseBus>	how can i overwrite all files
+Sep 12 20:26:16 <vishal>	it branched??
+Sep 12 20:26:44 <Habbie>	i bet it merged
+Sep 12 20:27:08 <mlanting>	did it run into conflicts?
+Sep 12 20:27:26 <RoseBus>	no conflicts
+Sep 12 20:29:15 <mlanting>	what branch were you on before the pull and what are you on now?
+Sep 12 20:30:16 <RoseBus>	him it must have missed changes in the file
+Sep 12 20:30:33 <RoseBus>	because i added a comment and then recommitted and now it's applying the changes it was supposed to the first time
+Sep 12 20:40:30 <RoseBus>	wow the same thing happened again. my local changes didn't get applied to the master when i pushed
+Sep 12 20:40:37 <RoseBus>	but my commits registered locally
+Sep 12 20:40:52 <RoseBus>	so i had to change the file again (add white space) and save, then commit, then push, then pull remotely
+Sep 12 20:41:04 <RoseBus>	is this uncommoN?
+Sep 12 20:41:06 <RoseBus>	i'm new to git
+Sep 12 20:41:12 <RoseBus>	i should have been using htis a long time ago
+Sep 13 07:15:49 *	Disconnected ()
+**** ENDING LOGGING AT Fri Sep 13 07:15:49 2019
+
+**** BEGIN LOGGING AT Fri Sep 13 07:16:13 2019
+
+Sep 13 07:16:13 *	Now talking on #git
+Sep 13 07:16:13 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 13 07:16:13 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 13 07:16:23 <Toxmi>	I'm developing some feature in a branch called feature/F1. During this development I come across some basic fixes which I applied in master and then cherry pick those into dev and the feature_F1.
+Sep 13 07:16:52 <Toxmi>	Now I think it's better to squash those commits into one. I can rebase in master and squash them. But what about other branches?
+Sep 13 07:17:11 <Toxmi>	I have also some unfinished jobs with feature_F1. What can I do in this situation?
+Sep 13 07:17:12 <AnrDaemon>	Hi. Do I need to run `git update-server-info` aftear each push to the simple DAV remote?
+Sep 13 07:20:01 <AnrDaemon>	Toxmi: It only matters, when you push to the public repository. Never squash commits that you have pushed, unless absolutely necessary.
+Sep 13 07:22:32 <Toxmi>	AnrDaemon:Oh, great. But what about local thing. I'm asking about best practice here. For example my basic understanding is squash them on master, then squash them on dev and then squash them on feature_F1. Same procedure but on 3 different branches. It seems a bit redundant.
+Sep 13 07:23:38 <Toxmi>	This might be due to my previous practice which fix on master and cherry picked them to dev and feature_F1.... (I didn't know a better practice).
+Sep 13 07:26:31 <AnrDaemon>	Toxmi: You are developing in a branch anyway. No matter what you do.
+Sep 13 07:27:04 <AnrDaemon>	Toxmi: When you developed something, and you feel comfortable with it, you squash your commits and merge them to master.
+Sep 13 07:28:49 <Toxmi>	During the development I found some bugs related to master (not that feature) so I switched to master and commit there. This happens serveral times. Each time I cherry-pick those hot fixes to other branches as well. Now I want to squash on master. I can squash on dev and feature_F1 as well. But I want to know if there is a better way or even better practice for such scenario?
+Sep 13 07:33:06 <AnrDaemon>	Toxmi: Did you ask about best practices?
+Sep 13 07:33:24 <AnrDaemon>	Toxmi: Best practice is to never commit directly to master.
+Sep 13 07:33:54 <Toxmi>	but based on gitflow, hotfixes stems from master and merges to it.
+Sep 13 07:46:12 <AnrDaemon>	Toxmi: Merge, not commit.
+Sep 13 07:46:57 <Toxmi>	AnrDaemon:You mean, I should have commit the hot fixes to feature_F1 branch and then merges that to master/dev?
+Sep 13 08:02:48 <AnrDaemon>	Toxmi: You should have created a branch for your fixes.
+Sep 15 22:38:27 *	Disconnected ()
+**** ENDING LOGGING AT Sun Sep 15 22:38:27 2019
+
+**** BEGIN LOGGING AT Sun Sep 15 22:38:53 2019
+
+Sep 15 22:38:53 *	Now talking on #git
+Sep 15 22:38:53 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 15 22:38:53 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 15 22:48:37 <disruptivenl>	git rebase -i HEAD~15
+Sep 15 22:48:56 <disruptivenl>	Total 96 (delta 71), reused 1 (delta 1)... thats not 15...
+Sep 15 23:01:51 <_ikke_>	you know that's not talking about an amount of files, right..?
+Sep 15 23:07:42 <disruptivenl>	No commits
+Sep 15 23:08:07 <disruptivenl>	its puhing the whole git log
+Sep 15 23:08:24 <disruptivenl>	But these are from master and not from the branch
+Sep 15 23:13:51 <disruptivenl>	Ahh I seems when I "make" a branch from master it is including master...
+Sep 15 23:16:25 <disruptivenl>	its not the push what does this...
+Sep 16 00:19:18 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 00:19:18 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 00:19:45 2019
+
+Sep 16 00:19:45 *	Now talking on #git
+Sep 16 00:19:45 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 16 00:19:45 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 16 00:53:33 <alystair>	wow the reflog contains way more info than I originally thought, even when we decide to checkout different branches
+Sep 16 00:53:44 <alystair>	when no changes were actually made
+Sep 16 09:05:08 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 09:05:08 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 09:05:35 2019
+
+Sep 16 09:05:35 *	Now talking on #git
+Sep 16 09:05:35 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 16 09:05:35 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 16 09:38:58 <henrebotha[m]>	How do y'all avoid using the mouse to copy & paste Git commit hashes?
+Sep 16 09:39:26 <henrebotha[m]>	So many commands (cherry-pick, show, etc) need a specific hash, but I'm sick of having to grab my mouse to get it
+Sep 16 09:40:04 <oxymoron93>	I just type it in. Only first 6 characters are enough to distinguish commits.
+Sep 16 09:40:36 <LordRyan>	if I need to copy something in the terminal that I won't be using out of the terminal, I'll usually use tmux's copy/paste functionality
+Sep 16 09:40:39 <henrebotha[m]>	My short term memory & attention span do not lend themselves to this
+Sep 16 09:40:41 <oxymoron93>	6 is usual number, mind that
+Sep 16 09:41:09 <LordRyan>	move cursor onto hash, space, e, enter
+Sep 16 09:41:14 <LordRyan>	then can paste with ctrl-b ]
+Sep 16 09:45:17 <henrebotha[m]>	Ah, I see my Tmux has a binding for xclip (not sure if I put it there?)
+Sep 16 09:45:42 <henrebotha[m]>	Still a bit clunky (enter copy mode, move to hash, "visual mode" select, invoke xclip)
+Sep 16 09:45:45 <henrebotha[m]>	But better than nothing I suppose?
+Sep 16 09:47:59 <LordRyan>	It becomes muscle memory after a while, I guess.
+Sep 16 09:49:27 <henrebotha[m]>	I think I'll just make an alias that pipes rev-parse into xclip
+Sep 16 09:51:59 <henrebotha[m]>	Oh on the topic of "first n charcters"
+Sep 16 09:52:03 <henrebotha[m]>	*characters
+Sep 16 09:52:20 <henrebotha[m]>	In situations where two commits have hashes of which the first n characters are identical
+Sep 16 09:52:28 <henrebotha[m]>	Will Git warn me if I try to e.g. rebase onto one of them?
+Sep 16 09:52:59 <oxymoron93>	yes, if the hash is ambiguous git should tell you about it.
+Sep 16 09:53:09 <henrebotha[m]>	Cool
+Sep 16 09:53:26 <henrebotha[m]>		cpref = ! "f() { git rev-parse --short $1 | xclip -sel clip;}; f"
+Sep 16 09:53:29 <henrebotha[m]>	That oughta do it
+Sep 16 09:53:43 <oxymoron93>	too much hassle for me :P
+Sep 16 09:54:56 <henrebotha[m]>	I may or may not be slightly alias-addicted haha
+Sep 16 09:56:30 <oxymoron93>	and I might be feeling aversion to shell scripts
+Sep 16 09:58:36 <Luyin>	is there a revision for the tracked remote for HEAD? something that points to origin/foo automatically when I'm on branch foo?
+Sep 16 10:05:29 <_ikke_>	Luyin: HEAD@{upstream}, or just @{u} for short
+Sep 16 10:06:53 <Luyin>	_ikke_: uuh, nice. thanks!
+Sep 16 10:57:06 <Celmor[m]>	I'm trying to rebase and get my changes on-top of origin/master but each time rebase --continue doesn't work and rebase --skip deletes my changes and I'm left with origin/master
+Sep 16 10:58:06 <Celmor[m]>	I've started the rebase process which shows me that there are merge conflicts which I resolve using my IDE, after I'm finished resolving the conflicts git still says that I'm still rebasing
+Sep 16 10:58:41 <canton7>	Celmor[m], you need to 1) resolve the conflicts, 2) 'git add' the conflicted files, 3) 'git rebase --continue'
+Sep 16 10:58:46 <canton7>	(sorry afk; meeting)
+Sep 16 10:59:32 <Celmor[m]>	it looked like they were already `add`ed in the git status output (green highlight, below "changes to be commited"
+Sep 16 10:59:42 <Celmor[m]>	and sayd "  (all conflicts fixed: run "git rebase --continue")"
+Sep 16 11:00:08 <Celmor[m]>	but `git rebase --continue` says "You must edit all merge conflicts and then mark them as resolved using git add"
+Sep 16 11:00:34 <_ikke_>	Celmor[m]: that means that origin/master already contains the changes you are trying to rebase
+Sep 16 11:00:37 <Celmor[m]>	`git rebase --skip` seems to just abort the rebase and checks out origin/master and delets my changes
+Sep 16 11:00:53 <_ikke_>	no, it just skips the the current commit
+Sep 16 11:01:46 <_ikke_>	it just means your commit is not introducing any new changes
+Sep 16 11:08:23 <Celmor[m]>	My changes did, which rebase --skip deleted and put me back to origin/master state. How can there be no changes if 'git rebase ' shows conflicts which I needed to resolve?
+Sep 16 11:09:04 <_ikke_>	When the conflict resolution results in undoing the changes
+Sep 16 11:09:12 <_ikke_>	git rebase --skip does not delete any changes
+Sep 16 11:09:29 <_ikke_>	it just continues with the next commit in the rebase sequence (or when none are left, finished the rebase)
+Sep 16 11:09:57 <Celmor[m]>	Anyway, I finally got my changes onto master using stash
+Sep 16 11:41:27 <Toxmi>	I like to get the content of one merge-requests (pull-request) from my private repo to my local repository, resovle conflicts and then accept the merge request aka put the requested code in dev (after my modifiction).
+Sep 16 11:41:48 <Toxmi>	What is the best practice here? Is there a way to do this almost all in my convinent command line.
+Sep 16 11:42:14 <Celmor[m]>	guess all I was missing was the  `git add` between conflict resolution and `git rebase --continue`, still didn't expect `git rebase --skip` to reset to the commit I was rebasing onto and therefore discarding my conflict resolution changes
+Sep 16 12:08:32 <Luyin>	_ikke_: I have this alias in my config now: diverged = log --graph --pretty=format(...) --abbrev-commit @...@{u} --left-right, so I get the differences from diverged branches in a quick overview. thanks again :)
+Sep 16 12:14:09 <Toxmi>	I've merged some PR locally and now after I did `git push origin develope` I couldn't do the `git branch -d The_PR` thing. It seems I've not updated the origin by merge status and hence it cannot be deleted locally!
+Sep 16 12:14:41 <Luyin>	Toxmi: could you give concrete output of the commands you've used, of `git status` and similar?
+Sep 16 12:16:23 <Toxmi>	Luyin: I fetch a merge-request from my private gitlab repo. I did some small modification then I did `git merge fix_blah`. Then `git push origin dev` and when I tried `git branch -d fix_blah` I got this warning which says: not deleting branch fix_blah that is not yet merged to refs/remotes/origin/fix_blah, even though it is merged to HEAD.
+Sep 16 12:16:41 <Toxmi>	I think 1) conceptually 2) and by issuing a command I've missed something here.
+Sep 16 12:18:22 <Celmor[m]>	how do I checkout a commit AS master (make master point to it as well as checking out master). otherwise I need to do `git checkout <ref> ; git branch -f master HEAD ; git checkout master`
+Sep 16 12:19:39 <oxymoron93>	`git checkout -B master <ref>` should do it
+Sep 16 12:20:44 <Toxmi>	I should say, after the warning I have a error which states: The branch 'fix_blah' is not fully merged.
+Sep 16 12:20:56 <_ikke_>	That's not an error
+Sep 16 12:21:13 <_ikke_>	hmm, depending on what command you did, it might be
+Sep 16 12:24:22 <Luyin>	Toxmi: well, the "error"/warning tells you: you have merged the version that is on your local fix_blah but it is not the same version as origin/fix_blah. so you didn't push to your origin before you merged. that can be absolutely fine, or problematic, depending on your project, setup, guidelines etc.
+Sep 16 12:25:22 <Toxmi>	Luyin:Yeah, right. Because I've changed that merged request. So as it suggest using -D is OK. Great and thanks
+Sep 16 12:25:35 <Luyin>	sure, np
+Sep 16 12:30:01 <Celmor[m]>	can I ignore tracked files to have local-only changes to them and avoid commiting them by mistake? I tried adding them to the .gitignore (including the .gitignore itself) but it still shows under "Changes not staged for commit:". I would expect it to show a clean working tree
+Sep 16 12:30:56 <Luyin>	Celmor[m]: https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/#stop-tracking-a-tracked-file
+Sep 16 12:31:20 <jguddas-tr>	is there a way to find commits that changed lines that contain a string?
+Sep 16 12:31:40 <Luyin>	jguddas-tr: I think "git log -S" does that
+Sep 16 12:32:15 <jguddas-tr>	thanks, that looks promising
+Sep 16 12:33:45 <Celmor[m]>	Luyin: now it shows as 'Changes to be committed:  ... deleted:    .gitignore'
+Sep 16 12:34:33 <Luyin>	Celmor[m]: what did you do?
+Sep 16 12:35:34 <Celmor[m]>	I added ".gitignore" to .gitignore and run `git rm --cached ".gitignore"`
+Sep 16 12:35:39 <Luyin>	Celmor[m]: also, what are you actually trying to achieve? there's also .git/info/exclude for ignoring files that are not to be added to .gitignore
+Sep 16 12:35:59 <Luyin>	Celmor[m]: that sounds wrong. don't do that. you'd remove .gitignore for your whole team
+Sep 16 12:36:09 <Luyin>	which is probably not what you're trying to do
+Sep 16 12:36:28 <Celmor[m]>	I only want my local changes to be ignored for commit
+Sep 16 12:36:38 <Luyin>	Celmor[m]: if you have a file foo.txt that you don't want tracked at all but don't want to show up in `git status` and similar, add it to .git/info/exclude
+Sep 16 12:37:15 <Luyin>	Celmor[m]: also you can't tell git to only ignore certain changes in a file. you can use `git add -p` to selectively add changes to the index, and only commit that
+Sep 16 12:37:17 <Celmor[m]>	the files I'm trying to exclude are tracked, does it work for those as well?
+Sep 16 12:37:24 <Luyin>	I still don't understand fully what you're trying to achieve
+Sep 16 12:37:32 <Luyin>	can you be more concrete?
+Sep 16 12:37:50 <Luyin>	you have changes in your working directory that you don't want to include in a commit? is it that?
+Sep 16 12:38:21 <Celmor[m]>	I modified certain tracked files locally and don't want them to be commited nor automatically added using "git commit -a" or similar
+Sep 16 12:38:26 <Celmor[m]>	and not show up in git status
+Sep 16 12:39:40 <Luyin>	don't use git commit -a
+Sep 16 12:39:43 <Luyin>	use git add -p
+Sep 16 12:39:50 <Luyin>	review what's added to the index with git status
+Sep 16 12:39:52 <Luyin>	then use git commit
+Sep 16 12:40:18 <Celmor[m]>	I don't want these changes to show up at all to be commited, either in git status or in my IDE's VCS integration
+Sep 16 12:40:28 <Luyin>	`git commit -a` commits _all_ changes in the working directory, regardless of what's in the index
+Sep 16 12:40:31 <Habbie>	Celmor[m], then those changes should not be in files that git is tracking..
+Sep 16 12:40:57 <Luyin>	Habbie: that's not entirely true. maybe they're developing something that isn't commit-ready, but should eventually be in the tracked files.
+Sep 16 12:41:05 <Celmor[m]>	they have to be in those files...
+Sep 16 12:41:06 <Luyin>	Celmor[m]: however, you can't achieve that.
+Sep 16 12:41:44 <Habbie>	Luyin, i was only referring to the desire to have those changes be invisible from 'git status' etc.
+Sep 16 12:42:17 <Celmor[m]>	I can live with it showing up in the `git status`, etc. but I still have to handle these files specialle when pulling, resseting, checkout, etc.
+Sep 16 12:42:45 <Celmor[m]>	although these changes won't ever change in the VCS anymore and I always want to "override" them with my local versions
+Sep 16 12:42:58 <Celmor[m]>	guess git just isn't as flexible as I though
+Sep 16 12:43:32 <Luyin>	I'm still thinking you're trying to solve something with git that you shouldn't be doing
+Sep 16 12:43:45 <Celmor[m]>	I explained my use-case
+Sep 16 12:43:46 <Luyin>	like handling a config file with passwords or auth keys or something
+Sep 16 12:44:11 <Luyin>	Celmor[m]: if you always want your version, why can't you simply commit them?
+Sep 16 12:44:37 <Celmor[m]>	I want that version _for me_ not for the whole team
+Sep 16 12:53:20 <Luyin>	well you can set autostash before pulls and stuff
+Sep 16 12:53:28 <Luyin>	man autostash
+Sep 16 12:53:33 <Luyin>	hmmm
+Sep 16 12:53:36 <Luyin>	!man autostash
+Sep 16 12:53:36 <gitinfo>	The git man pages are available online at https://gitirc.eu/git.html. Or were you looking for the "man git-foo" syntax (without the !)?
+Sep 16 12:53:44 <Luyin>	argh
+Sep 16 12:53:55 <Luyin>	well, somewhere in the git manpages there's something about autostash
+Sep 16 13:01:01 <Toxmi>	Consider my master branch has multiple commits and merges which make the codebase much better. Now I want to merge from an old merge-request but how to add those new changes as well? Is rebase is the solution here
+Sep 16 13:01:52 <_ikke_>	Yes, rebasing is how you get the latest changes in a feature branch
+Sep 16 13:02:09 <Toxmi>	My scenario is not linear one branch. But let's say the target PR (MR for gitlab) is a bit old and it doesn't have some necessary changes and features which have been introduced later.
+Sep 16 13:02:36 <Toxmi>	_ikke_:Aha, I will try that. rebase seems very intimidating (esp for a cloud repo)
+Sep 16 13:02:54 <Toxmi>	Is cherry pick and squash safer?
+Sep 16 13:15:34 <_ikke_>	No
+Sep 16 13:19:32 <Luyin>	Toxmi: rebase gets much better if you activate rerere
+Sep 16 13:19:42 <Luyin>	man git-config search for "rerere"
+Sep 16 13:19:42 <gitinfo>	the git-config manpage is available at https://gitirc.eu/git-config.html
+Sep 16 13:19:57 <_ikke_>	Luyin: That only applies if you happen to do the same rebase multiple times
+Sep 16 13:20:13 <Luyin>	_ikke_: sometimes it can help for a multitude of problems
+Sep 16 13:20:20 <Luyin>	I find it's generally a good idea to have it enabled
+Sep 16 13:20:35 <_ikke_>	Sure, but if you just rebase a branch, it is not going to help you in any way
+Sep 16 13:20:46 <_ikke_>	it only helps you if you happen to get the exact same conflict again
+Sep 16 13:29:13 <gschwind>	hello, is it prossible to create a submodule that do not have remote, and do init instead instead of clone ?
+Sep 16 13:32:05 <Luyin>	if it doesn't have its own upstream, why does it need to be a submodule? can't it just be its own dir in the project, or in another way just part of the project?
+Sep 16 15:45:11 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 15:45:11 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 15:45:39 2019
+
+Sep 16 15:45:39 *	Now talking on #git
+Sep 16 15:45:39 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 16 15:45:39 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 16 15:55:36 <solidfox>	hmm, are questions about git extensions ok? it is a gui for windows
+Sep 16 15:56:20 <solidfox>	I get an error in git extensions but not in git gui. it happens whenever i open the repo, it is trying to do something with submodules but i'm not sure what.
+Sep 16 15:56:43 <solidfox>	i can debug it because i have the git extensions code
+Sep 16 15:57:38 <solidfox>	it seems that previous devs for the repo im trying to open have submodules that use a file from c:\dev and my project is in c:\users\solidfox\Projects instead
+Sep 16 15:57:58 <rafasc>	!guis
+Sep 16 15:57:58 <gitinfo>	Popular GUIs for Git are listed on the website: http://git-scm.com/downloads/guis
+Sep 16 15:58:00 <rafasc>	!gui
+Sep 16 15:58:00 <gitinfo>	Graphical user interfaces are not supported here. If you want to get support, it needs to be through the git CLI. Reasons: 1) Because very few people here use the graphical interface. 2) Because giving instructions for GUI's is difficult. 3) The command line gives you a history of what commands you have executed.
+Sep 16 15:58:20 <solidfox>	alright
+Sep 16 15:58:22 <rafasc>	you can try, but gui related questions rarely get answers.
+Sep 16 15:59:33 <solidfox>	i think this guy did it on purpose cause he hates it when people don't put their projects in c:\dev
+Sep 16 15:59:46 <solidfox>	it used to work
+Sep 16 15:59:47 <solidfox>	sad
+Sep 16 15:59:55 <rafasc>	sounds like a pleasant person to work with.
+Sep 16 16:01:00 <rafasc>	solidfox: git has a url-rewrite mechanism, you can probably use that to map their urls to yours.
+Sep 16 16:02:04 <rafasc>	https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf
+Sep 16 16:03:44 <solidfox>	hmm ok i will look into that thanks
+Sep 16 16:06:12 <rafasc>	and you can probably try to just replace that url with the proper one.
+Sep 16 16:06:20 <rafasc>	look inside .gitmodules
+Sep 16 16:17:37 <jarlopez>	There are times when I have some local changes that I'd like to be able to re-apply and stash away at times, almost like a "ghost" commit that I don't want to push to origin
+Sep 16 16:18:45 <jarlopez>	What are some ways to accomplish this?
+Sep 16 16:18:47 <_ikke_>	sounds like git stash
+Sep 16 16:19:15 <jarlopez>	_ikke_: It does, but stash stashes _all_ the changes, rather than letting me choose specific hunks
+Sep 16 16:20:12 <mobidrop>	isn't there a -p for stash ?
+Sep 16 16:20:30 <jarlopez>	:o
+Sep 16 16:20:59 <_ikke_>	git stash push -p
+Sep 16 16:22:18 <rafasc>	and now with the new git restore, it solved some of the limitations that checking out files from stash references had.
+Sep 16 16:22:27 <rafasc>	as you can do: git restore -p --source=<somestashref> --worktree/--staged
+Sep 16 16:22:57 <rafasc>	requires a bit of knowledge about how the stash is stored.
+Sep 16 16:22:59 <jarlopez>	That's pretty close to what I'm looking for. My workaround so far has been to reference a magic commit that has the changes: `git cherry-pick -n <myhash>`
+Sep 16 16:23:29 <rafasc>	but if you can split in advance stash push -p; is the easy route.
+Sep 16 16:27:30 <henrebotha[m]>	jarlopez: just in case of an XY problem, what is the use case for these ghost commits?
+Sep 16 16:28:39 <solidfox>	rafasc, i tried it but its not working. oh well i'll just have to use command line
+Sep 16 16:29:11 <rafasc>	solidfox: maybe your gui is doing some weird parsing and not respecting what it should.
+Sep 16 16:29:21 <solidfox>	rafasc, it is actually
+Sep 16 16:29:47 <solidfox>	rafasc, the very line it crashes on is doing some magic stringy things, and if i change their condition the error goes away
+Sep 16 16:29:55 <solidfox>	this is the code within the git extensions gui
+Sep 16 16:30:26 <solidfox>	i changed var superPath = modulePaths.Find(path => submodulePath != path && submodulePath.Contains(path)); Trace.Assert(superPath != null);
+Sep 16 16:30:33 <finn0>	I've hard time to understand the meaning this sentence "Whether and how Git detects renames" (see "diff.renames" section in git-config(1) man page). If here, rename word is used in context of renaming of a file, how does diff subcommand related to file renaming?
+Sep 16 16:30:41 <solidfox>	to var superPath = modulePaths.Find(path => submodulePath.Contains(path)); Trace.Assert(superPath != null);
+Sep 16 16:31:08 <solidfox>	i know you can't confirm its correct just on the one line of code but looking at the paths that its working with, it doesnt seem right to me
+Sep 16 16:32:01 <finn0>	when I've to rename a file a git I've to explicitly told git by using "git mv" command otherwise, it will mark committed file as 'D' and arrived file as 'A'.
+Sep 16 16:32:08 <rafasc>	solidfox: maybe open an issue. If git works, and the gui doesn't. It's a bug on their gui.
+Sep 16 16:33:29 <henrebotha[m]>	finn0: AFAIK `git mv` doesn't inform Git that the file was moved, it just moves the file & then stages the deletion & addition
+Sep 16 16:34:08 <rafasc>	finn0: git doesn't support renames. It records them as delete-add pairs.
+Sep 16 16:34:47 <rafasc>	But there are heuristics that say: "renamed" when git sees a delete-add pair with similar enough content.
+Sep 16 16:35:06 <finn0>	Okay, but what does diff.rename do?
+Sep 16 16:35:54 <henrebotha[m]>	It tells Git what qualifies as a "rename"
+Sep 16 16:35:59 <finn0>	*then
+Sep 16 16:35:59 <rafasc>	what I've just said. It enables or disalbes the heuristic.
+Sep 16 16:38:25 <henrebotha[m]>	Related: why doesn't Git record rename information? Is this just a legacy thing that they never implemented, or is there another good reason for it?
+Sep 16 16:38:27 <finn0>	rafasc: By default diff.rename is set to true. What would if set to false? Then, we shouldn't be able to perform renaming.
+Sep 16 16:38:41 <rafasc>	if you set it to false, a rename will always show up as D x.txt A y.txt
+Sep 16 16:41:11 <rafasc>	finn0: also, sometimes when you rename a file and change it substantially, git has a threshold where it stops considering a rename, and shows a add-delete pair. You can change that threshold with the -M flag. (or -C for copies)
+Sep 16 16:42:34 <rafasc>	henrebotha[m]: the reason is that commits are snapshots your project. And renames are things that happen between snapshots.
+Sep 16 16:42:40 <rafasc>	they're differences between commits.
+Sep 16 16:43:00 <henrebotha[m]>	Ah!
+Sep 16 16:43:39 <rafasc>	It's one of the traps of thinking that commits only store the changes in relation to the previous commit. That's not true.
+Sep 16 16:44:19 <henrebotha[m]>	I guess that's what happens when commits are snapshots but are viewed as changesets
+Sep 16 16:45:19 <rafasc>	doesn't help that we talk of commits as changes in spoken language.
+Sep 16 16:45:47 <henrebotha[m]>	Precisely
+Sep 17 10:23:00 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 10:23:00 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 10:23:27 2019
+
+Sep 17 10:23:27 *	Now talking on #git
+Sep 17 10:23:27 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 17 10:23:27 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 17 10:23:30 <oxymoron93>	I don't see anything. But wait for others with a response.
+Sep 17 10:26:35 <oxymoron93>	I doubt there is a single command for that, to be precise.
+Sep 17 10:26:50 <henrebotha[m]>	So do I, but thought it was worth asking
+Sep 17 10:26:55 <henrebotha[m]>	It comes up for me relatively frequently
+Sep 17 10:27:32 <oxymoron93>	create some script which takes the name of the new branch, and voila
+Sep 17 10:28:50 <oxymoron93>	of course, do not ask me nada, I don't know how to write it off the top of my head :D
+Sep 17 10:29:18 <henrebotha[m]>	Haha, no worries
+Sep 17 10:33:50 <oxymoron93>	`com = !sh -c \"git checkout -b $1 && git commit && git checkout -\" -` in git config under [alias] could be it? Invoked with `git com new-branch`
+Sep 17 10:34:17 <henrebotha[m]>	Yeah something along those lines
+Sep 17 10:34:42 <henrebotha[m]>	More likely I'd just make it a separate script so I can have some decent error handling
+Sep 17 10:34:42 <henrebotha[m]>	Starting to realise that not every use case calls for an alias
+Sep 17 11:15:47 <chieta>	@@ -85,6 +86,23 @@ class machineInterface(threading.Thread):
+Sep 17 11:16:13 <chieta>	what is the meaning '@@ -85,6 +86,23 @@'
+Sep 17 11:16:52 <pandem>	rows
+Sep 17 11:18:47 <chieta>	pandem, im trying patching the code... so it means rows 85 written 'class machineInterface(threading.Thread):'
+Sep 17 11:19:25 <pandem>	not 100% sure, but i would guess that you removed 6 lines starting from row 85 and then added there 23 lines
+Sep 17 11:19:51 <chieta>	noted, thanks
+Sep 17 11:21:35 <Bombe>	Yeah, that’s just the formats diff and patch use.
+Sep 17 11:22:46 <chieta>	will patching python code with additon ^M will be problem on execution?
+Sep 17 11:59:35 <Toxmi>	I've a repo in gitlab with some merge-requests. When I `git fetch` it I can not see the merge request e.g. with `git branch -a`. Is there a way to checkout the merge requests locally?
+Sep 17 12:00:23 <pandem>	you want to checkout a branch, not a merge request
+Sep 17 12:00:33 <pandem>	merge requests are a concept of gitlab, not git
+Sep 17 12:01:48 <Toxmi>	pandem:But previously I could checkout (and create a branch at the same time) from a merge-requst after a `git fetch`.
+Sep 17 12:02:14 <Toxmi>	It was something like `git fetch` then git checkout and create a branch from remotes/origin/feature_x
+Sep 17 12:03:05 <Toxmi>	So since I don't have them locally (after fetch). How can I access the merge requests locally without leaving my convinient command line.
+Sep 17 12:05:13 <wonko7>	Hi all! I'm trying to clone a git repo that has submodules, some of which I don't have access to (ssh priv key). Can these be silently ignored? When I clone --recursive ALL my submodules are empty (correct head, but not checked out).
+Sep 17 12:28:29 <wonko7>	I can't find a workflow where I don't end up doing "git checkout" for each submodule. I tried cloning without recurse, git config submodule.X.active false, and multiple variations of git submodule init/update, I still end up with empty repos that should be checked out
+Sep 17 12:48:04 <wonko7>	this is the repo: git clone --recursive https://github.com/Wonko7/conf-root
+Sep 17 12:50:01 <henrebotha[m]>	Toxmi: are the merge requests coming from forks?
+Sep 17 12:57:13 <Toxmi>	henrebotha[m]:yeah, exactly
+Sep 17 12:59:41 <Toxmi>	priviously when I did `git fetch` I had the merge-requests in my remotes/origin/feature_x which I could easily checkout. But I don't know what has happend that this time gives me a url to checkout (something like `git fetch "git@gitlab.com:USER/Project.git" "feature_x")
+Sep 17 13:00:15 <Toxmi>	and this doesn't work due to some access problem.
+Sep 17 13:00:30 <henrebotha[m]>	Presumably because you don't have access to another user's repos
+Sep 17 13:01:15 <Toxmi>	henrebotha[m]:It's a user with access to my private repo and it already forked the repo, push a feature to the repo and request a merge...
+Sep 17 13:01:42 <henrebotha[m]>	Yeah but I'm saying maybe you don't have access to their repo
+Sep 17 13:01:55 <henrebotha[m]>	Although
+Sep 17 13:01:59 <henrebotha[m]>	Did you try adding their repo as a remote?
+Sep 17 13:02:21 <Toxmi>	what is the general practice when someone checkout a merge-request locally? isn't it git checkout origin/feature_x (after git fetch?)
+Sep 17 13:03:11 <Toxmi>	henrebotha[m]:My problem is this worked before but I can not find out what has happen or what is the problem to search for a fix. The error message is also too general.
+Sep 17 13:04:55 <henrebotha[m]>	The general way to check out a remote branch is git checkout name-of-remote/name-of-branch, yes
+Sep 17 13:05:04 <henrebotha[m]>	What is the error message you get?
+Sep 17 13:07:07 <Toxmi>	henrebotha[m]: The project you're looking for can not be found.
+Sep 17 13:07:44 <Toxmi>	fatal: could not read from remote repository
+Sep 17 13:11:42 <Toxmi>	I fixed it by adding some refspec to the config file (git config -e). Do the job at least.
+Sep 17 13:12:38 <henrebotha[m]>	If git fetch url branch gives you that error, then it must be that you don't have perms
+Sep 17 13:12:43 <henrebotha[m]>	What did you do to fix it?
+Sep 17 13:17:17 <Toxmi>	henrebotha[m]:I add this to config for origin:  fetch = +refs/merge-requests/*/head:refs/remotes/origin/merge-requests/*
+Sep 17 13:17:56 <rafasc>	wonko7: if you know beforehand which submodules have access issues, you could try excluding them from recurse, and dealing with them individually: git clone --recurse-submodules=:^notes --recurse-submodules=:^zsh https://github.com/Wonko7/conf-root
+Sep 17 13:18:57 <Toxmi>	One question. To sync back the forked repo after doing merge-request with the upstream. A git pull upstream is enough. right? I have two branches: master and dev and I want to all of them be updated.
+Sep 17 13:19:29 <henrebotha[m]>	I don't think git pull upstream will update both those branches
+Sep 17 13:19:46 <Toxmi>	henrebotha[m]:If the problem is with permissions which is probably the case why I can easily checkout with that config trick?
+Sep 17 13:20:05 <Toxmi>	henrebotha[m]:what is the best practice for that case then?
+Sep 17 13:20:14 <Toxmi>	git pull upstream dev:dev
+Sep 17 13:20:26 <Toxmi>	git pull upstream master:master :D
+Sep 17 13:20:41 <Toxmi>	Sorry I'm noob (my first real git experience)
+Sep 17 13:21:29 <henrebotha[m]>	Toxmi: ah I see, I guess by default those GitLab merge request branches are not included somehow
+Sep 17 13:21:31 <henrebotha[m]>	So not perms then
+Sep 17 13:22:12 <henrebotha[m]>	To update both branches, I would checkout dev, then pull upstream, then checkout master, then pull upstream
+Sep 17 13:22:50 <Toxmi>	henrebotha[m]:ah, great. I understand that
+Sep 17 13:23:32 <Toxmi>	henrebotha[m]:I didn't get your 'not included somehow' could you please give me more description to read on
+Sep 17 13:24:09 <henrebotha[m]>	Idk, I'm saying before you added the fetch config, Git for some reason didn't think it had to fetch the merge-request branches, or GitLab didn't advertise them, or something
+Sep 17 13:25:34 <Toxmi>	henrebotha[m]:aha. Very good lead to follow. Thanks
+Sep 17 13:31:10 <wonko7>	rafasc: I didn't know you could use ^, thanks
+Sep 17 13:39:21 <rafasc>	wonko7: don't get excited, it seems it doesn't work very well if you want to ignore the inner submodules..
+Sep 17 13:40:48 <wonko7>	yeah, just ran into that
+Sep 17 13:46:44 <wonko7>	well... it's not pretty, but excluding notes is enough. The inner submodules still print errors, but don't stop the other modules from being checked out
+Sep 17 13:48:48 <wonko7>	actually yes it does break things
+Sep 17 13:49:11 <wonko7>	zsh's public/normal submodules aren't checked out
+Sep 17 13:51:59 <rafasc>	you have a complex submodule setup right there. And since most of those are referencing a local repo in the parent directory, it's hard to reproduce your issues.
+Sep 17 14:09:30 <wonko7>	it's referencing a local repo so that I'm not tied to github, I can host this repo tree anywhere
+Sep 17 14:16:12 <rafasc>	wonko7: I think you need cd into each submodule that has private submodules, and deinit them.
+Sep 17 14:30:00 <drebs>	hello,!
+Sep 17 14:30:00 <gitinfo>	drebs: hi! I'd like to automatically welcome you to #git, a place full of helpful gits. Got a question? Just ask it — chances are someone will answer fairly soon. The topic has links with more information about git and this channel. NB. it can't hurt to do a backup (type !backup for help) before trying things out, especially if they involve dangerous keywords such as --hard, clean, --force/-f, rm and so on.
+Sep 17 14:30:13 <drebs>	thanks, gitinfo
+Sep 17 14:30:13 <gitinfo>	drebs: you're welcome, but please note that I'm a bot. I'm not programmed to care.
+Sep 17 14:30:24 <drebs>	:)
+Sep 17 14:31:16 <drebs>	i'm trying to set a submodule using gcrypt:: helper, but i get a "fatal: transport 'gcrypt' not allowed"
+Sep 17 14:31:17 <DelTree>	not so true. it's programmed to care enough to answer...
+Sep 17 14:31:44 <drebs>	is it the case that gcrypt is not allowed for submodules at all?
+Sep 17 14:32:07 <drebs>	DelTree, i think it depends on the definition of "care", no? ;)
+Sep 17 14:39:51 <shomon>	hi, if I set "git branch --set-upstream-to=origin/master master" then will git pull pull in also the other branches, or do if I'm in a branch do I need to set the upstream to that branch each time?
+Sep 17 14:46:46 <daggs1>	Greetings, is there a way to configure git that when ever git commit is issued, the signoff feature will be enabled?
+Sep 17 14:48:51 <oxymoron93>	what that option does is sets tracking info for your `master` branch. While on `master` branch, running plain `git fetch` will no from what remote to fetch. Also, it sets information what remote tracking branch (in this case `origin/master`) to use for following merge procedure. shomon
+Sep 17 14:49:17 <oxymoron93>	will know from what remote to fetch.* (wow)
+Sep 17 14:49:48 <shomon>	:)  thanks very much oxymoron93
+Sep 17 14:50:09 <oxymoron93>	following merge procedure is in case when you use `git pull`
+Sep 17 14:50:42 <oxymoron93>	as well in case, when you configured pull to do the rebase instead of merge, or explicitely with `git pull -r`
+Sep 17 14:57:20 <shomon>	oxymoron93 probably I just want to make sure my branch is up to date with other commits to master that might have taken place since I created it
+Sep 17 14:57:23 <oxymoron93>	daggs1 I might didn't understand well. What stops you from providing this short `-s` option to `git commit` ? There is a mention of `format.signOff` configuration option. But I don't believe that would help, as it works with patches.
+Sep 17 14:58:18 <rafasc>	git doesn't have that option because it waters down what it means. That you are giving explicit consent to use the code.
+Sep 17 14:59:04 <wonko7>	rafasc: I can't find a way to deinit them.
+Sep 17 14:59:05 <rafasc>	git::master:templates/hooks--prepare-commit-msg.sample#L20
+Sep 17 14:59:05 <gitinfo>	Git web link: https://github.com/git/git/blob/master/templates/hooks--prepare-commit-msg.sample#L20
+Sep 17 14:59:49 <rafasc>	wonko7: cd zsh; git submodule deinit <bookmarks>; etc..
+Sep 17 14:59:57 <wonko7>	I get errors could not "lock config file .git/modules/notes/config: No such file or directory" for submodules that failed init
+Sep 17 15:00:55 <rafasc>	wonko7: I think it should still work. Does it complain again if you rerun the command?
+Sep 17 15:02:26 <wonko7>	I'll keep trying, but I can't get it to work right now, I've tried cloning without --recurse and trying to remove it then, doesn't work, I tried letting it fail with --recurse and then removing them, doesn't work either
+Sep 17 15:05:45 <Toxmi>	I want to ask about the good (best) practice in special scenario when the one developer have assigned some tasks. However, after developing task 1 on branch T1, then he push T1 to the repo. What if he (as second developer) merges teh T1 with dev branch and then push the dev branch to the repo? which one is better pushing the T1 (feature branch) to origin or pushing merge dev?
+Sep 17 15:07:00 <Toxmi>	Another question is about handling other tasks. When T1 is done some commits in T1 mgiht be needed in T2 as well. As I have searched online one thing is rebase but niether me nor the other guy are expert enough for using rebase (it seems intimidating). Is there a workflow around this without rebase in a collaborative environment?
+Sep 17 15:09:35 <butterslax>	hey all, I'm trying to clone a private repo via https, but when I try using 'git clone https://user@re.po/project/project.git', I'm not prompted for a password and I'm given a repo not found error.  I'm the owner of the repo, and I'm using the correct username, so I'm not sure what's going on....
+Sep 17 15:11:24 *	gitinfo gives voice to butterslax
+Sep 17 15:15:07 <wonko7>	 
+Sep 17 15:17:30 <shomon>	butterslax - is there already a .git/config ? and can you clone a random repo from somewhere else to that box?
+Sep 17 15:18:29 <butterslax>	@shomon there's no .git/config, and yes I've been successful cloning public repos
+Sep 17 15:19:10 <shomon>	may be to do with connectivity to that box itself but hopefully others here will know more
+Sep 17 15:52:54 <rafasc>	wonko7: you may ask for advice on the mailing list, https://upaste.de/ucZ seems to work. But it isn't a general solution, which sucks.
+Sep 17 15:57:01 <rafasc>	[RFC] rename submodules to sobmodules. :'(
+Sep 17 15:58:15 <bremner>	doooit
+Sep 17 16:00:43 <wonko7>	rafasc: ouch, yeah, I wouldn't have found that, thanks... I might ask on the mailing list because that does not scale :/
+Sep 17 16:06:41 <rafasc>	wonko7: I think you can add submodule.<name>.update=none, for your private submodules, so they're automatically skipped.
+Sep 17 16:22:14 <wonko7>	rafasc: going back to your paste, the deinit line fails for me: I get the "could not lock config file .../conf-root/.git/modules/zsh/modules/history/config: No such file or directory" errors
+Sep 17 16:22:48 <rafasc>	I also get those errors. But seems to work :shrug:
+Sep 17 16:23:36 <wonko7>	hah, yeah, I can live with that, let me see if it works then
+Sep 17 16:24:16 <rafasc>	still think it may be worth dropping that email in the list. (or search the list if something similar was reported already)
+Sep 17 16:24:28 <wonko7>	yes, ok, it does work
+Sep 17 16:25:15 <rafasc>	it's probably a weird edge-case. Cloning something that has a submodule that you do not have permission to clone.
+Sep 17 16:25:38 <wonko7>	yeah, I thought I was being clever
+Sep 17 16:38:35 <henrebotha[m]>	…Something super spooky is happening
+Sep 17 16:38:35 <henrebotha[m]>	I have made changes to a file
+Sep 17 16:38:43 <henrebotha[m]>	I have staged some of those changes
+Sep 17 16:39:11 <henrebotha[m]>	But now, neither git add -p nor git diff see the remaining changes
+Sep 17 16:39:24 <henrebotha[m]>	Damn it, never mind, I was editing the wrong file
+Sep 17 16:39:49 <_ikke_>	;-)
+Sep 17 16:43:43 <rafasc>	henrebotha[m]: it's only Tuesday!
+Sep 17 16:43:51 <henrebotha[m]>	:D
+Sep 17 16:44:17 <_ikke_>	Still recovering from the weekend
+Sep 17 16:46:10 <oncall-pokemon>	Hi, is there a way to do a git rebase but just have it squash the commits. what I have now in the working directory is good. But it seems like it's a complex rebase and a lot of work. I kinda want to avoid the work, squash the commits and just take what I have now. anyway to do that?
+Sep 17 16:46:13 <oxymoron93>	wait, weekend has passed?
+Sep 17 16:46:59 <_ikke_>	oxymoron93: yes, you should have gotten the memo
+Sep 17 16:47:18 <rafasc>	oncall-pokemon: squash everything?
+Sep 17 16:57:35 <rafasc>	the easiest way I can think of is using: git replace --graft branch master / git filter-branch master..branch
+Sep 17 16:58:22 <rafasc>	and git replace --delete the replacement afterwards.
+Sep 17 16:59:25 <rafasc>	git checkout <base>; git merge --squash <branch>; git commit; is similar but you'll have to solve conflicts if they arise.
+Sep 17 17:00:51 <rafasc>	git checkout -b branch <base>; git checkout <branch> -- :/ ; git commit; should also work.
+Sep 17 17:02:27 <rafasc>	git checkout -b branch <base>; git checkout <tip_commit> -- :/ ; git commit;
+Sep 17 17:03:32 <rafasc>	If you don't mind having the complex history, git merge -s ours <master>; can also work.
+Sep 17 17:04:04 <rafasc>	!backup
+Sep 17 17:04:04 <gitinfo>	Worried about your data while trying stuff out in your repo? The repository in its entirety lives inside the .git directory in the root of your work tree so to backup everything `cp -a path/to/workdir path/to/backup` or equivalent will suffice as long as the repo is not modified during backup. See also http://sethrobertson.github.com/GitBestPractices/#backups
+Sep 17 17:04:27 <rafasc>	checkout with paths and filter-branch can be destructive.
+Sep 17 17:05:24 <joo-_>	hi. If I undo a recent commit, will the changes be reverted and the source files still be the same so that i can do anothoer commit? or will the source filea also dis appear ?
+Sep 17 17:06:30 <rafasc>	!undo
+Sep 17 17:06:30 <gitinfo>	[!fixup] So you lost or broke something or need to otherwise find, fix, or delete commits? Look at http://sethrobertson.github.com/GitFixUm/ for full instructions, or !fixup_hints for the tl;dr. Warning: changing old commits will require you to !rewrite published history!
+Sep 17 17:06:40 <rafasc>	wrong. factoid !revert
+Sep 17 17:06:41 <gitinfo>	That's a rather ambiguous question... options: a) make a commit that "undoes" the effects of an earlier commit [man git-revert]; b) discard uncommitted changes in the working tree [git reset --hard]; c) undo committing [git reset --soft HEAD^]; d) restore staged versions of files [git checkout -p]; e) move the current branch to a different point(possibly losing commits)[git reset --hard $COMMIT]?
+Sep 17 17:06:51 <rafasc>	what do you mean by undo?
+Sep 17 17:13:47 <joo-_>	i messed up, i added 3 files that were earch one gigabyte
+Sep 17 17:13:54 <joo-_>	now even though i removed them i cannot push to github
+Sep 17 17:14:31 <joo-_>	But really it seems very complicated for me to get this fixed
+Sep 17 17:14:57 <rafasc>	depends what you mean by 'I added 3 files'.
+Sep 17 17:15:24 <joo-_>	git add file1 file2 file3, git commit file1 file2 fil3 -m "dont know what im doing"
+Sep 17 17:15:33 <joo-_>	worked like a charm, took a while though
+Sep 17 17:15:38 <rafasc>	was this on the most recent commit?
+Sep 17 17:16:15 <joo-_>	well after that i run the rebase command because somebody suggest me that, i dont know what it did
+Sep 17 17:16:39 <joo-_>	oh wait thats not it
+Sep 17 17:16:49 <joo-_>	the most recent commit is after this stupid action i remove the files and make new commit
+Sep 17 17:17:17 <joo-_>	like i worry if i undo the commit then I will lose all the code changes i've made
+Sep 17 17:17:37 <joo-_>	i am a very bad boi, so i guess there is months of work in 30-40 difference php files in one super-commit
+Sep 17 17:18:08 <rafasc>	then you probably want to: git rebase -i HEAD~2; change the last pick to fixup;
+Sep 17 17:18:39 <rafasc>	that will squash the two commits together.
+Sep 17 17:19:34 <rafasc>	or you can change the first from pick to edit and do git rm --cached bigfile hugefile;
+Sep 17 17:19:34 <joo-_>	like the commits will remain as is, but the big files will be gone ?
+Sep 17 17:19:55 <rafasc>	joo-_: no. The commits will change. Rebase always change the commits.
+Sep 17 17:20:14 <joo-_>	can i remove the bigfiles with --cached ?
+Sep 17 17:20:25 <joo-_>	means my git will be like normal but they will be gone ?
+Sep 17 17:20:40 <rafasc>	they'll be still on your history.
+Sep 17 17:20:55 <rafasc>	and github will still prevent you from pushing because of it
+Sep 17 17:21:02 <joo-_>	oh man
+Sep 17 17:21:18 <rafasc>	you need to remove them from your history. And I just told you how.
+Sep 17 17:21:57 <rafasc>	(with rebase, and rm --cached from the commit they were introduced)
+Sep 17 17:22:00 <joo-_>	does HEAD~2 mean current "head" like where i am now, and 2 points back ?
+Sep 17 17:22:08 <rafasc>	yes
+Sep 17 17:22:19 <joo-_>	and what does the rebase do ? like rewind ?
+Sep 17 17:22:57 <rafasc>	rebase will take those two commits, and reapply them.
+Sep 17 17:23:15 <joo-_>	why would i want them reapplyed ?
+Sep 17 17:23:27 <rafasc>	to remove the files you added?
+Sep 17 17:23:40 <joo-_>	but what does it mean to reapply ?
+Sep 17 17:24:00 <joo-_>	thats what the man page says also, but seems very abstract
+Sep 17 17:24:10 <rafasc>	means you need to create a new commit object without those huge files.
+Sep 17 17:24:31 <joo-_>	but how will this reapply thing know without huge files?
+Sep 17 17:24:54 <rafasc>	by doing what I said.
+Sep 17 17:24:56 <joo-_>	rebase -i HEAD~2 turns back time 2 commits ago right ?
+Sep 17 17:25:19 <rafasc>	When the todo list shows up, you change 'pick' to 'edit'.
+Sep 17 17:25:35 <rafasc>	This will stop the rebase before applying the commit, and allowing you to edit it.
+Sep 17 17:25:49 <joo-_>	There will be a todo list when i do this :)?
+Sep 17 17:25:52 <rafasc>	when it stops, you run $git rm --cached bigfiles; git rebase --continue.
+Sep 17 17:26:10 <joo-_>	bigfiles is it a keyword or i replace by my big file names ?
+Sep 17 17:26:19 <rafasc>	replace the names.
+Sep 17 17:27:16 <joo-_>	i have a feeling You provided me a lot of help, i will print this dialog and contemplate on it... hopefully i will do something and get everything back to normal
+Sep 17 17:27:27 <joo-_>	rafasc: THANKS :-)
+Sep 17 17:28:23 <rafasc>	joo-_: just be aware that this is a !rewrite.
+Sep 17 17:28:23 <gitinfo>	joo-_: Rewriting public history is not recommended. Everyone who has pulled the old history will have to do work (and you'll have to tell them to), so it's infinitely better to just move on. If you must, you can use `git push --force-with-lease <remote> <branch>` to force (and the remote may reject that, anyway). See http://goo.gl/waqum
+Sep 17 17:30:00 <rafasc>	since github denied your push, you should be good. (If you have local branches that branched off after this event, you'll need to rebase them as well)
+Sep 17 17:30:27 <joo-_>	i dont even work with branches
+Sep 17 17:31:19 <rafasc>	that's a lie. You work with at least two.
+Sep 17 17:31:27 <rafasc>	master and origin/master ;)
+Sep 17 17:31:37 <joo-_>	what is difference between them ?
+Sep 17 17:32:01 <rafasc>	master is your local branch, origin/master is a mirror of the master branch the remote has.
+Sep 17 17:32:04 <rafasc>	!rtb
+Sep 17 17:32:04 <gitinfo>	[!remote_tracking_branch] Remote-tracking branches (branches which start with e.g. 'origin/', listed by 'git branch -r') are read-only mirrors of the branches in another repository. They're updated by 'git fetch'. You can't edit them directly (trying to check them out results in a !detached HEAD), but you can create a local branch based on a remote-tracking branch using e.g. 'git checkout -b <branch> <remote>/<branch>'
+Sep 17 17:32:19 <joo-_>	ok
+Sep 17 17:34:13 <rafasc>	joo-_: also, if you use git add f1 f2 f3; you don't/shouldn't use commit f1 f2 f3.
+Sep 17 17:34:48 <joo-_>	i was like "git add *", "git commit ." :-)
+Sep 17 17:34:59 <joo-_>	-m "50 IQ :D"
+Sep 17 17:35:02 <rafasc>	which is another kind of worse.
+Sep 17 17:35:34 <rafasc>	if you specify paths to commit, even if it's '.' you're bypassing your git add.
+Sep 17 17:35:52 <rafasc>	git add f1 f2 f3; git commit; should suffice.
+Sep 17 17:36:33 <joo-_>	Have been using git for 10+ years, but still have so much to learn :D
+Sep 17 17:36:58 <rafasc>	git add '*' is also bad practice, as you can tell from where it got you.
+Sep 17 17:37:39 <rafasc>	but one thing at a time.
+Sep 17 17:37:50 <joo-_>	Yeah i usually don't do, there was just so many files so didnt even bother to look at commit list :-) Usually less dangerous because i rarely modify more than 5-10 files in a commit
+Sep 17 17:37:56 <joo-_>	yeah :)
+Sep 17 17:40:19 <rafasc>	I suggest you read one of !book
+Sep 17 17:40:19 <gitinfo>	There are several good books available about git; 'Pro Git' is probably the best: http://git-scm.com/book but also look at !bottomup !cs !gcs !designers !gitt !vcbe and !parable
+Sep 17 17:40:35 <rafasc>	and start to learn how to branch.
+Sep 17 17:49:01 <Radler>	hello there
+Sep 17 17:50:55 <gitinfo>	Radler: [!welcome] Welcome to #git, a place full of helpful gits. If you have a question, feel free to just go ahead and ask—somebody should answer shortly. For more info on this channel, see https://gitirc.eu/ - Take backups (type !backup to learn how) before taking advice.
+Sep 17 18:27:12 <Josse>	How can I .gitignore all .css and .css.map files in a React repository? I've so far tried adding /ui-react/**/*.css and /ui-react/**/*.css.map, without success
+Sep 17 18:28:58 <sangy>	what's with that guy posting godwin-tier stuff on the ML. Am I the only one who's getting these?
+Sep 17 18:29:52 <rafasc>	Josse: *.css should suffice but !ignore_tracked
+Sep 17 18:29:52 <gitinfo>	Josse: Git only applies ignore patterns to untracked files. You can't use ignore patterns to ignore changes to files that are already tracked by git. To remove files only from git, but keeping them on disk, use git rm --cached <file>. Still, see https://gist.github.com/1423106 for ways people have worked around the problem.
+Sep 17 18:30:43 <_ikke_>	sangy: no, you're not the only one
+Sep 17 18:30:43 <Josse>	Right... And can I rm --cached *.css.map ?
+Sep 17 18:30:53 <_ikke_>	yes
+Sep 17 18:31:13 <sangy>	_ikke_: ok, just making sure. Thanks
+Sep 17 18:57:58 <Celmor[m]>	my local repos master has diverged from remote after a commit I've pushed got amended on the remote (though only the commit message has been changed) and I've created several new commits locally, how best would I now push the new commits?
+Sep 17 18:59:21 <thiago>	rebase first
+Sep 17 18:59:30 <Celmor[m]>	correction, the commit hasn't been amended but rather rebased on the remote
+Sep 17 19:00:14 <thiago>	yep, so rebase your local copy too, on top of their rebasing of your content
+Sep 17 19:00:18 <Celmor[m]>	wouldn't a "normal" rebase cause conflicts as there's a commit in my history different from the remotes history that changes same files?
+Sep 17 19:00:37 <thiago>	no, because usually rebase will notice that your change is already applied, so it'll simply skip it
+Sep 17 19:00:48 <thiago>	if it fails, then during the conflict, do git rebase --skip
+Sep 17 19:00:55 <bin_bash>	wait a minute
+Sep 17 19:01:07 <bin_bash>	you probably want to resolve any conflicts
+Sep 17 19:01:11 <bin_bash>	not just skip them
+Sep 17 19:02:00 <Celmor[m]>	well, the commit(s) in question do the same changes, merely have different parents
+Sep 17 19:03:00 <Celmor[m]>	which commits exactly would a rebase onto current master in this situation now rewrite?
+Sep 17 19:03:08 <rafasc>	bin_bash: rebase can detect the patch is already applied, and will say: man, the changes you told me to apply were already there. --skip to do nothing, or commit --allow-empty if you want an empty commit to stay around.
+Sep 17 19:03:50 <bin_bash>	rafasc: i'm talking about conflicts in files that were both changed upstream and locally (which was how i read the original question)
+Sep 17 19:04:30 <rafasc>	in that case, sure solve them. But this was the thing thiago was mentioning in his comment.
+Sep 17 19:05:15 <rafasc>	if it's just a rewritten commit message it shouldn't conflict anyways.
+Sep 17 19:05:21 <bin_bash>	rafasc: but if someone changed a file upstream that did not exist when he started, and he modified the exact same file, then skipping wouldn't apply your changes
+Sep 17 19:07:27 <Celmor[m]>	the repos have divereged like this, if I understand it right: remote: a < b < c < d < ...; local:  a < 1 < 2 < ... < b.rebased <  e < ...
+Sep 17 19:07:44 <Celmor[m]>	swap "remote" and "local", shouldn't matter though
+Sep 17 19:08:22 <Celmor[m]>	so I guess "pull --rebase" should fix it?
+Sep 17 19:08:48 <rafasc>	bin_bash: if rebase drops you into 'conflict resolution mode' because the patch was already applied, you have to --skip. (or make an empty commit). If there's an actual conflict, you shouldn't skip unless you want to discard those changes.
+Sep 17 19:09:15 <Celmor[m]>	not sure what the result now is but it appears "pull --rebase" run though without issues
+Sep 17 19:09:25 <Celmor[m]>	through*
+Sep 17 19:09:32 <bin_bash>	rafasc: right, which is why I said you should try to resolve them rather than just skipping
+Sep 17 19:49:15 <t2mkn>	is it possible to replace some texts while using "git checkout -f master"?
+Sep 17 19:49:43 <_ikke_>	t2mkn: Can you elaborate?
+Sep 17 19:50:05 *	thiago posits !config
+Sep 17 19:51:33 <t2mkn>	i have written a post-receive hook which checkeout from master to www directory.
+Sep 17 19:51:50 <_ikke_>	thiago is right :-)
+Sep 17 19:52:47 <_ikke_>	The best advise we can give you to not directly deploy from git
+Sep 17 19:52:59 <t2mkn>	can i have any example in detail please. not getting, how to use. kind of new to git.
+Sep 17 19:53:31 <_ikke_>	!config
+Sep 17 19:53:31 <gitinfo>	[!configfiles] It is recommended to store local configuration data in a file which is not tracked by git, but certain deployment scenarios(such as Heroku) may require otherwise. See https://gist.github.com/1423106 for some ideas
+Sep 17 19:54:43 <t2mkn>	checking...
+Sep 17 19:57:22 <t2mkn>	OK. just a config file not in tracking can do the job. lol. how i missed that idea! :P
+Sep 17 19:58:16 <_ikke_>	:-)
+Sep 17 20:06:58 <t2mkn>	.gitignore is not respecting the new entries. or am i doing something wrong?
+Sep 17 20:11:13 <t2mkn>	ok gpt it $ git rm --cached site.conf
+Sep 17 20:24:47 <rawtaz>	hi. quick question; when needing git on windows 10, is there a good reason to install Windows Subsystem for Linux and e.g. https://github.com/andy-5/wslgit instead of installing git through the official installer? when not otherwise having WSL installed or knowing that you need it, that is.
+Sep 17 20:25:31 <_ikke_>	depends if you feel more at home in a linux environment or on a windows environment
+Sep 17 20:34:03 <rawtaz>	_ikke_: i feel more at home in linux than windows, but im thinking it might not be worth installing WSL and distro just for git. is the command line git very different in windows than linux? i suppose it's just args syntax and such that differ?
+Sep 17 20:34:22 <rawtaz>	or is it e.g. `git commit --amend` in windows too?
+Sep 17 20:34:36 <_ikke_>	yes\
+Sep 17 20:34:41 <_ikke_>	the commands are exactly the same
+Sep 17 20:34:47 <_ikke_>	and git for windows comes with git bash
+Sep 17 20:35:03 <rawtaz>	hm, whats git bash used for?
+Sep 17 20:35:13 <rawtaz>	i imagine running git in the cmd
+Sep 17 20:35:18 <_ikke_>	yes
+Sep 17 20:35:22 <bin_bash>	are you developing for windows or *nix?
+Sep 17 20:35:25 <_ikke_>	git bash is an alternative terminal / shell
+Sep 17 20:35:58 <rawtaz>	bin_bash: android, so neither really :D
+Sep 17 20:36:10 <bin_bash>	android is linux
+Sep 17 20:36:48 <rawtaz>	sorry, i meant to write arduino
+Sep 17 20:36:51 <rawtaz>	my bad
+Sep 17 20:37:22 <bin_bash>	ok
+Sep 17 20:37:29 <bin_bash>	youre planning on doing the dev in windows?
+Sep 17 20:38:15 <rawtaz>	yeah on windows 10. using arduino IDE, Eagle and thats about it. the reason i need git is to version control the sketches and some additional libraries used in eagle and so on
+Sep 17 20:49:29 <rbastic>	hello all
+Sep 17 20:49:38 <rbastic>	i'm looking for some expertise on merge conflicts, if anyone is around
+Sep 17 20:50:14 <thiago>	on the git part of it or in the actual source code?
+Sep 17 20:50:18 <rbastic>	the git part of it
+Sep 17 20:50:59 <rbastic>	i'm trying to handle a couple of different scenarios
+Sep 17 20:51:10 <rbastic>	without going into too much detail, suffice it to say that i am building a git UI for end-users in the company i work at
+Sep 17 20:51:23 <rbastic>	part of that is having some reasonable merge conflict handling, and of course there are a number of instances in which merge conflicts can arise.
+Sep 17 20:52:01 <rbastic>	so, my current question is centered around --
+Sep 17 20:52:12 <rbastic>	i know if i am behind the remote origin, fetching, and then pulling can result in conflicts
+Sep 17 20:52:36 <rbastic>	a push can also result in merge conflicts, even if not behind the remote origin though... yes?
+Sep 17 20:53:08 <bin_bash>	no a push can't result in merge conflicts
+Sep 17 20:53:17 <bin_bash>	pull = git fetch + merge
+Sep 17 20:53:27 <bin_bash>	a fetch can't result in merge conflicts either
+Sep 17 20:54:02 <rbastic>	why would i trust someone whose irc name is 'fuck you'? ;p
+Sep 17 20:54:08 <rbastic>	you're probably some longlost enemy of mine
+Sep 17 20:54:09 <rbastic>	;)
+Sep 17 20:54:18 <_ikke_>	rbastic: a bit more respect please
+Sep 17 20:54:54 <rbastic>	_ikke_: if you /whois bin_bash ... you'll see what i'm referring to
+Sep 17 20:54:55 <rbastic>	:p
+Sep 17 20:55:01 <rbastic>	it's a harmless joke
+Sep 17 20:55:52 <bin_bash>	trust whatever you want lmao
+Sep 17 20:57:38 <rbastic>	:P
+Sep 17 20:58:39 <rafasc>	.votekick bin_bash
+Sep 17 20:58:53 <bin_bash>	for what?
+Sep 17 20:59:10 <rafasc>	no votes, bin_bash stays :D
+Sep 17 20:59:16 <bin_bash>	lolol
+Sep 17 20:59:39 <rbastic>	.votekick bin_bash
+Sep 17 20:59:46 <rbastic>	i don't even know how this thing works
+Sep 17 20:59:50 <rbastic>	who am i to votekick
+Sep 17 21:02:33 <rafasc>	rbastic: it doesn't. It was a joke.
+Sep 17 22:43:51 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 22:43:51 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:44:16 2019
+
+Sep 17 22:44:16 *	Now talking on #git
+Sep 17 22:44:16 *	Topic for #git is: Welcome to #git | First visit? https://gitirc.eu | Current stable version: 2.23.0 | Getting "cannot send to channel"? /msg gitinfo .voice | This channel is logged: https://gitirc.eu/log | git: Multiplayer Notepad
+Sep 17 22:44:16 *	Topic for #git set by gitinfo!jast@bot.gitirc.eu (Fri Aug 16 23:09:40 2019)
+Sep 17 22:47:22 <Allods>	Hi, is `.gitconfig` with `includeif` for per-directory defaults the best way to handle multiple git identities (git user.name and user.email)?
+Sep 17 22:48:28 <rafasc>	Allods: that's one option. The other option is to just remember to configure a local identity.
+Sep 17 22:49:38 <j416>	Allods: I handle it using user.useConfigOnly; has worked great for a long time.
+Sep 17 22:49:44 <rafasc>	if you unset the global/system identity, and set user.configonly=true globally git will always ask to set it.
+Sep 17 22:50:05 <j416>	I set the user name in the global config but I leave the e-mail out. Then I set the e-mail per repo.
+Sep 17 22:50:34 <j416>	that way I can make sure that all personal repos have my personal e-mail address and all work repos have my work e-mail.
+Sep 17 22:51:07 <Allods>	nice, ty
+Sep 17 22:51:43 <rafasc>	the key is that you need to leave something out. But as j416 mentioned, email is often the best candidate.
+Sep 17 22:52:05 <Allods>	yh
+Sep 17 22:52:20 <rafasc>	but conditional ifs are also a common way to deal with it.
+Sep 17 22:52:32 <j416>	surprisingly, I go by the same name at home and at work.
+Sep 17 22:53:13 <j416>	perhaps I should have separate identities there too
+Sep 17 22:53:33 <rafasc>	I used to use rafasc for github, but sometimes projects require your actual name.
+Sep 17 22:54:23 <j416>	people with half a brain will figure out your real name anyway
+**** ENDING LOGGING AT Tue Sep 17 22:58:02 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:58:02 2019
+

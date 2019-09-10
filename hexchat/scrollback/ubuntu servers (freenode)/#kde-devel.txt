@@ -1,0 +1,768 @@
+T 1567243421 19*	Now talking on 22#kde-devel
+T 1567243421 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567243421 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567245148 18<luc418>	Hello! When I build plasma with kdesrc-build and I run it through sddm, will it use my home to save settings right? I ask this cause I did it accidentally and it broke my installation :-) can I set that installation to use a different home?
+T 1567248201 18<brute4s9918>	can someone add " .noautonum .tocnumber { display: none; } " to https://community.kde.org/MediaWiki:Common.css please?
+T 1567248204 18<brute4s9918>	bcooksley: ^
+T 1567248228 18<[ade]18>	CarlSchwan[m]: ^
+T 1567248235 18<[ade]18>	brute4s99: except .. *why*?
+T 1567248367 18<meven[m]18>	luc4:AFAIK it was possible maybe using KDEHOME and tweaking session startup scritp plasma-dev-prefix.sh, perhaps the simplest way would be to create another user
+T 1567248566 18<meven[m]18>	luc4: https://userbase.kde.org/KDE_System_Administration/KDE_Filesystem_Hierarchy mentions this and although it is no very actual, I think it mostly stands
+T 1567248744 18<vkrause18>	apol[m]: nicofee: wondering if we should maybe have an Android BoF too?
+T 1567248770 18<nicofee18>	Makes sense
+T 1567248798 18<CarlSchwan[m]18>	brute4s99: What does it fix/change?
+T 1567248871 18<frinring18>	vkrause: hi. perhaps you or someone can tell: does qt allow to build it without deprecated versions? and if so, where does it store the information, so when parsing headers the right deprecated methods are filtered?
+T 1567248908 18<CarlSchwan[m]18>	And merge request welcome: https://invent.kde.org/websites/aether-sass/blob/master/css/includes/mediawiki.scss
+T 1567248912 18<frinring18>	without deprecated versions -> API / symbols I mean
+T 1567248952 18<frinring18>	meven[m]: that is sadly kde4 info. for qt5-based software things have been switched to use xdg paths and env vars
+T 1567249038 18<vkrause18>	frinring: good question, maybe as part of the interface compile definitions in the cmake config?
+T 1567249039 18<frinring18>	meven[m]: so this looks better: https://userbase.kde.org/KDE_System_Administration/XDG_Filesystem_Hierarchy
+T 1567249156 18<frinring18>	vkrause: asking, as I have a first working prototype to add same fine-grained deprecated symbols control for KF (via ECM macro, so others can enjoy as well ;) ). one goal to achieve: allow to build all kf modules without deprecated API to a defined version
+T 1567249206 18<frinring18>	that should help kf-bundling apps a bit perhaps. at least help to prepare better for Qt6-triggered KF NG :)
+T 1567249209 18<[ade]18>	but that is some serious magic if you can (a) remove the declarations from the headers and (b) remove the symbols from the objects
+T 1567249235 18<vkrause18>	nicofee: scheduling-wise I think that either means Wed morning (collision with kwin), or Thu afternoon or later
+T 1567249298 18<nicofee18>	I don't really need to go to KWin
+T 1567249300 18<frinring18>	[ade]: it's more ifdef of the sources as well, no objects touched.
+T 1567249354 18<nicofee18>	But apol might want to attend the kwin BoF?
+T 1567249366 18<vkrause18>	frinring: yep, seen that, certainly useful infrastructure to have :)
+T 1567249469 18<nicofee18>	vkrause: but Thursday afternoon should be fine
+T 1567249745 18<vkrause18>	nicofee: ok, added for Thu 16:30
+T 1567253210 18<luc418>	meven[m]: yes, using another user is what I currently do. I thought it could be more comfortable not to have to switch user for developing.
+T 1567253220 18<luc418>	meven[m]: however thanks for the link.
+T 1567255011 18<vkrause18>	nicofee: didn't realize the parking thing had pkpass files, the sample you send me Wednesday doesn't have that though, does it?
+T 1567255032 18<nicofee18>	It has a link
+T 1567255070 18<vkrause18>	ah, I don't click links in sample data, too much risk I accidentally change/cancel a booking ;-)
+T 1567255097 18<nicofee18>	I can send you the file
+T 1567255312 18<vkrause18>	seems to render correctly at least, nice given the super small test set for event pkpass files so far :)
+T 1567272735 18<brute4s9918>	[ade] CarlSchwan[m]: https://www.mediawiki.org/wiki/Manual:Table_of_contents#Auto-numbering : I'd like to have the option to remove auto-numbering fir my docs page :)
+T 1567407102 20*	Disconnected (20)
+T 1567407128 19*	Now talking on 22#kde-devel
+T 1567407128 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567407128 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567407949 20*	Disconnected (20)
+T 1567407972 19*	Now talking on 22#kde-devel
+T 1567407972 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567407972 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567409874 20*	Disconnected (20)
+T 1567409897 19*	Now talking on 22#kde-devel
+T 1567409897 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567409897 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567418638 20*	Disconnected (20)
+T 1567418664 19*	Now talking on 22#kde-devel
+T 1567418664 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567418664 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567425360 20*	Disconnected (20)
+T 1567425386 19*	Now talking on 22#kde-devel
+T 1567425386 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567425386 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567433324 18*	frinring looks int teachiing doxygen about things like #if KCOREADDONS_ENABLE_DEPRECATED_SINCE(5, 2)
+T 1567498452 20*	Disconnected (20)
+T 1567498477 19*	Now talking on 22#kde-devel
+T 1567498477 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567498477 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567501468 18<einar77_work18>	what would it require to add support for sshfs mounts to be displayed in dolphin? Add support for sshfs in the solid fstab backend?
+T 1567502160 18<ervin18>	einar77_work: I'd think so
+T 1567502187 18<ervin18>	interestingly, it might "just" (hehe right) mean reviving the fstab/mount backend that solid had a while ago
+T 1567502199 18<ervin18>	(I think it got discontinued somehow)
+T 1567502541 18<einar77_work18>	ervin: it's not discontinued, in fact it's pretty healthy
+T 1567502569 18<einar77_work18>	well, I guess I'll take a peek  there
+T 1567502615 18<ervin18>	ah, it might simply miss taking sshfs into account
+T 1567503090 18<sitter18>	einar77_work: probably just needs adding to _k_isFstabNetworkFileSystem() which acts as a whitelist it seems
+T 1567503112 18<einar77_work18>	thanks, guess I found something to hack at in the nights ;)
+T 1567503308 18<frinring18>	einar77_work: now I am curious how effecient you will do this to stay in your quota of "I write perhaps 10 C++ LoC per year ;)" :P
+T 1567503361 18<[ade]18>	std::do_the_right_thing(everything.begin(), everything.end(), [](auto& thing){ thing.amazing(); });
+T 1567503363 18<[ade]18>	one line
+T 1567503393 18<bubli18>	[ade]:  'return' is missing :P
+T 1567503447 18<einar77_work18>	frinring: I could finish it perhaps in 2 or 3 years? ;)
+T 1567503470 18<sitter18>	"QA takes time"
+T 1567503473 18<frinring18>	here my grant to break your quota then ;)
+T 1567506004 18<DavidRedondo118>	No 19.08.1 tags yesterday?
+T 1567506268 18<arojas18>	DavidRedondo1: tags are pushed on release day. Tarballs may still get respinned
+T 1567506349 18<DavidRedondo118>	Thanks I'm asking because of https://community.kde.org/Schedules/Applications/19.08_Release_Schedule#Monday.2C_September_2.2C_2019:_KDE_Applications_19.08.1_tagging
+T 1567506550 18<sitter18>	the wording isn't quite clear. the sha1's of the tags are locked down, the tags aren't actually pushed until release day because they may change if a respin is required to move the tag to a different sha
+T 1567506600 18<sitter18>	which is generally how this works for the large release bundles. the final tag is not made until release
+T 1567506750 18<DavidRedondo118>	Thank you for the explanation!
+T 1567510844 18<einar77_work18>	sitter: your hunch was correct! https://i.imgur.com/MymBx97.png
+T 1567511073 18<einar77_work18>	frinring: it was just one line of C++, so it fits my current record ;)
+T 1567511082 18<einar77_work18>	https://phabricator.kde.org/D23694 for those who are interested
+T 1567511123 18<frinring18>	:) well done
+T 1567511219 18<einar77_work18>	I got annoyed enough of not having them visible in dolphin ;)
+T 1567521688 18<gwm[m]18>	Hey, code style question.
+T 1567521689 18<gwm[m]18>	Is variable shadowing acceptable in KDE's codebase (taking into account that shadowed varible isn't used after it is shaded), or should I avoid it if I want to submit a patch?
+T 1567522537 18<thiago18>	avoid if you can if it's in a .cpp; avoid it in a .h
+T 1567522839 18<gwm[m]18>	Thanks for the answer. (it's a .cpp file)
+T 1567522841 18<gwm[m]18>	Well, the problem is I can't come up with a good VariableNameThatIsNotAwfullyLong and the variables (the original and the shadowed one) are used in almost identical way.
+T 1567522841 18<gwm[m]18>	Is leaving it as it is,so reviewers can change it a good idea?
+T 1567524721 18<leinir18>	gwm[m]: Will it make people do a double take when the code is looked at again in five years, and after it has been moved around so git blame doesn't show why it happened?
+T 1567524902 18<gwm[m]18>	Well, honestly, no idea...
+T 1567524902 18<gwm[m]18>	Anyway, I've already submitted a patch, so hopefully I'll get corrected in case it is really bad.
+T 1567524903 18<gwm[m]18>	Thanks anyway!
+T 1567531242 20*	Disconnected (20)
+T 1567531266 19*	Now talking on 22#kde-devel
+T 1567531266 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567531266 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567535144 20*	Disconnected (20)
+T 1567535172 19*	Now talking on 22#kde-devel
+T 1567535172 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567535172 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567536261 18<Kon[m]18>	Was there a separate channel for Discover development? I could have sworn I was once linked to a Telegram group, but I can't remember for sure
+T 1567538366 18<ngraham18>	Kon: There is. I can invite you if you give me your telegram username
+T 1567538961 18<cmacq2[m]18>	mpyne: based on your feedback, I updated the MR and I left some thoughts regarding your questions there as well
+T 1567542344 18<heirecka18>	hmm, somehow I ended up being default assignee for a neon package. anybody I can assign that to?
+T 1567576502 20*	Disconnected (20)
+T 1567576526 19*	Now talking on 22#kde-devel
+T 1567576526 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567576526 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567584933 20*	Disconnected (20)
+T 1567584956 19*	Now talking on 22#kde-devel
+T 1567584956 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567584956 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567586273 18<accumulator18>	Hi all
+T 1567586315 18<accumulator18>	Is there a known issue with the akonadi imap resource? When I try to make an IMAP account, akonadi_imap_resource crashes according to akonadi
+T 1567586346 18<accumulator18>	(that's using the wizard within kmail)
+T 1567586381 18<accumulator18>	when creating the resource from within akonadiconsole, any auth attempts fail
+T 1567586460 18<accumulator18>	and server says: dovecot: imap-login: Aborted login (no auth attempts in 21 secs): user=<>, rip=xxx.yyy....
+T 1567586505 18<einar77_work18>	accumulator: which PIM version?
+T 1567586509 18<accumulator18>	master
+T 1567586519 18<bubli18>	accumulator: With that kind of question, ,aybe you'd have more luck on #kontact channel ?
+T 1567586523 18<einar77_work18>	accumulator: so far I don't have problems but I'm ~24h behind
+T 1567586533 18<accumulator18>	kf5 and pim built via kdesrc-build, qt from bullseye
+T 1567586546 18<einar77_work18>	(I'm also on master)
+T 1567586558 18<accumulator18>	is #kontact more suited for dev issues w.r.t. pim?
+T 1567586665 18<accumulator18>	einar77_work: did you try to create a new imap resource? which sasl algo? 
+T 1567586716 18<einar77_work18>	I'm updating, I'll restart akonadi and try
+T 1567586719 18<einar77_work18>	once done
+T 1567586745 18<einar77_work18>	(may take a while)
+T 1567586749 18<accumulator18>	:)
+T 1567587115 18<accumulator18>	einar77_work: which libboost version do you use?
+T 1567587166 18<accumulator18>	not sure if libboost is actually used in the resource though..
+T 1567587187 18<accumulator18>	but it's a dep here and there 
+T 1567587272 18<einar77_work18>	accumulator: sec, checking
+T 1567587307 18<einar77_work18>	1.69
+T 1567587373 18<accumulator18>	ok thx. mine is 1.67 so def not too new
+T 1567587831 18<einar77_work18>	accumulator: worksforme here
+T 1567587860 18<accumulator18>	einar77_work: ok, thanks. investigating further :)
+T 1567601198 18<maxyz18>	Hi, where is the current output of the autotests for extra-cmake-modules available?
+T 1567601220 18<maxyz18>	Building extra-cmake-modules in debian I'm getting: https://salsa.debian.org/qt-kde-team/kde/extra-cmake-modules/-/jobs/305662
+T 1567601322 18<maxyz18>	Which seems to indicate a missing dependency between the moc and the cpp.o file for tr_thread_test.
+T 1567601343 18<maxyz18>	But, well I wanted to check if this test is also failing in the kde ci builds
+T 1567601765 18<DavidRedondo118>	Is it by design that globalShortcutChanged isn't emitted by KGlobalAccel if the Application that the shortcut belongs to changes it?
+T 1567604607 18<frinring18>	seems using __attribute__ ((__deprecated__))  with the "ckass <here> X" declaration does not automatically result in the compiler warning for the use of any class methods?
+T 1567604683 18<frinring18>	might explain why all the deprecated Qt classes do not have the attribute set in that place, but on constructors & static methods
+T 1567604768 18*	frinring copies that approach then for his work
+T 1567608965 20*	Disconnected (20)
+T 1567608990 19*	Now talking on 22#kde-devel
+T 1567608990 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567608990 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567670323 20*	Disconnected (20)
+T 1567670346 19*	Now talking on 22#kde-devel
+T 1567670346 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567670346 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567676115 18*	CarlSchwan[m] uploaded an image: image.png (16KB) < https://matrix.org/_matrix/media/v1/download/kde.org/qkoEfTepnRgiCwOciZWulZWw >
+T 1567676131 18<CarlSchwan[m]18>	volker|office_: Why can I not add it to the calendar?
+T 1567685064 18<vkrause[m]18>	Carl Schwan: I think that's because it has no times associated with it
+T 1567685090 18<vkrause[m]18>	ie. this is likely a boarding pass found by the generic extractor, with no existing booking in the calendar
+T 1567685111 18<vkrause[m]18>	so it doesn't know where to actually put it in the calendar
+T 1567685130 18<vkrause[m]18>	(the underlying problem is that the barcodes in a standard boarding pass contain only the date, not the times)
+T 1567685211 18<CarlSchwan[m]18>	vkrause:  Ok so I think I will need to attend the itinerary bof 😉
+T 1567685238 18<vkrause[m]18>	definitely, we have no samples for Luxair yet :)
+T 1567685333 18<[ade]18>	only got deutsche bahn and trenitalia for you this time, boring stuff.
+T 1567685466 18<vkrause[m]18>	not at all, the trenitialia barcodes still have some unknown parts in them, more samples will hopefully help to decode those :)
+T 1567685526 18<vkrause[m]18>	and international DB tickets are also very interesting for the still fairly new generic extractor for the standard EU international tickets
+T 1567685552 18<vkrause[m]18>	ie. more samples are always helpful
+T 1567685568 18<CarlSchwan[m]18>	Do you want some blablacar sample?
+T 1567685569 18<CarlSchwan[m]18>	and flixbus?
+T 1567685580 18<vkrause[m]18>	the answer is always yes :)
+T 1567685594 18<vkrause[m]18>	blablacar I think I only have one, not enough for an extractor yet
+T 1567685634 18<vkrause[m]18>	flixbus has structured annotations, but without timezones IIRC, so those will also still need work
+T 1567685678 18<CarlSchwan[m]18>	Should I send all those samples to an email address?
+T 1567685688 18<vkrause[m]18>	yep, vkrause@kde.org
+T 1567685772 18<bshah|matrix18>	I'm curious, if everyone sends you their booking, don't you end up with all of that entries in your itinerary app?
+T 1567685791 18<bshah|matrix18>	Of course you can kill it later 
+T 1567685811 18<vkrause[m]18>	that's why I have never implemented the often requested automatic adding :)
+T 1567685825 18<bshah|matrix18>	Aah
+T 1567685846 18<bshah|matrix18>	Wasn't aware as I don't use kmail
+T 1567685866 18<vkrause[m]18>	but it does happen occasioanlly nevertheless, and I notice when my weather forecast doesn't match reality at all ;-)
+T 1567686165 18<einar77_work18>	vkrause[m]: currently for non-tickets (e.g. reservation mails) does the whole thing only look for json-ld?
+T 1567686356 18<vkrause[m]18>	it also looks if it has a custom extractor script that claims it supports this email (typically by matching the From header)
+T 1567686404 18<vkrause[m]18>	it doesn't search emails for barcode image attachments yet though, it only does that in PDF or pkpass attachments
+T 1567686483 18<vkrause[m]18>	it does support inline microdata schema.org though, next to json-ld, in HTML parts
+T 1567686550 18<CarlSchwan[m]18>	vkrause: I send some sample for flixbus.de and blablacar.fr. For blablacar I have a lot more emails if you want.
+T 1567686991 18<vkrause[m]18>	got the two flixbus ones (and they indeed show only an UTC offset, not a proper timezone), not seeing the blablacar one yet
+T 1567687149 18<CarlSchwan[m]18>	Strange I send the blablacar mails before the flixbus mails
+T 1567687224 18<vkrause[m]18>	the flixbus ones show up with their original receiving date (ie. way in the past), so took me a while to find those as well, might be I'm just blind
+T 1567687334 18<einar77_work18>	vkrause[m]: some bookings for places I visited in Spain this year had barcodes, unsure what was in the barcode though
+T 1567687768 18<CarlSchwan[m]18>	vkrause: I send the emails this time as attachment and didn't use the KMail redirect feature. It should be easier to find now. 
+T 1567687927 18<vkrause[m]18>	that worked, thanks!
+T 1567688205 18<vkrause[m]18>	they look quite messed up, weird encoding, lots of remote content, and in a language I'm not exactly fluent in, might make sense to have a look at this together next week so I properly understand what I'm looking at :)
+T 1567695041 20*	Disconnected (20)
+T 1567695241 19*	Now talking on 22#kde-devel
+T 1567695241 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567695241 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567703679 20*	Disconnected (20)
+T 1567703706 19*	Now talking on 22#kde-devel
+T 1567703706 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567703706 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567712717 20*	Disconnected (20)
+T 1567712743 19*	Now talking on 22#kde-devel
+T 1567712743 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567712743 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567750304 20*	Disconnected (20)
+T 1567750330 19*	Now talking on 22#kde-devel
+T 1567750330 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567750330 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567759147 18<guoyunhe18>	Hi
+T 1567759173 18<guoyunhe18>	How could I contribute to "kompare", it is not in Phabricator or GitLab
+T 1567759201 18<guoyunhe18>	I have a small patch (1 line)
+T 1567759580 18<einar77_work18>	guoyunhe: how invasive the change is?
+T 1567759662 18<guoyunhe18>	einar77_work: just one line, to enable HiDPI icon rendering
+T 1567760430 18<guoyunhe18>	I just pushed it to master and hope they don't mind it https://cgit.kde.org/kompare.git/commit/?id=f4ad6f7c2548f59477785829c7602b2af1c3062c
+T 1567772181 18<asturm18>	oh no please no ccache automagic
+T 1567772211 18*	asturm looks at konsole.git
+T 1567773195 18<krop18>	khindenburg: ↑ 
+T 1567774073 18<einar77_work18>	asturm: I think it's only switched on if ccache is found, but I agree - it violates the principle of least surprise
+T 1567774259 18<krop18>	asturm: OT do you see crashes on startup with scribus 1.5.5?
+T 1567775473 18<arojas18>	I don't see why projects have the need to enable such things, this should be a decision of the person who is compiling
+T 1567775723 18<heirecka18>	+1
+T 1567776132 18<asturm18>	krop: haven't tried that release yet
+T 1567776608 18<ebby2118>	Hey everyone.. I'm new to contributing to OpenSource
+T 1567776610 18<ebby2118>	I've always been fascinated by foss since I got into Linux
+T 1567776625 18<ebby2118>	I like KDE a lot
+T 1567776632 18<ebby2118>	and would like to contribute to it
+T 1567776638 18<ebby2118>	I read somewhere that to contribute to kde, you should create a patch and post it online for approval?
+T 1567776647 18<ebby2118>	after making changes
+T 1567777037 18<nicofee18>	Yes
+T 1567780936 20*	Disconnected (20)
+T 1567780960 19*	Now talking on 22#kde-devel
+T 1567780960 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567780960 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567847128 20*	Disconnected (20)
+T 1567847150 19*	Now talking on 22#kde-devel
+T 1567847150 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567847150 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567853117 18<asturm18>	anyone here who's built qtwebengine-5.13.1 successfully?
+T 1567853893 18<precla18>	DavidRedondo1 I'm gonna make this one: https://bugs.kde.org/show_bug.cgi?id=375382 , before I start: would it be better to have two bools , one for saveToFile other for saveToClipboard. Or have one int, where , for example if set to 1 - save to file, 2 - save to clipboard, 3- save to both
+T 1567853926 18<krop18>	asturm: looks like we did 
+T 1567853956 18<arojas18>	asturm: yes
+T 1567854148 18<asturm18>	thanks, so it is theoretically possible ;) I do get "content_features.cc:122:14: error: missing binary operator before token... #if BUILDFLAG(ENABLE_REPORTING)" in content_features.cc
+T 1567856275 18<heirecka18>	asturm: works fine here, too. but qdoc seems to have problems building .qch help files for baloo and kdeclarative since 5.13.1
+T 1567856629 18<frinring18>	heirecka: hi. where is qdoc used to building .qch help files for baloo and kdeclarative?
+T 1567856783 18<heirecka18>	frinring: actually I'm not sure how they are built, I just noticed that they silently fail to get created since 5.13.1 (maybe coincidence?) and then the build fails during make install because the files don't exist
+T 1567856806 18<arojas18>	heirecka: works for me
+T 1567856842 18*	heirecka investigates
+T 1567856854 18<arojas18>	heirecka: if you're on doxygen 1.8.16, see https://cgit.kde.org/baloo.git/commit/?id=33e042970075e120f99bb85ba3f8fb96a200f4b8
+T 1567856870 18<arojas18>	but kdeclarative is not affected, at least for me
+T 1567856874 18<frinring18>	heirecka: so in the build of baloo & kdeclarative? that is doxygen actually 
+T 1567856888 18<heirecka18>	ah, thanks
+T 1567861764 18<tsdgeos18>	dfaure[m]: so the current links are https://bugs.chromium.org/p/oss-fuzz/issues/list?q=kcodecs https://bugs.chromium.org/p/oss-fuzz/issues/list?q=karchive https://bugs.chromium.org/p/oss-fuzz/issues/list?q=kimageformats
+T 1567861791 18<tsdgeos18>	problem is there's a few out of memory/timeout that i think it's just oss-fuzz giving it too litle memory/time
+T 1567861797 18<tsdgeos18>	so i generally tend to ignore those
+T 1567862326 18<svuorela18>	precla: sounds like the usecase for a enum ?
+T 1567862333 18<precla18>	yea
+T 1567862339 18<precla18>	or that way
+T 1567862555 18<svuorela18>	precla: at least a magic int sounds wrong
+T 1567862586 18<precla18>	yeah, but dbus doesn't support enum. So a number has to be passed
+T 1567862616 18<precla18>	a byte (unsigned 8bit) as 'y' would be enough
+T 1567862631 18<precla18>	boolean sounds more straight-forward
+T 1567862676 18<svuorela18>	if over dbus, I*d serialize dbus as strings
+T 1567864216 18<dfaure[m]18>	tsdgeos: noted, thanks
+T 1567864789 18<precla18>	https://youtu.be/sKc36FMz0kA?t=22
+T 1567864796 18<precla18>	oops, worng chan :d
+T 1567869072 20*	Disconnected (20)
+T 1567869094 19*	Now talking on 22#kde-devel
+T 1567869094 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1567869094 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1567869113 18<tsdgeos18>	dfaure[m]: you broke kcoreaddons
+T 1567869126 18<tsdgeos18>	 error C2065: 'recurse': undeclared identifier
+T 1567869622 18<bcooksley18>	that could possibly have been due to MSVC updates we applied today, but hopefully not....
+T 1567869767 18<dfaure[m]18>	@tsdgeos oops, I renamed the method but not in the windows code path. Fixed, thanks.
+T 1567869878 18<tsdgeos18>	:)
+T 1568013689 20*	Disconnected (20)
+T 1568013710 19*	Now talking on 22#kde-devel
+T 1568013710 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568013710 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568015502 18<[ade]18>	cmacq2[m]: ooooo, now i've mapped you back from "person at akademy social event" to "person who messes around with kdesrc-build" :)
+T 1568015863 18<svuorela18>	do we have a html dom library ?
+T 1568015897 18<svuorela18>	that is not khtml
+T 1568015921 18<bshah|matrix18>	But we have khtml
+T 1568016144 18<svuorela18>	not for long
+T 1568016258 18<bshah|matrix18>	Not if you start taking it seriously and using it :p
+T 1568016291 18<bshah|matrix18>	svuorela: https://github.com/lagner/QGumboParser there's this
+T 1568021019 18<cmacq2[m]18>	Bhushan Shah: am creating a bunch of MRs for the otpclient app. Starting with: https://invent.kde.org/bshah/otpclient/merge_requests/1
+T 1568028062 18<frinring18>	hi (native) english speakers: what would be a proper term to describe "before x" where "x" is also included into the range described? it's about a timeline range (actually versions). looking for a term in a variable, of pattern elements_before_x
+T 1568028476 18<frinring18>	motivation: I misinterpreted "QT_DISABLE_DEPRECATED_BEFORE" myself before finally reading up the docs, and for the KF counterparts would like to find a term less confusing
+T 1568028893 18<noahdvs[m]118>	frinring: Native speaker here, can you tell me how you would say it first? TBH, it sounds like the correct terminology would come from math and my knowledge of math terminology is a bit rusty.
+T 1568029186 18<frinring18>	noahdvs[m]1: I have also no idea how to say it properly in an informal sentence :)
+T 1568029221 18<frinring18>	in german I would use "bis einschließlich", which translates word-wise to "till including"
+T 1568029242 18<frinring18>	tough that also already misses from which side the date is approached
+T 1568029250 18<einar77_work18>	that "before" is inclusive in the macro?
+T 1568029273 18<noahdvs[m]118>	Looking at the documentation for QT_DISABLE_DEPRECATED_BEFORE, it actually reads like english when you write the whole line
+T 1568029279 18<frinring18>	einar77_work: yes.https://doc.qt.io/qt-5/qtglobal.html#QT_DISABLE_DEPRECATED_BEFORE
+T 1568029300 18<einar77_work18>	noahdvs[m]1: to my (non native) eye, I interpret it like < and not <=
+T 1568029313 18<einar77_work18>	which is AFAICS the issue
+T 1568029314 18<noahdvs[m]118>	ah, that's a good point
+T 1568029356 18<noahdvs[m]118>	and you're right. In math, before doesn't mean before and including the current
+T 1568029359 18<frinring18>	I guess someone wrote bad code off by one, and then things were "fixed" in the docs ;)
+T 1568029417 18<einar77_work18>	informally "up to <version>" would be probably fine but in a macro sounds a little off
+T 1568029489 18<frinring18>	well, KF_DISABLE_DEPRECATED_UP_TO would work for me, but I dislike there that is misses to make obvious that is for things older, not newer
+T 1568029509 18<noahdvs[m]118>	maybe DISABLE_DEPRECATED_BY or DISABLE_DEPRECATED_UP_TO? I don't think "up to <version> is that bad, but I'm not familiar with macro naming conventions.
+T 1568029547 18<frinring18>	here the idea is to be expressive when writing things like "-DQT_DISABLE_DEPRECATED_BEFORE=0x050900"
+T 1568029590 18<frinring18>	*expressive to the person reading the code
+T 1568029769 18<frinring18>	my small pain with DISABLE_DEPRECATED_UP_TO is that as developer with a certain version locally I look at that version given backwards mentally
+T 1568029835 18<frinring18>	so Up_to means "all versions since and including that one" in a first thought
+T 1568029874 18<noahdvs[m]118>	DISABLE_DEPRECATED_FROM?
+T 1568030004 18<noahdvs[m]118>	eh, from doesn't actually specify the end point of the range
+T 1568030030 18<frinring18>	how enlgish and (not) cumbersome is DISABLE_DEPRECATED_AT_AND_BEFORE 
+T 1568030069 18<noahdvs[m]118>	I don't see anything wrong with it. It's perfectly understandable.
+T 1568030133 18<noahdvs[m]118>	I mean, I wouldn't say that in formal writing, but it seems like a balance of clairity and brevity is what we want.
+T 1568030153 18<cmacq2[m]18>	`DISABLE_DEPRECATED_SINCE` ?
+T 1568030195 18<noahdvs[m]118>	yes, that's a good one. Usually, since included the date specified.
+T 1568030275 18<frinring18>	though "deprecated since" could also mean all things which became deprecated since, no?
+T 1568030305 18<frinring18>	which would invert what we try to describe :)
+T 1568030340 18<noahdvs[m]118>	yeah. Thinking about it a bit more, since is usually use like "ever since 1900, it's been like this"
+T 1568030450 18<frinring18>	DISABLE_BEEN_DEPRECATED_SINCE would be more clear to me as non-native speaker, vs. DISABLE_GOT_DEPRECATED_SINCE meaning I initially would read into DISABLE_DEPRECATED_SINCE
+T 1568030534 18<noahdvs[m]118>	DISABLE_BEEN_DEPRECATED_SINCE is not like native english though.
+T 1568030547 18<frinring18>	I would have guessed so :)
+T 1568030677 18<noahdvs[m]118>	DISABLE_DEPRECATED_AT_AND_BEFORE is probably good enough
+T 1568030781 18<noahdvs[m]118>	DISABLE_DEPRECATED_BEFORE_AND_AT is slightly better
+T 1568030823 18<noahdvs[m]118>	Plus it's not radically different from the Qt macro, so people familiar with Qt should understand what it means.
+T 1568030966 18<frinring18>	okay, and perhaps it will also help people to learn about this small surprise with the Qt one, when they see QT_DISABLE_DEPRECATED_BEFORE & KF_DISABLE_DEPRECATED_BEFORE_AND_AT used next to each other and wonder why the additional term
+T 1568031037 18<frinring18>	thanks so far, will then go and update https://phabricator.kde.org/D23789 with that. still open for better suggestions, comments on the current API of that macro and its generated API very welcome (see the examples in the docs)
+T 1568031049 18<frinring18>	"WIP: Add ECMGenerateExportHeaders, for improved handling of deprecated API"
+T 1568031142 18<frinring18>	well, also need to update the code to adapt to the off-by-one ("<" -> "<=") now :)
+T 1568037909 18<svuorela18>	bcooksley: ! you were maintainer of systemsettings - how do I switch to classic mode ?
+T 1568037941 18<bcooksley18>	svuorela: Hamburger on the top left > Configure
+T 1568038123 18<svuorela18>	oh.
+T 1568038173 18<dark[m]18>	That got resolved quickly. lel
+T 1568038458 18<svuorela18>	dark[m]: I resolved it harder.
+T 1568038540 18<svuorela18>	sitter: ^5
+T 1568038930 18<act93[m]18>	alex123_riot: did you figure out the error? I'm getting the same one when I try to build Qt
+T 1568038949 18<einar77_work18>	svuorela: I didn't even know that the classic mode in systemsettings used khtml
+T 1568039098 18<einar77_work18>	dvratil[m]: any specific reasons that the imap (and other PIM) resources in kdepim-runtime use kmessagebox when there are errors?
+T 1568039139 18<einar77_work18>	that is the annoyance I mentioned on saturday, because it creates a modal dialog that goes over everything
+T 1568039169 18<einar77_work18>	I think, at least
+T 1568039757 18<dvratil[m]18>	svuorela: Currently there's no other way for a resource to report an error. Ideally we would have an infrastructure for the resources to ask users through the Kontact UI (or whatever Akonadi app is currently active), but, well, someone would need to write it first ;-)
+T 1568039782 18<svuorela18>	dvratil[m]: I thikn you mean einar77_work :)
+T 1568039811 18<einar77_work18>	dvratil[m]: I mean, the "cause" is my dovecot server killing off long-lived sessions
+T 1568039842 18<einar77_work18>	so every time it happens I have a blocking dialog box telling me that the connection has been terminated
+T 1568039851 18<dvratil[m]18>	<svuorela "dvratil: I thikn you mean einar7"> Ah, indeed. Sorry, still learning how to use Riot :)
+T 1568039859 18<einar77_work18>	(which also steals focus from all other applications)
+T 1568039890 18<dvratil[m]18>	Hmm, weird. I thought we only ask about wrong password
+T 1568039901 18<einar77_work18>	my original question was: where in the code is that triggered? laurent was telling me resourcestate.cpp in kdepim-runtime, but it looks like a different kmessagebox there
+T 1568039932 18<einar77_work18>	and of course with these things, it NEVER happens on this machine, only at home
+T 1568039982 18<dvratil[m]18>	:P is it really IMAP? Or POP3<
+T 1568039984 18<dvratil[m]18>	 * :P is it really IMAP? Or POP3?
+T 1568039988 18<einar77_work18>	IMAP
+T 1568040012 18<einar77_work18>	the error which I assume comes from the resource is "TLS connection closed" or something like that (localized so I'm back-translating ;)
+T 1568040037 18<einar77_work18>	I assume this is just forwarded from lower in the stack *somewhere*
+T 1568040055 18<dvratil[m]18>	Ok, I'll check that. It's weird, since technically we would be getting "connection lost" messagebox whenever I resume from suspend...
+T 1568040063 18<einar77_work18>	next time it happens I'll monitor the server too
+T 1568040077 18<einar77_work18>	I'm sure it only happens when the long-lived connection is killed
+T 1568040085 18<einar77_work18>	(from the server side)
+T 1568040200 18<dvratil[m]18>	Try to get a screenshot or the text of the messagebox next time, even if its Italian, please - grepping the source code for messages is still the easiest way to find things in PIM :D
+T 1568040329 18<einar77_work18>	dvratil[m]: I will, it happens regularly when I'm watching videos :P
+T 1568040935 18<svuorela18>	CarlSchwan[m]: https://lxr.kde.org/ident?_i=KHTMLPart&_remember=1
+T 1568041775 18<vkrause[m]18>	einar77 briefly looked at the renfe ticket, very interesting, we need to add support for DataMatrix to the barcode decoder :)
+T 1568042452 18<einar77_work18>	vkrause[m]: glad it was useful
+T 1568042497 18<einar77_work18>	vkrause[m]: btw I think a reservation in Lufthansa I made yesterday wasn't properly extracted, or at least I didn't get the usual display in kmail
+T 1568042520 18<einar77_work18>	I'll check the past ones (which I knew worked)
+T 1568042547 18<einar77_work18>	hm, from last year, works
+T 1568042550 18<einar77_work18>	from this year, not
+T 1568042666 18<vkrause[m]18>	No longer containing schema.org annotations?
+T 1568042952 18<frinring18>	vkrause[m]: hi. I just saw on planet.kde.org twitter timeline there was a KF6 bof this morning. are there any notes published somewhere?
+T 1568043006 18<frinring18>	vkrause[m]: especially interested if there was any discussion related to deprecation of API, given what I would like to porpose with ECMGenerateExportHeader (ihttps://phabricator.kde.org/D23789) :)
+T 1568043098 18<frinring18>	as I am curious whom to poke and pull into this work and its application onto all the KDE Frameworks modules. by my experiments with a few, that will be work better distributed on multiple shoulders/hands/heads
+T 1568043152 18<frinring18>	going to upload the current experiment patches now, so people can see what kind of changes this would bring
+T 1568043247 18<einar77_work18>	vkrause[m]: looks like it, let me look
+T 1568043277 18<einar77_work18>	vkrause[m]: no, there is
+T 1568043292 18<einar77_work18>	<div itemscope itemtype=3D"http://schema.org/FlightReservation"> (taken unparsed from the mail)
+T 1568043463 18<einar77_work18>	vkrause[m]: looks like it's not in the head anymore
+T 1568043468 18<einar77_work18>	it's at the bottom of the message or so
+T 1568043506 18<einar77_work18>	yes it used to be in <head> now it's in the HTML body
+T 1568043563 18<svuorela18>	frinring: there wwas mostly "remember to do KF6 TODO REMOVE  for things that should be removed and not yet much about ifdeffery
+T 1568043614 18<frinring18>	like all those KF5 rremove and kde4 remove we have in the codebase? :P
+T 1568043622 18<svuorela18>	yep
+T 1568043632 18<svuorela18>	they need friends
+T 1568043646 18<svuorela18>	but mostly for "small things" that actually can be removed
+T 1568043669 18<frinring18>	the compiler can be our friend here then, with ifdeffery
+T 1568043864 18<frinring18>	so, anyone did notes in the bof and will post them? or will stay in milan what was said in milan... :)
+T 1568043887 18<ngraham18>	"What happens in Milan stays in Milan?" :)
+T 1568043942 18<frinring18>	yup, that's what I tried to word-play with ;)
+T 1568043960 18<frinring18>	btw, will there be videos of the talks? so far no mention, so shall I better not continue hopes?
+T 1568043977 18<ngraham18>	I think all the talks generally get recorded
+T 1568043993 18<ngraham18>	last year it was a few weeks before they were posted IIRC
+T 1568044064 18<svuorela18>	the pim bof and kf6 bof did have notes taken on notes.kde.org
+T 1568044087 18<svuorela18>	the goals bof was using the blackboard. I don't know if someone persisted it out of the blackboard
+T 1568044102 18<svuorela18>	I don't know if any notes are taken at the kirigamidocs bof
+T 1568044375 18<frinring18>	svuorela: any chance for a link for the kf6 one? no idea how to find recent pads on notes.kde.org, and my quick search via the index did not yield results
+T 1568044405 18<svuorela18>	09:43 < hefee> url for the KF5 BoF: https://notes.kde.org/p/akademy2019-kf6-notes
+T 1568044411 18<svuorela18>	(from #akademy 
+T 1568044413 18<svuorela18>	)
+T 1568044462 18<frinring18>	thanks
+T 1568044507 18<svuorela18>	frinring: idling in #akademy this week - even if not attanding might be an idea
+T 1568044584 18<frinring18>	seems so :)
+T 1568044595 18<vkrause[m]18>	frinring: sorry for the delay, https://notes.kde.org/p/akademy2019-kf6-notes, and yes, I think your deprecation work fits right in there
+T 1568044622 18<vkrause[m]18>	it would help with phasing out the old stuff now already, and assess the impact on plasma/apps
+T 1568044640 18<vkrause[m]18>	esp. beyond the big known things already in porting aids
+T 1568044681 18<vkrause[m]18>	einar77_work: interesting, inline microdata should work anywhere in the file, but it's quite possible we don't handle some variant of that correctly yet
+T 1568044687 18<tsdgeos[m]18>	we need help porting okular out of kjs
+T 1568044700 18<tsdgeos[m]18>	and the epub thing uses khtml too
+T 1568044709 18<tsdgeos[m]18>	via kio magic
+T 1568044720 18<tsdgeos[m]18>	that may need total rewrite or removal :/
+T 1568044734 18<vkrause[m]18>	frinring: also, https://phabricator.kde.org/project/board/310/ might be interesting for you (still in the process of being filled obviously)
+T 1568044811 18<vkrause[m]18>	tsdgeos: Allan and Sune are already porting khtml usage, maybe they can be motivated to have a look :)
+T 1568044831 18<tsdgeos18>	svuorela: ↑↑
+T 1568044896 18<svuorela18>	I already looked a bit on that - and maybe sacrificing it on the altar of the past
+T 1568045116 18<tsdgeos18>	i'd prefer not to do that ideally
+T 1568045124 18<tsdgeos18>	i mean there's not many epub readers i think
+T 1568045134 18<tsdgeos18>	if there is something better we can point to people, fine
+T 1568045142 18<svuorela18>	oh. I meant the chm one
+T 1568045142 18<tsdgeos18>	but otherwise they're losing features
+T 1568045150 18<tsdgeos18>	ah yes chm, sorry
+T 1568045171 18<svuorela18>	I haven't seen a chm file in a decade
+T 1568045179 18<svuorela18>	so maybe I'm  colored by that
+T 1568045211 18<vkrause[m]18>	is that about html -> image rendering or is that using khtml directly for display? ie. would a webengine port be technically feasible?
+T 1568045267 18<svuorela18>	it is html to image rendering I think. and event loops
+T 1568045322 18<frinring18>	vkrause[m]: np with delay, know you all are busy chatting in bofs & hallways :)
+T 1568045366 18<frinring18>	btw, for kcoreaddons tthe macro and ifdeffery might look like this: https://phabricator.kde.org/D23800 
+T 1568045405 18<svuorela18>	yay. ifdeffery is now a word.
+T 1568045456 18<svuorela18>	tsdgeos: oh. there is also kjjs in okular. that must be a task for carewolf :)
+T 1568045498 18<vkrause[m]18>	frinring: looks good to me
+T 1568045589 18<svuorela18>	tsdgeos[m]: have you given okular the "run from build dir treatment" ?
+T 1568045617 18<tsdgeos18>	svuorela: i have not
+T 1568045631 18<svuorela18>	hmm...
+T 1568045689 18<tsdgeos18>	i'm not sure even if we have that treatment with things that have plugins with plugins
+T 1568045699 18<tsdgeos18>	like okularpart has with okulargenerators
+T 1568045771 18<svuorela18>	don't tell ivan about plugins having plugins :)
+T 1568046210 18<frinring18>	and KService being prototype-ifdefferied for deprecated API in https://phabricator.kde.org/D23802
+T 1568046222 18<ngraham18>	I'm finding that when I compile plasma-desktop, the mouse KCM .so file that gets built doesn't actually include any of my changes and I am somewhat baffled by why
+T 1568046370 18<svuorela18>	tsdgeos: so. it looks like chm backend uses khtml to convert html to bitmaps. qtwe does not have that. but it might be able to generate a pdf.... and now I_start to feel dirty
+T 1568046842 18<tsdgeos[m]18>	Sorry :D
+T 1568046852 18<tsdgeos[m]18>	I think there was qchmviewer or something
+T 1568046881 18<tsdgeos[m]18>	May be worth trying seeing how good it is, if we can just point people there
+T 1568046905 18<tsdgeos[m]18>	Or if the UI is terrible we can try to steal the backend code
+T 1568054454 18<sankasan18>	hi, is there anyone in here who works on skrooge?
+T 1568054527 18<einar7718>	vkrause[m]: do you think things will break if I forward you a working and a non-working mail?
+T 1568054546 18<einar7718>	break -> won't be parsable
+T 1568056412 18<sankasan18>	damn, building a single application using kdesrc-build pulls in _a lot_ of modules. Even after I've disabled Qt I'm still building 77 modules in order to build the application skrooge. It seems excessive for a standalone application. It feels like I'm building a large part from the latest and greatest of the KDE stack in order to build a single application. It is the recommended way from the 'getting involved' pages but it looks like a lot 
+T 1568056413 18<sankasan18>	can break when building like this. What is the best way to _only_ build the application I want to improve?
+T 1568056522 18<sankasan18>	ah.. "include-dependencies" can be set to off :) (rtfm douchebag)
+T 1568057704 18<ngraham18>	> It feels like I'm building a large part from the latest and greatest of the KDE stack in order to build a single application
+T 1568057704 18<ngraham18>	Well, you are :)
+T 1568057733 18<ngraham18>	which is necessary if your distro has old packages. But if you're on a rolling release distro, then it's not really necessary, and you can disable `include-dependencies` as you've discovered :)
+T 1568058298 18<vkrause[m]18>	einar77: shouldn't be a problem, I can always separate them here I think
+T 1568058347 18<sankasan18>	yeah, I'm on arch so I guess I'm okay in the rolling release part. And actually I don't mind building a large part of the stack once, but not for every iteration. I'm used to hit F5 almost as often as Control+S :)
+T 1568058422 18<ngraham18>	once you build them all once, it's done and rebuilding them is pretty fast FWIW
+T 1568058445 18<sankasan18>	well, part of building with kdesrc-build is a sync step if I'm not mistaken
+T 1568058467 18<sankasan18>	so every build can pull in a bad submit or a larger rebuild, no?
+T 1568058477 18<sankasan18>	trigger*
+T 1568058486 18<ngraham18>	yes, but this is why we insist on keeping master green :)
+T 1568058521 18<ngraham18>	The frameworks codebase is not like your typical corporate stuff where things may be failing to build for weeks, months, or years, without anyone caring about it
+T 1568058535 18<ngraham18>	when something breaks the build, it's considered a drop-everything emergency
+T 1568058620 18<sankasan18>	yeah I'm used to that (gamedev)
+T 1568058713 18<ngraham18>	cool
+T 1568059012 18<sankasan18>	ngraham, if you don't mind me bothering you a bit more a few follow up questions.
+T 1568059089 18<ngraham18>	sure, go ahead
+T 1568059098 18<sankasan18>	I want to make sure that I compile debugfull for the application skrooge. So I've added an options block to ~/.kdesrc-buildrc that looks like this: options skrooge
+T 1568059098 18<sankasan18>	    cmake-options -DCMAKE_BUILD_TYPE=debugfull
+T 1568059098 18<sankasan18>	end options
+T 1568059116 18<dfaure[m]18>	debugfull no longer exists, for a long time
+T 1568059120 18<dfaure[m]18>	use Debug instead
+T 1568059140 18<sankasan18>	oh, I got that from here: https://techbase.kde.org/Getting_Started/Build/kdesrc-build-config
+T 1568059146 18<ngraham18>	I've got this added to my `global` section:
+T 1568059147 18<ngraham18>	`cmake-options -DCMAKE_BUILD_TYPE=RelWithDebInfo`
+T 1568059158 18<sankasan18>	yeah that is the default I think
+T 1568059171 18<ngraham18>	oh gosh yet another outdated wiki page for kdesrc-build lol
+T 1568059176 18<sankasan18>	but I want to step every step, not sure if that is the case with that option
+T 1568059186 18<ngraham18>	I have been working on consolidating those for years
+T 1568059208 18<sankasan18>	ngraham, sorry about that... I'm just looking around for docs instead of bothering poor souls like yourself
+T 1568059239 18<ngraham18>	haha no worries
+T 1568059268 18<einar7718>	dvratil[m]: finally the stupid messagebox appeared, I mailed the screenshot
+T 1568059271 18<dfaure[m]18>	at least that one warns that it's outdated ;-)
+T 1568059347 18<sankasan18>	ngraham, however I wanted to see the flag passed in the CMakeLists.txt and print it with MESSAGE("lets see what we have" ${CMAKE_BUILD_TYPE}). However that didn't display the variable. Is that CMakeLists.txt file not used?
+T 1568059428 18<ngraham18>	no, it is; that's how kdesrc-build knows what to do in fact
+T 1568059433 18<ngraham18>	if that didn't work, I'm surprised
+T 1568059479 18<ngraham18>	did you check the right log file? kdesrc-build will give you the path to its logs dir, but you kind of have to hunt for it. the CMake output isn't displayed in the console
+T 1568059508 18<dfaure[m]18>	the hunt can be simplified to `less log/latest/module/error.log`
+T 1568059523 18<ngraham18>	like I just built Okular for example and the CMake log for it is in `~/kde/src/log/2019-09-09-04/okular/build.log`
+T 1568059542 18<sankasan18>	ah, that might be it. I'm used to an IDE so I'm launching kdesrc-build from QtCreator.
+T 1568059564 18<ngraham18>	dfaure: oh sweet, where does that stuff live?
+T 1568059570 18<einar7718>	vkrause: I think the same "issue" with extraction is with booking.com but I can't make sure (base64 encoded mail...)
+T 1568059590 18<dfaure[m]18>	Nate Graham: same place, it's just that "latest" is a convenient symlink for 2019-09-09-04 ;)
+T 1568059601 18<einar7718>	I guess I should poke laurent for a "show HTML source" option in kmail ;)
+T 1568059613 18<vkrause18>	einar77: has this gone through gmail? they seem to do creative things with html content...
+T 1568059617 18<dfaure[m]18>	this exists already
+T 1568059618 18<dfaure[m]18>	you just need to set an env var
+T 1568059636 18<einar7718>	vkrause: nope, right to my mailbox
+T 1568059644 18<ShalokShalom18>	the development of the Firefox integration via xdg is stalled, as it seems?
+T 1568059655 18<einar7718>	(which is not gmail)
+T 1568059664 18<ShalokShalom18>	It seems to not work in some mysterious cases and nobody knows why?
+T 1568059672 18<ngraham18>	dfaure: super, thanks so much!
+T 1568059723 18<sankasan18>	ngraham, it indeed appears in log/latest/skrooge/cmake.log
+T 1568059742 18<dfaure[m]18>	einar77: export KDEPIM_DEBUGGING=1
+T 1568059765 18<einar7718>	dfaure[m]: what does it do?
+T 1568059788 18<dfaure[m]18>	@einar77 enables the "show HTML source" action, among others
+T 1568059793 18<dfaure[m]18>	or rather tab, iirc
+T 1568059805 18<dfaure[m]18>	in the same dialog as the one where you can see raw email contents
+T 1568059845 18<vkrause18>	dfaure[m]: that is the rendered html, not the input html
+T 1568059892 18<dfaure[m]18>	ah, right, I thought that was the question. The input HTML can just be saved from the treeview no?
+T 1568059912 18<einar7718>	vkrause: it looks like there are no annotations inside
+T 1568059996 18<vkrause18>	einar77: for booking.com, they only seem to be there if you book for yourself, bookings somebody else made for me don't seem to have it (at least that's the best theory I have atm for why it's not always there)
+T 1568059996 18<einar7718>	indeed not
+T 1568060013 18<einar7718>	vkrause: I was the one making the booking with my own account, so quite weird
+T 1568060042 18<vkrause18>	we do have a custom extractor though, that should trigger at least
+T 1568060075 18<einar7718>	it doesn't look like it does
+T 1568060079 18<einar7718>	the HTML is pretty ugly
+T 1568060260 18<vkrause18>	I think they have a few unique css classes we look for via xpath, seemed quite reliable so far
+T 1568064348 18<vidal72[m]18>	apol: if you plan to make kde 5.13 flatpak runtime then please base it on freedesktop 19.08 which is almost uploaded to flathub, it comes with libudev so you could drop your version
+T 1568064998 18<apol[m]18>	vi will do,  thanks!
+T 1568101855 18<einar77_work18>	dvratil[m]: ah, so the errors were about sieve?
+T 1568101872 18<dvratil[m]18>	yes
+T 1568101875 18<einar77_work18>	then I know why I don't get it here, that's because the sieve port is blocked
+T 1568101912 18<dvratil[m]18>	So probably just disable Sieve support in your IMAP resource configuration :)
+T 1568101918 18<einar77_work18>	dvratil[m]: I wonder if (in the long run) we can use knotification instead of KMessagebox?
+T 1568102000 18<dvratil[m]18>	Possibly, yes
+T 1568102016 18<einar77_work18>	but handling sieve works nevertheless FTR (I did fix some of my filters earlier this month from kmail)
+T 1568102110 18<einar77_work18>	nevermind, I think I just need to "fix" dovecot to not to cut these connections like that
+T 1568102175 18<einar77_work18>	dvratil[m]: given that, I may give a stab to see if I can make a PoC after your change is in
+T 1568102181 18<einar77_work18>	(for knotification)
+T 1568102192 18<einar77_work18>	it annoys me enough to put me out of my comfort zone ;)
+T 1568102228 18<dvratil[m]18>	Cool! Let me know if you need any help :)
+T 1568102271 18<einar77_work18>	I probably will, stay tuned sooner or later ;)
+T 1568102855 18<bubli18>	Where can I find Akademy group photo? I saw it yesterday and I tagged myself but I didn't bookmark URL
+T 1568103142 18<tsdgeos[m]18>	https://devel-home.kde.org/~duffus/akademy/2019/groupphoto/
+T 1568103680 20*	Disconnected (20)
+T 1568103704 19*	Now talking on 22#kde-devel
+T 1568103704 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568103704 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568104700 18<barchiesi[m]18>	So I landed a diff that contained a "BUG xxxx" reference but used a wrong email address in the git committer field. The bugzilla bug report was unaffected and I received an error email (screenshot below). Can I just copy/paste the email body in bugzilla to achieve the original desired effect?
+T 1568104735 18*	barchiesi[m] uploaded an image: Screenshot_20190910_103223.png (104KB) < https://matrix.org/_matrix/media/v1/download/kde.org/wJuBAurQjTQWcUjMsYsKJSVC >
+T 1568104766 18<dvratil[m]18>	barchiesi:  just copy-pasting is not enough, you need to set the resolution, fixed-in etc. fields manually
+T 1568104798 18<barchiesi[m]18>	ah, I was hoping the @annotations where enough
+T 1568104816 18<dvratil[m]18>	Or just put the link to the commit to the message and close it :-)
+T 1568104867 18<dvratil[m]18>	Having all the extra fields is nice, but we can live without it  ;-)
+T 1568104954 18<barchiesi[m]18>	I'll see what I can do
+T 1568106296 18<einar77_work18>	dfaure[m]: you are my hero with D23820
+T 1568106340 18<dfaure[m]18>	perfect opportunity to debug this problem indeed ;-)
+T 1568106361 18<einar77_work18>	dfaure[m]: bear in mind that dan changed a few strings in master already with https://phabricator.kde.org/D23814
+T 1568106433 18<dfaure[m]18>	ah cool so that part is done already (and I'll get a merge conflict) ;-)
+T 1568106455 18<einar77_work18>	dfaure[m]: unfortunately I complained to him first ;)
+T 1568106542 18<einar77_work18>	dfaure[m]: as I mentioned earlier in the channel I'll see if I can make a poc using notifications rather than an ugly blocking messagebox (which steals focus)
+T 1568106853 18<dfaure[m]18>	excellent idea
+T 1568107116 18<einar77_work18>	is there any way to trigger those things "manually" rather than waiting for an error that may not come?
+T 1568107273 18<bubli18>	IDK who was it who asked about Libreoffice on Wayland during my session at Akademy and I told them it crashes w/ kf5 frontend atm because of either kf5waylandclient or qt bug
+T 1568107284 18<bubli18>	So here is the bug https://bugs.kde.org/show_bug.cgi?id=408358
+T 1568107386 18<svuorela18>	einar77_work: just do it in the "main" code path and not in the error code path, then move it into the error code path when satisfied ?
+T 1568107646 18<einar77_work18>	svuorela: might be a good idea
+T 1568111925 18<barchiesi[m]18>	is https://techbase.kde.org/Development/Tutorials/Creating_Konqueror_Service_Menus the most complete documentation regarding service menus?
+T 1568112200 18<eang18>	that's probably not up to date
+T 1568112227 18<eang18>	I'd recommend looking at another service menu we currently ship
+T 1568112266 18<barchiesi[m]18>	that was the initial idea, but I wasn't sure what to grep. "KonqPopupMenu/Plugin" seems good
+T 1568112302 18<barchiesi[m]18>	eang: I would like to add "copy url to clipboard" to kio-gdrive
+T 1568112373 18<eang18>	barchiesi: then you probably want to use a kfileitemaction plugin instead
+T 1568112379 18<eang18>	so that you can make it smart
+T 1568112390 18<eang18>	e.g. only show the action when the selected item is a gdrive url
+T 1568112408 18<barchiesi[m]18>	I was just trying to figure that out, thanks!
+T 1568112444 18<eang18>	have a look at ark or purpose plugins
+T 1568112454 18<eang18>	(Extract/Compress, Send to, etc.)
+T 1568148708 20*	Disconnected (20)
+T 1568148732 19*	Now talking on 22#kde-devel
+T 1568148732 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568148732 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568164543 18<act93[m]18>	do I need an invite to join the kate channel? I keep getting err_needreggednick even though I believe I've registered my nick...
+T 1568166180 18<Kon[m]18>	You need to register a Freenode account specifically for your Matrix account
+T 1568166209 18<Kon[m]18>	 * You need to register a Freenode account specifically for connecting through Matrix
+T 1568193167 20*	Disconnected (20)
+T 1568193192 19*	Now talking on 22#kde-devel
+T 1568193192 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568193192 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568197268 18<cmacq2[m]18>	@romangg : could you remind me where I'm supposed to file bug reports on the issue we discussed? Namely: flickering when zooming in with kate. What happens is that the contents of the window behind Kate get rendered while zooming in the line number border/side bar of the document view (katepart)
+T 1568197398 18<cmacq2[m]18>	It's worse with kate 19.10 running against kf 5.62 on Qt 5.12.5 (all built with kdesrc-build)
+T 1568205692 18<zzag18>	does anyone have issues with building qt 5.14? I know it's too early, just wanted to have quick look at it :-)
+T 1568206577 18<alexde18>	zzag, you are fluent in QML, right? ;)
+T 1568209622 19*	Now talking on 22#kde-devel
+T 1568209622 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568209622 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568212408 19*	Now talking on 22#kde-devel
+T 1568212408 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568212408 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568214253 18<zzag18>	alexde: I'm quite the opposite of that
+T 1568275714 20*	Disconnected (20)
+T 1568275738 19*	Now talking on 22#kde-devel
+T 1568275738 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568275738 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568279021 18*	bubli appreciates one of [ade]'s older tweets and uses it to slap^Weducate people addressing mixed-gender group as 'guys'
+T 1568280711 18<einar77_work18>	dvratil[m]: dfaure[m] super stupid question: were I use knotification in say, libksieve, does it make sense for such a repo / lib to ship a notifyrc?
+T 1568280790 18<dvratil[m]18>	einar77_work: for a library I think it would be best to have it only emit a signal on error and then implement the notification in the app that uses it - for instance in KMail, having a notification for the error makes sense, however in KSieveManager, a messagebox would make more sense, since the context there is clear
+T 1568280817 18<dfaure[m]18>	makes sense
+T 1568280831 18<einar77_work18>	dfaure[m]: that's what I was thinking
+T 1568280836 18<einar77_work18>	er dvratil[m]^
+T 1568280851 18<einar77_work18>	IOW replace messageboxes with signals?
+T 1568280886 18<dvratil[m]18>	yep
+T 1568281487 18<[ade]18>	bubli: have you subitted a talk to the Linux Applications Summit? That might be your thing as well (Barcelona, November).
+T 1568281698 18*	bubli doesn't even know Linux Applications Summit is a thing
+T 1568281794 18<bubli18>	bah, missed CfP deadline by 4 days
+T 1568282374 20*	Disconnected (20)
+T 1568282397 19*	Now talking on 22#kde-devel
+T 1568282397 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568282397 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568283959 18<[ade]18>	well, actually .. 
+T 1568284215 18*	dfaure[m] writes #incldude -- fun typo
+T 1568284694 18<dfaure[m]18>	Oops, I pushed a bad commit to kio which leads to some garbage in the URL navigator (e.g. in dolphin). Finishing unittest and fixing properly.
+T 1568284742 18<bubli18>	LOL let me paste what dfaure[m] wrote to our semi-secret women in tech chat, we love puns
+T 1568284789 18<dfaure[m]18>	@bubli right, we need a #inclgirl variant and some more, these days ;)
+T 1568284910 18<einar77_work18>	bubli: I wanted to attend your talk on LO but I ended up missing it...
+T 1568284929 18<einar77_work18>	(for a stupid reason: I didn't want to enter via the front door, but the back doors were locked)
+T 1568285068 18*	bubli unsure if einar77_work missed that much, some animated gifs and lolcat at the end for sure
+T 1568285086 18<bubli18>	nay it was a grumpy cat, sry
+T 1568285591 18<dfaure[m]18>	it was a very nice talk, and not just about the cats ;-)
+T 1568295009 18<[ade]18>	#incldude is twi-worthy indeed
+T 1568295071 18<[ade]18>	dfaure[m]: I spent some time on the gwenview CI / test failure on FreeBSD, and all I'm getting is "unhandled exception somewhere" . That's going to take a lot more effort to track down (it's in an XCF file, so maybe it's just we don't support those and are not getting a decent traceback)
+T 1568295142 18<[ade]18>	.. but that's applications. I'll look into the kcoreaddons / inotify issue now
+T 1568295806 18<spstarr18>	bcooksley: how goes our migration to invent for git workflow?
+T 1568295827 18<Riddellll18>	bdhruve: hola!
+T 1568296839 18<frinring18>	krop: hi. would you have an idea how to do tests for ECM which yields test-passed if a compilation fails? asking in context of https://phabricator.kde.org/D23789 . I got some initial test code done to test the positive side (i.e. API is visible), now I wonder how to test that API is invisible :)
+T 1568296885 18<krop18>	test pass if failed ? mmm
+T 1568296953 18<frinring18>	I wonder if I could make use of cmake's try_compile somehow, but no-one used that so far in ECM, so I have no sample to be inspired from :)
+T 1568297016 18<frinring18>	also still having get to used to all those indirect ctest invocations, still a bit lost about the principal testing framework there in ECM
+T 1568297095 18<bcooksley18>	spstarr: delayed due to other work
+T 1568297258 18<tackat18>	hi frining
+T 1568297621 18<frinring18>	ho
+T 1568298267 18<svuorela18>	dfaure[m]: can I exec() on a kiojob before app.exec has been called? 
+T 1568298385 18<[ade]18>	dfaure[m]: looking at kcoreaddons, the test failures related to inotify should really end up being unit tests in the underlying library (inotify-compatibility-shim for kevent). Basically it looks like removing a file yields a dirty event on the irectory, but no event directly related to the file that was removed.
+T 1568298410 18<[ade]18>	.. it'd be helpful if the tests had a bit more explicit information on what the events should be that are generated.
+T 1568300665 18<[ade]18>	kdelibs4support test failure .. I can at least reproduce the failure
+T 1568301418 18<[ade]18>	.. but looks more like a failure in kservice than in kdelibs4support :S
+T 1568301544 18<cmacq2[m]18>	@frinring: for try_compile try looking at @ivan:kde.org  s work on activities. He likes to try out more modern C++, so has been forced to solve that before. IIRC I once cribbed some cmake magic from his projects like that
+T 1568301603 18<frinring18>	cmacq2[m]: thanks. my question though is more about how this fits into the current desgn of the ECM tests, less about how to use it in general
+T 1568301629 18<[ade]18>	does kservice not get release tags?
+T 1568301672 18<frinring18>	[ade]: it does. cmp. e.g. the list at https://cgit.kde.org/kservice.git
+T 1568301747 18<frinring18>	(v6.x.0 only happen at final release day, just like for all kf modules, if that is the question)
+T 1568301855 18<[ade]18>	(now you're confusing me by mentioning v6, even) No, it's just my repo only has a handful of old tags, git pull does pull in the most up-to-date code commits, but doesn't update tags
+T 1568301944 18<frinring18>	oops, typo :) v5.x.0 of course
+T 1568302016 18<frinring18>	[ade]: that is because gt pull will only getch tags part/on of the branches you pull. for tags on commits e.g. off-named branch, like the rc ones, you will need to expliitly pull them
+T 1568302031 18<frinring18>	getch = merge of get & fetch ;)
+T 1568302095 18<[ade]18>	i wonder why git doesn't update the available tags (i dunno, usually git checkout master ; git pull does the right thing). not that important, since now i've moved on to bugs / test failures in kservice which i think i need to resolve before i can deal with kdelibs4support
+T 1568302186 18<frinring18>	because tags would pull in all the commits leading to the commit they are on. which could be a lot and not what you wanted when you pulled the default branch
+T 1568302226 18<frinring18>	*pulled a/the current branch
+T 1568302899 18<frinring18>	[ade]: so, git pull does bring you all the tags which are on commits of the branch you pulled. but not tags on commits which are off that branch. usually (here: kde plasma, applications) tags are on commits on branches. but for kf, there are no normal branches with branch names, but commit chain "branches" whose heads are referenced by tags. because, they are supposed to be final, no branches where more stuff is pushed to with a moving head
+T 1568303103 18<[ade]18>	IOW, rm -rf and re-clone if you want to find tags or branches. 
+T 1568303234 18<frinring18>	that's the windows approach ;) git pull --tags e.g. will get you all the tags from the remote repo (and all the commits leading to them)
+T 1568303275 18<heirecka18>	fwiw, there's also git fetch --tags
+T 1568303327 18<frinring18>	yes, more correct as it does not update current local branch
+T 1568303353 18<[ade]18>	dfaure[m]: I get failures in the unittests of kservice on Linux as well :(
+T 1568303366 18<[ade]18>	(er .. in the 5.60 version)
+T 1568303563 18<frinring18>	meh, IN_LIST is only cmake 3.3
+T 1568303610 18<[ade]18>	so that's odd .. the tests succeed on the CI (Linux), fail on my laptop (Linux) and fail on FreeBSD (home workstation  and CI)
+T 1568307216 20*	Disconnected (20)
+T 1568307242 19*	Now talking on 22#kde-devel
+T 1568307242 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568307242 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568310857 18<ngraham18>	bcooksley: would you be able to tell me how many people are subscribed to the kde-community mailing list?
+T 1568351749 20*	Disconnected (20)
+T 1568351773 19*	Now talking on 22#kde-devel
+T 1568351773 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568351773 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568579907 20*	Disconnected (20)
+T 1568579933 19*	Now talking on 22#kde-devel
+T 1568579933 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568579933 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568580559 18<jzarl18>	consistency is nice, of course. "before and at" just sounds a little clumsy in my opinion (but I'm no native speaker)
+T 1568580568 18<jzarl18>	so YMMV ;-)
+T 1568580641 18<ngraham18>	+1 for the "until" version, which seems a bit easier to understand to me
+T 1568582401 18<bshah|matrix18>	Nate Graham: any reason you had emptied out community.kde.org/Goals ?
+T 1568582425 18<ngraham18>	I did?
+T 1568582428 18<bshah|matrix18>	evolve.kde.org now redirects to it but that's... ... unexpected?
+T 1568582443 18<ngraham18>	umm... that was definitely not my intention and I have no memory of doing that
+T 1568582449 18<bshah|matrix18>	History says so
+T 1568582455 18<ngraham18>	indeed it does
+T 1568582463 18<ngraham18>	reverting
+T 1568582484 18<ngraham18>	I have no idea how this happened
+T 1568582487 18<bshah|matrix18>	Maybe though adding a details for new goals would be lovely
+T 1568582504 18<ngraham18>	yeah
+T 1568582509 18<ngraham18>	Consistency already has a wiki page
+T 1568583708 18<frinring18>	tsdgeos[m]: thanks for reply, hopefully that will inspire more feedback also from others
+T 1568583830 18<frinring18>	hope my reply makes current proposals more understandable. in doubt about proper names myself, consistency with Qt has been my only guide so far
+T 1568584690 18<tiendonam[m]18>	does anyone know if "kdesrc-build systemsettings --no-include-dependencies" includes my new change? It seems to ignore my change
+T 1568584915 18<tosky18>	you probably want to use --no-src, so that the checked out branch is not touched
+T 1568585958 20*	Disconnected (20)
+T 1568585985 19*	Now talking on 22#kde-devel
+T 1568585985 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568585985 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568587560 18<dfaure[m]18>	bcooksley: yes?
+T 1568617508 20*	Disconnected (20)
+T 1568617535 19*	Now talking on 22#kde-devel
+T 1568617535 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568617535 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568621320 18<Riddellll18>	bdhruve: get home ok? did you make a room/channel for open qa?
+T 1568630224 18<bubli18>	True https://twitter.com/Carnage4Life/status/1173282225594306560
+T 1568633185 18<Safa_[A_Boy]18>	Hi guys. So, the recent changed to the open file dialog cause some stuff, such as this insanely large dialog (1024 minimum width)
+T 1568633187 18<Safa_[A_Boy]18>	https://i.imgur.com/KAXB2bm.png
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22#kde-devel
+T 1568641539 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568641539 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568645248 18<bcooksley18>	vkrause[m]: once the server side agent of KUserFeedback is deployed, what is the easiest way of testing it?
+T 1568645382 18<volker|office_18>	bcooksley: you can connect to it using the UserFeedbackConsole application, which allows you to manage products and see the data
+T 1568645403 18<volker|office_18>	it's part of the same git repo
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22#kde-devel
+T 1568708607 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568708607 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)
+T 1568709921 18<arojas18>	archetech: kdelibs4support's FindNetworkManager doesn't work with latest NM
+T 1568709929 18<arojas18>	it's looking for libraries which no longer exist
+T 1568711758 18<Riddellll18>	dfaure: kdelibs4support doesn't want to compile without an updated kdesignerplugin but that doesn't exist
+T 1568711785 18<bshah|matrix18>	kdesignerplugin moved to portingAids
+T 1568711814 18<Riddellll18>	ah hah, there it is!
+T 1568712083 18<archetech18>	arojas,   ty
+T 1568712145 18<arojas18>	archetech: I don't think it does anything anyway
+T 1568712147 18<arojas18>	https://cgit.kde.org/kdelibs4support.git/tree/src/solid-networkstatus/kded/CMakeLists.txt#n19
+T 1568712157 18<arojas18>	NM_0_7 is nowhere defined
+T 1568712299 18<archetech18>	I didnt copy the error  message  it wasnt important sounding
+T 1568712359 18<archetech18>	  yeah to solid
+T 1568712394 18*	archetech waits for plasma 5.17 beta
+T 1568712541 18<archetech18>	while you're there arojas   did you notice new upower wants kernel user namespace enbled ?
+T 1568712580 18<archetech18>	hope that dont open a can of worms
+T 1568713636 18<arojas18>	archetech: no idea
+T 1568713638 18<arojas18>	https://phabricator.kde.org/D24020
+T 1568715923 18<archetech18>	arojas,  bookmarked  
+T 1568716917 18<tiendonam[m]18>	Currently there are 2 entries for "Notifications", will they be merged for 5.17?
+T 1568716934 18<tiendonam[m]18>	 * Currently there are 2 entries in System Settings for "Notifications", will they be merged for 5.17?
+T 1568722493 18<Riddellll18>	Nate Graham: shall we kill systemd-kcm ?
+T 1568723378 18<bcooksley18>	volker|office_: any objections if I make people confirm they've read https://kde.org/privacypolicy-apps.php before giving them access to telemetry.kde.org?
+T 1568723632 18<volker|office_18>	bcooksley: makes sense, probably even more so the telemetry policy
+T 1568725996 18<CarlSchwan[m]18>	How do I debug kglobalaccel? I can't use the krunner shortcut anymore (running master)
+T 1568726031 18<dfaure[m]18>	Carl Schwan: It's tricky to debug. But for a workaround you can just kill it and restart it
+T 1568726186 18<CarlSchwan[m]18>	dfaure: I can restart it: No protocol specified
+T 1568726217 18<dfaure[m]18>	you mean can't? What's that message? A fatal error from kglobalaccel?
+T 1568726372 18<CarlSchwan[m]18>	it's the message I get then I try to restart kglobalaccel
+T 1568726698 18<CarlSchwan[m]18>	ok it looks like an issue with my system ☹️
+T 1568728449 18<bcooksley18>	nggraham: thanks for those comments re. that telemetry kcm
+T 1568728460 18<bcooksley18>	as it stands, it doesn't really comply with the policy we've laid out...
+T 1568728473 18<ngraham18>	my pleasure
+T 1568728512 18<ngraham18>	yeah I think before we put this in front of users, the presentation and behavior need to be polished to a mirror sheen or else at best nobody will feel confident enough to enable it, and at worst, it will cause a PR nightmare
+T 1568729391 18<bcooksley18>	Oki, i've got the stuff for Flatpaks staged as much as I can
+T 1568729412 18<bcooksley18>	annoyingly, I now have to wait for the 100GB repository that has who knows how many inodes in it to sync
+T 1568729426 18<bcooksley18>	Flatpak really is not designed to scale at all :(
+T 1568729458 18<bcooksley18>	100GB should not take hours to rsync over a gigabit connection with extremely low latency (we're talking 2-3ms tops)
+T 1568729526 18<bcooksley18>	What it really needs is something like Git has - packs - to improve compression and reduce the number of files on disk
+T 1568729534 18<bcooksley18>	(which should also reduce fetch times)
+T 1568731501 18<brute4s9918>	bcooksley: do you know if "fatal: remote error: service not enabled: /craft" is a temporary hiccup or if I'm the one at fault? I'm trying to land D23907
+T 1568739326 18<nicofee18>	vkrause: apol Someone suggested to have a kde android room so I made one
+T 1568739328 18<nicofee18>	https://matrix.to/#/!lcCWmDjEEJPEGILOXe:kde.org?via=kde.org&via=matrix.org&via=t2bot.io
+T 1568739366 18<bshah18>	hm
+T 1568739382 18<bshah18>	slightly reader friendly link #kde-android:kde.org
+T 1568739383 18<bshah18>	:)
+T 1568741585 18<Fuchs18>	might want to add a corresponding IRC channels for those who do not feel like using Matrix 
+T 1568741628 18<nicofee18>	bhushan said he'll do it
+T 1568741634 18<Fuchs18>	that works :) 
+T 1568741661 18<bshah|matrix18>	Fuchs: yes. I plan to set up bridge
+T 1568741703 18<bshah|matrix18>	(tomorrow morning)
+T 1568741820 18<Fuchs18>	no hurry at all 
+T 1568741833 18<Fuchs18>	depending on people parking in there you might need assistance, but that should be trivial 
+T 1568745011 18<jzarl18>	it seems that api.kde.org is down...
+T 1568745058 18<bomb18>	yeah
+T 1568753031 20*	Disconnected (20)
+T 1568753056 19*	Now talking on 22#kde-devel
+T 1568753056 22*	Topic for 22#kde-devel is: KDE Applications master will be 19.12; stable in Applications/19.08 | Schedules: http://is.gd/H9mskw | Dev wiki: http://community.kde.org/ | Git: http://cgit.kde.org | Newcomers, please read and follow the KDE Guide before asking questions here: http://archive.flossmanuals.net/kde-guide/
+T 1568753056 22*	Topic for 22#kde-devel set by 26tsdgeos!~tsdgeos@kde/aacid (24Mon Jul 15 21:19:40 2019)

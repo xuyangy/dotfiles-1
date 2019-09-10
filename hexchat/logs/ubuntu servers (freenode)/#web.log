@@ -1,0 +1,499 @@
+**** BEGIN LOGGING AT Mon Sep  9 10:30:25 2019
+
+Sep 09 10:30:25 *	Now talking on #web
+Sep 09 10:30:25 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 09 10:30:25 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 09 10:30:25 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 09 10:30:25 *	Channel #web url: http://hashweb.org
+Sep 09 10:30:53 <Nomikos>	must've not paid attention much in the past few decades
+Sep 09 10:31:34 <fructose>	If you don't want a solution, that's up to you.
+Sep 09 10:32:38 <Nomikos>	Lady_Aleena: maybe try later when there's socially well-adjusted people with iphones around
+Sep 09 10:33:03 <fructose>	Nomikos: Bad advice
+Sep 09 10:33:33 <Lady_Aleena>	Also, if you are thinking emulators, they are not as reliable as a real device.
+Sep 09 10:33:51 <Nomikos>	fructose: too bad no one around has any better
+Sep 09 10:34:05 <fructose>	Nomikos: How do you know? No one has asked.
+Sep 09 10:36:16 <Nomikos>	educated guess
+Sep 09 10:37:39 <fructose>	That'd explain the error.
+Sep 09 10:39:41 <moeng00>	hai
+Sep 09 10:39:47 <Buck>	hoi
+Sep 09 10:40:08 <moeng00>	Can I use console.log() in browser or is there something with wider support
+Sep 09 10:40:30 <Buck>	you can use console.log() in browser
+Sep 09 10:42:29 <eirikb>	There used to be a time....
+Sep 09 10:43:01 <Buck>	tell us about the old times eirikb!
+Sep 09 10:43:05 *	Buck gathers around the campfire
+Sep 09 10:43:17 <Nomikos>	elinks javascript support is disabled by default, can't think of any others :p
+Sep 09 10:43:42 <Buck>	elinks?
+Sep 09 10:43:47 <Buck>	I only know of lynx and links
+Sep 09 10:44:07 <Nomikos>	fork of links
+Sep 09 10:44:16 <eirikb>	This was a time long ago, a time before one needed 54 000 npm packages to write "Hello, world!"
+Sep 09 10:44:19 <Buck>	http://elinks.or.cz/
+Sep 09 10:44:20 <Natasha>	>> ELinks - Full-Featured Text WWW Browser
+Sep 09 10:44:21 <moeng00>	Well if someone does not have js support then their problems will be much more serious as the app is react
+Sep 09 10:44:24 <Buck>	The current unstable version is 0.12pre6, released on 2012-10-30.
+Sep 09 10:45:08 <Nomikos>	Buck: yea >.> there was a time when it was better than links
+Sep 09 10:45:25 <Buck>	apparently links has a graphical front end as well
+Sep 09 10:45:34 <Nomikos>	that's just cheating
+Sep 09 10:45:37 <Buck>	yeah
+Sep 09 10:45:41 <Buck>	stay with your leest, links
+Sep 09 10:45:47 <Buck>	https://upload.wikimedia.org/wikipedia/commons/9/91/Webbrowser_Links.jpg
+Sep 09 10:46:16 <Buck>	wb Mrbuck
+Sep 09 10:47:12 <Mrbuck>	hi Buck
+Sep 09 11:09:06 <jan6>	links2 > elinks ;p
+Sep 09 11:09:17 <jan6>	except no js, of course...
+Sep 09 11:09:39 <jan6>	ah the days before js ruined everything ;p
+Sep 09 11:15:48 <Buck>	jan6: the 80s?
+Sep 09 11:36:47 <jan6>	and 90s
+Sep 09 11:36:53 <jan6>	and 00s
+Sep 09 11:37:16 <jan6>	I said ruined, not existed ;p
+Sep 09 12:50:20 <spinningCat>	i am sorry if it is off topic questyion please let me knopw
+Sep 09 12:50:58 <Mrbuck>	spinningCat: what is the question ?
+Sep 09 12:51:39 <spinningCat>	i have two seperate machine on network so external ip of those is same. I want to give one of them access via RDP. Do i need to use proxy or something to avoid confliction between thiese two machines?_
+Sep 09 12:53:12 <Nomikos>	spinningCat: I suspect this is extremely similar to what you did for SSH and HTTP
+Sep 09 12:53:16 <Mrbuck>	load balancer may help ?
+Sep 09 12:53:21 <Mrbuck>	I don;t know
+Sep 09 12:53:43 <Mrbuck>	just redirect the traffic
+Sep 09 12:55:22 <spinningCat>	Nomikos,  yes it is similar confusing part is two different machine with same external ip isnt it weird?
+Sep 09 12:55:43 <Nomikos>	spinningCat: no, because they have different internal ip addresses
+Sep 09 12:55:58 <Nomikos>	the external ip address is the router's ip address
+Sep 09 12:56:10 <spinningCat>	okay yeah
+Sep 09 12:56:32 <spinningCat>	let me check something real quick
+Sep 09 12:57:17 <Nomikos>	if the network is a house with different rooms (machines) the router is the front door. all mail has to be addressed to the front door, once it's inside you can figure out what goes to which room
+Sep 09 12:57:19 <spinningCat>	oh yeah
+Sep 09 12:57:30 <spinningCat>	what i need is internal ip for rdp connection
+Sep 09 12:57:49 <spinningCat>	i understood the metaphor
+Sep 09 12:58:01 <spinningCat>	it was really clear Nomikos
+Sep 09 12:58:14 <spinningCat>	i guess i need to check internal ip of machine
+Sep 09 12:58:20 <Nomikos>	so you just need to add another NAT entry
+Sep 09 12:58:30 <spinningCat>	with internal ip
+Sep 09 12:58:46 <Nomikos>	same way you did the other two
+Sep 09 12:58:52 <spinningCat>	yeap
+Sep 09 12:59:05 <spinningCat>	easy peasy leamon squeezy
+Sep 09 12:59:30 <spinningCat>	it is more fun than writing piece of cake
+Sep 09 12:59:32 <spinningCat>	hahahehahe
+Sep 09 15:25:53 <chazapp>	In mongodb shell : db.getCollection("doc").find({"features.creationTimestamp": {"$gte": "2019-09-09T14:03:43.094Z"}}); => 0  results instead of 3. Did i miss anything ?
+Sep 09 15:26:33 <chazapp>	"features" is an embeded document of doc
+Sep 09 15:50:18 <shomon>	hi, what is a good way of telling what country someone is in for the purpose of payment? So to buy some boots if I am in the UK but have a spanish browser and a US browser, what country should I offer as default for the payment button? Or should I just always ask the user?
+Sep 09 15:50:34 <shomon>	sorry spanish browser and us OS I mean
+Sep 09 15:51:43 <Nomikos>	I'd offer a select item where your best guess is pre-selected
+Sep 09 15:52:33 <shomon>	I agree! so my question part 2: what logic should I consider in providing that best guess?
+Sep 09 15:53:11 <shomon>	I'm sure someone must have written about it or even written a script/library etc for it
+Sep 09 15:53:13 <ThePendulum>	shomon: the browser's geolocation API
+Sep 09 15:53:22 <Nomikos>	browsers send a preferred language header, I think
+Sep 09 15:55:55 <shomon>	thanks! It's a bit like determining what language to show the content in, but a bit different as maybe they speak italian but pay in swiss francs for example.
+Sep 09 15:56:36 <Nomikos>	https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
+Sep 09 15:56:37 <Natasha>	>> Accept-Language - HTTP | MDN
+Sep 09 16:25:04 <khobo>	hey guys
+Sep 09 16:25:09 <khobo>	so i'm using a position: sticky
+Sep 09 16:25:17 <khobo>	and it's taking up space in the flow
+Sep 09 16:27:06 <khobo>	https://jsfiddle.net/joyt7zfL/7/
+Sep 09 16:27:07 <Natasha>	>> Edit fiddle - JSFiddle
+Sep 09 16:27:07 <khobo>	whyyyy?
+Sep 09 16:29:07 *	pingu4 lurks
+Sep 09 17:36:32 <Buck>	hi kh
+Sep 09 17:36:37 <Buck>	bugger
+Sep 09 17:41:30 <spinningCat>	hey there
+Sep 09 17:43:08 <spinningCat>	i wrote ServerAlias on my server normally i can access the domain with spesific port like url:8000. And in /etc/hosts i gave my ip that i connect to my server and url address that i set in apache2.conf. But i cannot ping the ServerAlias. What can be the possible reason of that?
+Sep 09 17:45:59 <Nomikos>	is it still saying "name or service not known" ?
+Sep 09 17:46:16 <spinningCat>	let me check
+Sep 09 17:46:48 <spinningCat>	yes
+Sep 09 17:48:53 <spinningCat>	well well well
+Sep 09 17:49:08 <spinningCat>	i also cannot ping actually domain name
+Sep 09 17:49:12 <spinningCat>	test.vaysbuy...
+Sep 09 17:49:18 <spinningCat>	it just waits
+Sep 09 17:49:22 <Nomikos>	can you ping google.com
+Sep 09 17:49:42 <Nomikos>	the actual domain name isn't registered yet I think
+Sep 09 17:49:57 <spinningCat>	yes
+Sep 09 17:50:08 <spinningCat>	i can ping google.com
+Sep 09 17:51:09 <spinningCat>	what do you mean?
+Sep 09 17:51:14 <spinningCat>	problem is .com?
+Sep 09 17:55:07 <Nomikos>	if you ping the ServerName, it does echo the IP address, correct?
+Sep 09 18:00:29 <spinningCat>	it just waits
+Sep 09 18:00:43 <spinningCat>	but it return ip address yes
+Sep 09 18:00:48 <Nomikos>	ok
+Sep 09 18:01:13 <Nomikos>	I've no idea why your system is not using /etc/hosts then
+Sep 09 18:01:38 <spinningCat>	why it waits
+Sep 09 18:01:45 <spinningCat>	i am confused
+Sep 09 18:02:14 <Nomikos>	it waits because it's waiting for the ping response, that is what ping does
+Sep 09 18:02:36 <Nomikos>	but it means it found the ip address, otherwise it would simply stop
+Sep 09 18:02:38 <spinningCat>	okay there is no response that means something is wrong in your side may be
+Sep 09 18:03:02 <spinningCat>	because i am pinging your side and i can react it from browser
+Sep 09 18:03:12 <Nomikos>	my side?
+Sep 09 18:03:34 <spinningCat>	i mean i can see welcome page when i write ip address on browser
+Sep 09 18:03:41 <spinningCat>	but i cannot ping it
+Sep 09 18:03:47 <spinningCat>	isnt it weird?
+Sep 09 18:03:54 <spinningCat>	i mean i cannot get package
+Sep 09 18:04:18 <spinningCat>	i am just asking
+Sep 09 18:04:45 <Nomikos>	> the ping is just a check to see if it can find the right IP address for the domain name
+Sep 09 18:04:54 <spinningCat>	okayi understand
+Sep 09 18:05:03 <spinningCat>	but also show package is recieving right
+Sep 09 18:05:17 <spinningCat>	and i cannot recieve packages
+Sep 09 18:05:25 <spinningCat>	let me try telnet
+Sep 09 18:05:47 <Nomikos>	what packages
+Sep 09 18:05:58 <Nomikos>	packets?
+Sep 09 18:06:19 <spinningCat>	packaet
+Sep 09 18:06:21 <spinningCat>	sorry 84 packets transmitted, 84 received, 0% packet loss, time 83134ms
+Sep 09 18:06:34 <spinningCat>	telnet also cannot connect ip address
+Sep 09 18:06:39 <spinningCat>	should i give port?
+Sep 09 18:06:56 <Nomikos>	wtf. that line from ping says it worked
+Sep 09 18:07:19 <spinningCat>	it is for google
+Sep 09 18:07:41 <Nomikos>	ok, that wasn't confusing at all
+Sep 09 18:07:53 <Nomikos>	so. ignore the ping packets. it's about the IP address/
+Sep 09 18:07:55 <spinningCat>	check your p.m. by the way
+Sep 09 18:08:06 <Nomikos>	I have
+Sep 09 18:08:12 <spinningCat>	why i could domain with telnet
+Sep 09 18:08:30 <spinningCat>	oops
+Sep 09 18:08:39 <spinningCat>	why i couldnt connect domain with telnet
+Sep 09 18:09:00 <Nomikos>	I'm guessing port, yeah
+Sep 09 18:09:35 <Nomikos>	did you notice about how it found the right IP address though?
+Sep 09 18:09:41 <spinningCat>	ye
+Sep 09 18:09:45 <Nomikos>	because DNS is set correctly for that address
+Sep 09 18:09:52 <spinningCat>	yeah
+Sep 09 18:10:05 <spinningCat>	the problem is using alias
+Sep 09 18:10:08 <spinningCat>	that is all
+Sep 09 18:10:12 <Nomikos>	no
+Sep 09 18:10:17 <spinningCat>	hmm?
+Sep 09 18:10:24 <Nomikos>	it can not find the IP address..
+Sep 09 18:10:51 <spinningCat>	what is that?
+Sep 09 18:10:58 <spinningCat>	well
+Sep 09 18:11:07 <spinningCat>	alias cannot find ip address
+Sep 09 18:11:18 <spinningCat>	but i mix them in /etc/hosts
+Sep 09 18:11:20 <Nomikos>	alias is not involved
+Sep 09 18:11:33 <Nomikos>	your ping command can not find the IP address to send the pings to
+Sep 09 18:11:42 <Nomikos>	it doesn't reach the right system
+Sep 09 18:11:50 <spinningCat>	got it
+Sep 09 18:12:04 <Nomikos>	and even if it did it wouldn't touch apache, because ping pings IP addresses, not webservers
+Sep 09 18:12:12 <Nomikos>	the webserver is not involved for ping, at all
+Sep 09 18:12:17 <Dazzling_Viking>	have you tried turning it off and back on again?
+Sep 09 18:12:26 <Dazzling_Viking>	ping is its own protocol
+Sep 09 18:12:32 <spinningCat>	turning of what?
+Sep 09 18:12:38 <Dazzling_Viking>	the thing
+Sep 09 18:12:45 <spinningCat>	ping?
+Sep 09 18:12:47 <Nomikos>	camfm
+Sep 09 18:12:55 <spinningCat>	what is camfm?
+Sep 09 18:13:16 <Nomikos>	cat on the keyboard
+Sep 09 18:13:44 <KingOfKingOfKing>	Nomikos was it spinning?
+Sep 09 18:13:58 <Nomikos>	KingOfKingOfKing: it is now >.>
+Sep 09 18:14:04 <KingOfKingOfKing>	:O
+Sep 09 18:14:04 <spinningCat>	damn
+Sep 09 18:14:37 <Nomikos>	spinningCat: reboot your computer, try the server alias from your browser
+Sep 09 18:14:38 <spinningCat>	Nomikos,  i am not still clear why i cannot access alias
+Sep 09 18:14:52 <KingOfKingOfKing>	cat your /etc/hosts
+Sep 09 18:14:53 <spinningCat>	reboot server you mean
+Sep 09 18:14:55 <spinningCat>	okay
+Sep 09 18:14:58 <KingOfKingOfKing>	and show us your terminal
+Sep 09 18:15:00 <Nomikos>	yes, do that first
+Sep 09 18:15:06 <spinningCat>	sure
+Sep 09 18:15:07 <Nomikos>	the termuinal thing
+Sep 09 18:15:12 <Nomikos>	not the server, leave the server alone
+Sep 09 18:15:13 <spinningCat>	okay
+Sep 09 18:17:41 <spinningCat>	here https://i.itsosticky.com/wliplb.png
+Sep 09 18:18:26 <Dazzling_Viking>	and what are you trying to ping?
+Sep 09 18:19:27 <spinningCat>	actual domain name
+Sep 09 18:19:33 <spinningCat>	i set in apache.conf
+Sep 09 18:19:37 <Dazzling_Viking>	test-www.vaysbuy.com?
+Sep 09 18:19:40 <Nomikos>	yes
+Sep 09 18:19:46 <spinningCat>	not this one
+Sep 09 18:19:53 <Nomikos>	wait waht
+Sep 09 18:19:57 <spinningCat>	that give me error
+Sep 09 18:20:00 <spinningCat>	gave me
+Sep 09 18:20:06 <spinningCat>	i tried to ping
+Sep 09 18:20:15 <spinningCat>	but that gave me service not known error
+Sep 09 18:20:20 <Dazzling_Viking>	tell us, what did you try to ping
+Sep 09 18:20:32 <Dazzling_Viking>	show us
+Sep 09 18:20:37 <Dazzling_Viking>	love us
+Sep 09 18:20:44 <spinningCat>	yeah okay
+Sep 09 18:20:48 <spinningCat>	but i wont kiss you
+Sep 09 18:21:17 <spinningCat>	i used that command ping test-www.vaysbuy.com
+Sep 09 18:22:05 <spinningCat>	i got service not known
+Sep 09 18:22:32 <spinningCat>	i suppose when i type alias it should check the ip behind it right?
+Sep 09 18:22:56 <Nomikos>	when you type alias where
+Sep 09 18:23:17 <Dazzling_Viking>	you ping on the same server right?
+Sep 09 18:23:22 <Dazzling_Viking>	not on different machines?
+Sep 09 18:23:46 <Nomikos>	wait.. wtf
+Sep 09 18:23:54 <spinningCat>	same server
+Sep 09 18:23:58 <Nomikos>	spinningCat: is that /etc/hosts on YOUR computer, or on the server?
+Sep 09 18:23:58 <spinningCat>	i got same error
+Sep 09 18:24:04 <spinningCat>	Nomikos,
+Sep 09 18:24:10 <spinningCat>	on server
+Sep 09 18:24:31 <spinningCat>	should it be in my computer?
+Sep 09 18:24:37 <Nomikos>	that's.. not helping much. yes.
+Sep 09 18:24:45 <spinningCat>	well
+Sep 09 18:24:49 <Dazzling_Viking>	if you're pinging from your computer, it must be on your computer
+Sep 09 18:24:53 <spinningCat>	if someone want to react the alias
+Sep 09 18:25:03 <Dazzling_Viking>	it has to be in the DNS
+Sep 09 18:25:07 <spinningCat>	Dazzling_Viking,  i tried to ping o server too
+Sep 09 18:25:19 <spinningCat>	i got same error service not known
+Sep 09 18:25:40 <Nomikos>	put it in your local /etc/hosts first
+Sep 09 18:25:49 <spinningCat>	okay
+Sep 09 18:25:50 <Nomikos>	on your own machine
+Sep 09 18:25:56 <Nomikos>	then reboot your machine, and try again
+Sep 09 18:26:32 <spinningCat>	reboot machine or apache?
+Sep 09 18:26:38 <Nomikos>	your machine
+Sep 09 18:26:42 <Nomikos>	your own machine
+Sep 09 18:26:44 <Nomikos>	not the server
+Sep 09 18:26:55 <spinningCat>	damn
+Sep 09 18:27:06 <spinningCat>	if someone use that alias for accessing website
+Sep 09 18:27:13 <Nomikos>	not apache either, your own local machine from which you are pinging and where you are adding the /etc/hosts entry
+Sep 09 18:27:16 <spinningCat>	should i add this info to each computer?_
+Sep 09 18:27:30 <spinningCat>	hmm?
+Sep 09 18:27:42 <Dazzling_Viking>	ping doesn't give a flying fuck about apache
+Sep 09 18:27:46 <spinningCat>	so i need to add that line manually to each computer
+Sep 09 18:27:48 <Nomikos>	when you want others to test it, they should register the domain
+Sep 09 18:27:59 <spinningCat>	okay
+Sep 09 18:28:03 <spinningCat>	or adding this
+Sep 09 18:28:05 <Nomikos>	and then you can add the DNS entry, and then you don't need /etc/hosts
+Sep 09 18:28:23 <spinningCat>	let me start my machine now
+Sep 09 18:28:35 <Nomikos>	/etc/hosts is only for testing and debugging locakkasdfnjofpppffft
+Sep 09 18:35:24 <spinningCat>	i have one router and two server if electricity goes off and you start router and servers, the internal ip will change right?
+Sep 09 18:36:08 <Nomikos>	it might, but you can make them static
+Sep 09 18:36:23 <Nomikos>	it's a setting on the VM OS
+Sep 09 18:36:45 <spinningCat>	yeah my aim is to make static
+Sep 09 18:36:57 <spinningCat>	should i purchase some services?
+Sep 09 18:37:02 <Nomikos>	what for?
+Sep 09 18:37:10 <spinningCat>	to use static ip?
+Sep 09 18:37:19 <Nomikos>	18:36:22 < Nomikos> it's a setting on the VM OS
+Sep 09 18:37:20 <spinningCat>	some dns services
+Sep 09 18:37:26 <spinningCat>	ah
+Sep 09 18:37:39 <spinningCat>	can i givve any ip?
+Sep 09 18:37:57 <Nomikos>	any that is allowed by the router
+Sep 09 18:38:11 <spinningCat>	how can i check that ?
+Sep 09 18:38:14 <spinningCat>	Do you know?
+Sep 09 18:38:44 <spinningCat>	if you dont know that is okay
+Sep 09 18:38:47 <Nomikos>	I would just use the IP address that is has right now
+Sep 09 18:39:02 <spinningCat>	okay
+Sep 09 18:39:06 <Nomikos>	different routers have different interfaces, I'd have to sit down behind one
+Sep 09 18:39:09 <spinningCat>	so you just make the ip static
+Sep 09 18:39:16 <Nomikos>	yes
+Sep 09 18:39:27 <spinningCat>	this ip that router define recently
+Sep 09 18:39:30 <spinningCat>	that make sense
+Sep 09 18:39:46 <spinningCat>	okay better to check how to make ip static ubuntu
+Sep 09 18:39:53 <spinningCat>	that should not be hard
+Sep 09 18:40:06 <spinningCat>	i can do for windows server and for windoews 7 too
+Sep 09 18:40:23 <spinningCat>	two problems in a box
+Sep 09 18:40:33 <spinningCat>	i have solutions YAY
+Sep 09 18:40:50 <spinningCat>	thanks Nomikos
+Sep 09 18:40:54 <Nomikos>	yw
+Sep 09 18:41:02 <spinningCat>	i try to configure server machine
+Sep 09 18:41:11 <spinningCat>	for creating working environment
+Sep 09 19:35:20 <patrickk>	Hello, I am setting up a server (centos 7.5) and will host around 10-15 websites in them. Should I go with Apache or nginx?
+Sep 09 19:45:30 <jan6>	personally I'd go with nginx, but it might depend on stuff like how heavy load they get, etc... for < 1000 people per day I don't think there's noticeable difference...maybe...
+Sep 09 19:52:14 <Buck>	patrickk: either is fine
+Sep 09 19:55:20 <jan6>	^^iirc there was only neglegable dfference, performance-wise
+Sep 09 19:59:25 <samsch>	nginx is easier to config IMO. The only thing that apache has better than nginx that I know is htaccess files, which are questionably "good" anyway.
+Sep 09 20:03:29 <Buck>	I do prefer nginx's config
+Sep 09 20:03:31 <eirikb>	Last server I set up was Caddy, worked fine
+Sep 09 20:03:39 <Buck>	apache otoh doesn't require restarts on config changes
+Sep 09 20:04:42 <jan6>	eirikb: busybox's httpd also works fine, doesn't mean I'd use it publically ;P
+Sep 09 20:06:12 <eirikb>	I used Caddy publically
+Sep 10 00:23:50 <praxis>	is there a way to discover the publish/release date of a particular URL?
+Sep 10 00:26:03 <praxis>	I can see a modified date in the page source, but it doesn't really reflect the date the information became available, i guess some minor or aesthetic modification was made since the original date
+Sep 10 09:55:02 <fructose>	praxis: You can check the Wayback Machine to see if/when it took its first snapshot. There's no universal way to know how long a server has been serving particular data though.
+Sep 10 10:21:20 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 10 10:21:20 2019
+
+**** BEGIN LOGGING AT Wed Sep 11 16:33:28 2019
+
+Sep 11 16:33:28 *	Now talking on #web
+Sep 11 16:33:28 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 11 16:33:28 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 11 16:33:28 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 11 16:33:28 *	Channel #web url: http://hashweb.org
+Sep 11 17:29:51 <Oberon4278>	Does anyone know if I can export a Wix site for modification and hosting elsewhere?
+Sep 11 17:39:58 <Nomikos>	the resulting HTML etc, probably, but they'll be keeping the CMS
+Sep 11 17:40:07 <Nomikos>	so you'd end up with static files
+Sep 11 17:40:59 <Nomikos>	.. unless it's heavy on ajax and does domain checks with minified JS and all that. tbh I don't know. technically you can but it'd be in their interest to make it difficult
+Sep 11 17:43:04 <Oberon4278>	Yeah, I was hoping they might offer some kind of "build a site here and export it" option for web developers
+Sep 11 17:43:23 <Oberon4278>	but I guess they don't really have an incentive to do that since their model seems to require you to host it with them and then pay to remove their branding
+Sep 11 17:45:10 <Oberon4278>	God, professional web development sucks so hard.  Everyone wants a Rolls Royce site at Honda Civic prices.
+Sep 11 17:45:33 <Oberon4278>	Literally had a guy say I should build him a site and if he likes it he'll cut me a check for a couple hundred bucks.
+Sep 12 10:08:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 10:08:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 10:08:58 2019
+
+Sep 12 10:08:58 *	Now talking on #web
+Sep 12 10:08:58 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 12 10:08:58 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 12 10:08:59 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 12 10:08:59 *	Channel #web url: http://hashweb.org
+Sep 12 11:59:34 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 11:59:34 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 11:59:57 2019
+
+Sep 12 11:59:57 *	Now talking on #web
+Sep 12 11:59:57 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 12 11:59:57 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 12 11:59:58 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 12 11:59:58 *	Channel #web url: http://hashweb.org
+Sep 12 12:56:26 <Oberon4278>	pokk: the only reason I can think of (re: breaking up login/register) is related to attack surfaces.  You want the answer that minimizes the avenues someone might use to get to your data.
+Sep 12 16:07:03 <hyperisco>	How can I stream data over HTTP and save it to Web Storage or IndexedDB?
+Sep 12 16:07:24 <hyperisco>	Also, how can I stream data from Web Storage or IndexedDB?
+Sep 12 17:54:57 <yakiza>	Hello people is it possible with flex box to have divs in this sequence   11 111 11
+Sep 12 17:55:08 <yakiza>	2 then space then 3 then space then 2
+Sep 12 18:06:35 <khobo>	https://jsfiddle.net/xb9L6snp/9/
+Sep 12 18:06:36 <Natasha>	>> Edit fiddle - JSFiddle
+Sep 12 18:06:39 <khobo>	anyone know why this doesnt work for me?
+Sep 12 18:06:50 <khobo>	https://github.com/jessepollak/card
+Sep 12 18:06:51 <Natasha>	>> GitHub - jessepollak/card: make your credit card form better in one line of code
+Sep 12 18:06:52 <khobo>	i'm working with this
+Sep 12 18:53:36 *	Disconnected ()
+**** ENDING LOGGING AT Thu Sep 12 18:53:36 2019
+
+**** BEGIN LOGGING AT Thu Sep 12 18:54:02 2019
+
+Sep 12 18:54:02 *	Now talking on #web
+Sep 12 18:54:02 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 12 18:54:02 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 12 18:54:02 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 12 18:54:02 *	Channel #web url: http://hashweb.org
+Sep 12 19:56:28 <cixx>	hi.
+Sep 12 19:57:06 <cixx>	is there an editor allows put custom text background color highlight on marked text?
+Sep 12 20:01:15 <MassDebates>	anyone work with inlined ics files
+Sep 12 20:01:30 <MassDebates>	trying to make one play nice with links. Trying to make the most of outlok
+Sep 12 20:20:26 <pokk>	cixx: not sure I understand your question, could you explain more?
+Sep 13 07:15:49 *	Disconnected ()
+**** ENDING LOGGING AT Fri Sep 13 07:15:49 2019
+
+**** BEGIN LOGGING AT Fri Sep 13 07:16:13 2019
+
+Sep 13 07:16:13 *	Now talking on #web
+Sep 13 07:16:13 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 13 07:16:13 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 13 07:16:13 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 13 07:16:13 *	Channel #web url: http://hashweb.org
+Sep 13 08:16:07 <vlt>	gambl0r3: Django (maybe with Bootstrap) should do that.
+Sep 15 22:38:27 *	Disconnected ()
+**** ENDING LOGGING AT Sun Sep 15 22:38:27 2019
+
+**** BEGIN LOGGING AT Sun Sep 15 22:38:53 2019
+
+Sep 15 22:38:53 *	Now talking on #web
+Sep 15 22:38:53 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 15 22:38:53 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 15 22:38:53 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 15 22:38:53 *	Channel #web url: http://hashweb.org
+Sep 16 00:19:18 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 00:19:18 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 00:19:45 2019
+
+Sep 16 00:19:45 *	Now talking on #web
+Sep 16 00:19:45 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 16 00:19:45 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 16 00:19:45 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 16 00:19:45 *	Channel #web url: http://hashweb.org
+Sep 16 09:05:08 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 09:05:08 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 09:05:35 2019
+
+Sep 16 09:05:35 *	Now talking on #web
+Sep 16 09:05:35 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 16 09:05:35 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 16 09:05:35 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 16 09:05:35 *	Channel #web url: http://hashweb.org
+Sep 16 10:18:54 <Buck>	slashdev: did you get an answer?
+Sep 16 11:21:24 <zaherdirkey>	we write "Backend" or "BackEnd"?
+Sep 16 11:22:48 <Zizzo>	for sure not the latter
+Sep 16 11:22:56 <QuanRan>	"backend" ?
+Sep 16 11:23:13 <Zizzo>	back end
+Sep 16 11:25:31 <Buck>	back-end
+Sep 16 11:25:33 <Buck>	end of the back
+Sep 16 11:25:41 <Buck>	not BackEnd though
+Sep 16 11:26:31 <zaherdirkey>	i need it one work for directory name and project, hmmm, it is really hard naming it :P
+Sep 16 11:28:08 <Buck>	the name is really unimportant
+Sep 16 11:28:13 <Buck>	.randomnoun
+Sep 16 11:28:26 <Buck>	.randomnoun
+Sep 16 11:28:29 <Natasha>	Flick
+Sep 16 11:29:27 <QuanRan>	I use /r/hybridanimals for names usually
+Sep 16 11:30:19 <QuanRan>	I browse and try to find an hybrid animal that corresponds to what the project achieves
+Sep 16 11:30:39 <QuanRan>	My last pentesting was named "Cobster" => https://www.reddit.com/r/HybridAnimals/comments/ct3dh7/cobster/
+Sep 16 11:31:25 <Buck>	.> require('animal-name-generator')
+Sep 16 11:31:27 <Natasha>	>> 404 Not Found: animal-name-generator@latest
+Sep 16 11:31:37 <Buck>	.> require('random-animal-name-generator')
+Sep 16 11:31:41 <Natasha>	>> console.log not available, see .help.about
+Sep 16 11:32:22 <Buck>	.% console={log:print};require('random-animal-name-generator')
+Sep 16 11:32:22 <Natasha>	Reproductive reindeer
+Sep 16 11:32:30 <Buck>	.% console={log:print};require('random-animal-name-generator')
+Sep 16 11:32:30 <Natasha>	Gushy graywolf
+Sep 16 11:33:04 <Buck>	use those, zaherdirkey
+Sep 16 11:34:47 <zaherdirkey>	ty
+Sep 16 11:35:54 <Buck>	yw
+Sep 16 11:42:05 <pokk>	Buck: naming of projects can be rather important. We hade ~60 projects on github, finding the right one could be hard when they all had random names
+Sep 16 11:42:28 <pokk>	naming it web/backend/whatever/-simple-explaining-name helped
+Sep 16 11:42:42 <pokk>	that being said, I would name things like "Lando" for the "landing page"
+Sep 16 11:42:50 <pokk>	or tenko, for the translation service
+Sep 16 11:43:02 <Buck>	well, yes
+Sep 16 11:43:07 <Buck>	it has to be descriptive
+Sep 16 11:43:26 <Buck>	but he's just one guy
+Sep 16 11:43:31 <Buck>	you're many guys
+Sep 16 11:43:33 <Buck>	and maybe girls
+Sep 16 11:46:16 <pokk>	true
+Sep 16 12:02:41 <gulzar>	Twitter-Bootstrap 4 help.  https://jsfiddle.net/4bj1zfLv/, I want to convert the "upload" button to an icon and place it in line with the text just like they explained in https://getbootstrap.com/docs/4.0/components/input-group/  , first example only . Can't figure it out. Any help
+Sep 16 12:02:42 <Natasha>	>> Edit fiddle - JSFiddle
+Sep 16 13:32:26 <kek_>	hi
+Sep 16 13:34:40 <kek_>	I noticed that a lot of people use services for hosting - stuff like firebase. Is it that common to use such services? Why is it that common? If so, is there aservice that garantuees privacy?
+Sep 16 13:35:48 <Buck>	kek_: firebase isn't a hosting service, it's a backend service
+Sep 16 13:36:00 <Buck>	it's great for keeping your own server setup simple
+Sep 16 13:36:09 <Buck>	as for as your last question, what do you mean with privacy
+Sep 16 13:37:40 <kek_>	Buck, okay it's a backend service then, but it still does the hosting part in the end as well, doesn't it?
+Sep 16 13:41:33 <kek_>	Buck, since all your data is in googles cloud they might use it somehow you don't like.
+Sep 16 15:45:11 *	Disconnected ()
+**** ENDING LOGGING AT Mon Sep 16 15:45:11 2019
+
+**** BEGIN LOGGING AT Mon Sep 16 15:45:39 2019
+
+Sep 16 15:45:39 *	Now talking on #web
+Sep 16 15:45:39 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 16 15:45:39 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 16 15:45:40 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 16 15:45:40 *	Channel #web url: http://hashweb.org
+Sep 16 16:36:31 <slashdev>	Buck: not really - got referred to #datahoarders, but no luck there.
+Sep 17 10:23:00 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 10:23:00 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 10:23:27 2019
+
+Sep 17 10:23:27 *	Now talking on #web
+Sep 17 10:23:27 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 17 10:23:27 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 17 10:23:27 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 17 10:23:27 *	Channel #web url: http://hashweb.org
+Sep 17 11:35:42 <chazapp>	Hi guys, anyone know how to download older version of MongoDBCompass ?
+Sep 17 11:36:02 <chazapp>	I got this bug and its driving me insane: https://stackoverflow.com/questions/47456910/mongodb-compass-loading-forever
+Sep 17 12:58:39 <Nomikos>	is there any reason why "git stash" could take bloody ages?
+Sep 17 13:05:15 <ko_lo>	depends on the commit your are stashing
+Sep 17 13:05:17 <ko_lo>	but it seems odd
+Sep 17 13:12:50 <Nomikos>	ko_lo: small differences in just a few files, but it takes like 6 seconds
+Sep 17 13:13:05 <Nomikos>	(yesthatsbloodyages :| )
+Sep 17 13:13:15 <ko_lo>	how many commits ?
+Sep 17 13:13:37 <Nomikos>	in the repo in total?
+Sep 17 13:14:07 <Nomikos>	it's just stashing uncommitted changes
+Sep 17 13:15:06 <Nomikos>	seems to me all it needs to do is store the diffs and checkout the changed files
+Sep 17 13:16:29 *	Nomikos considers (against his better judgement) writing a function that does just that o.o
+Sep 17 14:56:26 <Dazzling_Viking>	Nomikos git stash should be pretty quick
+Sep 17 14:56:39 <Dazzling_Viking>	seeing as it basically just is a commit that adds everything
+Sep 17 14:57:03 <Dazzling_Viking>	popping or applying a commit would take a bit more time, as it gotta merge the changes
+Sep 17 14:59:03 <Nomikos>	yeah see
+Sep 17 14:59:07 <Nomikos>	I blame windows
+Sep 17 15:01:24 <Dazzling_Viking>	that sounds correct
+Sep 17 20:57:42 <dfive>	Hi. What is the difference between idempotent and nullipotent and how to use them?
+Sep 17 21:02:59 <systemfault>	dfive: IIRC idempotent requests can actually mutate as long as the result is always the same... Like DELETE or PUT for example
+Sep 17 21:03:14 <systemfault>	Nullipotent don't change anything... like GET/HEAD/OPTIONS
+Sep 17 21:20:16 <dfive>	Okay. What do you think about using POST with a standard form, GET with links and PUT and DELETE with ajax and and a window relocation. There you only have one data obect in a put methid at the client and a visual response of the site by reliading the page. That seems to be a good combination of the technologies, isn't it?
+Sep 17 21:25:29 <dfive>	systemfault: yes. There is only POST and GET supported in HTML forms.  Idempotent changes belong to be handled by the user. That is some kind of mutual exclusion to be implemented there. Is there a difference between machine-machine and machine-human interaction?
+Sep 17 22:43:51 *	Disconnected ()
+**** ENDING LOGGING AT Tue Sep 17 22:43:51 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:44:15 2019
+
+Sep 17 22:44:15 *	Now talking on #web
+Sep 17 22:44:15 *	Topic for #web is: https://hashweb.org | General Web Development talk | JS/HTML/CSS problem? Create a testcase on https://jsfiddle.net or https://jsbin.com | #web-social for social chat | Channel Rules https://git.io/v20lo | Use !ops to alert channel ops
+Sep 17 22:44:15 *	Topic for #web set by Buck (Sun Aug 26 17:46:42 2018)
+Sep 17 22:44:16 -ChanServ-	[#web] Welcome to #web! Just ask your question, someone may or may not reply. Offering coffee helps. Don't ask to ask. Don't ask if someone's worked with/knows about <tech>. Just ask!
+Sep 17 22:44:16 *	Channel #web url: http://hashweb.org
+**** ENDING LOGGING AT Tue Sep 17 22:58:02 2019
+
+**** BEGIN LOGGING AT Tue Sep 17 22:58:02 2019
+

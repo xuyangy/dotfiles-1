@@ -1,0 +1,1203 @@
+T 1567243380 19*	Now talking on 22#docker
+T 1567243380 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1567243380 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1567247479 18<mgolisch18>	how does that new docker for windows wsl2 stuff work?
+T 1567247501 18<mgolisch18>	does it run the docker engine inside the wsl2 distro?
+T 1567247679 18<mgolisch18>	if so why do i need to install docker for windows at all then?
+T 1567253147 18<cluelessperson18>	okay I'm stuck and this is driving me nuts
+T 1567253160 18<cluelessperson18>	docker-compose says   "address already in use" and errors bringing a container up
+T 1567253168 18<cluelessperson18>	except that address is definitely NOT in use.
+T 1567253173 18<cluelessperson18>	I tried rebooting evein
+T 1567253434 18<bozzle18>	So I went back to basics and tried to follow this: https://docs.docker.com/docker-for-mac/. I got to step 3 which looked fine in the terminal, but I got 'This site can’t be reached' on localhost
+T 1567253479 18<cluelessperson18>	bozzle   do     docker container ls      is that container running?
+T 1567253491 18<bozzle18>	What I can find out there said something about httpd (have no idea what that is or how to discover if it's the problem) or maybe a proxy, which I also don't know how to discover.
+T 1567253512 18<bozzle18>	cluelessperson: Yeah, that container is running.
+T 1567253574 18<cluelessperson18>	bozzle  what did you type into the address bar exactly?    http://localhost    https://localhost    localhost ?
+T 1567253587 18<bozzle18>	Just `localhost`
+T 1567253600 18<bozzle18>	Also tried http://127.0.0.1/
+T 1567253628 18<bozzle18>	cluelessperson
+T 1567253628 18<cluelessperson18>	bozzle   does   docker container ls   report that container is listening/exposed on port 80?
+T 1567253662 18<bozzle18>	cluelessperson: `0.0.0.0:80->80/tcp` under `ports`
+T 1567253700 18<cluelessperson18>	did you change the configuration elsewise?
+T 1567253729 18<bozzle18>	cluelessperson: I don't think so, but how can I check?
+T 1567253754 18<cluelessperson18>	what's the exact run command you used?
+T 1567253761 18<cluelessperson18>	you can also do.   docker logs container
+T 1567253767 18<bozzle18>	The one from the tutorial
+T 1567253813 18<bozzle18>	cluelessperson: logs doesn't show me anything.
+T 1567253843 18<bozzle18>	Jut goes right back to command prompt
+T 1567254202 18<bozzle18>	cluelessperson?
+T 1567254231 18<cluelessperson18>	bozzle    try     telnet localhost 80
+T 1567254237 18<cluelessperson18>	does that connect?
+T 1567254271 18<bozzle18>	cluelessperson: No, `connection refused`
+T 1567254400 18<cluelessperson18>	bozzle  are you running docker on the mac directly, or another machine?
+T 1567254404 18<cluelessperson18>	or in a virtual machine?
+T 1567254426 18<bozzle18>	cluelessperson: I think it's in my mac directly
+T 1567254447 18<bozzle18>	That is, I don't have virtual box open or anything.
+T 1567254474 18<bozzle18>	If it did it's own virtual machine thing in the background secretly without doing anything visible, then maybe that's a thing...
+T 1567254483 18<cluelessperson18>	bozzle  can you also try  telnet 127.0.0.1 80      and try your local network ip as well
+T 1567254498 18<cluelessperson18>	it doesn't do any secret virtual machine thing
+T 1567254506 18<bozzle18>	Heh
+T 1567254526 18<bozzle18>	The one you just said also has connection refused. I'll try my IP
+T 1567254547 18<bozzle18>	cluelessperson: How do I find out my local network IP? How is that different from other IPs?
+T 1567254660 18<bozzle18>	cluelessperson: Found these instructions: http://osxdaily.com/2010/08/08/lan-ip-address-mac/. Used that address and got `Connection refused` again.
+T 1567254705 18<cluelessperson18>	I think there's a bug in the docker network driver/storage.   I had to delete the network and recreate it in order to reuse this address.
+T 1567254713 18<cluelessperson18>	double checking my network config as well.
+T 1567254757 18<cluelessperson18>	bozzle   So, servers can have multiple network connections attached to them.  Most laptops for example will have wifi, lan, and they can have more.
+T 1567254786 18<cluelessperson18>	So, you might sometimes define a "bind" address.   0.0.0.0 is designed so that it listens on "all" of them.
+T 1567254816 18<bozzle18>	Should I test that one?
+T 1567254838 18<cluelessperson18>	bozzle  no.   it leads nowhere.
+T 1567254853 18<cluelessperson18>	bozzle  OH, I remember now.  Yeah, docker on mac DOES run in a virtual machine.
+T 1567254897 18<cluelessperson18>	do,   ip a    and you might spot another interface/network in the background.
+T 1567254918 18<cluelessperson18>	that might be the ip you need to hit.
+T 1567254930 18<bozzle18>	cluelessperson: `ip: command not found`
+T 1567254952 18<cluelessperson18>	ipconfig /a     I don't remember strictly on mac
+T 1567255006 18<bozzle18>	cluelessperson: getting `ipconfig <command> <args> where <command> is one of waitall, getifaddr, ifcount, getoption, getpacket, getv6packet, set, setverbose`.
+T 1567255040 18<bozzle18>	What can I search for on the internets to find the mac way to do it?
+T 1567255092 18<cluelessperson18>	ifconfig ?
+T 1567255193 18<bozzle18>	cluelessperson: `ifconfig -a` did a thing. What am I looking for there?
+T 1567255211 18<cluelessperson18>	a subnet that might be specified for virtual machines to use
+T 1567255258 18<bozzle18>	cluelessperson: I don't find 'subnet' anywhere in the text of the output.
+T 1567255295 18<cluelessperson18>	a subnet is like an ip range.   perhaps 172.62.0.1/24   or something completely different
+T 1567255335 18<cluelessperson18>	note ip addresses aren't usually sensitive info, so feel free to supply a paste link of the output and I can glance at it
+T 1567255678 18<cluelessperson18>	bozzle   do    docker inspect <contianer_name>    and see what its ip address is.
+T 1567255688 18<cluelessperson18>	it may have an ipv4 and/or ipv6 address.
+T 1567255692 18<cluelessperson18>	try that.
+T 1567255797 18<bozzle18>	cluelessperson: I don't see `v4` anywhere. `v6` stuff has values like empty string, null, and length of 0.
+T 1567255889 18<cluelessperson18>	bozzle   docker inspect pihole | grep IPAddress
+T 1567255917 18<bozzle18>	cluelessperson: `Error: No such object: pihole`
+T 1567255929 18<cluelessperson18>	replace pihole with your container's name
+T 1567255965 18<bozzle18>	lol
+T 1567256021 18<bozzle18>	cluelessperson: It gives me an IPAddress. With `"SecondaryIPAddresses": null,`
+T 1567256057 18<cluelessperson18>	sounds like some sort of configuration issue.
+T 1567256070 18<cluelessperson18>	how did you install docker exactly?
+T 1567256074 18<bozzle18>	Maybe it didn't start a vm and that's the problem?
+T 1567256096 18<bozzle18>	I installed the Toolbox following the directions online from the Docker site.
+T 1567256114 18<cluelessperson18>	bozzle  I'm not entirely clear, but my understanding is that on mac, docker runs everything in a single vm.  Can you link me to the toolbox thing?
+T 1567256124 18<bozzle18>	I'll try to find it again.
+T 1567256194 18<bozzle18>	cluelessperson: I think I did it this way: https://docs.docker.com/toolbox/toolbox_install_mac/
+T 1567256354 18<cluelessperson18>	bozzle  yeah, so this configuration confusion is what's hurting.   I understand this may be frustrating, but stick with it, we'll get to the bottom eventually
+T 1567256376 18<cluelessperson18>	try,   docker-machine ls    (if that's installed) and see if it reveals info.
+T 1567256437 18<cluelessperson18>	based on your   ifconfig   output from earlier, there's an internal vbox1 subnet,  192.168.99.1/24  defined, and it correlates with some of the docker-machine info I'm finding online.
+T 1567256454 18<bozzle18>	cluelessperson: I get `default   *        virtualbox   Running   tcp://###...:####` and the Docker version: `v18.09.6   `
+T 1567256502 18<cluelessperson18>	there aren't others?
+T 1567256518 18<bozzle18>	cluelessperson: No, just that one.
+T 1567256659 18<cluelessperson18>	bozzle  what does   docker-machine env   return?
+T 1567256688 18<cluelessperson18>	and what's that tcp://   ip address?
+T 1567256776 18<bozzle18>	Starts the same as the one you put up there, but instead of `.1` it's got `.100:2376`
+T 1567256799 18<bozzle18>	@cluelessperson
+T 1567257038 18<cluelessperson18>	so it seems your docker vm is at an internal 192.168.99.100  and docker is listening on 2376 there.
+T 1567257077 18<bozzle18>	cluelessperson: Is that a useful clue?
+T 1567257081 18<cluelessperson18>	btw,  https://en.wikipedia.org/wiki/Private_network
+T 1567257089 18<cluelessperson18>	it's leading us in the right direction
+T 1567257119 18<cluelessperson18>	bozzle   Basically, when you connect to localhost in your browser, your connection isn't being forwarded to that VM, which is actually where nginx is running.
+T 1567257158 18<cluelessperson18>	presumably, nginx is supposed to come up with 192.168.99.? and is probably connectable there.
+T 1567257180 18<cluelessperson18>	oh wait, maybe it's on the host net
+T 1567257198 18<cluelessperson18>	bozzle  try   http://192.168.99.100
+T 1567257235 18<bozzle18>	Wow. That worked. Wat!?
+T 1567257259 18<cluelessperson18>	(you can run a docker container as its own network entity, like 192.168.99.105,   or run the service so that it uses the host's ip)
+T 1567257268 18<bozzle18>	Would that happen on any mac or is it just something I did sometime?
+T 1567257290 18<bozzle18>	So this is using its own network entity?
+T 1567257316 18<cluelessperson18>	bozzle  So here's what's happening.    On most configurations you can run docker directly, and this tutorial would result in nginx listening on your computer's localhost at port 80.
+T 1567257361 18<cluelessperson18>	Mac/windows are different enough from linux and what docker is based out of, that they make docker work by spinning up a virtual machine in the background.
+T 1567257384 18<cluelessperson18>	So docker is run in linux environment in the background (which isn't really anything to worry about)
+T 1567257409 18<cluelessperson18>	---
+T 1567257429 18<cluelessperson18>	So, all in all.   nginx is running in the virtual machine, listening on localhost:80
+T 1567257517 18<bozzle18>	And the virtual machine is sending it somewhere else?
+T 1567257542 18<cluelessperson18>	No.  the docker container, nginx, is running there and listening there.
+T 1567257567 18<bozzle18>	Then why can't I go to 80 on my machine?
+T 1567257579 18<mgolisch18>	because it runs in that vm not your machine
+T 1567257602 18<mgolisch18>	you installed docker toolbox but looked at the documentation for docker for osx
+T 1567257624 18<cluelessperson18>	bozzle  The VM is acting as a different machine, at the ip address 192.168.99.100, the nginx container is located there.
+T 1567257627 18<bozzle18>	Where's the documentation for toolbox?
+T 1567257653 18<cluelessperson18>	192.168.99.100 btw, in this case, is only accessible and available to connect to from your machine.
+T 1567257656 18<mgolisch18>	its basicaly the same with docker for osx but it does some magic so the published ports are accessible using localhost
+T 1567257670 18<bozzle18>	Can the VM act as a different machine at port 80 instead? Is that something that can be done?
+T 1567257671 18<cluelessperson18>	yeah, I suspect that magic wasn't happening here.
+T 1567257731 18<cluelessperson18>	bozzle     think of addresses as the location, and ports as paths/slots to get there.
+T 1567257775 18<bozzle18>	So can I change the address so that I can use port 80 on my machine?
+T 1567257798 18<mgolisch18>	no
+T 1567257806 18<mgolisch18>	if you want that install docker for osx
+T 1567257812 18<bozzle18>	Ok
+T 1567257820 18<cluelessperson18>	You can do anything, but it requires some knowledge
+T 1567257834 18<bozzle18>	Ah, I see
+T 1567257845 18<cluelessperson18>	probably outside your skillset, beyond what I know off the top of my head, and would be a headache.
+T 1567257847 18<bozzle18>	I'm doing this so I can use someone else's ... image? from the library they wrote. Would they be able to change the way it's run so it just shows up in `localhost` for macs using Toolbox?
+T 1567257860 18<cluelessperson18>	so, I recommend installing docker in way that it handles that for you.
+T 1567257872 18<mgolisch18>	bozzle: no it has nothing to do with the image
+T 1567257876 18<bozzle18>	I can't, the system I'm using is too old.
+T 1567257911 18<bozzle18>	Where's the documentation for Toolbox that would have helped here?
+T 1567257998 18<cluelessperson18>	bozzle   You could setup what are called "port forwards", so that when you ask for localhost:22  it's forwarded to  -> 192.168.99.100:22
+T 1567258000 18<mgolisch18>	https://docs.docker.com/toolbox/overview/ but not sure it realy meantions alot of helpful stuff
+T 1567258006 18<cluelessperson18>	port forwarding anyway
+T 1567258049 18<bozzle18>	It doesn't contain anything :/
+T 1567258072 18<bozzle18>	Just stuff like the install instructions.
+T 1567258114 18<mgolisch18>	i think the getting started guide just asumes you use current stuff
+T 1567258219 18<bozzle18>	Yeah
+T 1567258329 18<bozzle18>	Now it can't read my CA certificate for some reason :/
+T 1567258353 18<cluelessperson18>	bozzle  who's CA certficiate?
+T 1567258365 18<bozzle18>	Thanks for solving that mystery, though, cluelessperson. I would never have gotten there otherwise.
+T 1567258417 18<bozzle18>	Well shit
+T 1567258462 18<bozzle18>	Sorry
+T 1567258480 18<cluelessperson18>	bozzle for what?  and what about a CA cert?
+T 1567258487 18<bozzle18>	I ran the results of `env` by mistake with some stuff edited. So. Y'know. Restored now.
+T 1567258493 18<bozzle18>	Sorry for swearing.
+T 1567258500 18<bozzle18>	I don't know what this channel's policies are.
+T 1567258517 18<cluelessperson18>	I don't remotely care, but others might
+T 1567258774 18<bozzle18>	Anyway, thanks for the assist cluelessperson.
+T 1567258944 18<cluelessperson18>	no prob
+T 1567259267 18<bozzle18>	Would this be relevant to fixing the issue somehow? https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach
+T 1567259307 18<bozzle18>	Their instructions say other things to do in the terminal. Maybe they could add instructions about this.
+T 1567259379 18<cluelessperson18>	bozzle  I'd avoid getting into that detailed stuff.
+T 1567259412 18<bozzle18>	Figured I might just link it to them if it was relevant. If they don't want to get into it, that's up to them.
+T 1567259825 18<very_sneaky18>	hi all, i'm getting the following error: `Get https://gcr.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)` when i try to push my image to gcr.io. I'm running docker on macos; all the solutions I've come across (mostly for windows) indicate that the proxy settings need to be changed to use google dns; I tried this to no effect. Does anybody know what I need to do to get t
+T 1567259825 18<very_sneaky18>	his to work?
+T 1567263172 18<az18>	hi, I need help please with this: sudo docker -D build -t askbot:latest --build-arg ASKBOT=. .
+T 1567263173 18<az18>	Sending build context to Docker daemon  310.3kB
+T 1567263173 18<az18>	Error response from daemon: Error processing tar file(exit status 1): remount /, flags: 0x84000: permission denied
+T 1567263190 18<az18>	it's inside LXC
+T 1567267193 18<tabakhase18>	az unprivilidged lxc? and where is that dockerD runnin... from memory thats a nada inside lxc...
+T 1567267259 18<tabakhase18>	(and unprivi acts like a nsmap with 0 not beeing 0 anymore kinda deal in there)
+T 1567270659 18<Pio18>	.4}}45]]]]}46.}46.5]5]5}}}46.]5]].}4}4}]].}4}].].].}}46].
+T 1567274771 18<bozzle18>	Does it matter what dir I'm in when I do `docker run`?
+T 1567276108 18<bozzle18>	Not sure if this got sent to the channel before: Does it matter what dir I'm in when I do `docker run`?
+T 1567277574 18<lrvick18>	So if I run docker-machine with virtualbox backend it mounts my /home as /hosthome inside the VM. In the VM the docker user is uid 1000 gid 50. My container user also is uid 1000 gid 50. I can mount from /hosthome/me/config to /home/build/config in the container. Then things get weird. I can run "git init" in the volume mounted folder and it populates the .git directory as expected. If I try to do a "git add
+T 1567277575 18<lrvick18>	." I get: error: insufficient permission for adding an object to repository database .git/objects.
+T 1567277590 18<lrvick18>	I can however touch files in .git/objects no problem
+T 1567277600 18<lrvick18>	as the container user
+T 1567279558 18<bozzle18>	Does it matter what dir I'm in when I do `docker run`? Does it need to be in my HD directly in order to access stuff? Can it just be in a random folder on the desktop?
+T 1567279584 18<lrvick18>	Example with strace. This makes no sense: https://gist.github.com/lrvick/8b49f8b40955387bfb7d45da9912e3ba
+T 1567279585 18<bozzle18>	Maybe I mean the place where you put `/da`
+T 1567280373 18<tabakhase18>	bozzle wherever - cause "run" only takes absolute paths anyways :P
+T 1567280405 18<tabakhase18>	now, with docker-compose, what allows "./" - and expands for you before sending it to docker - whole different story :P
+T 1567280415 18<bozzle18>	tabakhase: Ok. And thanks. Just wondering if it affects where my server logs are going because I can't find them.
+T 1567280442 18<bozzle18>	Thought maybe it couldn't find where to put them.
+T 1567280487 18<tabakhase18>	this also makes a bit more sense if you look in what docker actually does under the hood -- there is a deamon running on your system | and any "docker" commands are the CLI using a http api on it todo stuff  ((with the exception of "docker build" where the CLI also does the step of packing the "build context" up))
+T 1567280593 18<tabakhase18>	so it "doesnt care about the directory your CLI is running in at all" so to say - cause it may not even be the cli or anything that has a directory at all, as you can totally "call the deamons http-apis with a webbrowser" if you wanted to
+T 1567407102 20*	Disconnected (20)
+T 1567407949 20*	Disconnected (20)
+T 1567409874 20*	Disconnected (20)
+T 1567418638 20*	Disconnected (20)
+T 1567425360 20*	Disconnected (20)
+T 1567498452 20*	Disconnected (20)
+T 1567531242 20*	Disconnected (20)
+T 1567535144 20*	Disconnected (20)
+T 1567576502 20*	Disconnected (20)
+T 1567584933 20*	Disconnected (20)
+T 1567608965 20*	Disconnected (20)
+T 1567670323 20*	Disconnected (20)
+T 1567695041 20*	Disconnected (20)
+T 1568212408 19*	Now talking on 22#docker
+T 1568212408 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568212408 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568212463 18<lmat18>	Now I changed index.html to index.php. Requesting http://localhost spins. I'm guessing nginx isn't able to talk to my php interpreter.
+T 1568212497 18<lmat18>	I guess I should check and see if my php container is listening on 9000 as expected...
+T 1568212537 20<threenuc>30	Hi. I'm trying to set up a mysql db for my dev environment. The goal is so other developers working on my project can skip the db config. Is it really not possible to connect to a docker database from my docker host (in this case my personal pc). Ideally it'd be something like `mysql --port=3306 -u root -p`
+T 1568212562 18<lmat18>	programmerq: Crap, ss -an; nor nestat -an; works in the container... :-/
+T 1568212581 19<lmat>	threenuc: Of course you can.
+T 1568212582 18<programmerq18>	is is possible to connect to a dockerized database. publish the port when you run the container.
+T 1568212674 18<lmat18>	programmerq: I switched to *-alpine; (I was on 7-fpm), and netstat is there. it is listening on 9000. Do I need to have a 'ports' section on that service?
+T 1568212703 18<programmerq18>	no. a 'ports' section is required for ingress. is nginx telling you that it's seeing a connection refused when connected to your php-fpm container?
+T 1568212747 18<lmat18>	timed out
+T 1568212770 18<programmerq18>	sounds more like it's communicating with it, but your php code is stuck doing something.
+T 1568212780 18<lmat18>	oh, okay... I'll revisit my index.php
+T 1568212807 18<programmerq18>	I always start out with a super simple phpinfo() script
+T 1568212828 18<lmat18>	programmerq: I was just using the same index.html I had been using   <html><title>...</title><body>...</body></html>
+T 1568212843 18<programmerq18>	index.html is 100% handled by nginx and not by php-fpm
+T 1568212857 18<lmat18>	programmerq: I    mv index.html index.php;
+T 1568212867 18<lmat18>	<?php
+T 1568212870 18<programmerq18>	index.php is a php file, and will be handled by php-fpm
+T 1568212882 18<lmat18>	echo phpinfo();     is the script they recommend on the tutorial. This shoud end with ?>, right?
+T 1568213009 18<lmat18>	client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://129.79.78.36:9000", host: "localhost"
+T 1568213012 18<lmat18>	I'm not sure where it's getting 129...
+T 1568213029 18<programmerq18>	what did you put in the nginx config file?
+T 1568213050 18<lmat18>	copy and paste.   OOOhhh, mine isn't callet fastcgi_pass_php. doh
+T 1568213076 18<lmat18>	I changed the conf. What's the best way to get the service to restart so it will read this conf?
+T 1568213108 18<programmerq18>	docker-compose restart <service>
+T 1568213125 18<lmat18>	I'm not using docker-compose; I'm using docker swarm/stack/service
+T 1568213136 18<programmerq18>	docker service update -f
+T 1568213148 18<lmat18>	sweet
+T 1568213162 18<programmerq18>	or send that nginx container a HUP
+T 1568213229 18<lmat18>	Ahh, docker kill; great idea!
+T 1568213318 18<lmat18>	"unknown shorthand flag: 'f' in -f"  u usin some strange magic, boy!?
+T 1568213331 18<lmat18>	(The container was down and wasn't goin to restart, so I couldn't send it a signal)
+T 1568213348 18<programmerq18>	ah, it's --force
+T 1568213398 18<lmat18>	programmerq: I would have expected -f to work, too ^_^. I'm definitely getting somewhere now: FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream
+T 1568213412 18<lmat18>	Does the php container need to have the php file?
+T 1568213426 18<lmat18>	Is the php container strictly an interpreter? Or will it hold the php code?
+T 1568213438 19<lmat>	threenuc: got it all sorted?
+T 1568213775 18<programmerq18>	php-fpm needs to have access to the files.
+T 1568213822 18<programmerq18>	that's the kind of weird thing about containerizing this setup- both nginx and php-fpm need to see the same files for this to truly work correctly. nginx will handle serving up static files, but if it sees the file is a php file, it'll pass the request off to php-fpm, which needs access to the file to be able to handle the request.
+T 1568213854 18<programmerq18>	so in a prod setup, you'd have to build a new nginx and php-fpm container that has the updated code
+T 1568213863 18<programmerq18>	but you'd be able to scale horizontally across arbitrary hosts.
+T 1568213982 18<lmat18>	programmerq: I would think the code would be a volume shared with all.
+T 1568213998 18<programmerq18>	that pattern breaks down when you want to scale across arbitrary hosts
+T 1568214012 18<programmerq18>	plus then you have to not only distribute your docker image artifact, but treat the code repository as an artifact.
+T 1568214043 18<programmerq18>	in my opinion, it's simpler just to build one or more images that has the necessary files, and update all the containers in question
+T 1568214063 18<lmat18>	programmerq: Seems like I might want to run nginx and php in the same container?
+T 1568214070 18<programmerq18>	it's really not that different from tacking on a scheduler/worker process too.
+T 1568214072 18<programmerq18>	nah
+T 1568214078 18<programmerq18>	just add the code to an nginx image and to the php image
+T 1568214080 18<programmerq18>	no big deal
+T 1568214083 18<lmat18>	programmerq: If I were using appache PHP (without fpm) I would use only one container.
+T 1568214094 18<programmerq18>	correct-- because apache's process model is one process
+T 1568214098 18<programmerq18>	nginx and php-fpm are two
+T 1568214107 18<programmerq18>	so the way to containerize it reflects that
+T 1568214130 18<lmat18>	programmerq: Ah yes, I will still need a reverse proxy anyway.
+T 1568214361 20<threenuc>30	@programmerq, thanks, I googled "publish port" and found what I needed. Db is working nice. Thanks
+T 1568214394 20<threenuc>30	lmat, yes :) thanks, I just hoped you guys would say a keyword I could google and you did hah
+T 1568214504 19<lmat>	threenuc: nice
+T 1568215401 18<lmat18>	programmerq: Okay, I got the way to restart the stack:  docker stack rm mystack; while docker network inspect mystack_default ; do sleep 1; done; docker stack deploy -c mystack.yml mystack;
+T 1568215527 18<lmat18>	programmerq: Whoa! Got phpinfo \o/
+T 1568215533 18<lmat18>	time to commit
+T 1568275714 20*	Disconnected (20)
+T 1568275732 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568275732 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568275738 19*	Now talking on 22#docker
+T 1568275738 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568275738 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568276001 18<tsujp18>	Can you tag an image from Dockerfile?
+T 1568276012 18<tsujp18>	If not, can you get the image ID of the one just built from within the Dockerfile?
+T 1568280521 18<[twisti]18>	is there any way to get notifications about upstream changes in the docker repo ? i.e. we have a project based on 'php', and when upstream changes, we need to rebuild our entire image, which takes a long time. that in itself is not a problem, but the problem is that we only NOTICE the change when someone pushes a local change, and the CI server builds the docker image and it suddenly takes 20 times as long as normally
+T 1568280540 18<[twisti]18>	it would be neat if we could somehow say "whenever php:latest gets updated, we want our CI server to be noticed"
+T 1568280550 18<Swahili18>	Q: After a few attempts found out that the image `wordpress` ( https://hub.docker.com/_/wordpress/ ) does not execute the shell script placed in the entrypoint path, for some reason. I had to create a service with the image `alpine` and a shared dir `/var/www/html` to run the desired script. I don't think this is a good practice though, but it's a solution. How to debug when the entrypoint script does not run? Accessing the cont
+T 1568280550 18<Swahili18>	ainer shell, I was able to run manually, I did notice that the sh file does not have read permissions
+T 1568280624 18<cim20918>	[twisti]: why don't you just have your images build weekly on a cron job
+T 1568280695 18<[twisti]18>	cim209: thats our go-to if we cant find anything better, but that comes with the chance to just miss the upstream change, or a change during the week. notifications would be a neater and cleaner solution
+T 1568280708 18<Swahili18>	There's probably images that don't execute the script files in the entrypoint path?!
+T 1568280723 18<[twisti]18>	i was thinking maybe there was like a mailing list for new releases that i could use as a trigger for our CI server
+T 1568280777 18<Swahili18>	Or, does all images run the script files in entrypoint?
+T 1568280857 18<cim20918>	Swahili: all their entrypoints should be executable
+T 1568280883 18<Swahili18>	cim209: thanks for looking! right! So, how to debug when the script does not run?
+T 1568280912 18<cim20918>	Swahili: run the image in the container but not in -d detach mode
+T 1568280977 18<cim20918>	[twisti]: docker php has a github repo
+T 1568281008 18<Swahili18>	cim209: I'm using docker-compose and I do `up -d --remove-orphan`, so I should do `up` only to debug?
+T 1568281028 18<cim20918>	Swahili: yeah see what outputs in the terminal
+T 1568281041 18<Swahili18>	hum ok
+T 1568281057 18<Swahili18>	docker-compose, can we just run one image?
+T 1568281114 18<cim20918>	docker-compose up service-name
+T 1568281198 18<Swahili18>	cim209: cool! I'll try let's see
+T 1568281214 18<[twisti]18>	cim209: thanks, ill see if i can use that somehow, i know github supports watching releases now
+T 1568281588 18<Swahili18>	if I `echo "Hello world!"` in a script dumped into docker-entrypoint I should see the output right?
+T 1568281617 18<cim20918>	did you git clone the repo and build it?
+T 1568281626 18<Swahili18>	yeah
+T 1568281646 18<Swahili18>	wait, no
+T 1568281663 18<Swahili18>	I have it has image: wordpress:latest
+T 1568281678 18<cim20918>	[twisti]: maybe you can use this in a cron script https://hub.docker.com/v2/repositories/library/php/tags
+T 1568281681 18<Swahili18>	I have it has image: wordpress:php7.3-fpm
+T 1568281688 18<Swahili18>	actually
+T 1568281704 18<cim20918>	it has "last updated" in a json array
+T 1568281726 18<cim20918>	wordpress latest tag is the apache one i think
+T 1568281736 18<cim20918>	or none alpine
+T 1568281738 18<Swahili18>	yeah sorry, using php7.3-fpm
+T 1568281768 18<Swahili18>	so, not sure why the script is not exec
+T 1568281800 18<Swahili18>	I'll down, stop, remove all volumes, networks, etc and try again from scratch and see if that helps
+T 1568281805 18<Swahili18>	did try it last night without success
+T 1568281808 18<Swahili18>	will do once again
+T 1568281840 18<cim20918>	i opened a shell to that image and it does work
+T 1568281869 18<cim20918>	that entrypoint needs the first variable to be php-fpm
+T 1568281911 18<Swahili18>	cim209: this is part of my docker-compose if you don't mind have a quick look https://paste.ee/p/BcYJp#15fWobm8lqE13ui9iaUOxUwAkfg9Ku96
+T 1568281946 18<Swahili18>	at the moment the script content is just #!/bin/sh \ echo "HELLO WORLD!"
+T 1568281991 18<[twisti]18>	cim209: id rather not hammer a public, free service with a cron job, even if itll be a low frequency hammer. i think the github solution is best, since they push notification
+T 1568282004 18<[twisti]18>	but thank you anyways
+T 1568282024 18<cim20918>	that's why you set the cron job to hourly or something
+T 1568282027 18<Swahili18>	and the log https://paste.ee/p/JJTpl#0iuk1CXuZrCZC4mBDeaqAZzrI5xCnkTs
+T 1568282031 18<cim20918>	or daily
+T 1568282039 18<Swahili18>	wordpress    | [12-Sep-2019 09:52:43] NOTICE: ready to handle connections
+T 1568282048 18<cim20918>	Swahili: looks like it's working like it should
+T 1568282052 18<Swahili18>	so it does not show "Hello world", if I'm supposed to see that
+T 1568282060 18<cim20918>	what is the problem?
+T 1568282091 18<Swahili18>	cim209: the problem is that I'm supposed to see the "hello world" right?
+T 1568282127 18<Swahili18>	the script content atm https://paste.ee/p/Bdcm2#4iZ65MXXI1pfSWfTbPs06SVBEmC237Nx
+T 1568282144 18<cim20918>	are you trying to override the entrypoint in a dockerfile or during run time?
+T 1568282169 18<cim20918>	i'm not sure what you're trying to do here
+T 1568282259 18<Swahili18>	cim209: I'd like to run a script when the image is built. The wordpress image comes with the wordpress files but I need to modify .htaccess etc.
+T 1568282374 20*	Disconnected (20)
+T 1568282391 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568282391 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568282397 19*	Now talking on 22#docker
+T 1568282397 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568282397 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568282398 18<artok18>	to run any script on image building, COPY it and then RUN
+T 1568282512 18<Swahili18>	oh ok
+T 1568282543 18<cim20918>	i thought you knew that Swahili
+T 1568282544 18<Swahili18>	so, create a Dockerfile FROM wordpress:php7.3-fpm, and then COPY script and then RUN ?
+T 1568282569 18<artok18>	yeah
+T 1568282582 18<Swahili18>	cim209: no, I thought I could use the entrypoint differently
+T 1568282583 18<artok18>	that will be then done when build happens
+T 1568282599 18<Swahili18>	Ok, I'll do that!
+T 1568282669 18<Swahili18>	So, for the wordpress image, it provides all the wordpress source files in /var/www/html; If I do COPY and then RUN, will this happen after the files are placed there etc, or I should put a sleep or wait for file availability in the script before the command is run?
+T 1568282795 18<artok18>	what exactly are doing? and commands are run in serial, so there is no need for wait
+T 1568282931 18<Swahili18>	artok: yeh, so I'll modify some of the files provided by the image; that is the wordpress source files.
+T 1568282937 18<Swahili18>	I'll TIAS
+T 1568287383 20<threenuc>30	Hi. I'm trying to use the mysql:8 image but it turns out that I need to modify it more and more on startup, so I decided to use a Dockerfile (never used it before). So I do `FROM mysql:8` assuming it will use the mysql v8.0 image. Then i write `RUN mysql -u root -proot < db.sql` I get errors that are explained in a way that 'well the mysql service is not running'
+T 1568287424 20<threenuc>30	But if I do docker run -d mysql:8, the container comes online with mysql working. Will using FROM not start my Dockerfile at the end of the mysql:8 Dockerfile?
+T 1568287449 20<threenuc>30	Like, if the mysql:8 Dockerfile starts the mysql service, why doesn't it start it when I use FROM mysql:8?
+T 1568293601 19<programmerq>	threenuc▸ when you do a RUN statement, the command you pass in is the *only thing running* in that layer. The mysql image declares /var/lib/mysql as a volume, so even if mysql was running and that command worked, it'd import to an anonymous volume that would be discarded at the end of the RUN step. Instead,
+T 1568293640 18<programmerq18>	you can take advantage of the features listed under the "Initializing a fresh instance" header here: https://hub.docker.com/_/mysql
+T 1568293661 18<programmerq18>	basically, the entrypoint script for that image looks in a specific location for .sql and/or .sh files and runs them the first time the container comes up.
+T 1568294394 18<Swahili18>	Q: In docker-compose if we mount a host dir to a container path we can share between services; if we build the image separately and happens that the images provides some application source files in a particular path, how to share between services?
+T 1568294985 18<programmerq18>	Swahili▸ make both services use a common image, or ADD/COPY the same source to the image for both.
+T 1568294996 18<programmerq18>	having a web server and a background worker, for example
+T 1568295017 18<programmerq18>	both those services could use the same image that has the same source in it, and only differ in the command that is run
+T 1568295054 18<programmerq18>	but if you're needing the source for highly different components (nginx and php-fpm, for example), then ADD/COPY the source to both images you use
+T 1568295107 18<Swahili18>	programmerq: thanks for looking!
+T 1568295214 18<Swahili18>	Ok, so I have a wordpress:php-fpm image; but also a worker service that is composer/composer; before I had `volumes:  - hostApplicationSource:applicationPath`
+T 1568295263 18<Swahili18>	then I had to create a Dockerfile for the wordpress:php-fpm, and removed the volume in the docker-compose declaration
+T 1568295299 18<adhawkins18>	Can a docker container started with docker-compose be on more than one network?
+T 1568295325 18<Swahili18>	to let both services use the same sourcePath:destinationPath, I just need to make sure the source is the same in the Dockerfiles; is that it programmerq?
+T 1568295358 18<programmerq18>	adhawkins▸ yes.
+T 1568295401 18<adhawkins18>	programmerq: Would it get multiple network interfaces in order for this to work then?
+T 1568295443 18<programmerq18>	Swahili▸ for production, you'll skip the bind mounts and use the copy of the source in the image-- so that means that the Dockerfile should ADD/COPY the source for each image. If you're doing local development, then you can keep the same Dockerfile, and add in the bind mount over top of the copy of the source in the image.
+T 1568295454 18<programmerq18>	adhawkins▸ yes.
+T 1568295478 18<adhawkins18>	Looking to have multiple docker-compose files starting up various services, then a final docker-compose that fires up nginx to work as an https proxy for those other services. Wondering if this would 'just work' if I connected up the nginx container to the networks defined in the other docker-compose files?
+T 1568295511 18<programmerq18>	in the compose world, you'd declare it as an "external" network.
+T 1568295543 18<programmerq18>	although, I'd recommend doing it backwards. bring up your proxy first, and then define an external network in all your other compose files, and only attach the service you need to be proxied to the proxy network.
+T 1568295585 18<adhawkins18>	programmerq: But those external services would probably end up being on two networks (as some of them have an internal network they use to communicate between VMs in that docker-compose file)
+T 1568295596 18<programmerq18>	adhawkins▸ yup, and that's just fine.
+T 1568295626 18<adhawkins18>	Ok, just wondering. Will have a play with that then. Thanks for the advice.
+T 1568295645 18<adhawkins18>	Anything special needed for DNS lookups to work in the nginx container allowing it to see the other containers by name?
+T 1568295656 18<programmerq18>	no
+T 1568295662 18<programmerq18>	well, kind of
+T 1568295679 18<programmerq18>	nginx out of the box doesn't look at /etc/resolv.conf so you have to explicitly set the 127.0.0.11 resolver
+T 1568295936 18<slavanap18>	Hi! Is there a custom network driver to limit container to talk to specific list of IPs only (restrict outgoing internet traffic)?
+T 1568296110 18<adhawkins18>	programmerq: The container I'm using seems to work correctly (linuxserver.io)
+T 1568296179 18<adhawkins18>	Currently the nginx container is started in the same docker-compose file as the others. It can see the others by using container names as hostnames.
+T 1568296267 18<adhawkins18>	Presumably there'll be a startup order issue, if I tell docker-compose to create a container using an external network that hasn't been created yet?
+T 1568296299 18<adhawkins18>	Will have to try to find out (when using 'restart: unless-stopped' if there's a way to force the nginx container to start up before the others.
+T 1568296398 18<programmerq18>	slavanap▸ no, there isn't anything like that out of the box that I'm aware of.
+T 1568296410 18<programmerq18>	slavanap▸ what sort of traffic? tcp/udp? https? something else?
+T 1568296426 18<programmerq18>	is this egress traffic going to other hosts, or other containerized services?
+T 1568296465 18<slavanap18>	I want to experiment with part of production from inside docker container, and in order to not break something real, I need a way to isolate outgoing traffic to everything else except my host computer.
+T 1568296466 18<programmerq18>	adhawkins▸ the external network must already exist, or docker-compose will exit with an error.
+T 1568296484 18<programmerq18>	adhawkins▸ that's why I suggest doing the proxy first-- that way you don't have to bring up all your projects and *then* the proxy
+T 1568296526 18<programmerq18>	slavanap▸ connect that container to a network that was created with --internal, and use that network's gateway ip to talk to the host.
+T 1568296589 18<slavanap18>	programmerq, I've never heard of internal networks. Thanks. I'll google it
+T 1568296702 18<programmerq18>	the other thing you can do is bring up a container with --cap-add net_admin, set some iptables rules to do what you want within the container, and then bring up your real container with --net container:<othercontainerwithmodifiedrules>
+T 1568296762 18<slavanap18>	Thanks you very much!
+T 1568299230 18<SpeakerToMeat18>	I can't find otu what I'm doing wrong for my volumes section on my docker compose file.... https://hastebin.com/ebiyomipiy.bash
+T 1568299247 18<SpeakerToMeat18>	It looks identical to the web page sample
+T 1568299522 18<Swahili18>	I had a worker service (image `composer/composer`), that I've now removed and now RUN curl command to get composer and link the binary to global and install a package phpdotenv. While conceptually this should work, I thought, the RUN commands while I can see in the log, the composer packages are now installed, neither the composer bin
+T 1568299529 18<Swahili18>	Here's the Dockerfile https://paste.ubuntu.com/p/vJwt2rkDzF/
+T 1568299566 18<Swahili18>	basically doing
+T 1568299567 18<Swahili18>	RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && chmod +x /usr/bin/composer
+T 1568299573 18<Swahili18>	followed by
+T 1568299574 18<Swahili18>	RUN composer require vlucas/phpdotenv
+T 1568299749 18<tabakhase18>	Swahili wordpress is "special"...  /var/www/html is a volume that gets poped by the entrypoint on first run
+T 1568299771 18<Swahili18>	tabakhase: thanks for looking! yeah, so that's what I'm trying to solve
+T 1568299785 18<tabakhase18>	(thats also why ${WORDPRESS_VERSION} is kinda "Not a thing" there, as updating the WP itself is NOT done "by docker" later on...
+T 1568299814 18<Swahili18>	tabakhase: yeah, so what solutions do I have? before I had the worker composer/composer and worked great
+T 1568299839 18<Swahili18>	but now without a shared volume decided to add composer in the wordpress builder
+T 1568299963 18<tabakhase18>	mess with /usr/src/wordpress id guess...
+T 1568300026 18<Swahili18>	so the RUN commands happen before the entrypoint ?
+T 1568300056 18<Swahili18>	I'll also try the /usr/src/wordpress
+T 1568300327 18<Swahili18>	tabakhase: where did you find about /usr/src/wordpress ?
+T 1568300336 18<Swahili18>	is that documented or you just looked around
+T 1568300407 18<tabakhase18>	https://github.com/docker-library/wordpress/blob/cca618c2e6c1414859162d6f1316652daa8515f7/php7.1/apache/Dockerfile#L65 && https://github.com/docker-library/wordpress/blob/cca618c2e6c1414859162d6f1316652daa8515f7/php7.1/apache/docker-entrypoint.sh#L48
+T 1568300504 18<Swahili18>	tabakhase: thanks! So the best documentation is to look into the original Dockerfile's and the entrypoint scripts
+T 1568300510 18<Swahili18>	that's what you people do right?
+T 1568300530 18<tabakhase18>	thats the very first thing if you want to mod anything yea...
+T 1568300644 18<Swahili18>	Ok cool! Thanks for sharing the knowledge
+T 1568300648 18<Swahili18>	That's very helpful!
+T 1568300659 18<Swahili18>	Saved me a lot of time
+T 1568301267 18<Swahili18>	Interesting now, because for the `wordpress:php-fpm`, I have a nginx reverse proxy and I need to mount the volume
+T 1568301270 18<Swahili18>	how to solve that?
+T 1568301395 18<Swahili18>	I'll mount the same host path to the container path and see what happens. Because I've solved the composer issue before by changing it in the source `/usr/src/wordpress`
+T 1568301471 18<Swahili18>	`WARNING: Service "wordpress" is using volume "/var/www/html" from the previous container. Host mapping "/Users/punkbit/www/moola-starter-blog-cms/.docker/wordpress/src" has no effect. Remove the existin`
+T 1568301981 18<asgardian18>	hello
+T 1568302115 18<asgardian18>	I have a question regarding docker-compose when a volume is declared what is the difference between "volume_name: {}" and "volume_name:" what "{}" stands for?
+T 1568302411 18<ada18>	nothing
+T 1568302496 18<ada18>	asgardian: where are you seeing this example?
+T 1568302533 18<ada18>	https://docs.docker.com/compose/compose-file/#name
+T 1568302536 18<asgardian18>	on linuxacademy docker deep dive course :)
+T 1568302544 18<ada18>	linuxacademy needs to update thier course material
+T 1568302555 18<asgardian18>	oh, ok
+T 1568302568 18<adhawkins18>	If I want a container created using docker-compose to be on both the 'default' network created for the compose file, *and* one listed as an external network, do I need to list both in the 'networks' section for each container? If so, will 'default' work as a name, or do I have to give it the full name (composefile_default)?
+T 1568302680 18<asgardian18>	thank you ada
+T 1568302720 18<ada18>	adhawkins: under the services: key, you are assigning a network to a service
+T 1568302729 18<ada18>	adhawkins: in the top-level networks: key, you define each network
+T 1568302736 18<Swahili18>	For the problem that I've exposed about, seems that is best to forget about the official wordpress image and stick with my own, to solve the shared volume issue; As I need it to have the reverse-proxy for PHP-FPM to work. Let me know if there are any alternatives, thank you!
+T 1568302747 18<ada18>	adhawkins: so under the top-level networks key you can set the name of your network, but in the services: key it's just a key->value pair
+T 1568302754 18<ada18>	adhawkins: making an example
+T 1568302787 18<ada18>	adhawkins: https://gist.github.com/adamancini/39fc34f50a5be5c419f3e1e1047420b6
+T 1568302841 18<ada18>	if I have a service:  key without a networks: key, it is going to be attached to the 'default' network for that stack
+T 1568302915 18<ada18>	updated
+T 1568302934 18<adhawkins18>	Thanks ada, just what I wanted.
+T 1568302959 18<ada18>	sure thing
+T 1568303034 18<adhawkins18>	Could I omit the 'default' section completely from the top level networks section? And it'd just create on with the 'file_default' name style?
+T 1568303043 18<ada18>	yes
+T 1568303066 18<biam18>	hi all, i'm having some trouble with regular expressions in my Dockerfile that i'm hoping someone can help me with.
+T 1568303081 18<biam18>	https://www.irccloud.com/pastebin/1Lwj1LzF/
+T 1568303130 18<biam18>	including the regex causes the following error: /bin/sh: [clamscan,: not found
+T 1568303169 18<biam18>	any ideas how to fix this?
+T 1568303184 18<ada18>	"including the regex" does that imply taking it out works as expected?
+T 1568303190 18<biam18>	yes
+T 1568303192 18<ada18>	can you show both examples
+T 1568303194 18<ada18>	in the same pastebin
+T 1568303207 18<ada18>	just as a point of comparison
+T 1568303211 18<biam18>	sure
+T 1568303258 18<biam18>	https://www.irccloud.com/pastebin/pHYF8MjN/
+T 1568303735 18<tabakhase18>	id guess that $ gets "lost"
+T 1568303789 18<abyx18>	how can i create and drop into a temporary container for testing things?
+T 1568303824 18<tabakhase18>	abyx run & exec?
+T 1568303844 18<ada18>	docker run -it busybox
+T 1568303853 18<tabakhase18>	may want to overwrite --entrypoint "" - and use "sh/bash" as cmd/ 1st arg in run
+T 1568303858 18<ada18>	depends
+T 1568303862 18<ada18>	might not matter
+T 1568304940 18<Imaginatrix18>	If I add a service in a docker compose file and give it a named volume, if I do not declare a volume a the top-level of my docker compose yaml file will it just look for existing volumes?
+T 1568305011 18<Imaginatrix18>	And further, if I DO provide a top-level named volume in my yaml file, if I run it the first time it creates the volume, and the second time it just uses the one that was previously created? Or does it recreate it all over again?
+T 1568305059 18<programmerq18>	docker-compose fights to reuse existing volumes-- whether named or anonymous.
+T 1568305213 18<Imaginatrix18>	so should i create my named volumes, like an nfs "gitlab-data" volume, externally (as in not in my docker-compose.yaml file) through the command line and then in my docker-compose just not put a top-level volume declaration and just do service: gitlab: volume: gitlab-data:/var/opt/gitlab?
+T 1568305286 18<programmerq18>	if you want to create it outside compose, you still need to declare it in the top level volumes in the compose file, but mark it as external.
+T 1568305301 18<programmerq18>	What problem are you hoping to solve by having compose not create it for you?
+T 1568305514 18<Imaginatrix18>	im fine having compose create it i just don't want it to be recreating it everytime i need to run my config file and have it mess data up
+T 1568305546 18<Imaginatrix18>	so like if i have it declared in the file, it should just create it, and then use the existing one on the 2nd run forwards
+T 1568305568 18<Imaginatrix18>	thank you for your help btw
+T 1568305568 18<programmerq18>	that's the behavior that compose has.
+T 1568305584 18<programmerq18>	you basically have to explicitly delete it (docker-compose down)
+T 1568305595 18<programmerq18>	just running docker-compose up  again won't delete volumes.
+T 1568305630 18<Imaginatrix18>	so it doesn't delete it, it creates twp volumes?
+T 1568305644 18<programmerq18>	it'll reuse it
+T 1568305653 18<Imaginatrix18>	like each time i run compose its going to keep making copies of my volumes?
+T 1568305656 18<programmerq18>	...
+T 1568305665 18<Imaginatrix18>	that's what i was getting at
+T 1568305669 18<programmerq18>	whip up an example file and try it out
+T 1568305675 18<Imaginatrix18>	so if it's reusing it, how do you mean its recreating it?
+T 1568305680 18<Imaginatrix18>	you are saying its doin gboth
+T 1568305682 18<Imaginatrix18>	doing both*
+T 1568305693 18<programmerq18>	reusing means to use an existing thing
+T 1568305697 18<programmerq18>	recreating would be making a new thing
+T 1568305726 18<Imaginatrix18>	yeah but you said it recreates it and you just said it would reuse it, like if i spin up a standard docker command
+T 1568305759 18<programmerq18>	I don't see the word "recreate" in any of my messages.
+T 1568305845 18<Imaginatrix18>	no need to be pedantic lol. you didnt state it explicitly but you said that docker fights to reuse existing volumes. and then when i asked about it recreating them you said that was the behavior compose has
+T 1568305869 18<disi18>	when multiple FROMs are stacked like this, do they share the COPYs/etc below? https://github.com/docker/compose/blob/d7c7e21921fba349f2fc2fa702c07d87166d80c9/Dockerfile#L67
+T 1568305888 18<programmerq18>	https://gist.github.com/programmerq/8b9ee09cc094406241f1c44d6a51953d
+T 1568305904 18<programmerq18>	you very clearly said you want compose to reuse and not recreate, and I said "that is the behavior compose has"
+T 1568305906 18<programmerq18>	...
+T 1568305910 18<programmerq18>	try it for yourself
+T 1568305928 18<Imaginatrix18>	ok
+T 1568305940 18<Imaginatrix18>	thanks
+T 1568307216 20*	Disconnected (20)
+T 1568307236 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568307236 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568307242 19*	Now talking on 22#docker
+T 1568307242 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568307242 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568307248 18<programmerq18>	look at the networks you are on and the routes you have.
+T 1568307394 18<helo18>	ahh, it's related to a messy cleanup job, where we docker stop; rm -rf /var/lib/docker/*; docker start, and it's leaving the routes
+T 1568307510 18<programmerq18>	oh goodness
+T 1568307524 18<programmerq18>	you stop containers, leave the daemon running, and then delete /var/lib/docker/* ?
+T 1568307535 18<helo18>	no, sto pthe dameon, rm, then start daemon
+T 1568307537 18<programmerq18>	or are you actually stopping and starting docker itself?
+T 1568307546 18<programmerq18>	that honestly sounds like it shouldn't be an issue
+T 1568307555 18<programmerq18>	what version of docker are you running?
+T 1568307570 18<programmerq18>	I *believe* it should remove the routes when it comes down-- if you allow it to do so cleanly.
+T 1568307708 18<disi18>	is there a way to put CMD in the first stage of a multi-stage build?
+T 1568307945 18<Swahili18>	I've moved some commands to a dockerfile instead, but it's not running and skips to the last step it seems that is npm install, but some packages fail, as it doesn't exist yet unless apt-get runs
+T 1568307948 18<Swahili18>	https://paste.ee/p/MFfBT#2LFMeG05715oHL30LekZ8g2d0aHLhtKH
+T 1568308009 18<ada18>	disi: no, CMD is only executed when your container actually runs;  during multi-stage, only the contents of the final stage are made into the image
+T 1568308025 18<disi18>	ada: ok, ty
+T 1568308037 18<helo18>	programmerq: hmm, looks like it doesn't remove them, maybe because 18.06.1-ce
+T 1568308063 18<disi18>	what is the point of stacking FROMs like this? https://github.com/docker/compose/blob/d7c7e21921fba349f2fc2fa702c07d87166d80c9/Dockerfile#L67
+T 1568308869 18<Swahili18>	a service that has build + context + dockerfile, if I want to reuse the same image, in a worker or slave service, I should place the build + content + dockerfile ?
+T 1568308973 18<programmerq18>	disi▸ it looks like those FROMs were put there and then never actually utilized, so they're basically a no-op. in theory, one could do a COPY --from=runtime to grab a file from that image/build stage and then place it in the final stage.
+T 1568308996 18<programmerq18>	runtime-alpine and runtime-debian appear to be unused, but the line you specifically linked (line 67) is the final stage
+T 1568309007 18<rolandas18>	hello i cant get it i have docker-compose file and volumes:
+T 1568309007 18<rolandas18>	      - db-volume:/var/lib/psql this line does data is stored locally not in container?
+T 1568309009 18<programmerq18>	and it copies stuff from the build context, then docker-cli, then build stages.
+T 1568309037 18<disi18>	huh, interesting, ok, ty
+T 1568309052 18<programmerq18>	rolandas▸ a volume is a directory on your docker host that is bind mounted into the container. This allows your container to be swapped out (like when you want to use a newer image, for example) but you want to keep your persistent data around.
+T 1568309067 18<programmerq18>	the container still sees it, but it isn't on that container's write layer, which is ephemeral
+T 1568309093 18<disi18>	is there a way to loop in docker with different images? my first stage builds a binary, and i try running the binary with a bunch of different base images (same steps to copy from build and run). i'm hoping to dedupe the copy and run steps for those images
+T 1568309134 18<rolandas18>	programmerq: but where does this data stored in volumes?
+T 1568309149 18<programmerq18>	no, there's no looping logic in the Dockerfile syntax. at that point, I'd recommend using a bash script in conjunction with build args to do looping logic
+T 1568309167 18<programmerq18>	rolandas▸ named and anonymous volumes are by default stored under /var/lib/docker/volumes on the docker host in question.
+T 1568309170 18<disi18>	ok, ty
+T 1568309186 18<Swahili18>	* about my question above, it seems to work, but I'm not sure if the build is running twice because I can see in the logs all the steps for both services?!
+T 1568309237 18<programmerq18>	Swahili▸ if you tell docker-compose to do two builds, it will do two builds. You can override the image name to be the same thing between both services, and only specify the build for one of them. I've had some success with that approach.
+T 1568309249 18<rolandas18>	programmerq: if i am deleting container i am not losing data yes?
+T 1568309264 18<SpeakerToMeat18>	Docker trivia of the day: If you're basing yourself on a deb based image, always run apt-get update on the same run command as apt-get install commands.
+T 1568309290 18<programmerq18>	rolandas▸ correct. the volume is a separate entity and won't be deleted unless specifically specified.
+T 1568309303 18<SpeakerToMeat18>	The way I do it is: RUN apt-get update && apt-get install -y .....
+T 1568309343 18<programmerq18>	SpeakerToMeat▸ run cleanup commands too and you'll get a slightly smaller image too.
+T 1568309357 18<Swahili18>	programmerq: thanks for looking! Yeh, my first attempt, the master service I've set a container_name: foobar that is the same name as the service; now...for the slave service, I tried to place the master container_name in the image: foobar; need to find out how to override the image to be the same between both services
+T 1568309363 18<SpeakerToMeat18>	programmerq: Good advice
+T 1568309371 18<Swahili18>	in case someone know or have an example, please let me know : ) thank you!
+T 1568309381 18<programmerq18>	Swahili▸ container_name is not the same thing as image
+T 1568309397 18<rolandas18>	programmerq: is there a way to check content of volume?
+T 1568309402 18<Swahili18>	yeah...was just trying as I don't know how to do it yet, searchinv
+T 1568309405 18<Swahili18>	searching.
+T 1568309414 18<programmerq18>	https://github.com/programmerq/scaletest/blob/master/docker-compose.yml - here's how to specify an image name.
+T 1568309444 18<SpeakerToMeat18>	rolandas: An easy way is to create a small container like a busybox one, and mount the volume to it to check it out
+T 1568309490 18<programmerq18>	yeah-- just attach a container to it and look at it that way. if you are on the host, you could also see it by going to /var/lib/docker/volumes/<name>/_data/
+T 1568309506 18<programmerq18>	but going in that way isn't really a guaranteed thing that should be scripted around
+T 1568309518 18<rolandas18>	ok cool
+T 1568309539 18<SpeakerToMeat18>	rolandas: Be aware more than one container can use a named volume, either at the same time, or different times
+T 1568309540 18<Swahili18>	programmerq: yeah thanks! but in my case I'm using docker-compose and the dockerfile for the image https://paste.ee/p/s60fT#pFXHTHJr5ssSwuvCi90CLc33gtlcfuil
+T 1568309555 18<rolandas18>	thanks
+T 1568309557 18<Swahili18>	I'll try to add the image: foobar and see what happens
+T 1568309585 18<SpeakerToMeat18>	Be specially aware of it if you design a volume to be used by several containers so you don't have race or concurrency problems if the data is shared
+T 1568309595 18<programmerq18>	yup, just like any folder on a linux system, one or more process can see and access it. (containers are just a fancy way to run a process).
+T 1568309646 18<SpeakerToMeat18>	rolandas: Also, somethign that can be usefull, the first time you create a named volume, if the mountpoint on the container that uses it (first) is not empty, the contents of the mountpoitn wil be copied to the newly created volume
+T 1568309651 18<programmerq18>	Swahili▸ the docker-compose.yml file I linked is a docker-compose file, and there's a Dockerfile associated with it. I've just used the short syntax for the build.
+T 1568309672 18<programmerq18>	so that difference really isn't a concern
+T 1568309679 18<programmerq18>	so you'd remove the build key for the second service
+T 1568309686 18<programmerq18>	and add an image: key for both services, and have it be the same image
+T 1568309690 18<programmerq18>	that's it
+T 1568309692 18<Swahili18>	programmerq: ahhh ok interesting, that's nice
+T 1568309692 18<SpeakerToMeat18>	programmerq: I finally gave up, and created a docker-compose-dev.yml :)
+T 1568309718 18<SpeakerToMeat18>	programmerq: It has the upside of letting me leave a version tagged on my deploy yml file and use :latest on the dev one
+T 1568309720 18<cronolio18>	i can't setup efk https://hastebin.com/tofinukuma.bash from article https://docs.fluentd.org/v/0.12/articles/docker-logging-efk-compose
+T 1568309742 18<Swahili18>	what's the image: programmerq/scaletest:TERM_HERE ? that's the difference for both services, is that a tag?
+T 1568309756 18<cronolio18>	after this docker don't work at all and can only be rebooted
+T 1568309759 18<programmerq18>	yeah, it's a tag
+T 1568309768 18<programmerq18>	in my example, that is two separate images
+T 1568309776 18<programmerq18>	I've shown it to show you how to set the image name
+T 1568309876 18<Swahili18>	programmerq: Ok cool! foobar/foobar:a != foobar/foobar:b
+T 1568309890 18<Swahili18>	but foobar/foobar == foobar/foobar
+T 1568309903 18<programmerq18>	yup
+T 1568309915 18<programmerq18>	and any time you leave off a tag, :latest is implicitly present.
+T 1568309918 18<SpeakerToMeat18>	foobar/foobar is equivalent (afaik) to foobar/foobar:latest as well
+T 1568309963 18<Swahili18>	That's cool! Thank you so much!
+T 1568310705 18<rolandas18>	how can i create user and database for psql in docker?
+T 1568310840 18<NOTevil18>	rolandas: the environment variables will do it.  https://hub.docker.com/_/postgres  or you can load init data with /docker-entrypoint-initdb.d/*.sql files.
+T 1568310862 18<NOTevil18>	or shell scripts *.sh.
+T 1568310994 18<helo18>	thanks programmerq, really appreciate your time!
+T 1568311128 18<rolandas18>	NOTevil: i fallowed instruction but new user nor new db is created what is wrong https://github.com/Rolandas1369/psqldocker/tree/master/jiraapp ?
+T 1568311320 18<tabakhase18>	rolandas youre not doing anything with docker-entrypoint-initdb.d
+T 1568311348 18<rolandas18>	tabakhase: do i need specify entrypoint in dockerfile?
+T 1568311377 18<rolandas18>	or something in docker compose?
+T 1568311382 18<tabakhase18>	that dockerfile is your app, not your db
+T 1568311462 18<tabakhase18>	(also that image offers POSTGRES_USER & POSTGRES_DB to use already...)
+T 1568311496 18<tabakhase18>	and last, make sure youre not having a "older attempt" volume still sticking around, that init obvs. only runs on the "very very first start"
+T 1568311568 18<rolandas18>	hmm i need to add POSTGRES_USER & POSTGRES_DB to docker-compose?
+T 1568311591 18<tabakhase18>	you need to read the readme ;-)
+T 1568311602 18<rolandas18>	:D
+T 1568311607 18<rolandas18>	where?
+T 1568311608 18<SpeakerToMeat18>	If anybody here develops in flask: Right now I'm using development FLASK_ENV=development so any html templates I change I can see immediately... but whenever I change code, I need to stop and restart the containers (I am mounting the app dir inside the container to avoid havign to rebuild)... is there any easier way to have uwsgi or supervisor or someone reload the app when any code file changes?
+T 1568311614 18<Swahili18>	I usually find empty files when I copy dot files, like .npmrc or .env, the container has the file, but empty. Usually dot files are ignored, not sure it it's the case. Does anyone know the expectation here?
+T 1568311645 18<programmerq18>	SpeakerToMeat▸ there are python code reloaders out there
+T 1568311654 18<NOTevil18>	in docker-compose (after line 10) add:   - ./jiraapp/docker-entrypoint-initdb.d/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+T 1568311705 18<Swahili18>	Also, do .env variables pass to Dockerfiles if we have it in the docker-compose? Nope right?
+T 1568311706 18<programmerq18>	SpeakerToMeat▸ keep in mind that if you're sharing code into a VM from your workstation, then it may not support inotify.
+T 1568311760 18<rolandas18>	NOTevil: ty
+T 1568311771 18<programmerq18>	Swahili▸ if you want to paramatarize a Dockerfile, then you need to use build args. if you pass in a .env file to a service in compose, that's applied at runtime, and not to the build step.
+T 1568311804 18<Swahili18>	programmerq: Cool! Thanks for helping out!
+T 1568311850 18<NOTevil18>	rolandas: that maps the script into the /docker-entrypiont-initdb.d directory of the postgres container.
+T 1568311877 18<rolandas18>	NOTevil: yes this part is clear :)
+T 1568311981 18<programmerq18>	SpeakerToMeat▸ https://flask.palletsprojects.com/en/1.1.x/server/ - if you are doing 'flask run' with FLASK_ENV=development, in theory it should pick it up. if you're not using 'flask run' then you'd have to devise your own reload appropriate for that server.
+T 1568312011 18<NOTevil18>	rolandas: you might need to `docker-compose down -v` to remove the volumes, then up will redo the db initialization part.
+T 1568312023 18<SpeakerToMeat18>	programmerq: Yeah, even on my dev system I'm usign the same setup with supervisord and uwsgi, not flask run
+T 1568312062 18<SpeakerToMeat18>	programmerq: I need to check if supervisord is set to respawn uwsgi or die... given it's inside a container I think it's set to die.. if I can set it to respawn uwsgi, I might be able to somehow signal uwsgi to restart
+T 1568312167 18<helo18>	I'd suggest some dev setup where you use flask run locally
+T 1568312176 18<rolandas18>	NOTevil: yes removed all volumes
+T 1568312205 18<SpeakerToMeat18>	helo: That would mean an extra Dockerfile appar form my extra docker-compose file... nad it would mean having different deploy and dev enviros which irk me slightly....
+T 1568312253 18<helo18>	normally I think you could have some environment variable that will select which command to use
+T 1568312280 18<helo18>	you still could run into some issue where you broke the startup command in prod and didn't notice, but that's what staging env is for :)
+T 1568312364 18<SpeakerToMeat18>	hmmmmmmmm I could wrap my supervisord entrypoint with a script, and check the environment for FLASK_ENV=development....
+T 1568312399 18<helo18>	yeah, exactly
+T 1568313158 18<biam18>	tabakhase: thanks for your help earlier. i was able to sort the CMD regex issue by using the shell form as opposed to the exec form
+T 1568313296 18<tabakhase18>	biam so was the $ actually the issue? - that was a complete moonshot after 2 seconds looking at the paste ;D - i was almost sure it would NOT be the fix after rereading your error message ;D (tho, "crypitc file not found"´s docker likes to spit in a ton of stupid cases...
+T 1568313440 18<biam18>	yeah, i'm not entirely sure. i think, when using the exec form of CMD, docker wasn't able to expand the regex.
+T 1568313451 18<Keytap18>	Is it safe to use the `#syntax=docker/dockerfile:experimental` directive in production?  I mean, it doesn't affect the output image.  The only reason I need to use it is for the RUN --mount option.
+T 1568313485 18<tabakhase18>	-> one case from memory that likes todo that "file not found scriptname" is when the file is totally there, - but the shebang in the file calls for bash on an alpine(ash) system or such... can drive people insane debugging :P
+T 1568313644 18<helo18>	^ so many times hah
+T 1568351749 20*	Disconnected (20)
+T 1568351767 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568351767 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568351773 19*	Now talking on 22#docker
+T 1568351773 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568351773 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568579907 20*	Disconnected (20)
+T 1568579927 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568579927 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568579933 19*	Now talking on 22#docker
+T 1568579933 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568579933 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568585958 20*	Disconnected (20)
+T 1568585979 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568585979 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568585985 19*	Now talking on 22#docker
+T 1568585985 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568585985 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568617508 20*	Disconnected (20)
+T 1568617529 22*	26threenuc sets mode 24+Z on 22threenuc
+T 1568617529 22*	26threenuc sets mode 24+i on 22threenuc
+T 1568617535 19*	Now talking on 22#docker
+T 1568617535 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568617535 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568619527 18<blip9918>	Morning all!  When I mount a local directory into a container using docker-compose volumes './local_dir:/container/dir
+T 1568619550 18<blip9918>	I correctly see changes in a file propgated from local to container
+T 1568619562 18<blip9918>	however when i restart container, it resets the changes in my local file!
+T 1568619573 18<blip9918>	how can that possible happen?  It's a 1-way mount
+T 1568620443 18<RV0618>	blip99, does your image have an entrypoint script that could reset the changes ?
+T 1568620529 18<blip9918>	RV06, I didn't write the project but trying to understand it.  No the entrypoint doesn't.  The Dockerfile has a bunch of copies though - could that be it?
+T 1568620635 18<blip9918>	ok the COPY commands go host->docker as far as I can tell (I don't think you can do docker->host there)
+T 1568620636 18<RV0618>	The Dockerfiles actions are executed at image creation.
+T 1568620662 18<blip9918>	let me check, I think local gets overwriten only when I rebuild
+T 1568620667 18<RV0618>	they go host=>image, then you create a container from the image
+T 1568620667 18<blip9918>	2 mins
+T 1568620678 18<blip9918>	ah right
+T 1568620697 18<RV0618>	it's quite important to make the distinction between image and container.
+T 1568620905 18<blip9918>	ok just confirmed, simply restarting containers over-writes changes in host fs
+T 1568620930 18<blip9918>	RV06, ah I didn't think that affects the writing to host issue
+T 1568621034 18<blip9918>	ok so while the container is running - changes to host FS propagate through to container FS.   as expected
+T 1568621059 18<blip9918>	restarting the container resets the host fs changes.   Must be something in the scripts somewhere!
+T 1568621065 18<blip9918>	I just don't know what to look for
+T 1568621077 18<RV0618>	Are you really confident on the container's entrypoint + command behaviour ?
+T 1568621096 18<blip9918>	I used to understand Docker, can't believe it's all out of the window now :D
+T 1568621106 18<RV0618>	"docker inspect" will give you the entrypoint and command
+T 1568621187 18<RV0618>	you could test by creating a similar container with overridden entrypoint and command (like bash + sleep infinity)
+T 1568621189 18<blip9918>	ah 1 sec, the entrypint has a exec "$@".   Let me see the command in docker-compose
+T 1568621382 18<blip9918>	btw there's 5 containers, but they all use same Dockerfile.  only difference is the command in docker-compose
+T 1568621412 18<blip9918>	just checked inspect, 4 containers simply start a program (airflow)
+T 1568621461 18<blip9918>	but the 5th runs a script which has:  'rsync -avz  --delete /some_dir/ /dir1/dir2'
+T 1568621482 18<blip9918>	that doesnt look like host fs though, it's all in the container fs right?
+T 1568621745 18<blip9918>	this is insane
+T 1568621756 18<blip9918>	im gonna comment out everything and slowly add stuff in
+T 1568621769 18<blip9918>	to isolate which container over-writes, and where it over-writes
+T 1568622026 18<blip9918>	RV06, do i need to rebuild an image to propagate changes to entrypoint.sh?
+T 1568622107 18<RV0618>	blip99, if your entrypoint is 'exec "$@"' there's no need to override it.
+T 1568622129 18<RV0618>	you can just change your command.
+T 1568622148 18<RV0618>	All that can be done in your docker-compose files.
+T 1568622184 18<RV0618>	...the rsync looks like a good lead though.
+T 1568622681 18<lxsameer18>	hey folks, is it possible to run a container entirely in memory ( including the volumnes )
+T 1568622858 18<blip9918>	RV06, I'm getting very close, just a silly thing this doesn't work:  command: ["sh", "sleep infinity"]
+T 1568622868 18<blip9918>	sh: 0: Can't open sleep infinity
+T 1568622880 18<blip9918>	sorry it's a really basic question
+T 1568623139 18<blip9918>	oh that was dumb, nvm command: ["sleep", "infinity"]
+T 1568623348 18<RV0618>	lxsameer, https://docs.docker.com/storage/tmpfs/
+T 1568623388 18<lxsameer18>	RV06: hmm that's only for the storage, right ?
+T 1568623403 18<blip9918>	RV06, ok indeed it's the rsync.  Thanks for the help figuring out.  Now I need to know why on earth the author did this...
+T 1568623447 18<RV0618>	great blip99 !
+T 1568623490 18<RV0618>	lxsameer, that's for volumes. You want the image to be in memory as well ?
+T 1568623591 18<blip9918>	RV06, so when the entrypoint runs and receives the 'command' from docker-compose - all of this is running in the container no?  Cos the rsync paths aren't host fs... i dont get how it's writing to it
+T 1568623629 18<blip9918>	both paths start with /, which isn't the path of the over-written file on host..
+T 1568623632 18<blip9918>	so strange
+T 1568623664 18<lxsameer18>	RV06: yes, everything in memory
+T 1568623818 18<RV0618>	blip99, yes, it runs in the container. But rsync writes in the mount path at a moment. Maybe some symlinks ?
+T 1568623873 18<RV0618>	lxsameer, I don't catch the reason to do so, but you could create a tmpfs on your host for /var/lib/docker.
+T 1568623918 18<RV0618>	lxsameer, the path for images is global to your docker instance, so AFAIK there's no way to have it in memory for one container and on disk for another.
+T 1568624047 18<lxsameer18>	RV06: hmm no problem. I just can use it for all the containers
+T 1568624053 18<lxsameer18>	RV06: thanks
+T 1568624188 18<blip9918>	RV06, I acutally didn't realize the volume mount goes both ways - thought it only did host->container not vice versa :D
+T 1568624225 18<blip9918>	at the same time, we actually want to be able to write to host when we run in production - cos some parts of the software need to write to disk
+T 1568624261 18<blip9918>	So I'll probably just have a check in the script for an env var - to have different behavior when it runs in prod vs when we develop the project :)
+T 1568624272 18<RV0618>	Right. That's a bind mount.
+T 1568624315 18<RV0618>	blip99, you could check for the volume contents: if empty, init it with rsync. Otherwise keep it as it is.
+T 1568624412 18<RV0618>	(but beware that some empty volumes may have some files like "lost+found")
+T 1568624951 18<blip9918>	RV06, well it will only be empty on first run of fresh container, the rsync should propagate changes when you restart container (even if not empty)
+T 1568628080 18<gdrc18>	maybe off-topic: nodejs's function to check if a file exists return false on a file that is in a dir that I mounted with --volume. I've checked the linux permission and looks fine. What else should I check? Thanks.
+T 1568630576 18<nmee18>	Hi! I have a problem with `docker run` downloading a new image from the registry even if it should exist locally -- from `docker images` I can see that a particular image is present locally, but `docker run` still downloads the latest image (the image _has_ changed). I thought `docker run` wouldn't check the registry for updates if the image was already present?
+T 1568630956 18<Celmor[m]18>	docker run never checks for updates, it simply checks if there's a local image with the given tag, except if you specify an image id
+T 1568631313 18<nmee18>	Right, that is what I was expecting -- it does say however that the image was not found locally (and thus proceeds with downloading it). The image should absolutely be present though -- I can see it in `docker images` with the correct repository, image name and tag
+T 1568632749 18<mgolisch18>	sure you ran it with that tag?
+T 1568632756 18<mgolisch18>	if you dont specify a tag it will use latest
+T 1568632841 18<pix918>	hey folks need to know about doker overlay, found some filess with full permission under docker overlay path over centos7
+T 1568632912 18<pix918>	currently referring to https://docs.docker.com/storage/storagedriver/overlayfs-driver/
+T 1568633170 18<nmee18>	mgolisch: the tag in question _is_ `latest` -- but we're explicitly specifying the tag though, but might still that be the issue?
+T 1568633191 18<nmee18>	I'll double check that we are specifying "latest" also when running docker run (and not only when pushing the tag)
+T 1568641511 20*	Disconnected (20)
+T 1568641539 19*	Now talking on 22#docker
+T 1568641539 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568641539 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568643080 18<tabakhase18>	dka depends... - those ports are not exposed to the public, but to "every docker container in the network" - so a random other docker could find that, and own the system from it +  it seems "most of the time" gitlab checks the tls port, so it would be "faster" not having to wait 30sec. for timeout --- ((note that depending on hardware key-generation can take a bit tho! a 1-core-vps-runner-farm
+T 1568643080 18<tabakhase18>	i have takes almost 25seconds to start with tls-generation... - also "gitlab checks a random port" so this may flip any day, so if thats rly a concern one is better off mirroring docker:dind completly, and build from it with "EXPOSE {}" (i think?) && "EXPOSE actualusedPort"...
+T 1568643759 18<C0nundrum18>	Hello, if i have docker on nexus is there a way for me to push and pull images without using the full nexus url for the image ?
+T 1568643787 18<C0nundrum18>	If i have a docker repository on nexus*
+T 1568643854 18<programmerq18>	C0nundrum▸ docker uses the url as part of the image name to namespace everything by design.
+T 1568643935 18<tabakhase18>	(and the default is not even changeable if i remember right, so you need to use "full names all the time" ether way)
+T 1568644002 18<C0nundrum18>	Ok wasn't sure if i was missing something because the nexus page says for an image go/myimage in the repository ,i can fetch it with docker pull go/myimage
+T 1568644064 18<C0nundrum18>	but that isn't the case, i have to do nexus.mysite.com:5000/go/myimage
+T 1568644064 18<tabakhase18>	not sure what youre looking at, but firt google result cleary has the domain in the example too https://help.sonatype.com/repomanager3/formats/docker-registry/pushing-images
+T 1568644103 18<C0nundrum18>	on the specification for the image on the actual nexus gui
+T 1568644123 18<C0nundrum18>	under usage but i guess that's just outdated
+T 1568644295 18<tabakhase18>	hm, no clue what nexus itself is ;D - but maybe that has its own cli tool that pads that or so? ((there are some other "docker forks/interfaces" kinda deals that do such things...))
+T 1568644316 18<tabakhase18>	(aka "docker build" becomes "XY build" and such)
+T 1568644437 18<Swahili18>	Q: I have two different containers, created from two different images, that I'd like to share a particular volume (Service1 and Service2); Service1 generates some files in `/home/node/app/public` and Service2 should serve these files, but has the nginx root set to `/var/www/html`. I started by creating volume `public_html` and declared it under Service1 like so `- public_hmtl:/var/www/html/public`. I think that in Service2 I hav
+T 1568644437 18<Swahili18>	e to `- public_html:/var/www/html` and because the dest directory is empty the volume data in public_html should persist?
+T 1568644445 18<Swahili18>	Is this correct?
+T 1568644475 18<programmerq18>	correct-- when you have a volume, the data in the volume will persist in the volume.
+T 1568644641 18<Swahili18>	Thanks programmerq :) I'll try
+T 1568644707 18<C0nundrum18>	gotcha thanks for info
+T 1568644715 18<C0nundrum18>	Thanks for the info*
+T 1568644739 18<Swahili18>	Q: When we re-use the same `image: imageName` between services, does Docker use the same container? The reason why I ask, is to make sure I'm not setting concurrent app source files under the same pathname such as `/var/www/html` or so.
+T 1568644777 18<programmerq18>	Swahili▸ no, it does not use the same container. it uses the same image.
+T 1568644824 18<Swahili18>	programmerq: thanks for confirming! There's no such thing as two difference services using the same container?
+T 1568644864 18<programmerq18>	correct
+T 1568644897 18<Swahili18>	Thank you programmerq!
+T 1568644989 18<pid118>	I have a one-off container that runs a Python program daily that compiles some information and spits it out to a file. Previously I had this and an nginx container on a single host just sharing a volume so I could provide web access to the file content (and old versions). I would like to make this HA and run on a couple of swarm workers. Is there a recommended way of configuring setups like this? I didn't want to go down the route of sharing a ceph
+T 1568644989 18<pid118>	volume if that was overkill.
+T 1568645049 18<programmerq18>	pid1▸ sharing data between hosts _does_ require some sort of file sharing system in place-- whether ceph or something else.
+T 1568645076 18<programmerq18>	nfs might work too
+T 1568645093 18<programmerq18>	you can even feed info to docker to say "hey mount this nfs at this location in this container"
+T 1568645151 18<pid118>	Cool, that's what I figured. I wanted to make sure there wasn't a better way to solve this. Thanks!
+T 1568645223 18<angular_mike18>	 having issue with installing gevent in docker: https://termbin.com/j4gb
+T 1568645463 18<mgolisch18>	angular_mike: which python version do you use?
+T 1568645532 18<mgolisch18>	https://github.com/gevent/gevent/issues/1297
+T 1568645550 18<mgolisch18>	looks like you need atleast 1.3 for python 3.7
+T 1568645853 18<angular_mike18>	hm, so i should force-install a newer gevent version?
+T 1568708580 20*	Disconnected (20)
+T 1568708607 19*	Now talking on 22#docker
+T 1568708607 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568708607 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568708760 18<tnewman18>	regarding traefik, whats the difference between yml vs toml?  when do i use one over the other?
+T 1568708795 18<cim20918>	tnewman: preference i guess. i prefer keeping the configs in the yml
+T 1568709183 18<tnewman18>	uhuh
+T 1568709223 18<mgolisch18>	why would that be awesome?
+T 1568710112 18<Swahili18>	Q: I'd like to test Traefik that was suggested to me yesterday and following the docs, the most basics the localhost:8080 does not work. The docker-compose.yml is the first step of the basics tutorial here 1 — Launch Traefik — Tell It to Listen to Docker¶
+T 1568710135 18<Swahili18>	Does anyone mind have a look to see if it's just my machine?
+T 1568710397 18<tnewman18>	hey Swahili perhaps you've run into my problem
+T 1568710433 18<tnewman18>	try the guide specific to v2 here https://docs.traefik.io/v2.0/getting-started/quick-start/#launch-traefik-with-the-docker-provider
+T 1568710446 18<tnewman18>	use that docker-compose.yml
+T 1568710536 18<Swahili18>	tnewman: thanks for looking! I'll check ; )
+T 1568710602 18<tnewman18>	yeah they must have just updating things very recently
+T 1568710604 18<Swahili18>	tnewman: yeh it worked
+T 1568710607 18<tnewman18>	awesome!
+T 1568710617 18<cim20918>	v2 came out yesterday
+T 1568710620 18<Swahili18>	tnewman: why is this happening? is it just macos related?
+T 1568710763 18<tnewman18>	i think its that v2 came out yesterday
+T 1568710785 18<tnewman18>	not an OS X thing
+T 1568710813 18<Swahili18>	just stepping in, and wondering what do you people do in production, 8080 is not public is it? this dashboard
+T 1568710833 18<cim20918>	Swahili: you have to use the traefik.port labels for the dashboard
+T 1568710848 18<cim20918>	because 8080 does not work with https
+T 1568710854 18<cim20918>	or any other ports
+T 1568710903 18<cim20918>	unless you want to jump hoops to use a different HTTPS port other than 443
+T 1568710912 18<Swahili18>	Ok! I'll be learning this for the next few hours. I was advised here and this looks nice. Actually I found this web server and reverse proxy called Caddy that looked super easy too
+T 1568710947 18<Swahili18>	cim209: that's alright! ; )
+T 1568710976 18<Swahili18>	This will work with amazon ecs it seems
+T 1568714323 18<akik18>	how would i use docker cp on a swarm to copy files from containers without knowing on which host the containers run on?
+T 1568714780 18<tuskkk____18>	hello!
+T 1568714780 18<tuskkk____18>	am trying to run a jar built using clojure in the openjdk 8 alpine image using `CMD ["java", "-jar", "app-standalone.jar"]` but all I get is `Clojure 1.8.0 user=>` and then it terminates. Any ideas?
+T 1568716879 18<mgolisch18>	tuskkk____: what does the app do?
+T 1568717503 18<mgolisch18>	tuskkk____: looks like a repl, it probably requires a terminal
+T 1568719110 18<tuskkk____18>	mgolisch: it exposes and endpoint
+T 1568719114 18<tuskkk____18>	an*
+T 1568720829 18<mgolisch18>	looks like it starts a clojure repl
+T 1568720833 18<mgolisch18>	is that intended?
+T 1568720844 18<mgolisch18>	does the same jar file work if you run it on your box?
+T 1568721185 18<gsearle18>	I want to use swap space for applications running in my docker containers, but Kubernetes said I can't. Has anyone else solve this problem?
+T 1568721267 18<Ckat18>	I'm not quite sure where to get permissions fixed for volumes created in a docker-compose.yml
+T 1568721281 18<Ckat18>	dockerfile? right under it? somewhere else?
+T 1568721419 18<Ckat18>	its a mariadb based container and the volumes look like ./datadir:/var/libmysql and ./tmpdir:/tmp but after creation the container gets permission denied on /tmp. which is fixed when doing chmod 757 on the ./tmpdir from host
+T 1568722268 18<mgolisch18>	whats that mount good for?
+T 1568722331 18<mgolisch18>	why do you need access to or persist /tmp ?
+T 1568722475 18<Ckat18>	thats how its setup, this isnt mine its form a coworker
+T 1568722664 18<mgolisch18>	but yeah youd change the permissions in your entrypoint
+T 1568722669 18<mgolisch18>	if you want to automate that
+T 1568722943 18<cyberjunkie18>	Why would one use Traefik? Won't it be simpler to route/forward ports from a VPS to a remote server , through a VPN?
+T 1568722967 18<cyberjunkie18>	I have a VPS, and I want to host some stuff remotely (at home) on my Raspberry Pi.
+T 1568724505 18<mgolisch18>	its simple?
+T 1568724515 18<mgolisch18>	you want to use multiple things on port 443/80
+T 1568724525 18<tuskkk____18>	mgolisch: sorry I was away, I got it running in the end, thanks!
+T 1568724531 18<mgolisch18>	tuskkk____: cool
+T 1568725512 18<Elodin18>	Hello, i have this flask application i have been running with sqlite. So far the database is in the same dir of the application code. Should i make a volume for it?
+T 1568726453 18<Cheaterman18>	I'm sad :-( https://github.com/docker/for-linux/issues/488#issuecomment-532206947
+T 1568726456 18<Cheaterman18>	I wasted like 3h on this
+T 1568726484 18<Cheaterman18>	Mostly wondering why it works on one machine and not the other - until I noticed one is 17.09 and the other 18.09
+T 1568726515 18<Cheaterman18>	In any case it doesn't feel "right" that such a backward-incompatible change to the networking system was made
+T 1568726535 18<Cheaterman18>	and it's puzzling to me that no one noticed it, since docker-compose creates a user-defined network by default, which should trigger the bug
+T 1568726539 18<programmerq18>	I was under the impression that the docker dns forwarding never worked with /etc/hosts -- unless you had a resolver on your host that took that into account.
+T 1568726552 18<Cheaterman18>	programmerq: the real issue is resolv.conf here
+T 1568726559 18<Cheaterman18>	the embedded DNS server is supposed to take it into account
+T 1568726562 18<Cheaterman18>	and, well, it did.
+T 1568726570 18<programmerq18>	resolv.conf on the host on in the container?
+T 1568726576 18<programmerq18>	in the container, it should be 127.0.0.11
+T 1568726588 18<Cheaterman18>	Yes → user defined network, so embedded DNS ,so 127.0.0.11 in container
+T 1568726592 18<Cheaterman18>	however can't resolve names in there!
+T 1568726608 18<Cheaterman18>	until I add "network_mode: 'bridge'" to docker-compose
+T 1568726609 18<programmerq18>	and the names you're trying to resolve are resolvable on the host?
+T 1568726615 18<Cheaterman18>	google.com? Yes it is
+T 1568726616 18<programmerq18>	using dig?
+T 1568726619 18<Cheaterman18>	using ping
+T 1568726625 18<programmerq18>	oh, an external name isn't resolvable?
+T 1568726628 18<Cheaterman18>	yes :-(
+T 1568726630 18<Cheaterman18>	makes me very sad
+T 1568726630 18<programmerq18>	and, ping is *not* a dns resolution tool
+T 1568726647 18<programmerq18>	that's most likely a fixable issue on your system and not a design change in docker that's irreconcileable.
+T 1568726649 18<Cheaterman18>	I know, but at least it shows that things work. I could use "dig" to double check, but instead I removed my actual server from resolv.conf
+T 1568726653 18<programmerq18>	what does your host /etc/resolv.conf look like?
+T 1568726658 18<programmerq18>	are you using systemd-resolved ?
+T 1568726670 18<Cheaterman18>	Nope programmerq, and made sure /run/systemd/resolve/** is removed
+T 1568726688 18<programmerq18>	what distro are you using?
+T 1568726693 18<Cheaterman18>	Debian on both machines
+T 1568726696 18<Cheaterman18>	same resolv.conf on both macihnes
+T 1568726700 18<Cheaterman18>	one has 17.09 one has 18.09
+T 1568726702 18<programmerq18>	and /etc/resolv.conf on the host has what?
+T 1568726727 18<programmerq18>	which debian? buster?
+T 1568726736 18<Cheaterman18>	"domain openstack\nsearch openstack\nnameserver 127.0.0.1\nnameserver 213.186.33.99"
+T 1568726757 18<programmerq18>	what nameserver is running on your host?
+T 1568726764 18<Cheaterman18>	9.2 on the working machine, 9.6 on the other
+T 1568726766 18<programmerq18>	systemd-resolved ? dnsmasq ?
+T 1568726774 18<Cheaterman18>	dnsmasq, but that's for resolving VPN hosts
+T 1568726780 18<Cheaterman18>	irrelevant here - and again, BOTH MACHINES have this setup
+T 1568726795 18<Cheaterman18>	the main difference between the two machines really is the docker version
+T 1568726808 18<Cheaterman18>	also, I've seen SEVERAL mention that 18.09 breaks networking, so I think it's NOT an isolated inciddent
+T 1568726809 18<programmerq18>	it's absolutely relevant
+T 1568726819 18<programmerq18>	okay
+T 1568726822 18<Cheaterman18>	how so? it's not used to resolve google.com
+T 1568726825 18<Cheaterman18>	(and can't be)
+T 1568726830 18<programmerq18>	do you want me to help, or do you want to argue?
+T 1568726872 18<Cheaterman18>	I'd like you to help, if you want
+T 1568726884 18<programmerq18>	I'm happy to help, but please don't argue against my information gathering questions.
+T 1568726906 18<Cheaterman18>	Ask away then :-)
+T 1568726921 18<Cheaterman18>	Anything else you need to know?
+T 1568726943 18<programmerq18>	can you resolve vpn-specific addresses from within the container (use dig)
+T 1568726974 18<Cheaterman18>	pretty hard to use dig, the image doesn' thave it, and if I don't have the network I can't install it
+T 1568726977 18<Cheaterman18>	:-/
+T 1568726996 18<programmerq18>	docker run --rm -it --net container:<existingcontainer> nicolaka/netshoot drill <record>
+T 1568727007 18<programmerq18>	(drill is like dig)
+T 1568727021 18<Cheaterman18>	Ok
+T 1568727099 18<Cheaterman18>	programmerq: Good one - got resolution for the VPN, not for external stuff
+T 1568727112 18<Cheaterman18>	resolv.conf on host should be reordered I assume? :-/
+T 1568727143 18<Cheaterman18>	Again - works on the other machine. With the SAME resolv.conf in the SAME order
+T 1568727147 18<programmerq18>	that may help, it may not. It may swap what's broken.
+T 1568727162 18<Cheaterman18>	programmerq: keep in mind, the 17.09 machine works perfectly with the same config
+T 1568727175 18<programmerq18>	stop saying that please. repeating it won't help moving forward.
+T 1568727182 18<Cheaterman18>	Ok, what do I do now?
+T 1568727228 18<learningc18>	Can I run a Windows game using docker?
+T 1568727244 18<programmerq18>	with that said, I've always operated under the assumption that /etc/resolv.conf is supposed to have nameservers that are basically redundant to eachother. having one that can do some records and one that can do another record goes against that pattern-- I think you've opted into something that isn't guaranteed across different interpretations of things. docker just happens to be the first thing you ran into
+T 1568727246 18<programmerq18>	that doesn't react properly to this unconventional setup. I'd argue
+T 1568727267 18<gsearle18>	learningc: I think you want to use Wine.
+T 1568727282 18<Ckat18>	any reason I get unsupported Compose file version: 2.2 when my docker is 19.03.2 and my compose is 1.24.1?
+T 1568727286 18<programmerq18>	that instead of having two separate dns servers that you hope things can resolve against, you should have a dns server that does the correct thing-- set up your dnsmasq locally to resolve all the records intelligently, and point /etc/resolv.conf to that.
+T 1568727287 18<Ckat18>	isnt it backwards compatible?
+T 1568727296 18<mgolisch18>	Ckat: swarm?
+T 1568727300 18<Ckat18>	yea
+T 1568727305 18<learningc18>	gsearle, but Wine is not a container isn't it?
+T 1568727311 18<Cheaterman18>	programmerq: So you're gonna entirely dismiss the fact that it worked on 17.09? I was repeating it for a reason.
+T 1568727311 18<gsearle18>	Wine has bottle that are containers that are windows enviroments.
+T 1568727316 18<mgolisch18>	swarm mode requires version 3.x compose files
+T 1568727327 18<Cheaterman18>	You're also gonna dismiss the fact that host resolves everything fine? Both VPN and external?
+T 1568727328 18<Ckat18>	ah
+T 1568727354 18<Ckat18>	I recall being able to throw a stack together with these before.. is there around using it for a swarm? can I pass it the images instead or something?
+T 1568727362 18<programmerq18>	so while it's entirely possible that the docker version is the difference here (you also mentioned that you're on 9.2 and 9.6, and that's another difference), I'd recommend moving to a more robust setup and not rely on a particular combination of package and distro versions to act a certain way with a weird /etc/resolv.conf setup with diverging, non-redundant resolvers.
+T 1568727364 18<Cheaterman18>	programmerq: It's also probably relevant that "network_mode: 'bridge'" solves the issue. Why does that work?
+T 1568727393 18<Cheaterman18>	inspecting the networks reveal absolutely no difference between "network_mode: 'bridge'" and default
+T 1568727402 18<Cheaterman18>	That's also something that puzzled me a lot
+T 1568727415 18<programmerq18>	Cheaterman▸ that connects you to the docker0 default network, which is the legacy docker network. instead of getting 127.0.0.11, you'll get a copy of your host's /etc/resolv.conf, but with s/127.0.0.1/8.8.8.8/
+T 1568727426 18<programmerq18>	or maybe since you have another one in there, it'll use only that one
+T 1568727447 18<Cheaterman18>	programmerq: That is incorrect
+T 1568727448 18<programmerq18>	so you're cutting out the service discovery feature and forcing it to use the public dns server, basically.
+T 1568727452 18<Cheaterman18>	programmerq: The resolv.conf still has 127.0.0.11
+T 1568727457 18<Cheaterman18>	even with network_mode: 'bridge'
+T 1568727458 18<programmerq18>	interesting
+T 1568727461 18<programmerq18>	not sure then.
+T 1568727464 18<Cheaterman18>	that's why I'm having issues understanding here.
+T 1568727467 18<Cheaterman18>	Okay :-) thanks anyway!
+T 1568727491 18<Cheaterman18>	programmerq: then we are both reaching the conclusion that something broke between 17.09 and 18.09, as the issue concluded?
+T 1568727497 18<programmerq18>	learningc▸ windows containers can't run windows gui programs. you can run windows gui via wine+x11, run that in a container with a remote x11 display, but that's probably not what you're asking about.
+T 1568727513 18<programmerq18>	Ckat▸ the version needs to be a string.
+T 1568727539 18<programmerq18>	Ckat▸ oh, nevermind someone else already got you sorted-- yeah, docker stack deploy needs a version 3.x syntax
+T 1568727593 18<programmerq18>	Cheaterman▸ you haven't provided enough information to convice me that's it since you're running different versions of the debian os. it could be docker, it could be the way docker calls out to the resolver library on both those versions. with some more testing and eliminating more variables, it's possible that it could be a behavior change in docker, yes
+T 1568727658 18<Cheaterman18>	programmerq: that's a fair point indeed - TBH I wasted wayyy too much time on this already
+T 1568727662 18<programmerq18>	but I would argue it's irrelevant because it's bad practice to rely on a specific behavior with a novel/non-standard setup. /etc/resolv.conf should point to dns servers that are equally capable. if one returns "no such record", that's an actual response that it can pass back.
+T 1568727667 18<Cheaterman18>	and I gotta do the actual things I set up my docker services for ^^
+T 1568727667 18<mgolisch18>	then again you should probably not have nameservers in your resolv.conf that only resolve some domains, that might lead to weird issues
+T 1568727694 18<programmerq18>	and you're relying oh hoping every possible thing doing a resolution will fall back to the other nameserver when it gets a particular dns response from one server.
+T 1568727725 18<Cheaterman18>	programmerq: I understand that, but I've been using this setup for decades now
+T 1568727732 18<Cheaterman18>	and it works for hosts
+T 1568727749 18<Cheaterman18>	and it *used* to work inside Docker
+T 1568727774 18<programmerq18>	arguably, this is a bug that was fixed somewhere. hammering both dns servers for a true 'record not found' sounds like bad form
+T 1568727781 18<Cheaterman18>	mgolisch: :-/ really this works on all hosts, and used to work inside Docker, only today did I first run into an issue
+T 1568727795 18<Cheaterman18>	programmerq: I would agree if host resolution didn't do that
+T 1568727823 18<Ckat18>	whats the compose 3.x notation for the old cpu_count: ?
+T 1568727825 18<programmerq18>	different things can have bad behaviors and still have it be how it behaves.
+T 1568727834 18<Cheaterman18>	There is IIRC some way to stop if notfound, like [NOTFOUND=return] in nsswitch.conf, programmerq
+T 1568727854 18<Cheaterman18>	Yes, that's fair, but still, some things work the way they do by fiat
+T 1568727867 18<Cheaterman18>	and changing that to better suit what they "should" do isn't necessarily practical
+T 1568727873 18<Cheaterman18>	(practicality beats purity anyday in my book)
+T 1568727903 18<programmerq18>	Ckat▸ https://docs.docker.com/compose/compose-file/ - this is your friend. swarm-specific stuff is generally found under the deploy: key.
+T 1568727994 18<Ckat18>	programmerq: thats where I was, and didnt see cpu_count, it doenst like being under limits or deploy
+T 1568728036 18<programmerq18>	cpu_count is the regular containers api setting, not the swarm mode setting
+T 1568728044 18<programmerq18>	they aren't all 1:1, which is why there's the deploy key
+T 1568728049 18<programmerq18>	so go look under deploy for what's there
+T 1568728068 18<programmerq18>	'docker service create --help' there's no cpu_count here either, but there are cpu limit settings
+T 1568728484 18<Swahili18>	Q: If you don't mind me asking about Traefik, following the oficial docs I'm not finding the reference for where label properties come from for example traefik.http.routers.my-container.rule=Host(`xxxx.docker.localhost`)
+T 1568728494 18<Swahili18>	I'm basically following examples I can find.
+T 1568728543 18<Swahili18>	so you go through the getting started and shows the whoami example and then BAAM https://docs.traefik.io/v2.0/providers/docker
+T 1568728989 18<mgolisch18>	?
+T 1568729261 18<learningc18>	programmerq, so docker isn't really a container for every applications which I thought could replace a VM?
+T 1568729294 18<programmerq18>	learningc▸ not windows gui applications and not wayland gui applications currently
+T 1568729316 18<jtreminio18>	new traefik v2 breaks old configs :(
+T 1568729327 18<programmerq18>	although now that I think about it-- you might be able to pass all the hardware into the container and run wayland in the container that way
+T 1568729331 18<learningc18>	programmerq, is there any plan to support gui and games?
+T 1568729332 18<programmerq18>	not sure though, haven't played with it.
+T 1568729354 18<jtreminio18>	learningc, there's nvidia-docker for AI work
+T 1568729355 18<programmerq18>	learningc▸ well, keep in mind that windows containers in application isolation mode only works on windows server 2016
+T 1568729361 18<programmerq18>	on windows 10, windows containers use hyper-v
+T 1568729383 18<programmerq18>	so even if it did work with gui, the gpu wouldn't be in the hyper-v isolation
+T 1568729391 18<learningc18>	I see
+T 1568729398 18<jtreminio18>	nvidia docker is only linux, yeah
+T 1568729398 18<programmerq18>	and at that point, you might as well run the game in a full blown hyper-v vm
+T 1568729423 18<learningc18>	Is docker a Linux container?
+T 1568729443 18<dude-x18>	programmerq can windows containers run IE, Chrome, Firefox, etc?
+T 1568729449 18<programmerq18>	...
+T 1568729451 18<dude-x18>	in isolation?
+T 1568729459 18<programmerq18>	read above re: windows gui containers...
+T 1568729483 18<dude-x18>	programmerq ah i see. dang.
+T 1568729488 18<tabakhase18>	the simple answer to "windows games in docker" is No.
+T 1568729500 18<dude-x18>	games? i'm thinking browser automation
+T 1568729508 18<vegardx18>	So use a headless?
+T 1568729510 18<tabakhase18>	and docker is specifically "not a vm"
+T 1568729526 18<vegardx18>	selenium has all the things you need to run it in containers, headless and whatnot
+T 1568729529 18<learningc18>	tabakhase, dang. that's the answer I wanted to hear, but not the correct answer I wanted to hear.
+T 1568729529 18<dude-x18>	windows has unique characteristics
+T 1568729569 18<programmerq18>	learningc▸ what games do you want to containerize? what problem are you trying to solve?
+T 1568729571 18<dude-x18>	i'm fine with linux/mac automation for browsers, but i guess in a few years windows containers will be a thing,
+T 1568729573 18<learningc18>	vegardx, selenium? you mean including windows games??
+T 1568729588 18<dude-x18>	two different threads
+T 1568729603 18<tabakhase18>	dude-x idk about you, but that dude was asking for games from what i see in my scrollback ;D -- for browser stuff, headless chrome is just fine for 99% so i wouldnt worry to much... not like you can rly automate IE or so anyways
+T 1568729610 18<programmerq18>	dude-x▸ windows containers *are* a thing
+T 1568729617 18<vegardx18>	learningc: I'm not sure where games came in. Selenium is a testing framework that can work with headless browsers.
+T 1568729640 18<programmerq18>	ah Ckat was the one who asked the games question
+T 1568729642 18<tabakhase18>	been having some fun with puppeteer myself recently...
+T 1568729645 18<dude-x18>	tabakhase selenium works with IE7-11 (newest version only works with 11)
+T 1568729645 18<programmerq18>	I've got my wires crossed, lol
+T 1568729692 18<dude-x18>	headless works fine in Linux, but headless Chrome and headless firefox do not behave the same as regular Chrome and regular firefox
+T 1568729693 18<learningc18>	programmerq, basically and ideally I want a lean Windows machines where I can run everything in container and uninstall applications which would leave Windows settings and registry pristine
+T 1568729714 18<vegardx18>	dude-x: That I'd like to see proof of
+T 1568729747 18<vegardx18>	We run quite literally thousands of integration tests in headless per day. I can't really see how we wouldn't have stumbled upon that.
+T 1568729777 18<dude-x18>	vegardx you can do basic automation fine with headless, but if you do things like download files or some certain actions that are atypical, you may run into problems. these issues are documented on their respective sites (i'm not including bugs)
+T 1568729801 18<dude-x18>	vegardx what do you define as headless, Chrome with xvfb or chrome with --headless option?
+T 1568729802 18<learningc18>	What is headless chrome and firefox?
+T 1568729804 18<tabakhase18>	learningc nothing of that sort exist - "docker" is a linux thing - and the "windows docker" is about windows-server-2019 ussage  --- now this is not rly "true answer" but kinda the answer to your Q.
+T 1568729818 18<dude-x18>	learningc headless means without monitor, without rendering to a real graphics thingie
+T 1568729832 18<vegardx18>	Just build a base image for Windows and deploy it to $cloud when you need a new box. Vagrant can likely help you.
+T 1568729926 18<learningc18>	takamatsu, I see. I thought docker was an hypervisor of some kind where any applications can run natively on top of it
+T 1568729955 18<learningc18>	I probably got the wrong concept...
+T 1568730008 18<tabakhase18>	dude-x oh well depends how deep you go... me no frontend, so somewhat fixed screenshots are already awesomesauce to me ;D --- but i guess if youre in frontend and want to actually play around in your React-SPA smth like IE may be more interesting...
+T 1568730034 18<tabakhase18>	and then ye, vagrant & virtualbox is prob more way to go than docker
+T 1568730043 18<dude-x18>	tabakhase i don't do front end work, i "merely" do automation
+T 1568730079 18<learningc18>	ok, a headless without a monitor, but how do I see the browser?
+T 1568730105 18<mgolisch18>	you dont
+T 1568730109 18<mgolisch18>	its for automation
+T 1568730131 18<dude-x18>	learningc you don't. screenshots still work with browser automation
+T 1568730174 18<dude-x18>	learningc but with something like xvfb (X virtual framebuffer) you can use an X windows client and connect to the host and see the appplication
+T 1568730207 18<dude-x18>	actualy xvfb + vnc
+T 1568730225 18<dude-x18>	vnc gives you a window to look at the app, while just plain x will stream the UI to your desktop
+T 1568730257 18<learningc18>	so headless browsers using docker are not for regular internet users?
+T 1568730263 18<dude-x18>	learningc no.
+T 1568730280 18<dude-x18>	what good is a browser if you can't see it
+T 1568730290 18<dude-x18>	but if you need to run tests that your website is functionally properly
+T 1568730297 18<dude-x18>	then headless makes sense
+T 1568730305 18<learningc18>	ah
+T 1568730306 18<dude-x18>	because it's faster, and uses less resources
+T 1568730312 18<dude-x18>	or if you're scraping websites
+T 1568730358 18<programmerq18>	I've got a scraping project I want to do. I want to listen to the full archives of a podcast, but their rss feed is capped to only show the most recent x episodes, and they have about double that. I figure I can scrape and generate my own xml, lol.
+T 1568730375 18<programmerq18>	probably don't need a browser to do it though
+T 1568730416 18<dude-x18>	scrapy on Python has a pretty good api. it uses selenium/requests to get the job done
+T 1568730424 18<tabakhase18>	learningc random example: https://github.com/checkly/puppeteer-examples/blob/master/4.%20shopping-carts/walmart.js   --- this puts smth in your walmart onlineshop basket and makes a screenshot -- now your CI pipeline would do that, maybe compare the generated image with a older one you saved "golden master" - and trigger an alarm if "more than 1% difference" is found
+T 1568730443 18<tabakhase18>	and all of this can hapen "on some server in the cloud"
+T 1568730482 18<dude-x18>	image comparison tests are hard to maintain. for that my company pays for Applitools Eyes
+T 1568730492 18<learningc18>	dude-x, but why use a web browser to scrap websites? Can't these be done with programming languages to do these faster?
+T 1568730507 18<dude-x18>	learningc javascript can ruin your day
+T 1568730531 18<dude-x18>	learningc you can use a program to open a page but it won't execute the javascript that may render the URL or asset you're looking for.
+T 1568730549 18<learningc18>	dude-x, ah! good point!
+T 1568730555 18<tabakhase18>	dude-x how you feel on Applitools? -- im only getting into that whole visual stuff and it looked neat, but kinda little info & no demo... ((currently ive got some selfwritten stuff and csscritic for user-review))
+T 1568730611 18<schangg18>	I am building a docker FROM image debian:9 . According to dockerhub, that image was last updated 6 days ago. However, when I run an apt-get dist-upgrade it fetches around 150 packages...
+T 1568730627 18<schangg18>	that seems like a lot for an image that is 6 days old
+T 1568730651 18<tabakhase18>	schangg building with "--pull"?
+T 1568730665 18<learningc18>	What would be the best docker image I could use?
+T 1568730686 18<Ckat18>	is there a way to just use existing local images in a stack?
+T 1568730705 18<mgolisch18>	Ckat: why?
+T 1568730713 18<mgolisch18>	sounds like alot of work
+T 1568730717 18<Ckat18>	its a huge pain to get this ported to 3.0
+T 1568730726 18<Ckat18>	its just working at all rather
+T 1568730735 18<schangg18>	tabakhase no
+T 1568730751 18<Ckat18>	why is it alot of work to get a stack with local images? is that not an option?
+T 1568730768 18<schangg18>	tabakhase just docker build .
+T 1568730781 18<tabakhase18>	schangg "docker images debian" - you prob have some older version on disk, build with --pull or manually "docker pull IMAGE" dfirst
+T 1568730835 18<tabakhase18>	Ckat what does that even mean...? - build everything FROM scratch? "--no-pull"?
+T 1568730873 18<tabakhase18>	and no idea how "3.0" fits in any of this ;D
+T 1568730883 18<mgolisch18>	also not sure how that would help, the compose file would still require that 3.x format
+T 1568730896 18<mgolisch18>	when used with the docker stack deploy command
+T 1568730911 18<Ckat18>	what a pain
+T 1568730929 18<learningc18>	I still cannot understand. Why would we want to run an application in docker if docker image is generally linux based?
+T 1568730930 18<tabakhase18>	ohhhh now i understand - youre talking of "docker stack" - sorry, i didnt made that connection ;D
+T 1568730956 18<tabakhase18>	and not super painfull... you can run a registry in another docker in "just a click"...
+T 1568730960 18<mgolisch18>	learningc: because we want to run linux applications?
+T 1568730996 18<learningc18>	mgolisch, I mean at least running something, isn't it?
+T 1568731051 18<Ckat18>	the case I have is some images with docker images with compose 2.2 files, that I want to put in a single node swarm
+T 1568731061 18<Ckat18>	do I need a registry for this?
+T 1568731072 18<mgolisch18>	just run them as standalone containers?
+T 1568731082 18<mgolisch18>	if you dont require any swarm mode features
+T 1568731083 18<Ckat18>	people want to use secrets
+T 1568731101 18<Ckat18>	also they might want to use swarm features later, is what I was told
+T 1568731135 18<Ckat18>	kinda failing to see what the workflow is to set this up.. do I build the images off the existing compose files and make some local registry than put up a stack with that?
+T 1568731154 18<tabakhase18>	also sure you dont have a registry already?... most kube things come with one, gitlab comes with one, running your own is "a single docker run command" too...
+T 1568731157 18<programmerq18>	you don't need a registry for a single node swarm dev setup.
+T 1568731169 18<programmerq18>	just build the images locally and refer to them
+T 1568731197 18<Ckat18>	can I do that from a command or do I need seperate deploy-stack.yml files?
+T 1568731207 18<mgolisch18>	sure docker service create?
+T 1568731227 18<programmerq18>	Ckat▸ 'docker stack deploy' won't build images for you. you can build with 'docker-compose build' or 'docker build'
+T 1568731245 18<programmerq18>	or whatever other build process you'd like to use
+T 1568731282 18<tabakhase18>	so: "git clone && docker stack deploy" will not work -- but "git clone && dockr build && docker stack deploy" will be just fine?
+T 1568731297 18<Ckat18>	okay so build images with the docker-compose build. that creates my two images and sets up some volumes and networks. then is there a clean way to use that on a stack?
+T 1568731314 18<programmerq18>	docker-compose build does not set up volumes and networks-- it only builds images.
+T 1568731321 18<mgolisch18>	yes make a version 3.x compose file
+T 1568731342 18<Ckat18>	this is what I was trying to avoid
+T 1568731354 18<programmerq18>	why is that a problem?
+T 1568731377 18<mgolisch18>	because it uses properties not available in that version and they are too lazy to look for the approriate replacements
+T 1568731390 18<programmerq18>	Ckat▸ the cpu thing?
+T 1568731408 18<programmerq18>	just specify both cpu options-- the one for containers, and the one for swarm...
+T 1568731423 18<Ckat18>	I've set that with cpus and memory now, which were cpucount and mem_limit
+T 1568731440 18<dude-x18>	learningc the purpose of docker is many-fold. one is isolation of applications. when in a container they don't have access to other things, so if someone hacks the app the container is in, they will have access only to container resources. the other aspect is that of repeatability. A container should represent the same environment always, so that you can share with it other people or machines
+T 1568731472 18<dude-x18>	learningc and see that it runs the same. another aspect is that you can run multiple containers on the same machine
+T 1568731533 18<learningc18>	dude-x, how is that different from a VM?
+T 1568731547 18<dude-x18>	learningc a VM is essentially a computer in your computer
+T 1568731607 18<learningc18>	you mean a standalone os inside another os?
+T 1568731618 18<dude-x18>	from the point of view of a Linux host, a container is just a thing where files live and processes can run, but they can't access/see things out side of the walls you provide them
+T 1568731649 18<dude-x18>	containers can run different OSes but that's more of an implementation detail.
+T 1568731674 18<tabakhase18>	containers "dont run a OS at all" if you wanne be strict - only thing running in there is your app and only your app
+T 1568731694 18<tabakhase18>	so "debian" is "just there so you can use apt-get" and nothing more in a way :P
+T 1568731707 18<programmerq18>	learningc▸ a docker container doesn't get its own copy of the kernel. there is no virtual bios, no boot, no virtual hardware at all. instead, they use kernel features that section off the containerized process into its own corner-- on linux that's namespaces and cgroups.
+T 1568731709 18<dude-x18>	a VM actually emulates hardware. it has a bios, it can even emulate 32 bit CPUs if your CPU supports that
+T 1568731726 18<dude-x18>	a VM has a virtual harddrive
+T 1568731737 18<dude-x18>	a container on your machine exist on your harddrive, and you can look at the files.
+T 1568731758 18<programmerq18>	basically the containerized process is lied to by the host-- it makes a syscall like "hey, show me all the processes running on the system" and the kernel responds back with only processes in that container.
+T 1568731765 18<programmerq18>	it's still the same kernel that's running your whol host
+T 1568731786 18<programmerq18>	or put simply, it's a fancy way to run a process
+T 1568731810 18<dude-x18>	when i was a windows user, i dreamed of isolated apps. imagine being able to browser without getting pwned due to a bug in the browser
+T 1568731854 18<dude-x18>	but docker came to bsd/linux first.
+T 1568731866 18<programmerq18>	windows containers have two isolation modes. application isolation is the closest to what linux containers are like-- microsoft implemented their own containerization features in windows server 2016/2019 and docker uses those. It also has hyper-v isolation mode which is available on WS and windows 10 pro, and it feels like a container since the same interface is prosented to the user, but actually does use
+T 1568731868 18<programmerq18>	some virtualization. It doesn't show up as a vm in the hyper-v hypervisor utilities though.
+T 1568731933 18<programmerq18>	docker hasn't actually gone to bsd, to be fair. there have been some efforts to wrap docker around jail, but none that's been merged upstream. jails have been around on bsd for decades and definitely predate docker/lxc
+T 1568731939 18<incognito18>	programmerq: when network "bridge" : does docker integrate a dhcp ?
+T 1568731950 18<programmerq18>	incognito▸ docker does not use dhcp in its ipam
+T 1568731973 18<learningc18>	I see. Thanks for the explanations
+T 1568731975 18<incognito18>	programmerq: how does it know the next available ip to use ?
+T 1568731986 18<programmerq18>	it has its own ipam module built in.
+T 1568732013 18<programmerq18>	that way containers aren't on the hook to all have some sort of dhcp client-- by the time your containerized process starts, the network interface has been configured by docker already.
+T 1568732035 18<incognito18>	programmerq: if i create a new interface inside my container, i need to assign it manually, isn't it ?
+T 1568732051 18<programmerq18>	incognito▸ why not connect your container to a second docker network that has the configuration you need?
+T 1568732063 18<incognito18>	programmerq: vpn ^^
+T 1568732087 18<incognito18>	vpn to the isolated docker network
+T 1568732090 18<learningc18>	So I can use docker to replace a VM for non gui stuffs?
+T 1568732123 18<programmerq18>	incognito▸ if you run a vpn client in the container, then you'd be on the hook to configure it from within the container, yeah.
+T 1568732164 18<incognito18>	ok, thanks
+T 1568732219 18<dude-x18>	learningc depends on what you use the VM for
+T 1568732248 18<learningc18>	dude-x, I often build Linux distro from source on VM
+T 1568732271 18<dude-x18>	i would use a VM for that. but you can then take tailor that distro into a container image.
+T 1568732382 18<learningc18>	dude-x, the distro are more for embedded systems
+T 1568732395 18<dude-x18>	i see. i would use a vm for that
+T 1568732421 18<dude-x18>	but you can still contaiinerize your build system too
+T 1568732452 18<learningc18>	dude-x, in that case why VM is preferable?
+T 1568732477 18<dude-x18>	docker philosophy is about containerizing a single application
+T 1568732511 18<dude-x18>	you can have mutiple apps in a single container too but the idea is that an app can run, but then be torn down, and easily replaced letter with a better/newer version
+T 1568732610 18<dude-x18>	learningc i would imagine a build for a distro relies on a lot of tooling
+T 1568732636 18<alexeightsix18>	How come when i build an image locally vs on the server itself it produces different results?
+T 1568732666 18<alexeightsix18>	I'm getting this error ONLY on the server, locally I don't get any errors and i'm using the no-cache option
+T 1568732667 18<alexeightsix18>	: Unable to locate package libmariadb-client-lgpl-devE: Package 'mysql-client' has no installation candidate
+T 1568732809 18<learningc18>	dude-x, I use yocto for embedded. It's all automated once to configure the build script
+T 1568732880 18<dude-x18>	learningc i suppose you can run this script in a container.
+T 1568732935 18<dude-x18>	the advantage to a container instead of a VM is that it will use less memory, diskspace since you can only include the minimal set of files necessary
+T 1568732948 18<dude-x18>	but if you need to debug a broken build
+T 1568732951 18<dude-x18>	a VM feels more natural
+T 1568733021 18<learningc18>	Do we need to allocate a fix amount of diskspace with docker as we do with a VM?
+T 1568733055 18<mgolisch18>	alexeightsix: what are you building from?
+T 1568733071 18<alexeightsix18>	php frpm 7.1
+T 1568733180 18<mgolisch18>	cat /etc/debian_debian version?
+T 1568733184 18<mgolisch18>	ups
+T 1568733189 18<mgolisch18>	/etc/debian_version
+T 1568733217 18<mgolisch18>	might be just an old image already pulled based on a previous base distribution version
+T 1568733460 18<ironfroggy18>	I'm looking to clear up something about Docker for Windows (from WSL).
+T 1568733499 18<ironfroggy18>	I have a container with my CWD, my project folder, volume mounted inside it. If I do this with the directory sitting in WSL-space, then Docker for Windows can't see it.
+T 1568733516 18<ironfroggy18>	if I do this with the project sitting in Windows space, then Docker can see it but symlinks in the project don't work.
+T 1568733527 18<ironfroggy18>	So... is there a resolution for this?
+T 1568733563 18<ironfroggy18>	What's really bothering me is that I *did* have this exact project running with this setup before, but I'd reset my machine and was rebuilding my setup and now its not working and I don't know what's changed.
+T 1568733618 18<mgolisch18>	what is not working with symlinks?
+T 1568733629 18<ironfroggy18>	they appear as empty files
+T 1568733646 18<ironfroggy18>	Windows itself doesn't support symlinks
+T 1568733654 18<ironfroggy18>	only inside WSL
+T 1568733660 18<mgolisch18>	hm pretty sure it does
+T 1568733664 18<mgolisch18>	mklink.exe
+T 1568733700 18<alexeightsix18>	mgolisch
+T 1568733705 18<ironfroggy18>	but it doens't support linux symlinks
+T 1568733709 18<mgolisch18>	yeah no
+T 1568733715 18<alexeightsix18>	you're right, thx -- locally i did -pull and it produced the same results
+T 1568733921 18<mgolisch18>	ironfroggy: so you have symlinks in a mounted directory or what?
+T 1568734066 18<ironfroggy18>	yes, in the mounted C drive
+T 1568734170 18<mgolisch18>	pretty sure symlinks are just normal files
+T 1568734189 18<AWizzArd18>	I have a dockerized app that wants to connect to a server on port 5500 on localhost. I don't have this server running on local host, but I have an ssh tunnel that establishes the connection. How can I enable the app in the container to connect to _my_ localhost, port 5500?
+T 1568734194 18<AWizzArd18>	Can I do this only with --net=host?
+T 1568734220 18<ironfroggy18>	mgolisch, i don't know why you'd think that, but they aren't, but thanks anyway
+T 1568734365 18<ironfroggy18>	it looks like it was a git issue. re-cloning the repository from windows fixed the symlinks.
+T 1568734523 18<mgolisch18>	AWizzArd: yes
+T 1568734549 18<mgolisch18>	ironfroggy: cool
+T 1568734772 18<mgolisch18>	AWizzArd: cant you just change where it connects to?
+T 1568734807 18<gsearle18>	I want to use swap space but managinf Docker via Kubernetes. I'm thinking of using Docker swarm to get around Kubernetes buggy handeling of swap. Is there anything I should know before working on this?
+T 1568735342 18<mgolisch18>	gsearle: does swarm support everything you need?
+T 1568735455 18<istop2818>	Hey everyone. I have a question about general container efficacy. I understand how this technology can be used to expedite development and be used to scale up/down very quickly in conjunction with "cloud" technologies. How would containers be applied to enterprise application services? For example, if I were to run a Jira server or SQL server, what
+T 1568735455 18<istop2818>	are the benefits of doing it via containerization over normal provision/orchestration/deployment methods using a tool like Ansible?
+T 1568735698 18<incognito18>	istop28: you said almost all the quality of docker; deployment facilties, scaling; you can add some security (since it's an isolated container); networking simplicity (need of subnet,etc..), volume management (transparent mounting of network storage)
+T 1568735748 18<incognito18>	Ansible is designed for hybrid cloud management, it encapsulates the docker needs in it, so it's not really a good comparison
+T 1568735766 18<incognito18>	resource limits
+T 1568735792 18<incognito18>	many management + CI + logging tools
+T 1568735835 18*	incognito is a good advertiser, isn't he ?
+T 1568735910 18<incognito18>	istop28: you can for example find a docker-compose file ready to deploy the whole jira stacks (backend, storage, frontend)
+T 1568735975 18<incognito18>	istop28: you can also inherit from this one and append your services or node (to an existing service)
+T 1568736022 18<incognito18>	if you trust the maintainer (there are docker certified image), it simplifies many tasks of the sys admins
+T 1568736034 18<AWizzArd18>	mgolisch: I sit at location A and have a location B which runs a PG DB. Now a dockerized app on AWS needs to access the DB. What I can do is to build a tunnel from A to B. And I setup a reverse tunnel from A to AWS.
+T 1568736067 18<AWizzArd18>	mgolisch: The consequence is that the dockerized app tries to connect to localhost:5432, which tunnels data to machine A, which forwards it to B.
+T 1568736077 18<AWizzArd18>	I am not sure that I can use the `host` setting on AWS.
+T 1568736140 18<istop2818>	incognito so from a practical standpoint docker is more suited for large distributed operations i.e. “we must create an info sys that supports 500 users with ability to grow” which would require development of docker files, programmatic provisioning etc. but then when the need for 500 more users occurs you can just run the files again. Rather
+T 1568736140 18<istop2818>	than do the manual work of getting a 500 person info sys up and working and then doing it again?
+T 1568736172 18<istop2818>	I do not understand your last point about inheritance
+T 1568736207 18<incognito18>	istop28: you can use existing certified image to base your project on it and enhance it
+T 1568736241 18<mgolisch18>	AWizzArd: why not?
+T 1568736254 18<mgolisch18>	if its just docker on an ec2 instance i dont see why that wouldnt work
+T 1568736296 18<incognito18>	istop28: some are using docker in all cases, it permits to stand with a clean and simple os with only the tools you need; another good point is the hability to use docker-swarm in order to scale up on different machines
+T 1568736355 18<mgolisch18>	AWizzArd: or create that tunnel in seperate container and put both into the same user defined network
+T 1568736376 18<mgolisch18>	then you dont have to run the container in the global network namespace
+T 1568736390 18<incognito18>	istop28: you can when you need add another machine to your swarm with ease : https://docs.docker.com/engine/swarm/swarm-tutorial/add-nodes/
+T 1568736414 18<mekhami18>	it's really frustrating how many problems i'm having getting a decent docker setup going for a relatively straight forward web app
+T 1568736435 18<mgolisch18>	its ususualy pretty simple
+T 1568736449 18<mgolisch18>	put stuff in image, run image, done
+T 1568736461 18<mgolisch18>	if its a straight forward web app
+T 1568736473 18<incognito18>	istop28: plus there are management tools capable to categorize your containers in a nice UI; if you want to share the swarm with other services
+T 1568736541 18<mekhami18>	i guess my definition of straight forward may be skewed though. It's a web app, it uses webpack, it's for local dev so i mount my files over (except node modules and build files that need to happen inside the image). but getting webpack to work (getting the right node modules mostly) is like pulling teeth!
+T 1568736582 18<mgolisch18>	the right modules?
+T 1568736595 18<mgolisch18>	that should all be in your package.json
+T 1568736597 18<mekhami18>	node_modules. dependencies.
+T 1568736605 18<mgolisch18>	and no diffrent from running the app not in docker
+T 1568736610 18<istop2818>	incognito great thank you so much for the information. I will look into the thing you told me about. I am curious about any use cases that are applied to enterprise computing like windows AD, exchange, etc. and if those things are being adopted to containers readily or if the old way is still pervasive.
+T 1568736626 18<mekhami18>	right, but in order to have the ones on your local machine not end up in the container, you have to have a volume in the container
+T 1568736631 18<mekhami18>	and that volume gets in weird screwy states
+T 1568736648 18<mgolisch18>	i just mount the whole thing in
+T 1568736654 18<mgolisch18>	and do all my debugging inside the container
+T 1568736661 18<incognito18>	istop28: you are welcome
+T 1568736671 18<mekhami18>	that doesn't work with node modules, some of those dependencies are built using OS bindings that can differ on host and image os
+T 1568736701 18<mgolisch18>	why not?
+T 1568736706 18<mgolisch18>	just never build it on the host,,
+T 1568739259 18<Swahili18>	Q: Let's say I have a Service that happens to be a http server that is serving 2 or more Apps configured by Port number. Would Traefik support that? Or I'd have to split into different Http servers?
+T 1568739270 18<Swahili18>	How does that work or where can I read or see an example for this sort of cases?
+T 1568739327 18<Swahili18>	Or which other options are there. What I'm thinking is that, I'd have to create multiple http servers for each app?
+T 1568739333 18<Swahili18>	Wrong?!
+T 1568742802 18<programmerq18>	Swahili▸ as far as I know it works just fine, you just need to use a separate set of labels with a different service name.
+T 1568742912 18<Swahili18>	programmerq: thanks for looking btw. Ok. I've now create two http services for each application. I'll try that later
+T 1568744200 18<ironfroggy_18>	i have an existing few services running that were spun up with docker-compose
+T 1568744218 18<ironfroggy_18>	how can i copy a file into a named service's container without modifying the docker-compose.yml?
+T 1568744887 18<tabakhase18>	ironfroggy_ crowbar style? "docker cp"?
+T 1568744950 18<ironfroggy_18>	yeah i think i figured out a decent construct
+T 1568744985 18<ironfroggy_18>	docker cp path/to/file $(docker-compose ps -q service):path/in/container
+T 1568745008 18<tabakhase18>	pretty much this yep
+T 1568745054 18<tabakhase18>	and hey, docker-compose cp issue is only 3 years old, so maybe well get it one day /s https://github.com/docker/compose/issues/3593
+T 1568745088 18<ironfroggy_18>	haha yeah i saw that
+T 1568746508 18<effprime18>	hello, I am setting up a container with postfix (SMTP server), working fine at the base level, and I have exposed 25:25 so I can send mail externally. when sending through localhost, it seems to NAT and report the source domain as "unknown"... this doesn't happen when not using a container (it just keeps the source as localhost), so is there a way
+T 1568746508 18<effprime18>	to configure docker to keep the domain?
+T 1568746605 18<lmat18>	Is round-robin DNS resolution default in docker swarm? That is, if I have a service with 2 replicas, the DNS server will return the IP address of one then the other?
+T 1568746854 18<_Raijin18>	If I am running a media server server with docker compose and I want to use a VPN for my media downloads, will this screw up my domain networking and my ability to connect to the server?
+T 1568747105 18<tabakhase18>	hell yea
+T 1568747133 18<tabakhase18>	docker is not made to hide in tor ;-) do it on the router infront of it or youll sink into madness
+T 1568747187 18<tabakhase18>	that is, all that is certainly possible, but "worth" na
+T 1568747351 18<tabakhase18>	effprime docker and mail is a bit special... (also expose is for "in", for "out" you dont need any ports at all) -- "simplest" would prob be to run it in the "host" network namespace... but its rly more a "not do final delivery from docker" ((as "outgoing ip" may be whatever.. and you likely have a static one with reputaton on your mailserver - or use smth like sendgrid/mailjet and whatanot...)
+T 1568747523 18<effprime18>	I am trying network mode host now, ty
+T 1568747531 18<effprime18>	ports seem to no longer be available though, interesting
+T 1568747593 18<effprime18>	ah nvm, its a direct port expose, nice
+T 1568753031 20*	Disconnected (20)
+T 1568753056 19*	Now talking on 22#docker
+T 1568753056 22*	Topic for 22#docker is: Docker: Open platform for distributed applications | http://docker.com | Certifications https://success.docker.com/certification | http://github.com/moby/moby | Current Status: http://status.docker.com/ | https://forums.docker.com/ | Registration with NickServ required: https://freenode.net/kb/answer/registration
+T 1568753056 22*	Topic for 22#docker set by 26programmerq!~jeff@unaffiliated/programmerq (24Fri Dec  7 20:42:52 2018)
+T 1568753463 18<SpeakerToMeat18>	should services show up in docker ps?
+T 1568753540 18<SpeakerToMeat18>	Ah yes, yes they do
+T 1568753553 18<SpeakerToMeat18>	I guess the service's task shows on ps

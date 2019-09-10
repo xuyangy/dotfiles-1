@@ -1,0 +1,7 @@
+T 1568580139 18<Necm>	hi
+T 1568585958 20*	Disconnected (20)
+T 1568617508 20*	Disconnected (20)
+T 1568625741 29*	Necm :No such server
+T 1568641511 20*	Disconnected (20)
+T 1568708580 20*	Disconnected (20)
+T 1568753031 20*	Disconnected (20)

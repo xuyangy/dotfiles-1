@@ -1,1 +1,0 @@
-/home/artur/.bash_aliases

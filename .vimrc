@@ -7,6 +7,9 @@ set ruler
 set hidden
 set t_Co=256
 
+" open git commit in insert mode
+autocmd FileType gitcommit exec 'au VimEnter * startinsert'
+
 " NERDTree
 let NERDTreeMinimalUI=1
 let g:NERDTreeWinPos = "right"

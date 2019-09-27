@@ -1,1 +1,5 @@
-/home/artur/.gitconfig
+[user]
+	email = atagisov@gmail.com
+	name = Artur Tagisow
+[core]
+	editor = vim

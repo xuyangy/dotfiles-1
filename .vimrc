@@ -27,6 +27,9 @@ if !has('gui_running')
 endif
 set noshowmode
 
+" ale
+let g:ale_fixers = {'javascript':  ['eslint']}
+
 " mappings
 map <C-p> :Files<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>

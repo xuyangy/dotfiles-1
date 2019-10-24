@@ -7,6 +7,10 @@ set ruler
 set hidden
 set t_Co=256
 
+" change swap file dir
+set swapfile
+set dir=~/.vimswap
+
 " open git commit in insert mode
 autocmd FileType gitcommit exec 'au VimEnter * startinsert'
 

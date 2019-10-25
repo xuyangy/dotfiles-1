@@ -10,6 +10,13 @@ set swapfile
 set dir=~/.vimswap
 set cursorline
 
+" change swap file dir
+set swapfile
+set dir=~/.vimswap
+
+" open git commit in insert mode
+autocmd FileType gitcommit exec 'au VimEnter * startinsert'
+
 " NERDTree
 let NERDTreeMinimalUI=1
 let g:NERDTreeWinPos = "right"

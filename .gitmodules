@@ -1,16 +1,16 @@
-[submodule "pack/plugins/start/lightline"]
+[submodule ".vim/pack/plugins/start/lightline"]
 	path = .vim/pack/plugins/start/lightline
 	url = https://github.com/itchyny/lightline.vim
-[submodule "pack/plugins/start/fzf"]
+[submodule ".vim/pack/plugins/start/fzf"]
 	path = .vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.vim
-[submodule "pack/plugins/start/nerdtree"]
+[submodule ".vim/pack/plugins/start/nerdtree"]
 	path = .vim/pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
-[submodule "pack/plugins/start/vim-devicons"]
+[submodule ".vim/pack/plugins/start/vim-devicons"]
 	path = .vim/pack/plugins/start/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons
-[submodule "pack/plugins/start/vim-nerdtree-syntax-highlight"]
+[submodule ".vim/pack/plugins/start/vim-nerdtree-syntax-highlight"]
 	path = .vim/pack/plugins/start/vim-nerdtree-syntax-highlight
 	url = https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
 [submodule "/home/artur/.vim/pack/plugins/start/ale"]

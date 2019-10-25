@@ -6,6 +6,9 @@ set wildmenu
 set ruler
 set hidden
 set t_Co=256
+set swapfile
+set dir=~/.vimswap
+set cursorline
 
 " NERDTree
 let NERDTreeMinimalUI=1

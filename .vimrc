@@ -10,22 +10,9 @@ set swapfile
 set dir=~/.vimswap
 set cursorline
 
-" change swap file dir
-set swapfile
-set dir=~/.vimswap
-
-" open git commit in insert mode
-autocmd FileType gitcommit exec 'au VimEnter * startinsert'
-
-" NERDTree
-let NERDTreeMinimalUI=1
-let g:NERDTreeWinPos = "right"
-
 " fzf
 set rtp+=~/.fzf
-
-" vim-devicons
-set encoding=UTF-8
+nnoremap <C-p> :GFiles<cr>
 
 " lightline
 set laststatus=2 
@@ -38,7 +25,5 @@ set noshowmode
 let g:ale_fixers = {'javascript':  ['eslint']}
 
 " mappings
-map <C-p> :Files<CR>
-nnoremap <C-b> :NERDTreeToggle<CR>
 inoremap jk <esc>
 

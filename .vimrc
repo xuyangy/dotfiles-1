@@ -24,6 +24,10 @@ set noshowmode
 " ale
 let g:ale_fixers = {'javascript':  ['eslint']}
 
+" camelcasemotion
+let g:camelcasemotion_key = '<leader>'
+
+
 " mappings
 inoremap jk <esc>
 

@@ -28,3 +28,6 @@
 [submodule ".vim/pack/plugins/start/camelcasemotion"]
 	path = .vim/pack/plugins/start/camelcasemotion
 	url = https://github.com/bkad/CamelCaseMotion.git
+[submodule ".vim/pack/plugins/start/surround"]
+	path = .vim/pack/plugins/start/surround
+	url = https://github.com/tpope/vim-surround

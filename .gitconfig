@@ -1,5 +1,5 @@
 [user]
-	email = atagisov@gmail.com
-	name = Artur Tagisow
+	email = atagisov@protonmail.com
+	name = Artur Tagisow 
 [core]
-	editor = vim
+	editor = nvim

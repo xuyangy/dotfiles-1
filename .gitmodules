@@ -28,3 +28,6 @@
 [submodule ".vim/pack/plugins/start/vim-surround"]
 	path = .vim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/pack/plugins/start/matchit"]
+	path = .vim/pack/plugins/start/matchit
+	url = https://github.com/tmhedberg/matchit

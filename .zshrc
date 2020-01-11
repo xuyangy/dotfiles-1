@@ -2,7 +2,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$HOME/.npm-global/bin:/sna
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="cypher"
-plugins=(git safe-paste vi-mode autojump)
+plugins=(git safe-paste vi-mode autojump npm docker)
 
 KEYTIMEOUT=10
 export TERM=xterm-256color
@@ -19,6 +19,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey -M viins 'jk' vi-cmd-mode  # @todo - THIS DOES NOT WORK?
 alias sai="sudo apt install -y"
 alias ni="npm install"
+alias nrs="npm run serve"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

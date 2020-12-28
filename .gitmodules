@@ -4,9 +4,6 @@
 [submodule ".vim/pack/plugins/start/fzf"]
 	path = .vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.vim
-[submodule ".vim/pack/plugins/start/nerdtree"]
-	path = .vim/pack/plugins/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree
 [submodule ".vim/pack/plugins/start/vim-devicons"]
 	path = .vim/pack/plugins/start/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons
@@ -28,6 +25,9 @@
 [submodule ".vim/pack/plugins/start/camelcasemotion"]
 	path = .vim/pack/plugins/start/camelcasemotion
 	url = https://github.com/bkad/CamelCaseMotion.git
-[submodule ".vim/pack/plugins/start/surround"]
-	path = .vim/pack/plugins/start/surround
-	url = https://github.com/tpope/vim-surround
+[submodule ".vim/pack/plugins/start/vim-surround"]
+	path = .vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/pack/plugins/start/matchit"]
+	path = .vim/pack/plugins/start/matchit
+	url = https://github.com/tmhedberg/matchit

@@ -24,6 +24,7 @@ call plug#begin()
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'vim-scripts/AutoClose'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-vetur'
 call plug#end()
 
 " coc

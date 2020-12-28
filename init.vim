@@ -58,3 +58,4 @@ call plug#end()
   " Symbol renaming.
   nmap <leader>rn <Plug>(coc-rename)
 
+:map <C-p> :FZF<CR>

@@ -21,11 +21,19 @@ let g:camelcasemotion_key = '<leader>'
   let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 call plug#begin()
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'vim-scripts/AutoClose'
+
+" coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-vetur'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+"
+" syntax highl.
+Plug 'posva/vim-vue'
 call plug#end()
+
+"posva vim-vue
+let g:vue_pre_processors = ['typescript', 'scss']
 
 " coc
   " Use <c-space> to trigger completion.

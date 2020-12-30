@@ -2,10 +2,13 @@ syntax enable
 filetype plugin indent on
 " search down subfolders in :find completion, but ignore node_modules
 set path+=** wildignore+=**/node_modules/**
-set rnu nu tabstop=2 shiftwidth=2 expandtab nocompatible smartcase wildmenu noswapfile
+set rnu nu tabstop=2 shiftwidth=2 expandtab nocompatible smartcase wildmenu noswapfile autoread
+set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus
 
-nnoremap <C-l> :Lex .<CR>
-map <Esc><Esc> :w<CR>
+nnoremap <C-l> :Lex %CR>
+map <leader>w :w<CR>
+nmap <C-j> <C-w>w
+nmap <C-k> <C-w>W
 
 " open git commit in insert mode
 autocmd FileType gitcommit exec 'au VimEnter * startinsert'
@@ -13,29 +16,39 @@ autocmd FileType gitcommit exec 'au VimEnter * startinsert'
 
 let g:camelcasemotion_key = '<leader>'
 " netrw
-  " https://shapeshed.com/vim-netrw/
-  let g:netrw_liststyle = 3 " tree view (expandable folders)
-  let g:netrw_banner = 0 " remove tips at top
-  let g:netrw_browse_split = 2 " open entered file to side split rather than replacing netrw split
-  " netrw line numbers https://stackoverflow.com/a/8731175/10706046
-  let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+  let g:netrw_liststyle    = 3                                " tree view (expandable folders) https://shapeshed.com/vim-netrw/
+  let g:netrw_banner       = 0                                " remove tips at top
+  let g:netrw_browse_split = 2                                " open entered file to side split rather than replacing netrw split
+  let g:netrw_bufsettings  = 'noma nomod nu nobl nowrap ro'   " netrw line numbers https://stackoverflow.com/a/8731175/10706046
 
 call plug#begin()
-Plug 'vim-scripts/AutoClose'
 
-" coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-vetur'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-"
-" syntax highl.
-Plug 'posva/vim-vue'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc-vetur'
+  Plug 'neoclide/coc-eslint'
+  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+
+  " syntax highl
+  Plug 'posva/vim-vue'
+    let g:vue_pre_processors = ['typescript', 'scss']
+
+  Plug 'tpope/vim-fugitive'
+    nmap <leader>gsb :G<CR>
+    nmap <leader>gc :Gcommit<CR>
+    " don't ask to set upstream
+    nmap <leader>gp :G -c push.default=current push<CR> 
+    nmap <leader>gl :Gpull 
+  "misc
+  Plug 'vim-scripts/AutoClose'
+  Plug 'mattn/emmet-vim' " div.aa<C-y>,  -> <div class=aa>
+
 call plug#end()
 
-"posva vim-vue
-let g:vue_pre_processors = ['typescript', 'scss']
 
-" coc
+" ------------------coc
+"
+"
   " Use <c-space> to trigger completion.
   if has('nvim')
     inoremap <silent><expr> <c-space> coc#refresh()

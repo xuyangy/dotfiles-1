@@ -1,105 +1,128 @@
 syntax enable 
 filetype plugin indent on
-" search down subfolders in :find completion, but ignore node_modules
-set path+=** wildignore+=**/node_modules/**
-set rnu nu tabstop=2 shiftwidth=2 expandtab nocompatible smartcase wildmenu noswapfile autoread
-set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus
+highlight LineNr ctermbg=NONE guibg=NONE
 
-tnoremap <Esc> <C-\><C-n>
+set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab smartcase wildmenu noswapfile autoread
+set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus
+set termguicolors
+
 nmap <C-j> <C-w>w
 nmap <C-k> <C-w>W
-
-" open git commit in insert mode
-autocmd FileType gitcommit exec 'au VimEnter * startinsert'
-
-" netrw
-  let g:netrw_liststyle    = 3                                " tree view (expandable folders) https://shapeshed.com/vim-netrw/
-  let g:netrw_banner       = 0                                " remove tips at top
-  let g:netrw_browse_split = 2                                " open entered file to side split rather than replacing netrw split
-  let g:netrw_bufsettings  = 'noma nomod nu nobl nowrap ro'   " netrw line numbers https://stackoverflow.com/a/8731175/10706046
-  let g:netrw_winsize      = 25
+autocmd FileType gitcommit exec 'au VimEnter * startinsert' " open git commit in insert mode
 
 call plug#begin()
-  
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         " https://www.erickpatrick.net/blog/adding-syntax-highlighting-to-fzf.vim-preview-window
-  Plug 'junegunn/fzf.vim'
-    map <C-p> :Files<CR>
-    let g:fzf_layout = {'window': { 'width': 0.9, 'height': 0.9  }}
-    let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+    set completeopt=menuone,noinsert,noselect
+  Plug 'tjdevries/nlua.nvim'
+  Plug 'tjdevries/lsp_extensions.nvim'
+  Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
 
-  Plug 'stsewd/fzf-checkout.vim'
-    nmap <leader>go :GBranches checkout<CR>
 
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    map <leader>s :CocList outline<CR>
-    map <leader>S :CocList symbols<CR>
-    map <leader>F :CocList grep 
-  Plug 'dense-analysis/ale'
-    let g:ale_fixers = {} 
-    let g:ale_fixers.typescript = ['prettier', 'eslint']
-    let g:ale_fixers.javascript = ['prettier', 'eslint']
-    let g:ale_fixers.vue = ['prettier', 'eslint']
-  Plug 'neoclide/coc-vetur'
-  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-  " syntax highl
-  Plug 'posva/vim-vue'
-    let g:vue_pre_processors = ['typescript', 'scss']
+  Plug 'puremourning/vimspector'
+  Plug 'szw/vim-maximizer'
+
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+    nnoremap <C-p> <cmd>Telescope find_files<cr>
+    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>gb <cmd>Telescope help_tags<cr>
 
   "misc
-  Plug 'dracula/vim', {'as': 'dracula'}
-    colorscheme dracula
-    highlight Normal ctermbg=black
   Plug 'tpope/vim-fugitive'
     nmap <leader>gsb :G<CR>
     nmap <leader>gc :Gcommit<CR>
-    " don't ask to set upstream
-    nmap <leader>gp :G -c push.default=current push<CR> 
+    nmap <leader>gp :G -c push.default=current push<CR> " don't ask to set upstream
     nmap <leader>gl :Gpull 
-  Plug 'vim-scripts/AutoClose'
   Plug 'francoiscabrol/ranger.vim'
+    Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1
     let g:ranger_map_keys = 0
-    map <leader>f :RangerWorkingDirectory<CR>
-  Plug 'mattn/emmet-vim' " div.aa<C-y>,  -> <div class=aa>
+    map <leader>p :RangerWorkingDirectory<CR>
   Plug 'bkad/CamelCaseMotion'
-    let g:camelcasemotion_key = '<leader>'
-
+  Plug 'tpope/vim-surround'
+  Plug 'christianchiarulli/nvcode-color-schemes.vim'
 call plug#end()
 
+colorscheme nvcode " need special theme for treesitter
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+-- local lspconfig = require'lspconfig'
+-- lspconfig.vuels.setup{on_attach=require'completion'.on_attach}
+-- lspconfig.tsserver.setup{}
+-- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+-- THIS IS CRITICAL OR ELSE TREESITTER DOESNT HIGHLIGHT
+-- parser_config.typescript.used_by = "vue"
+EOF
+
+lua << EOF
+local nvim_lsp = require('lspconfig')
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+  
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    require('lspconfig').util.nvim_multiline_command [[
+      :hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      :hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      :hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd!
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]]
+  end
+end
+
+-- Use a loop to conveniently both setup defined servers 
+-- and map buffer local keybindings when the language server attaches
+local servers = { "pyright", "rust_analyzer", "tsserver", "vuels" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup { on_attach = on_attach }
+end
+EOF
 
 
-" ------------------coc
-"
-"
-  " Use <c-space> to trigger completion.
-  if has('nvim')
-    inoremap <silent><expr> <c-space> coc#refresh()
-  else
-    inoremap <silent><expr> <c-@> coc#refresh()
-  endif
-  " GoTo code navigation.
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-
-  " Use K to show documentation in preview window.
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-      call CocActionAsync('doHover')
-    else
-      execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-  endfunction
-
-  " Highlight the symbol and its references when holding the cursor.
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
-  " Symbol renaming.
-  nmap <leader>rn <Plug>(coc-rename)
-
+lua << EOF
+  vim.lsp.set_log_level("debug")
+EOF

@@ -8,7 +8,7 @@ set termguicolors
 
 nmap <C-j> <C-w>w
 nmap <C-k> <C-w>W
-autocmd FileType gitcommit exec 'au VimEnter * startinsert' " open git commit in insert mode
+autocmd FileType gitcommit exec 'au VimEnter * startinsert' 
 
 call plug#begin()
   Plug 'neovim/nvim-lspconfig'
@@ -120,9 +120,73 @@ local servers = { "pyright", "rust_analyzer", "tsserver", "vuels" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
-EOF
 
+nvim_lsp.diagnosticls.setup{
+	filetypes = { "javascript", "javascript.jsx", "sh" },
+	init_options = {
+		filetypes = {
+			javascript = "eslint",
+			["javascript.jsx"] = "eslint",
+			javascriptreact = "eslint",
+			typescriptreact = "eslint",
+			sh = "shellcheck"
+		},
+		linters = {
+			eslint = {
+				sourceName = "eslint",
+				command = "./node_modules/.bin/eslint",
+				rootPatterns = { ".eslintrc", ".eslintrc.json", ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.yaml", "package.json" },
+				debounce = 100,
+				args = {
+					"--stdin",
+					"--stdin-filename",
+					"%filepath",
+					"--format",
+					"json",
+				},
+				parseJson = {
+					errorsRoot = "[0].messages",
+					line = "line",
+					column = "column",
+					endLine = "endLine",
+					endColumn = "endColumn",
+					message = "${message} [${ruleId}]",
+					security = "severity",
+				},
+				securities = {
+					[2] = "error",
+					[1] = "warning"
+				}
+			},
+			shellcheck = {
+				sourceName = "shellcheck",
+				command = "shellcheck",
+				debounce = 100,
+				args = { "--format=gcc", "-" },
+				offsetLine = 0,
+				offsetColumn = 0,
+				formatLines = 1,
+				formatPattern = {
+					"^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+					{
+						line = 1,
+						column = 2,
+						message = 4,
+						security = 3
+					};
+				},
+				securities = {
+					error = "error",
+					warning = "warning",
+					note = "info"
+				};
+			}
+		}
+	}
+}
+EOF
 
 lua << EOF
   vim.lsp.set_log_level("debug")
 EOF
+

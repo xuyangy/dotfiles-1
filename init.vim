@@ -27,10 +27,10 @@ call plug#begin()
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-    nnoremap <C-p> <cmd>Telescope find_files<cr>
+    nnoremap <leader>ff <cmd>Telescope git_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
-    nnoremap <leader>gb <cmd>Telescope help_tags<cr>
+    nnoremap <leader>gb <cmd>Telescope git_branches<cr>
 
   "misc
   Plug 'tpope/vim-fugitive'
@@ -72,6 +72,8 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+
+  require'completion'.on_attach()
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.

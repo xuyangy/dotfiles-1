@@ -17,6 +17,7 @@ call plug#begin()
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
   Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
+    let g:vue_pre_processr = ['scss', 'typescript', 'javascript']
 
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -137,13 +138,12 @@ for _, lsp in ipairs(servers) do
 end
 
 nvim_lsp.diagnosticls.setup{
-	filetypes = { "javascript", "javascript.jsx", "sh" },
+	filetypes = { "javascript", "typescript", "vue" },
 	init_options = {
 		filetypes = {
 			javascript = "eslint",
-			["javascript.jsx"] = "eslint",
-			javascriptreact = "eslint",
-			typescriptreact = "eslint",
+			typescript = "eslint",
+			vue = "eslint",
 			sh = "shellcheck"
 		},
 		linters = {

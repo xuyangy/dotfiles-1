@@ -3,8 +3,11 @@ filetype plugin indent on
 highlight LineNr ctermbg=NONE guibg=NONE
 
 set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab smartcase wildmenu noswapfile autoread
-set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus
+set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set termguicolors
+set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
+
+nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
 
 nmap <C-j> <C-w>w
 nmap <C-k> <C-w>W
@@ -107,6 +110,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -144,7 +148,6 @@ nvim_lsp.diagnosticls.setup{
 			javascript = "eslint",
 			typescript = "eslint",
 			vue = "eslint",
-			sh = "shellcheck"
 		},
 		linters = {
 			eslint = {
@@ -173,29 +176,6 @@ nvim_lsp.diagnosticls.setup{
 					[1] = "warning"
 				}
 			},
-			shellcheck = {
-				sourceName = "shellcheck",
-				command = "shellcheck",
-				debounce = 100,
-				args = { "--format=gcc", "-" },
-				offsetLine = 0,
-				offsetColumn = 0,
-				formatLines = 1,
-				formatPattern = {
-					"^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
-					{
-						line = 1,
-						column = 2,
-						message = 4,
-						security = 3
-					};
-				},
-				securities = {
-					error = "error",
-					warning = "warning",
-					note = "info"
-				};
-			}
 		}
 	}
 }

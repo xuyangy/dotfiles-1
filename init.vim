@@ -7,10 +7,11 @@ set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set termguicolors
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
 
-nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
+nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>
 
 nmap <C-j> <C-w>w
 nmap <C-k> <C-w>W
+nmap <leader>w :w<cr>
 autocmd FileType gitcommit exec 'au VimEnter * startinsert' 
 
 call plug#begin()
@@ -39,9 +40,9 @@ call plug#begin()
   "misc
   Plug 'tpope/vim-fugitive'
     nmap <leader>gsb :G<CR>
-    nmap <leader>gc :Gcommit<CR>
     nmap <leader>gp :G -c push.default=current push<CR> " don't ask to set upstream
     nmap <leader>gl :Gpull 
+    nmap <leader>gcb :G checkout -b 
   Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1
@@ -136,10 +137,26 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver", "vuels" }
+local servers = { "pyright", "rust_analyzer", "tsserver" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+nvim_lsp.vuels.setup{ 
+  on_attach = on_attach,
+  init_options = {
+    config = {
+      vetur = {
+        validation = {
+          templateProps = true
+        },
+        experimental = {
+          templateInterpolationService = true
+        }
+      }
+    } 
+  } 
+} 
 
 nvim_lsp.diagnosticls.setup{
 	filetypes = { "javascript", "typescript", "vue" },

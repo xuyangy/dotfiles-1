@@ -38,8 +38,12 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'
     nnoremap <leader>ff <cmd>Telescope git_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
+    nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+    Plug 'kyazdani42/nvim-web-devicons'
+
 
   "misc
   Plug 'tpope/vim-fugitive'

@@ -1,24 +1,12 @@
-NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-P=(
-    $HOME/bin
-    $HOME/.npm-global/bin
-    /usr/local/bin
-    /snap/bin
-    $NVM_DIR
-)
-PATH=$(IFS=:; echo "${P[*]}"
-export PATH;
-
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$HOME/.npm-global/bin:/snap/bin:/opt/netbeans/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="cypher"
 plugins=(git safe-paste vi-mode autojump npm docker)
 
 KEYTIMEOUT=10
-export TERM=xterm-256color
+export TERM=screen-256color
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
 
@@ -33,6 +21,7 @@ bindkey -M viins 'jk' vi-cmd-mode  # @todo - THIS DOES NOT WORK?
 alias sai="sudo apt install -y"
 alias ni="npm install"
 alias nrs="npm run serve"
+alias vi="nvim"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -96,10 +85,13 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/snapd/desktop/"
+# Android Studio vars for React Native development
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+tmux

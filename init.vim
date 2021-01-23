@@ -24,8 +24,8 @@ call plug#begin()
     set completeopt=menuone,noinsert,noselect
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
-  Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
-    let g:vue_pre_processr = ['scss', 'typescript', 'javascript']
+  "  Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
+  "  let g:vue_pre_processr = ['scss', 'typescript', 'javascript']
 
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -81,7 +81,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = { 'vue', 'javascript', 'typescript', 'json' }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust", "vue" },  -- list of language that will be disabled
+    disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
 -- local lspconfig = require'lspconfig'
@@ -204,9 +204,5 @@ nvim_lsp.diagnosticls.setup{
 		}
 	}
 }
-EOF
-
-lua << EOF
-  vim.lsp.set_log_level("debug")
 EOF
 

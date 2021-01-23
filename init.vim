@@ -9,7 +9,7 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set termguicolors
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
-nnoremap <leader>fx mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+nnoremap <leader>f :!eslint_d --fix % <CR>
 
 nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>
 

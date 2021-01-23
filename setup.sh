@@ -13,3 +13,4 @@ ln -s -f ~/dotfiles/.zshrc ~/.bashrc
 ln -s -f ~/dotfiles/.tmux.conf ~/.tmux.conf 
 ln -s -f ~/dotfiles/.bash_aliases ~/.bash_aliases 
 ln -s -f ~/dotfiles/.gitconfig ~/.gitconfig 
+sudo npm i -g vls typescript-language-server eslint_d @vue/cli

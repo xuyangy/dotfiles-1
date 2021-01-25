@@ -9,7 +9,7 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set termguicolors
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
-nnoremap <leader>fx mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+nnoremap <leader>f :!eslint_d --fix % <CR>
 
 nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>
 
@@ -24,8 +24,8 @@ call plug#begin()
     set completeopt=menuone,noinsert,noselect
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
-  Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
-    let g:vue_pre_processr = ['scss', 'typescript', 'javascript']
+  "  Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
+  "  let g:vue_pre_processr = ['scss', 'typescript', 'javascript']
 
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -38,8 +38,12 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'
     nnoremap <leader>ff <cmd>Telescope git_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
+    nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+    Plug 'kyazdani42/nvim-web-devicons'
+
 
   "misc
   Plug 'tpope/vim-fugitive'
@@ -77,7 +81,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = { 'vue', 'javascript', 'typescript', 'json' }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust", "vue" },  -- list of language that will be disabled
+    disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
 -- local lspconfig = require'lspconfig'
@@ -200,9 +204,5 @@ nvim_lsp.diagnosticls.setup{
 		}
 	}
 }
-EOF
-
-lua << EOF
-  vim.lsp.set_log_level("debug")
 EOF
 

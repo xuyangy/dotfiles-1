@@ -17,5 +17,5 @@ ln -s -f ~/dotfiles/.zshrc ~/.zshrc
 ln -s -f ~/dotfiles/.tmux.conf ~/.tmux.conf 
 ln -s -f ~/dotfiles/.bash_aliases ~/.bash_aliases 
 ln -s -f ~/dotfiles/.gitconfig ~/.gitconfig 
-
 python3 -m pip install --user --upgrade pynvim
+sudo npm i -g vls typescript-language-server eslint_d @vue/cli

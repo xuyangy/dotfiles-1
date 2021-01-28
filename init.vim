@@ -1,13 +1,15 @@
 syntax enable 
 filetype plugin indent on
 highlight LineNr ctermbg=NONE guibg=NONE
+    
+set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab 
+set ruler smartcase wildmenu noswapfile autoread
 
-set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab smartcase wildmenu noswapfile autoread
-set ruler
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+highlight User1 ctermbg=red 
+set statusline=\ %F\ %m\ %r\ %=\ %1*%{fugitive#head()}\ 
+"set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
-set termguicolors
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
 nnoremap <leader>f :!eslint_d --fix % <CR>
 
@@ -16,7 +18,7 @@ nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<
 nmap <C-j> <C-w>w
 nmap <C-k> <C-w>W
 nmap <leader>w :w<cr>
-nmap <leader>ve :edit $MYVIMRC<cr>
+nmap <leader>ve :vsp $MYVIMRC<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " autoreload vimrc on save
 autocmd FileType gitcommit exec 'au VimEnter * startinsert' 
 

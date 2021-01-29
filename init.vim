@@ -15,6 +15,7 @@ nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<
 
 nmap <C-j> <C-w>w
 nmap <C-k> <C-w>W
+nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>
 nmap <leader>ve :edit $MYVIMRC<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " autoreload vimrc on save
@@ -43,16 +44,16 @@ call plug#begin()
     nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
     nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
-    nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+    nnoremap \b <cmd>Telescope git_branches<cr>
     Plug 'kyazdani42/nvim-web-devicons'
 
 
   "misc
   Plug 'tpope/vim-fugitive'
-    nmap <leader>gsb :G<CR>
+    nmap \s :G<CR>
     nmap <leader>gp :G -c push.default=current push<CR> " don't ask to set upstream
     nmap <leader>gl :Gpull 
-    nmap <leader>gcb :G checkout -b 
+    nmap <leader>gcb :G checkout develop -b 
   Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1

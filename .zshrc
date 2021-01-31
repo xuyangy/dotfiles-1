@@ -4,7 +4,7 @@ ZSH_THEME="cypher"
 plugins=(git safe-paste vi-mode autojump)
 
 KEYTIMEOUT=10
-export TERM=screen-256color
+export TERM=xterm-256color
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"

@@ -2,13 +2,20 @@ syntax enable
 filetype plugin indent on
 highlight LineNr ctermbg=NONE guibg=NONE
     
+set termguicolors
 set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab 
 set ruler smartcase wildmenu noswapfile autoread
 
-highlight User1 ctermbg=red 
-set statusline=\ %F\ %m\ %r\ %=\ %1*%{fugitive#head()}\ 
-"set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-
+colorscheme nvcode " need special theme for treesitter, needs to be infront of colorscheme
+hi User1 guifg=#eea040 guibg=#222222
+hi User2 guifg=#ff0000 guibg=#00ff00
+hi User3 guifg=#0000ff guibg=#ffffff
+hi User4 guifg=#00ff00 guibg=#222222
+hi User5 guifg=#888888 guibg=#222222
+hi StatusLine guifg=#0000ff guibg=#ffffff
+hi StatusLineNC guifg=#eeeeee guibg=#222222
+set statusline=\ %1*\ %t\ %*\ \ %*\ %f\ %2*%m%*\ %3*%r%*\ %=\ %4*%{fugitive#head()}
+ 
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
 nnoremap <leader>fx :!eslint_d --fix % <CR>
@@ -63,8 +70,9 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
     nmap \s :G<CR>
     nmap <leader>gp :G -c push.default=current push<CR> " don't ask to set upstream
-    nmap <leader>gl :Gpull 
+    nmap <leader>l :Gpull 
     nmap <leader>gcb :G checkout develop -b 
+    nmap <leader>gl :G log -- %
   Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1
@@ -75,7 +83,6 @@ call plug#begin()
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
 call plug#end()
 
-colorscheme nvcode " need special theme for treesitter
 
 lua << EOF
 local actions = require('telescope.actions')

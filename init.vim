@@ -6,16 +6,6 @@ set termguicolors
 set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab 
 set ruler smartcase wildmenu noswapfile autoread
 
-colorscheme nvcode " need special theme for treesitter, needs to be infront of colorscheme
-hi User1 guifg=#eea040 guibg=#222222
-hi User2 guifg=#ff0000 guibg=#00ff00
-hi User3 guifg=#0000ff guibg=#ffffff
-hi User4 guifg=#00ff00 guibg=#222222
-hi User5 guifg=#888888 guibg=#222222
-hi StatusLine guifg=#0000ff guibg=#ffffff
-hi StatusLineNC guifg=#eeeeee guibg=#222222
-set statusline=\ %1*\ %t\ %*\ \ %*\ %f\ %2*%m%*\ %3*%r%*\ %=\ %4*%{fugitive#head()}
- 
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
 nnoremap <leader>fx :!eslint_d --fix % <CR>
@@ -82,6 +72,17 @@ call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
 call plug#end()
+
+colorscheme nvcode
+hi User1 guifg=#eea040 guibg=#222222
+hi User2 guifg=#ff0000 guibg=#00ff00
+hi User3 guifg=#0000ff guibg=#ffffff
+hi User4 guifg=#00ff00 guibg=#222222
+hi User5 guifg=#888888 guibg=#222222
+hi StatusLine guifg=#0000ff guibg=#ffffff
+hi StatusLineNC guifg=#eeeeee guibg=#222222
+set statusline=\ %1*\ %t\ %*\ \ %*\ %f\ %2*%m%*\ %3*%r%*\ %=\ %4*%{fugitive#head()}
+ 
 
 
 lua << EOF

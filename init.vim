@@ -56,14 +56,14 @@ call plug#begin()
     nnoremap \b <cmd>Telescope git_branches<cr>
     Plug 'kyazdani42/nvim-web-devicons'
 
-
   "misc
   Plug 'tpope/vim-fugitive'
     nmap \s :G<CR>
     nmap <leader>gp :G -c push.default=current push<CR> " don't ask to set upstream
-    nmap <leader>l :Gpull   
+    nmap <leader>gl :Gpull
     nmap <leader>gcb :G checkout origin/develop -b 
-    nmap <leader>gl :Glog %<cr>
+    nmap <leader>go :Glog<cr>
+    nmap <leader>gO :Glog %<cr>
   Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1

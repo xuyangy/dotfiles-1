@@ -20,4 +20,3 @@ alias oldvim="\vim"
 autoload -U compinit && compinit -u
 
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/snapd/desktop/"
-tmux

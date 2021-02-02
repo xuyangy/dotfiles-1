@@ -60,9 +60,9 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
     nmap \s :G<CR>
     nmap <leader>gp :G -c push.default=current push<CR> " don't ask to set upstream
-    nmap <leader>l :Gpull 
+    nmap <leader>l :Gpull   
     nmap <leader>gcb :G checkout develop -b 
-    nmap <leader>gl :G log -- %
+    nmap <leader>gl :G log -- %<cr>
   Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1

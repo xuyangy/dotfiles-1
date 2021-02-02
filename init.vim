@@ -4,7 +4,8 @@ highlight LineNr ctermbg=NONE guibg=NONE
     
 set termguicolors
 set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab 
-set ruler smartcase wildmenu noswapfile autoread
+set ruler wildmenu noswapfile autoread
+set ignorecase smartcase
 
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
@@ -61,8 +62,8 @@ call plug#begin()
     nmap \s :G<CR>
     nmap <leader>gp :G -c push.default=current push<CR> " don't ask to set upstream
     nmap <leader>l :Gpull   
-    nmap <leader>gcb :G checkout develop -b 
-    nmap <leader>gl :G log -- %<cr>
+    nmap <leader>gcb :G checkout origin/develop -b 
+    nmap <leader>gl :Glog %<cr>
   Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1

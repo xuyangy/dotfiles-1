@@ -18,6 +18,8 @@ nmap <C-k> <C-w>W
 nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>
 nmap <leader>ve :vsp $MYVIMRC<cr>
+nmap ]q :cn<cr>
+nmap [q :cp<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " autoreload vimrc on save
 autocmd FileType gitcommit exec 'au VimEnter * startinsert' 
 

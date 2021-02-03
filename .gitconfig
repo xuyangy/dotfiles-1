@@ -7,3 +7,5 @@
 	helper = store
 [pull]
 	rebase = false
+[push]
+  default = current

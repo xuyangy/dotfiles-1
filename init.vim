@@ -20,6 +20,8 @@ nmap <leader>w :w<cr>
 nmap <leader>ve :vsp $MYVIMRC<cr>
 nmap ]q :cn<cr>
 nmap [q :cp<cr>
+nmap <down> :cn<cr>
+nmap <up> :cp<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " autoreload vimrc on save
 autocmd FileType gitcommit exec 'au VimEnter * startinsert' 
 
@@ -84,9 +86,10 @@ hi User4 guifg=#00ff00 guibg=#222222
 hi User5 guifg=#888888 guibg=#222222
 hi StatusLine guifg=#0000ff guibg=#ffffff
 hi StatusLineNC guifg=#eeeeee guibg=#222222
-set statusline=\ %1*\ %t\ %*\ \ %*\ %f\ %2*%m%*\ %3*%r%*\ %=\ %4*%{fugitive#head()}
- 
-
+set statusline=\ %t\ \|\ 
+set statusline+=%f\ 
+set statusline+=%2*%m%*\ %3*%r%*\ %=\ 
+set statusline+=%4*%{fugitive#head()}
 
 lua << EOF
 local actions = require('telescope.actions')

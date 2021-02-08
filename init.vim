@@ -72,7 +72,7 @@ call plug#begin()
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1
     let g:ranger_map_keys = 0
-    map <leader>p :RangerWorkingDirectory<CR>
+    map <leader>p :Ranger<CR>
   Plug 'bkad/CamelCaseMotion'
   Plug 'tpope/vim-surround'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'

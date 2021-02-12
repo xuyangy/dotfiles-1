@@ -76,6 +76,7 @@ call plug#begin()
     map <leader>p :Ranger<CR>
   Plug 'bkad/CamelCaseMotion'
   Plug 'tpope/vim-surround'
+  Plug 'jiangmiao/auto-pairs'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
 call plug#end()
 

@@ -90,7 +90,7 @@ hi StatusLineNC guifg=#eeeeee guibg=#222222
 set statusline=\ %t\ \|\ 
 set statusline+=%f\ 
 set statusline+=%2*%m%*\ %3*%r%*\ %=\ 
-set statusline+=%4*%{fugitive#head()}
+set statusline+=%{fugitive#head()}
 
 lua << EOF
 local actions = require('telescope.actions')

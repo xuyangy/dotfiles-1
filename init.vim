@@ -53,6 +53,7 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
     nnoremap <leader>ff <cmd>Telescope git_files<cr>
+    nnoremap <leader>fF <cmd>Telescope find_files<cr>
     nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
@@ -76,6 +77,7 @@ call plug#begin()
     map <leader>p :Ranger<CR>
   Plug 'bkad/CamelCaseMotion'
   Plug 'tpope/vim-surround'
+  Plug 'jiangmiao/auto-pairs'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
 call plug#end()
 

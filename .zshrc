@@ -11,6 +11,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias sai="sudo apt install"
 alias ni="npm install"
+alias nrs="npm run serve"
 alias vi="nvim"
 alias vim="nvim"
 alias oldvim="\vim"

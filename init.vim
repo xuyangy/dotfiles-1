@@ -7,6 +7,13 @@ set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab
 set ruler wildmenu noswapfile autoread
 set ignorecase smartcase
 
+" https://vim.fandom.com/wiki/Highlight_current_line
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
 nnoremap <leader>fx :!eslint_d --fix % <CR>

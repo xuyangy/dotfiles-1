@@ -68,10 +68,10 @@ call plug#begin()
     nmap \s :G<CR>
     " don't ask to set upstream
     nmap <leader>ggp :G -c push.default=current push<CR> 
-    nmap <leader>gl :Gpull
+    nmap <leader>gl :G pull
     nmap <leader>gcb :G checkout origin/develop -b 
-    nmap <leader>glo :Glog<cr>
-    nmap <leader>glO :Glog %<cr>
+    nmap <leader>glo :G log<cr>
+    nmap <leader>glO :G log %<cr>
   Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1

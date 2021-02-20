@@ -68,7 +68,7 @@ call plug#begin()
     nmap \s :G<CR>
     " don't ask to set upstream
     nmap <leader>ggp :G -c push.default=current push<CR> 
-    nmap <leader>gl :G pull
+    nmap <leader>gL :G pull
     nmap <leader>gcb :G checkout origin/develop -b 
     nmap <leader>glo :G log<cr>
     nmap <leader>glO :G log %<cr>

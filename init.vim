@@ -7,9 +7,17 @@ set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab
 set ruler wildmenu noswapfile autoread
 set ignorecase smartcase
 
+" https://vim.fandom.com/wiki/Highlight_current_line
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
 nnoremap <leader>fx :!eslint_d --fix % <CR>
+ nnoremap <leader>fxx mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
 
 nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>
 
@@ -65,8 +73,9 @@ call plug#begin()
   "misc
   Plug 'tpope/vim-fugitive'
     nmap \s :G<CR>
-    nmap <leader>ggp :G -c push.default=current push<CR> " don't ask to set upstream
-    nmap <leader>gl :Gpull
+    " don't ask to set upstream
+    nmap <leader>ggp :G -c push.default=current push<CR> 
+    nmap <leader>gL :G pull
     nmap <leader>gcb :G checkout origin/develop -b 
     nmap <leader>glo :G log<cr>
     nmap <leader>glO :G log %<cr>

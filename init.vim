@@ -16,8 +16,7 @@ augroup END
 
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
-nnoremap <leader>fx :!eslint_d --fix % <CR>
- nnoremap <leader>fxx mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+nnoremap <leader>fx mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F
 
 nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>
 

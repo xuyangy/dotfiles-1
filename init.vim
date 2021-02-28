@@ -83,8 +83,15 @@ call plug#begin()
     Plug 'rbgrouleff/bclose.vim'
     let g:ranger_replace_netrw = 1
     let g:ranger_map_keys = 0
-    map <leader>p :Ranger<CR>
+    nmap <leader>p :RangerCurrentFileExistingOrNewTab<CR>
   Plug 'bkad/CamelCaseMotion'
+   " https://github.com/bkad/CamelCaseMotion
+   " nnoremap <Space> <NOP>
+    map <silent> w <Plug>CamelCaseMotion_w
+    map <silent> b <Plug>CamelCaseMotion_b
+    sunmap w
+    sunmap b
+
   Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'

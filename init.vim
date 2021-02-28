@@ -1,6 +1,6 @@
 syntax enable 
 filetype plugin indent on
-highlight LineNr ctermbg=NONE guibg=NONE
+highlight LineNr 
     
 set termguicolors
 set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab 
@@ -254,3 +254,5 @@ nvim_lsp.diagnosticls.setup{
 }
 EOF
 
+highlight Normal ctermbg=black
+highlight Normal guibg=black

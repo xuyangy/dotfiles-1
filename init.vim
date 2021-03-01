@@ -78,11 +78,10 @@ call plug#begin()
     nmap <leader>glo :G log<cr>
     nmap <leader>glO :G log %<cr>
     nmap <leader>gf :G fetch<cr>
-  Plug 'francoiscabrol/ranger.vim'
-    Plug 'rbgrouleff/bclose.vim'
-    let g:ranger_replace_netrw = 1
-    let g:ranger_map_keys = 0
-    nmap <leader>p :RangerCurrentFileExistingOrNewTab<CR>
+  Plug 'kevinhwang91/rnvimr'
+    nmap <leader>p :RnvimrToggle<cr>
+    nmap <leader>P :RnvimrResize<cr>
+    let g:rnvimr_enable_ex = 1
   Plug 'bkad/CamelCaseMotion'
    " https://github.com/bkad/CamelCaseMotion
    " nnoremap <Space> <NOP>

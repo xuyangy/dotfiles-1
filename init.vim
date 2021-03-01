@@ -1,6 +1,5 @@
 syntax enable 
 filetype plugin indent on
-highlight LineNr 
     
 set termguicolors
 set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab 

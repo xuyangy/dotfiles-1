@@ -57,6 +57,8 @@ call plug#begin()
 
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
   Plug 'nvim-telescope/telescope.nvim'
     nnoremap <leader>ff <cmd>Telescope git_files<cr>
     nnoremap <leader>fF <cmd>Telescope find_files<cr>
@@ -65,8 +67,8 @@ call plug#begin()
     nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
     nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
-    nnoremap \b <cmd>Telescope git_branches<cr>
-    Plug 'kyazdani42/nvim-web-devicons'
+    nnoremap <leader>b <cmd>Telescope git_branches<cr>
+
 
   "misc
   Plug 'tpope/vim-fugitive'
@@ -112,14 +114,26 @@ lua << EOF
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
+    file_sorter = require('telescope.sorters').get_fzy_sorter,
+    color_devicons = true,
     mappings = {
       i = {
-        ["<esc>"] = actions.close
+        ["<esc>"] = actions.close,
+        ["<C-q>"] = actions.send_to_qflist
       },
     },
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      }
+    }
   }
 }
+
+require('telescope').load_extension('fzy_native')
 EOF
+
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
@@ -129,12 +143,6 @@ require'nvim-treesitter.configs'.setup {
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
--- local lspconfig = require'lspconfig'
--- lspconfig.vuels.setup{on_attach=require'completion'.on_attach}
--- lspconfig.tsserver.setup{}
--- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
--- THIS IS CRITICAL OR ELSE TREESITTER DOESNT HIGHLIGHT
--- parser_config.typescript.used_by = "vue"
 EOF
 
 lua << EOF

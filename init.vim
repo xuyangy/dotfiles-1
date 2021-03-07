@@ -71,6 +71,8 @@ call plug#begin()
 
 
   "misc
+  Plug 'tpope/vim-ragtag'
+    let g:ragtag_global_maps = 1
   Plug 'tpope/vim-fugitive'
     nmap \s :G<CR>
     " don't ask to set upstream

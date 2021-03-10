@@ -94,6 +94,7 @@ call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 colorscheme nvcode

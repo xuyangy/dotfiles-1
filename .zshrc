@@ -1,7 +1,7 @@
 export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="cypher"
-plugins=(git safe-paste vi-mode autojump)
+plugins=(git safe-paste vi-mode autojump npm)
 
 KEYTIMEOUT=10
 # Uncomment the following line to display red dots whilst waiting for completion.

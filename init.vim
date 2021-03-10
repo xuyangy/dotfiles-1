@@ -24,8 +24,6 @@ nmap <C-k> <C-w>W
 nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>
 nmap <leader>ve :vsp $MYVIMRC<cr>
-nmap ]q :cn<cr>
-nmap [q :cp<cr>
 nmap <down> :cn<cr>
 nmap <up> :cp<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " autoreload vimrc on save

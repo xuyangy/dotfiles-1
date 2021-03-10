@@ -69,8 +69,7 @@ call plug#begin()
 
 
   "misc
-  Plug 'tpope/vim-ragtag'
-    let g:ragtag_global_maps = 1
+  Plug 'windwp/nvim-ts-autotag'
   Plug 'tpope/vim-fugitive'
     nmap \s :G<CR>
     " don't ask to set upstream
@@ -137,11 +136,13 @@ EOF
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { 'vue', 'javascript', 'typescript', 'json' }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+  autotag = {
+    enable = true,
   },
+  ensure_installed = { 'vue', 'javascript', 'typescript', 'json' },
+  highlight = {
+    enable = true,
+  }
 }
 EOF
 

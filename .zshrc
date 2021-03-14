@@ -21,3 +21,24 @@ alias oldvim="\vim"
 autoload -U compinit && compinit -u
 
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/snapd/desktop/"
+
+# https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
+if command -v tmux >/dev/null 2>&1 && [ "${DISPLAY}" ]; then
+    # if not inside a tmux session, and if no session is started, start a new session
+    [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
+fi
+
+
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
+}
+
+# https://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/#mode-indicator
+# define right prompt, regardless of whether the theme defined it
+RPS1='$(vi_mode_prompt_info)'
+RPS2=$RPS1
+
+# https://stackoverflow.com/a/49079378/10706046
+function pip-install-save { 
+    pip install $1 && pip freeze | grep $1 >> requirements.txt
+}

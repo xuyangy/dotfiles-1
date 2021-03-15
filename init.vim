@@ -5,6 +5,8 @@ set termguicolors
 set nocompatible rnu nu tabstop=2 shiftwidth=2 expandtab 
 set ruler wildmenu noswapfile autoread
 set ignorecase smartcase
+set hidden
+set completeopt=menuone,noselect
 
 " https://vim.fandom.com/wiki/Highlight_current_line
 augroup CursorLine
@@ -24,8 +26,6 @@ nmap <C-k> <C-w>W
 nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>
 nmap <leader>ve :vsp $MYVIMRC<cr>
-nmap ]q :cn<cr>
-nmap [q :cp<cr>
 nmap <down> :cn<cr>
 nmap <up> :cp<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " autoreload vimrc on save
@@ -49,11 +49,7 @@ call plug#begin()
   Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
     let g:vue_pre_processor = ['scss', 'typescript', 'javascript']
 
-
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-  Plug 'puremourning/vimspector'
-  Plug 'szw/vim-maximizer'
 
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
@@ -71,8 +67,14 @@ call plug#begin()
 
 
   "misc
-  Plug 'tpope/vim-ragtag'
-    let g:ragtag_global_maps = 1
+  Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/vim-vsnip'
+    inoremap <silent><expr> <C-Space> compe#complete()
+    inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+    inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+    inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+    inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+  Plug 'windwp/nvim-ts-autotag'
   Plug 'tpope/vim-fugitive'
     nmap \s :G<CR>
     " don't ask to set upstream
@@ -97,6 +99,7 @@ call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 colorscheme nvcode
@@ -139,11 +142,13 @@ EOF
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { 'vue', 'javascript', 'typescript', 'json' }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+  autotag = {
+    enable = true,
   },
+  ensure_installed = { 'vue', 'javascript', 'typescript', 'json', 'python' },
+  highlight = {
+    enable = true,
+  }
 }
 EOF
 
@@ -206,6 +211,7 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
+nvim_lsp.pyls.setup{}
 nvim_lsp.vuels.setup{ 
   on_attach = on_attach,
   init_options = {
@@ -262,6 +268,37 @@ nvim_lsp.diagnosticls.setup{
 		}
 	}
 }
+EOF
+
+lua << EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+    treesitter = true;
+  };
+}
+
 EOF
 
 highlight Normal ctermbg=black

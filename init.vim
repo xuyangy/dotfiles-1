@@ -222,6 +222,8 @@ nvim_lsp.vuels.setup{
   } 
 } 
 
+nvim_lsp.cssls.setup{}
+
 nvim_lsp.diagnosticls.setup{
 	filetypes = { "javascript", "typescript", "vue" },
 	init_options = {

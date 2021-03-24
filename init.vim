@@ -49,7 +49,7 @@ call plug#begin()
   Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
     let g:vue_pre_processor = ['scss', 'typescript', 'javascript']
 
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter'
 
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
@@ -112,7 +112,7 @@ hi StatusLineNC guifg=#eeeeee guibg=#222222
 set statusline=\ %t\ \|\ 
 set statusline+=%f\ 
 set statusline+=%2*%m%*\ %3*%r%*\ %=\ 
-set statusline+=%{fugitive#statusline()}
+set statusline+=%{fugitive#head()}\ %{fugitive#statusline()}
 
 lua << EOF
 local actions = require('telescope.actions')
@@ -144,7 +144,7 @@ require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
   },
-  ensure_installed = { 'vue', 'javascript', 'typescript', 'json', 'python' },
+  ensure_installed = { },
   highlight = {
     enable = true,
   }

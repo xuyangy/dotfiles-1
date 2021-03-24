@@ -65,7 +65,6 @@ call plug#begin()
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>b <cmd>Telescope git_branches<cr>
 
-
   "misc
   Plug 'hrsh7th/nvim-compe'
     Plug 'hrsh7th/vim-vsnip'
@@ -76,7 +75,7 @@ call plug#begin()
     inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
   Plug 'windwp/nvim-ts-autotag'
   Plug 'tpope/vim-fugitive'
-    nmap \s :G<CR>
+    nmap <leader>s :G<CR>
     " don't ask to set upstream
     nmap <leader>ggp :G -c push.default=current push<CR> 
     nmap <leader>gL :G pull
@@ -113,7 +112,7 @@ hi StatusLineNC guifg=#eeeeee guibg=#222222
 set statusline=\ %t\ \|\ 
 set statusline+=%f\ 
 set statusline+=%2*%m%*\ %3*%r%*\ %=\ 
-set statusline+=%{fugitive#head()}
+set statusline+=%{fugitive#head()}\ %{fugitive#statusline()}
 
 lua << EOF
 local actions = require('telescope.actions')
@@ -145,7 +144,7 @@ require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
   },
-  ensure_installed = { 'vue', 'javascript', 'typescript', 'json', 'python' },
+  ensure_installed = { },
   highlight = {
     enable = true,
   }
@@ -227,6 +226,8 @@ nvim_lsp.vuels.setup{
     } 
   } 
 } 
+
+nvim_lsp.cssls.setup{}
 
 nvim_lsp.diagnosticls.setup{
 	filetypes = { "javascript", "typescript", "vue" },

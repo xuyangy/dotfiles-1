@@ -49,7 +49,7 @@ call plug#begin()
   Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
     let g:vue_pre_processor = ['scss', 'typescript', 'javascript']
 
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter'
 
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'

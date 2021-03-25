@@ -7,6 +7,7 @@ set ruler wildmenu noswapfile autoread
 set ignorecase smartcase
 set hidden
 set completeopt=menuone,noselect
+set colorcolumn=9999
 
 " https://vim.fandom.com/wiki/Highlight_current_line
 augroup CursorLine
@@ -98,6 +99,7 @@ call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
   Plug 'christianchiarulli/nvcode-color-schemes.vim'
+  Plug 'Yggdroot/indentLine'
   Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 

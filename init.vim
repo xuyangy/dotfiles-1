@@ -75,6 +75,7 @@ call plug#begin()
     inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
     inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
   Plug 'windwp/nvim-ts-autotag'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'tpope/vim-fugitive'
     nmap <leader>s :G<CR>
     " don't ask to set upstream
@@ -300,6 +301,21 @@ require'compe'.setup {
   };
 }
 
+EOF
+
+lua << EOF
+require('gitsigns').setup()
+
+EOF
+
+lua << EOF
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    underline = true,
+    signs = true,
+  }
+)
 EOF
 
 highlight Normal ctermbg=black

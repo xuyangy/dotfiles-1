@@ -1,5 +1,6 @@
 export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh/"
+source /usr/share/oh-my-zsh/oh-my-zsh.sh
 ZSH_THEME="cypher"
 plugins=(git safe-paste vi-mode autojump npm)
 
@@ -7,7 +8,6 @@ KEYTIMEOUT=10
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-source $ZSH/oh-my-zsh.sh
 
 alias sai="sudo apt install"
 alias ni="npm install"

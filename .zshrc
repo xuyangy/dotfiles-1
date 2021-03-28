@@ -4,6 +4,9 @@ ZSH_THEME="cypher"
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
 
+export NVM_DIR=~/.nvm
+source /usr/share/nvm/nvm.sh
+
 KEYTIMEOUT=10
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"

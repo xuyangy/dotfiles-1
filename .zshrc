@@ -1,8 +1,8 @@
-export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
-export ZSH="/usr/share/oh-my-zsh/"
-source /usr/share/oh-my-zsh/oh-my-zsh.sh
-ZSH_THEME="cypher"
 plugins=(git safe-paste vi-mode autojump npm)
+ZSH="/usr/share/oh-my-zsh/"
+ZSH_THEME="cypher"
+source $ZSH/oh-my-zsh.sh
+export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
 
 KEYTIMEOUT=10
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -20,13 +20,11 @@ alias oldvim="\vim"
 [[ -s /home/artur/.autojump/etc/profile.d/autojump.sh ]] && source /home/artur/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
-export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/snapd/desktop/"
-
 # https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
-if command -v tmux >/dev/null 2>&1 && [ "${DISPLAY}" ]; then
+# if command -v tmux >/dev/null 2>&1 && [ "${DISPLAY}" ]; then
     # if not inside a tmux session, and if no session is started, start a new session
-    [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
-fi
+    # [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
+#fi
 
 
 function vi_mode_prompt_info() {

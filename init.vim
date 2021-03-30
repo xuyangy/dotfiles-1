@@ -47,8 +47,6 @@ call plug#begin()
     set completeopt=menuone,noinsert,noselect
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
-  Plug 'posva/vim-vue' " treesitter extension is unmaintained so I have to use this
-    let g:vue_pre_processor = ['scss', 'typescript', 'javascript']
 
   Plug 'nvim-treesitter/nvim-treesitter'
 

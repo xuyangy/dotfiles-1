@@ -43,3 +43,4 @@ RPS2=$RPS1
 function pip-install-save { 
     pip install $1 && pip freeze | grep $1 >> requirements.txt
 }
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

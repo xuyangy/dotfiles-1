@@ -26,7 +26,7 @@ nmap <C-j> <C-w>w
 nmap <C-k> <C-w>W
 nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>
-nmap <leader>ve :vsp $MYVIMRC<cr>
+nmap <leader>ve :e $MYVIMRC<cr>
 nmap <down> :cn<cr>
 nmap <up> :cp<cr>
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " autoreload vimrc on save
@@ -57,14 +57,17 @@ call plug#begin()
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+    nnoremap <leader>b <cmd>Telescope git_branches<cr>
     nnoremap <leader>ff <cmd>Telescope git_files<cr>
-    nnoremap <leader>fF <cmd>Telescope find_files<cr>
-    nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
+
+    nnoremap <leader>fG <cmd>Telescope live_grep<C-r><C-w><cr>
+
+    nnoremap <leader>fF <cmd>Telescope find_files<cr>
     nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
+    nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
-    nnoremap <leader>b <cmd>Telescope git_branches<cr>
 
   "misc
   Plug 'hrsh7th/nvim-compe'
@@ -89,6 +92,9 @@ call plug#begin()
     nmap <leader>p :RnvimrToggle<cr>
     nmap <leader>P :RnvimrResize<cr>
     let g:rnvimr_enable_ex = 1
+    let g:rnvimr_action = {
+            \ '<CR>': 'NvimEdit drop'
+            \ }
   Plug 'bkad/CamelCaseMotion'
    " https://github.com/bkad/CamelCaseMotion
    " nnoremap <Space> <NOP>

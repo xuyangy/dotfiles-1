@@ -61,6 +61,10 @@ call plug#begin()
     nnoremap <leader>ff <cmd>Telescope git_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     nnoremap <leader>fs <cmd>Telescope lsp_document_symbols<cr>
+    nnoremap <leader>fS <cmd>Telescope lsp_document_symbols<cr>
+
+    nnoremap <leader>fd <cmd>Telescope lsp_document_diagnostics<cr>
+    nnoremap <leader>fD <cmd>Telescope lsp_workspace_diagnostics<cr>
 
     nnoremap <leader>fG <cmd>Telescope live_grep<C-r><C-w><cr>
 

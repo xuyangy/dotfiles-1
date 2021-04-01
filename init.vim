@@ -66,7 +66,7 @@ call plug#begin()
     nnoremap <leader>fd <cmd>Telescope lsp_document_diagnostics<cr>
     nnoremap <leader>fD <cmd>Telescope lsp_workspace_diagnostics<cr>
 
-    nnoremap <leader>fG <cmd>Telescope live_grep<C-r><C-w><cr>
+    nnoremap <leader>fG :Telescope grep_string search=<C-R><C-W><cr>
 
     nnoremap <leader>fF <cmd>Telescope find_files<cr>
     nnoremap <leader>fS <cmd>Telescope lsp_workspace_symbols<cr>

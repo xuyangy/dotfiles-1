@@ -50,6 +50,8 @@ call plug#begin()
 
   Plug 'nvim-treesitter/nvim-treesitter'
 
+  Plug 'hoob3rt/lualine.nvim'
+
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
@@ -108,12 +110,12 @@ hi User2 guifg=#ff0000 guibg=#00ff00
 hi User3 guifg=#0000ff guibg=#ffffff
 hi User4 guifg=#00ff00 guibg=#222222
 hi User5 guifg=#888888 guibg=#222222
-hi StatusLine guifg=#0000ff guibg=#ffffff
-hi StatusLineNC guifg=#eeeeee guibg=#222222
-set statusline=\ %t\ \|\ 
-set statusline+=%f\ 
-set statusline+=%2*%m%*\ %3*%r%*\ %=\ 
-set statusline+=%{fugitive#head()}\ %{fugitive#statusline()}
+" hi StatusLine guifg=#0000ff guibg=#ffffff
+" hi StatusLineNC guifg=#eeeeee guibg=#222222
+" set statusline=\ %t\ \|\ 
+" set statusline+=%f\ 
+" set statusline+=%2*%m%*\ %3*%r%*\ %=\ 
+" set statusline+=%{fugitive#head()}\ %{fugitive#statusline()}
 
 lua << EOF
 local actions = require('telescope.actions')
@@ -314,6 +316,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     signs = true,
   }
 )
+EOF
+
+lua << EOF
+require('lualine').setup{}
 EOF
 
 highlight Normal ctermbg=black

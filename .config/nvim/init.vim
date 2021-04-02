@@ -18,8 +18,8 @@ augroup END
 
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
-nnoremap <leader>fx mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F
-
+"nnoremap <leader>fx mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F
+nnoremap <leader>fx :lua vim.lsp.buf.formatting_sync(nil, 1000)<cr>
 nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>
 
 nmap <C-j> <C-w>w
@@ -255,7 +255,7 @@ nvim_lsp.diagnosticls.setup{
 		linters = {
 			eslint = {
 				sourceName = "eslint",
-				command = "./node_modules/.bin/eslint_d",
+				command = "eslint_d",
 				rootPatterns = { ".eslintrc", ".eslintrc.json", ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.yaml", "package.json" },
 				debounce = 100,
 				args = {
@@ -271,16 +271,29 @@ nvim_lsp.diagnosticls.setup{
 					column = "column",
 					endLine = "endLine",
 					endColumn = "endColumn",
-					message = "${message} [${ruleId}]",
 					security = "severity",
+					message = "${message} [${ruleId}]",
 				},
 				securities = {
+					[1] = "warning",
 					[2] = "error",
-					[1] = "warning"
 				}
 			},
-		}
-	}
+		},
+    formatters = {
+      eslint_d = {
+        command = "eslint_d",
+        args = { "--stdin", "--fix-to-stdout", "--stdin-filename", "%filepath" },
+        isStdout = true,
+        doesWriteToFile = false,
+      }
+    },
+    formatFiletypes = {
+			javascript = "eslint_d",
+			typescript = "eslint_d",
+			vue = "eslint_d",
+    }
+  }
 }
 EOF
 
@@ -323,9 +336,10 @@ EOF
 lua << EOF
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
+    virtual_text = true,
     underline = true,
     signs = true,
+    update_in_insert = true,
   }
 )
 EOF

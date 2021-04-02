@@ -18,8 +18,6 @@ augroup END
 
 set shell=/bin/bash " zsh slow with vim-fugitive :Gstatus (on WSL)
 set omnifunc=v:lua.vim.lsp.omnifunc "felt cute may delete later <C-x><C-o> remember
-"nnoremap <leader>fx mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F
-nnoremap <leader>fx :lua vim.lsp.buf.formatting_sync(nil, 1000)<cr>
 nmap <leader>ll :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>
 
 nmap <C-j> <C-w>w
@@ -117,17 +115,6 @@ call plug#begin()
 call plug#end()
 
 colorscheme nvcode
-hi User1 guifg=#eea040 guibg=#222222
-hi User2 guifg=#ff0000 guibg=#00ff00
-hi User3 guifg=#0000ff guibg=#ffffff
-hi User4 guifg=#00ff00 guibg=#222222
-hi User5 guifg=#888888 guibg=#222222
-" hi StatusLine guifg=#0000ff guibg=#ffffff
-" hi StatusLineNC guifg=#eeeeee guibg=#222222
-" set statusline=\ %t\ \|\ 
-" set statusline+=%f\ 
-" set statusline+=%2*%m%*\ %3*%r%*\ %=\ 
-" set statusline+=%{fugitive#head()}\ %{fugitive#statusline()}
 
 lua << EOF
 local actions = require('telescope.actions')
@@ -138,7 +125,7 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<esc>"] = actions.close,
-        ["<C-q>"] = actions.send_to_qflist
+        ["<C-q>"] = actions.send_to_qflist,
       },
     },
     extensions = {
@@ -197,9 +184,9 @@ local on_attach = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<leader>fx", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<leader>fx", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
   
   -- Set autocommands conditional on server_capabilities

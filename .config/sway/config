@@ -36,6 +36,7 @@ input "type:keyboard" {
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
     bindsym $mod+Return exec $term
+    bindsym $mod+q exec exec qutebrowser
     bindsym $mod+Shift+q kill
     bindsym $mod+d exec $menu
 

@@ -15,9 +15,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 alias sai="sudo apt install"
 alias ni="npm install"
 alias nrs="npm run serve"
-alias vi="nvim"
-alias vim="nvim"
-alias oldvim="\vim"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
 # autojump

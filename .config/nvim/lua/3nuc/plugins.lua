@@ -1,29 +1,30 @@
 vim.cmd 'packadd paq-nvim'
 local paq = require('paq-nvim').paq
-  paq {'savq/paq-nvim', opt=true }
+paq {'savq/paq-nvim', opt=true }
+  --lsp
   paq 'neovim/nvim-lspconfig'
-  paq 'nvim-lua/completion-nvim'
-  paq 'tjdevries/nlua.nvim'
-  paq 'tjdevries/lsp_extensions.nvim'
-  paq 'nvim-treesitter/nvim-treesitter'
-  paq 'hoob3rt/lualine.nvim'
-  paq 'nvim-lua/popup.nvim'
-  paq 'nvim-lua/plenary.nvim'
-  paq 'kyazdani42/nvim-web-devicons'
-  paq { 'nvim-telescope/telescope-fzy-native.nvim', hook='git submodule update --init --recursive' } -- https://github.com/savq/paq-nvim/issues/6
-  paq 'nvim-telescope/telescope.nvim'
-  paq 'hrsh7th/nvim-compe'
-  paq 'hrsh7th/vim-vsnip'
   paq 'windwp/nvim-ts-autotag'
+
+  --telescope & deps
+  paq 'nvim-telescope/telescope.nvim'
+    paq 'nvim-lua/popup.nvim' -- dep from readme 1
+    paq 'nvim-lua/plenary.nvim' -- dep from readme 2
+    paq 'kyazdani42/nvim-web-devicons'
+    paq { 'nvim-telescope/telescope-fzy-native.nvim', hook='git submodule update --init --recursive' } -- https://github.com/savq/paq-nvim/issues/6
+
+  --highlighting
+  paq 'nvim-treesitter/nvim-treesitter'
+  --nvim misc
   paq 'lewis6991/gitsigns.nvim'
-  paq 'tpope/vim-fugitive'
-  paq 'kevinhwang91/rnvimr'
-  paq 'bkad/CamelCaseMotion'
-  paq 'tpope/vim-surround'
-  paq 'jiangmiao/auto-pairs'
-  paq 'christianchiarulli/nvcode-color-schemes.vim'
+  paq 'hoob3rt/lualine.nvim'
+  paq 'hrsh7th/nvim-compe'
   paq 'Yggdroot/indentLine'
   paq 'lukas-reineke/indent-blankline.nvim'
+  --generic misc
+  paq 'tpope/vim-fugitive'
+  paq 'tpope/vim-surround'
+  paq 'windwp/nvim-autopairs' --autoinsert brackets
+  paq 'kevinhwang91/rnvimr'  --file explorer
 
 
 local actions = require('telescope.actions')
@@ -63,7 +64,6 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
 
-  require'completion'.on_attach()
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
@@ -233,3 +233,5 @@ require('lualine').setup{
      lualine_z = {}
   }
 }
+
+require('nvim-autopairs').setup({})

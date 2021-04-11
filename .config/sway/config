@@ -5,7 +5,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
-set $menu wofi --show run
+set $menu wofi
 
 set $laptop LVDS-1
 bindswitch --reload --locked lid:on output $laptop disable
@@ -147,3 +147,5 @@ bar {
 }
 
 include /etc/sway/config.d/*
+include ./shotman.conf
+exec_always "systemctl --user import-environment; systemctl --user start sway-session.target""

@@ -88,6 +88,7 @@ local on_attach = function(client, bufnr)
 
   
   -- Set autocommands conditional on server_capabilities
+  --[[
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
       hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
@@ -98,18 +99,12 @@ local on_attach = function(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]], false)
-  end
+    ]]--, false)
+  --]]
+  --end
 end
 
-
--- Use a loop to conveniently both setup defined servers 
--- and map buffer local keybindings when the language server attaches
-local servers = { "tsserver" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
-end
-
+nvim_lsp.tsserver.setup{}
 nvim_lsp.pyls.setup{}
 nvim_lsp.vuels.setup{ 
   on_attach = on_attach,
@@ -130,41 +125,41 @@ nvim_lsp.vuels.setup{
 nvim_lsp.cssls.setup{}
 
 nvim_lsp.diagnosticls.setup{
-	filetypes = { "javascript", "typescript", "vue" },
-	init_options = {
-		filetypes = {
-			javascript = "eslint",
-			typescript = "eslint",
-			vue = "eslint",
-		},
-		linters = {
-			eslint = {
-				sourceName = "eslint",
-				command = "eslint_d",
-				rootPatterns = { ".eslintrc", ".eslintrc.json", ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.yaml", "package.json" },
-				debounce = 100,
-				args = {
-					"--stdin",
-					"--stdin-filename",
-					"%filepath",
-					"--format",
-					"json",
-				},
-				parseJson = {
-					errorsRoot = "[0].messages",
-					line = "line",
-					column = "column",
-					endLine = "endLine",
-					endColumn = "endColumn",
-					security = "severity",
-					message = "${message} [${ruleId}]",
-				},
-				securities = {
-					[1] = "warning",
-					[2] = "error",
-				}
-			},
-		},
+  filetypes = { "javascript", "typescript", "vue" },
+  init_options = {
+    filetypes = {
+      javascript = "eslint",
+      typescript = "eslint",
+      vue = "eslint",
+    },
+    linters = {
+      eslint = {
+        sourceName = "eslint",
+        command = "eslint_d",
+        rootPatterns = { ".eslintrc", ".eslintrc.json", ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.yaml", "package.json" },
+        debounce = 100,
+        args = {
+          "--stdin",
+          "--stdin-filename",
+          "%filepath",
+          "--format",
+          "json",
+        },
+        parseJson = {
+          errorsRoot = "[0].messages",
+          line = "line",
+          column = "column",
+          endLine = "endLine",
+          endColumn = "endColumn",
+          security = "severity",
+          message = "${message} [${ruleId}]",
+        },
+        securities = {
+          ["1"] = "warning",
+          ["2"] = "error",
+        }
+      },
+    },
     formatters = {
       eslint_d = {
         command = "eslint_d",
@@ -174,9 +169,9 @@ nvim_lsp.diagnosticls.setup{
       }
     },
     formatFiletypes = {
-			javascript = "eslint_d",
-			typescript = "eslint_d",
-			vue = "eslint_d",
+      javascript = "eslint_d",
+      typescript = "eslint_d",
+      vue = "eslint_d",
     }
   }
 }
@@ -199,7 +194,6 @@ require'compe'.setup {
     path = true;
     buffer = true;
     calc = true;
-    vsnip = true;
     nvim_lsp = true;
     nvim_lua = true;
     spell = true;
@@ -209,7 +203,8 @@ require'compe'.setup {
   };
 }
 
-require('gitsigns').setup()
+--errors out in monorepo
+--require('gitsigns').setup()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

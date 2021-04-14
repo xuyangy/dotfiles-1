@@ -14,6 +14,7 @@ paq {'savq/paq-nvim', opt=true }
 
   --highlighting
   paq 'nvim-treesitter/nvim-treesitter'
+  paq 'ChristianChiarulli/nvcode-color-schemes.vim'
   --nvim misc
   paq 'lewis6991/gitsigns.nvim'
   paq 'hoob3rt/lualine.nvim'

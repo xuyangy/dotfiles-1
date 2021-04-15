@@ -11,7 +11,7 @@ vim.api.nvim_set_keymap('n','<up>', ':cp<cr>', options)
 
 
 vim.api.nvim_set_keymap('n','<leader>ll', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>', options)
-vim.api.nvim_set_keymap('t','<esc>', '<C-\\><C-N>', options)
+--vim.api.nvim_set_keymap('t','<esc>', '<C-\\><C-N>', options)
 vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope git_branches<cr>', options)
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope git_files<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)

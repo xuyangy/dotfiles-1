@@ -10,7 +10,8 @@ paq {'savq/paq-nvim', opt=true }
     paq 'nvim-lua/popup.nvim' -- dep from readme 1
     paq 'nvim-lua/plenary.nvim' -- dep from readme 2
     paq 'kyazdani42/nvim-web-devicons'
-    paq { 'nvim-telescope/telescope-fzy-native.nvim', hook='git submodule update --init --recursive' } -- https://github.com/savq/paq-nvim/issues/6
+    --paq { 'nvim-telescope/telescope-fzy-native.nvim', hook='git submodule update --init --recursive' } -- https://github.com/savq/paq-nvim/issues/6
+    paq { 'nvim-telescope/telescope-fzf-native.nvim', hook='make' }
 
   --highlighting
   paq 'nvim-treesitter/nvim-treesitter'
@@ -41,15 +42,15 @@ telescope.setup{
       },
     },
     extensions = {
-      fzy_native = {
+      fzy = {
         override_generic_sorter = false,
         override_file_sorter = true,
       }
     }
   }
 }
+telescope.load_extension('fzf')
 
-telescope.load_extension('fzy_native')
 require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,

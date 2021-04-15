@@ -11,10 +11,11 @@ paq {'savq/paq-nvim', opt=true }
     paq 'nvim-lua/plenary.nvim' -- dep from readme 2
     paq 'kyazdani42/nvim-web-devicons'
     --paq { 'nvim-telescope/telescope-fzy-native.nvim', hook='git submodule update --init --recursive' } -- https://github.com/savq/paq-nvim/issues/6
-    paq { 'nvim-telescope/telescope-fzf-native.nvim', hook='make' }
+    paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
 
   --highlighting
   paq 'nvim-treesitter/nvim-treesitter'
+  paq 'nvim-treesitter/playground'
   paq 'ChristianChiarulli/nvcode-color-schemes.vim'
   --nvim misc
   paq 'lewis6991/gitsigns.nvim'
@@ -33,7 +34,6 @@ local actions = require('telescope.actions')
 local telescope = require('telescope')
 telescope.setup{
   defaults = {
-    file_sorter = require('telescope.sorters').get_fzy_sorter,
     color_devicons = true,
     mappings = {
       i = {
@@ -41,15 +41,17 @@ telescope.setup{
         ["<C-q>"] = actions.send_to_qflist,
       },
     },
+    --[[
     extensions = {
       fzy = {
         override_generic_sorter = false,
         override_file_sorter = true,
       }
     }
+    ]]
   }
 }
-telescope.load_extension('fzf')
+--telescope.load_extension('fzf')
 
 require'nvim-treesitter.configs'.setup {
   autotag = {
@@ -58,6 +60,27 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = { "vue", "typescript", "javascript", "scss", "css", "html" },
   highlight = {
     enable = true,
+  },
+  indent = {
+    enable = true
+  },
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
   }
 }
 local nvim_lsp = require('lspconfig')

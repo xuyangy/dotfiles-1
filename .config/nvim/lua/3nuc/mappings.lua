@@ -27,7 +27,7 @@ vim.api.nvim_set_keymap( 'n', '<leader>fF', '<cmd>Telescope find_files<cr>', opt
 vim.api.nvim_set_keymap( 'n', '<leader>fS', '<cmd>Telescope lsp_workspace_symbols<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
-vim.api.nvim_set_keymap( 'i', '<silent><expr> <C-Space>', 'compe#complete()', options)
+vim.api.nvim_set_keymap( 'i', '<C-Space>', "compe#complete()", {noremap = true, expr = true, silent = true})
 vim.api.nvim_set_keymap( 'i', '<silent><expr> <CR>', 'compe#confirm(\'<CR>\')', options)
 vim.api.nvim_set_keymap( 'i', '<silent><expr> <C-e>', 'compe#close(\'<C-e>\')', options)
 vim.api.nvim_set_keymap( 'n', '<leader>s', ':G<CR>', options)

@@ -57,7 +57,7 @@ require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
   },
-  ensure_installed = { "vue", "typescript", "javascript", "scss", "css", "html" },
+  ensure_installed = { "vue", "scss", "typescript", "javascript", "html"},
   highlight = {
     enable = true,
   },

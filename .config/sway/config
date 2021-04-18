@@ -146,6 +146,8 @@ bar {
     }
 }
 
+bindsym $mod+Shift+s exec "grimshot copy area"
+
 include /etc/sway/config.d/*
 include ./shotman.conf
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target""

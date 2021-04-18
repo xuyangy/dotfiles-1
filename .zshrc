@@ -1,14 +1,14 @@
-plugins=(git safe-paste vi-mode autojump npm)
 ZSH="/usr/share/oh-my-zsh/"
-ZSH_THEME="cypher"
+ZSH_THEME="flazz"
+plugins=(git safe-paste zsh-vi-mode autojump npm)
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
 
 export NVM_DIR=~/.nvm
 source /usr/share/nvm/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-KEYTIMEOUT=10
-# Uncomment the following line to display red dots whilst waiting for completion.
+KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
@@ -21,24 +21,6 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 [[ -s /home/artur/.autojump/etc/profile.d/autojump.sh ]] && source /home/artur/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
-# https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
-# if command -v tmux >/dev/null 2>&1 && [ "${DISPLAY}" ]; then
-    # if not inside a tmux session, and if no session is started, start a new session
-    # [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
-#fi
 
+bindkey -v
 
-function vi_mode_prompt_info() {
-  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
-}
-
-# https://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/#mode-indicator
-# define right prompt, regardless of whether the theme defined it
-RPS1='$(vi_mode_prompt_info)'
-RPS2=$RPS1
-
-# https://stackoverflow.com/a/49079378/10706046
-function pip-install-save { 
-    pip install $1 && pip freeze | grep $1 >> requirements.txt
-}
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

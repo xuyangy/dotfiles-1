@@ -13,15 +13,7 @@ vim.api.nvim_set_keymap('n','<up>', ':cp<cr>', options)
 vim.api.nvim_set_keymap('n','<leader>ll', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>', options)
 --vim.api.nvim_set_keymap('t','<esc>', '<C-\\><C-N>', options)
 
-function custom_git_branches()
-  local actions = require'telescope.actions'
-  require'telescope.builtin'.git_branches({attach_mappings = function(_, map)
-    actions.select_default:replace(actions.git_track_branch)
-      return true
-    end
-  })
-end
-vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>lua custom_git_branches()<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope git_branches<cr>', options)
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope git_files<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>fs', '<cmd>Telescope lsp_document_symbols<cr>', options)

@@ -28,6 +28,9 @@ paq {'savq/paq-nvim', opt=true }
   paq 'tpope/vim-surround'
   paq 'windwp/nvim-autopairs' --autoinsert brackets
   paq 'kevinhwang91/rnvimr'  --file explorer
+    vim.g.rnvimr_action = {
+      ["<CR>"] = 'NvimEdit drop'
+    }
 
 
 local actions = require('telescope.actions')
@@ -51,6 +54,8 @@ telescope.setup{
     ]]
   }
 }
+
+
 --telescope.load_extension('fzf')
 
 require'nvim-treesitter.configs'.setup {
@@ -251,6 +256,10 @@ require('lualine').setup{
      lualine_x = {},
      lualine_y = {'branch', 'diff'},
      lualine_z = {}
+  },
+  inactive_sections = {
+
+     lualine_y = {'branch', 'diff'},
   }
 }
 

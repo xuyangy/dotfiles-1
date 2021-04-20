@@ -34,29 +34,25 @@ paq {'savq/paq-nvim', opt=true }
 
 
 local actions = require('telescope.actions')
-local telescope = require('telescope')
-telescope.setup{
+
+require('telescope').setup{
   defaults = {
-    color_devicons = true,
     mappings = {
       i = {
         ["<esc>"] = actions.close,
         ["<C-q>"] = actions.send_to_qflist,
       },
     },
-    --[[
-    extensions = {
-      fzy = {
-        override_generic_sorter = false,
-        override_file_sorter = true,
-      }
+  },
+  extensions = {
+    fzf = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
     }
-    ]]
   }
 }
 
-
---telescope.load_extension('fzf')
+require('telescope').load_extension('fzf')
 
 require'nvim-treesitter.configs'.setup {
   autotag = {

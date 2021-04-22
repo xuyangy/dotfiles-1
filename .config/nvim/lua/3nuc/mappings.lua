@@ -1,8 +1,10 @@
 local options = { noremap = true }
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>w', options)
 
-vim.api.nvim_set_keymap('n','<C-j>', '<C-w>w', options)
-vim.api.nvim_set_keymap('n','<C-k>', '<C-w>W', options)
+vim.api.nvim_set_keymap('n','<C-j>', '<C-w><C-j>', options)
+vim.api.nvim_set_keymap('n','<C-k>', '<C-w><C-k>', options)
+vim.api.nvim_set_keymap('n','<C-h>', '<C-w><C-h>', options)
+vim.api.nvim_set_keymap('n','<C-l>', '<C-w><C-l>', options)
 --vim.api.nvim_set_keymap('n','<leader>q', ':q<cr>', options)
 vim.api.nvim_set_keymap('n','<leader>w', ':w<cr>', options)
 vim.api.nvim_set_keymap('n','<leader>ve', ':e $MYVIMRC<cr>', options)

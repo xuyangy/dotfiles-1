@@ -82,6 +82,11 @@ require'nvim-treesitter.configs'.setup {
       goto_node = '<cr>',
       show_help = '?',
     },
+  },
+  query_linter = {
+    enable = true,
+    use_virtual_text = true,
+    lint_events = {"BufWrite", "CursorHold"}
   }
 }
 local nvim_lsp = require('lspconfig')

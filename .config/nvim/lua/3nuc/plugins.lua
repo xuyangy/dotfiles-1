@@ -222,15 +222,15 @@ require'compe'.setup {
   documentation = true;
 
   source = {
+    nvim_lsp = {priority = 1000};
     path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
+    buffer = {priority = 10};
     nvim_lua = true;
     spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
+    tags = false;
+    snippets_nvim = true; -- doesnt work because no snippet plugin
+    treesitter = false;
+    calc = false;
   };
 }
 

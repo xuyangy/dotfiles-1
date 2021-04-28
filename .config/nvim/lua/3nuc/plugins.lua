@@ -16,6 +16,7 @@ paq {'savq/paq-nvim', opt=true }
   --highlighting
   paq 'nvim-treesitter/nvim-treesitter'
   paq 'nvim-treesitter/playground'
+  paq 'nvim-treesitter/nvim-treesitter-textobjects'
   paq 'ChristianChiarulli/nvcode-color-schemes.vim'
   --nvim misc
   paq 'lewis6991/gitsigns.nvim'
@@ -87,6 +88,14 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     use_virtual_text = true,
     lint_events = {"BufWrite", "CursorHold"}
+  },
+  textobjects = {
+    move = {
+      enable = true,
+      goto_next_start = {
+        ["]a"] = "parameter.outer"
+      }
+    }
   }
 }
 local nvim_lsp = require('lspconfig')

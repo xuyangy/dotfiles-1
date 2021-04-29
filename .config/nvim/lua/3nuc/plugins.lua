@@ -93,14 +93,14 @@ require'nvim-treesitter.configs'.setup {
     move = {
       enable = true,
       goto_next_start = {
-        ["]t"] = "function",
-        ["]k"] = "call",
-        ["]v"] = "parameter",
+        ["]t"] = "function.outer",
+        ["]k"] = "call.outer",
+        ["]v"] = "parameter.outer",
       },
       goto_next_previous = {
-        ["[t"] = "function",
-        ["[k"] = "call",
-        ["[v"] = "parameter",
+        ["[t"] = "function.outer",
+        ["[k"] = "call.outer",
+        ["[v"] = "parameter.outer",
       }
     }
   }

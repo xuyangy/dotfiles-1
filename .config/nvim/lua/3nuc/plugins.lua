@@ -16,7 +16,7 @@ paq {'savq/paq-nvim', opt=true }
   --highlighting
   paq 'nvim-treesitter/nvim-treesitter'
   paq 'nvim-treesitter/playground'
-  paq 'nvim-treesitter/nvim-treesitter-textobjects'
+  paq '3nuc/nvim-treesitter-textobjects'
   paq 'ChristianChiarulli/nvcode-color-schemes.vim'
   --nvim misc
   paq 'lewis6991/gitsigns.nvim'
@@ -93,7 +93,14 @@ require'nvim-treesitter.configs'.setup {
     move = {
       enable = true,
       goto_next_start = {
-        ["]a"] = "parameter.outer"
+        ["]t"] = "function",
+        ["]k"] = "call",
+        ["]v"] = "parameter",
+      },
+      goto_next_previous = {
+        ["[t"] = "function",
+        ["[k"] = "call",
+        ["[v"] = "parameter",
       }
     }
   }

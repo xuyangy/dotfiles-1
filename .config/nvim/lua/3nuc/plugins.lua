@@ -97,7 +97,7 @@ require'nvim-treesitter.configs'.setup {
         ["]k"] = "call.outer",
         ["]v"] = "parameter.outer",
       },
-      goto_next_previous = {
+      goto_previous_start = {
         ["[t"] = "function.outer",
         ["[k"] = "call.outer",
         ["[v"] = "parameter.outer",

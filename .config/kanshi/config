@@ -1,0 +1,17 @@
+profile docked {
+	output LVDS-1 disable
+	output DP-2 enable mode 2560x1440 position 0,0 
+}
+
+profile docked_stupid {
+	output DP-2 enable mode 2560x1440 position 0,0 
+}
+
+profile docked_mega_tryhard {
+	output LVDS-1 enable
+	output DP-2 enable mode 2560x1440 position 0,0 
+}
+
+profile undocked {
+	output LVDS-1 enable
+}

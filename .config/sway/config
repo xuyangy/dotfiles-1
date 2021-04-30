@@ -8,14 +8,16 @@ set $term alacritty
 set $menu wofi
 
 set $laptop LVDS-1
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
+bindswitch --reload --locked lid:on exec kanshictl switch docked_mega_tryhard
+bindswitch --reload --locked lid:off exec kanshictl switch docked
 output LVDS-1 {
   resolution 1366x768
+  enable
 }
 output DP-2 {
   position 0,0
   resolution 2560x1440
+  enable
 }
 output * bg #3f3f3f solid_color
 

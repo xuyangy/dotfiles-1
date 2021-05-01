@@ -22,8 +22,7 @@ paq {'savq/paq-nvim', opt=true }
   paq 'lewis6991/gitsigns.nvim'
   paq 'hoob3rt/lualine.nvim'
   paq 'hrsh7th/nvim-compe'
-  paq 'Yggdroot/indentLine'
-  paq 'lukas-reineke/indent-blankline.nvim'
+  paq { 'lukas-reineke/indent-blankline.nvim', branch='lua' }
   --generic misc
   paq 'tpope/vim-fugitive'
   paq 'tpope/vim-surround'

@@ -26,6 +26,7 @@ paq {'savq/paq-nvim', opt=true }
   --generic misc
   paq 'tpope/vim-fugitive'
   paq 'tpope/vim-surround'
+  paq 'lambdalisue/suda.vim' --:SudaWrite
   paq 'windwp/nvim-autopairs' --autoinsert brackets
   paq 'kevinhwang91/rnvimr'  --file explorer
     vim.g.rnvimr_action = {

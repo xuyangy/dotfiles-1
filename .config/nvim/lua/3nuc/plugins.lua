@@ -59,7 +59,7 @@ require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
   },
-  ensure_installed = { "vue", "scss", "typescript", "javascript", "html"},
+  ensure_installed = { "vue", "scss", "typescript", "javascript", "html", "lua"},
   highlight = {
     enable = true,
   },
@@ -158,8 +158,15 @@ nvim_lsp.vuels.setup{
   init_options = {
     config = {
       vetur = {
+        completion = {
+          autoImport = true,
+          tagCasing = "initial"
+        },
+        languageFeatures = {
+          codeActions = true,
+        },
         validation = {
-          templateProps = true
+          templateProps = false,
         },
         experimental = {
           templateInterpolationService = true

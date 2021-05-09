@@ -32,7 +32,7 @@ vim.api.nvim_set_keymap( 'n', '<leader>fS', '<cmd>Telescope lsp_workspace_symbol
 vim.api.nvim_set_keymap( 'n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
 vim.api.nvim_set_keymap( 'i', '<C-Space>', "compe#complete()", {noremap = true, expr = true, silent = true})
-vim.api.nvim_set_keymap( 'i', '<silent><expr> <CR>', 'compe#confirm(\'<CR>\')', options)
+vim.api.nvim_set_keymap( 'i', '<CR>', [[compe#confirm('<CR>')]], {noremap = true, expr = true, silent = true})
 vim.api.nvim_set_keymap( 'i', '<silent><expr> <C-e>', 'compe#close(\'<C-e>\')', options)
 vim.api.nvim_set_keymap( 'n', '<leader>s', ':G<CR>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>ggp', ':G -c push.default=current push<CR>' , options)

@@ -1,10 +1,10 @@
 ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="flazz"
-plugins=(git safe-paste fasd npm)
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+plugins=(zsh-nvm git safe-paste fasd npm)
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"

@@ -1,8 +1,5 @@
 ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="flazz"
-source /usr/share/doc/ranger/examples/shell_automatic_cd.sh
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
 plugins=(git safe-paste fasd npm)
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
@@ -13,8 +10,6 @@ KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-alias sai="sudo apt install"
-alias ni="npm install"
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
@@ -30,5 +25,4 @@ ranger_cd() {
   fi
   rm -f -- "$temp_file"
 }
-
 bindkey -s '^o' "ranger_cd\n"

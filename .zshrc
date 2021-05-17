@@ -1,3 +1,4 @@
+VISUAL=nvim
 ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="flazz"
 export NVM_LAZY_LOAD=true
@@ -12,6 +13,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
+alias vi="nvim"
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init

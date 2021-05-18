@@ -1,3 +1,4 @@
+VISUAL=nvim
 ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="flazz"
 export NVM_LAZY_LOAD=true
@@ -17,6 +18,7 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias calculator=bc
 function gcmsg2 { git commit -m "$*"; }
 alias gcmsg3=gcmsg
+alias vi="nvim"
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init

@@ -10,8 +10,13 @@ KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+alias f="fasd -f"
+alias v="f -e nvim"
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
+alias calculator=bc
+function gcmsg2 { git commit -m "$*"; }
+alias gcmsg3=gcmsg
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init

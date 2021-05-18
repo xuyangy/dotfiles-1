@@ -16,7 +16,7 @@ paq {'savq/paq-nvim', opt=true }
   --highlighting
   paq 'nvim-treesitter/nvim-treesitter'
   paq 'nvim-treesitter/playground'
-  paq '3nuc/nvim-treesitter-textobjects'
+  paq 'nvim-treesitter/nvim-treesitter-textobjects'
   paq 'ChristianChiarulli/nvcode-color-schemes.vim'
   --nvim misc
   paq 'lewis6991/gitsigns.nvim'
@@ -276,7 +276,7 @@ require('lualine').setup{
   sections = {
      lualine_a = {'mode'},
      lualine_b = {},
-     lualine_c = {'filename',{'diagnostics', sources = {'nvim_lsp'}, color_error = "#ff0000"},'location', 'progress'},
+     lualine_c = {{'filename', path = 1},{'diagnostics', sources = {'nvim_lsp'}, color_error = "#ff0000"},'location', 'progress'},
      lualine_x = {},
      lualine_y = {'branch', 'diff'},
      lualine_z = {}
@@ -288,3 +288,6 @@ require('lualine').setup{
 }
 
 require('nvim-autopairs').setup({})
+
+
+require'lspinstall'.setup() -- important

@@ -1,8 +1,8 @@
 vim.cmd('colorscheme nvcode')
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
-vim.cmd('highlight Normal ctermbg=black')
-vim.cmd('highlight Normal guibg=black')
+--vim.cmd('highlight Normal ctermbg=black')
+--vim.cmd('highlight Normal guibg=black')
 
 vim.o.shell = '/bin/bash' -- zsh starts too slow for fugitive, but also term:// starts bash instead of zsh
 vim.o.termguicolors= true

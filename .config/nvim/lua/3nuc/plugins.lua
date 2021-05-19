@@ -22,6 +22,7 @@ paq {'savq/paq-nvim', opt=true }
   paq 'lewis6991/gitsigns.nvim'
   paq 'hoob3rt/lualine.nvim'
   paq 'hrsh7th/nvim-compe'
+    paq 'onsails/lspkind-nvim'
   paq { 'lukas-reineke/indent-blankline.nvim', branch='lua' }
   --generic misc
   paq 'tpope/vim-fugitive'
@@ -247,7 +248,7 @@ require'compe'.setup {
   source = {
     nvim_lsp = {priority = 1000};
     path = true;
-    buffer = {priority = 10};
+    buffer = {priority = 10, kind = '🗑'};
     nvim_lua = true;
     spell = true;
     tags = false;
@@ -256,6 +257,8 @@ require'compe'.setup {
     calc = false;
   };
 }
+
+require('lspkind').init()
 
 --errors out in monorepo
 --require('gitsigns').setup()

@@ -1,8 +1,8 @@
-nmap <buffer> <silent> gg ggj
-nmap <buffer> <silent> <nowait> j <C-n>
-nmap <buffer> <silent> <nowait> k <C-p>
-" h to stage/reset
-nmap <buffer> <silent> <nowait> h -
+nnoremap <buffer> <silent> <nowait> J <C-n>
+nnoremap <buffer> <silent> <nowait> K <C-p>
+nmap <buffer> <silent> <nowait> l -
+nmap <buffer> <silent> <nowait> h =
+
 
 augroup ft_gitcommit_status
 	autocmd BufEnter <buffer> call <SID>select_first()

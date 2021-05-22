@@ -1,9 +1,7 @@
 VISUAL=nvim
 ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="flazz"
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
-plugins=(zsh-nvm zsh-vi-mode git safe-paste fasd npm)
+plugins=(zsh-vi-mode git safe-paste fasd npm)
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
 

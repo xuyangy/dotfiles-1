@@ -1,4 +1,4 @@
-vim.cmd('colorscheme nvcode')
+vim.cmd('colorscheme tokyonight')
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 --vim.cmd('highlight Normal ctermbg=black')

@@ -1,5 +1,8 @@
-nnoremap <buffer> <silent> <nowait> J <C-n>
-nnoremap <buffer> <silent> <nowait> K <C-p>
+nmap gg ggj
+nmap <buffer> <silent> <nowait> j <C-n>
+nmap <buffer> <silent> <nowait> k <C-p>
+nnoremap <buffer> <silent> <nowait> J j
+nnoremap <buffer> <silent> <nowait> K k
 nmap <buffer> <silent> <nowait> l -
 nmap <buffer> <silent> <nowait> h =
 

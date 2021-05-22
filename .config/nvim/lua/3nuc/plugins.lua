@@ -17,7 +17,7 @@ paq {'savq/paq-nvim', opt=true }
   paq 'nvim-treesitter/nvim-treesitter'
   paq 'nvim-treesitter/playground'
   paq 'nvim-treesitter/nvim-treesitter-textobjects'
-  paq 'ChristianChiarulli/nvcode-color-schemes.vim'
+  paq 'folke/tokyonight.nvim'
   --nvim misc
   paq 'lewis6991/gitsigns.nvim'
   paq 'hoob3rt/lualine.nvim'

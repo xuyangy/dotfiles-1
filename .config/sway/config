@@ -4,11 +4,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term kitty
 set $menu wofi
 
 set $laptop LVDS-1
-bindswitch --reload --locked lid:on exec kanshictl switch docked_mega_tryhard
+bindswitch --reload --locked lid:on exec kanshictl switch undocked
 bindswitch --reload --locked lid:off exec kanshictl switch docked
 output LVDS-1 {
   resolution 1366x768
@@ -143,14 +143,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    position top
-    status_command ~/.config/sway/status.sh
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    #position top
+    #status_command ~/.config/sway/status.sh
+    #colors {
+    #    statusline #ffffff
+    #    background #323232
+    #    inactive_workspace #32323200 #32323200 #5c5c5c
+    #}
+    swaybar_command waybar
 }
 
 bindsym $mod+Shift+s exec "grimshot copy area"

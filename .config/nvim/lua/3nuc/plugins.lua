@@ -31,8 +31,15 @@ paq {'savq/paq-nvim', opt=true }
   paq 'windwp/nvim-autopairs' --autoinsert brackets
   paq 'kevinhwang91/rnvimr'  --file explorer
     vim.g.rnvimr_action = {
-      ["<CR>"] = 'NvimEdit drop'
+      ["<CR>"] = 'NvimEdit drop',
+      ['<C-t>'] = 'NvimEdit tabedit',      
+      ['<C-x>'] = 'NvimEdit split',
+      ['<C-v>'] = 'NvimEdit vsplit',
+      ['<C-o>'] = 'NvimEdit drop',
+      ['gw'] = 'JumpNvimCwd',
+      ['yw'] = 'EmitRangerCwd'
     }
+    vim.g.rnvimr_enable_ex = 1
 
 
 local actions = require('telescope.actions')

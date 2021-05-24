@@ -4,13 +4,13 @@ paq {'savq/paq-nvim', opt=true }
   --lsp
   paq 'neovim/nvim-lspconfig'
   paq 'windwp/nvim-ts-autotag'
+  paq 'windwp/nvim-autopairs' --autoinsert brackets
 
   --telescope & deps
   paq 'nvim-telescope/telescope.nvim'
     paq 'nvim-lua/popup.nvim' -- dep from readme 1
     paq 'nvim-lua/plenary.nvim' -- dep from readme 2
     paq 'kyazdani42/nvim-web-devicons'
-    --paq { 'nvim-telescope/telescope-fzy-native.nvim', hook='git submodule update --init --recursive' } -- https://github.com/savq/paq-nvim/issues/6
     paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
 
   --highlighting
@@ -19,7 +19,6 @@ paq {'savq/paq-nvim', opt=true }
   paq 'nvim-treesitter/nvim-treesitter-textobjects'
   paq 'folke/tokyonight.nvim'
   --nvim misc
-  paq 'lewis6991/gitsigns.nvim'
   paq 'hoob3rt/lualine.nvim'
   paq 'hrsh7th/nvim-compe'
     paq 'onsails/lspkind-nvim'
@@ -28,7 +27,6 @@ paq {'savq/paq-nvim', opt=true }
   paq 'tpope/vim-fugitive'
   paq 'tpope/vim-surround'
   paq 'lambdalisue/suda.vim' --:SudaWrite
-  paq 'windwp/nvim-autopairs' --autoinsert brackets
   paq 'kevinhwang91/rnvimr'  --file explorer
     vim.g.rnvimr_action = {
       ["<CR>"] = 'NvimEdit drop',
@@ -268,8 +266,6 @@ require'compe'.setup {
 
 require('lspkind').init()
 
---errors out in monorepo
---require('gitsigns').setup()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

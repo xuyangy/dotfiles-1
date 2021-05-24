@@ -39,7 +39,8 @@ paq {'savq/paq-nvim', opt=true }
       ['gw'] = 'JumpNvimCwd',
       ['yw'] = 'EmitRangerCwd'
     }
-    vim.g.rnvimr_enable_ex = 1
+   vim.g.rnvimr_enable_ex = 1
+   vim.g.rnvimr_enable_picker = 1
 
 
 local actions = require('telescope.actions')

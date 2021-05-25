@@ -12,7 +12,9 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 alias v="f -e nvim"
-alias dv="d -e nvim"
+function dv() {
+  fasd_cd -d "$1" && nvim
+}
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias calculator=bc

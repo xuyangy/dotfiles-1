@@ -11,6 +11,7 @@ vim.api.nvim_set_keymap('n','<leader>w', ':w<cr>', options)
 vim.api.nvim_set_keymap('n','<leader>ve', ':e $MYVIMRC<cr>', options)
 vim.api.nvim_set_keymap('n','<down>', ':cn<cr>', options)
 vim.api.nvim_set_keymap('n','<up>', ':cp<cr>', options)
+vim.api.nvim_set_keymap('n','yfp', ':let @+=@%<cr>', options) -- copy current file path to clipboard
 
 
 vim.api.nvim_set_keymap('n','<leader>ll', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>', options)

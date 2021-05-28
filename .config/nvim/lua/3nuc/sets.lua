@@ -9,6 +9,7 @@ vim.o.termguicolors= true
 vim.o.ruler=         true
 vim.o.wildmenu=      true
 vim.o.autoread=      true
+vim.bo.autoread=     true
 vim.o.ignorecase=    true
 vim.o.smartcase=     true
 vim.o.hidden=        true

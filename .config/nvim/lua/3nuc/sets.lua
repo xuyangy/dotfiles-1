@@ -4,29 +4,21 @@ vim.cmd('filetype plugin indent on')
 --vim.cmd('highlight Normal ctermbg=black')
 --vim.cmd('highlight Normal guibg=black')
 
-vim.o.shell = '/bin/bash' -- zsh starts too slow for fugitive, but also term:// starts bash instead of zsh
-vim.o.termguicolors= true
-vim.o.ruler=         true
-vim.o.wildmenu=      true
-vim.o.autoread=      true
-vim.bo.autoread=     true
-vim.o.ignorecase=    true
-vim.o.smartcase=     true
-vim.o.hidden=        true
-vim.o.completeopt=  'menuone,noinsert,noselect'
+vim.opt.shell = '/bin/bash' -- zsh starts too slow for fugitive, but also term:// starts bash instead of zsh
+vim.opt.termguicolors= true
+vim.opt.ruler=         true
+vim.opt.wildmenu=      true
+vim.opt.autoread=      true
+vim.opt.ignorecase=    true
+vim.opt.smartcase=     true
+vim.opt.hidden=        true
+vim.opt.completeopt=  'menuone,noinsert,noselect'
 
-vim.wo.number=          true
-vim.wo.relativenumber=  true
+vim.opt.number=          true
+vim.opt.relativenumber=  true
 
 --vim.bo.omnifunc=vim.lsp.omnifunc -- its rekt
-vim.o.tabstop=    2
-vim.bo.tabstop=    2
-
-vim.o.shiftwidth= 2
-vim.bo.shiftwidth= 2
-
-vim.o.expandtab=  true
-vim.bo.expandtab=  true
-
-vim.o.swapfile = false
-vim.bo.swapfile = false
+vim.opt.tabstop=    2
+vim.opt.shiftwidth= 2
+vim.opt.expandtab=  true
+vim.opt.swapfile = false

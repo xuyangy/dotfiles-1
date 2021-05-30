@@ -69,6 +69,7 @@ lib32-mesa
 lib32-openal
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
+libqalculate
 libreoffice-fresh
 libtool
 libva-intel-driver
@@ -104,6 +105,7 @@ openal
 openssh
 optipng
 otf-fira-code-symbol
+otf-openmoji
 pacmanfile
 pacutils
 patch

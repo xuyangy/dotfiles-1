@@ -25,6 +25,7 @@ paq {'savq/paq-nvim', opt=true }
   paq { 'lukas-reineke/indent-blankline.nvim', branch='lua' }
   --generic misc
   paq 'tpope/vim-fugitive'
+    paq 'tpope/vim-dispatch'
   paq 'tpope/vim-surround'
   paq 'lambdalisue/suda.vim' --:SudaWrite
   paq 'kevinhwang91/rnvimr'  --file explorer
@@ -39,6 +40,7 @@ paq {'savq/paq-nvim', opt=true }
     }
    vim.g.rnvimr_enable_ex = 1
    vim.g.rnvimr_enable_picker = 1
+
 
 
 local actions = require('telescope.actions')
@@ -136,7 +138,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   --for some reason the diagnosticls formatter works only for vue files, see maps.lua for manual format
-  --buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<leader>x", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   
   -- Set autocommands conditional on server_capabilities

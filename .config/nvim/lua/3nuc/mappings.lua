@@ -33,8 +33,8 @@ vim.api.nvim_set_keymap( 'n', '<leader>td', '<cmd>Telescope lsp_document_diagnos
 vim.api.nvim_set_keymap( 'n', '<leader>tD', '<cmd>Telescope lsp_workspace_diagnostics<cr>', options)
 
 
-vim.api.nvim_set_keymap( 'n', '<leader>ggp', ':Dispatch git push<CR>' , options)
-vim.api.nvim_set_keymap( 'n', '<leader>gL', ':Dispatch git pull', options)
+vim.api.nvim_set_keymap( 'n', '<leader>ggp', ':Gpush<CR>' , options)
+vim.api.nvim_set_keymap( 'n', '<leader>gL', ':Gpull<CR>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>gcb', ':G checkout origin/develop -b' , options)
 vim.api.nvim_set_keymap( 'n', '<leader>glo', '<cmd>Gcl<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>glO', '<cmd>Gcl %<cr>', options)

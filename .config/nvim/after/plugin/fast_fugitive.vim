@@ -8,3 +8,8 @@ augroup nhooyr_fugitive
   autocmd!
   autocmd FileType fugitive call s:ftplugin_fugitive()
 augroup END
+
+command! -bang -bar -nargs=* Gpush execute 'Dispatch<bang> -dir=' .
+      \ fnameescape(FugitiveGitDir()) 'git push' <q-args>
+command! -bang -bar -nargs=* Gfetch execute 'Dispatch<bang> -dir=' .
+      \ fnameescape(FugitiveGitDir()) 'git fetch' <q-args>

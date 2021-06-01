@@ -1,10 +1,13 @@
 vim.cmd 'packadd paq-nvim'
 local paq = require('paq-nvim').paq
 paq {'savq/paq-nvim', opt=true }
+
+
   --lsp
   paq 'neovim/nvim-lspconfig'
-  paq 'windwp/nvim-ts-autotag'
-  paq 'windwp/nvim-autopairs' --autoinsert brackets
+  paq 'hrsh7th/nvim-compe'
+    paq 'onsails/lspkind-nvim'
+
 
   --telescope & deps
   paq 'nvim-telescope/telescope.nvim'
@@ -13,20 +16,31 @@ paq {'savq/paq-nvim', opt=true }
     paq 'kyazdani42/nvim-web-devicons'
     paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
 
+
   --highlighting
   paq 'nvim-treesitter/nvim-treesitter'
   paq 'nvim-treesitter/playground'
   paq 'nvim-treesitter/nvim-treesitter-textobjects'
-  paq 'folke/tokyonight.nvim'
-  --nvim misc
-  paq 'hoob3rt/lualine.nvim'
-  paq 'hrsh7th/nvim-compe'
-    paq 'onsails/lspkind-nvim'
+
+
+  --visual stuffs
   paq { 'lukas-reineke/indent-blankline.nvim', branch='lua' }
-  --generic misc
+  paq 'hoob3rt/lualine.nvim'
+  paq 'folke/tokyonight.nvim'
+
+
+  --git
   paq 'tpope/vim-fugitive'
     paq 'tpope/vim-dispatch'
+
+
+  --surround, brackets, etc
+  paq 'windwp/nvim-ts-autotag'
   paq 'tpope/vim-surround'
+  paq 'windwp/nvim-autopairs' --autoinsert brackets
+
+
+  --fs util
   paq 'lambdalisue/suda.vim' --:SudaWrite
   paq 'kevinhwang91/rnvimr'  --file explorer
     vim.g.rnvimr_action = {
@@ -40,8 +54,6 @@ paq {'savq/paq-nvim', opt=true }
     }
    vim.g.rnvimr_enable_ex = 1
    vim.g.rnvimr_enable_picker = 1
-
-
 
 local actions = require('telescope.actions')
 

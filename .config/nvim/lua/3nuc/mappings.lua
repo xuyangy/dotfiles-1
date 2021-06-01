@@ -29,7 +29,7 @@ vim.api.nvim_set_keymap( 'n', '<leader>Gr', ':Telescope grep_string search=<C-R>
 vim.api.nvim_set_keymap( 'n', '<leader>o', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>O', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>', options)
 
-vim.api.nvim_set_keymap( 'n', '<leader>sp', ':Gpush<CR>' , options)
+vim.api.nvim_set_keymap( 'n', '<leader>Gp', ':Gpush<CR>' , options)
 vim.api.nvim_set_keymap( 'n', '<leader>Gl',  ':Gpull<CR>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>Gf',  ':Gfetch<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>Gcb', ':G checkout origin/develop -b' , options)

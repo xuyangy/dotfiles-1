@@ -1,5 +1,3 @@
-
-vim.g.tokyonight_style = "night"
 vim.g.tokyonight_italic_comments = 1
 vim.cmd('colorscheme tokyonight')
 
@@ -8,9 +6,6 @@ vim.cmd('filetype plugin indent on')
 
 vim.cmd('highlight LineNr guifg=#888888')
 vim.cmd('highlight CursorLineNr guifg=#ffffff')
-vim.cmd('highlight CursorLine guibg=#444444')
---vim.cmd('highlight Normal ctermbg=black')
---vim.cmd('highlight Normal guibg=black')
 
 vim.opt.shell = '/bin/bash' -- zsh starts too slow for fugitive, but also term:// starts bash instead of zsh
 vim.opt.termguicolors= true

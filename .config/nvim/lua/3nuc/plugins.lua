@@ -39,7 +39,6 @@ paq {'savq/paq-nvim', opt=true }
   paq 'tpope/vim-surround'
   paq 'windwp/nvim-autopairs' --autoinsert brackets
 
-
   --fs util
   paq 'lambdalisue/suda.vim' --:SudaWrite
   paq 'kevinhwang91/rnvimr'  --file explorer
@@ -261,7 +260,7 @@ require'compe'.setup {
     nvim_lua = true;
     spell = true;
     tags = false;
-    snippets_nvim = true; -- doesnt work because no snippet plugin
+    snippets_nvim = true;
     treesitter = false;
     calc = false;
   };

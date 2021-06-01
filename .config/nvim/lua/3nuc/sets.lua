@@ -1,6 +1,14 @@
+
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_italic_comments = 1
 vim.cmd('colorscheme tokyonight')
+
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
+
+vim.cmd('highlight LineNr guifg=#888888')
+vim.cmd('highlight CursorLineNr guifg=#ffffff')
+vim.cmd('highlight CursorLine guibg=#444444')
 --vim.cmd('highlight Normal ctermbg=black')
 --vim.cmd('highlight Normal guibg=black')
 
@@ -18,7 +26,6 @@ vim.opt.cursorline=    true
 vim.opt.number=          true
 vim.opt.relativenumber=  true
 
---vim.bo.omnifunc=vim.lsp.omnifunc -- its rekt
 vim.opt.tabstop=    2
 vim.opt.shiftwidth= 2
 vim.opt.expandtab=  true

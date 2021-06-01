@@ -17,32 +17,25 @@ vim.api.nvim_set_keymap('n','yfp', ':let @+=@%<cr>', options) -- copy current fi
 vim.api.nvim_set_keymap('n','<leader>ll', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>', options)
 --vim.api.nvim_set_keymap('t','<esc>', '<C-\\><C-N>', options)
 
-vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>Telescope git_branches<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<leader>s', ':G<CR>', options)
-vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>Telescope git_files<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<leader>g', '<cmd>Telescope live_grep<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>a', '<cmd>lua require(\'telescope.builtin\').git_branches()<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>s', ':G<cr>', options)
 
-vim.api.nvim_set_keymap( 'n', '<leader>F', '<cmd>Telescope find_files<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>f', '<cmd>lua require(\'telescope.builtin\').git_files()<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>F', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', options)
 
-vim.api.nvim_set_keymap( 'n', '<leader>tG', ':Telescope grep_string search=<C-R><C-W><cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>g', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>Gr', ':Telescope grep_string search=<C-R><C-W><cr>', options)
 
-vim.api.nvim_set_keymap( 'n', '<leader>ts', '<cmd>Telescope lsp_document_symbols<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<leader>tS', '<cmd>Telescope lsp_workspace_symbols<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>o', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>O', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>', options)
 
-vim.api.nvim_set_keymap( 'n', '<leader>td', '<cmd>Telescope lsp_document_diagnostics<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<leader>tD', '<cmd>Telescope lsp_workspace_diagnostics<cr>', options)
-
-
-vim.api.nvim_set_keymap( 'n', '<leader>ggp', ':Gpush<CR>' , options)
-vim.api.nvim_set_keymap( 'n', '<leader>gL', ':Gpull<CR>', options)
-vim.api.nvim_set_keymap( 'n', '<leader>gcb', ':G checkout origin/develop -b' , options)
-vim.api.nvim_set_keymap( 'n', '<leader>glo', '<cmd>Gcl<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<leader>glO', '<cmd>Gcl %<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<leader>gf', ':G fetch<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>sp', ':Gpush<CR>' , options)
+vim.api.nvim_set_keymap( 'n', '<leader>Gl',  ':Gpull<CR>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>Gf',  ':Gfetch<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>Gcb', ':G checkout origin/develop -b' , options)
+vim.api.nvim_set_keymap( 'n', '<leader>Glo', '<cmd>Gcl<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>GlO', '<cmd>Gcl %<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<space>f', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F', options)
-
-vim.api.nvim_set_keymap( 'n', '<silent>w', '<Plug>CamelCaseMotion_w', options)
-vim.api.nvim_set_keymap( 'n', '<silent>b', '<Plug>CamelCaseMotion_b', options)
 
 vim.api.nvim_set_keymap( 'n', '<leader>p', ':RnvimrToggle<cr>', options)
 vim.api.nvim_set_keymap( 't', '<leader>P', '<C-\\><C-n>:RnvimrResize<cr>', options)

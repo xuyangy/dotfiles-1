@@ -14,12 +14,13 @@
     //  "network",
     //  "cpu",
     //  "memory",
+      "disk",
       "temperature",
     //  "backlight",
     //  "sway/language",
       "battery",
 //      "battery#bat2",
-      "clock",
+      "clock#1",
     ],
 
     // Modules configuration
@@ -78,10 +79,9 @@
         // "icon-size": 21,
         "spacing": 10
     },
-    "clock": {
-        // "timezone": "America/New_York",
+    "clock#1": {
+        "format": "{:%d-%m | <b>%H:%M</b>}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -158,5 +158,10 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    },
+  "disk": {
+		"interval": 5,
+		"format": "{percentage_used:2}% D",
+		"path": "/"
+	},
 }

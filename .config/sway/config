@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 set $left h
 set $down j
 set $up k
@@ -188,3 +188,5 @@ exec_always "systemctl --user import-environment; systemctl --user start sway-se
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec "/usr/lib/kdeconnectd"
 exec "element-desktop --hidden"
+
+for_window [title="1Password"] floating enable

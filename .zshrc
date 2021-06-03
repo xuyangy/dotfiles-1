@@ -12,7 +12,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 alias v="f -e nvim"
-function dv() {
+function vd() {
   fasd_cd -d "$1" && nvim
 }
 alias nrs="npm run serve"

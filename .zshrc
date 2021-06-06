@@ -22,6 +22,7 @@ function gcmsg2 { git commit -m "$*"; }
 alias gcmsg3=gcmsg
 alias vi="nvim"
 alias curr="qalc -t -e"
+alias spacy="python -m spacy"
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init

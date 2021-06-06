@@ -29,15 +29,15 @@ vim.api.nvim_set_keymap( 'n', '<leader>Gr', ':Telescope grep_string search=<C-R>
 vim.api.nvim_set_keymap( 'n', '<leader>o', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>O', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>', options)
 
-vim.api.nvim_set_keymap( 'n', 'sp', ':Gpush<CR>' , options)
-vim.api.nvim_set_keymap( 'n', 'sf',  ':Gfetch<cr>', options)
-vim.api.nvim_set_keymap( 'n', 'sl',  ':Gpull<CR>', options)
-vim.api.nvim_set_keymap( 'n', 'so', '<cmd>Gcl<cr>', options)
-vim.api.nvim_set_keymap( 'n', 'sO', '<cmd>Gcl %<cr>', options)
-vim.api.nvim_set_keymap( 'n', 'scb', ':G checkout origin/develop -b' , options)
+vim.api.nvim_set_keymap( 'n', '<leader>gp', '<cmd>Gpush<cr>' , options)
+vim.api.nvim_set_keymap( 'n', '<leader>gf', '<cmd>Gfetch<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>gl', '<cmd>Gpull<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>go', '<cmd>Gcl<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>gO', '<cmd>Gcl %<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>gcb', ':G checkout origin/develop -b' , options)
 vim.api.nvim_set_keymap( 'n', '<space>f', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F', options)
 
-vim.api.nvim_set_keymap( 'n', '<F12>', '<cmd>ccl', options)
+vim.api.nvim_set_keymap( 'n', '<F12>', '<cmd>ccl<cr>', options)
 
 vim.api.nvim_set_keymap( 'n', '<leader>p', ':RnvimrToggle<cr>', options)
 vim.api.nvim_set_keymap( 't', '<leader>P', '<C-\\><C-n>:RnvimrResize<cr>', options)

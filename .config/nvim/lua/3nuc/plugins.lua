@@ -44,6 +44,7 @@ paq {'savq/paq-nvim', opt=true }
   paq 'kevinhwang91/rnvimr'  --file explorer
     vim.g.rnvimr_action = {
       ["<CR>"] = 'NvimEdit drop',
+      ["<F1>"] = 'NvimEdit quit',
       ['<C-t>'] = 'NvimEdit tabedit',      
       ['<C-x>'] = 'NvimEdit split',
       ['<C-v>'] = 'NvimEdit vsplit',

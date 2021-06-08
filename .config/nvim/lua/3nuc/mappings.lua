@@ -1,6 +1,7 @@
 local options = { noremap = true }
-vim.api.nvim_set_keymap('n','<SPACE>', '<Leader>', options)
+vim.api.nvim_set_keymap('n','<SPACE>', '<Leader>', {})
 vim.api.nvim_set_keymap('n','<leader>w', '<cmd>w<cr>', options)
+vim.api.nvim_set_keymap('n','<leader>q', '<cmd>w<cr>', options)
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>w', options)
 
 vim.api.nvim_set_keymap('n','<C-j>', '<C-w><C-j>', options)
@@ -41,7 +42,7 @@ vim.api.nvim_set_keymap( 'n', '<leader>gl', '<cmd>Gpull<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>go', '<cmd>Gcl<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>gO', '<cmd>Gcl %<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>gcb', ':G checkout origin/develop -b' , options)
-vim.api.nvim_set_keymap( 'n', '<space>f', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F', options)
+vim.api.nvim_set_keymap( 'n', '<leader>x', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F', options)
 
 vim.api.nvim_set_keymap( 'n', '<F12>', '<cmd>ccl<cr>', options)
 

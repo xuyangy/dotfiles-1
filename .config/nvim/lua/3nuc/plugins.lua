@@ -34,9 +34,8 @@ paq {'savq/paq-nvim', opt=true }
     paq 'tpope/vim-dispatch'
 
 
-  --surround, brackets, etc
   paq 'windwp/nvim-ts-autotag'
-  paq 'tpope/vim-surround'
+  paq 'machakann/vim-sandwich'
   paq 'windwp/nvim-autopairs' --autoinsert brackets
 
   --fs util

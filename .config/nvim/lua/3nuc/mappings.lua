@@ -50,6 +50,6 @@ vim.api.nvim_set_keymap( 'n', '<F12>', '<cmd>ccl<cr>', options)
 vim.api.nvim_set_keymap( 'i', '<C-e>', '<C-o>$', options)
 
 vim.api.nvim_set_keymap( 'i', '<C-Space>', "compe#complete()", {noremap = true, expr = true, silent = true})
-vim.api.nvim_set_keymap( 'i', '<CR>', [[compe#confirm('<CR>')]], {noremap = true, expr = true, silent = true})
+--vim.api.nvim_set_keymap( 'i', '<CR>', [[compe#confirm('<CR>')]], {noremap = true, expr = true, silent = true})
 vim.api.nvim_set_keymap( 'i', '<silent><expr> <C-e>', 'compe#close(\'<C-e>\')', options)
 

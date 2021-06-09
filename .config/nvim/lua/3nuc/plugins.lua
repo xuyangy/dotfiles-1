@@ -36,6 +36,8 @@ paq {'savq/paq-nvim', opt=true }
 
   paq 'windwp/nvim-ts-autotag'
   paq 'machakann/vim-sandwich'
+    -- use vim-surround mappings
+    vim.cmd('runtime macros/sandwich/keymap/surround.vim')
   paq 'windwp/nvim-autopairs' --autoinsert brackets
 
   --fs util

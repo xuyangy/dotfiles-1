@@ -44,6 +44,10 @@ vim.api.nvim_set_keymap( 'n', '<leader>gO', '<cmd>Gcl %<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>gcb', ':G checkout origin/develop -b' , options)
 vim.api.nvim_set_keymap( 'n', '<leader>x', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F', options)
 
+vim.api.nvim_set_keymap( 'n', '<leader>y', '"+y', options)
+vim.api.nvim_set_keymap( 'v', '<leader>y', '"+y', options)
+vim.api.nvim_set_keymap( 'n', '<leader>Y', 'gg"+yG', options)
+
 vim.api.nvim_set_keymap( 'n', '<F12>', '<cmd>ccl<cr>', options)
 
 

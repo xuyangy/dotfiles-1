@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap('n','<C-k>', '<C-w><C-k>', options)
 vim.api.nvim_set_keymap('n','<C-h>', '<C-w><C-h>', options)
 vim.api.nvim_set_keymap('n','<C-l>', '<C-w><C-l>', options)
 vim.api.nvim_set_keymap('n','<leader>=', '<C-w>=', options)
---vim.api.nvim_set_keymap('n','<leader>q', ':q<cr>', options)
+vim.api.nvim_set_keymap('n','<leader>q', '<cmd>q<cr>', options)
 --
 vim.api.nvim_set_keymap('n','<leader>ve', ':e $MYVIMRC<cr>', options)
 vim.api.nvim_set_keymap('n','<leader>q', '<cmd>quit<cr>', options)
@@ -26,9 +26,9 @@ vim.api.nvim_set_keymap( 'n', '<leader>f', '<cmd>lua require(\'telescope.builtin
 vim.api.nvim_set_keymap( 'n', '<leader>F', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', options)
 
 vim.api.nvim_set_keymap( 'n', '<f1>', '<cmd>RnvimrToggle<cr>', options)
-vim.api.nvim_set_keymap( 't', '<s-f1>', '<C-\\><C-n>:RnvimrResize<cr>', options)
+vim.api.nvim_set_keymap( 't', '<leader><f1>', '<C-\\><C-n>:RnvimrResize<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<f2>', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<s-f2>', ':Telescope grep_string search=<C-R><C-W><cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader><f2>', ':Telescope grep_string search=<C-R><C-W><cr>', options)
 
 vim.api.nvim_set_keymap( 'n', '<leader>a', '<cmd>lua require(\'telescope.builtin\').git_branches()<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>s', '<cmd>G<cr>', options)
@@ -60,3 +60,19 @@ vim.api.nvim_set_keymap( 'i', '<silent><expr> <C-e>', 'compe#close(\'<C-e>\')', 
 
 vim.api.nvim_set_keymap( 'n', '<leader>db', '<cmd>lua require\'dap\'.toggle_breakpoint()<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>dl', '<cmd>lua require\'dap\'.continue()<cr>', options)
+
+vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', options)
+vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', options)
+vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', options)
+vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', options)
+vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
+vim.api.nvim_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', options)
+vim.api.nvim_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', options)
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', options)
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', options)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', options)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', options)
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', options)
+vim.api.nvim_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', options)
+--for some reason the diagnosticls formatter works only for vue files, see maps.lua for manual format
+vim.api.nvim_set_keymap("n", "<leader>x", "<cmd>lua vim.lsp.buf.formatting()<CR>", options)

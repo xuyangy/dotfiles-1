@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap('n','<C-k>', '<C-w><C-k>', options)
 vim.api.nvim_set_keymap('n','<C-h>', '<C-w><C-h>', options)
 vim.api.nvim_set_keymap('n','<C-l>', '<C-w><C-l>', options)
 vim.api.nvim_set_keymap('n','<leader>=', '<C-w>=', options)
---vim.api.nvim_set_keymap('n','<leader>q', ':q<cr>', options)
+vim.api.nvim_set_keymap('n','<leader>q', '<cmd>q<cr>', options)
 --
 vim.api.nvim_set_keymap('n','<leader>ve', ':e $MYVIMRC<cr>', options)
 vim.api.nvim_set_keymap('n','<down>', ':cn<cr>', options)

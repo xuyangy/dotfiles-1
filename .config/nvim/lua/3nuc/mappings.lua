@@ -1,6 +1,6 @@
 local options = { noremap = true }
 vim.api.nvim_set_keymap('n','<leader>w', '<cmd>w<cr>', options)
-vim.api.nvim_set_keymap('n','<leader>q', '<cmd>w<cr>', options)
+vim.api.nvim_set_keymap('n','<leader>q', '<cmd>quit<cr>', options)
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>w', options)
 
 vim.api.nvim_set_keymap('n','<C-j>', '<C-w><C-j>', options)

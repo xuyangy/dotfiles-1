@@ -55,6 +55,28 @@ paq {'savq/paq-nvim', opt=true }
    vim.g.rnvimr_enable_ex = 1
    vim.g.rnvimr_enable_picker = 1
 
+  paq 'mfussenegger/nvim-dap'
+  local dap = require('dap')
+  dap.adapters.firefox = {
+    type = 'executable',
+    command = 'node',
+    args = {os.getenv('HOME') .. '/dap/firefox-adapter.js'},
+  }
+  dap.configurations.vue = {
+    {
+      type = 'firefox',
+      request = 'launch',
+      program = '${file}',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = 'inspector',
+      console = 'integratedTerminal',
+      firefoxExecutable = '/usr/bin/firefox-nightly',
+      url = 'http://localhost:3333',
+      webRoot = '${workspaceFolder}'
+    }
+  }
+
 local actions = require('telescope.actions')
 
 require('telescope').setup{

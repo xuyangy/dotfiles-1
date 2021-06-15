@@ -1,5 +1,4 @@
 local options = { noremap = true }
-vim.api.nvim_set_keymap('n','<SPACE>', '<Leader>', {})
 vim.api.nvim_set_keymap('n','<leader>w', '<cmd>w<cr>', options)
 vim.api.nvim_set_keymap('n','<leader>q', '<cmd>w<cr>', options)
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>w', options)
@@ -12,6 +11,7 @@ vim.api.nvim_set_keymap('n','<leader>=', '<C-w>=', options)
 --vim.api.nvim_set_keymap('n','<leader>q', ':q<cr>', options)
 --
 vim.api.nvim_set_keymap('n','<leader>ve', ':e $MYVIMRC<cr>', options)
+vim.api.nvim_set_keymap('n','<leader>q', '<cmd>quit<cr>', options)
 vim.api.nvim_set_keymap('n','<down>', ':cn<cr>', options)
 vim.api.nvim_set_keymap('n','<up>', ':cp<cr>', options)
 vim.api.nvim_set_keymap('n','yfp', ':let @+=@%<cr>', options) -- copy current file path to clipboard
@@ -32,6 +32,7 @@ vim.api.nvim_set_keymap( 'n', '<s-f2>', ':Telescope grep_string search=<C-R><C-W
 
 vim.api.nvim_set_keymap( 'n', '<leader>a', '<cmd>lua require(\'telescope.builtin\').git_branches()<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>s', '<cmd>G<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>b', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', options)
 
 vim.api.nvim_set_keymap( 'n', '<leader>o', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>O', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>', options)
@@ -57,3 +58,5 @@ vim.api.nvim_set_keymap( 'i', '<C-Space>', "compe#complete()", {noremap = true, 
 --vim.api.nvim_set_keymap( 'i', '<CR>', [[compe#confirm('<CR>')]], {noremap = true, expr = true, silent = true})
 vim.api.nvim_set_keymap( 'i', '<silent><expr> <C-e>', 'compe#close(\'<C-e>\')', options)
 
+vim.api.nvim_set_keymap( 'n', '<leader>db', '<cmd>lua require\'dap\'.toggle_breakpoint()<cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader>dl', '<cmd>lua require\'dap\'.continue()<cr>', options)

@@ -1,4 +1,5 @@
 vim.g.tokyonight_italic_comments = 1
+vim.g.mapleader = " "
 vim.cmd('colorscheme tokyonight')
 
 vim.cmd('syntax enable')

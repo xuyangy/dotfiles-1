@@ -1,8 +1,3 @@
-nmap gg ggj
-nmap <buffer> <silent> <nowait> j <C-n>
-nmap <buffer> <silent> <nowait> k <C-p>
-nnoremap <buffer> <silent> <nowait> J j
-nnoremap <buffer> <silent> <nowait> K k
 nmap <buffer> <silent> <nowait> l -
 nmap <buffer> <silent> <nowait> h =
 
@@ -18,7 +13,7 @@ function! s:select_first()
 		" Only once this script is sourced
 		" Go to the first file
 		" This picks up the horizontal shortcuts already
-		execute 'normal' "gg"
+		execute 'normal' "<C-n>"
 		let s:selected = 1
 	endif
 endfunction

@@ -1,5 +1,9 @@
 nmap <buffer> <silent> <nowait> l -
 nmap <buffer> <silent> <nowait> h =
+nnoremap <buffer> <silent> cc :Git commit --quiet<CR>
+nnoremap <buffer> <silent> ca :Git commit --quiet --amend<CR>
+nnoremap <buffer> <silent> ce :Git commit --quiet --amend --no-edit<CR>
+
 
 
 augroup ft_gitcommit_status

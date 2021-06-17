@@ -27,7 +27,7 @@ vim.api.nvim_set_keymap( 'n', '<leader>F', '<cmd>lua require(\'telescope.builtin
 vim.api.nvim_set_keymap( 'n', '<f1>', '<cmd>RnvimrToggle<cr>', options)
 vim.api.nvim_set_keymap( 't', '<leader><f1>', '<C-\\><C-n>:RnvimrResize<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<f2>', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', options)
-vim.api.nvim_set_keymap( 'n', '<leader><f2>', ':Telescope grep_string search=<C-R><C-W><cr>', options)
+vim.api.nvim_set_keymap( 'n', '<leader><f2>', '<cmd>lua require(\'telescope.builtin\').grep_string({search = vim.fn.expand("<cword>")})<cr>', options)
 
 vim.api.nvim_set_keymap( 'n', '<leader>a', '<cmd>lua require(\'telescope.builtin\').git_branches()<cr>', options)
 vim.api.nvim_set_keymap( 'n', '<leader>s', '<cmd>G<cr>', options)

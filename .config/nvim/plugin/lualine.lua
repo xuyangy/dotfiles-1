@@ -24,7 +24,7 @@ require('lualine').setup{
     },
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'fugitive_branch'}
+    lualine_z = {'branch'}
   },
   inactive_sections = {
     lualine_y = {'branch', 'diff'},

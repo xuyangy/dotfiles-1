@@ -1,3 +1,7 @@
+local paq = require'paq-nvim'.paq
+paq 'nvim-treesitter/nvim-treesitter'
+paq 'nvim-treesitter/playground'
+paq 'nvim-treesitter/nvim-treesitter-textobjects'
 require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,

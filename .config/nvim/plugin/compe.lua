@@ -1,3 +1,7 @@
+
+require'paq-nvim'.paq'hrsh7th/nvim-compe'
+require'paq-nvim'.paq 'onsails/lspkind-nvim'
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;

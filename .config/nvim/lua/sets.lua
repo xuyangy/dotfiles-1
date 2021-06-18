@@ -9,7 +9,7 @@ vim.cmd('filetype plugin indent on')
 vim.cmd('highlight LineNr guifg=#888888')
 vim.cmd('highlight CursorLineNr guifg=#ffffff')
 
-vim.opt.shell = '/bin/bash' -- zsh starts too slow for fugitive, but also term:// starts bash instead of zsh
+vim.opt.shell = '/bin/zsh' -- zsh starts too slow for fugitive, but also term:// starts bash instead of zsh
 vim.opt.termguicolors= true
 vim.opt.ruler=         true
 vim.opt.wildmenu=      true

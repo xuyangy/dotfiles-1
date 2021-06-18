@@ -1,10 +1,8 @@
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-end
+require'paq-nvim'.paq'neovim/nvim-lspconfig'
+require'paq-nvim'.paq'kabouzeid/nvim-lspinstall'
 
-nvim_lsp.tsserver.setup{}
-nvim_lsp.pyls.setup{}
-nvim_lsp.vuels.setup{ 
+local vuels_config = {
+  filetypes={"vue"},
   on_attach = on_attach,
   init_options = {
     config = {
@@ -16,12 +14,10 @@ nvim_lsp.vuels.setup{
       }
     } 
   } 
-} 
+}
 
-nvim_lsp.cssls.setup{}
-
-nvim_lsp.diagnosticls.setup{
-  filetypes = { "javascript", "typescript", "vue" },
+local diagnosticls_config = {
+  filetypes={"vue", "javascript", "typescript"},
   init_options = {
     filetypes = {
       javascript = "eslint",
@@ -72,6 +68,40 @@ nvim_lsp.diagnosticls.setup{
   }
 }
 
+local lspinstall = require'lspinstall'
+local nvim_lsp = require'lspconfig'
+
+local on_attach = function(client, bufnr)
+end
+
+local function setup_servers()
+  lspinstall.setup{}
+  local servers = lspinstall.installed_servers()
+  for _, server in pairs(servers) do
+    local config = {}
+    if server == "vue" then
+      config = vuels_config;
+    end
+    if server == "diagnosticls" then
+      config = diagnosticls_config;
+      config.filetypes = {"vue", "typescript", "javascript"}
+    end
+    if server == "typescript" then
+      config.filetypes = {"typescript"}
+    end
+    nvim_lsp[server].setup(config)
+  end
+end
+
+setup_servers()
+
+--nvim_lsp.diagnosticls.setup(diagnosticls_config)
+
+nvim_lsp.post_install_hook = function()
+  setup_servers()
+  vim.cmd("bufdo e")
+end
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
@@ -80,3 +110,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+

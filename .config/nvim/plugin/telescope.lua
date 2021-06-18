@@ -1,6 +1,15 @@
-local actions = require('telescope.actions')
+local paq = require'paq-nvim'.paq
+--telescope & deps
+paq 'nvim-telescope/telescope.nvim'
+  paq 'nvim-lua/popup.nvim' -- dep from readme 1
+  paq 'nvim-lua/plenary.nvim' -- dep from readme 2
+  paq 'kyazdani42/nvim-web-devicons'
+  paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
 
-require('telescope').setup{
+local telescope = require 'telescope'
+local actions = require 'telescope.actions'
+
+telescope.setup{
   defaults = {
     mappings = {
       i = {
@@ -17,5 +26,4 @@ require('telescope').setup{
   }
 }
 
-require('telescope').load_extension('fzf')
-
+telescope.load_extension('fzf')

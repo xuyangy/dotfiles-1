@@ -1,3 +1,5 @@
+
+  require 'paq-nvim'.paq 'mfussenegger/nvim-dap'
   local dap = require('dap')
   dap.adapters.firefox = {
     type = 'executable',

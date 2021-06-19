@@ -36,4 +36,4 @@ ranger_cd() {
   fi
   rm -f -- "$temp_file"
 }
-bindkey -s '^o' "ranger_cd\n"
+bindkey -s '\eOP' "ranger_cd\n" # f1

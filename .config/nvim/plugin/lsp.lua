@@ -1,6 +1,9 @@
 require'paq-nvim'.paq'neovim/nvim-lspconfig'
 require'paq-nvim'.paq'kabouzeid/nvim-lspinstall'
 
+local on_attach = function(client, bufnr)
+end
+
 local vuels_config = {
   filetypes={"vue"},
   on_attach = on_attach,
@@ -12,8 +15,8 @@ local vuels_config = {
         validation = { templateProps = false, },
         experimental = { templateInterpolationService = true }
       }
-    } 
-  } 
+    }
+  }
 }
 
 local diagnosticls_config = {
@@ -68,11 +71,31 @@ local diagnosticls_config = {
   }
 }
 
+local luals_config = {
+  settings = {
+    Lua = {
+      runtime = {
+        -- LuaJIT in the case of Neovim
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    }
+  }
+}
+
 local lspinstall = require'lspinstall'
 local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client, bufnr)
-end
 
 local function setup_servers()
   lspinstall.setup{}
@@ -80,11 +103,14 @@ local function setup_servers()
   for _, server in pairs(servers) do
     local config = {}
     if server == "vue" then
-      config = vuels_config;
+      config = vuels_config
     end
     if server == "diagnosticls" then
-      config = diagnosticls_config;
+      config = diagnosticls_config
       config.filetypes = {"vue", "typescript", "javascript"}
+    end
+    if server == "lua" then
+      config = luals_config
     end
     if server == "typescript" then
       config.filetypes = {"typescript"}

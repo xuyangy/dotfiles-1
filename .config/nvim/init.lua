@@ -9,7 +9,8 @@ local plugins = {
   'windwp/nvim-ts-autotag',
   'machakann/vim-sandwich',
   'windwp/nvim-autopairs',
-  'lambdalisue/suda.vim'
+  'lambdalisue/suda.vim',
+  'b3nj5m1n/kommentary'
 }
 for _,plugin in ipairs(plugins) do
   require('paq-nvim').paq(plugin)

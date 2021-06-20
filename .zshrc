@@ -5,7 +5,7 @@ export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 plugins=(zsh-nvm git safe-paste fasd npm)
 source $ZSH/oh-my-zsh.sh
-export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools:$PATH
+export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools::$HOME/.local/bin:$PATH
 
 KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"

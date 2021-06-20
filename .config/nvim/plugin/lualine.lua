@@ -1,4 +1,4 @@
-_G.paq 'hoob3rt/lualine.nvim'
+Paq 'hoob3rt/lualine.nvim'
 
 require('lualine').setup{
   options = {

@@ -1,5 +1,5 @@
-_G.paq'neovim/nvim-lspconfig'
-_G.paq'kabouzeid/nvim-lspinstall'
+Paq'neovim/nvim-lspconfig'
+Paq'kabouzeid/nvim-lspinstall'
 
 local on_attach = function(client, bufnr)
 end

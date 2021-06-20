@@ -1,10 +1,8 @@
-_G.paq 'nvim-treesitter/nvim-treesitter'
-_G.paq 'nvim-treesitter/playground'
-_G.paq 'nvim-treesitter/nvim-treesitter-textobjects'
+Paq 'nvim-treesitter/nvim-treesitter'
+Paq 'nvim-treesitter/playground'
+Paq 'nvim-treesitter/nvim-treesitter-textobjects'
 require'nvim-treesitter.configs'.setup {
-  autotag = {
-    enable = true,
-  },
+  autotag = { enable = true },
   ensure_installed = { "vue", "scss", "typescript", "javascript", "html", "lua"},
   highlight = { enable = true, },
   indent = { enable = true },

@@ -1,9 +1,9 @@
 --telescope & deps
-_G.paq { 'Conni2461/telescope.nvim', branch='cycle_prompt_history' }
-  _G.paq 'nvim-lua/popup.nvim' -- dep from readme 1
-  _G.paq 'nvim-lua/plenary.nvim' -- dep from readme 2
-  _G.paq 'kyazdani42/nvim-web-devicons'
-  _G.paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
+Paq { 'Conni2461/telescope.nvim', branch='cycle_prompt_history' }
+  Paq 'nvim-lua/popup.nvim' -- dep from readme 1
+  Paq 'nvim-lua/plenary.nvim' -- dep from readme 2
+  Paq 'kyazdani42/nvim-web-devicons'
+  Paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
 
 local telescope = require 'telescope'
 local actions = require 'telescope.actions'

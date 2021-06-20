@@ -1,4 +1,4 @@
-_G.paq 'mfussenegger/nvim-dap'
+Paq 'mfussenegger/nvim-dap'
 
 local dap = require('dap')
 dap.adapters.firefox = {

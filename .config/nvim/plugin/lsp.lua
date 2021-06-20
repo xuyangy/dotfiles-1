@@ -74,15 +74,8 @@ local diagnosticls_config = {
 local luals_config = {
   settings = {
     Lua = {
-      runtime = {
-        -- LuaJIT in the case of Neovim
-        version = 'LuaJIT',
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
+      runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+      diagnostics = { globals = {'vim', 'Paq'} },
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = {

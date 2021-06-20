@@ -1,6 +1,7 @@
 vim.cmd 'packadd paq-nvim'
 Paq = require('paq-nvim').paq
 local plugins = {
+  -- plugins that dont need their own file
   {'savq/paq-nvim', opt=true },
   { 'lukas-reineke/indent-blankline.nvim', branch='lua' },
   'tpope/vim-fugitive',

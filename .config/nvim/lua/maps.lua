@@ -1,6 +1,6 @@
 local options = { noremap = true }
 vim.api.nvim_set_keymap('n','<leader>w', '<cmd>w<cr>', options)
-vim.api.nvim_set_keymap('n','<leader>q', ':q<cr>', options)
+vim.api.nvim_set_keymap('n','<leader>q', '<cmd>q<cr>', options)
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>w', options)
 
 vim.api.nvim_set_keymap('n','<C-j>', '<C-w><C-j>', options)
@@ -9,10 +9,10 @@ vim.api.nvim_set_keymap('n','<C-h>', '<C-w><C-h>', options)
 vim.api.nvim_set_keymap('n','<C-l>', '<C-w><C-l>', options)
 vim.api.nvim_set_keymap('n','<leader>=', '<C-w>=', options)
 --
-vim.api.nvim_set_keymap('n','<leader>ve', ':e $MYVIMRC<cr>', options)
-vim.api.nvim_set_keymap('n','<down>', ':cn<cr>', options)
-vim.api.nvim_set_keymap('n','<up>', ':cp<cr>', options)
-vim.api.nvim_set_keymap('n','yfp', ':let @+=@%<cr>', options) -- copy current file path to clipboard
+vim.api.nvim_set_keymap('n','<leader>ve', '<cmd>e $MYVIMRC<cr>', options)
+vim.api.nvim_set_keymap('n','<down>', '<cmd>cn<cr>', options)
+vim.api.nvim_set_keymap('n','<up>', '<cmd>cp<cr>', options)
+vim.api.nvim_set_keymap('n','yfp', '<cmd>let @+=@%<cr>', options) -- copy current file path to clipboard
 vim.api.nvim_set_keymap('n','Q', '<Nop>', { noremap = true}) 
 
 

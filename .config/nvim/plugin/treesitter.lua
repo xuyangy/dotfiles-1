@@ -7,12 +7,8 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
   ensure_installed = { "vue", "scss", "typescript", "javascript", "html", "lua"},
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true
-  },
+  highlight = { enable = true, },
+  indent = { enable = true },
   playground = {
     enable = true,
     disable = {},

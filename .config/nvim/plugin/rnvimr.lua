@@ -1,4 +1,4 @@
-  require'paq-nvim'.paq 'kevinhwang91/rnvimr'
+  _G.paq 'kevinhwang91/rnvimr'
   vim.g.rnvimr_action = {
     ["<CR>"] = 'NvimEdit drop',
     ["<F1>"] = 'NvimEdit quit',

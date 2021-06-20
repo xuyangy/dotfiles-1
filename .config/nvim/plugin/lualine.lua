@@ -1,5 +1,4 @@
-require 'paq-nvim'.paq 'hoob3rt/lualine.nvim'
-
+_G.paq 'hoob3rt/lualine.nvim'
 
 require('lualine').setup{
   options = {
@@ -13,14 +12,14 @@ require('lualine').setup{
     lualine_b = {},
     lualine_c = {
       {
-        'filename', 
+        'filename',
         path=1
       },
       {
-        'diagnostics', 
-        sources = {'nvim_lsp'}, 
-      }, 
-      'location', 
+        'diagnostics',
+        sources = {'nvim_lsp'},
+      },
+      'location',
       'progress'
     },
     lualine_x = {},

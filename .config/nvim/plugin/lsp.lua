@@ -1,5 +1,5 @@
-require'paq-nvim'.paq'neovim/nvim-lspconfig'
-require'paq-nvim'.paq'kabouzeid/nvim-lspinstall'
+_G.paq'neovim/nvim-lspconfig'
+_G.paq'kabouzeid/nvim-lspinstall'
 
 local on_attach = function(client, bufnr)
 end

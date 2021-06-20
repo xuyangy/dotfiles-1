@@ -1,6 +1,5 @@
-
-require'paq-nvim'.paq'hrsh7th/nvim-compe'
-require'paq-nvim'.paq 'onsails/lspkind-nvim'
+_G.paq'hrsh7th/nvim-compe'
+_G.paq 'onsails/lspkind-nvim'
 
 require'compe'.setup {
   enabled = true;

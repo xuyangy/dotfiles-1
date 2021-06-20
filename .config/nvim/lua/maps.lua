@@ -13,7 +13,7 @@ vim.api.nvim_set_keymap('n','<leader>ve', '<cmd>e $MYVIMRC<cr>', options)
 vim.api.nvim_set_keymap('n','<down>', '<cmd>cn<cr>', options)
 vim.api.nvim_set_keymap('n','<up>', '<cmd>cp<cr>', options)
 vim.api.nvim_set_keymap('n','yfp', '<cmd>let @+=@%<cr>', options) -- copy current file path to clipboard
-vim.api.nvim_set_keymap('n','Q', '<Nop>', { noremap = true}) 
+vim.api.nvim_set_keymap('n','Q', '<Nop>', { noremap = true})
 
 
 vim.api.nvim_set_keymap('n','<leader>ll', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>', options)

@@ -1,12 +1,10 @@
 Paq'neovim/nvim-lspconfig'
 Paq'kabouzeid/nvim-lspinstall'
 
-local on_attach = function(client, bufnr)
-end
+-- turn on `window/workDoneProgress` capability
 
 local vuels_config = {
   filetypes={"vue"},
-  on_attach = on_attach,
   init_options = {
     config = {
       vetur = {

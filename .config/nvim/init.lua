@@ -9,7 +9,8 @@ local plugins = {
   'machakann/vim-sandwich',
   'windwp/nvim-autopairs',
   'lambdalisue/suda.vim',
-  'b3nj5m1n/kommentary'
+  'b3nj5m1n/kommentary',
+  'junegunn/gv.vim',
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)

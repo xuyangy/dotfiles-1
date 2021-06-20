@@ -1,0 +1,12 @@
+set folder=imaps://imap.mailbox.org
+set imap_user=artur@tagisow.dev
+set my_pass="`pass artur@tagisow.dev`"
+set imap_pass= $my_pass
+set spoolfile=+INBOX
+set imap_check_subscribed
+set smtp_pass = $imap_pass
+set smtp_url=smtps://$imap_user@smtp.mailbox.org
+set realname = 'Artur Tagisow'
+set from = "artur@tagisow.dev"
+set use_from = yes
+source colors.muttrc

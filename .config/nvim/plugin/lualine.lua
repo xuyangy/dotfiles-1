@@ -1,4 +1,4 @@
-Paq 'hoob3rt/lualine.nvim'
+Paq {'NullVoxPopuli/lualine.nvim', branch='fix-estimated-with-calculation'}
 
 require('lualine').setup{
   options = {
@@ -13,8 +13,12 @@ require('lualine').setup{
     lualine_c = {
       {
         'filename',
-        path=1
+        file_status=true,
+        path=2,
       },
+    },
+    lualine_x = {},
+    lualine_y = {
       {
         'diagnostics',
         sources = {'nvim_lsp'},
@@ -22,12 +26,10 @@ require('lualine').setup{
       'location',
       'progress'
     },
-    lualine_x = {},
-    lualine_y = {},
     lualine_z = {'branch'}
   },
   inactive_sections = {
-    lualine_y = {'branch', 'diff'},
+    lualine_z = {'branch', 'diff'},
   },
 }
 

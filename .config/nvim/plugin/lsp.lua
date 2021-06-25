@@ -11,7 +11,8 @@ local vuels_config = {
         completion = { autoImport = true, tagCasing = "initial" },
         languageFeatures = { codeActions = true, },
         validation = { templateProps = false, },
-        experimental = { templateInterpolationService = true }
+        experimental = { templateInterpolationService = true },
+        useWorkspaceDependencies = true,
       }
     }
   }
@@ -73,7 +74,7 @@ local luals_config = {
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-      diagnostics = { globals = {'vim', 'Paq'} },
+      diagnostics = { globals = {'vim', 'Paq', 'Keymap'} },
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = {

@@ -1,4 +1,8 @@
 vim.cmd 'packadd paq-nvim'
+function Keymap(mode, map, cmd)
+  local options = { noremap = true }
+  vim.api.nvim_set_keymap(mode, map, cmd, options)
+end
 Paq = require('paq-nvim').paq
 local plugins = {
   -- plugins that dont need their own file

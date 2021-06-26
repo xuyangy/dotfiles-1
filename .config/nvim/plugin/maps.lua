@@ -1,5 +1,5 @@
 local function keymap(mode, map, cmd)
-  local options = { noremap = true }
+  local options = {noremap = true}
   vim.api.nvim_set_keymap(mode, map, cmd, options)
 end
 
@@ -17,20 +17,20 @@ local keymaps = {
   {'n','<down>', '<cmd>cn<cr>'},
   {'n','<up>', '<cmd>cp<cr>'},
   {'n','Q', '<Nop>'},
-  {'n','<leader>f', '<cmd>lua require(\'telescope.builtin\').git_files()<cr>'},
-  {'n','<leader>F', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>'},
   {'n','<f1>', '<cmd>RnvimrToggle<cr>'},
   {'t','<leader><f1>', '<C-\\><C-n>:RnvimrResize<cr>'},
   {'n','<f2>', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>'},
   {'n','<leader><f2>', '<cmd>lua require(\'telescope.builtin\').grep_string({search = vim.fn.expand("<cword>")})<cr>'},
-  {'n','<leader>s', '<cmd>G<cr>'},
   {'n','<leader>a', '<cmd>lua require(\'telescope.builtin\').git_branches()<cr>'},
   {'n','<leader>b', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>'},
   {'n','<leader>o', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>'},
   {'n','<leader>O', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>'},
-  {'n','<leader>gp', '<cmd>Gpush<cr>' },
-  {'n','<leader>gf', '<cmd>Gfetch<cr>'},
-  {'n','<leader>gl', '<cmd>Gpull<cr>'},
+  {'n','<leader>f', '<cmd>lua require(\'telescope.builtin\').git_files()<cr>'},
+  {'n','<leader>F', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>'},
+  {'n','<leader>s', '<cmd>G<cr>'},
+  {'n','<leader>gp', '<cmd>G push<cr>' },
+  {'n','<leader>gf', '<cmd>G fetch<cr>'},
+  {'n','<leader>gl', '<cmd>G pull<cr>'},
   {'n','<leader>go', '<cmd>GV<cr>'},
   {'n','<leader>gO', '<cmd>GV!<cr>'},
   {'n','<leader>gcb', ':G checkout origin/develop -b' },

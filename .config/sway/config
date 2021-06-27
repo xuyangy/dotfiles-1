@@ -26,9 +26,9 @@ default_border pixel 10
 set $screenlock swaylock -f -c 000000
 
 exec swayidle -w \
-          timeout 120 'swaylock -f -c 000000' \
+          timeout 120 'swaylock -f -c 6b0000' \
           timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep 'swaylock -f -c 6b0000'
 
 bindsym $mod+Shift+x exec $screenlock
 bindsym $mod+i exec firefox-nightly

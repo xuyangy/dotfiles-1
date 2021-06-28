@@ -105,7 +105,7 @@ local function setup_servers()
       config = luals_config
     end
     if server == "typescript" then
-      config.filetypes = {"typescript"}
+      config.filetypes = {"typescript", "javascript"}
     end
     nvim_lsp[server].setup(config)
   end

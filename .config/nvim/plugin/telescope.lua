@@ -4,6 +4,7 @@ Paq { 'Conni2461/telescope.nvim', branch='cycle_prompt_history' }
   Paq 'nvim-lua/plenary.nvim' -- dep from readme 2
   Paq 'kyazdani42/nvim-web-devicons'
   Paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
+  Paq 'ThePrimeagen/git-worktree.nvim'
 
 local telescope = require 'telescope'
 local actions = require 'telescope.actions'
@@ -30,3 +31,4 @@ telescope.setup{
 }
 
 telescope.load_extension('fzf')
+telescope.load_extension('git_worktree')

@@ -33,7 +33,7 @@ local keymaps = {
   {'n','<leader>gl', '<cmd>G pull<cr>'},
   {'n','<leader>gpb', ':G checkout <C-r>+<cr>'},
   {'n','<leader>go', '<cmd>GV<cr>'},
-  {'n','<leader>gO', '<cmd>GV!<cr>'},
+  {'n','<leader>g%', '<cmd>GV!<cr>'},
   {'n','<leader>gcb', ':G checkout origin/develop -b' },
   {'n','<leader>gw', '<cmd>lua require(\'telescope\').extensions.git_worktree.git_worktrees()<cr>' },
   {'n','<leader>x', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F'},

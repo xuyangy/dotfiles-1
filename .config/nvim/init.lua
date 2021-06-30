@@ -20,7 +20,7 @@ for _,plugin in ipairs(plugins) do
   Paq(plugin)
 end
 
-vim.cmd('runtime macros/sandwich/keymap/surround.vim')
+--vim.cmd('runtime macros/sandwich/keymap/surround.vim')
 
 
 vim.cmd('syntax enable')

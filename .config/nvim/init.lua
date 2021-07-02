@@ -3,10 +3,16 @@ function Keymap(mode, map, cmd)
   local options = { noremap = true }
   vim.api.nvim_set_keymap(mode, map, cmd, options)
 end
-Paq = require('paq-nvim').paq
+
+Plugins = {}
+function PaqAdd(plugin_name)
+  table.insert(Plugins, plugin_name)
+end
+_G.Paq = PaqAdd
+
 local plugins = {
   -- plugins that dont need their own file
-  {'savq/paq-nvim', opt=true },
+  'savq/paq-nvim',
   { 'lukas-reineke/indent-blankline.nvim', branch='lua' },
   'tpope/vim-fugitive',
   'windwp/nvim-ts-autotag',

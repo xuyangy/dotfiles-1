@@ -39,6 +39,7 @@ vim.opt.ruler=         true
 vim.opt.wildmenu=      true
 vim.opt.autoread=      true
 vim.opt.ignorecase=    true
+vim.opt.showmode=    false
 vim.opt.smartcase=     true
 vim.opt.hidden=        true
 vim.opt.completeopt=   'menuone,noinsert,noselect'

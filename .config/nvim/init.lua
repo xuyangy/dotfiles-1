@@ -44,6 +44,7 @@ vim.opt.smartcase=     true
 vim.opt.hidden=        true
 vim.opt.completeopt=   'menuone,noinsert,noselect'
 vim.opt.cursorline=    true
+vim.opt.equalalways=   true
 
 vim.opt.number=        true
 vim.opt.relativenumber=true

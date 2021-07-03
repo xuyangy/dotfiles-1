@@ -13,7 +13,7 @@ _G.Paq = PaqAdd
 local plugins = {
   -- plugins that dont need their own file
   'savq/paq-nvim',
-  { 'lukas-reineke/indent-blankline.nvim', branch='lua' },
+  'lukas-reineke/indent-blankline.nvim',
   'tpope/vim-fugitive',
   'windwp/nvim-ts-autotag',
   'machakann/vim-sandwich',

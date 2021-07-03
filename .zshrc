@@ -1,5 +1,6 @@
 if [ "$TMUX" = "" ]; then tmux; fi
 VISUAL=nvim
+EDITOR=nvim
 ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="flazz"
 export NVM_LAZY_LOAD=true

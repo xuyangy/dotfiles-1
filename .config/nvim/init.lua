@@ -3,13 +3,7 @@ function Keymap(mode, map, cmd)
   local options = { noremap = true }
   vim.api.nvim_set_keymap(mode, map, cmd, options)
 end
-
-Plugins = {}
-function PaqAdd(plugin_name)
-  table.insert(Plugins, plugin_name)
-end
-_G.Paq = PaqAdd
-
+Paq = require('paq-nvim').paq
 local plugins = {
   -- plugins that dont need their own file
   'savq/paq-nvim',

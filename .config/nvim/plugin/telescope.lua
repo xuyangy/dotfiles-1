@@ -5,6 +5,8 @@ Paq { 'Conni2461/telescope.nvim', branch='cycle_prompt_history' }
   Paq 'kyazdani42/nvim-web-devicons'
   Paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
   Paq 'ThePrimeagen/git-worktree.nvim'
+  Paq 'tami5/sql.nvim'
+  Paq 'nvim-telescope/telescope-frecency.nvim'
 
 local telescope = require 'telescope'
 local actions = require 'telescope.actions'

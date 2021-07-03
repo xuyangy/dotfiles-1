@@ -1,8 +1,3 @@
-local function keymap(mode, map, cmd)
-  local options = {noremap = true}
-  vim.api.nvim_set_keymap(mode, map, cmd, options)
-end
-
 local keymaps = {
   {'n','<leader>ve', '<cmd>e $MYVIMRC<cr>'},
   {'n','<leader>w', '<cmd>w<cr>'},
@@ -59,7 +54,7 @@ local keymaps = {
 }
 
 for _,mymap in pairs(keymaps) do
-  keymap(mymap[1], mymap[2], mymap[3])
+  Keymap(mymap[1], mymap[2], mymap[3])
 end
 
 vim.api.nvim_set_keymap( 'i', '<C-Space>', "compe#complete()", {noremap = true, expr = true, silent = true})

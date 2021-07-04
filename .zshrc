@@ -1,4 +1,3 @@
-if [ "$TMUX" = "" ]; then tmux; fi
 VISUAL=nvim
 EDITOR=nvim
 ZSH="/usr/share/oh-my-zsh"

@@ -24,7 +24,7 @@ alias gcmsg3=gcmsg
 alias vi="nvim"
 alias curr="qalc -t -e"
 alias spacy="python -m spacy"
-alias weahter="curl wttr.in"
+alias weather="curl wttr.in"
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init

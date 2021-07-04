@@ -29,11 +29,21 @@ telescope.setup{
       override_generic_sorter = false,
       override_file_sorter = true,
     }
+  },
+  pickers = {
+    buffers = {
+      sort_lastused = true,
+      selection_strategy="closest",
+      mappings = {
+        i = { ["<c-d>"] = actions.delete_buffer },
+      }
+    }
   }
 }
 
 telescope.load_extension('fzf')
 telescope.load_extension('git_worktree')
+telescope.load_extension('frecency')
 
 _G.telescope_smart_files = function()
   local opts = {} -- define here if you want to define something

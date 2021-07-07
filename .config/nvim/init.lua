@@ -3,13 +3,7 @@ function Keymap(mode, map, cmd)
   local options = { noremap = true }
   vim.api.nvim_set_keymap(mode, map, cmd, options)
 end
-
-Plugins = {}
-function PaqAdd(plugin_name)
-  table.insert(Plugins, plugin_name)
-end
-_G.Paq = PaqAdd
-
+Paq = require('paq-nvim').paq
 local plugins = {
   -- plugins that dont need their own file
   'savq/paq-nvim',
@@ -21,7 +15,8 @@ local plugins = {
   'lambdalisue/suda.vim',
   'b3nj5m1n/kommentary',
   'junegunn/gv.vim',
-  'vim-scripts/ConflictMotions'
+  'vim-scripts/ConflictMotions',
+  'iamcco/markdown-preview.nvim'
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)
@@ -40,7 +35,7 @@ vim.opt.ruler=         true
 vim.opt.wildmenu=      true
 vim.opt.autoread=      true
 vim.opt.ignorecase=    true
-vim.opt.showmode=    false
+vim.opt.showmode=      false
 vim.opt.smartcase=     true
 vim.opt.hidden=        true
 vim.opt.completeopt=   'menuone,noinsert,noselect'
@@ -54,4 +49,4 @@ vim.opt.tabstop=       2
 vim.opt.shiftwidth=    2
 vim.opt.shiftround=    true
 vim.opt.expandtab=     true
-vim.opt.swapfile=     false
+vim.opt.swapfile=      false

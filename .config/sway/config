@@ -187,6 +187,6 @@ include ./shotman.conf
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target""
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec "/usr/lib/kdeconnectd"
-exec "element-desktop --hidden"
+exec "flameshot"
 
 for_window [title="1Password"] floating enable

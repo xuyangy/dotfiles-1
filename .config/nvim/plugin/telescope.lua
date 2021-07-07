@@ -5,6 +5,8 @@ Paq { 'Conni2461/telescope.nvim', branch='cycle_prompt_history' }
   Paq 'kyazdani42/nvim-web-devicons'
   Paq { 'nvim-telescope/telescope-fzf-native.nvim', run='make' }
   Paq 'ThePrimeagen/git-worktree.nvim'
+  Paq 'tami5/sql.nvim'
+  Paq 'nvim-telescope/telescope-frecency.nvim'
 
 local telescope = require 'telescope'
 local actions = require 'telescope.actions'
@@ -27,11 +29,21 @@ telescope.setup{
       override_generic_sorter = false,
       override_file_sorter = true,
     }
+  },
+  pickers = {
+    buffers = {
+      sort_lastused = true,
+      selection_strategy="closest",
+      mappings = {
+        i = { ["<c-d>"] = actions.delete_buffer },
+      }
+    }
   }
 }
 
 telescope.load_extension('fzf')
 telescope.load_extension('git_worktree')
+telescope.load_extension('frecency')
 
 _G.telescope_smart_files = function()
   local opts = {} -- define here if you want to define something

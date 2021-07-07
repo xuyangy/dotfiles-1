@@ -21,6 +21,7 @@ local plugins = {
   'lambdalisue/suda.vim',
   'b3nj5m1n/kommentary',
   'junegunn/gv.vim',
+  'vim-scripts/ConflictMotions'
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)

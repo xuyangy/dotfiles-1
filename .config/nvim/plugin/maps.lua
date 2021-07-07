@@ -25,6 +25,8 @@ local keymaps = {
   {'n','<leader>gp', '<cmd>G push<cr>' },
   {'n','<leader>gf', '<cmd>G fetch<cr>'},
   {'n','<leader>gl', '<cmd>G pull<cr>'},
+  {'n','<leader>2', '<cmd>diffget //2<cr>'},
+  {'n','<leader>3', '<cmd>diffget //3<cr>'},
   {'n','<leader>gpb', ':G checkout <C-r>+<cr>'},
   {'n','<leader>go', '<cmd>GV<cr>'},
   {'n','<leader>g%', '<cmd>GV!<cr>'},

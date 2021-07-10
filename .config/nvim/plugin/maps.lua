@@ -34,6 +34,8 @@ local keymaps = {
   {'n','<leader>x', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F'},
   {'n','<leader>y', '"+y'},
   {'v','<leader>y', '"+y'},
+  {'n','<leader>p', '"+p'},
+  {'v','<leader>p', '"+p'},
   {'n','<leader>Y', 'gg"+yG'},
   {'i','<silent><expr> <C-e>', 'compe#close(\'<C-e>\')'},
   {'n','<leader>db', '<cmd>lua require\'dap\'.toggle_breakpoint()<cr>'},

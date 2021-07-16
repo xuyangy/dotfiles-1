@@ -152,7 +152,7 @@ bar {
     swaybar_command waybar
 }
 
-bindsym $mod+Shift+s exec "grimshot copy area"
+bindsym $mod+Shift+s exec "flameshot gui"
 
 bindsym $mod+Shift+Ctrl+1 mark "sp1", move scratchpad
 bindsym $mod+Shift+Ctrl+2 mark "sp2", move scratchpad

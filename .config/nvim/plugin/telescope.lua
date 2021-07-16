@@ -1,5 +1,5 @@
 --telescope & deps
-Paq { 'Conni2461/telescope.nvim', branch='cycle_prompt_history' }
+Paq 'nvim-telescope/telescope.nvim'
   Paq 'nvim-lua/popup.nvim' -- dep from readme 1
   Paq 'nvim-lua/plenary.nvim' -- dep from readme 2
   Paq 'kyazdani42/nvim-web-devicons'

@@ -37,6 +37,9 @@ telescope.setup{
       mappings = {
         i = { ["<c-d>"] = actions.delete_buffer },
       }
+    },
+    git_files = {
+      shorten_path = true,
     }
   }
 }

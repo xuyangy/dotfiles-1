@@ -7,9 +7,15 @@ set $right l
 set $term kitty
 set $menu wofi
 
+set $laptop LVDS-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+exec_always /home/artur/bin/sway_clamshell.sh
+
 output * bg #3f3f3f solid_color
-output LVDS-1 pos 0 0 res 1366x768
+output $laptop pos 0 0 res 1366x768
 output DP-2 pos 1366 0 res 2560x1440
+
 
 default_border pixel 5
 

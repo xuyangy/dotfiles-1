@@ -33,7 +33,8 @@ local keymaps = {
   {'n','<leader>g%', '<cmd>GV!<cr>'},
   {'n','<leader>gcb', ':G checkout origin/develop -b' },
   {'n','<leader>gw', '<cmd>lua require(\'telescope\').extensions.git_worktree.git_worktrees()<cr>' },
-  {'n','<leader>x', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F'},
+  {'n','<leader>0', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F'},
+  {'n','<leader>x', '<cmd>x<cr>'},
   {'n','<leader>y', '"+y'},
   {'v','<leader>y', '"+y'},
   {'n','<leader>p', '"+p'},
@@ -55,7 +56,7 @@ local keymaps = {
   {'n','[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>'},
   {'n',']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'},
   {'n','<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>'},
-  {'n','<leader>x', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
+  --{'n','<leader>x', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
 }
 
 for _,mymap in pairs(keymaps) do

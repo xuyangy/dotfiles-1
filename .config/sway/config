@@ -7,21 +7,9 @@ set $right l
 set $term kitty
 set $menu wofi
 
-set $laptop LVDS-1
-bindswitch --reload --locked lid:on exec kanshictl switch undocked
-bindswitch --reload --locked lid:off exec kanshictl switch docked
-output LVDS-1 {
-  resolution 1366x768
-  enable
-}
-output DP-2 {
-  position 0,0
-  resolution 2560x1440
-  enable
-}
-output * bg #3f3f3f solid_color
+# output * bg #3f3f3f solid_color
 
-default_border pixel 10
+default_border pixel 5
 
 set $screenlock swaylock -f -c 000000
 
@@ -153,6 +141,7 @@ bar {
 }
 
 bindsym $mod+Shift+s exec "flameshot gui"
+bindsym $mod+p exec "pno"
 
 bindsym $mod+Shift+Ctrl+1 mark "sp1", move scratchpad
 bindsym $mod+Shift+Ctrl+2 mark "sp2", move scratchpad

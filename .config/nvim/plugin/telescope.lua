@@ -19,8 +19,8 @@ telescope.setup{
       i = {
         ["<esc>"] = actions.close,
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<Up>"] = actions.cycle_history_next,
-        ["<Down>"] = actions.cycle_history_prev,
+        ["<Down>"] = actions.cycle_history_next,
+        ["<Up>"] = actions.cycle_history_prev,
       },
     },
   },
@@ -34,9 +34,9 @@ telescope.setup{
     buffers = {
       sort_lastused = true,
       selection_strategy="closest",
-      mappings = {
-        i = { ["<c-d>"] = actions.delete_buffer },
-      }
+    },
+    git_files = {
+      path_display = {'shorten'},
     }
   }
 }

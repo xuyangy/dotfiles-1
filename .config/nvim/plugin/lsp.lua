@@ -8,16 +8,19 @@ local vuels_config = {
   init_options = {
     config = {
       vetur = {
+        -- its downright criminal that those are not enabled by default for vue
         completion = { autoImport = true, tagCasing = "initial" },
         languageFeatures = { codeActions = true, },
-        validation = { templateProps = false, },
         experimental = { templateInterpolationService = true },
+        --
+        validation = { templateProps = false, },
         useWorkspaceDependencies = true,
       }
     }
   }
 }
 
+-- TODO: need to handle case when I attempt formatting but workspace folder has no eslint installed
 local diagnosticls_config = {
   filetypes={"vue", "javascript", "typescript"},
   init_options = {
@@ -49,6 +52,8 @@ local diagnosticls_config = {
           message = "${message} [${ruleId}]",
         },
         securities = {
+        -- for some reason everyone has [1], [2] in their dotfiles on github
+        -- but makes errors show up as warnings. you need to use ["1"] ["2"] instead
           ["1"] = "warning",
           ["2"] = "error",
         }
@@ -57,6 +62,9 @@ local diagnosticls_config = {
     formatters = {
       eslint_d = {
         command = "eslint_d",
+        -- lots of args but thats because eslint_d refuses to lint .vue
+        -- with with "regular" eslint_d args
+        -- https://github.com/mantoni/eslint_d.js/issues/145
         args = { "--stdin", "--fix-to-stdout", "--stdin-filename", "%filepath" },
         isStdout = true,
         doesWriteToFile = false,
@@ -89,6 +97,7 @@ local luals_config = {
 local lspinstall = require'lspinstall'
 local nvim_lsp = require'lspconfig'
 
+-- TODO: make this less stupid
 local function setup_servers()
   lspinstall.setup{}
   local servers = lspinstall.installed_servers()
@@ -123,7 +132,7 @@ end
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
-    underline = true,
+    underline = true, -- works only on terminal emulators that support underlines (eg. kitty)
     signs = true,
     update_in_insert = true,
   }

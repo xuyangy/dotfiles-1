@@ -23,7 +23,6 @@ set $screenlock swaylock -f -c 000000
 
 exec swayidle \
           timeout 120 'swaylock -f -c 6b0000' \
-          timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 6b0000'
 
 bindsym $mod+Shift+x exec $screenlock
@@ -150,6 +149,8 @@ bar {
 
 bindsym $mod+Shift+s exec "flameshot gui"
 bindsym $mod+p exec "pno"
+bindsym $mod+F11 exec "adev headphones"
+bindsym $mod+F12 exec "adev monitor"
 
 bindsym $mod+Shift+Ctrl+1 mark "sp1", move scratchpad
 bindsym $mod+Shift+Ctrl+2 mark "sp2", move scratchpad
@@ -176,6 +177,7 @@ bindsym $mod+Ctrl+9 [con_mark="sp9"] scratchpad show
 bindsym $mod+Ctrl+0 [con_mark="sp0"] scratchpad show
 bindsym $mod+grave [con_mark="sp`"] scratchpad show
 bindsym $mod+tab [con_mark="sp`"] scratchpad show
+
 
 client.focused #ffff00 #ffff00 #ffff00 #ff0000 #ffff00
 

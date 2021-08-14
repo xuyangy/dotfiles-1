@@ -21,7 +21,7 @@ local keymaps = {
   {'n','<leader>o', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<cr>'},
   {'n','<leader>O', '<cmd>lua require(\'telescope.builtin\').lsp_workspace_symbols()<cr>'},
   {'n','<leader>f', '<cmd>lua telescope_smart_files()<cr>'},
-  {'n','<leader>F', '<cmd>lua require(\'telescope\').extensions.frecency.frecency()<cr>'},
+  {'n','<leader>F', ':lua require(\'telescope\').extensions.frecency.frecency()<cr>:CWD:'},
   {'n','<leader>s', '<cmd>G<cr>'},
   {'n','<leader>gp', '<cmd>G push<cr>' },
   {'n','<leader>gf', '<cmd>G fetch<cr>'},

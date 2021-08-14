@@ -188,4 +188,3 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec "/usr/lib/kdeconnectd"
 exec "flameshot"
 
-for_window [title="1Password"] floating enable

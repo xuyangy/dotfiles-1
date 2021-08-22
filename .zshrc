@@ -18,11 +18,7 @@ function vd() {
 }
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
-alias calculator=bc
-function gcmsg2 { git commit -m "$*"; }
-alias gcmsg3=gcmsg
 alias vi="nvim"
-alias curr="qalc -t -e"
 alias spacy="python -m spacy"
 alias weather="curl wttr.in"
 

@@ -3,6 +3,7 @@ local keymaps = {
   {'n','<leader>w', '<cmd>w<cr>'},
   {'n','<leader>q', '<cmd>q<cr>'},
   {'n','<leader>=', '<C-w>='},
+  {'n','<leader>1', '<cmd>only<cr>'},
   {'n','<C-j>', '<C-w><C-j>'},
   {'n','<C-k>', '<C-w><C-k>'},
   {'n','<C-h>', '<C-w><C-h>'},

@@ -28,7 +28,7 @@ local keymaps = {
   {'n','<leader>gl', '<cmd>G pull<cr>'},
   {'n','<leader>2', '<cmd>diffget //2<cr>'},
   {'n','<leader>3', '<cmd>diffget //3<cr>'},
-  {'n','<leader>crb', ':G checkout --quiet <C-r>+<cr>:redrawstatus<cr>'},
+  {'n','<leader><C-b>', ':G checkout --quiet <C-r>+<cr>:redrawstatus<cr>'},
   {'n','<leader>go', '<cmd>GV<cr>'},
   {'n','<leader>g%', '<cmd>GV!<cr>'},
   {'n','<leader>gcb', ':G checkout origin/develop -b' },

@@ -187,4 +187,5 @@ exec_always "systemctl --user import-environment; systemctl --user start sway-se
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec "/usr/lib/kdeconnectd"
 exec "flameshot"
+exec --no-startup-id dockd --daemon
 

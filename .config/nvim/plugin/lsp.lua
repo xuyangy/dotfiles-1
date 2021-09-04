@@ -18,8 +18,8 @@ local volar_initial = {
      renameFileRefactoring=true,
      signatureHelp=true,
      completion={
-       defaultTagNameCase=both,
-       defaultAttrNameCase=kebabCase,
+       defaultTagNameCase='both',
+       defaultAttrNameCase='kebabCase',
        getDocumentNameCasesRequest=false,
        getDocumentSelectionRequest=false,
      },
@@ -43,6 +43,46 @@ local volar_initial = {
        defaultPrintWidth=100,
        getDocumentPrintWidthRequest=false,
      },
+   }
+ }
+
+ -- this is from https://github.com/mattn/vim-lsp-settings/blob/master/settings/volar.vim#L64
+ -- but I have no idea where to put this
+local volar_config = {
+   ['volar-api' ]= {
+     trace= { server= "off" },
+   },
+   ['volar-document']= {
+     trace= { server= "off" },
+   },
+   ['volar-html' ]= {
+     trace= { server= "off" },
+   },
+   volar= {
+     codeLens= {
+       references= false,
+       pugTools= false,
+       scriptSetupTools= false,
+     },
+     formatting= {
+       printWidth= 100,
+     },
+     icon= {
+       splitEditors= true,
+       preview= false,
+       finder= false,
+     },
+     lowPowerMode= false,
+     autoCompleteRefs= true,
+     tsPluginStatus= false,
+     checkVueTscVersion= false,
+     preferredTagNameCase= "auto",
+     preferredAttrNameCase= "auto",
+     preview= {
+       port= 3333,
+       backgroundColor= "fff",
+       transparentGrid= false,
+     }
    }
  }
 
@@ -71,8 +111,6 @@ npm install -g vls
     },
   },
 }
-
--- turn on `window/workDoneProgress` capability
 
 local vuels_config = {
   filetypes={"vue"},

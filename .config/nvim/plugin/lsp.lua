@@ -1,6 +1,77 @@
 Paq'neovim/nvim-lspconfig'
 Paq'kabouzeid/nvim-lspinstall'
 
+local configs = require 'lspconfig/configs'
+local util = require 'lspconfig/util'
+
+local volar_initial = {
+   typescript = {
+     serverPath = "/home/artur/.npm-global/lib/node_modules/typescript/lib/tsserverlibrary.js",
+   },
+   languageFeatures={
+     references={ enabledInTsScript=true },
+     definition=true,
+     typeDefinition=true,
+     callHierarchy=true,
+     hover=true,
+     rename=true,
+     renameFileRefactoring=true,
+     signatureHelp=true,
+     completion={
+       defaultTagNameCase=both,
+       defaultAttrNameCase=kebabCase,
+       getDocumentNameCasesRequest=false,
+       getDocumentSelectionRequest=false,
+     },
+     documentHighlight=true,
+     documentLink=true,
+     codeLens={
+       showReferencesNotification=false,
+     },
+     semanticTokens=true,
+     codeAction=true,
+     diagnostics=true,
+     schemaRequestService=true,
+   },
+   documentFeatures={
+     selectionRange=true,
+     foldingRange=true,
+     linkedEditingRange=true,
+     documentSymbol=true,
+     documentColor=true,
+     documentFormatting={
+       defaultPrintWidth=100,
+       getDocumentPrintWidthRequest=false,
+     },
+   }
+ }
+
+configs['volar'] = {
+  default_config = {
+    cmd = { 'volar-server', '--stdio' },
+    filetypes = { 'vue' },
+    root_dir = util.root_pattern('package.json'),
+    init_options = volar_initial,
+  },
+  docs = {
+    package_json = 'https://raw.githubusercontent.com/vuejs/vetur/master/package.json',
+    description = [[
+https://github.com/vuejs/vetur/tree/master/server
+Vue language server(vls)
+`vue-language-server` can be installed via `npm`:
+```sh
+npm install -g vls
+```
+]],
+    default_config = {
+      root_dir = [[root_pattern("package.json", "vue.config.js")]],
+      init_options = {
+        config = {},
+      },
+    },
+  },
+}
+
 -- turn on `window/workDoneProgress` capability
 
 local vuels_config = {
@@ -105,7 +176,8 @@ local function setup_servers()
   for _, server in pairs(servers) do
     local config = {}
     if server == "vue" then
-      config = vuels_config
+      --config = vuels_config
+      goto continue
     end
     if server == "diagnosticls" then
       config = diagnosticls_config
@@ -118,10 +190,12 @@ local function setup_servers()
       config.filetypes = {"typescript", "javascript"}
     end
     nvim_lsp[server].setup(config)
+    ::continue::
   end
 end
 
 setup_servers()
+nvim_lsp.volar.setup{}
 
 --nvim_lsp.diagnosticls.setup(diagnosticls_config)
 
@@ -139,3 +213,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
+--[[
+require 'lspinstall/servers'.volar = {
+  -- shamelessly stolen from https://github.com/mattn/vim-lsp-settings/blob/1fdda7d3493f086b5e28446f8daa6a9d6dc1325c/installer/install-volar.sh
+  install_script = [[
+    ! test -f package.json && npm init -y --scope=lspinstall || true
+    npm install @volar/server@0.27.12-alpha.1
+    npm install typescript@4.3 # volar doesn't work well with TS4.4
+ add doublesquarebracket here ,
+--  uninstall_script = nil
+}
+--]]

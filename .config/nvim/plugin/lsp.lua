@@ -15,6 +15,7 @@ local vuels_config = {
         --
         validation = { templateProps = false, },
         useWorkspaceDependencies = true,
+        ignoreProjectWarning = true
       }
     }
   }

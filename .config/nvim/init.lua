@@ -15,7 +15,7 @@ local plugins = {
   'lambdalisue/suda.vim',
   'b3nj5m1n/kommentary',
   'junegunn/gv.vim',
-  'iamcco/markdown-preview.nvim'
+  'iamcco/markdown-preview.nvim',
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)

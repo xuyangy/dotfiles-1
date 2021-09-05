@@ -4,8 +4,9 @@ Paq'kabouzeid/nvim-lspinstall'
 local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 
-local volar_initial = {
-   typescript = {
+--  https://github.com/johnsoncodehk/volar/blob/master/packages/shared/src/types.ts#L5
+local volar_init_options = {
+  typescript = {
      serverPath = "/home/artur/.npm-global/lib/node_modules/typescript/lib/tsserverlibrary.js",
    },
    languageFeatures={
@@ -46,9 +47,8 @@ local volar_initial = {
    }
  }
 
- -- this is from https://github.com/mattn/vim-lsp-settings/blob/master/settings/volar.vim#L64
- -- but I have no idea where to put this
-local volar_config = {
+-- https://github.com/johnsoncodehk/volar/blob/master/package.json#L59
+local volar_settings = {
    ['volar-api' ]= {
      trace= { server= "off" },
    },
@@ -88,27 +88,25 @@ local volar_config = {
 
 configs['volar'] = {
   default_config = {
+    -- TODO volar-server executable is non-standard. it works for me because I downloaded it from the aur - it's just a script that runs node_modules/@volar/server/out/index.js
+    -- TODO see https://github.com/johnsoncodehk/volar/issues/458
     cmd = { 'volar-server', '--stdio' },
     filetypes = { 'vue' },
     root_dir = util.root_pattern('package.json'),
-    init_options = volar_initial,
+    init_options = volar_init_options,
+    settings = volar_settings,
   },
   docs = {
-    package_json = 'https://raw.githubusercontent.com/vuejs/vetur/master/package.json',
-    description = [[
-https://github.com/vuejs/vetur/tree/master/server
-Vue language server(vls)
-`vue-language-server` can be installed via `npm`:
+    package_json = 'https://github.com/johnsoncodehk/volar/blob/master/packages/server/package.json',
+    description =
+[[
+https://github.com/johnsoncodehk/volar/tree/master/packages/server
+Vetur language server for Vue
+Vetur can be installed via TODO
 ```sh
-npm install -g vls
+TODO
 ```
 ]],
-    default_config = {
-      root_dir = [[root_pattern("package.json", "vue.config.js")]],
-      init_options = {
-        config = {},
-      },
-    },
   },
 }
 

@@ -1,114 +1,5 @@
-Paq'neovim/nvim-lspconfig'
+Paq'3nuc/nvim-lspconfig'
 Paq'kabouzeid/nvim-lspinstall'
-
-local configs = require 'lspconfig/configs'
-local util = require 'lspconfig/util'
-
---  https://github.com/johnsoncodehk/volar/blob/master/packages/shared/src/types.ts#L5
-local volar_init_options = {
-  typescript = {
-     serverPath = "/home/artur/.npm-global/lib/node_modules/typescript/lib/tsserverlibrary.js",
-   },
-   languageFeatures={
-     references={ enabledInTsScript=true },
-     definition=true,
-     typeDefinition=true,
-     callHierarchy=true,
-     hover=true,
-     rename=true,
-     renameFileRefactoring=true,
-     signatureHelp=true,
-     completion={
-       defaultTagNameCase='both',
-       defaultAttrNameCase='kebabCase',
-       getDocumentNameCasesRequest=false,
-       getDocumentSelectionRequest=false,
-     },
-     documentHighlight=true,
-     documentLink=true,
-     codeLens={
-       showReferencesNotification=false,
-     },
-     semanticTokens=true,
-     codeAction=true,
-     diagnostics=true,
-     schemaRequestService=true,
-   },
-   documentFeatures={
-     selectionRange=true,
-     foldingRange=true,
-     linkedEditingRange=true,
-     documentSymbol=true,
-     documentColor=true,
-     documentFormatting={
-       defaultPrintWidth=100,
-       getDocumentPrintWidthRequest=false,
-     },
-   }
- }
-
--- https://github.com/johnsoncodehk/volar/blob/master/package.json#L59
-local volar_settings = {
-   ['volar-api' ]= {
-     trace= { server= "off" },
-   },
-   ['volar-document']= {
-     trace= { server= "off" },
-   },
-   ['volar-html' ]= {
-     trace= { server= "off" },
-   },
-   volar= {
-     codeLens= {
-       references= false,
-       pugTools= false,
-       scriptSetupTools= false,
-     },
-     formatting= {
-       printWidth= 100,
-     },
-     icon= {
-       splitEditors= true,
-       preview= false,
-       finder= false,
-     },
-     lowPowerMode= false,
-     autoCompleteRefs= true,
-     tsPluginStatus= false,
-     checkVueTscVersion= false,
-     preferredTagNameCase= "auto",
-     preferredAttrNameCase= "auto",
-     preview= {
-       port= 3333,
-       backgroundColor= "fff",
-       transparentGrid= false,
-     }
-   }
- }
-
-configs['volar'] = {
-  default_config = {
-    -- TODO volar-server executable is non-standard. it works for me because I downloaded it from the aur - it's just a script that runs node_modules/@volar/server/out/index.js
-    -- TODO see https://github.com/johnsoncodehk/volar/issues/458
-    cmd = { 'volar-server', '--stdio' },
-    filetypes = { 'vue' },
-    root_dir = util.root_pattern('package.json'),
-    init_options = volar_init_options,
-    settings = volar_settings,
-  },
-  docs = {
-    package_json = 'https://github.com/johnsoncodehk/volar/blob/master/packages/server/package.json',
-    description =
-[[
-https://github.com/johnsoncodehk/volar/tree/master/packages/server
-Vetur language server for Vue
-Vetur can be installed via TODO
-```sh
-TODO
-```
-]],
-  },
-}
 
 local vuels_config = {
   filetypes={"vue"},
@@ -205,6 +96,7 @@ local luals_config = {
 local lspinstall = require'lspinstall'
 local nvim_lsp = require'lspconfig'
 
+
 -- TODO: make this less stupid
 local function setup_servers()
   lspinstall.setup{}
@@ -213,7 +105,7 @@ local function setup_servers()
     local config = {}
     if server == "vue" then
       --config = vuels_config
-      goto continue
+      goto continue -- prevent conflict with vuels and volarvuels
     end
     if server == "diagnosticls" then
       config = diagnosticls_config
@@ -230,8 +122,9 @@ local function setup_servers()
   end
 end
 
+nvim_lsp.volarvuels.setup{}
+
 setup_servers()
-nvim_lsp.volar.setup{}
 
 --nvim_lsp.diagnosticls.setup(diagnosticls_config)
 
@@ -248,15 +141,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
-
---[[
-require 'lspinstall/servers'.volar = {
-  -- shamelessly stolen from https://github.com/mattn/vim-lsp-settings/blob/1fdda7d3493f086b5e28446f8daa6a9d6dc1325c/installer/install-volar.sh
-  install_script = [[
-    ! test -f package.json && npm init -y --scope=lspinstall || true
-    npm install @volar/server@0.27.12-alpha.1
-    npm install typescript@4.3 # volar doesn't work well with TS4.4
- add doublesquarebracket here ,
---  uninstall_script = nil
-}
---]]

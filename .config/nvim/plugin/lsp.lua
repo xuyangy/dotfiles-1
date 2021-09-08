@@ -122,7 +122,7 @@ local function setup_servers()
   end
 end
 
-nvim_lsp.volarvuels.setup{}
+nvim_lsp.volar.setup{}
 
 setup_servers()
 

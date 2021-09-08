@@ -24,6 +24,7 @@ local keymaps = {
   {'n','<leader>f', '<cmd>lua telescope_smart_files()<cr>'},
   {'n','<leader>F', ':lua require(\'telescope\').extensions.frecency.frecency()<cr>:CWD:'},
   {'n','<leader><leader>', '<cmd>Telescope resume<cr>'}, --holy shit
+  {'n','<leader>gw', '<cmd>lua require(\'telescope\').extensions.git_worktree.git_worktrees()<cr>' },
   {'n','<leader>s', '<cmd>G<cr>'},
   {'n','<leader>gp', '<cmd>G push<cr>' },
   {'n','<leader>gf', '<cmd>G fetch<cr>'},
@@ -34,8 +35,6 @@ local keymaps = {
   {'n','<leader>go', '<cmd>GV<cr>'},
   {'n','<leader>g%', '<cmd>GV!<cr>'},
   {'n','<leader>gcb', ':G checkout origin/develop -b' },
-  {'n','<leader>gw', '<cmd>lua require(\'telescope\').extensions.git_worktree.git_worktrees()<cr>' },
-  {'n','<leader>0', 'mF:%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F'},
   {'n','<leader>x', '<cmd>x<cr>'},
   {'n','<leader>y', '"+y'},
   {'v','<leader>y', '"+y'},
@@ -45,20 +44,6 @@ local keymaps = {
   {'i','<silent><expr> <C-e>', 'compe#close(\'<C-e>\')'},
   {'n','<leader>db', '<cmd>lua require\'dap\'.toggle_breakpoint()<cr>'},
   {'n','<leader>dl', '<cmd>lua require\'dap\'.continue()<cr>'},
-  {'n','<leader>ll', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>'},
-  {'n','gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>'},
-  {'n','gd', '<Cmd>lua vim.lsp.buf.definition()<CR>'},
-  {'n','K', '<cmd>lua vim.lsp.buf.hover()<CR>'},
-  {'n','gi', '<cmd>lua vim.lsp.buf.implementation()<CR>'},
-  {'n','<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>'},
-  {'n','<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>'},
-  {'n','<f2>', '<cmd>lua vim.lsp.buf.rename()<CR>'},
-  {'n','gr', '<cmd>lua vim.lsp.buf.references()<CR>'},
-  {'n','<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>'},
-  {'n','[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>'},
-  {'n',']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'},
-  {'n','<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>'},
-  --{'n','<leader>x', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
 }
 
 for _,mymap in pairs(keymaps) do

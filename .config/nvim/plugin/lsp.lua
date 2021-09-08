@@ -1,4 +1,4 @@
-Paq'3nuc/nvim-lspconfig'
+Paq'neovim/nvim-lspconfig'
 Paq'kabouzeid/nvim-lspinstall'
 
 local lspinstall = require'lspinstall'

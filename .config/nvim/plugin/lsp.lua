@@ -109,7 +109,7 @@ local function setup_servers()
           settings = {
             Lua = {
               runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-              diagnostics = { globals = {'vim', 'Paq', 'Keymap'} },
+              diagnostics = { globals = {'vim', 'Paq', 'inoremap', 'tnoremap', 'nnoremap', 'vnoremap'} },
               workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = {

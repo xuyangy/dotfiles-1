@@ -1,9 +1,10 @@
 vim.cmd 'packadd paq-nvim'
-function Keymap(mode, map, cmd)
-  local options = { noremap = true }
-  vim.api.nvim_set_keymap(mode, map, cmd, options)
-end
 Paq = require('paq-nvim').paq
+local keymap = require('astronauta.keymap')
+_G.nnoremap = keymap.nnoremap
+_G.tnoremap = keymap.tnoremap
+_G.vnoremap = keymap.vnoremap
+_G.inoremap = keymap.vnoremap
 local plugins = {
   -- plugins that dont need their own file
   'savq/paq-nvim',
@@ -16,6 +17,7 @@ local plugins = {
   'b3nj5m1n/kommentary',
   'junegunn/gv.vim',
   'iamcco/markdown-preview.nvim',
+  'tjdevries/astronauta.nvim'
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)

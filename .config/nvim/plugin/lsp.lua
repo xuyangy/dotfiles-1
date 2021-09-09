@@ -83,7 +83,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 local function setup_servers()
   lspinstall.setup{}
   local servers = lspinstall.installed_servers()
-  table.insert(servers, 'volar')
+  table.insert(servers, "volar");
   for _, server in pairs(servers) do
     local config = {}
     if server == "vue" then

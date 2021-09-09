@@ -3,9 +3,8 @@ vim.g.rnvimr_action = {
   ["<CR>"] = 'NvimEdit drop',
   ["<F1>"] = 'NvimEdit quit',
   ['<C-t>'] = 'NvimEdit tabedit',
-  ['<C-s>'] = 'NvimEdit split',
-  ['<C-v>'] = 'NvimEdit vsplit',
-  ['<C-o>'] = 'NvimEdit drop',
+  ['gs'] = 'NvimEdit split',
+  ['gv'] = 'NvimEdit vsplit',
   ['gw'] = 'JumpNvimCwd',
   ['yw'] = 'EmitRangerCwd'
 }

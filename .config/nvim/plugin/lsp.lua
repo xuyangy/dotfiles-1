@@ -1,7 +1,6 @@
 Paq'neovim/nvim-lspconfig'
 Paq'kabouzeid/nvim-lspinstall'
 
-local lspinstall = require'lspinstall'
 local nvim_lsp = require'lspconfig'
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -79,15 +78,16 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	}
 }
 
+local lspinstall = require'lspinstall'
 local function setup_servers()
   lspinstall.setup{}
   local servers = lspinstall.installed_servers()
   --table.insert(servers, "volar");
-  for _, server in pairs(servers) do
+  for _, server in ipairs(servers) do
     local config = {}
     if server == "vue" then
       config = {
-        --filetypes={'vue'}, --temproarily doesn't contain "vue" because I'm testing volar
+        filetypes={"vue"}, --temproarily doesn't contain "vue" because I'm testing volar
         init_options = {
           config = {
             vetur = {
@@ -101,9 +101,9 @@ local function setup_servers()
               ignoreProjectWarning = true
             }
           }
-        },
+        }
       }
-    else if server == "lua" then
+    elseif server == "lua" then
         config = {
           settings = {
             Lua = {
@@ -182,7 +182,6 @@ local function setup_servers()
       config.capabilities = capabilities;
       nvim_lsp[server].setup(config)
 
-    end
   end
 end
 

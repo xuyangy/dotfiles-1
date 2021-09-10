@@ -1,10 +1,5 @@
 vim.cmd 'packadd paq-nvim'
 Paq = require('paq-nvim').paq
-local keymap = require('astronauta.keymap')
-_G.nnoremap = keymap.nnoremap
-_G.tnoremap = keymap.tnoremap
-_G.vnoremap = keymap.vnoremap
-_G.inoremap = keymap.vnoremap
 local plugins = {
   -- plugins that dont need their own file
   'savq/paq-nvim',
@@ -22,6 +17,12 @@ local plugins = {
 for _,plugin in ipairs(plugins) do
   Paq(plugin)
 end
+
+local keymap = require('astronauta.keymap')
+_G.nnoremap = keymap.nnoremap
+_G.tnoremap = keymap.tnoremap
+_G.vnoremap = keymap.vnoremap
+_G.inoremap = keymap.vnoremap
 
 --vim.cmd('runtime macros/sandwich/keymap/surround.vim')
 

@@ -82,12 +82,12 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 local function setup_servers()
   lspinstall.setup{}
   local servers = lspinstall.installed_servers()
-  table.insert(servers, "volar");
+  --table.insert(servers, "volar");
   for _, server in pairs(servers) do
     local config = {}
     if server == "vue" then
       config = {
-        filetypes={}, --temproarily doesn't contain "vue" because I'm testing volar
+        --filetypes={'vue'}, --temproarily doesn't contain "vue" because I'm testing volar
         init_options = {
           config = {
             vetur = {
@@ -101,7 +101,7 @@ local function setup_servers()
               ignoreProjectWarning = true
             }
           }
-        }
+        },
       }
     else if server == "lua" then
         config = {

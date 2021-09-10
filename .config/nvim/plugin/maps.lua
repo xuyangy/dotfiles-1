@@ -2,8 +2,8 @@ nnoremap {'<leader>ve', '<cmd>e $MYVIMRC<cr>'}
 nnoremap {'<leader>w', '<cmd>w<cr>'}
 nnoremap {'<leader>x', '<cmd>x<cr>'}
 nnoremap {'<leader>q', '<cmd>q<cr>'}
-nnoremap {'n','<leader>=', '<C-w>='}
-nnoremap {'n','<leader>1', '<cmd>only<cr>'}
+nnoremap {'<leader>=', '<C-w>='}
+nnoremap {'<leader>1', '<cmd>only<cr>'}
 nnoremap {'<C-j>', '<C-w><C-j>'}
 nnoremap {'<C-k>', '<C-w><C-k>'}
 nnoremap {'<C-h>', '<C-w><C-h>'}
@@ -29,8 +29,6 @@ nnoremap {'<leader>p', '"+p'}
 vnoremap {'<leader>y', '"+y'}
 vnoremap {'<leader>p', '"+p'}
 nnoremap {'<leader>Y', 'gg"+yG'}
-nnoremap {'<leader>db', require'dap'.toggle_breakpoint}
-nnoremap {'<leader>dl', require'dap'.continue}
 tnoremap {'<leader><f1>', '<C-\\><C-n>:RnvimrResize<cr>'}
 inoremap {'<silent><expr> <C-e>', 'compe#close(\'<C-e>\')'}
 vim.api.nvim_set_keymap( 'i', '<C-Space>', "compe#complete()", {noremap = true, expr = true, silent = true})

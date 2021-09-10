@@ -20,3 +20,6 @@ dap.configurations.vue = {
     webRoot = '${workspaceFolder}'
   }
 }
+
+nnoremap {'<leader>db', dap.toggle_breakpoint}
+nnoremap {'<leader>dl', dap.continue}

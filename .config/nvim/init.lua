@@ -12,7 +12,8 @@ local plugins = {
   'b3nj5m1n/kommentary',
   'junegunn/gv.vim',
   'iamcco/markdown-preview.nvim',
-  'tjdevries/astronauta.nvim'
+  'tjdevries/astronauta.nvim',
+  'lewis6991/gitsigns.nvim',
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)

@@ -34,6 +34,7 @@ local npairs=require('nvim-autopairs')
 _G.MUtils= {}
 
 vim.g.completion_confirm_key = ""
+
 MUtils.completion_confirm=function()
   if vim.fn.pumvisible() ~= 0  then
     if vim.fn.complete_info()["selected"] ~= -1 then
@@ -48,5 +49,4 @@ end
 
 require('nvim-autopairs').setup()
 
-vim.api.nvim_set_keymap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
-
+inoremap{'<CR>',MUtils.completion_confirm, {expr = true, silent = true}}

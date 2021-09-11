@@ -2,13 +2,12 @@ Paq 'nvim-treesitter/nvim-treesitter'
 Paq 'nvim-treesitter/playground'
 Paq 'nvim-treesitter/nvim-treesitter-textobjects'
 Paq 'p00f/nvim-ts-rainbow'
+
 require'nvim-treesitter.configs'.setup {
   rainbow = {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
---    colors = {}, -- table of hex strings
---    termcolors = {} -- table of colour name strings
   },
   autotag = { enable = true },
   ensure_installed = { "vue", "scss", "typescript", "javascript", "html", "lua"},
@@ -53,3 +52,5 @@ require'nvim-treesitter.configs'.setup {
     }
   }
 }
+-- https://stackoverflow.com/a/62863375/10706046
+vim.cmd('autocmd VimEnter * ++once ++nested TSUpdate');

@@ -21,6 +21,8 @@ telescope.setup{
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.cycle_history_next,
         ["<C-h>"] = actions.cycle_history_prev,
+        ["<C-s>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
       },
     },
     dynamic_preview_title = true,

@@ -49,4 +49,5 @@ end
 
 require('nvim-autopairs').setup()
 
-inoremap{'<CR>',MUtils.completion_confirm, {expr = true, silent = true}}
+vim.api.nvim_set_keymap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+

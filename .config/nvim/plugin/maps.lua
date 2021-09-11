@@ -31,5 +31,5 @@ vnoremap {'<leader>p', '"+p'}
 nnoremap {'<leader>Y', 'gg"+yG'}
 tnoremap {'<leader><f1>', '<C-\\><C-n>:RnvimrResize<cr>'}
 inoremap {' <C-e>', 'compe#close(\'<C-e>\')', {silent = true, expr = true}}
-inoremap { '<C-Space>', "compe#complete()", {noremap = true, expr = true, silent = true}}
+vim.api.nvim_set_keymap( 'i', '<C-Space>', "compe#complete()", {noremap = true, expr = true, silent = true})
 

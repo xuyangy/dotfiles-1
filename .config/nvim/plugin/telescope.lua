@@ -39,7 +39,7 @@ telescope.setup{
       selection_strategy="closest",
     },
     git_files = {
-      path_display = {shorten = 4},
+      path_display = {'smart'},
     }
   }
 }

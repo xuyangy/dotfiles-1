@@ -21,5 +21,8 @@ dap.configurations.vue = {
   }
 }
 
-nnoremap {'<leader>db', dap.toggle_breakpoint}
-nnoremap {'<leader>dl', dap.continue}
+nnoremap {'\\b', dap.toggle_breakpoint}
+nnoremap {'\\c', dap.continue}
+nnoremap {'\\o', dap.setp_over}
+nnoremap {'\\i', dap.step_into}
+nnoremap {'\\r', dap.repl_open}

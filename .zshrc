@@ -12,13 +12,12 @@ KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-alias v="f -e nvim"
 function vd() {
   fasd_cd -d "$1" && nvim
 }
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
-alias vi="nvim"
+alias v="nvim"
 alias spacy="python -m spacy"
 alias weather="curl wttr.in"
 

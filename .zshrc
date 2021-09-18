@@ -18,6 +18,7 @@ function vd() {
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias v="nvim"
+alias vi="nvim"
 alias spacy="python -m spacy"
 alias weather="curl wttr.in"
 

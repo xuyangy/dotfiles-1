@@ -1,7 +1,7 @@
 Paq 'kevinhwang91/rnvimr'
 vim.g.rnvimr_action = {
-  ["<CR>"] = 'NvimEdit drop',
-  ["<F1>"] = 'NvimEdit quit',
+  ['<CR>'] = 'NvimEdit drop',
+  ['<F1>'] = 'NvimEdit quit',
   ['<C-t>'] = 'NvimEdit tabedit',
   ['gs'] = 'NvimEdit split',
   ['gv'] = 'NvimEdit vsplit',

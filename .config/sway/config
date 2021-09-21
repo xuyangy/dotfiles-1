@@ -12,15 +12,16 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 exec_always /home/artur/bin/sway_clamshell.sh
 
-#output DP-2 res 2560x1440
+# output DP-2 res 2560x1440
 output * bg #3f3f3f solid_color
 
 default_border pixel 5
 
 
-exec swayidle \
+exec swayidle -w \
           timeout 120 'swaylock -f -c 6b0000' \
-          timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          timeout 300 'swaymsg "output * dpms off"' \
+               resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 6b0000'
 
 set $screenlock swaylock -f -c 000000

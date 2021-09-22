@@ -151,7 +151,7 @@ bar {
 }
 
 bindsym $mod+Shift+s exec "flameshot gui"
-bindsym $mod+p exec "pno"
+bindsym $mod+p exec "kitty --hold pno2"
 bindsym $mod+F11 exec "adev headphones"
 bindsym $mod+F12 exec "adev monitor"
 

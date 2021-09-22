@@ -36,3 +36,7 @@ ranger_cd() {
 }
 bindkey -s '\eOP' "ranger_cd\n" # f1
 
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -e "/usr/lib/kitty/shell-integration/kitty.zsh"; then source "/usr/lib/kitty/shell-integration/kitty.zsh"; fi
+# END_KITTY_SHELL_INTEGRATION

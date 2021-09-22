@@ -9,11 +9,11 @@ local plugins = {
   'machakann/vim-sandwich',
   'windwp/nvim-autopairs',
   'lambdalisue/suda.vim',
-  'b3nj5m1n/kommentary',
   'junegunn/gv.vim',
   'iamcco/markdown-preview.nvim',
   'tjdevries/astronauta.nvim',
   'lewis6991/gitsigns.nvim',
+  'tpope/vim-commentary'
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)
@@ -41,6 +41,7 @@ vim.opt.ignorecase=    true
 vim.opt.showmode=      false
 vim.opt.smartcase=     true
 vim.opt.hidden=        true
+vim.opt.confirm=       true -- can't shortmess E162 :(
 vim.opt.completeopt=   'menuone,noinsert,noselect'
 vim.opt.cursorline=    true
 vim.opt.equalalways=   true

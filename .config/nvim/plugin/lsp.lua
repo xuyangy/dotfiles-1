@@ -82,12 +82,12 @@ local lspinstall = require'lspinstall'
 local function setup_servers()
   lspinstall.setup{}
   local servers = lspinstall.installed_servers()
-  --table.insert(servers, "volar");
+  table.insert(servers, "volar");
   for _, server in ipairs(servers) do
     local config = {}
     if server == "vue" then
       config = {
-        filetypes={"vue"}, --temproarily doesn't contain "vue" because I'm testing volar
+        filetypes={}, --temproarily doesn't contain "vue" because I'm testing volar
         init_options = {
           config = {
             vetur = {

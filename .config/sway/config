@@ -12,19 +12,19 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 exec_always /home/artur/bin/sway_clamshell.sh
 
-output $laptop pos 0 0 res 1366x768
-output DP-2 pos 1366 0 res 2560x1440@59.951Hz
+# output DP-2 res 2560x1440
 output * bg #3f3f3f solid_color
 
 default_border pixel 5
 
-set $screenlock swaylock -f -c 000000
 
-exec swayidle \
+exec swayidle -w \
           timeout 120 'swaylock -f -c 6b0000' \
-          timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          timeout 300 'swaymsg "output * dpms off"' \
+               resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 6b0000'
 
+set $screenlock swaylock -f -c 000000
 bindsym $mod+Shift+x exec $screenlock
 bindsym $mod+i exec firefox-nightly
 
@@ -151,7 +151,7 @@ bar {
 }
 
 bindsym $mod+Shift+s exec "flameshot gui"
-bindsym $mod+p exec "pno"
+bindsym $mod+p exec "kitty --hold pno2"
 bindsym $mod+F11 exec "adev headphones"
 bindsym $mod+F12 exec "adev monitor"
 

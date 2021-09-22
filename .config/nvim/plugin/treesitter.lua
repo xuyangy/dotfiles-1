@@ -2,8 +2,12 @@ Paq 'nvim-treesitter/nvim-treesitter'
 Paq 'nvim-treesitter/playground'
 Paq 'nvim-treesitter/nvim-treesitter-textobjects'
 Paq 'p00f/nvim-ts-rainbow'
+Paq 'JoosepAlviste/nvim-ts-context-commentstring'
 
 require'nvim-treesitter.configs'.setup {
+  context_commentstring = {
+    enable = true
+  },
   rainbow = {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean

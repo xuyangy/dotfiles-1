@@ -1,4 +1,4 @@
-Paq {'NullVoxPopuli/lualine.nvim', branch='fix-estimated-with-calculation'}
+Paq {'NullVoxPopuli/lualine.nvim' }
 require('lualine').setup{
   options = {
     theme = 'tokyonight',

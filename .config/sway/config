@@ -5,14 +5,14 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-set $menu wofi
+set $menu wofi --term=kitty
 
 set $laptop LVDS-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 exec_always /home/artur/bin/sway_clamshell.sh
 
-# output DP-2 res 2560x1440
+#output DP-2 res 2560x1440
 output * bg #3f3f3f solid_color
 
 default_border pixel 5
@@ -188,6 +188,7 @@ include /etc/sway/config.d/*
 include ./shotman.conf
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target""
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec "signal-desktop --start-in-tray"
 exec "/usr/lib/kdeconnectd"
 exec "flameshot"
 

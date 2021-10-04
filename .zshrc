@@ -21,6 +21,7 @@ alias v="nvim"
 alias vi="nvim"
 alias spacy="python -m spacy"
 alias weather="curl wttr.in"
+alias sway="sway -d > ~/sway.log 2>&1"
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init

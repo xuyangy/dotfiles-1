@@ -29,13 +29,17 @@ eval "$(fasd --init auto)"
 
 ranger_cd() {
   temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
-  ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+  < $TTY ranger --choosedir="$temp_file" -- "${@:-$PWD}"
   if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
     cd -- "$chosen_dir"
   fi
   rm -f -- "$temp_file"
+  zle reset-prompt
 }
-bindkey -s '\eOP' "ranger_cd\n" # f1
+zle -N ranger_cd
+bindkey -v 
+bindkey -M viins '\eOP' ranger_cd # f1 
+bindkey -M vicmd '\eOP' ranger_cd # f1 
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION

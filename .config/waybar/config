@@ -80,7 +80,7 @@
         "spacing": 10
     },
     "clock#1": {
-        "format": "{:%d-%m | <b>%H:%M</b>}",
+        "format": "{:%d-%m | <b>%T</b>}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
     "cpu": {
@@ -138,6 +138,8 @@
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
+            "alsa_output.usb-BEHRINGER_UMC204HD_192k-00": "",
+            "alsa_output.pci-0000_00_1b.0": "M",
             "headphone": "",
             "hands-free": "",
             "headset": "",

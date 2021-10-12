@@ -1,5 +1,6 @@
 Paq'neovim/nvim-lspconfig'
 Paq'kabouzeid/nvim-lspinstall'
+Paq'nvim-lua/lsp_extensions.nvim'
 
 local nvim_lsp = require'lspconfig'
 

@@ -1,5 +1,6 @@
 vim.cmd 'packadd paq-nvim'
 Paq = require('paq-nvim').paq
+Paq {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'}
 local plugins = {
   -- plugins that dont need their own file
   'ellisonleao/glow.nvim',
@@ -11,7 +12,6 @@ local plugins = {
   'windwp/nvim-autopairs',
   'lambdalisue/suda.vim',
   'junegunn/gv.vim',
-  'iamcco/markdown-preview.nvim',
   'tjdevries/astronauta.nvim',
   'lewis6991/gitsigns.nvim',
   'tpope/vim-commentary'

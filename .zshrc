@@ -38,8 +38,8 @@ ranger_cd() {
 }
 zle -N ranger_cd
 bindkey -v 
-bindkey -M viins '\eOP' ranger_cd # f1 
-bindkey -M vicmd '\eOP' ranger_cd # f1 
+bindkey '^R' history-incremental-search-backward
+bindkey -M viins '\eOP' ranger_cd # f1
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION

@@ -4,6 +4,7 @@ nnoremap {'<leader>x', '<cmd>x<cr>'}
 nnoremap {'<leader>q', '<cmd>q<cr>'}
 nnoremap {'<leader>=', '<C-w>='}
 nnoremap {'<leader>1', '<cmd>only<cr>'}
+nnoremap {'<leader>.', '<cmd>so %<cr>'}
 nnoremap {'<C-j>', '<C-w><C-j>'}
 nnoremap {'<C-k>', '<C-w><C-k>'}
 nnoremap {'<C-h>', '<C-w><C-h>'}

@@ -1,6 +1,9 @@
 Paq 'mfussenegger/nvim-dap'
+Paq 'mfussenegger/nvim-dap-python'
 
 local dap = require('dap')
+local dap_python = require('dap-python')
+dap_python.setup('/usr/bin/python')
 dap.adapters.firefox = {
   type = 'executable',
   command = 'node',
@@ -31,3 +34,6 @@ nnoremap {'\\b', dap.toggle_breakpoint}
 nnoremap {'\\c', dap.continue}
 nnoremap {'\\o', dap.step_over}
 nnoremap {'\\i', dap.step_into}
+nnoremap {'\\r', dap.repl.open}
+--vnoremap {'\\s', '<leader>ds <ESC>:lua require("dap-python").debug_selection()<CR>', { silent = true }}
+vim.api.nvim_set_keymap( 'v', '<leader>s', "<ESC>:lua require('dap-python').debug_selection()<CR>", {silent = true})

@@ -26,9 +26,6 @@ _G.tnoremap = keymap.tnoremap
 _G.vnoremap = keymap.vnoremap
 _G.inoremap = keymap.vnoremap
 
---vim.cmd('runtime macros/sandwich/keymap/surround.vim')
-
-
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 

@@ -35,5 +35,6 @@ nnoremap {'\\c', dap.continue}
 nnoremap {'\\o', dap.step_over}
 nnoremap {'\\i', dap.step_into}
 nnoremap {'\\r', dap.repl.open}
+nnoremap {'\\x', function() dap.disconnect() dap.close(); end}
 --vnoremap {'\\s', '<leader>ds <ESC>:lua require("dap-python").debug_selection()<CR>', { silent = true }}
 vim.api.nvim_set_keymap( 'v', '<leader>s', "<ESC>:lua require('dap-python').debug_selection()<CR>", {silent = true})

@@ -104,6 +104,14 @@ local function setup_servers()
           }
         }
       }
+    elseif server == "volar" then
+      config = {
+        filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+      }
+    elseif server == "typescript" then
+        config = {
+          filetypes = {}
+        }
     elseif server == "lua" then
         config = {
           settings = {
@@ -183,13 +191,13 @@ local function setup_servers()
       config.capabilities = capabilities;
       nvim_lsp[server].setup(config)
 
+    end
   end
-end
 
-setup_servers()
-
-nvim_lsp.post_install_hook = function()
   setup_servers()
-  vim.cmd("bufdo e")
-end
+
+  nvim_lsp.post_install_hook = function()
+    setup_servers()
+    vim.cmd("bufdo e")
+  end
 

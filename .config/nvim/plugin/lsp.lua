@@ -1,8 +1,9 @@
+local util = require 'lspconfig/util'
 Paq'neovim/nvim-lspconfig'
-Paq'kabouzeid/nvim-lspinstall'
+Paq'williamboman/nvim-lsp-installer'
 Paq'nvim-lua/lsp_extensions.nvim'
 
-local nvim_lsp = require'lspconfig'
+--local nvim_lsp = require'lspconfig'
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -12,6 +13,19 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
+local function get_typescript_server_path(root_dir)
+  local project_root = util.find_node_modules_ancestor(root_dir)
+
+  local local_tsserverlib = project_root ~= nil and util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
+  local global_tsserverlib = '/home/artur/.npm-global/lib/node_modules/typescript/lib/tsserverlibrary.js'
+
+  if local_tsserverlib and util.path.exists(local_tsserverlib) then
+    return local_tsserverlib
+  else
+    return global_tsserverlib
+  end
+end
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -79,15 +93,11 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	}
 }
 
-local lspinstall = require'lspinstall'
-local function setup_servers()
-  lspinstall.setup{}
-  local servers = lspinstall.installed_servers()
-  table.insert(servers, "volar");
-  for _, server in ipairs(servers) do
-    local config = {}
-    if server == "vue" then
-      config = {
+local lsp_installer = require'nvim-lsp-installer'
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+    if server.name == "vuels" then
+      opts = {
         filetypes={}, --temproarily doesn't contain "vue" because I'm testing volar
         init_options = {
           config = {
@@ -104,16 +114,19 @@ local function setup_servers()
           }
         }
       }
-    elseif server == "volar" then
-      config = {
-        filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+    elseif server.name == "volar" then
+      opts = {
+        filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+        on_new_config = function(new_config, new_root_dir)
+            new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
+          end,
       }
     elseif server == "typescript" then
-        config = {
+        opts = {
           filetypes = {}
         }
     elseif server == "lua" then
-        config = {
+        opts = {
           settings = {
             Lua = {
               runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
@@ -128,8 +141,8 @@ local function setup_servers()
             }
           }
         }
-      elseif server == "diagnosticls" then
-        config = {
+      elseif server.name == "diagnosticls" then
+        opts = {
           filetypes={"vue", "javascript", "typescript"},
           init_options = {
             filetypes = {
@@ -186,18 +199,9 @@ local function setup_servers()
           }
         }
       end
-
-      config.on_attach = on_attach;
-      config.capabilities = capabilities;
-      nvim_lsp[server].setup(config)
-
-    end
-  end
-
-  setup_servers()
-
-  nvim_lsp.post_install_hook = function()
-    setup_servers()
-    vim.cmd("bufdo e")
-  end
-
+  opts.on_attach = on_attach;
+  opts.capabilities = capabilities;
+  server:setup(opts)
+  vim.cmd [[ do User LspAttachBuffers ]]
+end
+)

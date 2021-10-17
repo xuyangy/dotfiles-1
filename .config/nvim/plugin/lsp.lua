@@ -1,9 +1,10 @@
+local nvim_lsp = require'lspconfig'
+local configs = require'lspconfig/configs'
 local util = require 'lspconfig/util'
 Paq'neovim/nvim-lspconfig'
 Paq'williamboman/nvim-lsp-installer'
 Paq'nvim-lua/lsp_extensions.nvim'
 
---local nvim_lsp = require'lspconfig'
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -115,93 +116,160 @@ lsp_installer.on_server_ready(function(server)
         }
       }
     elseif server.name == "volar" then
-      opts = {
-        filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
-        on_new_config = function(new_config, new_root_dir)
-            new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
-          end,
+
+  elseif server == "typescript" then
+    opts = {
+      filetypes = {}
+    }
+  elseif server == "lua" then
+    opts = {
+      settings = {
+        Lua = {
+          runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+          diagnostics = { globals = {'vim', 'Paq', 'inoremap', 'tnoremap', 'nnoremap', 'vnoremap'} },
+          workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = {
+              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+              [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+            },
+          },
+        }
       }
-    elseif server == "typescript" then
-        opts = {
-          filetypes = {}
-        }
-    elseif server == "lua" then
-        opts = {
-          settings = {
-            Lua = {
-              runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-              diagnostics = { globals = {'vim', 'Paq', 'inoremap', 'tnoremap', 'nnoremap', 'vnoremap'} },
-              workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                },
-              },
+    }
+  elseif server.name == "diagnosticls" then
+    opts = {
+      filetypes={"vue", "javascript", "typescript"},
+      init_options = {
+        filetypes = {
+          javascript = "eslint",
+          typescript = "eslint",
+          vue = "eslint",
+        },
+        linters = {
+          eslint = {
+            sourceName = "eslint",
+            command = "eslint_d",
+            rootPatterns = { ".eslintrc", ".eslintrc.json", ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.yaml", "package.json" },
+            debounce = 100,
+            args = {
+              "--stdin",
+              "--stdin-filename",
+              "%filepath",
+              "--format",
+              "json",
+            },
+            parseJson = {
+              errorsRoot = "[0].messages",
+              line = "line",
+              column = "column",
+              endLine = "endLine",
+              endColumn = "endColumn",
+              security = "severity",
+              message = "${message} [${ruleId}]",
+            },
+            securities = {
+              -- for some reason everyone has [1], [2] in their dotfiles on github
+              -- but makes errors show up as warnings. you need to use ["1"] ["2"] instead
+              ["1"] = "warning",
+              ["2"] = "error",
             }
+          },
+        },
+        formatters = {
+          eslint_d = {
+            command = "eslint_d",
+            -- lots of args but thats because eslint_d refuses to lint .vue
+            -- with with "regular" eslint_d args
+            -- https://github.com/mantoni/eslint_d.js/issues/145
+            args = { "--stdin", "--fix-to-stdout", "--stdin-filename", "%filepath" },
+            isStdout = true,
+            doesWriteToFile = false,
           }
+        },
+        formatFiletypes = {
+          javascript = "eslint_d",
+          typescript = "eslint_d",
+          vue = "eslint_d",
         }
-      elseif server.name == "diagnosticls" then
-        opts = {
-          filetypes={"vue", "javascript", "typescript"},
-          init_options = {
-            filetypes = {
-              javascript = "eslint",
-              typescript = "eslint",
-              vue = "eslint",
-            },
-            linters = {
-              eslint = {
-                sourceName = "eslint",
-                command = "eslint_d",
-                rootPatterns = { ".eslintrc", ".eslintrc.json", ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.yaml", "package.json" },
-                debounce = 100,
-                args = {
-                  "--stdin",
-                  "--stdin-filename",
-                  "%filepath",
-                  "--format",
-                  "json",
-                },
-                parseJson = {
-                  errorsRoot = "[0].messages",
-                  line = "line",
-                  column = "column",
-                  endLine = "endLine",
-                  endColumn = "endColumn",
-                  security = "severity",
-                  message = "${message} [${ruleId}]",
-                },
-                securities = {
-                  -- for some reason everyone has [1], [2] in their dotfiles on github
-                  -- but makes errors show up as warnings. you need to use ["1"] ["2"] instead
-                  ["1"] = "warning",
-                  ["2"] = "error",
-                }
-              },
-            },
-            formatters = {
-              eslint_d = {
-                command = "eslint_d",
-                -- lots of args but thats because eslint_d refuses to lint .vue
-                -- with with "regular" eslint_d args
-                -- https://github.com/mantoni/eslint_d.js/issues/145
-                args = { "--stdin", "--fix-to-stdout", "--stdin-filename", "%filepath" },
-                isStdout = true,
-                doesWriteToFile = false,
-              }
-            },
-            formatFiletypes = {
-              javascript = "eslint_d",
-              typescript = "eslint_d",
-              vue = "eslint_d",
-            }
-          }
-        }
-      end
+      }
+    }
+  end
   opts.on_attach = on_attach;
   opts.capabilities = capabilities;
-  server:setup(opts)
+  if server.name ~= 'volar' then
+    server:setup(opts)
+  end
   vim.cmd [[ do User LspAttachBuffers ]]
 end
 )
+
+local bin_name = 'volar-server'
+
+configs.volar_api = {
+  default_config = {
+    cmd = { bin_name, '--stdio' },
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+    root_dir = util.root_pattern 'package.json',
+    init_options = {
+      typescript = {
+        serverPath = ''
+      },
+      languageFeatures = {
+        -- not supported - https://github.com/neovim/neovim/pull/14122
+        semanticTokens = false,
+        references = true,
+        definition = true,
+        typeDefinition = true,
+        callHierarchy = true,
+        hover = true,
+        rename = true,
+        renameFileRefactoring = true,
+        signatureHelp = true,
+        codeAction = true,
+        completion = {
+          defaultTagNameCase = 'both',
+          defaultAttrNameCase = 'kebabCase',
+        },
+        schemaRequestService = true,
+        documentHighlight = true,
+        documentLink = true,
+        codeLens = true,
+        diagnostics = true,
+      }
+    },
+    on_new_config = function(new_config, new_root_dir)
+      new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
+    end
+  }
+}
+
+configs.volar_doc = {
+  default_config = {
+    cmd = {bin_name, '--stdio'},
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue'}, -- note that there's no 'json'
+    root_dir = util.root_pattern 'package.json',
+    init_options = {
+      typescript = {
+        serverPath = ''
+      },
+      documentFeatures = {
+        -- not supported - https://github.com/neovim/neovim/pull/13654
+        documentColor = false,
+        selectionRange = true,
+        foldingRange = true,
+        linkedEditingRange = true,
+        documentSymbol = true,
+        documentFormatting = {
+          defaultPrintWidth = 100,
+        },
+      }
+    },
+    on_new_config = function(new_config, new_root_dir)
+      new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
+    end
+  }
+}
+
+nvim_lsp.volar_api.setup{}
+nvim_lsp.volar_doc.setup{}

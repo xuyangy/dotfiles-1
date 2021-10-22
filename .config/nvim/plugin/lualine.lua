@@ -1,4 +1,4 @@
-Paq {'NullVoxPopuli/lualine.nvim' }
+Paq {'nvim-lualine/lualine.nvim' }
 require('lualine').setup{
   options = {
     theme = 'tokyonight',

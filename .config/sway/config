@@ -29,7 +29,7 @@ bindsym $mod+Shift+x exec $screenlock
 bindsym $mod+i exec firefox-nightly
 
 input "type:keyboard" {
-    xkb_layout pl
+    xkb_layout pl,es
     xkb_options caps:escape
     repeat_delay 200
     repeat_rate 30
@@ -151,7 +151,7 @@ bar {
     swaybar_command waybar
 }
 
-bindsym $mod+Shift+s exec "flameshot gui"
+bindsym $mod+Shift+s exec "XDG_CURRENT_DESKTOP=sway flameshot && flameshot gui"
 bindsym $mod+p exec "kitty --hold pno2"
 bindsym $mod+F11 exec "adev headphones"
 bindsym $mod+F12 exec "adev monitor"
@@ -190,6 +190,7 @@ include ./shotman.conf
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target""
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec "signal-desktop --start-in-tray"
+exec "nextcloud --background"
 exec "/usr/lib/kdeconnectd"
-exec "flameshot &"
+# exec "XDG_CURRENT_DESKTOP=sway flameshot &"
 

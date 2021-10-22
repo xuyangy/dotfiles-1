@@ -1,6 +1,3 @@
-local nvim_lsp = require'lspconfig'
-local configs = require'lspconfig/configs'
-local util = require 'lspconfig/util'
 Paq'neovim/nvim-lspconfig'
 Paq'williamboman/nvim-lsp-installer'
 Paq'nvim-lua/lsp_extensions.nvim'
@@ -14,19 +11,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
-
-local function get_typescript_server_path(root_dir)
-  local project_root = util.find_node_modules_ancestor(root_dir)
-
-  local local_tsserverlib = project_root ~= nil and util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
-  local global_tsserverlib = '/home/artur/.npm-global/lib/node_modules/typescript/lib/tsserverlibrary.js'
-
-  if local_tsserverlib and util.path.exists(local_tsserverlib) then
-    return local_tsserverlib
-  else
-    return global_tsserverlib
-  end
-end
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -51,10 +35,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader><F12>', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>', opts)
 
    -- Set some keybinds conditional on server capabilities
@@ -115,13 +97,11 @@ lsp_installer.on_server_ready(function(server)
           }
         }
       }
-    elseif server.name == "volar" then
-
   elseif server == "typescript" then
     opts = {
-      filetypes = {}
+      filetypes = {} --disable because of volar
     }
-  elseif server == "lua" then
+  elseif server == "sumneko_lua" then
     opts = {
       settings = {
         Lua = {
@@ -137,87 +117,50 @@ lsp_installer.on_server_ready(function(server)
         }
       }
     }
-  elseif server.name == "diagnosticls" then
-    opts = {
-      filetypes={"vue", "javascript", "typescript"},
-      init_options = {
-        filetypes = {
-          javascript = "eslint",
-          typescript = "eslint",
-          vue = "eslint",
-        },
-        linters = {
-          eslint = {
-            sourceName = "eslint",
-            command = "eslint_d",
-            rootPatterns = { ".eslintrc", ".eslintrc.json", ".eslintrc.cjs", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.yaml", "package.json" },
-            debounce = 100,
-            args = {
-              "--stdin",
-              "--stdin-filename",
-              "%filepath",
-              "--format",
-              "json",
-            },
-            parseJson = {
-              errorsRoot = "[0].messages",
-              line = "line",
-              column = "column",
-              endLine = "endLine",
-              endColumn = "endColumn",
-              security = "severity",
-              message = "${message} [${ruleId}]",
-            },
-            securities = {
-              -- for some reason everyone has [1], [2] in their dotfiles on github
-              -- but makes errors show up as warnings. you need to use ["1"] ["2"] instead
-              ["1"] = "warning",
-              ["2"] = "error",
-            }
-          },
-        },
-        formatters = {
-          eslint_d = {
-            command = "eslint_d",
-            -- lots of args but thats because eslint_d refuses to lint .vue
-            -- with with "regular" eslint_d args
-            -- https://github.com/mantoni/eslint_d.js/issues/145
-            args = { "--stdin", "--fix-to-stdout", "--stdin-filename", "%filepath" },
-            isStdout = true,
-            doesWriteToFile = false,
-          }
-        },
-        formatFiletypes = {
-          javascript = "eslint_d",
-          typescript = "eslint_d",
-          vue = "eslint_d",
-        }
-      }
-    }
   end
   opts.on_attach = on_attach;
   opts.capabilities = capabilities;
-  if server.name ~= 'volar' then
-    server:setup(opts)
-  end
+  server:setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
 end
 )
 
-local bin_name = 'volar-server'
+local lspconfig = require'lspconfig'
+local lspconfig_configs = require'lspconfig/configs'
+local lspconfig_util = require 'lspconfig/util'
 
-configs.volar_api = {
+local function on_new_config(new_config, new_root_dir)
+  local function get_typescript_server_path(root_dir)
+    local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
+    return project_root and (lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js'))
+      or ''
+  end
+
+  if
+    new_config.init_options
+    and new_config.init_options.typescript
+    and new_config.init_options.typescript.serverPath == ''
+  then
+    new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
+  end
+end
+
+local volar_cmd = {'volar-server', '--stdio'}
+local volar_root_dir = lspconfig_util.root_pattern 'package.json'
+
+lspconfig_configs.volar_api = {
   default_config = {
-    cmd = { bin_name, '--stdio' },
-    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
-    root_dir = util.root_pattern 'package.json',
+    cmd = volar_cmd,
+    root_dir = volar_root_dir,
+    on_new_config = on_new_config,
+    filetypes = { 'vue'},
+    -- If you want to use Volar's Take Over Mode (if you know, you know)
+    --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
     init_options = {
       typescript = {
         serverPath = ''
       },
       languageFeatures = {
-        -- not supported - https://github.com/neovim/neovim/pull/14122
-        semanticTokens = false,
         references = true,
         definition = true,
         typeDefinition = true,
@@ -227,49 +170,71 @@ configs.volar_api = {
         renameFileRefactoring = true,
         signatureHelp = true,
         codeAction = true,
+        workspaceSymbol = true,
         completion = {
           defaultTagNameCase = 'both',
           defaultAttrNameCase = 'kebabCase',
+          getDocumentNameCasesRequest = false,
+          getDocumentSelectionRequest = false,
         },
-        schemaRequestService = true,
-        documentHighlight = true,
-        documentLink = true,
-        codeLens = true,
-        diagnostics = true,
       }
     },
-    on_new_config = function(new_config, new_root_dir)
-      new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
-    end
   }
 }
+lspconfig.volar_api.setup{}
 
-configs.volar_doc = {
+lspconfig_configs.volar_doc = {
   default_config = {
-    cmd = {bin_name, '--stdio'},
-    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue'}, -- note that there's no 'json'
-    root_dir = util.root_pattern 'package.json',
+    cmd = volar_cmd,
+    root_dir = volar_root_dir,
+    on_new_config = on_new_config,
+
+    filetypes = { 'vue'},
+    -- If you want to use Volar's Take Over Mode (if you know, you know):
+    --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+    init_options = {
+      typescript = {
+        serverPath = ''
+      },
+      languageFeatures = {
+        documentHighlight = true,
+        documentLink = true,
+        codeLens = { showReferencesNotification = true},
+        -- not supported - https://github.com/neovim/neovim/pull/14122
+        semanticTokens = false,
+        diagnostics = true,
+        schemaRequestService = true,
+      }
+    },
+  }
+}
+lspconfig.volar_doc.setup{}
+
+lspconfig_configs.volar_html = {
+  default_config = {
+    cmd = volar_cmd,
+    root_dir = volar_root_dir,
+    on_new_config = on_new_config,
+
+    filetypes = { 'vue'},
+    -- If you want to use Volar's Take Over Mode (if you know, you know), intentionally no 'json':
+    --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     init_options = {
       typescript = {
         serverPath = ''
       },
       documentFeatures = {
-        -- not supported - https://github.com/neovim/neovim/pull/13654
-        documentColor = false,
         selectionRange = true,
         foldingRange = true,
         linkedEditingRange = true,
         documentSymbol = true,
+        -- not supported - https://github.com/neovim/neovim/pull/13654
+        documentColor = false,
         documentFormatting = {
           defaultPrintWidth = 100,
         },
       }
     },
-    on_new_config = function(new_config, new_root_dir)
-      new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
-    end
   }
 }
-
-nvim_lsp.volar_api.setup{}
-nvim_lsp.volar_doc.setup{}
+lspconfig.volar_html.setup{}

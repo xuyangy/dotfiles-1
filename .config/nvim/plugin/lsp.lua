@@ -119,8 +119,10 @@ lsp_installer.on_server_ready(function(server)
     }
   end
   opts.on_attach = on_attach;
-  opts.capabilities = capabilities;
-  server:setup(opts)
+  opts.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
+  if server.name ~= "volar" then
+    server:setup(opts)
+  end
   vim.cmd [[ do User LspAttachBuffers ]]
 end
 )

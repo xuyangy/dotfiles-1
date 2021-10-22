@@ -40,7 +40,6 @@ vim.opt.showmode=      false
 vim.opt.smartcase=     true
 vim.opt.hidden=        true
 vim.opt.confirm=       true -- can't shortmess E162 :(
-vim.opt.completeopt=   'menuone,noinsert,noselect'
 vim.opt.cursorline=    true
 vim.opt.equalalways=   true
 

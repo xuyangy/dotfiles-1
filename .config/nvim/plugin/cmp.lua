@@ -11,6 +11,10 @@ local lspkind = require'lspkind'
 
 vim.opt.completeopt='menuone,noinsert,noselect'
 cmp.setup({
+  experimental = {
+    native_menu = false,
+    ghost_text = true
+  },
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
@@ -23,10 +27,30 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
-  sources = cmp.config.sources({{ name = 'nvim_lua'}, { name = 'nvim_lsp' }, { name = 'vsnip' }, }, { { name = 'buffer' } }),
+  sources = cmp.config.sources(
+    {
+      { name = 'nvim_lua'},
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+    },
+    {
+      { name = 'buffer' } ,
+    }
+  ),
+
   formatting = {
-    format = lspkind.cmp_format({with_text = true, maxwidth = 50})
+    format = lspkind.cmp_format(
+      {
+        with_text = true,
+        maxwidth = 50,
+        menu = {
+          buffer = "[buf]",
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[nvim]",
+          path = "[path]",
+          vsnip = "[vsnip]",
+        }
+      }
+    )
   }
 })
-
-

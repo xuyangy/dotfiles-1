@@ -1,6 +1,9 @@
-vim.cmd 'packadd paq-nvim'
+local install_path = vim.fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
+end
+
 Paq = require('paq-nvim').paq
-Paq {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'}
 local plugins = {
   -- plugins that dont need their own file
   'ellisonleao/glow.nvim',
@@ -14,7 +17,8 @@ local plugins = {
   'junegunn/gv.vim',
   'tjdevries/astronauta.nvim',
   'lewis6991/gitsigns.nvim',
-  'tpope/vim-commentary'
+  'tpope/vim-commentary',
+  {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'}
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)
@@ -30,13 +34,13 @@ vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 
 vim.g.mapleader = " "
-vim.opt.shell = '/bin/bash' -- zsh starts too slow for fugitive, but also term:// starts bash instead of zsh
+vim.opt.completeopt='menuone,noinsert,noselect' --for nvim-cmp
+vim.opt.showmode=      false -- for lualine
 vim.opt.termguicolors= true
 vim.opt.ruler=         true
 vim.opt.wildmenu=      true
 vim.opt.autoread=      true
 vim.opt.ignorecase=    true
-vim.opt.showmode=      false
 vim.opt.smartcase=     true
 vim.opt.hidden=        true
 vim.opt.confirm=       true -- can't shortmess E162 :(

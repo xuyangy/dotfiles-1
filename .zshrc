@@ -20,7 +20,7 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias v="nvim"
 alias vi="nvim"
 alias spacy="python -m spacy"
-alias weather="curl wttr.in"
+alias wttr="curl -s \"wttr.in/?2nFQ&lang=pl\" | less"
 alias sway="sway -d > ~/sway.log 2>&1"
 
 fasd_cache="$HOME/.fasd-init-zsh"

@@ -22,8 +22,8 @@ nnoremap {'<leader>gl', '<cmd>G pull<cr>'}
 nnoremap {'<leader>2', '<cmd>diffget //2<cr>'}
 nnoremap {'<leader>3', '<cmd>diffget //3<cr>'}
 nnoremap {'<leader><C-b>', ':G checkout --quiet <C-r>+<cr>:redrawstatus<cr>'}
-nnoremap {'<leader>go', '<cmd>GV<cr>'}
-nnoremap {'<leader>g%', '<cmd>GV!<cr>'}
+nnoremap {'<leader>go', '<cmd>Git log<cr>'}
+nnoremap {'<leader>g%', '<cmd>Git log %<cr>'}
 nnoremap {'<leader>gcb', ':G checkout origin/develop -b' }
 nnoremap {'<leader>y', '"+y'}
 nnoremap {'<leader>p', '"+p'}

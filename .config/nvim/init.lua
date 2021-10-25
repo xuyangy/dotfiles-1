@@ -14,7 +14,6 @@ local plugins = {
   'machakann/vim-sandwich',
   'windwp/nvim-autopairs',
   'lambdalisue/suda.vim',
-  'junegunn/gv.vim',
   'tjdevries/astronauta.nvim',
   'lewis6991/gitsigns.nvim',
   'tpope/vim-commentary',
@@ -33,8 +32,10 @@ _G.inoremap = keymap.vnoremap
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 
-vim.g.mapleader = " "
-vim.opt.completeopt='menuone,noinsert,noselect' --for nvim-cmp
+vim.g.mapleader=       ' '
+vim.opt.inccommand=    'split' -- semblance of ide search and replace
+vim.opt.completeopt=   'menuone,noinsert,noselect' --for nvim-cmp
+vim.opt.signcolumn=    'yes' -- avoid layout shift when lsp diagnostics appear
 vim.opt.showmode=      false -- for lualine
 vim.opt.termguicolors= true
 vim.opt.ruler=         true

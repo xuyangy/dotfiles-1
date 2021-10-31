@@ -121,9 +121,6 @@ lsp_installer.on_server_ready(function(server)
     opts = {
       settings = {
         json = {
-          schemaDownload = {
-            enable = true
-          },
           schemas = {
             {
               fileMatch = {"package.json"},

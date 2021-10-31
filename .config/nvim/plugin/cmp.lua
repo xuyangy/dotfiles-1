@@ -1,4 +1,4 @@
-Paq'hrsh7th/nvim-cmp'
+Paq 'hrsh7th/nvim-cmp'
 Paq 'hrsh7th/cmp-nvim-lsp'
 Paq 'hrsh7th/cmp-buffer'
 Paq 'hrsh7th/cmp-vsnip'

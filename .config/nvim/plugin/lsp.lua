@@ -97,11 +97,11 @@ lsp_installer.on_server_ready(function(server)
           }
         }
       }
-  elseif server == "typescript" then
+  elseif server.name == "typescript" then
     opts = {
       filetypes = {} --disable because of volar
     }
-  elseif server == "sumneko_lua" then
+  elseif server.name == "sumneko_lua" then
     opts = {
       settings = {
         Lua = {
@@ -117,10 +117,13 @@ lsp_installer.on_server_ready(function(server)
         }
       }
     }
-  elseif server == "jsonls" then
+  elseif server.name == "jsonls" then
     opts = {
       settings = {
         json = {
+          schemaDownload = {
+            enable = true
+          },
           schemas = {
             {
               fileMatch = {"package.json"},

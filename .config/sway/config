@@ -192,5 +192,6 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec "signal-desktop --start-in-tray"
 exec "nextcloud --background"
 exec "/usr/lib/kdeconnectd"
+exec "pidgin &"
 # exec "XDG_CURRENT_DESKTOP=sway flameshot &"
 

@@ -5,6 +5,7 @@ Paq 'hrsh7th/cmp-vsnip'
 Paq 'hrsh7th/cmp-nvim-lua'
 Paq 'hrsh7th/vim-vsnip'
 Paq 'onsails/lspkind-nvim'
+Paq 'windwp/nvim-autopairs'
 
 local cmp = require'cmp'
 local lspkind = require'lspkind'
@@ -54,3 +55,9 @@ cmp.setup({
     )
   }
 })
+
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
+local autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on( 'confirm_done', autopairs.on_confirm_done({  map_char = { tex = '' } }))

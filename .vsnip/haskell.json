@@ -1,0 +1,16 @@
+{
+  "stack": {
+    "prefix": ["stack"],
+    "body": [
+      "#!/usr/bin/stack",
+      "{- stack script --resolver lts-17.0",
+        "--package process",
+        "--package http-client,http-conduit",
+        "--package bytestring",
+      "-}",
+      "{-# LANGUAGE OverloadedStrings #-}",
+      "main = do",
+      "  putStrLn \"yoo\""
+    ]
+  }
+}

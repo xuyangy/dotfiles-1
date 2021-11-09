@@ -16,12 +16,12 @@ local plugins = {
   'lambdalisue/suda.vim',
   'tjdevries/astronauta.nvim',
   'lewis6991/gitsigns.nvim',
-  'tpope/vim-commentary',
-  {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'}
+  {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'},
 }
 for _,plugin in ipairs(plugins) do
   Paq(plugin)
 end
+
 
 local keymap = require('astronauta.keymap')
 _G.nnoremap = keymap.nnoremap

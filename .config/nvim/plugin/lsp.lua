@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader><F12>', ':lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>:edit<cr>', opts)
+  buf_set_keymap('n', '<leader><F12>', ':LspRestart<cr>:e<cr>', opts)
 
    -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then

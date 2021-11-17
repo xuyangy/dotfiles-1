@@ -56,3 +56,14 @@ vim.opt.shiftwidth=    2
 vim.opt.shiftround=    true
 vim.opt.expandtab=     true
 vim.opt.swapfile=      false
+
+vim.api.nvim_exec(
+[[
+  function! SetOrgSets()
+    setlocal conceallevel=2
+    setlocal concealcursor=nc
+    setlocal nowrap
+  endfunction
+  autocmd FileType org call SetOrgSets()
+]],
+true)

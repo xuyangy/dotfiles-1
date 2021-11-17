@@ -2,11 +2,8 @@ VISUAL=nvim
 export EDITOR=nvim
 ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="flazz"
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
 plugins=(git safe-paste fasd npm)
 source $ZSH/oh-my-zsh.sh
-export PATH=$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/snap/bin:~/.dotnet/tools::$HOME/.local/bin:$PATH
 
 KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"
@@ -22,6 +19,7 @@ alias vi="nvim"
 alias spacy="python -m spacy"
 alias wttr="curl -s \"wttr.in/?2nFQ&lang=pl\" | less"
 alias sway="sway -d > ~/sway.log 2>&1"
+alias ssh="kitty +kitten ssh"
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init
@@ -34,12 +32,11 @@ ranger_cd() {
     cd -- "$chosen_dir"
   fi
   rm -f -- "$temp_file"
-  zle reset-prompt
 }
-zle -N ranger_cd
-bindkey -v 
+# bindkey -v - if you enable this you will disable this in 2 weeks
 bindkey '^R' history-incremental-search-backward
-bindkey -M viins '\eOP' ranger_cd # f1
+#bindkey -M viins '\eOP' ranger_cd # f1
+bindkey -s '\eOP' "ranger_cd\n" # f1
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION

@@ -117,6 +117,14 @@ lsp_installer.on_server_ready(function(server)
         }
       }
     }
+  elseif server.name == "ltex" then
+  opts = {
+    settings = {
+      ltex = {
+        language = 'pl-PL'
+      }
+    }
+  }
   elseif server.name == "jsonls" then
     opts = {
       settings = {

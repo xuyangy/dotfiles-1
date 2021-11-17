@@ -5,7 +5,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-set $menu wofi --term=kitty
+set $menu "bemenu-run -l 5"
 
 set $laptop LVDS-1
 bindswitch --reload --locked lid:on output $laptop disable

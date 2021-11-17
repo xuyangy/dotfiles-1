@@ -33,6 +33,7 @@ cmp.setup({
       { name = 'nvim_lua'},
       { name = 'nvim_lsp' },
       { name = 'vsnip' },
+      { name = 'orgmode' },
     },
     {
       { name = 'buffer' } ,

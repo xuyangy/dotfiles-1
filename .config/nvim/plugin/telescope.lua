@@ -69,4 +69,4 @@ nnoremap {'<leader>O', builtin.lsp_workspace_symbols}
 nnoremap {'<leader><leader>', builtin.resume} --holy shit
 nnoremap {'<leader>gw', telescope.extensions.git_worktree.git_worktrees }
 nnoremap {'<leader><f4>', grep_cword }
-nnoremap {'<leader>n', function() builtin.file_browser{cwd= "~/nextcloud/Notes" } end}
+nnoremap {'<leader>n', function() builtin.file_browser{cwd= "~/Nextcloud/Notes/org" } end}

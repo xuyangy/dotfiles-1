@@ -1,14 +1,14 @@
-Paq 'hrsh7th/cmp-nvim-lsp'
-Paq 'hrsh7th/cmp-buffer'
-Paq 'hrsh7th/cmp-path'
-Paq 'hrsh7th/cmp-cmdline'
-Paq 'hrsh7th/nvim-cmp'
+Paq'hrsh7th/cmp-nvim-lsp'
+Paq'hrsh7th/cmp-buffer'
+Paq'hrsh7th/cmp-path'
+Paq'hrsh7th/cmp-cmdline'
+Paq'hrsh7th/nvim-cmp'
 
-Paq 'hrsh7th/cmp-nvim-lua'
+Paq'hrsh7th/cmp-nvim-lua'
 
-Paq 'hrsh7th/cmp-vsnip'
-Paq 'hrsh7th/vim-vsnip'
-Paq 'onsails/lspkind-nvim'
+Paq'hrsh7th/cmp-vsnip'
+Paq'hrsh7th/vim-vsnip'
+Paq'onsails/lspkind-nvim'
 
 local cmp = require'cmp'
 local lspkind = require'lspkind'
@@ -25,10 +25,14 @@ cmp.setup{
     end,
   },
   mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources(
@@ -66,6 +70,12 @@ cmp.setup.cmdline(':', {
     { { name = 'cmdline' } }
   )
 })
+
+cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
 
 require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "vim" },

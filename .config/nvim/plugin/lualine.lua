@@ -1,4 +1,5 @@
 Paq {'nvim-lualine/lualine.nvim' }
+Paq {'arkav/lualine-lsp-progress'}
 require('lualine').setup{
   options = {
     theme = 'tokyonight',
@@ -15,6 +16,7 @@ require('lualine').setup{
         file_status=true,
         path=2,
       },
+      'lsp_progress'
     },
     lualine_x = {},
     lualine_y = {
@@ -25,7 +27,7 @@ require('lualine').setup{
       'location',
       'progress'
     },
-    lualine_z = {'branch'}
+    lualine_z = { 'branch',}
   },
   inactive_sections = {
     lualine_z = {'branch', 'diff'},

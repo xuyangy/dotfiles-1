@@ -1,2 +1,2 @@
 #!/bin/bash
-libreoffice "/home/artur/dev/magisterka/documentation/Praca magisterska.odt" &
+libreoffice "/home/artur/dev/magisterka/Praca magisterska.odt" &

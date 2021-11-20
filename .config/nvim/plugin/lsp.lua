@@ -3,6 +3,9 @@ Paq'williamboman/nvim-lsp-installer'
 Paq'nvim-lua/lsp_extensions.nvim'
 
 
+vim.lsp.set_log_level 'trace'
+require('vim.lsp.log').set_format_func(vim.inspect)
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
@@ -33,6 +36,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap("n", "<leader>cl", "<Cmd>lua vim.lsp.codelens.run()<CR>", opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -57,24 +61,19 @@ local on_attach = function(client, bufnr)
     ]], false)
   end
 
+  if client.resolved_capabilities.code_lens then
+    vim.api.nvim_exec([[
+    augroup lsp_code_lens
+    autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
+    augroup END
+    ]], false
+    )
+    
+  end
+
 end
 
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-	properties = {
-		'documentation',
-		'detail',
-		'additionalTextEdits',
-	}
-}
 
 local lsp_installer = require'nvim-lsp-installer'
 lsp_installer.on_server_ready(function(server)
@@ -176,8 +175,7 @@ lsp_installer.on_server_ready(function(server)
     }
   end
   opts.on_attach = on_attach;
-  opts.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
-  if server.name ~= "volar" then
+  if server.name ~= "volar"  then
     server:setup(opts)
   end
   vim.cmd [[ do User LspAttachBuffers ]]
@@ -236,8 +234,17 @@ lspconfig_configs.volar_api = {
           getDocumentNameCasesRequest = false,
           getDocumentSelectionRequest = false,
         },
+        schemaRequestService = true,
       }
     },
+    settings = {
+      volar = {
+        codeLens = {
+          scriptSetupTools = true,
+          pugTools = true,
+        },
+      }
+    }
   }
 }
 lspconfig.volar_api.setup{}
@@ -265,16 +272,22 @@ lspconfig_configs.volar_doc = {
         schemaRequestService = true,
       }
     },
+  },
+  settings = {
+    volar = {
+      codeLens = {
+        scriptSetupTools = true,
+        pugTools = true,
+      },
+    }
   }
 }
 lspconfig.volar_doc.setup{}
-
 lspconfig_configs.volar_html = {
   default_config = {
     cmd = volar_cmd,
     root_dir = volar_root_dir,
     on_new_config = on_new_config,
-
     filetypes = { 'vue'},
     -- If you want to use Volar's Take Over Mode (if you know, you know), intentionally no 'json':
     --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
@@ -294,6 +307,14 @@ lspconfig_configs.volar_html = {
         },
       }
     },
+    settings = {
+      volar = {
+        codeLens = {
+          scriptSetupTools = true,
+          pugTools = true,
+        },
+      }
+    }
   }
 }
 lspconfig.volar_html.setup{}

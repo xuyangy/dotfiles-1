@@ -17,7 +17,21 @@ require('lualine').setup{
       },
     },
     lualine_c = {
-      'lsp_progress' 
+      {
+        'lsp_progress',
+        separators = {
+          component = ' ',
+          progress = ' | ',
+          message = { pre = '', post = ''},
+          percentage = { pre = '', post = '%% ' },
+          title = { pre = '', post = ': ' },
+          lsp_client_name = { pre = '[', post = ']' },
+          spinner = { pre = '', post = '' },
+          message = { commenced = '⌛', completed = '✔️' },
+        },
+        display_components = { --[[ 'lsp_client_name', ]] 'spinner', { 'title', 'percentage', 'message' }},
+        spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+      }
     },
     lualine_x = {
       'location',

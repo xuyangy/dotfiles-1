@@ -1,18 +1,20 @@
-Paq 'hrsh7th/nvim-cmp'
 Paq 'hrsh7th/cmp-nvim-lsp'
 Paq 'hrsh7th/cmp-buffer'
-Paq 'hrsh7th/cmp-vsnip'
+Paq 'hrsh7th/cmp-path'
+Paq 'hrsh7th/cmp-cmdline'
+Paq 'hrsh7th/nvim-cmp'
+
 Paq 'hrsh7th/cmp-nvim-lua'
 
+Paq 'hrsh7th/cmp-vsnip'
 Paq 'hrsh7th/vim-vsnip'
-
 Paq 'onsails/lspkind-nvim'
 
 local cmp = require'cmp'
 local lspkind = require'lspkind'
 
 vim.opt.completeopt='menuone,noinsert,noselect'
-cmp.setup({
+cmp.setup{
   experimental = {
     native_menu = false,
     ghost_text = true
@@ -36,11 +38,11 @@ cmp.setup({
       { name = 'vsnip' },
       { name = 'orgmode' },
     },
+    { { name = 'path' } },
     {
       { name = 'buffer' } ,
     }
   ),
-
   formatting = {
     format = lspkind.cmp_format(
       {
@@ -56,6 +58,13 @@ cmp.setup({
       }
     )
   }
+}
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources(
+    { { name = 'path' } },
+    { { name = 'cmdline' } }
+  )
 })
 
 require('nvim-autopairs').setup({

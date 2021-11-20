@@ -68,7 +68,6 @@ local on_attach = function(client, bufnr)
     augroup END
     ]], false
     )
-    
   end
 
 end
@@ -118,6 +117,7 @@ lsp_installer.on_server_ready(function(server)
     }
   elseif server.name == "ltex" then
   opts = {
+    filetypes = { 'tex' },
     settings = {
       ltex = {
         language = 'pl-PL'
@@ -175,7 +175,7 @@ lsp_installer.on_server_ready(function(server)
     }
   end
   opts.on_attach = on_attach;
-  if server.name ~= "volar"  then
+  if server.name ~= "volar" then
     server:setup(opts)
   end
   vim.cmd [[ do User LspAttachBuffers ]]

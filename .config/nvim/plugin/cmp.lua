@@ -3,9 +3,10 @@ Paq 'hrsh7th/cmp-nvim-lsp'
 Paq 'hrsh7th/cmp-buffer'
 Paq 'hrsh7th/cmp-vsnip'
 Paq 'hrsh7th/cmp-nvim-lua'
+
 Paq 'hrsh7th/vim-vsnip'
+
 Paq 'onsails/lspkind-nvim'
-Paq 'windwp/nvim-autopairs'
 
 local cmp = require'cmp'
 local lspkind = require'lspkind'

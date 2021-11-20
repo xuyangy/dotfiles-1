@@ -6,16 +6,14 @@ end
 Paq = require('paq-nvim').paq
 local plugins = {
   -- plugins that dont need their own file
-  'ellisonleao/glow.nvim',
   'savq/paq-nvim',
   'lukas-reineke/indent-blankline.nvim',
   'tpope/vim-fugitive',
   'windwp/nvim-ts-autotag',
-  'machakann/vim-sandwich',
   'windwp/nvim-autopairs',
+  'machakann/vim-sandwich',
   'lambdalisue/suda.vim',
   'tjdevries/astronauta.nvim',
-  'lewis6991/gitsigns.nvim',
   {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'},
 }
 for _,plugin in ipairs(plugins) do

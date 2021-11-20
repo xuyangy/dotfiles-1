@@ -9,25 +9,28 @@ require('lualine').setup{
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {},
-    lualine_c = {
+    lualine_b = {
       {
         'filename',
         file_status=true,
         path=2,
       },
-      'lsp_progress'
     },
-    lualine_x = {},
+    lualine_c = {
+      'lsp_progress' 
+    },
+    lualine_x = {
+      'location',
+      'progress'
+    },
     lualine_y = {
       {
         'diagnostics',
         sources = {'nvim_lsp'},
       },
-      'location',
-      'progress'
+      'branch',
     },
-    lualine_z = { 'branch',}
+    lualine_z = {}
   },
   inactive_sections = {
     lualine_z = {'branch', 'diff'},

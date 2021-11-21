@@ -13,7 +13,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 exec_always /home/artur/bin/sway_clamshell.sh
 
 #output DP-2 res 2560x1440
-output * bg #3f3f3f solid_color
+output * bg ~/bg.jpg fit #000000
 
 default_border pixel 5
 

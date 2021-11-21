@@ -61,6 +61,7 @@ local on_attach = function(client, bufnr)
     ]], false)
   end
 
+  print(vim.inspect(client.resolved_capabilities.code_lens))
   if client.resolved_capabilities.code_lens then
     vim.api.nvim_exec([[
     augroup lsp_code_lens
@@ -127,7 +128,7 @@ lsp_installer.on_server_ready(function(server)
     opts = {
       settings = {
         json = {
-          schemas = {
+          schemas = { -- just use SchemaStore.nvim cmon
             {
               fileMatch = {"package.json"},
               url = "https://json.schemastore.org/package.json"
@@ -193,6 +194,7 @@ local function on_new_config(new_config, new_root_dir)
       or ''
   end
 
+  print(new_config)
   if
     new_config.init_options
     and new_config.init_options.typescript
@@ -202,16 +204,143 @@ local function on_new_config(new_config, new_root_dir)
   end
 end
 
-local volar_cmd = {'volar-server', '--stdio'}
+local function volar_cmd_debug(port)
+  local VOLAR_DEBUG = true;
+  if VOLAR_DEBUG then
+    return {'node', '--inspect=:' .. port, '/home/artur/dev/volar/packages/server/out/index.js', '--stdio'}
+  end
+  return {'volar-server', '--stdio'}
+end
 local volar_root_dir = lspconfig_util.root_pattern 'package.json'
+
+-- many of those are defaults, I just want a full list
+local settings = {
+  volar = {
+    codeLens = {
+      scriptSetupTools = true,
+      references = true,
+      pugTools = true,
+    },
+    lowPowerMode = false,
+    formatting = { printWidth = 100 },
+    autoCompleteRefs = true,
+    takeOverMode = {enabled = true}, -- default is "auto" which launches only when builtin vscode TS ext is enabled. wonder how that logic behaves in neovim where there's no such builtin TS ext
+    completion = {
+      preferredTagNameCase = 'pascal',
+      preferredAttrNameCase = 'kebab',
+      autoImportComponent = true,
+    },
+    preview = {
+      port = 3333,
+      backgroundColor = '#fff',
+      transparentGrid = true,
+    }
+
+  },
+  ['volar-api'] = {
+    trace = {
+      server = 'verbose'
+    }
+  },
+  ['volar-document'] = {
+    trace = {
+      server = 'verbose'
+    }
+  },
+  ['volar-html'] = {
+    trace = {
+      server = 'verbose'
+    }
+  },
+}
+
+-- TODO Currently I'm plugging this into ALL 3 volar_* servers
+-- This causes the actions to be applied more than 1 time
+local commands = {
+  VolarHtmlToPug = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.html-to-pug',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarPugToHtml = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.pug-to-html',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarUseSetupSugar = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.use-setup-sugar',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarUnuseSetupSugar = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.unuse-setup-sugar',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarUseRefSugar = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.use-ref-sugar',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarUnuseRefSugar = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.unuse-ref-sugar',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarShowReferences = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.show-references',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarConvertToKebabCase = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.server.executeConvertToKebabCase',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+  VolarConvertToPascalCase = {
+    function()
+      vim.lsp.buf.execute_command({
+        command = 'volar.server.executeConvertToPascalCase',
+        arguments = { vim.uri_from_bufnr(0) }
+      })
+    end,
+  },
+}
 
 lspconfig_configs.volar_api = {
   default_config = {
-    cmd = volar_cmd,
+    cmd = volar_cmd_debug('6009'),
+    commands = commands,
     root_dir = volar_root_dir,
     on_new_config = on_new_config,
+    on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { 'vue'},
+    trace = 'verbose',
     -- If you want to use Volar's Take Over Mode (if you know, you know)
     --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
     init_options = {
@@ -238,25 +367,20 @@ lspconfig_configs.volar_api = {
         schemaRequestService = true,
       }
     },
-    settings = {
-      volar = {
-        codeLens = {
-          scriptSetupTools = true,
-          pugTools = true,
-        },
-      }
-    }
   }
 }
-lspconfig.volar_api.setup{}
+lspconfig.volar_api.setup{settings = settings}
 
 lspconfig_configs.volar_doc = {
   default_config = {
-    cmd = volar_cmd,
+    cmd = volar_cmd_debug('6010'),
+    commands = commands,
     root_dir = volar_root_dir,
     on_new_config = on_new_config,
+    on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { 'vue'},
+    trace = 'verbose',
     -- If you want to use Volar's Take Over Mode (if you know, you know):
     --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
     init_options = {
@@ -274,23 +398,19 @@ lspconfig_configs.volar_doc = {
       }
     },
   },
-  settings = {
-    volar = {
-      codeLens = {
-        scriptSetupTools = true,
-        pugTools = true,
-      },
-    }
-  }
 }
-lspconfig.volar_doc.setup{}
+lspconfig.volar_doc.setup{settings = settings}
+
 lspconfig_configs.volar_html = {
   default_config = {
-    cmd = volar_cmd,
+    cmd = volar_cmd_debug('6011'),
+    commands = commands,
     root_dir = volar_root_dir,
     on_new_config = on_new_config,
+    on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { 'vue'},
+    trace = 'verbose',
     -- If you want to use Volar's Take Over Mode (if you know, you know), intentionally no 'json':
     --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     init_options = {
@@ -309,14 +429,16 @@ lspconfig_configs.volar_html = {
         },
       }
     },
-    settings = {
-      volar = {
-        codeLens = {
-          scriptSetupTools = true,
-          pugTools = true,
-        },
-      }
-    }
   }
 }
-lspconfig.volar_html.setup{}
+lspconfig.volar_html.setup{settings = settings}
+
+lspconfig_configs.hellols = {
+  default_config = {
+    cmd = {'/home/artur/dev/hellols/target/debug/hellols'},
+    filetypes = { 'svelte'},
+    root_dir = lspconfig_util.root_pattern 'Cargo.toml'
+  },
+}
+
+lspconfig.hellols.setup{}

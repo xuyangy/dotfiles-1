@@ -9,9 +9,14 @@ dap.adapters.firefox = {
   command = 'node',
   args = {os.getenv('HOME') .. '/dap/firefox/adapter.bundle.js'},
 }
+dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/dap/vscode-node-debug2/out/src/nodeDebug.js'},
+}
 dap.set_log_level('TRACE')
 
-local config = {
+local config_ff = {
     name = 'Debug with Firefox',
     type = 'firefox',
     request = 'launch',
@@ -27,8 +32,20 @@ local config = {
     firefoxExecutable = '/usr/bin/firefox-nightly'
   }
 
-dap.configurations.vue = { config }
-dap.configurations.typescript = { config }
+local config_node = {
+  name = 'Debug with Node',
+  type = 'node2',
+  request = 'launch',
+  program = '${file}',
+  cwd = vim.fn.getcwd(),
+  sourceMaps = true,
+  protocol = 'inspector',
+  console = 'integratedTerminal',
+}
+
+dap.configurations.vue = { config_ff }
+dap.configurations.typescript = { config_ff, config_node }
+dap.configurations.javascript = { config_ff, config_node }
 
 nnoremap {'\\b', dap.toggle_breakpoint}
 nnoremap {'\\c', dap.continue}

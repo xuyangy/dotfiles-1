@@ -69,325 +69,61 @@ local on_attach = function(client, bufnr)
     ]], false
     )
   end
-
 end
 
-local lsp_installer = require'nvim-lsp-installer'
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-    if server.name == "vuels" then
-      opts = {
-        filetypes={}, --temproarily doesn't contain "vue" because I'm testing volar
-        init_options = {
-          config = {
-            vetur = {
-              -- its downright criminal that those are not enabled by default for vue
-              completion = { autoImport = true, tagCasing = "initial" },
-              languageFeatures = { codeActions = true, },
-              experimental = { templateInterpolationService = true },
-              --
-              validation = { templateProps = false, },
-              useWorkspaceDependencies = true,
-              ignoreProjectWarning = true
-            }
-          }
-        }
-      }
-  elseif server.name == "typescript" then
-    opts = {
-      filetypes = {} --disable because of volar
-    }
+
+require('nvim-lsp-installer').on_server_ready(function(server)
+  local opts = {}
+  if server.name == "volar" then
+    return
+  elseif server.name == "vuels" then
+    return
   elseif server.name == "sumneko_lua" then
-    opts = {
-      settings = {
+    opts.settings = {
         Lua = {
           runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-          diagnostics = { globals = {'vim', 'Paq', 'inoremap', 'tnoremap', 'nnoremap', 'vnoremap'} },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = {
-              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-              [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-            },
+          diagnostics = {
+            globals = {
+              'vim', 'Paq', 'inoremap', 'tnoremap', 'nnoremap', 'vnoremap'
+            }
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
           },
-        }
+        },
       }
     }
   elseif server.name == "ltex" then
-  opts = {
-    filetypes = { 'tex' },
-    settings = {
-      ltex = {
-        language = 'pl-PL'
-      }
-    }
-  }
+    opts.filetypes = { 'tex' }
+    opts.settings = { ltex = { language = 'pl-PL' } }
   elseif server.name == "jsonls" then
-    opts = {
-      settings = {
-        json = {
-          schemas = require('schemastore').json.schemas(),
-        }
-      }
+    opts.settings = {
+      json = { schemas = require('schemastore').json.schemas() }
     }
   end
   opts.on_attach = on_attach;
   opts.capabilities = capabilities;
-  if server.name ~= "volar" then
-    server:setup(opts)
-  end
+  server:setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
 end
 )
 
 local lspconfig = require'lspconfig'
-local lspconfig_configs = require'lspconfig/configs'
 local lspconfig_util = require 'lspconfig/util'
 
-local function on_new_config(new_config, new_root_dir)
-  local function get_typescript_server_path(root_dir)
-    local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
-    return project_root and (lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js'))
-      or ''
-  end
 
-  if
-    new_config.init_options
-    and new_config.init_options.typescript
-    and new_config.init_options.typescript.serverPath == ''
-  then
-    new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
-  end
-end
+local executable_path = '/home/artur/dev/volar/packages/server/out/index.js'
+require('sh_volar').register_volar_lspconfigs();
+lspconfig.volar_api.setup{}
+lspconfig.volar_doc.setup{}
+lspconfig.volar_html.setup{}
 
-local function volar_cmd_debug(port)
-  local VOLAR_DEBUG = true;
-  if VOLAR_DEBUG then
-    return {'node', '--inspect=:' .. port, '/home/artur/dev/volar/packages/server/out/index.js', '--stdio'}
-  end
-  return {'volar-server', '--stdio'}
-end
-local volar_root_dir = lspconfig_util.root_pattern 'package.json'
 
--- many of those are defaults, I just want a full list
-local settings = {
-  volar = {
-    codeLens = {
-      scriptSetupTools = true,
-      references = true,
-      pugTools = true,
-    },
-    lowPowerMode = false,
-    formatting = { printWidth = 100 },
-    autoCompleteRefs = true,
-    takeOverMode = {enabled = true}, -- default is "auto" which launches only when builtin vscode TS ext is enabled. wonder how that logic behaves in neovim where there's no such builtin TS ext
-    completion = {
-      preferredTagNameCase = 'pascal',
-      preferredAttrNameCase = 'kebab',
-      autoImportComponent = true,
-    },
-    preview = {
-      port = 3333,
-      backgroundColor = '#fff',
-      transparentGrid = true,
-    }
-
-  },
-  ['volar-api'] = {
-    trace = {
-      server = 'verbose'
-    }
-  },
-  ['volar-document'] = {
-    trace = {
-      server = 'verbose'
-    }
-  },
-  ['volar-html'] = {
-    trace = {
-      server = 'verbose'
-    }
-  },
-}
-
-local commands = {
-  VolarHtmlToPug = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.html-to-pug',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarPugToHtml = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.pug-to-html',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarUseSetupSugar = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.use-setup-sugar',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarUnuseSetupSugar = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.unuse-setup-sugar',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarUseRefSugar = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.use-ref-sugar',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarUnuseRefSugar = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.unuse-ref-sugar',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarShowReferences = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.show-references',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarConvertToKebabCase = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.server.executeConvertToKebabCase',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-  VolarConvertToPascalCase = {
-    function()
-      vim.lsp.buf.execute_command({
-        command = 'volar.server.executeConvertToPascalCase',
-        arguments = { vim.uri_from_bufnr(0) }
-      })
-    end,
-  },
-}
-
-lspconfig_configs.volar_api = {
-  default_config = {
-    cmd = volar_cmd_debug('6009'),
-    commands = commands,
-    root_dir = volar_root_dir,
-    on_new_config = on_new_config,
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { 'vue'},
-    trace = 'verbose',
-    -- If you want to use Volar's Take Over Mode (if you know, you know)
-    --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-    init_options = {
-      typescript = {
-        serverPath = ''
-      },
-      languageFeatures = {
-        references = true,
-        definition = true,
-        typeDefinition = true,
-        callHierarchy = true,
-        hover = true,
-        rename = true,
-        renameFileRefactoring = true,
-        signatureHelp = true,
-        codeAction = true,
-        workspaceSymbol = true,
-        completion = {
-          defaultTagNameCase = 'both',
-          defaultAttrNameCase = 'kebabCase',
-          getDocumentNameCasesRequest = false,
-          getDocumentSelectionRequest = false,
-        },
-        schemaRequestService = true,
-      }
-    },
-  }
-}
-lspconfig.volar_api.setup{settings = settings}
-
-lspconfig_configs.volar_doc = {
-  default_config = {
-    cmd = volar_cmd_debug('6010'),
-    -- commands = commands,
-    root_dir = volar_root_dir,
-    on_new_config = on_new_config,
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { 'vue'},
-    trace = 'verbose',
-    -- If you want to use Volar's Take Over Mode (if you know, you know):
-    --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-    init_options = {
-      typescript = {
-        serverPath = ''
-      },
-      languageFeatures = {
-        documentHighlight = true,
-        documentLink = true,
-        codeLens = { showReferencesNotification = true},
-        -- not supported - https://github.com/neovim/neovim/pull/14122
-        semanticTokens = false,
-        diagnostics = true,
-        schemaRequestService = true,
-      }
-    },
-  },
-}
-lspconfig.volar_doc.setup{settings = settings}
-
-lspconfig_configs.volar_html = {
-  default_config = {
-    cmd = volar_cmd_debug('6011'),
-    -- commands = commands,
-    root_dir = volar_root_dir,
-    on_new_config = on_new_config,
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { 'vue'},
-    trace = 'verbose',
-    -- If you want to use Volar's Take Over Mode (if you know, you know), intentionally no 'json':
-    --filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    init_options = {
-      typescript = {
-        serverPath = ''
-      },
-      documentFeatures = {
-        selectionRange = true,
-        foldingRange = true,
-        linkedEditingRange = true,
-        documentSymbol = true,
-        -- not supported - https://github.com/neovim/neovim/pull/13654
-        documentColor = false,
-        documentFormatting = {
-          defaultPrintWidth = 100,
-        },
-      }
-    },
-  }
-}
-lspconfig.volar_html.setup{settings = settings}
-
+local lspconfig_configs = require'lspconfig/configs'
 lspconfig_configs.hellols = {
   default_config = {
     cmd = {'/home/artur/dev/hellols/target/debug/hellols'},

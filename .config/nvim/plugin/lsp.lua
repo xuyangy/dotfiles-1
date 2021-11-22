@@ -61,7 +61,6 @@ local on_attach = function(client, bufnr)
     ]], false)
   end
 
-  print(vim.inspect(client.resolved_capabilities.code_lens))
   if client.resolved_capabilities.code_lens then
     vim.api.nvim_exec([[
     augroup lsp_code_lens
@@ -194,7 +193,6 @@ local function on_new_config(new_config, new_root_dir)
       or ''
   end
 
-  print(new_config)
   if
     new_config.init_options
     and new_config.init_options.typescript
@@ -254,8 +252,6 @@ local settings = {
   },
 }
 
--- TODO Currently I'm plugging this into ALL 3 volar_* servers
--- This causes the actions to be applied more than 1 time
 local commands = {
   VolarHtmlToPug = {
     function()
@@ -374,7 +370,7 @@ lspconfig.volar_api.setup{settings = settings}
 lspconfig_configs.volar_doc = {
   default_config = {
     cmd = volar_cmd_debug('6010'),
-    commands = commands,
+    -- commands = commands,
     root_dir = volar_root_dir,
     on_new_config = on_new_config,
     on_attach = on_attach,
@@ -404,7 +400,7 @@ lspconfig.volar_doc.setup{settings = settings}
 lspconfig_configs.volar_html = {
   default_config = {
     cmd = volar_cmd_debug('6011'),
-    commands = commands,
+    -- commands = commands,
     root_dir = volar_root_dir,
     on_new_config = on_new_config,
     on_attach = on_attach,

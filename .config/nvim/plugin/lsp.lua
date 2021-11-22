@@ -1,7 +1,7 @@
 Paq'neovim/nvim-lspconfig'
 Paq'williamboman/nvim-lsp-installer'
 Paq'nvim-lua/lsp_extensions.nvim'
-
+Paq'b0o/SchemaStore.nvim'
 
 vim.lsp.set_log_level 'trace'
 require('vim.lsp.log').set_format_func(vim.inspect)
@@ -127,48 +127,7 @@ lsp_installer.on_server_ready(function(server)
     opts = {
       settings = {
         json = {
-          schemas = { -- just use SchemaStore.nvim cmon
-            {
-              fileMatch = {"package.json"},
-              url = "https://json.schemastore.org/package.json"
-            },
-            {
-              fileMatch = {"tsconfig*.json"},
-              url = "https://json.schemastore.org/tsconfig.json"
-            },
-            {
-              fileMatch = {
-                ".prettierrc",
-                ".prettierrc.json",
-                "prettier.config.json"
-              },
-              url = "https://json.schemastore.org/prettierrc.json"
-            },
-            {
-              fileMatch = {".eslintrc", ".eslintrc.json"},
-              url = "https://json.schemastore.org/eslintrc.json"
-            },
-            {
-              fileMatch = {".babelrc", ".babelrc.json", "babel.config.json"},
-              url = "https://json.schemastore.org/babelrc.json"
-            },
-            {
-              fileMatch = {"lerna.json"},
-              url = "https://json.schemastore.org/lerna.json"
-            },
-            {
-              fileMatch = {"now.json", "vercel.json"},
-              url = "https://json.schemastore.org/now.json"
-            },
-            {
-              fileMatch = {
-                ".stylelintrc",
-                ".stylelintrc.json",
-                "stylelint.config.json"
-              },
-              url = "http://json.schemastore.org/stylelintrc.json"
-            }
-          }
+          schemas = require('schemastore').json.schemas(),
         }
       }
     }

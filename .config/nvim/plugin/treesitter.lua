@@ -2,10 +2,8 @@ Paq 'nvim-treesitter/nvim-treesitter'
 Paq 'nvim-treesitter/playground'
 Paq 'nvim-treesitter/nvim-treesitter-textobjects'
 Paq 'p00f/nvim-ts-rainbow'
-Paq 'JoosepAlviste/nvim-ts-context-commentstring'
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.org = {
+require "nvim-treesitter.parsers".get_parser_configs().org = {
   install_info = {
     url = 'https://github.com/milisims/tree-sitter-org',
     revision = 'main',
@@ -15,9 +13,6 @@ parser_config.org = {
 }
 
 require'nvim-treesitter.configs'.setup {
-  context_commentstring = {
-    enable = true
-  },
   rainbow = {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean

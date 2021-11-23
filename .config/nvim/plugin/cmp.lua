@@ -13,7 +13,6 @@ Paq'onsails/lspkind-nvim'
 local cmp = require'cmp'
 local lspkind = require'lspkind'
 
-vim.opt.completeopt='menuone,noinsert,noselect'
 cmp.setup{
   experimental = {
     native_menu = false,

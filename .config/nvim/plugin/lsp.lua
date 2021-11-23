@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<leader>K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -75,11 +75,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 require('nvim-lsp-installer').on_server_ready(function(server)
   local opts = {}
-  if server.name == "volar" then
-    return
-  elseif server.name == "vuels" then
-    return
-  elseif server.name == "sumneko_lua" then
+  if server.name == "sumneko_lua" then
     opts.settings = {
         Lua = {
           runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
@@ -118,9 +114,9 @@ local lspconfig_util = require 'lspconfig/util'
 
 local executable_path = '/home/artur/dev/volar/packages/server/out/index.js'
 require('sh_volar').register_volar_lspconfigs();
-lspconfig.volar_api.setup{}
-lspconfig.volar_doc.setup{}
-lspconfig.volar_html.setup{}
+lspconfig.volar_api.setup{capabilities = capabilities, on_attach = on_attach}
+lspconfig.volar_doc.setup{capabilities = capabilities, on_attach = on_attach}
+lspconfig.volar_html.setup{capabilities = capabilities, on_attach = on_attach}
 
 
 local lspconfig_configs = require'lspconfig/configs'

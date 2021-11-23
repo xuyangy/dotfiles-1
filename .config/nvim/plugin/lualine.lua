@@ -1,53 +1,58 @@
-Paq {'nvim-lualine/lualine.nvim' }
-Paq {'arkav/lualine-lsp-progress'}
+Paq'nvim-lualine/lualine.nvim'
+Paq'arkav/lualine-lsp-progress'
+
+local colors = {
+  yellow = '#ECBE7B',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#98be65',
+  orange = '#FF8800',
+  violet = '#a9a1e1',
+  magenta = '#c678dd',
+  blue = '#51afef',
+  red = '#ec5f67'
+}
+
+local function lspcount()
+  local count = 0
+  for _ in pairs(vim.lsp.buf_get_clients()) do
+    count = count + 1
+  end
+  return '👅 ' .. count
+end
+
 require('lualine').setup{
-  options = {
-    theme = 'tokyonight',
-    section_separators = '',
-    component_separators = '',
-    disabled_filetypes = {'fugitive'}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {
-      {
-        'filename',
-        file_status=true,
-        path=2,
-      },
+  sections={
+    lualine_b={
+      {'filetype', icon_only = true, separator = '' },
+      {'filename', shorting_target = 40, padding = 0 },
     },
-    lualine_c = {
+    lualine_c = {},
+    lualine_x={
       {
         'lsp_progress',
-        separators = {
-          component = ' ',
-          progress = ' | ',
-          message = { pre = '', post = ''},
-          percentage = { pre = '', post = '%% ' },
-          title = { pre = '', post = ': ' },
-          lsp_client_name = { pre = '[', post = ']' },
-          spinner = { pre = '', post = '' },
-          message = { commenced = '⌛', completed = '✔️' },
+        colors = {
+          lsp_client_name = colors.yellow,
+          title  = colors.cyan,
+          message  = colors.orange,
+          percentage  = colors.orange,
+          spinner = colors.orange,
+          use = true,
         },
-        display_components = { --[[ 'lsp_client_name', ]] 'spinner', { 'title', 'percentage', 'message' }},
-        spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-      }
-    },
-    lualine_x = {
-      'location',
-      'progress'
-    },
-    lualine_y = {
-      {
-        'diagnostics',
-        sources = {'nvim_lsp'},
+        display_components = {'lsp_client_name', {'title', 'message', 'percentage'}, 'spinner'},
+        separators = {
+          message = {commenced = ".", completed = 'OK'}
+        }
       },
-      'branch',
     },
-    lualine_z = {}
-  },
-  inactive_sections = {
-    lualine_z = {'branch', 'diff'},
+    lualine_y={
+      {'diagnostics', sources={'nvim_lsp', 'coc'}, separator = '', padding = 0},
+      lspcount,
+    },
+    lualine_z={
+      'diff',
+      'branch',
+    }
   },
 }
 

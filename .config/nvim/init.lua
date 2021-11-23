@@ -15,11 +15,14 @@ local plugins = {
   'lambdalisue/suda.vim',
   'tjdevries/astronauta.nvim',
   {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'},
+  {'numToStr/Comment.nvim'}
 }
-for _,plugin in ipairs(plugins) do
+
+for _, plugin in ipairs(plugins) do
   Paq(plugin)
 end
 
+require('Comment').setup{}
 
 local keymap = require('astronauta.keymap')
 _G.nnoremap = keymap.nnoremap

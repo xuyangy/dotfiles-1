@@ -14,7 +14,6 @@ nnoremap {'<F12>', '<cmd>ccl<cr>'}
 nnoremap {'<down>', '<cmd>cn<cr>'}
 nnoremap {'<up>', '<cmd>cp<cr>'}
 nnoremap {'Q', '<Nop>'}
-nnoremap {'<f1>', '<cmd>RnvimrToggle<cr>'}
 nnoremap {'<leader>s', '<cmd>G<cr>'}
 nnoremap {'<leader>gp', '<cmd>G push<cr>' }
 nnoremap {'<leader>gf', '<cmd>G fetch<cr>'}
@@ -30,4 +29,3 @@ nnoremap {'<leader>p', '"+p'}
 vnoremap {'<leader>y', '"+y'}
 vnoremap {'<leader>p', '"+p'}
 nnoremap {'<leader>Y', 'gg"+yG'}
-tnoremap {'<leader><f1>', '<C-\\><C-n>:RnvimrResize<cr>'}

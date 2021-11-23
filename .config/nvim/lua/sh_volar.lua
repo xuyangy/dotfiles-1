@@ -1,7 +1,9 @@
 local lspconfig_util = require 'lspconfig/util'
 local lspconfig_configs = require'lspconfig/configs'
 
+-- TODO Getting double completions :( (2 server reutring completions)
 local M = {}
+
 
 local settings = {
   volar = {
@@ -120,22 +122,24 @@ local commands = {
 }
 
 function M.register_volar_lspconfigs()
+
+  local filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' };
+  local filetypes_with_json = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+
   local volar_root_dir = lspconfig_util.root_pattern 'package.json'
-  local cmd = {'volar-server', '--stdio'}
+  local debug_executable_path = '/home/artur/dev/volar/packages/server/out/index.js'
 
   local volar_common = {
-    cmd = cmd,
     root_dir = volar_root_dir,
     on_new_config = M.on_new_config,
-    -- If you want to use Volar's Take Over Mode (if you know, you know)
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-    -- filetypes = { 'vue'},
     trace = 'verbose',
     settings = settings,
   }
 
   lspconfig_configs.volar_api = {
     default_config = vim.tbl_extend('keep', volar_common, {
+      cmd = M.volar_debug_cmd_factory('6009', debug_executable_path),
+      filetypes = filetypes_with_json,
       commands = commands,
       init_options = {
         typescript = {
@@ -166,6 +170,8 @@ function M.register_volar_lspconfigs()
 
   lspconfig_configs.volar_doc = {
     default_config = vim.tbl_extend('keep', volar_common, {
+      cmd = M.volar_debug_cmd_factory('6010', debug_executable_path),
+      filetypes = filetypes_with_json,
       init_options = {
         typescript = {
           serverPath = ''
@@ -185,6 +191,8 @@ function M.register_volar_lspconfigs()
 
   lspconfig_configs.volar_html = {
     default_config = vim.tbl_extend('keep', volar_common, {
+      cmd = M.volar_debug_cmd_factory('6011', debug_executable_path),
+      filetypes = filetypes,
       init_options = {
         typescript = {
           serverPath = ''
@@ -206,7 +214,7 @@ function M.register_volar_lspconfigs()
 end
 
 
-M.VOLAR_DEBUG = false
+M.VOLAR_DEBUG = true
 -- Api - port 6009
 -- Document - port 6010
 -- Html - port 6011

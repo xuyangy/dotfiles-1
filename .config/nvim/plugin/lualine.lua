@@ -25,7 +25,7 @@ require('lualine').setup{
   sections={
     lualine_b={
       {'filetype', icon_only = true, separator = '' },
-      {'filename', shorting_target = 40, padding = 0 },
+      {'filename', path = 1, shorting_target = 40, padding = 0 },
     },
     lualine_c = {},
     lualine_x={

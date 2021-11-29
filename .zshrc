@@ -36,7 +36,7 @@ ranger_cd() {
 # bindkey -v - if you enable this you will disable this in 2 weeks
 bindkey '^R' history-incremental-search-backward
 #bindkey -M viins '\eOP' ranger_cd # f1
-bindkey -s '\eOQ' "ranger_cd\n" # f1
+bindkey -s '^[OP' "ranger_cd\n" # f1
 
 
 

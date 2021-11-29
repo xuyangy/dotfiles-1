@@ -1,4 +1,4 @@
-Paq 'nvim-treesitter/nvim-treesitter'
+Paq {'nvim-treesitter/nvim-treesitter', run=function() vim.api.nvim_exec(':TSUpdate', false) end}
 Paq 'nvim-treesitter/playground'
 Paq 'nvim-treesitter/nvim-treesitter-textobjects'
 Paq 'p00f/nvim-ts-rainbow'
@@ -24,7 +24,10 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = {'org'}
   },
-  indent = { enable = true },
+  indent = {
+    enable = true,
+    disable = {"org"}
+  },
   playground = {
     enable = true,
     disable = {},
@@ -64,5 +67,3 @@ require'nvim-treesitter.configs'.setup {
     }
   }
 }
--- https://stackoverflow.com/a/62863375/10706046
-vim.cmd('autocmd VimEnter * ++once ++nested TSUpdate');

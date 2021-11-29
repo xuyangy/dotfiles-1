@@ -19,6 +19,7 @@ default_border pixel 5
 
 
 exec swayidle -w \
+          timeout 30 "makoctl set-mode away" resume "makoctl set-mode default" \
           timeout 120 'swaylock -f -c 6b0000' \
           timeout 300 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
@@ -27,6 +28,9 @@ exec swayidle -w \
 set $screenlock swaylock -f -c 000000
 bindsym $mod+Shift+x exec $screenlock
 bindsym $mod+i exec firefox-nightly
+bindsym $mod+p exec signal-desktop
+bindsym $mod+shift+t exec bemenu_translate.sh
+bindsym $mod+m exec thunderbird
 
 input "type:keyboard" {
     xkb_layout pl,es
@@ -73,6 +77,10 @@ input "type:keyboard" {
 #
 # Workspaces:
 #
+    workspace_auto_back_and_forth yes
+    bindsym $mod+bracketright workspace next_on_output
+    bindsym $mod+bracketleft workspace prev_on_output
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -151,8 +159,7 @@ bar {
     swaybar_command waybar
 }
 
-bindsym $mod+Shift+s exec "XDG_CURRENT_DESKTOP=sway flameshot && flameshot gui"
-bindsym $mod+p exec "kitty --hold pno2"
+bindsym $mod+Shift+s exec "XDG_CURRENT_DESKTOP=sway flameshot gui"
 bindsym $mod+F11 exec "adev headphones"
 bindsym $mod+F12 exec "adev monitor"
 
@@ -190,8 +197,9 @@ include ./shotman.conf
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target""
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec "signal-desktop --start-in-tray"
-exec "nextcloud --background"
-exec "/usr/lib/kdeconnectd"
-exec "pidgin &"
-# exec "XDG_CURRENT_DESKTOP=sway flameshot &"
-
+exec "XDG_CURRENT_DESKTOP=Unity nextcloud --background"
+exec pidgin
+exec flameshot
+#exec "/usr/lib/kdeconnectd"
+assign [app_id="thunderbird"] 3
+assign [class="Signal"] 2

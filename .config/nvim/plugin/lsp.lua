@@ -3,7 +3,7 @@ Paq'williamboman/nvim-lsp-installer'
 Paq'nvim-lua/lsp_extensions.nvim'
 Paq'b0o/SchemaStore.nvim'
 
-vim.lsp.set_log_level 'trace'
+-- vim.lsp.set_log_level 'trace'
 require('vim.lsp.log').set_format_func(vim.inspect)
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<leader>K', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -94,8 +94,11 @@ require('nvim-lsp-installer').on_server_ready(function(server)
       }
     }
   elseif server.name == "ltex" then
-    opts.filetypes = { 'tex' }
-    opts.settings = { ltex = { language = 'pl-PL' } }
+    opts.settings = {
+      ltex = {
+        language = 'pl-PL'
+      }
+    }
   elseif server.name == "jsonls" then
     opts.settings = {
       json = { schemas = require('schemastore').json.schemas() }
@@ -109,7 +112,7 @@ end
 )
 
 local lspconfig = require'lspconfig'
-local lspconfig_util = require 'lspconfig/util'
+local lspconfig_util = require 'lspconfig.util'
 
 
 local executable_path = '/home/artur/dev/volar/packages/server/out/index.js'
@@ -119,7 +122,7 @@ lspconfig.volar_doc.setup{capabilities = capabilities, on_attach = on_attach}
 lspconfig.volar_html.setup{capabilities = capabilities, on_attach = on_attach}
 
 
-local lspconfig_configs = require'lspconfig/configs'
+local lspconfig_configs = require'lspconfig.configs'
 lspconfig_configs.hellols = {
   default_config = {
     cmd = {'/home/artur/dev/hellols/target/debug/hellols'},

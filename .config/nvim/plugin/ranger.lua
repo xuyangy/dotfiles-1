@@ -1,13 +1,11 @@
 Paq 'kevinhwang91/rnvimr'
-nnoremap {'<f2>', '<cmd>RnvimrToggle<cr>'}
-tnoremap {'<leader><f2>', '<C-\\><C-n>:RnvimrResize<cr>'}
+nnoremap {'<leader><leader>', '<cmd>RnvimrToggle<cr>'}
 
 vim.g.rnvimr_action = {
   ['<C-t>'] = 'NvimEdit tabedit',
   ['<C-s>'] = 'NvimEdit split', -- disable CTRL+S in your bash/zsh rc
   ['<C-v>'] = 'NvimEdit vsplit',
   ['<CR>'] = 'NvimEdit drop',
-  ['<F2>'] = 'NvimEdit quit',
   ['gw'] = 'JumpNvimCwd',
   ['yw'] = 'EmitRangerCwd'
 }

@@ -15,12 +15,14 @@ local plugins = {
   'lambdalisue/suda.vim',
   'tjdevries/astronauta.nvim',
   {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'},
-  {'numToStr/Comment.nvim'}
+  'numToStr/Comment.nvim',
+  'lervag/vimtex'
 }
 
 for _, plugin in ipairs(plugins) do
   Paq(plugin)
 end
+
 
 require('Comment').setup{}
 
@@ -29,6 +31,26 @@ _G.nnoremap = keymap.nnoremap
 _G.tnoremap = keymap.tnoremap
 _G.vnoremap = keymap.vnoremap
 _G.inoremap = keymap.vnoremap
+
+-- vim.g.vimtex_compiler_latexmk = {
+--      options = {
+--        '-shell-escape',
+--        '-verbose',
+--        '-file-line-error',
+--        '-synctex=1',
+--        '-interaction=nonstopmode',
+--      },
+--     }
+
+vim.g.vimtex_compiler_latexmk = {
+     options = {
+       '-pdflatex="xelatex --shell-escape %O %S"',
+       '-verbose',
+       '-file-line-error',
+       '-synctex=1',
+       '-interaction=nonstopmode',
+     }
+    }
 
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')

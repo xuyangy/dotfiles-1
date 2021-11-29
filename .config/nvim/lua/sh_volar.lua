@@ -1,5 +1,5 @@
-local lspconfig_util = require 'lspconfig/util'
-local lspconfig_configs = require'lspconfig/configs'
+local lspconfig_util = require 'lspconfig.util'
+local lspconfig_configs = require'lspconfig.configs'
 
 -- TODO Getting double completions :( (2 server reutring completions)
 local M = {}
@@ -131,7 +131,7 @@ function M.register_volar_lspconfigs()
 
   local volar_common = {
     root_dir = volar_root_dir,
-    on_new_config = M.on_new_config,
+    on_new_config = M.smartass_on_new_config,
     trace = 'verbose',
     settings = settings,
   }
@@ -230,6 +230,21 @@ function M.get_typescript_server_path(root_dir)
   local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
   return project_root and (lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js'))
     or ''
+end
+
+function M.get_smartass_typescript_server_path(root_dir)
+  local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
+  local local_tsserverlib = project_root ~= nil and lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
+  local global_tsserverlib = '/home/artur/.npm-global/lib/node_modules/typescript/lib/tsserverlibrary.js'
+  if local_tsserverlib and lspconfig_util.path.exists(local_tsserverlib) then
+    return local_tsserverlib
+  else
+    return global_tsserverlib
+  end
+end
+
+function M.smartass_on_new_config(new_config, new_root_dir)
+  new_config.init_options.typescript.serverPath = M.get_smartass_typescript_server_path(new_root_dir)
 end
 
 function M.on_new_config(new_config, new_root_dir)

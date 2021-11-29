@@ -1,6 +1,8 @@
 Paq 'mfussenegger/nvim-dap'
 Paq 'mfussenegger/nvim-dap-python'
 
+require('dap.ext.vscode').load_launchjs()
+
 local dap = require('dap')
 local dap_python = require('dap-python')
 dap_python.setup('/usr/bin/python')
@@ -17,19 +19,13 @@ dap.adapters.node2 = {
 dap.set_log_level('TRACE')
 
 local config_ff = {
-    name = 'Debug with Firefox',
     type = 'firefox',
-    request = 'launch',
-    reAttach = true,
-    url = 'http://localhost:3000',
-    webRoot = '${workspaceFolder}',
-    --[[ pathMappings = {
-      {
-        url = 'http://localhost:3000',
-        path = "${workspaceFolder}"
-      }
-    }, ]]
-    firefoxExecutable = '/usr/bin/firefox-nightly'
+    request = 'attach',
+    program = '${file}',
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = 'inspector',
+    port = 6000,
   }
 
 local config_node = {

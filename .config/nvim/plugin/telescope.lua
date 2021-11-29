@@ -47,6 +47,5 @@ nnoremap {'<leader>a', builtin.git_branches}
 nnoremap {'<leader>b', builtin.buffers}
 nnoremap {'<leader>o', builtin.lsp_document_symbols}
 nnoremap {'<leader>O', builtin.lsp_workspace_symbols}
-nnoremap {'<leader><leader>', builtin.resume} --holy shit
 nnoremap {'<leader><f4>', grep_cword }
 nnoremap {'<leader>n', function() builtin.file_browser{cwd= "~/Nextcloud/Notes/org" } end}

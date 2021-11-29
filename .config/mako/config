@@ -1,3 +1,6 @@
 width=200
 ignore-timeout=1
 default-timeout=3000
+[app-name=bemenu_translate]
+ignore-timeout=true
+default-timeout=0

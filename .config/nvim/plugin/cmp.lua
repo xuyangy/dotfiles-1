@@ -81,3 +81,6 @@ require('nvim-autopairs').setup({
 })
 local autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on( 'confirm_done', autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
+vim.cmd('highlight CmpItemKindFunction guifg=#ff0000')
+vim.cmd('highlight CmpItemKindStruct guifg=#00ff00')

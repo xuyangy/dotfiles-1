@@ -16,7 +16,8 @@ local plugins = {
   'tjdevries/astronauta.nvim',
   {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'},
   'numToStr/Comment.nvim',
-  'lervag/vimtex'
+  'lervag/vimtex',
+  'mboughaba/i3config.vim'
 }
 
 for _, plugin in ipairs(plugins) do

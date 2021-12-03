@@ -1,0 +1,5 @@
+(package! org)
+(package! org-drill)
+(package! org-drill-table)
+(package! evil)
+(package! org-evil)

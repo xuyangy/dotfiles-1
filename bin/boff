@@ -1,2 +1,0 @@
-#!/bin/bash
-kasa --bulb --host 192.168.31.7 off --transition 0

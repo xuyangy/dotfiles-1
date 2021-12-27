@@ -1,2 +1,0 @@
-systemctl --user restart fluidsynth
-aconnect 20 128

@@ -3,7 +3,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
 end
 
-Paq = require('paq-nvim').paq
+Paq = require('paq').paq
 local plugins = {
   -- plugins that dont need their own file
   'savq/paq-nvim',
@@ -32,16 +32,6 @@ _G.nnoremap = keymap.nnoremap
 _G.tnoremap = keymap.tnoremap
 _G.vnoremap = keymap.vnoremap
 _G.inoremap = keymap.vnoremap
-
--- vim.g.vimtex_compiler_latexmk = {
---      options = {
---        '-shell-escape',
---        '-verbose',
---        '-file-line-error',
---        '-synctex=1',
---        '-interaction=nonstopmode',
---      },
---     }
 
 vim.g.vimtex_compiler_latexmk = {
      options = {

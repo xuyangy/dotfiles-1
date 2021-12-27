@@ -23,7 +23,8 @@
     //   "5": ["DP-2"]
     // },
     // "disable-scroll": false,
-    // "all-outputs": false,
+    "all-outputs": false,
+    "active-only": false,
     "format": "{name}: {icon}",
     "format-icons": {
       "1": "",

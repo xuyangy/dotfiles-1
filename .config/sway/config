@@ -12,17 +12,18 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 exec_always /home/artur/bin/sway_clamshell.sh
 
-#output DP-2 res 2560x1440
-output * bg ~/bg.jpg fit #000000
+output LVDS-1 pos 0 0
+# output DP-2 res 2560x1440
+#output * bg ~/bg.jpg fit #000000
 
 default_border pixel 5
 
-
 exec swayidle -w \
           timeout 30 "makoctl set-mode away" resume "makoctl set-mode default" \
-          timeout 120 'swaylock -f -c 6b0000' \
-          timeout 300 'swaymsg "output * dpms off"' \
+          timeout 90 "brightnessctl --save set 50%-" resume "brightnessctl --restore"\
+          timeout 90 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
+          timeout 240 'swaylock -f -c 6b0000' \
           before-sleep 'swaylock -f -c 6b0000'
 
 set $screenlock swaylock -f -c 000000
@@ -189,7 +190,6 @@ bindsym $mod+Ctrl+0 [con_mark="sp0"] scratchpad show
 bindsym $mod+grave [con_mark="sp`"] scratchpad show
 bindsym $mod+tab [con_mark="sp`"] scratchpad show
 
-
 client.focused #ffff00 #ffff00 #ffff00 #ff0000 #ffff00
 
 include /etc/sway/config.d/*
@@ -200,6 +200,7 @@ exec "signal-desktop --start-in-tray"
 exec "XDG_CURRENT_DESKTOP=Unity nextcloud --background"
 exec pidgin
 exec flameshot
+exec emacs --daemon
 #exec "/usr/lib/kdeconnectd"
 assign [app_id="thunderbird"] 3
 assign [class="Signal"] 2

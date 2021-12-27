@@ -94,6 +94,7 @@ require('nvim-lsp-installer').on_server_ready(function(server)
       }
     }
   elseif server.name == "ltex" then
+    opts.filetypes = {'tex', 'bib'}
     opts.settings = {
       ltex = {
         language = 'pl-PL'

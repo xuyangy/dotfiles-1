@@ -46,7 +46,7 @@ require('lualine').setup{
       },
     },
     lualine_y={
-      {'diagnostics', sources={'nvim_lsp', 'coc'}, separator = '', padding = 0},
+      {'diagnostics', sources={'nvim_diagnostic', 'coc'}, separator = '', padding = 0},
       lspcount,
     },
     lualine_z={

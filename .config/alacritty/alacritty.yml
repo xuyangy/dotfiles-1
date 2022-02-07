@@ -1,9 +1,0 @@
-
-font:
-  normal:
-    family: "FuraCode Nerd Font"
-    style: Regular
-  size: 8
-
-env:
-  TERM: xterm-256color

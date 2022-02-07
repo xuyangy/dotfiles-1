@@ -1,0 +1,3 @@
+* Dotfiles
+
+These are my dotfiles. I use them with Arch Linux and the Sway window manager.

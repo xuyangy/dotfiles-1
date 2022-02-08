@@ -1,0 +1,21 @@
+# These settings can also go under an "Account" section, but then the
+# "IMAPStore" section needs to reference the account. This is not
+# needed for just one store per account.
+IMAPStore mailbox-remote
+Host imap.mailbox.org
+User artur@tagisow.dev
+PassCmd "secret-tool lookup name mailbox"
+SSLType STARTTLS
+
+MaildirStore mailbox-local
+Path ~/mail/mailbox/
+Inbox ~/mail/mailbox/INBOX
+SubFolders Verbatim
+
+Channel mailbox
+Master :mailbox-remote:
+Slave :mailbox-local:
+Patterns * !Archives
+Create Both
+Expunge Both
+SyncState *

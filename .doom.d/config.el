@@ -8,6 +8,10 @@
       "w" #'evil-write
       )
 
+(use-package! lsp-volar)
+(use-package! tree-sitter)
+(use-package! tree-sitter-langs)
+
 ;; Takes a major-mode, a quoted hook function or a list of either
 (add-hook! python-mode
   (setq python-shell-interpreter "bpython"))
@@ -22,7 +26,7 @@
 
 (evil-collection-init 'vterm)
 
-(global-tree-sitter-mode)
+;;(global-tree-sitter-mode)
 
 (use-package! hl-todo
   ;; if you omit :defer, :hook, :commands, or :after, then the package is loaded

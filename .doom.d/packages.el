@@ -4,3 +4,5 @@
 
 (package! tree-sitter)
 (package! tree-sitter-langs)
+
+(package! lsp-volar :recipe (:host github :repo "jadestrong/lsp-volar"))

@@ -2,7 +2,7 @@ Paq'nvim-orgmode/orgmode'
 Paq'akinsho/org-bullets.nvim'
 Paq'dhruvasagar/vim-table-mode'
 
-local org_root = '~/Nextcloud/Notes/org/'
+local org_root = '~/org/'
 require('orgmode').setup({
   org_agenda_files = {org_root .. '*'},
   org_default_notes_file = org_root .. 'refile.org',

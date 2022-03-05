@@ -5,7 +5,6 @@ vim.g.rnvimr_action = {
   ['<C-t>'] = 'NvimEdit tabedit',
   ['<C-s>'] = 'NvimEdit split', -- disable CTRL+S in your bash/zsh rc
   ['<C-v>'] = 'NvimEdit vsplit',
-  ['<CR>'] = 'NvimEdit drop',
   ['gw'] = 'JumpNvimCwd',
   ['yw'] = 'EmitRangerCwd'
 }

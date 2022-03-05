@@ -1,17 +1,9 @@
-Paq {'nvim-treesitter/nvim-treesitter', run=function() vim.api.nvim_exec(':TSUpdate', false) end}
+Paq 'nvim-treesitter/nvim-treesitter'
 Paq 'nvim-treesitter/playground'
 Paq 'nvim-treesitter/nvim-treesitter-textobjects'
 Paq 'p00f/nvim-ts-rainbow'
 
-require "nvim-treesitter.parsers".get_parser_configs().org = {
-  install_info = {
-    url = 'https://github.com/milisims/tree-sitter-org',
-    revision = 'main',
-    files = {'src/parser.c', 'src/scanner.cc'},
-  },
-  filetype = 'org',
-}
-
+require'orgmode'.setup_ts_grammar()
 require'nvim-treesitter.configs'.setup {
   rainbow = {
     enable = true,
@@ -20,6 +12,7 @@ require'nvim-treesitter.configs'.setup {
   },
   autotag = { enable = true },
   ensure_installed = "all",
+  ignore_install = { "phpdoc" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = {'org'}

@@ -1,4 +1,5 @@
 Paq 'nvim-telescope/telescope.nvim'
+Paq 'nvim-telescope/telescope-file-browser.nvim'
 Paq 'nvim-lua/plenary.nvim'
 Paq 'kyazdani42/nvim-web-devicons'
 
@@ -31,6 +32,8 @@ telescope.setup{
   }
 }
 
+telescope.load_extension "file_browser"
+
 local function telescope_smart_files()
   local ok = pcall(builtin.git_files)
   if not ok then builtin.find_files() end
@@ -48,4 +51,4 @@ nnoremap {'<leader>b', builtin.buffers}
 nnoremap {'<leader>o', builtin.lsp_document_symbols}
 nnoremap {'<leader>O', builtin.lsp_workspace_symbols}
 nnoremap {'<leader><f4>', grep_cword }
-nnoremap {'<leader>n', function() builtin.file_browser{cwd= "~/Nextcloud/Notes/org" } end}
+nnoremap {'<leader>n', ":Telescope file_browser path=~/org<cr>"}

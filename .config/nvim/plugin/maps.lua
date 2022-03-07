@@ -1,4 +1,3 @@
-nnoremap {'<leader>ve', '<cmd>e $MYVIMRC<cr>'}
 nnoremap {'<leader>w', '<cmd>w<cr>'}
 nnoremap {'<leader>x', '<cmd>x<cr>'}
 nnoremap {'<leader>q', '<cmd>q<cr>'}

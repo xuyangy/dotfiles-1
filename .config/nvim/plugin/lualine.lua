@@ -21,6 +21,11 @@ local function lspcount()
   return '👅 ' .. count
 end
 
+local function orgmodestatus()
+  return vim.api.nvim_eval('v:lua.orgmode.statusline()')
+end
+
+
 require('lualine').setup{
   sections={
     lualine_b={
@@ -44,6 +49,8 @@ require('lualine').setup{
           message = {commenced = ".", completed = 'OK'}
         }
       },
+      orgmodestatus
+      
     },
     lualine_y={
       {'diagnostics', sources={'nvim_diagnostic', 'coc'}, separator = '', padding = 0},

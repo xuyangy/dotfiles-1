@@ -1,6 +1,7 @@
 Paq 'nvim-treesitter/nvim-treesitter'
 Paq 'nvim-treesitter/playground'
 Paq 'nvim-treesitter/nvim-treesitter-textobjects'
+Paq 'nvim-treesitter/nvim-treesitter-refactor'
 Paq 'p00f/nvim-ts-rainbow'
 
 require'orgmode'.setup_ts_grammar()
@@ -15,11 +16,11 @@ require'nvim-treesitter.configs'.setup {
   ignore_install = { "phpdoc" },
   highlight = {
     enable = true,
+    -- disable = {'org'},
     additional_vim_regex_highlighting = {'org'}
   },
   indent = {
     enable = true,
-    disable = {"org"}
   },
   playground = {
     enable = true,
@@ -44,6 +45,11 @@ require'nvim-treesitter.configs'.setup {
     use_virtual_text = true,
     lint_events = {"BufWrite", "CursorHold"}
   },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+    }
+  },
   textobjects = {
     move = {
       enable = true,
@@ -60,3 +66,9 @@ require'nvim-treesitter.configs'.setup {
     }
   }
 }
+
+-- vim.cmd [[
+--   set foldlevel=1000000
+--   set foldmethod=expr
+--   set foldexpr=nvim_treesitter#foldexpr()
+-- ]]

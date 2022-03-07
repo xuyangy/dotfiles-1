@@ -51,4 +51,5 @@ nnoremap {'<leader>b', builtin.buffers}
 nnoremap {'<leader>o', builtin.lsp_document_symbols}
 nnoremap {'<leader>O', builtin.lsp_workspace_symbols}
 nnoremap {'<leader><f4>', grep_cword }
-nnoremap {'<leader>n', ":Telescope file_browser path=~/org<cr>"}
+nnoremap {'<leader>n', "<cmd>Telescope file_browser path=~/org<cr>"}
+nnoremap {'<leader>ve', "<cmd>Telescope find_files cwd=~/.config/nvim<cr>"}

@@ -4,7 +4,7 @@ Paq'dhruvasagar/vim-table-mode'
 
 local org_root = '~/org/'
 require('orgmode').setup({
-  org_agenda_files = {org_root .. '*'},
+  org_agenda_files = {org_root .. '**/*'},
   org_default_notes_file = org_root .. 'refile.org',
   org_archive_location = org_root .. 'archive.org',
   org_agenda_templates = {

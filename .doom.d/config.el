@@ -8,6 +8,11 @@
       "w" #'evil-write
       )
 
+(map! :n "C-h" `evil-window-left)
+(map! :n "C-j" `evil-window-down)
+(map! :n "C-k" `evil-window-up)
+(map! :n "C-l" `evil-window-right)
+
 (use-package! lsp-volar)
 (use-package! tree-sitter)
 (use-package! tree-sitter-langs)
@@ -59,7 +64,7 @@
           )))
 
 (custom-set-variables
- '(org-directory "~/Nextcloud/Notes/org")
+ '(org-directory "~/org")
  '(org-agenda-files (list org-directory)
  '(org-refile-targets (list org-directory))))
 
@@ -78,6 +83,9 @@
                 ))
                 nil)))
 
+(evil-define-key 'motion org-agenda-mode-map
+  "ZH" 'org-habit-toggle-habits)
+
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
@@ -86,6 +94,8 @@
 
 
 (setq display-line-numbers-type 'relative)
+(set-face-foreground 'line-number "#ffffff")
+(set-face-foreground 'line-number-current-line "#ff0000")
 (setq x-select-enable-clipboard nil)
 
 (set-email-account! "artur@tagisow.dev"
@@ -137,3 +147,13 @@
     Blog - Artur Tagisow
   </a>
 </header>")
+
+
+(use-package calibredb
+  :defer t
+  :config
+  (setq calibredb-root-dir "~/Nextcloud/CALIBRE")
+  (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
+  (setq calibredb-library-alist '(("~/Nextcloud/Calibre"))))
+
+(add-hook! 'elfeed-search-mode-hook #'elfeed-update)

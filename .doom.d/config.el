@@ -57,7 +57,7 @@
            (file+headline "~/Nextcloud/Notes/org/spanish.org" "CapturedFlashcards")
            "** Word :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: twosided\n:END:\n*** Es\n%?\n*** En\n*** Example\n")
           ("l" "Piano lesson" entry
-           (file+olp+datetree "~/Nextcloud/Notes/org/piano.org" "Lekcje")
+           (file+olp+datetree "~/org/piano.org" "Lekcje")
            "* %?")
           ("p" "Protocol" entry (file+headline "~/Nextcloud/Notes/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
           ("L" "Protocol Link" entry (file+headline "~/Nextcloud/Notes/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")

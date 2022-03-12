@@ -51,20 +51,20 @@
         '(
           ; other entries here
           ("j" "Journal" entry
-           (file+olp+datetree "~/Nextcloud/Notes/org/journal.org")
+           (file+olp+datetree "~/org/journal.org")
            "* %?")
            ("s" "Spanish" entry
-           (file+headline "~/Nextcloud/Notes/org/spanish.org" "CapturedFlashcards")
+           (file+headline "~/org/spanish.org" "CapturedFlashcards")
            "** Word :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: twosided\n:END:\n*** Es\n%?\n*** En\n*** Example\n")
           ("l" "Piano lesson" entry
            (file+olp+datetree "~/org/piano.org" "Lekcje")
            "* %?")
-          ("p" "Protocol" entry (file+headline "~/Nextcloud/Notes/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-          ("L" "Protocol Link" entry (file+headline "~/Nextcloud/Notes/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
+          ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+          ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
           )))
 
 (custom-set-variables
- '(org-directory "~/org")
+ '(org-directory "~/org/")
  '(org-agenda-files (list org-directory)
  '(org-refile-targets (list org-directory))))
 

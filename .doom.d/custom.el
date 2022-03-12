@@ -22,7 +22,7 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
  '(objed-cursor-color "#ff6c6b")
  '(org-agenda-files (list org-directory))
- '(org-directory "~/Nextcloud/Notes/org")
+ '(org-directory "~/org")
  '(org-log-into-drawer t)
  '(org-modules '(ol-bibtex org-habit))
  '(package-selected-packages '(org))

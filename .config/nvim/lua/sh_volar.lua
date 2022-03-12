@@ -204,9 +204,12 @@ function M.register_volar_lspconfigs()
           documentSymbol = true,
           -- not supported - https://github.com/neovim/neovim/pull/13654
           documentColor = false,
-          documentFormatting = {
-            defaultPrintWidth = 100,
-          },
+
+          -- if you run <space>f (<cmd>lua vim.lsp.buf.formatting())
+          -- I assume you don't want to - EVERY TIME YOU RUN THAT - see the prompt "which langserver should format this? eslint or volar" because 99% of the time it's going to be eslint
+          -- documentFormatting = {
+          --   defaultPrintWidth = 100,
+          -- },
         }
       },
     })

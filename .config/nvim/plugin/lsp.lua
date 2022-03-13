@@ -68,19 +68,18 @@ end
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local nvim_lsp_installer = require('nvim-lsp-installer')
--- local lspinstaller_ensure_installed = function()
---   local servers = {'jsonls', 'sumneko_lua', 'eslint', 'pyright', 'omnisharp'}
---   for _, name in pairs(servers) do
---     local ok, server = nvim_lsp_installer.get_server(name)
---     print(server.name, ok)
---     print(server.is_installed)
---     print(server.is_installed()) -- fails here
---     if ok and not server.is_installed() then
---       server.install()
---     end
---   end
--- end
--- lspinstaller_ensure_installed()
+
+local lspinstaller_ensure_installed = function()
+  local servers = {'jsonls', 'sumneko_lua', 'eslint', 'pyright'} -- omnisharp
+  for _, name in pairs(servers) do
+    local ok, server = nvim_lsp_installer.get_server(name)
+    server.install()
+    if ok and not server:is_installed() then
+      server.install()
+    end
+  end
+end
+lspinstaller_ensure_installed()
 
 nvim_lsp_installer.on_server_ready(function(server)
   local opts = {}

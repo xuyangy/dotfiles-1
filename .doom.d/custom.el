@@ -21,7 +21,8 @@
  '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#98be65"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
  '(objed-cursor-color "#ff6c6b")
- '(org-agenda-files (list org-directory))
+ '(org-agenda-files
+   '("/home/artur/org/archive.org" "/home/artur/org/books.org" "/home/artur/org/ideas.org" "/home/artur/org/journal.org" "/home/artur/org/refile.org" "/home/artur/org/rel.org" "/home/artur/org/shopping.org"))
  '(org-directory "~/org")
  '(org-log-into-drawer t)
  '(org-modules '(ol-bibtex org-habit))

@@ -63,11 +63,6 @@
           ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
           )))
 
-(custom-set-variables
- '(org-directory "~/org/")
- '(org-agenda-files (list org-directory)
- '(org-refile-targets (list org-directory))))
-
 ;; https://github.com/hlissner/doom-emacs/issues/5714
 (defalias '+org--restart-mode-h #'ignore)
 

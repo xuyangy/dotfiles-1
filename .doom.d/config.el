@@ -47,36 +47,36 @@
 
 (after! org
   (setq
-        org-capture-templates
-        '(
-          ; other entries here
-          ("j" "Journal" entry
-           (file+olp+datetree "~/org/journal.org")
-           "* %?")
-           ("s" "Spanish" entry
-           (file+headline "~/org/spanish.org" "CapturedFlashcards")
-           "** Word :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: twosided\n:END:\n*** Es\n%?\n*** En\n*** Example\n")
-          ("l" "Piano lesson" entry
-           (file+olp+datetree "~/org/piano.org" "Lekcje")
-           "* %?")
-          ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-          ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
-          )))
+   org-capture-templates
+   '(
+                                        ; other entries here
+     ("j" "Journal" entry
+      (file+olp+datetree "~/org/journal.org")
+      "* %?")
+     ("s" "Spanish" entry
+      (file+headline "~/org/spanish.org" "CapturedFlashcards")
+      "** Word :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: twosided\n:END:\n*** Es\n%?\n*** En\n*** Example\n")
+     ("l" "Piano lesson" entry
+      (file+olp+datetree "~/org/piano.org" "Lekcje")
+      "* %?")
+     ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+     ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
+     )))
 
 ;; https://github.com/hlissner/doom-emacs/issues/5714
 (defalias '+org--restart-mode-h #'ignore)
 
- (setq org-agenda-custom-commands
-       (quote (
-               ("h" "Habits" tags-todo "STYLE=\"habit\""
-                ((org-agenda-overriding-header "Habits")
-                 (org-agenda-sorting-strategy
-                  '(todo-state-down effort-up category-keep))))
-               (" " "Agenda"
-                ((agenda "" nil)
-                 (tags "drill" ((org-agenda-overriding-header "Drills")))
+(setq org-agenda-custom-commands
+      (quote (
+              ("h" "Habits" tags-todo "STYLE=\"habit\""
+               ((org-agenda-overriding-header "Habits")
+                (org-agenda-sorting-strategy
+                 '(todo-state-down effort-up category-keep))))
+              (" " "Agenda"
+               ((agenda "" nil)
+                (tags "drill" ((org-agenda-overriding-header "Drills")))
                 ))
-                nil)))
+              nil)))
 
 (evil-define-key 'motion org-agenda-mode-map
   "ZH" 'org-habit-toggle-habits)
@@ -94,16 +94,16 @@
 (setq x-select-enable-clipboard nil)
 
 (set-email-account! "artur@tagisow.dev"
-  '((mu4e-sent-folder       . "/mailbox/Sent")
-    (mu4e-drafts-folder     . "/mailbox/Drafts")
-    (mu4e-trash-folder      . "/mailbox/Trash")
-    (mu4e-refile-folder     . "/mailbox/Archives")
-    (smtpmail-smtp-user     . "artur@tagisow.dev")
-    (user-mail-address      . "artur@tagisow.dev")
-    (user-full-name         . "Artur Tagisow"))
-  t)
+                    '((mu4e-sent-folder       . "/mailbox/Sent")
+                      (mu4e-drafts-folder     . "/mailbox/Drafts")
+                      (mu4e-trash-folder      . "/mailbox/Trash")
+                      (mu4e-refile-folder     . "/mailbox/Archives")
+                      (smtpmail-smtp-user     . "artur@tagisow.dev")
+                      (user-mail-address      . "artur@tagisow.dev")
+                      (user-full-name         . "Artur Tagisow"))
+                    t)
 
-;instead of the mu4e thread collapsing plugin
+                                        ;instead of the mu4e thread collapsing plugin
 (setq mu4e-headers-include-related nil
       mu4e-get-mail-command "mbsync mailbox"
       mu4e-update-interval 60

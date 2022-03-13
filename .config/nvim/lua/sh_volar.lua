@@ -146,6 +146,7 @@ function M.register_volar_lspconfigs()
           serverPath = ''
         },
         languageFeatures = {
+          implementation = true,
           references = true,
           definition = true,
           typeDefinition = true,
@@ -177,6 +178,7 @@ function M.register_volar_lspconfigs()
           serverPath = ''
         },
         languageFeatures = {
+          implementation = true,
           documentHighlight = true,
           documentLink = true,
           codeLens = { showReferencesNotification = true},
@@ -225,7 +227,7 @@ function M.volar_debug_cmd_factory(port, executable_path)
   if M.VOLAR_DEBUG then
     return {'node', '--inspect=:' .. port, executable_path, '--stdio'}
   end
-  return {'volar-server', '--stdio'}
+  return {'vue-language-server', '--stdio'}
 end
 
 

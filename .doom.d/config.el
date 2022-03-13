@@ -124,9 +124,9 @@
 
 (setq org-static-blog-publish-title "Blog - Artur Tagisow"
       org-static-blog-publish-url "https://blog.tagisow.dev"
-      org-static-blog-publish-directory "~/dev/blog/dist/"
-      org-static-blog-posts-directory "~/dev/blog/posts/"
-      org-static-blog-drafts-directory "~/dev/blog/drafts/"
+      org-static-blog-publish-directory "~/Nextcloud/devblog/dist/"
+      org-static-blog-posts-directory "~/Nextcloud/devblog/posts/"
+      org-static-blog-drafts-directory "~/Nextcloud/devblog/drafts/"
       org-static-blog-enable-tags t
       org-static-blog-use-preview t
       org-static-blog-preview-link-p t

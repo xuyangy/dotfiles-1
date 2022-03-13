@@ -73,9 +73,8 @@ local lspinstaller_ensure_installed = function()
   local servers = {'jsonls', 'sumneko_lua', 'eslint', 'pyright'} -- omnisharp
   for _, name in pairs(servers) do
     local ok, server = nvim_lsp_installer.get_server(name)
-    server.install()
     if ok and not server:is_installed() then
-      server.install()
+      server:install()
     end
   end
 end

@@ -11,7 +11,6 @@ export BEMENU_OPTS="--tb '#6272a4'\
  --sf '#50fa7b'\
  --scb '#282a36'\
  --scf '#ff79c6'"
-. "$HOME/.cargo/env"
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK

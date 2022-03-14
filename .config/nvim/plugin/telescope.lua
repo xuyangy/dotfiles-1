@@ -54,3 +54,4 @@ nnoremap {'<leader><f4>', grep_cword }
 nnoremap {'<leader>n', "<cmd>Telescope file_browser path=~/org<cr>"}
 nnoremap {'<leader>ve', "<cmd>Telescope find_files cwd=~/.config/nvim<cr>"}
 nnoremap {'<leader>ca', '<cmd>Telescope lsp_code_actions<CR>'}
+nnoremap {'<leader>R', "<cmd>Telescope resume<cr>"}

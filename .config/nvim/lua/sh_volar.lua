@@ -127,7 +127,7 @@ function M.register_volar_lspconfigs()
   local filetypes_with_json = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 
   local volar_root_dir = lspconfig_util.root_pattern 'package.json'
-  local debug_executable_path = '~/dev/volar/packages/vue-language-server/out/node.js'
+  local debug_executable_path =  vim.fn.expand('~/dev/volar/packages/vue-language-server/out/node.js')
 
   local volar_common = {
     root_dir = volar_root_dir,

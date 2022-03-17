@@ -25,6 +25,11 @@ telescope.setup{
     buffers = {
       sort_lastused = true,
       selection_strategy="closest",
+      mappings = {
+        i = {
+          ['<C-d>'] = actions.delete_buffer
+        }
+      }
     },
     git_files = {
       path_display = {'smart'},

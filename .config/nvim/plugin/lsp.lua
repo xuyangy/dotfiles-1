@@ -3,7 +3,11 @@ Paq'williamboman/nvim-lsp-installer'
 Paq'nvim-lua/lsp_extensions.nvim'
 Paq'b0o/schemastore.nvim'
 
--- vim.lsp.set_log_level 'trace'
+Paq'j-hui/fidget.nvim'
+require"fidget".setup{}
+
+
+vim.lsp.set_log_level 'trace'
 require('vim.lsp.log').set_format_func(vim.inspect)
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

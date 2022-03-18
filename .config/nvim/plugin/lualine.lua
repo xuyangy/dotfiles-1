@@ -1,5 +1,6 @@
 Paq'nvim-lualine/lualine.nvim'
 Paq'arkav/lualine-lsp-progress'
+Paq'SmiteshP/nvim-gps'
 
 local colors = {
   yellow = '#ECBE7B',
@@ -26,6 +27,9 @@ local function orgmodestatus()
 end
 
 
+local gps = require("nvim-gps")
+gps.setup()
+
 require('lualine').setup{
   options = {
     globalstatus = true
@@ -35,23 +39,25 @@ require('lualine').setup{
       {'filetype', icon_only = true, separator = '' },
       {'filename', path = 1, shorting_target = 40, padding = 0 },
     },
-    lualine_c = {},
+    lualine_c = {
+      { gps.get_location, cond = gps.is_available }
+    },
     lualine_x={
-      {
-        'lsp_progress',
-        colors = {
-          lsp_client_name = colors.yellow,
-          title  = colors.cyan,
-          message  = colors.orange,
-          percentage  = colors.orange,
-          spinner = colors.orange,
-          use = true,
-        },
-        display_components = {'lsp_client_name', {'title', 'message', 'percentage'}, 'spinner'},
-        separators = {
-          message = {commenced = ".", completed = 'OK'}
-        }
-      },
+      -- {
+      --   'lsp_progress',
+      --   colors = {
+      --     lsp_client_name = colors.yellow,
+      --     title  = colors.cyan,
+      --     message  = colors.orange,
+      --     percentage  = colors.orange,
+      --     spinner = colors.orange,
+      --     use = true,
+      --   },
+      --   display_components = {'lsp_client_name', {'title', 'message', 'percentage'}, 'spinner'},
+      --   separators = {
+      --     message = {commenced = ".", completed = 'OK'}
+      --   }
+      -- },
       orgmodestatus
       
     },

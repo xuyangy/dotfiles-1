@@ -46,9 +46,8 @@ require'nvim-treesitter.configs'.setup {
     lint_events = {"BufWrite", "CursorHold"}
   },
   refactor = {
-    highlight_definitions = {
-      enable = true,
-    }
+    highlight_definitions = { enable = true, },
+    highlight_current_scope = { enable = false },
   },
   textobjects = {
     move = {

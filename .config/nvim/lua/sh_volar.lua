@@ -142,8 +142,8 @@ function M.register_volar_lspconfigs()
           serverPath = ''
         },
         languageFeatures = {
-          implementation = true,
           references = true,
+          implementation = true,
           definition = true,
           typeDefinition = true,
           callHierarchy = true,
@@ -156,10 +156,12 @@ function M.register_volar_lspconfigs()
           completion = {
             defaultTagNameCase = 'both',
             defaultAttrNameCase = 'kebabCase',
-            getDocumentNameCasesRequest = false,
-            getDocumentSelectionRequest = false,
+            getDocumentNameCasesRequest = true,
+            getDocumentSelectionRequest = true,
           },
-          schemaRequestService = true,
+          schemaRequestService = {
+            getDocumentContentRequest = true,
+          },
         }
       },
     })
@@ -178,10 +180,10 @@ function M.register_volar_lspconfigs()
           documentHighlight = true,
           documentLink = true,
           codeLens = { showReferencesNotification = true},
-          -- not supported - https://github.com/neovim/neovim/pull/14122
-          semanticTokens = false,
-          diagnostics = true,
-          schemaRequestService = true,
+          -- not supported - https://github.com/neovim/neovim/pull/15723
+          -- semanticTokens = false,
+          diagnostics = { getDocumentVersionRequest = true },
+          schemaRequestService = { getDocumentContentRequest = true }
         }
       },
     }),
@@ -207,6 +209,7 @@ function M.register_volar_lspconfigs()
           -- I assume you don't want to - EVERY TIME YOU RUN THAT - see the prompt "which langserver should format this? eslint or volar" because 99% of the time it's going to be eslint
           -- documentFormatting = {
           --   defaultPrintWidth = 100,
+          --   getDocumentPrintWidthRequest = 100
           -- },
         }
       },
@@ -215,7 +218,7 @@ function M.register_volar_lspconfigs()
 end
 
 
-M.VOLAR_DEBUG = true
+M.VOLAR_DEBUG = false
 -- Api - port 6009
 -- Document - port 6010
 -- Html - port 6011

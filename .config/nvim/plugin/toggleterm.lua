@@ -1,4 +1,3 @@
 Paq'akinsho/toggleterm.nvim'
 require'toggleterm'.setup()
-nnoremap{'<F3>', '<cmd>ToggleTerm<cr>'}
-tnoremap{'<F3>', '<cmd>ToggleTerm<cr>'}
+vim.keymap.set({'n', 't'}, '<F3>', '<cmd>ToggleTerm<cr>')

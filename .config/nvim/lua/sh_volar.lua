@@ -1,9 +1,7 @@
 local lspconfig_util = require 'lspconfig.util'
 local lspconfig_configs = require'lspconfig.configs'
 
--- TODO Getting double completions :( (2 server reutring completions)
 local M = {}
-
 
 local settings = {
   volar = {
@@ -27,7 +25,6 @@ local settings = {
       backgroundColor = '#fff',
       transparentGrid = true,
     }
-
   },
   ['volar-api'] = {
     trace = {
@@ -122,7 +119,6 @@ local commands = {
 }
 
 function M.register_volar_lspconfigs()
-
   local filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' };
   local filetypes_with_json = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 

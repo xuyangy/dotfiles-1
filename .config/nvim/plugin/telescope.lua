@@ -48,15 +48,15 @@ local function grep_cword()
   builtin.grep_string({search = vim.fn.expand("<cword>")})
 end
 
-nnoremap {'<leader>f', telescope_smart_files}
-nnoremap {'<leader>F', builtin.find_files}
-nnoremap {'<f4>', builtin.live_grep}
-nnoremap {'<leader>a', builtin.git_branches}
-nnoremap {'<leader>b', builtin.buffers}
-nnoremap {'<leader>o', builtin.lsp_document_symbols}
-nnoremap {'<leader>O', builtin.lsp_workspace_symbols}
-nnoremap {'<leader><f4>', grep_cword }
-nnoremap {'<leader>n', "<cmd>Telescope file_browser path=~/org<cr>"}
-nnoremap {'<leader>ve', "<cmd>Telescope find_files cwd=~/.config/nvim<cr>"}
-nnoremap {'<leader>ca', '<cmd>Telescope lsp_code_actions<CR>'}
-nnoremap {'<leader>R', "<cmd>Telescope resume<cr>"}
+vim.keymap.set('n', '<leader>f', telescope_smart_files)
+vim.keymap.set('n', '<leader>F', builtin.find_files)
+vim.keymap.set('n', '<f4>', builtin.live_grep)
+vim.keymap.set('n', '<leader>a', builtin.git_branches)
+vim.keymap.set('n', '<leader>b', builtin.buffers)
+vim.keymap.set('n', '<leader>o', builtin.lsp_document_symbols)
+vim.keymap.set('n', '<leader>O', builtin.lsp_workspace_symbols)
+vim.keymap.set('n', '<leader><f4>', grep_cword )
+vim.keymap.set('n', '<leader>n', "<cmd>Telescope file_browser path=~/org<cr>")
+vim.keymap.set('n', '<leader>ve', "<cmd>Telescope find_files cwd=~/.config/nvim<cr>")
+vim.keymap.set('n', '<leader>ca', '<cmd>Telescope lsp_code_actions<CR>')
+vim.keymap.set('n', '<leader>R', "<cmd>Telescope resume<cr>")

@@ -13,7 +13,6 @@ local plugins = {
   'windwp/nvim-autopairs',
   'machakann/vim-sandwich',
   'lambdalisue/suda.vim',
-  'tjdevries/astronauta.nvim',
   {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'},
   'numToStr/Comment.nvim',
   'lervag/vimtex',
@@ -24,14 +23,8 @@ for _, plugin in ipairs(plugins) do
   Paq(plugin)
 end
 
-
 require('Comment').setup{}
 
-local keymap = require('astronauta.keymap')
-_G.nnoremap = keymap.nnoremap
-_G.tnoremap = keymap.tnoremap
-_G.vnoremap = keymap.vnoremap
-_G.inoremap = keymap.vnoremap
 
 vim.g.vimtex_compiler_latexmk = {
      options = {

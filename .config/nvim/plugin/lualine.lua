@@ -27,6 +27,9 @@ end
 
 
 require('lualine').setup{
+  options = {
+    globalstatus = true
+  },
   sections={
     lualine_b={
       {'filetype', icon_only = true, separator = '' },
@@ -62,4 +65,3 @@ require('lualine').setup{
     }
   },
 }
-

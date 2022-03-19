@@ -4,37 +4,46 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 Paq = require('paq').paq
-local plugins = {
-  -- plugins that dont need their own file
-  'savq/paq-nvim',
-  'lukas-reineke/indent-blankline.nvim',
-  'tpope/vim-fugitive',
-  'windwp/nvim-ts-autotag',
-  'windwp/nvim-autopairs',
-  'machakann/vim-sandwich',
-  'lambdalisue/suda.vim',
-  {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'},
-  'numToStr/Comment.nvim',
-  'lervag/vimtex',
-  'mboughaba/i3config.vim'
-}
 
-for _, plugin in ipairs(plugins) do
-  Paq(plugin)
-end
+Paq'savq/paq-nvim'
+Paq'lukas-reineke/indent-blankline.nvim'
+Paq'tpope/vim-fugitive'
 
-require('Comment').setup{}
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = "fugitive",
+	once = true,
+	callback =
+		function()
+			print("Filetype autocmd")
+			local fugitive_opts = {noremap = true, silent = true};
+			vim.api.nvim_buf_set_keymap(0, 'n', 'cc', '<cmd>Git commit --quiet<CR>', fugitive_opts)
+			vim.api.nvim_buf_set_keymap(0, 'n', 'ca', '<cmd>Git commit --quiet --amend<CR>', fugitive_opts)
+			vim.api.nvim_buf_set_keymap(0, 'n', 'ce', '<cmd>Git commit --quiet --amend --no-edit<CR>', fugitive_opts)
+	end
+})
+Paq'windwp/nvim-ts-autotag'
+Paq'windwp/nvim-autopairs'
+Paq'machakann/vim-sandwich'
+Paq'lambdalisue/suda.vim'
+Paq{'iamcco/markdown-preview.nvim', run ='cd app && yarn install'}
+Paq'mboughaba/i3config.vim'
 
+Paq'numToStr/Comment.nvim'
+require'Comment'.setup()
 
+Paq'akinsho/toggleterm.nvim'
+require'toggleterm'.setup()
+
+Paq'lervag/vimtex'
 vim.g.vimtex_compiler_latexmk = {
-     options = {
-       '-pdflatex="xelatex --shell-escape %O %S"',
-       '-verbose',
-       '-file-line-error',
-       '-synctex=1',
-       '-interaction=nonstopmode',
-     }
-    }
+  options = {
+    '-pdflatex="xelatex --shell-escape %O %S"',
+    '-verbose',
+    '-file-line-error',
+    '-synctex=1',
+    '-interaction=nonstopmode',
+  }
+}
 
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')

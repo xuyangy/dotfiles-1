@@ -11,6 +11,7 @@
     "disk",
     "temperature",
     "battery",
+    "sway/language",
     "clock#1",
     "custom/scratchpad-indicator"
   ],
@@ -35,7 +36,10 @@
       "default": ""
     }
   },
-
+  "sway/language": {
+    "format": "{}",
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+  },
   "custom/scratchpad-indicator": {
     "interval": 3,
     "return-type": "json",

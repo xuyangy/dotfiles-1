@@ -44,6 +44,7 @@ bindkey -s '^[OP' "ranger_cd\n" # f1
 
 # remove CTRL+S since it freezes rnvim.rnivm
 stty -ixon
+stty lnext undef # prevent having to press CTRL+V twice for rnvimr on mac
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION

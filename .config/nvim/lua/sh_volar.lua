@@ -182,8 +182,8 @@ function M.register_volar_lspconfigs()
           codeLens = { showReferencesNotification = true},
           -- not supported - https://github.com/neovim/neovim/pull/15723
           -- semanticTokens = false,
-          diagnostics = { getDocumentVersionRequest = true },
-          schemaRequestService = { getDocumentContentRequest = true }
+          diagnostics = { getDocumentVersionRequest = false }, -- if you set this to true it'll crash volar-doc with "MethodNotFound: vue/docVersion"
+          schemaRequestService = { getDocumentContentRequest = false } -- dunno if this crashes the ls but I'm disabling because I'm scared
         }
       },
     }),

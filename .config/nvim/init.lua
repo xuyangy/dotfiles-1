@@ -7,6 +7,10 @@ Paq = require('paq').paq
 
 Paq'savq/paq-nvim'
 Paq'lukas-reineke/indent-blankline.nvim'
+require"indent_blankline".setup {
+  show_current_context = true,
+  show_current_context_start = true,
+}
 Paq'tpope/vim-fugitive'
 
 vim.api.nvim_create_autocmd('FileType', {

@@ -11,7 +11,7 @@ require"indent_blankline".setup {
   show_current_context = true,
   show_current_context_start = true,
 }
-Paq'tpope/vim-fugitive'
+Paq{url='https://tpope.io/vim/fugitive.git'}
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = "fugitive",

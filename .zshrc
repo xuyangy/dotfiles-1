@@ -15,7 +15,6 @@ function vd() {
 }
 alias nrs="npm run serve"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
-alias v="nvim"
 alias vi="nvim"
 alias spacy="python -m spacy"
 alias wttr="curl -s \"wttr.in/?2nFQ&lang=pl\" | less"

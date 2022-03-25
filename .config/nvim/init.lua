@@ -7,7 +7,22 @@ Paq = require('paq').paq
 
 Paq'savq/paq-nvim'
 Paq'lukas-reineke/indent-blankline.nvim'
-Paq'tpope/vim-fugitive'
+require"indent_blankline".setup {
+  show_current_context = true,
+  show_current_context_start = true,
+}
+Paq{url='https://tpope.io/vim/fugitive.git'}
+Paq{url='https://tpope.io/vim/rhubarb.git'}
+  Paq{url='https://github.com/tyru/open-browser.vim.git'} -- need to disable enable_ex in rnvimr
+  vim.api.nvim_exec('command! -nargs=1 Browse OpenBrowser <args>', true); -- nne
+  vim.api.nvim_exec([[
+    let g:openbrowser_browser_commands = [
+        \ {"name": "open",
+        \  "args": ["{browser}", "{uri}"],
+        \  "background": 0}
+        \]
+  ]], true)
+
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = "fugitive",

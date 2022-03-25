@@ -58,14 +58,14 @@ local on_attach = function(client, bufnr)
   --   ]], false)
   -- end
 
-  if client.resolved_capabilities.code_lens then
-    vim.api.nvim_exec([[
-      augroup lsp_code_lens
-      autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
-      augroup END
-    ]], false
-    )
-  end
+  -- if client.resolved_capabilities.code_lens then
+  --   vim.api.nvim_exec([[
+  --     augroup lsp_code_lens
+  --     autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
+  --     augroup END
+  --   ]], false
+  --   )
+  -- end
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

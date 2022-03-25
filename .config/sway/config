@@ -13,8 +13,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 exec_always /home/artur/bin/sway_clamshell.sh
 
 output LVDS-1 pos 0 0
-#output DP-2 modeline 312.00 2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync
-#output DP-2 res 2560x1440
+output DP-2 res 2560x1440
 #output * bg ~/bg.jpg fit #000000
 
 default_border pixel 5

@@ -54,10 +54,10 @@
       (file+olp+datetree "~/org/journal.org")
       "* %?")
      ("s" "Spanish" entry
-      (file+headline "~/org/spanish.org" "CapturedFlashcards")
+      (file+headline "~/org-extra/spanish.org" "CapturedFlashcards")
       "** Word :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: twosided\n:END:\n*** Es\n%?\n*** En\n*** Example\n")
      ("l" "Piano lesson" entry
-      (file+olp+datetree "~/org/piano.org" "Lekcje")
+      (file+olp+datetree "~/org-extra/piano.org" "Lekcje")
       "* %?")
      ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
      ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")

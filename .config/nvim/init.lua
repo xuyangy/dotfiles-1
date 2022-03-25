@@ -61,6 +61,7 @@ vim.opt.ignorecase=    true
 vim.opt.smartcase=     true
 vim.opt.hidden=        true
 vim.opt.confirm=       true -- can't shortmess E162 :(
+vim.opt.shm:append('I') -- print(vim.inspect(vim.opt.shm:get())), really cool terse sttings here
 vim.opt.cursorline=    true
 vim.opt.equalalways=   true
 

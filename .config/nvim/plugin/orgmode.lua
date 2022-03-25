@@ -28,20 +28,19 @@ require('orgmode').setup({
       target = org_root .. 'shopping.org'
     },
   },
-  org_indent_mode = 'noindent'
 })
 
-require('org-bullets').setup {
-    symbols = { "◉", "○", "✸", "✿" }
-}
-
-vim.api.nvim_exec(
-[[
-  function! SetOrgSets()
-    setlocal conceallevel=2
-    setlocal concealcursor=nc
-    setlocal nowrap
-  endfunction
-  autocmd FileType org call SetOrgSets()
-]],
-true)
+-- require('org-bullets').setup {
+--     symbols = { "◉", "○", "✸", "✿" }
+-- }
+--
+-- vim.api.nvim_exec(
+-- [[
+--   function! SetOrgSets()
+--     setlocal conceallevel=2
+--     setlocal concealcursor=nc
+--     setlocal nowrap
+--   endfunction
+--   autocmd FileType org call SetOrgSets()
+-- ]],
+-- true)

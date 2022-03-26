@@ -13,7 +13,6 @@
 (map! :n "C-k" `evil-window-up)
 (map! :n "C-l" `evil-window-right)
 
-(use-package! lsp-volar)
 (use-package! tree-sitter)
 (use-package! tree-sitter-langs)
 

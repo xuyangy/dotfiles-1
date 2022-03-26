@@ -158,7 +158,7 @@ bar {
     swaybar_command waybar
 }
 
-bindsym $mod+Shift+s exec "XDG_CURRENT_DESKTOP=sway flameshot gui -r | wl-copy"
+bindsym $mod+Shift+s exec "QT_QPA_PLATFORM=xcb XDG_CURRENT_DESKTOP=sway flameshot gui -r | wl-copy"
 bindsym $mod+F11 exec "adev headphones"
 bindsym $mod+F12 exec "adev monitor"
 

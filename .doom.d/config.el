@@ -122,10 +122,10 @@
         message-send-mail-function #'message-send-mail-with-sendmail))
 
 (setq org-static-blog-publish-title "Blog - Artur Tagisow"
-      org-static-blog-publish-url "https://blog.tagisow.dev"
-      org-static-blog-publish-directory "~/Nextcloud/devblog/dist/"
-      org-static-blog-posts-directory "~/Nextcloud/devblog/posts/"
-      org-static-blog-drafts-directory "~/Nextcloud/devblog/drafts/"
+      org-static-blog-publish-url "https://tagisow.dev"
+      org-static-blog-publish-directory "~/Nextcloud/Documents/devblog/dist/"
+      org-static-blog-posts-directory "~/Nextcloud/Documents/devblog/posts/"
+      org-static-blog-drafts-directory "~/Nextcloud/Documents/devblog/drafts/"
       org-static-blog-enable-tags t
       org-static-blog-use-preview t
       org-static-blog-preview-link-p t
@@ -137,7 +137,7 @@
       org-static-blog-page-preamble
       "
 <header>
-  <a href=\"https://blog.tagisow.dev\">
+  <a href=\"https://tagisow.dev\">
     Blog - Artur Tagisow
   </a>
 </header>")

@@ -48,6 +48,7 @@ require'Comment'.setup()
 
 Paq'akinsho/toggleterm.nvim'
 require'toggleterm'.setup()
+vim.keymap.set('n', '<leader>ot', '<cmd>ToggleTerm<cr>')
 
 Paq'lervag/vimtex'
 vim.g.vimtex_compiler_latexmk = {

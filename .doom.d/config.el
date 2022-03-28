@@ -59,6 +59,7 @@
      ("l" "Piano lesson" entry
       (file+olp+datetree "~/org/piano.org" "Lekcje")
       "* %?")
+     ("m" "Meeting" entry (file+headline "~/org/refile.org" "Meeintgs") "* %U %?")
      ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
      ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
      )))
@@ -152,3 +153,9 @@
   (setq calibredb-library-alist '(("~/Nextcloud/Calibre"))))
 
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
+
+(defun org-insert-clipboard-image (&optional file)
+  (interactive "F")
+  (shell-command (concat "pngpaste " file))
+  (insert (concat "[[" file "]]"))
+  (org-display-inline-images))

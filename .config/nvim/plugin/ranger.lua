@@ -1,6 +1,6 @@
 Paq 'kevinhwang91/rnvimr'
 
-vim.keymap.set('n', '<leader><leader>', '<cmd>RnvimrToggle<cr>')
+vim.keymap.set('n', '<leader>o-', '<cmd>RnvimrToggle<cr>')
 vim.g.rnvimr_action = {
   ['<C-t>'] = 'NvimEdit tabedit',
   ['<C-s>'] = 'NvimEdit split', -- disable CTRL+S in your bash/zsh rc

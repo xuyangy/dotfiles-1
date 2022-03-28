@@ -6,7 +6,6 @@ Paq'b0o/schemastore.nvim'
 Paq'j-hui/fidget.nvim'
 require"fidget".setup{}
 
-
 vim.lsp.set_log_level 'trace'
 require('vim.lsp.log').set_format_func(vim.inspect)
 

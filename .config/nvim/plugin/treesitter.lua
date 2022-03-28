@@ -16,7 +16,7 @@ require'nvim-treesitter.configs'.setup {
   ignore_install = { "phpdoc" },
   highlight = {
     enable = true,
-    -- disable = {'org'},
+    disable = {'org'},
     additional_vim_regex_highlighting = {'org'}
   },
   indent = {

@@ -13,7 +13,6 @@
 (map! :n "C-k" `evil-window-up)
 (map! :n "C-l" `evil-window-right)
 
-(use-package! lsp-volar)
 (use-package! tree-sitter)
 (use-package! tree-sitter-langs)
 
@@ -54,10 +53,10 @@
       (file+olp+datetree "~/org/journal.org")
       "* %?")
      ("s" "Spanish" entry
-      (file+headline "~/org/spanish.org" "CapturedFlashcards")
+      (file+headline "~/org-extra/spanish.org" "CapturedFlashcards")
       "** Word :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: twosided\n:END:\n*** Es\n%?\n*** En\n*** Example\n")
      ("l" "Piano lesson" entry
-      (file+olp+datetree "~/org/piano.org" "Lekcje")
+      (file+olp+datetree "~/org-extra/piano.org" "Lekcje")
       "* %?")
      ("m" "Meeting" entry (file+headline "~/org/refile.org" "Meeintgs") "* %U %?")
      ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
@@ -124,10 +123,10 @@
         message-send-mail-function #'message-send-mail-with-sendmail))
 
 (setq org-static-blog-publish-title "Blog - Artur Tagisow"
-      org-static-blog-publish-url "https://blog.tagisow.dev"
-      org-static-blog-publish-directory "~/Nextcloud/devblog/dist/"
-      org-static-blog-posts-directory "~/Nextcloud/devblog/posts/"
-      org-static-blog-drafts-directory "~/Nextcloud/devblog/drafts/"
+      org-static-blog-publish-url "https://tagisow.dev"
+      org-static-blog-publish-directory "~/Nextcloud/Documents/devblog/dist/"
+      org-static-blog-posts-directory "~/Nextcloud/Documents/devblog/posts/"
+      org-static-blog-drafts-directory "~/Nextcloud/Documents/devblog/drafts/"
       org-static-blog-enable-tags t
       org-static-blog-use-preview t
       org-static-blog-preview-link-p t
@@ -139,7 +138,7 @@
       org-static-blog-page-preamble
       "
 <header>
-  <a href=\"https://blog.tagisow.dev\">
+  <a href=\"https://tagisow.dev\">
     Blog - Artur Tagisow
   </a>
 </header>")

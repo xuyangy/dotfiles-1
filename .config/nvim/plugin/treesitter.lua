@@ -4,7 +4,7 @@ Paq 'nvim-treesitter/nvim-treesitter-textobjects'
 Paq 'nvim-treesitter/nvim-treesitter-refactor'
 Paq 'p00f/nvim-ts-rainbow'
 
-require'orgmode'.setup_ts_grammar()
+require'orgmode'.setup_ts_grammar('9a595e51c1f69b9ac986f0e0b788804eda0e755d')
 require'nvim-treesitter.configs'.setup {
   rainbow = {
     enable = true,

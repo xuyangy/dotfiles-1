@@ -19,7 +19,7 @@
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
 
-       :completion (helm +fuzzy)
+       :completion
        company           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
@@ -48,7 +48,7 @@
        ;;vc-gutter         ; vcs diff in the fringe
        ;;vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
-       ;;workspaces        ; tab emulation, persistence & separate workspaces
+       workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
        :editor

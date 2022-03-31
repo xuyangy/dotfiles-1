@@ -31,3 +31,5 @@ vim.keymap.set('n', '<leader>gcb', ':G checkout origin/develop -b' )
 
 vim.keymap.set({'n', 'v'}, '<leader>p', '"+p')
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y')
+
+vim.keymap.set({'n', 't'}, '<leader>ot', '<cmd>ToggleTerm<cr>')

@@ -6,5 +6,3 @@
 (package! tree-sitter-langs)
 
 (package! calibredb)
-
-(unpin! lsp-mode)

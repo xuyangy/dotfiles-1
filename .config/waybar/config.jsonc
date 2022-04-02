@@ -4,16 +4,17 @@
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["sway/window"],
   "modules-right": [
-    "tray",
     "idle_inhibitor",
+    "tray",
+    "sway/language",
+    "temperature",
+    "disk",
+    "backlight",
     "pulseaudio",
     "network",
-    "disk",
-    "temperature",
     "battery",
-    "sway/language",
     "clock#1",
-    "custom/scratchpad-indicator"
+    "clock#2",
   ],
   "sway/workspaces": {
     // "persistent_workspaces": {
@@ -60,10 +61,15 @@
   },
   "tray": {
     // "icon-size": 21,
-    "spacing": 10
+    "spacing": 0
   },
   "clock#1": {
-    "format": "{:%d-%m | <b>%T</b>}",
+    "format": "{:%d-%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 1,
+  },
+  "clock#2": {
+    "format": "{:<b>%T</b>}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "interval": 1,
   },
@@ -77,14 +83,15 @@
   "temperature": {
     // "thermal-zone": 2,
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
+    "critical-threshold": 70,
     // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
+    // "format": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}",
     "format-icons": ["", "", ""]
   },
   "backlight": {
     // "device": "acpi_video1",
-    "format": "{percent}% {icon}",
+    "format": "{percent}",
     "format-icons": ["", ""]
   },
   "battery": {
@@ -107,7 +114,7 @@
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
-    "format": "{volume}% {icon} {format_source}",
+    "format": "{volume}",
     "format-bluetooth": "{volume} {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
@@ -126,7 +133,19 @@
   },
   "disk": {
     "interval": 5,
-    "format": "{percentage_used:2}% D",
+    "format": "{percentage_used:2}",
     "path": "/"
+  },
+  "custom/org": {
+      "format": "{icon} {}",
+      "return-type": "json",
+      "restart-interval": 1,
+      "format-icons": {
+        "refile": "",
+        "ToDo": "",
+      },
+      "exec": "emacsclient --eval '(org-clock-waybar-ouptut-task)' | jq fromjson --unbuffered --compact-output",
+      "on-click": "emacsclient --eval '(org-clock-out)'",
+      "on-middle-click": "emacsclient --eval '(org-clock-in-last)'",
   },
 }

@@ -8,6 +8,7 @@
  '(TeX-source-correlate-start-server t t)
  '(ansi-color-names-vector
    ["#282c34" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#bbc2cf"])
+ '(auth-source-save-behavior nil)
  '(custom-safe-themes
    '("234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" default))
  '(exwm-floating-border-color "#191b20")

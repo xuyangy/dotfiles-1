@@ -134,6 +134,7 @@
       org-export-with-section-numbers nil
       org-static-blog-page-header "<meta name=\"author\" content=\"Artur Tagisow\">
 <meta name=\"referrer\" content=\"no-referrer\">
+<link rel=\"preload\" href=\"static/style.css\" as=\"style\"/>
 <link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" />"
       org-static-blog-page-preamble
       "

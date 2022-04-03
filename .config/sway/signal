@@ -1,0 +1,8 @@
+# https://www.reddit.com/r/swaywm/comments/j3zn95/how_do_i_launch_an_app_on_startup_in_scratchpad/
+exec "signal-desktop-beta"
+for_window [class="Signal"] {
+  move scratchpad
+  resize set 1024 768
+  scratchpad show
+}
+bindsym $mod+Ctrl+s exec swaymsg [class="Signal"] scratchpad show || exec "signal-desktop-beta"

@@ -1,11 +1,11 @@
 {
   "layer": "bottom",
-  "height": 10,
-  "modules-left": ["sway/workspaces", "sway/mode"],
-  "modules-center": ["sway/window"],
+  "spacing": 8,
+  "modules-left": ["sway/workspaces", "custom/scratchpad-indicator", "sway/mode"],
+  "modules-center": [],
   "modules-right": [
-    "idle_inhibitor",
     "tray",
+    "idle_inhibitor",
     "sway/language",
     "temperature",
     "disk",
@@ -17,24 +17,24 @@
     "clock#2",
   ],
   "sway/workspaces": {
-    // "persistent_workspaces": {
-    //   "1": ["LVDS-1"],
-    //   "2": ["LVDS-1"],
-    //   "3": ["DP-2"],
-    //   "4": ["DP-2"],
-    //   "5": ["DP-2"]
-    // },
-    // "disable-scroll": false,
+    "persistent_workspaces": {
+      "1": ["LVDS-1"],
+      "2": ["LVDS-1"],
+      "3": ["LVDS-1"],
+      "7": ["DP-2"],
+      "8": ["DP-2"],
+      "9": ["DP-2"],
+    },
     "all-outputs": false,
     "active-only": false,
-    "format": "{name}: {icon}",
+    "format": "{name}{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
+     // "1": "",
+     // "2": "",
+     // "3": "",
       "urgent": "",
-      "focused": "",
-      "default": ""
+      "focused": "",
+      "default": ""
     }
   },
   "sway/language": {
@@ -45,7 +45,7 @@
     "interval": 3,
     "return-type": "json",
     "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(select(.name == \"root\") | .nodes[] | select(.name == \"__i3\") | .nodes[] | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") }'",
-    "format": "{} ",
+    "format": " {}",
     "on-click": "swaymsg 'scratchpad show'",
     "on-click-right": "swaymsg 'move scratchpad'"
   },
@@ -59,10 +59,6 @@
       "deactivated": ""
     }
   },
-  "tray": {
-    // "icon-size": 21,
-    "spacing": 0
-  },
   "clock#1": {
     "format": "{:%d-%m}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -73,48 +69,40 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "interval": 1,
   },
-  "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false
-  },
-  "memory": {
-    "format": "{}% "
-  },
   "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 70,
-    // "format-critical": "{temperatureC}°C {icon}",
-    // "format": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}",
-    "format-icons": ["", "", ""]
+    "format": "{icon}{temperatureC}",
+    "format-icons": [""],
+    "interval": 1,
+  },
+  "disk": {
+    "format": "{free}",
   },
   "backlight": {
     // "device": "acpi_video1",
-    "format": "{percent}",
-    "format-icons": ["", ""]
+    "format": "{icon}{percent}",
+    "format-icons": ["",]
   },
   "battery": {
     "states": {
-      // "good": 95,
       "warning": 30,
       "critical": 15
     },
-    "format": "<b>{capacity}</b>% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
+    "format": "{icon}{capacity}",
+    "format-charging": "{capacity}",
+    "format-plugged": "{capacity}",
     "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
   },
   "network": {
-    "format-wifi": "{signalStrength}% ",
-    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-    "format-linked": "{ifname} (No IP) ",
+    "format-wifi": "{signalStrength}",
+    "format-ethernet": "{ifname}",
+    "format-linked": "{ifname} (No IP)",
     "format-disconnected": "⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
-    "format": "{volume}",
+    "format": "{icon}{volume}",
     "format-bluetooth": "{volume} {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
@@ -130,11 +118,6 @@
       "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
-  },
-  "disk": {
-    "interval": 5,
-    "format": "{percentage_used:2}",
-    "path": "/"
   },
   "custom/org": {
       "format": "{icon} {}",

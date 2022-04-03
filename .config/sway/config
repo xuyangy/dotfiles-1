@@ -19,7 +19,6 @@ bindsym $mod+Shift+e exec "swaymsg exit"
 
 bindsym $mod+m exec "thunderbird"
 bindsym $mod+i exec "firefox-nightly"
-bindsym $mod+p exec "signal-desktop-beta"
 bindsym $mod+shift+t exec "bemenu_translate.sh"
 bindsym $mod+Shift+s exec "QT_QPA_PLATFORM=xcb XDG_CURRENT_DESKTOP=sway flameshot gui -r | wl-copy"
 
@@ -52,7 +51,6 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec "signal-desktop-beta --start-in-tray"
 exec "XDG_CURRENT_DESKTOP=Unity nextcloud --background"
 exec flameshot
 #exec pidgin
@@ -87,4 +85,5 @@ include ./clamshell
 include ./lockidle
 include ./workspaces
 include ./scratchpad
+include ./signal
 include /etc/sway/config.d/*

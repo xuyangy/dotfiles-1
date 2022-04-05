@@ -20,23 +20,21 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap('n', '<leader>e', vim.diagnostic.open_float, opts)
-vim.api.nvim_set_keymap('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.api.nvim_set_keymap('n', ']d', vim.diagnostic.goto_next, opts)
+vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local a = vim.lsp.buf
-
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd', a.definition, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cD', a.references, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ci', a.implementation, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ct', a.type_definition, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', a.rename, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cl", vim.lsp.codelens.run, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', a.hover, opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd',  '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cD',  '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ci',  '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ct',  '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr',  '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cl",  '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',           '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', vim.lsp.buf.declaration, opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)

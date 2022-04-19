@@ -1,4 +1,5 @@
 output DP-2 mode 1920x1080
+output DP-1 mode 2560x1440
 
 client.focused #ffff00 #ffff00 #ffff00 #ff0000 #ffff00
 default_border pixel 5
@@ -37,6 +38,11 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
+bindsym $mod+Alt+$left resize shrink width 10px
+bindsym $mod+Alt+$right resize grow width 10px
+bindsym $mod+Alt+$down resize shrink height 10px
+bindsym $mod+Alt+$up resize grow height 10px
+
 bindsym $mod+v splith
 bindsym $mod+s splitv
 
@@ -48,6 +54,11 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+bindsym $mod+Control+Shift+Right move workspace to output right
+bindsym $mod+Control+Shift+Left move workspace to output left
+bindsym $mod+Control+Shift+Down move workspace to output down
+bindsym $mod+Control+Shift+Up move workspace to output up
 
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway

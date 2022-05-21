@@ -1,54 +1,16 @@
-;; Takes a feature symbol or a library name (string)
-(evil-mode 1)
-(after! evil
-  (setq evil-magic nil))
-
-(map! :leader
-      :desc "Evil write shortcut"
-      "w" #'evil-write
-      )
-
-(map! :n "C-h" `evil-window-left)
-(map! :n "C-j" `evil-window-down)
-(map! :n "C-k" `evil-window-up)
-(map! :n "C-l" `evil-window-right)
+(map! :leader :desc "Evil write shortcut" "w" #'evil-write)
 
 (use-package! tree-sitter)
 (use-package! tree-sitter-langs)
-
-;; Takes a major-mode, a quoted hook function or a list of either
-(add-hook! python-mode
-  (setq python-shell-interpreter "bpython"))
-
-;; These are equivalent
-(setq-hook! 'python-mode-hook python-indent-offset 2)
-(setq-hook! python-mode python-indent-offset 2)
 
 (setq evil-insert-state-cursor '(bar "#00FF00")
       evil-visual-state-cursor '(box "#FF00FF")
       evil-normal-state-cursor '(box "#E2E8EF"))
 
-(evil-collection-init 'vterm)
-
-;;(global-tree-sitter-mode)
-
-(use-package! hl-todo
-  ;; if you omit :defer, :hook, :commands, or :after, then the package is loaded
-  ;; immediately. By using :hook here, the `hl-todo` package won't be loaded
-  ;; until prog-mode-hook is triggered (by activating a major mode derived from
-  ;; it, e.g. python-mode)
-  :hook (prog-mode . hl-todo-mode)
-  :init
-  ;; code here will run immediately
-  :config
-  ;; code here will run after the package is loaded
-  (setq hl-todo-highlight-punctuation ":"))
-
 (after! org
   (setq
    org-capture-templates
    '(
-                                        ; other entries here
      ("j" "Journal" entry
       (file+olp+datetree "~/org/journal.org")
       "* %?")
@@ -66,31 +28,21 @@
 ;; https://github.com/hlissner/doom-emacs/issues/5714
 (defalias '+org--restart-mode-h #'ignore)
 
-(setq org-agenda-custom-commands
-      (quote (
-              ("h" "Habits" tags-todo "STYLE=\"habit\""
-               ((org-agenda-overriding-header "Habits")
-                (org-agenda-sorting-strategy
-                 '(todo-state-down effort-up category-keep))))
-              (" " "Agenda"
-               ((agenda "" nil)
-                (tags "drill" ((org-agenda-overriding-header "Drills")))
-                ))
-              nil)))
-
-(evil-define-key 'motion org-agenda-mode-map
-  "ZH" 'org-habit-toggle-habits)
-
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 (global-set-key (kbd "C-c b") #'org-switchb)
+
 (setq org-use-tag-inheritance nil)
+
+(defun org-insert-clipboard-image (&optional file)
+  (interactive "F")
+  (shell-command (concat "pngpaste " file))
+  (insert (concat "[[" file "]]"))
+  (org-display-inline-images))
 
 
 (setq display-line-numbers-type 'relative)
-(set-face-foreground 'line-number "#ffffff")
-(set-face-foreground 'line-number-current-line "#ff0000")
 (setq x-select-enable-clipboard nil)
 
 (set-email-account! "artur@tagisow.dev"
@@ -152,10 +104,18 @@
   (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
   (setq calibredb-library-alist '(("~/Nextcloud/Calibre"))))
 
-(add-hook! 'elfeed-search-mode-hook #'elfeed-update)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(setq typescript-indent-level 2)
+(setq js2-basic-offset 2)
+(setq js-indent-level 2)
+(setq web-mode-markup-indent-offset 2)
 
-(defun org-insert-clipboard-image (&optional file)
-  (interactive "F")
-  (shell-command (concat "pngpaste " file))
-  (insert (concat "[[" file "]]"))
-  (org-display-inline-images))
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-style-indent-offset 2)
+(setq web-mode-style-padding 0)
+
+(setq web-mode-script-padding 0)
+
+(custom-set-variables
+  '(markdown-command "/opt/homebrew/bin/pandoc"))

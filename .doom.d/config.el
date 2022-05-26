@@ -119,3 +119,7 @@
 
 (custom-set-variables
   '(markdown-command "/opt/homebrew/bin/pandoc"))
+
+(custom-theme-set-faces! 'doom-one
+  '(line-number :foreground "dim gray")
+  '(line-number-current-line :foreground "white"))

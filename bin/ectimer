@@ -1,0 +1,2 @@
+#!/bin/sh
+(while sleep 1; do emacsclient --eval '(org-timer-value-string)' | sed s/\\\"//g && echo -e '\f'; done) | sm -

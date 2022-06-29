@@ -5,6 +5,7 @@ ZSH_THEME="flazz"
 plugins=(git safe-paste fasd npm)
 source $ZSH/oh-my-zsh.sh
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+export NODE_PATH=$(npm root -g)
 
 KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"
@@ -19,7 +20,6 @@ alias vi="nvim"
 alias spacy="python -m spacy"
 alias wttr="curl -s \"wttr.in/?2nFQ&lang=pl\" | less"
 alias sway="sway -d > ~/sway.log 2>&1"
-alias ssh="kitty +kitten ssh"
 
 fasd_cache="$HOME/.fasd-init-zsh"
 # fasd init

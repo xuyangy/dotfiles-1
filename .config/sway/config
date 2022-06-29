@@ -1,6 +1,4 @@
-output DP-2 mode 1920x1080
-output DP-1 mode 2560x1440
-
+output DP-2 mode 2560x1440
 client.focused #ffff00 #ffff00 #ffff00 #ff0000 #ffff00
 default_border pixel 5
 

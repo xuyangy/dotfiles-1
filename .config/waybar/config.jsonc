@@ -4,6 +4,7 @@
   "modules-left": ["sway/workspaces", "custom/scratchpad-indicator", "sway/mode"],
   "modules-center": [],
   "modules-right": [
+    "custom/orgtimer",
     "tray",
     "idle_inhibitor",
     "sway/language",
@@ -119,16 +120,10 @@
     },
     "on-click": "pavucontrol"
   },
-  "custom/org": {
-      "format": "{icon} {}",
-      "return-type": "json",
-      "restart-interval": 1,
-      "format-icons": {
-        "refile": "",
-        "ToDo": "",
-      },
-      "exec": "emacsclient --eval '(org-clock-waybar-ouptut-task)' | jq fromjson --unbuffered --compact-output",
-      "on-click": "emacsclient --eval '(org-clock-out)'",
-      "on-middle-click": "emacsclient --eval '(org-clock-in-last)'",
-  },
+  "custom/orgtimer": {
+    "format": "{icon} {}",
+    "restart-interval": 1,
+    "exec": "emacsclient --eval '(org-timer-value-string)' | sed s/\\\"//g",
+    "on-click": "emacsclient --eval '(org-timer-pause-or-continue)'"
+  }
 }

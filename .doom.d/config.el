@@ -1,3 +1,4 @@
+
 (map! :leader :desc "Evil write shortcut" "w" #'evil-write)
 
 (use-package! tree-sitter)
@@ -123,3 +124,33 @@
 (custom-theme-set-faces! 'doom-one
   '(line-number :foreground "dim gray")
   '(line-number-current-line :foreground "white"))
+
+(after! lsp-ui
+  (setq lsp-ui-doc-show-with-cursor t))
+
+
+(setq lsp-eslint-auto-fix-on-save t)
+
+(setq ranger-override-dired 'ranger)
+
+(org-agenda-list)
+
+(defun file-notify-rm-all-watches ()
+  "Remove all existing file notification watches from Emacs."
+  (interactive)
+  (maphash
+   (lambda (key _value)
+     (file-notify-rm-watch key))
+   file-notify-descriptors))
+
+(remove-hook 'doom-first-buffer-hook #'ws-butler-global-mode)
+
+;; (lsp-register-custom-settings '(("documentFeatures.documentFormatting.defaultPrintWidth" nil)))
+;; (lsp-register-custom-settings '(("documentFeatures.documentFormatting" nil)))
+;; (setf (lsp--client-initialization-options (gethash 'volar lsp-clients))  (( "documentFeatures.documentFormatting" nil )))
+;; (lsp--set-configuration `(:pyls , (:configurationSources . ("pycodestyle", "pyflakes")))
+;; (lsp--server-unregister-capability (
+;;                                     lsp-make-unregistration
+;;                                     :id "volar"
+;;                                     :method "textDocument/formatting"))
+

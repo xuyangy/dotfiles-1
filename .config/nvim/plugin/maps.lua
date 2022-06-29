@@ -16,7 +16,7 @@ vim.keymap.set('n', '<up>', '<cmd>cp<cr>')
 vim.keymap.set('n', '<down>', '<cmd>cn<cr>')
 vim.keymap.set('n', 'Q', '<Nop>')
 
-vim.keymap.set('n', '<leader>s', '<cmd>G<cr>')
+vim.keymap.set('n', '<leader>gg', '<cmd>Neogit<cr>')
 vim.keymap.set('n', '<leader>gp', '<cmd>G push<cr>' )
 vim.keymap.set('n', '<leader>gf', '<cmd>G fetch<cr>')
 vim.keymap.set('n', '<leader>gl', '<cmd>G pull<cr>')

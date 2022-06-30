@@ -10,23 +10,19 @@ require('orgmode').setup({
   org_agenda_templates = {
     t = {
       description = 'Task',
-      template = '* TODO %?\n%u'
+      template = '* TODO %?\n%u',
+      headline = 'TODOs',
+    },
+    m = {
+      description = 'Meeting',
+      template = '* TODO %?\n%u',
+      headline = 'Meetings',
     },
     j = {
       description = 'Journal entry',
       template = '* Journal %T %u\n%?',
       target = org_root .. 'journal.org'
     } ,
-    s = {
-      description = 'Spanish word',
-      template = "* Word :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: twosided\n:END:\n*** Es\n%?\n*** En\n*** Example\n",
-      target = org_root .. 'spanish.org'
-    },
-    b = {
-      description = 'Shopping list',
-      template = '* TODO %? - %T',
-      target = org_root .. 'shopping.org'
-    },
   },
 })
 

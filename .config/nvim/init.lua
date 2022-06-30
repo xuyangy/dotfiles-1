@@ -52,9 +52,6 @@ Paq'mboughaba/i3config.vim'
 Paq'numToStr/Comment.nvim'
 require'Comment'.setup()
 
-Paq'akinsho/toggleterm.nvim'
-require'toggleterm'.setup()
-
 Paq'lervag/vimtex'
 vim.g.vimtex_compiler_latexmk = {
   options = {

@@ -152,4 +152,3 @@
 ;;                                     lsp-make-unregistration
 ;;                                     :id "volar"
 ;;                                     :method "textDocument/formatting"))
-

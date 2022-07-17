@@ -1,0 +1,142 @@
+* Generic
+#+begin_src emacs-lisp
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (find-file-noselect "~/.emacs.el")
+  (find-file-noselect "~/.config.org")
+  (setq display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode)
+#+end_src
+* Straight init
+#+begin_src emacs-lisp
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+	(bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+	  (url-retrieve-synchronously
+	   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	   'silent 'inhibit-cookies)
+	(goto-char (point-max))
+	(eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+  (straight-use-package 'use-package)
+#+end_src
+* Packages
+#+begin_src emacs-lisp
+  (use-package magit :straight t)
+#+end_src
+
+* Org
+#+begin_src emacs-lisp
+    (global-set-key (kbd "C-c l") #'org-store-link)
+  (global-set-key (kbd "C-c a") #'org-agenda)
+  (global-set-key (kbd "C-c c") #'org-capture)
+
+  (setq
+   org-agenda-files (list org-directory)
+   org-archive-location "~/org/archive/%s_archive::"
+   org-capture-templates
+   '(
+     ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?")
+     ("l" "Piano lesson" entry (file+olp+datetree "~/org-extra/piano.org" "Lekcje") "* %?")
+     ("m" "Meeting" entry (file+headline "~/org/refile.org" "Meeintgs") "* %U %?")
+     ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+     ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
+     ))
+#+end_src
+
+** Static blog
+#+begin_src emacs-lisp
+  (use-package org-static-blog
+    :straight t
+    :init
+    (setq org-static-blog-publish-title "Blog - Artur Tagisow"
+	  org-static-blog-publish-url "https://tagisow.dev"
+	  org-static-blog-publish-directory "~/Nextcloud/Documents/devblog/dist/"
+	  org-static-blog-posts-directory "~/Nextcloud/Documents/devblog/posts/"
+	  org-static-blog-drafts-directory "~/Nextcloud/Documents/devblog/drafts/"
+	  org-static-blog-enable-tags t
+	  org-static-blog-use-preview t
+	  org-static-blog-preview-link-p t
+	  org-export-with-toc nil
+	  org-export-with-section-numbers nil
+	  org-static-blog-page-header "<meta name=\"author\" content=\"Artur Tagisow\"")
+    )
+#+end_src
+
+* Evil
+#+begin_src emacs-lisp
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+
+  (use-package evil
+    :straight t
+    :init 
+    (evil-mode 1)
+    (evil-set-leader 'normal (kbd "SPC"))
+    :bind
+    (:map evil-normal-state-map ("<leader>w" . evil-write))
+    (:map evil-normal-state-map ("<leader><" . counsel-switch-buffer))
+    (:map evil-normal-state-map ("<leader>pp" . counsel-projectile-switch-project))
+    (:map evil-normal-state-map ("<leader>pa" . projectile-add-known-project))
+    :config
+    (with-eval-after-load 'evil-maps (define-key evil-motion-state-map [down-mouse-1] nil))
+    )
+
+  (use-package evil-collection
+    :straight t
+    :init 
+    (evil-collection-init))
+#+end_src
+
+* tree-sitter
+#+begin_src emacs-lisp
+    (use-package tree-sitter
+      :straight t)
+    (use-package tree-sitter-langs
+      :straight t
+      :config
+      (tree-sitter-require 'typescript)
+      (tree-sitter-require 'javascript)
+  )
+#+end_src
+* Pickers, misc etc.
+#+begin_src emacs-lisp
+  (use-package ivy :straight t)
+  (use-package counsel :straight t)
+  (use-package swiper
+    :straight t
+    :init
+    (counsel-mode)
+    )
+  (use-package hydra :straight t)
+  (use-package ivy-hydra :straight t)
+
+  (use-package projectile :straight t)
+  (use-package counsel-projectile
+    :straight t
+    :config
+    (counsel-projectile-mode)
+    )
+
+  (use-package persp-mode
+    :straight t
+    :init
+    (persp-mode)
+    :custom
+    (persp-mode-prefix-key (kbd "SPC TAB"))
+    )
+#+end_src
+
+* Language support
+#+begin_src emacs-lisp 
+  (use-package typescript-mode :straight t)
+  (use-package web-mode :straight t)
+  (use-package lsp-mode
+    :straight t
+    :hook
+    (typescript-mode . lsp)
+    )
+#+end_src

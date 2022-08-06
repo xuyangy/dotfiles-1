@@ -239,7 +239,8 @@ end
 function M.get_smartass_typescript_server_path(root_dir)
   local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
   local local_tsserverlib = project_root ~= nil and lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
-  local global_tsserverlib = '/opt/homebrew/lib/node_modules/typescript/lib/tsserverlibrary.js'
+  local global_npm_prefix = '/home/artur/.npm-global'
+  local global_tsserverlib = global_npm_prefix .. '/lib/node_modules/typescript/lib/tsserverlibrary.js'
   if local_tsserverlib and lspconfig_util.path.exists(local_tsserverlib) then
     return local_tsserverlib
   else

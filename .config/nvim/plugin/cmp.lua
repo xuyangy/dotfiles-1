@@ -11,11 +11,11 @@ Paq'hrsh7th/vim-vsnip'
 Paq'onsails/lspkind-nvim'
 
 local cmp = require'cmp'
+local types = require'cmp.types'
 local lspkind = require'lspkind'
 
 cmp.setup{
   experimental = {
-    native_menu = false,
     ghost_text = true
   },
   snippet = {
@@ -26,6 +26,8 @@ cmp.setup{
   mapping = {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }), { 'i', 'c' }),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ['<C-e>'] = cmp.mapping({

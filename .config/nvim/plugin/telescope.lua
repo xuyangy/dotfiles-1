@@ -1,6 +1,7 @@
 Paq 'nvim-telescope/telescope.nvim'
 Paq 'nvim-telescope/telescope-file-browser.nvim'
 Paq 'nvim-telescope/telescope-project.nvim'
+Paq 'nvim-telescope/telescope-ui-select.nvim'
 Paq 'nvim-lua/plenary.nvim'
 Paq 'kyazdani42/nvim-web-devicons'
 
@@ -40,6 +41,7 @@ telescope.setup{
 
 telescope.load_extension "file_browser"
 telescope.load_extension "project"
+telescope.load_extension "ui-select"
 
 local function telescope_smart_files()
   local ok = pcall(builtin.git_files)
@@ -58,8 +60,8 @@ vim.keymap.set('n', '<leader><', builtin.buffers)
 -- vim.keymap.set('n', '<leader>o', builtin.lsp_document_symbols)
 -- vim.keymap.set('n', '<leader>O', builtin.lsp_workspace_symbols)
 vim.keymap.set('n', '<leader><f4>', grep_cword )
--- vim.keymap.set('n', '<leader>n', "<cmd>Telescope file_browser path=~/org<cr>")
+vim.keymap.set('n', '<leader>n', "<cmd>Telescope file_browser path=~/org<cr>")
 vim.keymap.set('n', '<leader>fP', "<cmd>Telescope find_files cwd=~/.config/nvim<cr>")
-vim.keymap.set('n', '<leader>ca', '<cmd>Telescope lsp_code_actions<CR>')
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>\'', "<cmd>Telescope resume<cr>")
 vim.keymap.set('n', '<leader>pp', "<cmd>Telescope project<CR>")

@@ -33,7 +33,7 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ci',  '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ct',  '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr',  '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cl",  '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', "<leader>cl",  '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',           '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', vim.lsp.buf.declaration, opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -43,8 +43,8 @@ local on_attach = function(_, bufnr)
 
   --- custom
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader><F12>', ':LspRestart<cr>:e<cr>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>0", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>-", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', "<leader>0", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', "<leader>-", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

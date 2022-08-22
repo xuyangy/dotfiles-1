@@ -109,11 +109,11 @@ nvim_lsp_installer.on_server_ready(function(server)
 end
 )
 
-local lspconfig = require'lspconfig'
-require('sh_volar').register_volar_lspconfigs();
-lspconfig.volar_api.setup{capabilities = capabilities, on_attach = on_attach}
-lspconfig.volar_doc.setup{capabilities = capabilities, on_attach = on_attach}
-lspconfig.volar_html.setup{capabilities = capabilities, on_attach = on_attach}
+-- local lspconfig = require'lspconfig'
+-- require('sh_volar').register_volar_lspconfigs();
+-- lspconfig.volar_api.setup{capabilities = capabilities, on_attach = on_attach}
+-- lspconfig.volar_doc.setup{capabilities = capabilities, on_attach = on_attach}
+-- lspconfig.volar_html.setup{capabilities = capabilities, on_attach = on_attach}
 
 
 -- local lspconfig_util = require 'lspconfig.util'

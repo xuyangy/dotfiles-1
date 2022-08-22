@@ -38,9 +38,9 @@ Paq{url='https://tpope.io/vim/rhubarb.git'}
         \]
   ]], true)
 
-Paq 'TimUntersberger/neogit'
-local neogit = require('neogit')
-neogit.setup{}
+-- Paq 'TimUntersberger/neogit'
+-- local neogit = require('neogit')
+-- neogit.setup{}
 
 Paq{url='https://tpope.io/vim/fugitive.git'}
 

@@ -1,8 +1,5 @@
 (map! :leader :desc "Evil write shortcut" "w" #'evil-write)
 
-(use-package! tree-sitter)
-(use-package! tree-sitter-langs)
-
 (setq evil-insert-state-cursor '(bar "#00FF00")
       evil-visual-state-cursor '(box "#FF00FF")
       evil-normal-state-cursor '(box "#E2E8EF"))
@@ -116,6 +113,8 @@
 (setq web-mode-style-padding 0)
 
 (setq web-mode-script-padding 0)
+
+(setq auth-sources '("~/.authinfo"))
 
 (custom-set-variables
   '(markdown-command "/opt/homebrew/bin/pandoc"))

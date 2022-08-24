@@ -28,12 +28,12 @@ local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd',  '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd',  '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cD',  '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ci',  '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ct',  '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr',  '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cl",  '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', "<leader>cl",  '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',           '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', vim.lsp.buf.declaration, opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -43,8 +43,8 @@ local on_attach = function(_, bufnr)
 
   --- custom
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader><F12>', ':LspRestart<cr>:e<cr>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>0", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>-", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', "<leader>0", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', "<leader>-", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -96,7 +96,7 @@ nvim_lsp_installer.on_server_ready(function(server)
     opts.on_attach = on_attach;
   elseif server.name == "eslint" then
     opts.on_attach = function (client, bufnr)
-      client.resolved_capabilities.document_formatting = true
+      client.server_capabilities.document_formatting = true
       on_attach(client, bufnr)
     end
     opts.settings = {
@@ -109,11 +109,11 @@ nvim_lsp_installer.on_server_ready(function(server)
 end
 )
 
-local lspconfig = require'lspconfig'
-require('sh_volar').register_volar_lspconfigs();
-lspconfig.volar_api.setup{capabilities = capabilities, on_attach = on_attach}
-lspconfig.volar_doc.setup{capabilities = capabilities, on_attach = on_attach}
-lspconfig.volar_html.setup{capabilities = capabilities, on_attach = on_attach}
+-- local lspconfig = require'lspconfig'
+-- require('sh_volar').register_volar_lspconfigs();
+-- lspconfig.volar_api.setup{capabilities = capabilities, on_attach = on_attach}
+-- lspconfig.volar_doc.setup{capabilities = capabilities, on_attach = on_attach}
+-- lspconfig.volar_html.setup{capabilities = capabilities, on_attach = on_attach}
 
 
 -- local lspconfig_util = require 'lspconfig.util'

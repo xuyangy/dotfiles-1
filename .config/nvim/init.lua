@@ -5,12 +5,27 @@ end
 
 Paq = require('paq').paq
 
+Paq'aserowy/tmux.nvim'
+require("tmux").setup({
+  copy_sync = {
+    enable = true,
+  },
+  navigation = {
+    enable_default_keybindings = true,
+  },
+  resize = {
+    enable_default_keybindings = true,
+  }
+})
 Paq'savq/paq-nvim'
 Paq'lukas-reineke/indent-blankline.nvim'
 require"indent_blankline".setup {
   show_current_context = true,
   show_current_context_start = true,
 }
+Paq 'akinsho/toggleterm.nvim'
+require('toggleterm').setup{}
+
 Paq{url='https://tpope.io/vim/fugitive.git'}
 Paq{url='https://tpope.io/vim/rhubarb.git'}
   Paq{url='https://github.com/tyru/open-browser.vim.git'} -- need to disable enable_ex in rnvimr
@@ -23,9 +38,9 @@ Paq{url='https://tpope.io/vim/rhubarb.git'}
         \]
   ]], true)
 
-Paq 'TimUntersberger/neogit'
-local neogit = require('neogit')
-neogit.setup{}
+-- Paq 'TimUntersberger/neogit'
+-- local neogit = require('neogit')
+-- neogit.setup{}
 
 Paq{url='https://tpope.io/vim/fugitive.git'}
 
@@ -44,6 +59,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 Paq'windwp/nvim-ts-autotag'
 Paq'windwp/nvim-autopairs'
+require('nvim-autopairs').setup{}
 Paq'machakann/vim-sandwich'
 Paq'lambdalisue/suda.vim'
 Paq{'iamcco/markdown-preview.nvim', run ='cd app && yarn install'}

@@ -1,3 +1,5 @@
+(use-package! docker)
+
 (map! :leader :desc "Evil write shortcut" "w" #'evil-write)
 
 (setq evil-insert-state-cursor '(bar "#00FF00")
@@ -9,8 +11,8 @@
  '(
    ("r" "Refile TODO" entry (file+headline "~/org/refile.org" "TODOs") "** TODO %?")
    ("m" "Meeting" entry (file+headline "~/org/refile.org" "Meetings") "* %U %?")
-   ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-   ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
+   ;; ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+   ;; ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
    ))
 
 ;; https://github.com/hlissner/doom-emacs/issues/5714

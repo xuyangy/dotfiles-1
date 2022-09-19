@@ -6,15 +6,6 @@
       evil-visual-state-cursor '(box "#FF00FF")
       evil-normal-state-cursor '(box "#E2E8EF"))
 
-(setq
- org-capture-templates
- '(
-   ("r" "Refile TODO" entry (file+headline "~/org/refile.org" "TODOs") "** TODO %?")
-   ("m" "Meeting" entry (file+headline "~/org/refile.org" "Meetings") "* %U %?")
-   ;; ("p" "Protocol" entry (file+headline "~/org/refile.org" "Selections") "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-   ;; ("L" "Protocol Link" entry (file+headline "~/org/refile.org"  "Links") "* %? [[%:link][%:description]] \nCaptured On: %U")
-   ))
-
 ;; https://github.com/hlissner/doom-emacs/issues/5714
 (defalias '+org--restart-mode-h #'ignore)
 
@@ -74,7 +65,8 @@
 (after! lsp-ui
   (setq lsp-ui-doc-show-with-cursor t))
 
-(setq ranger-override-dired 'ranger)
+;; (setq ranger-override-dired 'ranger)
+(ranger-override-dired-mode t)
 
 (defun file-notify-rm-all-watches ()
   "Remove all existing file notification watches from Emacs."

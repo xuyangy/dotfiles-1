@@ -54,16 +54,21 @@
     :init
     (setq org-static-blog-publish-title "Blog - Artur Tagisow"
 	  org-static-blog-publish-url "https://tagisow.dev"
-	  org-static-blog-publish-directory "~/Nextcloud/Documents/devblog/dist/"
-	  org-static-blog-posts-directory "~/Nextcloud/Documents/devblog/posts/"
-	  org-static-blog-drafts-directory "~/Nextcloud/Documents/devblog/drafts/"
+	  org-static-blog-publish-directory "/mnt/c/Users/rt/Nextcloud/Documents/devblog/dist"
+	  org-static-blog-posts-directory "/mnt/c/Users/rt/Nextcloud/Documents/devblog/posts/"
+	  org-static-blog-drafts-directory "/mnt/c/users/rt/Nextcloud/Documents/devblog/drafts/"
 	  org-static-blog-enable-tags t
 	  org-static-blog-use-preview t
 	  org-static-blog-preview-link-p t
 	  org-export-with-toc nil
 	  org-export-with-section-numbers nil
-	  org-static-blog-page-header "<meta name=\"author\" content=\"Artur Tagisow\"")
+	  org-static-blog-page-header "<meta name=\"author\" content=\"Artur Tagisow\"
+    <link rel=\"preload\" href=\"static/style.css\" as=\"style\"/>
+    <link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" />" 
+	  org-static-blog-page-preamble  "<header> <a href=\"https://tagisow.dev\"> Blog - Artur Tagisow </a> </header>"
+	  )
     )
+  (use-package htmlize :straight t)
 #+end_src
 
 * Evil
@@ -86,9 +91,13 @@
     )
 
   (use-package evil-collection
+    :after evil
     :straight t
     :init 
     (evil-collection-init))
+
+  (add-hook 'org-mode-hook
+    (lambda () (define-key evil-normal-state-map (kbd "C-i") 'org-cycle)))
 #+end_src
 
 * tree-sitter
@@ -139,4 +148,5 @@
     :hook
     (typescript-mode . lsp)
     )
+  (use-package nodejs-repl :straight t)
 #+end_src

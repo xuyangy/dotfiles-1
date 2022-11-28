@@ -1,4 +1,3 @@
-output DP-2 mode 2560x1440
 client.focused #ffff00 #ffff00 #ffff00 #ff0000 #ffff00
 default_border pixel 5
 
@@ -19,7 +18,7 @@ bindsym $mod+Shift+e exec "swaymsg exit"
 bindsym $mod+m exec "thunderbird"
 bindsym $mod+i exec "firefox-nightly"
 bindsym $mod+shift+t exec "bemenu_translate.sh"
-bindsym $mod+Shift+s exec "QT_QPA_PLATFORM=xcb XDG_CURRENT_DESKTOP=sway flameshot gui -r | wl-copy"
+bindsym $mod+Shift+s exec 'grim -g "$(slurp)" - | wl-copy'
 
 set $left h
 set $down j
@@ -58,10 +57,10 @@ bindsym $mod+Control+Shift+Left move workspace to output left
 bindsym $mod+Control+Shift+Down move workspace to output down
 bindsym $mod+Control+Shift+Up move workspace to output up
 
-exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec "XDG_CURRENT_DESKTOP=Unity nextcloud --background"
-exec flameshot
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec "nextcloud --background"
 #exec pidgin
 #exec "calibre --start-in-tray"
 #exec "/usr/lib/kdeconnectd"
@@ -90,7 +89,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-include ./clamshell
 include ./lockidle
 include ./workspaces
 include ./scratchpad

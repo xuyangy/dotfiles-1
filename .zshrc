@@ -1,33 +1,21 @@
 export VISUAL=nvim
 export EDITOR=nvim
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh/"
 ZSH_THEME="flazz"
 plugins=(git safe-paste fasd npm)
 source $ZSH/oh-my-zsh.sh
-export PATH="/opt/homebrew/opt/node@16/bin:$HOME/.rover/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
+eval "$(fnm env --use-on-cd)"
+eval "$(fasd --init auto)"
 export NODE_PATH=$(npm root -g)
 
-
-# BEGIN FASD
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-# END FASD
 
 KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-alias nrs="npm run serve"
-alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias vi="nvim"
-alias spacy="python -m spacy"
 alias wttr="curl -s \"wttr.in/?2nFQ&lang=pl\" | less"
-alias sway="sway -d > ~/sway.log 2>&1"
+#alias sway="sway -d > ~/sway.log 2>&1"
 
 
 ranger_cd() {

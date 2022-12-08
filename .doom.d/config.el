@@ -1,6 +1,12 @@
-(use-package! docker)
+(global-activity-watch-mode)
+
+(defun sethidden/open-org-dir ()
+  "Open org dir"
+  (interactive)
+  (doom-project-browse "~/org"))
 
 (map! :leader :desc "Evil write shortcut" "w" #'evil-write)
+(map! :leader :desc "Org files" "fO" #'sethidden/open-org-dir)
 
 (setq evil-insert-state-cursor '(bar "#00FF00")
       evil-visual-state-cursor '(box "#FF00FF")
@@ -20,6 +26,11 @@
   (insert (concat "[[" file "]]"))
   (org-display-inline-images))
 
+(after! org
+  (setq org-capture-templates
+        '(("m" "Meeting" entry (file+headline "~/org/refile.org" "Meetings")
+           "* %? \n%U")))
+  )
 
 (setq display-line-numbers-type 'relative)
 (setq select-enable-clipboard nil)

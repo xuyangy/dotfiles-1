@@ -16,6 +16,7 @@
     "battery",
     "clock#1",
     "clock#2",
+    "mpd"
   ],
   "sway/workspaces": {
     "persistent_workspaces": {

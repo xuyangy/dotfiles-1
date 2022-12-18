@@ -61,6 +61,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec "nextcloud --background"
+exec "mopidy"
+exec "gajim"
+exec wlsunset -l 53.13 -L 23.16 -t 2500
 #exec pidgin
 #exec "calibre --start-in-tray"
 #exec "/usr/lib/kdeconnectd"

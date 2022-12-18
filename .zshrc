@@ -8,6 +8,9 @@ eval "$(fnm env --use-on-cd)"
 eval "$(fasd --init auto)"
 export NODE_PATH=$(npm root -g)
 
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
 
 KEYTIMEOUT=1
 COMPLETION_WAITING_DOTS="true"

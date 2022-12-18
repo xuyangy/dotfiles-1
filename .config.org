@@ -26,6 +26,17 @@
 * Packages
 #+begin_src emacs-lisp
   (use-package magit :straight t)
+  (use-package emms
+    :straight t
+    :config
+    (require 'emms-setup)
+    (require 'emms-player-mpd)
+    (setq emms-player-mpd-server-name "localhost")
+    (setq emms-player-mpd-server-port "6600")
+    (setq emms-player-mpd-music-directory "/Subsonic")
+    (add-to-list 'emms-player-list 'emms-player-mpd)
+(add-to-list 'emms-info-functions 'emms-info-mpd)
+    )
 #+end_src
 
 * Org
@@ -149,4 +160,22 @@
     (typescript-mode . lsp)
     )
   (use-package nodejs-repl :straight t)
+#+end_src
+
+* Music
+#+begin_src emacs-lisp
+  ;; (defvar scales (list "C" "C#" "D" "D#" "E" "F" "F#" "G" "G#" "A" "A#" "B"))
+  (setq scales (list "Bb" "F" "C" "G" "D"))
+
+  (defun nshuffle (sequence)
+    (cl-loop for i from (length sequence) downto 2
+	  do (cl-rotatef (elt sequence (random i))
+		      (elt sequence (1- i))))
+    sequence)
+
+  (defun getscales ()
+    (interactive)
+    (message (string-join (nshuffle scales) "\n"))
+  )
+
 #+end_src

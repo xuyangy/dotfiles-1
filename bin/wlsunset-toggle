@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+if pidof wlsunset; then
+   killall -9 wlsunset
+else
+ wlsunset -l 53.13 -L 23.16 -t 2500
+fi
